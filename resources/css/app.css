@@ -1,0 +1,27 @@
+/*.ant-form-vertical .ant-form-item-reduced .ant-form-item-label {*/
+/*    padding-bottom: 0px !important;*/
+/*}*/
+
+/*.ant-form-vertical .ant-form-item-reduced {*/
+/*    margin-bottom: 1px !important;*/
+/*}*/
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.ant-form-vertical .ant-form-item-reduced .ant-form-item-label {
+    padding-bottom: 0px !important;
+}
+
+.ant-form-vertical .ant-form-item-reduced {
+    margin-bottom: 1px !important;
+}
+
+.ant-form-horizontal .ant-form-item-reduced {
+    margin-bottom: 1px !important;
+}
+
+.ant-form-vertical .ant-form-item-reduced-bottom {
+    margin-bottom: 5px;
+}
