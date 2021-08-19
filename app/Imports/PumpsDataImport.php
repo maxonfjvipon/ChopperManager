@@ -2,16 +2,16 @@
 
 namespace App\Imports;
 
-use App\Models\pumps\Pump;
-use App\Models\pumps\PumpAndApplication;
-use App\Models\pumps\PumpAndType;
-use App\Models\pumps\PumpApplication;
-use App\Models\pumps\PumpProducer;
-use App\Models\pumps\PumpSeries;
-use App\Models\pumps\PumpSeriesAndRegulation;
-use App\Models\pumps\PumpSeriesAndType;
-use App\Models\pumps\PumpSeriesTemperatures;
-use App\Models\pumps\PumpType;
+use App\Models\Pumps\Pump;
+use App\Models\Pumps\PumpAndApplication;
+use App\Models\Pumps\PumpAndType;
+use App\Models\Pumps\PumpApplication;
+use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpSeries;
+use App\Models\Pumps\PumpSeriesAndRegulation;
+use App\Models\Pumps\PumpSeriesAndType;
+use App\Models\Pumps\PumpSeriesTemperatures;
+use App\Models\Pumps\PumpType;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Models\users\User;
-use App\Models\users\Area;
-use App\Models\users\Business;
-use App\Models\users\Role;
+use App\Models\Users\User;
+use App\Models\Users\Area;
+use App\Models\Users\Business;
+use App\Models\Users\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;

@@ -6,9 +6,9 @@ use App\Models\ConnectionType;
 use App\Models\CurrentPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
-use App\Models\pumps\PumpProducer;
-use App\Models\pumps\PumpRegulation;
-use App\Models\pumps\PumpType;
+use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpType;
 use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\Regression;
 

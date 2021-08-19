@@ -9,7 +9,7 @@ use App\Http\Requests\UpdateSelectionRequest;
 use App\Http\Resources\SinglePumpSelectionResource;
 use App\Models\DN;
 use App\Models\LimitCondition;
-use App\Models\selections\single\SinglePumpSelection;
+use App\Models\Selections\Single\SinglePumpSelection;
 use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\Regression;
 use Illuminate\Http\RedirectResponse;

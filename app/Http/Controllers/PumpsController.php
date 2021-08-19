@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileUploadRequest;
 use App\Imports\PumpsDataImport;
 use App\Imports\PumpsImport;
-use App\Models\pumps\Pump;
+use App\Models\Pumps\Pump;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;

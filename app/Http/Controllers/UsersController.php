@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
-use App\Models\users\Area;
-use App\Models\users\Business;
-use App\Models\users\Role;
+use App\Models\Users\Area;
+use App\Models\Users\Business;
+use App\Models\Users\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;

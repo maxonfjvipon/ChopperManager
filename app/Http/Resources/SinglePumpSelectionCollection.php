@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\selections\single\SinglePumpSelection;
+use App\Models\Selections\Single\SinglePumpSelection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\HigherOrderCollectionProxy;
