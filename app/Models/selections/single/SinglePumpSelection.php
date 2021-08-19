@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models\selections\single;
+namespace App\Models\Selections\Single;
 
 use App\Models\ConnectionType;
 use App\Models\CurrentPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
 use App\Models\Project;
-use App\Models\pumps\Pump;
-use App\Models\pumps\PumpProducer;
-use App\Models\pumps\PumpRegulation;
-use App\Models\pumps\PumpType;
+use App\Models\Pumps\Pump;
+use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

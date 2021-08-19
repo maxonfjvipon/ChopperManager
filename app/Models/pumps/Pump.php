@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\pumps;
+namespace App\Models\Pumps;
 
 use App\Models\ConnectionType;
 use App\Models\Currency;
 use App\Models\CurrentPhase;
 use App\Models\DN;
-use App\Models\selections\single\SinglePumpSelection;
+use App\Models\Selections\Single\SinglePumpSelection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
