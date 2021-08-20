@@ -7,17 +7,17 @@ use App\Models\Currency;
 use App\Models\CurrentPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
-use App\Models\pumps\PumpRegulation;
-use App\Models\pumps\PumpApplication;
-use App\Models\pumps\PumpCategory;
-use App\Models\pumps\PumpType;
-use App\Models\pumps\PumpProducer;
-use App\Models\pumps\PumpSeries;
-use App\Models\selections\PumpSelectionType;
-use App\Models\users\Area;
-use App\Models\users\Business;
-use App\Models\users\City;
-use App\Models\users\Role;
+use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpApplication;
+use App\Models\Pumps\PumpCategory;
+use App\Models\Pumps\PumpType;
+use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpSeries;
+use App\Models\Selections\PumpSelectionType;
+use App\Models\Users\Area;
+use App\Models\Users\Business;
+use App\Models\Users\City;
+use App\Models\Users\Role;
 use Illuminate\Database\Seeder;
 
 class ListsSeeder extends Seeder
