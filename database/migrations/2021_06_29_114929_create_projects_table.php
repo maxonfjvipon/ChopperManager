@@ -18,7 +18,6 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name');
             $table->timestamp('created_at', 0)->useCurrent();
-            $table->integer('selections_count')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->boolean('deleted')->default(false);
         });

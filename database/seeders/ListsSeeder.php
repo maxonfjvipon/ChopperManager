@@ -18,8 +18,6 @@ use App\Models\users\Area;
 use App\Models\users\Business;
 use App\Models\users\City;
 use App\Models\users\Role;
-use App\Models\users\User;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class ListsSeeder extends Seeder
