@@ -30,7 +30,7 @@ class AdminSeeder extends Seeder
         ]);
 
         User::create([
-            'id' => 1,
+            'id' => 2,
             'name' => "Титарев&Co",
             'inn' => "1111111112",
             'email' => 'titatyov@admin.com',
@@ -44,7 +44,7 @@ class AdminSeeder extends Seeder
         ]);
 
         User::create([
-            'id' => 1,
+            'id' => 3,
             'name' => "Володин&Co",
             'inn' => "1111111113",
             'email' => 'volodin@admin.com',
