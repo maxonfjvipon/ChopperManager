@@ -39,4 +39,9 @@ class PumpSeries extends Model
     {
         return $this->belongsToMany(PumpRegulation::class, 'pump_series_and_regulations', 'series_id', 'regulation_id');
     }
+
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(PumpApplication::class, 'pump_series_and_applications', 'series_id', 'application_id');
+    }
 }

@@ -6,8 +6,10 @@ use App\Models\ConnectionType;
 use App\Models\CurrentPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
+use App\Models\Pumps\PumpApplication;
 use App\Models\Pumps\PumpProducer;
 use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpType;
 use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\Regression;
@@ -19,9 +21,14 @@ class SelectionsHelperController extends Controller
         return [
             'project_id' => $project_id,
             'producers' => PumpProducer::all(),
-            'producersWithSeries' => PumpProducer::with(['series', 'series.temperatures', 'series.types', 'series.regulations'])->get(),
+            'producersWithSeries' => PumpProducer::with(['series' => function ($query) {
+                $query->orderBy('name');
+            }, 'series.temperatures', 'series.types', 'series.applications', 'series.regulations'])
+                ->get(),
+//            'applicationIds' => PumpSeries::with('applications')->get(),
             'types' => PumpType::all(),
             'connectionTypes' => ConnectionType::all(),
+            'applications' => PumpApplication::all(),
             'phases' => CurrentPhase::all(),
             'dns' => DN::all(),
             'regulations' => PumpRegulation::all(),

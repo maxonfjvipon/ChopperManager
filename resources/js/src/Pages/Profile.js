@@ -44,6 +44,15 @@ const Profile = () => {
         },
         {
             values: {
+                name: 'business_id',
+                label: 'Основная деятельность',
+                rules: [rules.required],
+                initialValue: userdata.business
+            },
+            input: <Selection options={businesses}/>
+        },
+        {
+            values: {
                 name: 'inn', label: 'ИНН', rules: rules.inn, initialValue: userdata.inn || "",
                 // className: reducedAntFormItemClassName,
             }, input: <Input/>
@@ -68,19 +77,6 @@ const Profile = () => {
             input: <Input/>
         },
         {values: {name: 'email', label: 'E-mail', rules: rules.email, initialValue: userdata.email}, input: <Input/>},
-        {
-            values: {
-                name: 'business_id',
-                label: 'Основная деятельность',
-                rules: [rules.required],
-                initialValue: userdata.business
-            },
-            input: <Selection options={businesses}/>
-        },
-        {
-            values: {name: 'role_id', label: 'Роль', rules: [rules.required], initialValue: userdata.role},
-            input: <Selection options={roles}/>
-        },
     ]
 
     const updatePasswordItems = [

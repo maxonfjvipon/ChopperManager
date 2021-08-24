@@ -20,6 +20,7 @@ Route::middleware('guest')->group(function () {
     // LOGIN
     Route::get('login')->name('login')->uses('Auth\LoginController@showLoginForm');
     Route::post('login')->name('login.attempt')->uses('Auth\LoginController@login');
+
     // REGISTER
     Route::get('register')->name('register')->uses('Auth\RegisterController@showRegisterForm');
     Route::post('register')->name('register.attempt')->uses('Auth\RegisterController@register');
@@ -29,9 +30,16 @@ Route::middleware('guest')->group(function () {
 Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 
 Route::middleware('auth')->group(function () {
+    // EMAIL VERIFICATION
+    Route::get('/email/verify')->name('verification.notice')->uses('Auth\EmailVerificationController@notice');
+    Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses('Auth\EmailVerificationController@verify');
+    Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses('Auth\EmailVerificationController@resendVerification');
+
     // DASHBOARD
     Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
-    Route::redirect('/', '/dashboard');
+    Route::redirect('/', '/dashboard')->name('index');
+
+//    Route::middleware('')
 
     // PROJECTS
     Route::resource('projects', 'ProjectsController')->except(['edit', 'create']);

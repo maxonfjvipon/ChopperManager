@@ -32,6 +32,7 @@ class ProjectResource extends JsonResource
                 ->join('pumps', 'pump_id', '=', 'pumps.id')
                 ->join('currencies', 'pumps.currency_id', '=', 'currencies.id')
                 ->where('deleted', '=', false)
+                ->where('project_id', '=', $this->id)
                 ->select('price', 'power', 'created_at', 'selected_pump_name', 'pumps_count',
                     'pumps.part_num_main', 'pressure', 'consumption', 'single_pump_selections.id', 'currencies.name as currency')
                 ->selectRaw('(price * pumps_count) as sum_price, round((power * pumps_count), 1) as sum_power')

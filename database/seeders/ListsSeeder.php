@@ -69,8 +69,7 @@ class ListsSeeder extends Seeder
          * Roles
          */
         Role::create(['id' => 1, 'name' => 'Администратор']);
-        Role::create(['id' => 2, 'name' => 'Инфопользователь']);
-        Role::create(['id' => 3, 'name' => 'Бизнеспользователь']);
+        Role::create(['id' => 2, 'name' => 'Пользователь']);
 
         /**
          * Pump selection types

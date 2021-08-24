@@ -19,6 +19,6 @@ class PumpSeriesAndRegulation extends Model
 
     public function regulation(): BelongsTo
     {
-        return $this->belongsTo(PumpRegulation::class, 'relation_id');
+        return $this->belongsTo(PumpRegulation::class, 'regulation_id');
     }
 }

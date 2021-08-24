@@ -21,10 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('phone', 20);
             $table->string('fio')->nullable();
             $table->bigInteger('business_id')->unsigned();
-            $table->bigInteger('role_id')->unsigned();
+            $table->bigInteger('role_id')->unsigned()->default(2);
             $table->bigInteger('city_id')->unsigned();
             $table->timestamp('created_at', 0)->useCurrent();
             $table->boolean('deleted')->default(false);

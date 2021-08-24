@@ -26,7 +26,8 @@ class AdminSeeder extends Seeder
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,
-            'created_at' => now()
+            'created_at' => now(),
+            'email_verified_at' => now()
         ]);
 
         User::create([
@@ -40,7 +41,8 @@ class AdminSeeder extends Seeder
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,
-            'created_at' => now()
+            'created_at' => now(),
+            'email_verified_at' => now()
         ]);
 
         User::create([
@@ -54,7 +56,8 @@ class AdminSeeder extends Seeder
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,
-            'created_at' => now()
+            'created_at' => now(),
+            'email_verified_at' => now()
         ]);
     }
 }

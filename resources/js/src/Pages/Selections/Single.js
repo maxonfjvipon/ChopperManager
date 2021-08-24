@@ -85,6 +85,7 @@ const Single = () => {
         phases,
         project_id,
         regulations,
+        applications,
         types,
         defaults,
         connectionTypes,
@@ -93,6 +94,7 @@ const Single = () => {
     const [producersValue, setProducersValue] = useState(selection?.data.pump_producers || defaults.producers)
     const [regulationValue, setRegulationValue] = useState(selection?.data.pump_regulations || defaults.regulations)
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
+    const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
     const [temperatureValue, setTemperatureValue] = useState(selection?.data.liquid_temperature || 20)
     const [prevTemperatureValue, setPrevTemperatureValue] = useState(temperatureValue)
@@ -194,6 +196,7 @@ const Single = () => {
     }
 
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
+    // TODO: somehow info user that series have no types/applications if they do
     const producerSeriesListValuesCheckedHandler = values => {
         setProducersSeriesListValues(values)
     }
@@ -238,14 +241,23 @@ const Single = () => {
                 producer.series.forEach(series => {
                     const producerSeries = producer.name + " " + series.name
                     let hasType = typesValue.length <= 0
+                    let hasApplication = applicationsValue.length <= 0
                     let hasRegulation = regulationValue <= 0
                     let hasTemp = series.temperatures?.temp_max >= debouncedTemperature && series.temperatures?.temp_min <= debouncedTemperature
                     if (!hasType) {
-                        for (let type of series.types) {
-                            if (typesValue.includes(type.id)) {
-                                hasType = true
-                                break
-                            }
+                        if (typesValue.every(typeValue => series.types
+                            .map(type => type.id)
+                            .includes(typeValue))
+                        ) {
+                            hasType = true
+                        }
+                    }
+                    if (!hasApplication) {
+                        if (applicationsValue.every(applicationValue => series.applications
+                            .map(application => application.id)
+                            .includes(applicationValue))
+                        ) {
+                            hasApplication = true
                         }
                     }
                     if (!hasRegulation) {
@@ -256,7 +268,7 @@ const Single = () => {
                             }
                         }
                     }
-                    if (hasType && hasRegulation && hasTemp) {
+                    if (hasType && hasRegulation && hasTemp && hasApplication) {
                         _producersSeriesListValues.push(series.id)
                     }
                     if (temperatureWasChanged) {
@@ -291,32 +303,34 @@ const Single = () => {
             // what checkboxes are checked
             setProducersSeriesListValues(_producersSeriesListValues)
         }
-    }, [typesValue, regulationValue, debouncedTemperature, producersSeriesList])
+    }, [typesValue, applicationsValue, regulationValue, debouncedTemperature, producersSeriesList])
 
     // SAVE HANDLER
     const saveSelectionClickHandler = async fullSelectionFormData => {
-        const selectionFormData = await selectionForm.validateFields()
-        const separator = "|" // FIXME: some how make it global
+        console.log('save', fullSelectionFormData)
 
-        console.log(fullSelectionFormData)
-
-        const body = {
-            ...selectionFormData,
-            ...fullSelectionFormData,
-            pump_producer_ids: fullSelectionFormData.pump_producer_ids.join(separator),
-            pump_regulation_ids: fullSelectionFormData.pump_regulation_ids?.join(separator),
-            pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
-            main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
-            connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
-            current_phase_ids: selectionFormData.current_phase_ids?.join(separator),
-            pump_id: stationToShow.pump_id,
-            selected_pump_name: stationToShow.name,
-            pumps_count: stationToShow.pumps_count,
-            project_id,
-        }
-        console.log(body)
-        // console.log(selection ? selection.data.id : 'store');
-        Inertia.post(selection ? route('selections.update', selection.data.id) : route('selections.store'), body)
+        // const selectionFormData = await selectionForm.validateFields()
+        // const separator = "|" // FIXME: some how make it global
+        //
+        // console.log(fullSelectionFormData)
+        //
+        // const body = {
+        //     ...selectionFormData,
+        //     ...fullSelectionFormData,
+        //     pump_producer_ids: fullSelectionFormData.pump_producer_ids.join(separator),
+        //     pump_regulation_ids: fullSelectionFormData.pump_regulation_ids?.join(separator),
+        //     pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
+        //     main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
+        //     connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
+        //     current_phase_ids: selectionFormData.current_phase_ids?.join(separator),
+        //     pump_id: stationToShow.pump_id,
+        //     selected_pump_name: stationToShow.name,
+        //     pumps_count: stationToShow.pumps_count,
+        //     project_id,
+        // }
+        // console.log(body)
+        // // console.log(selection ? selection.data.id : 'store');
+        // Inertia.post(selection ? route('selections.update', selection.data.id) : route('selections.store'), body)
     }
 
     // MAKE SELECTION HANDLER
@@ -325,6 +339,8 @@ const Single = () => {
             message.warning('Не выбрана ни одна серия')
             return
         }
+        setStationToShow(null)
+        setWorkingPoint(null)
         body = {
             ...body,
             series_ids: producersSeriesListValues,
@@ -397,6 +413,7 @@ const Single = () => {
                                 name="pump_type_ids"
                                 label="Тип"
                                 initialValue={selection?.data.pump_types}
+                                tooltip="Для серии проверяется наличие всех выбранных типов!"
                             >
                                 <MultipleSelection
                                     placeholder="Тип"
@@ -408,10 +425,28 @@ const Single = () => {
                                     }}
                                 />
                             </Form.Item>
+                            {/* APPLICATIONS */}
+                            <Form.Item
+                                className={reducedAntFormItemClassName}
+                                name="pump_applications_ids"
+                                label="Применение"
+                                initialValue={selection?.data.applications}
+                                tooltip="Для серии проверяется наличие всех выбранных применений!"
+                            >
+                                <MultipleSelection
+                                    placeholder="Применение"
+                                    disabled={fieldsDisabled}
+                                    style={fullWidth}
+                                    options={applications}
+                                    onChange={values => {
+                                        setApplicationsValue(values)
+                                    }}
+                                />
+                            </Form.Item>
                             {/* TEMPERATURE */}
                             <RequiredFormItem
                                 className={reducedAntFormItemClassName}
-                                label="Температура перекачиваемой жидкости"
+                                label="Температура жидкости"
                                 name="liquid_temperature"
                                 initialValue={temperatureValue}
                                 style={margin.bottom(10)}
@@ -754,6 +789,7 @@ const Single = () => {
                                     }
                                 }
                             }}
+                            pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
                             scroll={{x: 2000, y: 450}}
                         />
                     </Col>
@@ -777,6 +813,15 @@ const Single = () => {
                                     htmlType="submit"
                                     form={fullSelectionFormName}
                                     onClick={saveSelectionClickHandler}
+                                >
+                                    Добавить в проект
+                                </PrimaryButton>
+                                <PrimaryButton
+                                    id={"save-and-close"}
+                                    disabled={!stationToShow}
+                                    htmlType="submit"
+                                    form={fullSelectionFormName}
+                                    // onClick={saveSelectionClickHandler}
                                 >
                                     Сохранить и выйти
                                 </PrimaryButton>

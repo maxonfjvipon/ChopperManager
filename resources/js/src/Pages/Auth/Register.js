@@ -22,6 +22,14 @@ function Register() {
     const formName = 'register-form'
     const items = [
         {values: {name: 'name', label: 'Наименование организации', rules: [rules.required]}, input: <Input/>},
+        {
+            values: {
+                name: 'business_id',
+                label: 'Основная деятельность',
+                rules: [rules.required]
+            },
+            input: <Selection options={businesses}/>
+        },
         {values: {name: 'inn', label: 'ИНН', rules: rules.inn}, input: <Input/>},
         {
             values: {name: 'phone', label: 'Контактный телефон', rules: rules.phone},
@@ -36,15 +44,6 @@ function Register() {
             values: {name: 'password_confirmation', label: 'Повторите пароль', rules: rules.password},
             input: <Input.Password/>
         },
-        {
-            values: {
-                name: 'business_id',
-                label: 'Основная деятельность',
-                rules: [rules.required]
-            },
-            input: <Selection options={businesses}/>
-        },
-        {values: {name: 'role_id', label: 'Роль', rules: [rules.required]}, input: <Selection options={roles}/>},
     ]
 
     useEffect(() => {

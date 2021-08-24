@@ -102,7 +102,7 @@ const Index = () => {
                 </Col>
                 <Col span={24}>
                     <SecondaryButton onClick={() => {
-                        Inertia.get(route('selections.dashboard', 0))
+                        Inertia.get(route('selections.dashboard', -1))
                     }}>
                         Произвести подбор без возможности сохранения
                     </SecondaryButton>

@@ -2,28 +2,16 @@ import {Breadcrumb, Dropdown, Layout, Menu, message, PageHeader} from "antd";
 import {useStyles} from "../../Hooks/styles.hook";
 import {ProfileOutlined, LogoutOutlined, DownOutlined, HomeOutlined} from "@ant-design/icons";
 import {Link, usePage} from "@inertiajs/inertia-react";
-import {useEffect} from "react";
+import React from "react";
 import {PrimaryButton} from "../Buttons/PrimaryButton";
-import {ErrorLayout} from "./ErrorLayout";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
+import {MessagesLayout} from "./MessagesLayout";
 
 export const Authenticated = ({title, children, backTo, breadcrumbs = []}) => {
     const {Content, Footer} = Layout
     const {backgroundColorWhite, fullWidth, textAlignCenter, margin, padding} = useStyles()
-    const {flash, auth} = usePage().props
+    const {auth} = usePage().props
     const {breadcrumb} = useBreadcrumbs()
-
-    useEffect(() => {
-        if (flash.success) {
-            message.success(flash.success)
-        }
-        if (flash.warning) {
-            message.warning(flash.warning)
-        }
-        if (flash.info) {
-            message.info(flash.info)
-        }
-    }, [flash])
 
     const routes = [
         {
@@ -35,7 +23,7 @@ export const Authenticated = ({title, children, backTo, breadcrumbs = []}) => {
     ]
 
     return (
-        <ErrorLayout>
+        <MessagesLayout>
             <Layout>
                 <PageHeader
                     onBack={backTo ? () => window.history.back() : null}
@@ -76,6 +64,6 @@ export const Authenticated = ({title, children, backTo, breadcrumbs = []}) => {
                 {/*    © Trunnikov M.V., 2021*/}
                 {/*</Footer>*/}
             </Layout>
-        </ErrorLayout>
+        </MessagesLayout>
     )
 }

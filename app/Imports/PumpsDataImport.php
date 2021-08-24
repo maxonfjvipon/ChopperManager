@@ -8,6 +8,7 @@ use App\Models\Pumps\PumpAndType;
 use App\Models\Pumps\PumpApplication;
 use App\Models\Pumps\PumpProducer;
 use App\Models\Pumps\PumpSeries;
+use App\Models\Pumps\PumpSeriesAndApplication;
 use App\Models\Pumps\PumpSeriesAndRegulation;
 use App\Models\Pumps\PumpSeriesAndType;
 use App\Models\Pumps\PumpSeriesTemperatures;
@@ -30,6 +31,7 @@ class PumpsDataImport implements ToCollection
         $seriesAndTemperatures = [];
         $seriesAndTypes = [];
         $seriesAndRegulations = [];
+        $seriesAndApplications = [];
 
         foreach ($rows as $row) {
             $series = PumpSeries::whereName($row[4])
@@ -44,6 +46,9 @@ class PumpsDataImport implements ToCollection
             }
             if (!array_key_exists($series->id, $seriesAndTypes)) {
                 $seriesAndTypes[$series->id] = [];
+            }
+            if (!array_key_exists($series->id, $seriesAndApplications)) {
+                $seriesAndApplications[$series->id] = [];
             }
             if (!array_key_exists($series->id, $seriesAndRegulations)) {
                 $seriesAndRegulations[$series->id] = [];
@@ -70,31 +75,34 @@ class PumpsDataImport implements ToCollection
             $pumpTypes = explode(", ", $row[22]);
 
             foreach ($applications as $application) {
+                $applicationId = PumpApplication::whereName($application)->first()->id;
+                if (!in_array($applicationId, $seriesAndApplications[$series->id])) {
+                    $seriesAndApplications[$series->id][] = $applicationId;
+                }
                 PumpAndApplication::firstOrCreate(
                     [
                         'pump_id' => $pump->id,
-                        'application_id' => PumpApplication::whereName($application)->first()->id
+                        'application_id' => $applicationId
                     ],
                     [
                         'pump_id' => $pump->id,
-                        'application_id' => PumpApplication::whereName($application)->first()->id
+                        'application_id' => $applicationId
                     ]);
             }
 
             foreach ($pumpTypes as $pumpType) {
-                $filterTypeId = PumpType::whereName($pumpType)->first()->id;
-                if (!in_array($filterTypeId, $seriesAndTypes[$series->id])) {
-                    $seriesAndTypes[$series->id][] = $filterTypeId;
+                $pumpTypeId = PumpType::whereName($pumpType)->first()->id;
+                if (!in_array($pumpTypeId, $seriesAndTypes[$series->id])) {
+                    $seriesAndTypes[$series->id][] = $pumpTypeId;
                 }
-
                 PumpAndType::firstOrCreate(
                     [
                         'pump_id' => $pump->id,
-                        'type_id' => $filterTypeId
+                        'type_id' => $pumpTypeId
                     ],
                     [
                         'pump_id' => $pump->id,
-                        'type_id' => $filterTypeId
+                        'type_id' => $pumpTypeId
                     ]);
             }
         }
@@ -132,6 +140,19 @@ class PumpsDataImport implements ToCollection
                 ], [
                     'series_id' => $seriesId,
                     'regulation_id' => $regulationId
+                ]);
+            }
+        }
+
+        // series and applications
+        foreach ($seriesAndApplications as $seriesId => $applicationIds) {
+            foreach ($applicationIds as $applicationId) {
+                PumpSeriesAndApplication::firstOrCreate([
+                    'series_id' => $seriesId,
+                    'application_id' => $applicationId
+                ], [
+                    'series_id' => $seriesId,
+                    'application_id' => $applicationId
                 ]);
             }
         }
