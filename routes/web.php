@@ -35,37 +35,35 @@ Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses('Auth\EmailVerificationController@verify');
     Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses('Auth\EmailVerificationController@resendVerification');
 
-    // DASHBOARD
-    Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
-    Route::redirect('/', '/dashboard')->name('index');
+    Route::middleware('verified')->group(function() {
+        // DASHBOARD
+        Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
+        Route::redirect('/', '/dashboard')->name('index');
 
-//    Route::middleware('')
+        // PROJECTS
+        Route::resource('projects', 'ProjectsController')->except(['edit', 'create']);
 
-    // PROJECTS
-    Route::resource('projects', 'ProjectsController')->except(['edit', 'create']);
+        // SELECTIONS
+        Route::prefix('selections')->group(function () {
+            Route::get('dashboard/{project}')->name('selections.dashboard')->uses('SelectionsController@dashboard');
+            Route::get('create/{project}')->name('selections.create')->uses('SelectionsController@create');
+            Route::get('show/{selection}')->name('selections.show')->uses('SelectionsController@show');
 
-    // SELECTIONS
-    // FIXME: fake selection path
-    Route::prefix('selections')->group(function () {
-        Route::get('dashboard/{project}')->name('selections.dashboard')->uses('SelectionsController@dashboard');
-        Route::get('create/{project}')->name('selections.create')->uses('SelectionsController@create');
-        Route::get('show/{selection}')->name('selections.show')->uses('SelectionsController@show');
-        Route::get('{project}')->name('selections.fake')->uses('SelectionsController@fake');
+            Route::post('select')->name('selections.select')->uses('SelectionsController@select');
+            Route::post('store')->name('selections.store')->uses('SelectionsController@store');
+            Route::post('update/{selection}')->name('selections.update')->uses('SelectionsController@update');
 
-        Route::post('select')->name('selections.select')->uses('SelectionsController@select');
-        Route::post('store')->name('selections.store')->uses('SelectionsController@store');
-        Route::post('update/{selection}')->name('selections.update')->uses('SelectionsController@update');
+            Route::delete('{selection}')->name('selections.destroy')->uses('SelectionsController@destroy');
+        });
 
-        Route::delete('{selection}')->name('selections.destroy')->uses('SelectionsController@destroy');
+        // USERS
+        Route::prefix('users')->group(function () {
+            Route::get('profile')->name('users.profile')->uses('UsersController@profile');
+            Route::put('update')->name('users.update')->uses('UsersController@update');
+        });
+
+        // PUMPS
+        Route::post('pumps/import')->name('pumps.import')->uses('PumpsController@import');
+        Route::resource('pumps', 'PumpsController')->except(['edit', 'create']);
     });
-
-    // USERS
-    Route::prefix('users')->group(function () {
-        Route::get('profile')->name('users.profile')->uses('UsersController@profile');
-        Route::put('update')->name('users.update')->uses('UsersController@update');
-    });
-
-    // PUMPS
-    Route::post('pumps/import')->name('pumps.import')->uses('PumpsController@import');
-    Route::resource('pumps', 'PumpsController')->except(['edit', 'create']);
 });

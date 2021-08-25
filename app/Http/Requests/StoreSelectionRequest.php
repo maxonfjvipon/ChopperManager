@@ -22,6 +22,7 @@ class StoreSelectionRequest extends FormRequest
             'pump_type_ids' => $this->pump_type_ids,
             'connection_type_ids' => $this->connection_type_ids,
             'current_phase_ids' => $this->current_phase_ids,
+            'pump_application_ids' => $this->pump_application_ids
         ]);
     }
 
@@ -73,6 +74,7 @@ class StoreSelectionRequest extends FormRequest
             'pump_producer_ids' => ['required', 'string'],
             'pump_regulation_ids' => ['nullable', 'string', 'max:3'],
             'pump_type_ids' => ['nullable', 'string'],
+            'pump_application_ids' => ['nullable', 'string'],
             'main_pumps_counts' => ['required', 'string', 'max:20'],
             'connection_type_ids' => ['nullable', 'string'],
             'current_phase_ids' => ['nullable', 'string', 'max:3'],

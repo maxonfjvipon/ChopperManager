@@ -50,6 +50,7 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->string('pump_producer_ids');
             $table->string('pump_regulation_ids', 3)->nullable();
             $table->string('pump_type_ids')->nullable();
+            $table->string('pump_application_ids')->nullable();
 
             $table->string('separator')->default('|');
 

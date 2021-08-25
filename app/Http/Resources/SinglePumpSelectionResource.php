@@ -54,6 +54,7 @@ class SinglePumpSelectionResource extends JsonResource
             'pump_producers' => $this->arrayOfIntsFromString($this->pump_producer_ids),
             'pump_regulations' => $this->arrayOfIntsFromString($this->pump_regulation_ids),
             'pump_types' => $this->arrayOfIntsFromString($this->pump_type_ids),
+            'pump_applications' => $this->arrayOfIntsFromString($this->pump_application_ids)
 
         ];
     }

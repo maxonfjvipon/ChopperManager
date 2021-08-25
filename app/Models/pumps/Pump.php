@@ -86,4 +86,9 @@ class Pump extends Model
     {
         return $this->belongsTo(CurrentPhase::class, 'phase_id');
     }
+
+    public function coefficients(): HasMany
+    {
+        return $this->hasMany(PumpsAndCoefficients::class, 'pump_id');
+    }
 }

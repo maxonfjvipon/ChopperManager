@@ -26,7 +26,6 @@ class ProjectsController extends Controller
             'projects' => auth()->user()->projects()->withCount(['selections' => function ($query) {
                 $query->where('deleted', false);
             }])->where('deleted', false)->get()->all()
-
         ]);
     }
 

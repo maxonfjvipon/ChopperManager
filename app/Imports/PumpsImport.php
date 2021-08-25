@@ -26,7 +26,7 @@ class PumpsImport implements ToModel, WithValidation, WithStartRow, WithUpserts,
      * @param array $row
      * @return Pump
      */
-    public function model(array $row)
+    public function model(array $row): Pump
     {
         return new Pump([
             'part_num_main' => trim($row[0]),

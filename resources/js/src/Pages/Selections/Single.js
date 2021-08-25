@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {Authenticated} from "../../Shared/Layout/Authenticated";
-import {Button, Checkbox, Col, Form, InputNumber, message, Radio, Row, Space, Table, Tree, Typography} from "antd";
+import {Checkbox, Col, Form, InputNumber, message, Radio, Row, Space, Table, Tree, Typography} from "antd";
 import {RequiredFormItem} from "../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../Shared/Inputs/MultipleSelection";
 import {useStyles} from "../../Hooks/styles.hook";
 import {Selection} from "../../Shared/Inputs/Selection";
 import {useCheck} from "../../Hooks/check.hook";
-import {usePaths} from "../../Hooks/paths.hook";
 import {useHttp} from "../../Hooks/http.hook";
 import {useGraphic} from "../../Hooks/graphic.hook";
-import {useRedirect} from "../../Hooks/redirect.hook";
 import {TypographyCenter} from "../../Shared/TypographyCenter";
 import {usePage} from "@inertiajs/inertia-react";
 import {useForm} from "antd/es/form/Form";
@@ -19,7 +17,6 @@ import {Inertia} from "@inertiajs/inertia";
 import {BoxFlexEnd} from "../../Shared/Box/BoxFlexEnd";
 import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
-import route from "ziggy-js/src/js";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -72,24 +69,26 @@ const Single = () => {
 
     const page = usePage().props
 
-    useEffect(() => {
-        console.log('page', page)
-    }, [page])
+    console.log(page)
 
     const {
         selection,
+        project_id,
+        selection_props
+    } = page
+
+    const {
         producers,
         producersWithSeries,
         dns,
         limitConditions,
         phases,
-        project_id,
         regulations,
         applications,
         types,
         defaults,
-        connectionTypes,
-    } = page
+        connectionTypes
+    } = selection_props.data
 
     const [producersValue, setProducersValue] = useState(selection?.data.pump_producers || defaults.producers)
     const [regulationValue, setRegulationValue] = useState(selection?.data.pump_regulations || defaults.regulations)
@@ -97,7 +96,7 @@ const Single = () => {
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
     const [temperatureValue, setTemperatureValue] = useState(selection?.data.liquid_temperature || 20)
-    const [prevTemperatureValue, setPrevTemperatureValue] = useState(temperatureValue)
+    const [prevTemperatureValue, setPrevTemperatureValue] = useState(-100)
     const debouncedTemperature = useDebounce(temperatureValue, 500)
 
     const [limitChecks, setLimitChecks] = useState({
@@ -106,14 +105,6 @@ const Single = () => {
         dnInput: selection?.data.dn_input_limit_checked || false,
         dnOutput: selection?.data.dn_output_limit_checked || false,
     })
-
-    useEffect(() => {
-        console.log(selection)
-    }, [selection])
-
-    useEffect(() => {
-        console.log('ps', producersWithSeries)
-    }, [producersWithSeries])
 
     // CONSTS
     const mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(value => {
@@ -172,7 +163,6 @@ const Single = () => {
         },
     ]
     const fieldsDisabled = (isArrayEmpty(producersValue))
-    const canSave = true
     const [selectionForm] = useForm()
     const [fullSelectionForm] = useForm()
 
@@ -187,7 +177,7 @@ const Single = () => {
     }
 
     // STYLES
-    const {fullWidth, marginBottomTen, margin, padding, reducedAntFormItemClassName} = useStyles()
+    const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName} = useStyles()
     const nextBelowStyle = {...fullWidth, ...marginBottomTen}
 
     // TEMPERATURE CHANGE HANDLER
@@ -306,31 +296,28 @@ const Single = () => {
     }, [typesValue, applicationsValue, regulationValue, debouncedTemperature, producersSeriesList])
 
     // SAVE HANDLER
-    const saveSelectionClickHandler = async fullSelectionFormData => {
-        console.log('save', fullSelectionFormData)
+    const addSelectionToProjectClickHandler = async fullSelectionFormData => {
+        const selectionFormData = await selectionForm.validateFields()
+        const separator = "|" // FIXME: some how make it global
 
-        // const selectionFormData = await selectionForm.validateFields()
-        // const separator = "|" // FIXME: some how make it global
-        //
-        // console.log(fullSelectionFormData)
-        //
-        // const body = {
-        //     ...selectionFormData,
-        //     ...fullSelectionFormData,
-        //     pump_producer_ids: fullSelectionFormData.pump_producer_ids.join(separator),
-        //     pump_regulation_ids: fullSelectionFormData.pump_regulation_ids?.join(separator),
-        //     pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
-        //     main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
-        //     connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
-        //     current_phase_ids: selectionFormData.current_phase_ids?.join(separator),
-        //     pump_id: stationToShow.pump_id,
-        //     selected_pump_name: stationToShow.name,
-        //     pumps_count: stationToShow.pumps_count,
-        //     project_id,
-        // }
-        // console.log(body)
-        // // console.log(selection ? selection.data.id : 'store');
-        // Inertia.post(selection ? route('selections.update', selection.data.id) : route('selections.store'), body)
+        const body = {
+            ...selectionFormData,
+            ...fullSelectionFormData,
+            pump_producer_ids: fullSelectionFormData.pump_producer_ids.join(separator),
+            pump_regulation_ids: fullSelectionFormData.pump_regulation_ids?.join(separator),
+            pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
+            pump_application_ids: fullSelectionFormData.pump_application_ids?.join(separator),
+            main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
+            connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
+            current_phase_ids: selectionFormData.current_phase_ids?.join(separator),
+            pump_id: stationToShow.pump_id,
+            selected_pump_name: stationToShow.name,
+            pumps_count: stationToShow.pumps_count,
+            project_id,
+        }
+        Inertia.post(selection ? route('selections.update', selection.data.id) : route('selections.store'), body, {
+            preserveScroll: true
+        })
     }
 
     // MAKE SELECTION HANDLER
@@ -345,9 +332,10 @@ const Single = () => {
             ...body,
             series_ids: producersSeriesListValues,
         }
-        console.log('select', body)
         try {
+            // Inertia.post(route('selections.select'), body)
             const data = await postRequest(route('selections.select'), body, true)
+            console.log(data)
             setSelectedPumps(data.selected_pumps)
             setWorkingPoint(data.working_point)
         } catch {
@@ -387,7 +375,7 @@ const Single = () => {
                         <Form
                             name={fullSelectionFormName}
                             form={fullSelectionForm}
-                            onFinish={saveSelectionClickHandler}
+                            onFinish={addSelectionToProjectClickHandler}
                             layout="vertical"
                         >
                             {/* PRODUCERS */}
@@ -428,9 +416,9 @@ const Single = () => {
                             {/* APPLICATIONS */}
                             <Form.Item
                                 className={reducedAntFormItemClassName}
-                                name="pump_applications_ids"
+                                name="pump_application_ids"
                                 label="Применение"
-                                initialValue={selection?.data.applications}
+                                initialValue={selection?.data.pump_applications}
                                 tooltip="Для серии проверяется наличие всех выбранных применений!"
                             >
                                 <MultipleSelection
@@ -806,24 +794,14 @@ const Single = () => {
                                 <SecondaryButton onClick={() => {
                                     Inertia.get(route('projects.show', project_id))
                                 }}>
-                                    Выйти без сохранения
+                                    Выйти
                                 </SecondaryButton>
                                 <PrimaryButton
                                     disabled={!stationToShow}
                                     htmlType="submit"
                                     form={fullSelectionFormName}
-                                    onClick={saveSelectionClickHandler}
                                 >
-                                    Добавить в проект
-                                </PrimaryButton>
-                                <PrimaryButton
-                                    id={"save-and-close"}
-                                    disabled={!stationToShow}
-                                    htmlType="submit"
-                                    form={fullSelectionFormName}
-                                    // onClick={saveSelectionClickHandler}
-                                >
-                                    Сохранить и выйти
+                                    {!selection ? "Добавить в проект" : "Обновить подбор"}
                                 </PrimaryButton>
                             </Space>}
                             {project_id === "-1" && <SecondaryButton onClick={() => {
@@ -843,7 +821,8 @@ Single.layout = page => <Authenticated
     title={window.location.href.includes("show") ? "Просмотр подбора" : "Подбор насоса"}
     backTo={true}
     children={page}
-    breadcrumbs={useBreadcrumbs().selections}/>
+    breadcrumbs={useBreadcrumbs().selections}
+/>
 
 export default Single
 

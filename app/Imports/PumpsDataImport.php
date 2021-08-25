@@ -7,12 +7,15 @@ use App\Models\Pumps\PumpAndApplication;
 use App\Models\Pumps\PumpAndType;
 use App\Models\Pumps\PumpApplication;
 use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpsAndCoefficients;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpSeriesAndApplication;
 use App\Models\Pumps\PumpSeriesAndRegulation;
 use App\Models\Pumps\PumpSeriesAndType;
 use App\Models\Pumps\PumpSeriesTemperatures;
 use App\Models\Pumps\PumpType;
+use App\Support\Selections\PumpPerformance;
+use App\Support\Selections\Regression;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -23,8 +26,9 @@ class PumpsDataImport implements ToCollection
 
     /**
      * @param Collection $rows
+     * @return string
      */
-    public function collection(Collection $rows)
+    public function collection(Collection $rows): string
     {
         $rows->shift();
 
@@ -34,6 +38,18 @@ class PumpsDataImport implements ToCollection
         $seriesAndApplications = [];
 
         foreach ($rows as $row) {
+            $pumpPerformance = new PumpPerformance(trim($row[17]));
+            for ($count = 1; $count < 10; ++$count) {
+                $coefficients = Regression::withData($pumpPerformance->lineData($count))->polynomial()->coefficients();
+                PumpsAndCoefficients::create([
+                    'pump_id' => Pump::wherePartNumMain(trim($row[0]))->first()->id,
+                    'count' => $count,
+                    'k' => $coefficients[0],
+                    'b' => $coefficients[1],
+                    'c' => $coefficients[2]
+                ]);
+            }
+
             $series = PumpSeries::whereName($row[4])
                 ->whereProducerId(PumpProducer::whereName($row[3])->first()->id)
                 ->first();

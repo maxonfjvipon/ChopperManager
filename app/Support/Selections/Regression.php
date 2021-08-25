@@ -4,6 +4,8 @@
 namespace App\Support\Selections;
 
 
+use JetBrains\PhpStorm\Pure;
+
 class Regression
 {
     private $data;
@@ -15,11 +17,25 @@ class Regression
     ];
     private $type = null;
 
-    public function __construct($data, $order = 2, $precision = 7)
+    public function __construct()
     {
-        $this->data = $data;
-        $this->order = $order;
-        $this->precision = $precision;
+    }
+
+    public static function withCoefficients($coefficients): Regression
+    {
+        $instance = new self();
+        $instance->coefficients = $coefficients;
+        $instance->type = $instance->types['polynomial'];
+        return $instance;
+    }
+
+    public static function withData($data, $order = 2, $precision = 7): Regression
+    {
+        $instance = new self();
+        $instance->data = $data;
+        $instance->order = $order;
+        $instance->precision = $precision;
+        return $instance;
     }
 
     public function polynomial(): Regression
@@ -81,7 +97,8 @@ class Regression
             {
                 return $this->coefficients[0] * $x * $x + $this->coefficients[1] * $x + $this->coefficients[2];
             }
-            default: return 0;
+            default:
+                return 0;
         }
     }
 
