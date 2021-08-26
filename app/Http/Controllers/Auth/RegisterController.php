@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'fio' => $validated['fio'],
             'city_id' => $validated['city_id'],
             'business_id' => $validated['business_id'],
+            'email_verified_at' => now()
         ]);
 
 //        $user->discounts()->insert(array_map(function ($series) use ($user) {
@@ -69,7 +70,7 @@ class RegisterController extends Controller
             return ['user_id' => $user->id, 'discountable_id' => $producer['id'], 'discountable_type' => 'pump_producer'];
         }, PumpProducer::all()->toArray()));
 
-        event(new Registered($user));
+//        event(new Registered($user));
 
         Auth::login($user);
 
