@@ -9,6 +9,7 @@ use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\PumpPerformance;
 use App\Support\Selections\Regression;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class MakeSelectionAction
 {
@@ -24,11 +25,16 @@ class MakeSelectionAction
         return $systemPerformance;
     }
 
-    public function execute(array $validated)
+    public function execute(array $validated): JsonResponse
     {
-        $dbPumps = Pump::with(['series', 'series.discount'])
+        $dbPumps = Pump
+            ::with(['series', 'series.discounts' => function ($query) {
+                $query->where('user_id', Auth::id());
+            }])
             ->with('currency')
-            ->with(['producer', 'producer.discount'])
+            ->with(['producer', 'producer.discounts' => function ($query) {
+                $query->where('user_id', Auth::id());
+            }])
             ->with(['coefficients' => function ($query) use ($validated) {
                 $query->whereBetween(
                     'count',
@@ -194,10 +200,10 @@ class MakeSelectionAction
                 $pump_rub_price = $pump->currency->name === 'RUB'
                     ? $pump->price
                     : round($pump->price / $rates[$pump->currency->name], 2);
-                $pump_rub_price_with_discount = $pump_rub_price - ($pump->series->discount->value
-                        ? $pump_rub_price * $pump->series->discount->value / 100
-                        : ($pump->producer->discount->value
-                            ? $pump_rub_price * $pump->producer->discount->value / 100
+                $pump_rub_price_with_discount = $pump_rub_price - ($pump->series->discounts[0]->value
+                        ? $pump_rub_price * $pump->series->discounts[0]->value / 100
+                        : ($pump->producer->discounts[0]->value
+                            ? $pump_rub_price * $pump->producer->discounts[0]->value / 100
                             : 0
                         )
                     );

@@ -29,12 +29,15 @@ Route::middleware('guest')->group(function () {
 // LOGOUT
 Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 
+// AUTHORIZED
 Route::middleware('auth')->group(function () {
+
     // EMAIL VERIFICATION
     Route::get('/email/verify')->name('verification.notice')->uses('Auth\EmailVerificationController@notice');
     Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses('Auth\EmailVerificationController@verify');
     Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses('Auth\EmailVerificationController@resendVerification');
 
+    // ONLY WITH VERIFIED EMAIL
     Route::middleware('verified')->group(function () {
         // DASHBOARD
         Route::get('/dashboard')->name('dashboard')->uses('DashboardController');

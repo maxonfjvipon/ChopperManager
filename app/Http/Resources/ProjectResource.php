@@ -6,6 +6,7 @@ use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Models\Selections\Single\SinglePumpSelection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProjectResource extends JsonResource
@@ -33,7 +34,14 @@ class ProjectResource extends JsonResource
             'selections' => SinglePumpSelection::with([
                 'pump' => function ($query) {
                     $query->select('id', 'name', 'price', 'power', 'currency_id', 'series_id', 'part_num_main');
-                }, 'pump.currency', 'pump.producer.discount', 'pump.series.discount'
+                },
+                'pump.currency',
+                'pump.producer.discounts' => function ($query) {
+                    $query->where('user_id', Auth::id());
+                },
+                'pump.series.discounts' => function ($query) {
+                    $query->where('user_id', Auth::id());
+                }
             ])
                 ->where('project_id', $this->id)
                 ->where('deleted', false)
@@ -43,10 +51,10 @@ class ProjectResource extends JsonResource
                         ? $selection->pump->price
                         : round($selection->pump->price / $rates[$selection->pump->currency->name], 2);
 
-                    $pump_price = $pump_rub_price - ($selection->pump->series->discount->value
-                            ? $pump_rub_price * $selection->pump->series->discount->value / 100
-                            : ($selection->pump->producer->discount->value
-                                ? $pump_rub_price * $selection->pump->producer->discount->value / 100
+                    $pump_price = $pump_rub_price - ($selection->pump->series->discounts[0]->value
+                            ? $pump_rub_price * $selection->pump->series->discounts[0]->value / 100
+                            : ($selection->pump->producer->discounts[0]->value
+                                ? $pump_rub_price * $selection->pump->producer->discounts[0]->value / 100
                                 : 0
                             )
                         );

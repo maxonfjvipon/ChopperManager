@@ -37,7 +37,9 @@ class UsersController extends Controller
                 ->where('discountable_type', '=', 'pump_producer')
                 ->with(['discountable' => function (MorphTo $morphTo) {
                     $morphTo->morphWith([
-                        PumpProducer::class => ['series', 'series.discount']
+                        PumpProducer::class => ['series', 'series.discounts' => function ($query) {
+                            $query->where('user_id', Auth::id());
+                        }]
                     ]);
                 }])
                 ->get()
@@ -51,14 +53,14 @@ class UsersController extends Controller
                         'value' => $discount->value,
                         'children' => $discount->discountable->series->map(function ($series) {
                             return [
-                                'key' => $series->discount->discountable_id
-                                    . '-' . $series->discount->discountable_type
-                                    . '-' . $series->discount->user_id,
-                                'discountable_id' => $series->discount->discountable_id,
-                                'discountable_type' => $series->discount->discountable_type,
-                                'user_id' => $series->discount->user_id,
+                                'key' => $series->discounts[0]->discountable_id
+                                    . '-' . $series->discounts[0]->discountable_type
+                                    . '-' . $series->discounts[0]->user_id,
+                                'discountable_id' => $series->discounts[0]->discountable_id,
+                                'discountable_type' => $series->discounts[0]->discountable_type,
+                                'user_id' => $series->discounts[0]->user_id,
                                 'name' => $series->name,
-                                'value' => $series->discount->value,
+                                'value' => $series->discounts[0]->value,
                             ];
                         })
                     ];
