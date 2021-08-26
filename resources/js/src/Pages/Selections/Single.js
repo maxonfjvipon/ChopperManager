@@ -1,6 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import {Authenticated} from "../../Shared/Layout/Authenticated";
-import {Checkbox, Col, Form, InputNumber, message, Radio, Row, Space, Table, Tree, Typography} from "antd";
+import {
+    Checkbox,
+    Col,
+    Form,
+    InputNumber,
+    message,
+    Radio,
+    Row,
+    Space,
+    Table,
+    Tree,
+    Typography,
+    notification
+} from "antd";
 import {RequiredFormItem} from "../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../Shared/Inputs/MultipleSelection";
 import {useStyles} from "../../Hooks/styles.hook";
@@ -186,8 +199,29 @@ const Single = () => {
     }
 
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
-    // TODO: somehow info user that series have no types/applications if they do
+    // TODO: somehow info user that series have no types/applications/regulation if they do ???
     const producerSeriesListValuesCheckedHandler = values => {
+        const checked = values.find(value => !producersSeriesListValues.includes(value))
+
+        if (checked !== undefined) {
+            for (let producer of filteredProducersWithSeries()) {
+                let index = producer.series.findIndex(series => series.id === checked)
+                // console.log(index, producer.series[index].types, producer.series[index])
+                if (index !== -1) {
+                    if (typesValue.some(typeValue => !producer.series[index].types
+                        .map(type => type.id)
+                        .includes(typeValue))
+                    ) {
+                        notification.info({
+                            message: 'Внимание',
+                            description: 'В выбранной серии ' + producer.series[index].name + ' отсутствуют насосы, соответствующие выбранным типам',
+                        })
+                    }
+                }
+            }
+        }
+
+        // console.log(checked)
         setProducersSeriesListValues(values)
     }
 

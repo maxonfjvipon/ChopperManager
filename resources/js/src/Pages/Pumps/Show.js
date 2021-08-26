@@ -19,7 +19,7 @@ const Show = () => {
     const {reducedAntFormItemClassName, fullWidth} = useStyles()
 
     useEffect(() => {
-        console.log(pump)
+        // console.log(pump)
     }, [pump])
 
     const items = [

@@ -34,7 +34,7 @@ const Show = () => {
         {title: 'Подобранный насос', dataIndex: 'selected_pump_name', key: 'selected_pump_name'},
         {
             title: 'Артикул', dataIndex: 'part_num_main', key: 'pump_part_num_main', render: (_, record) => {
-                console.log(record)
+                // console.log(record)
                 return (
                     <Link href={route('pumps.show', record.id)}>{record.part_num_main}</Link>
                 )
@@ -85,7 +85,7 @@ const Show = () => {
     ]
 
     const showSelectionHandler = id => () => {
-        console.log('show', id)
+        // console.log('show', id)
         Inertia.get(route('selections.show', id))
     }
 

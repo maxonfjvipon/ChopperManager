@@ -29,7 +29,7 @@ const Index = () => {
     const userdata = user.data
 
     useEffect(() => {
-        console.log(discounts)
+        // console.log(discounts)
     }, [discounts])
 
     useEffect(() => {
