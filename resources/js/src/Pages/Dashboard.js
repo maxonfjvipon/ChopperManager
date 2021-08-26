@@ -17,7 +17,7 @@ const Dashboard = () => {
             }
         },
         {
-            title: 'Насосы', src: 'img/dashboard/marketplace.png', onClick: () => {
+            title: 'Насосы', src: 'img/dashboard/pumps.jpg', onClick: () => {
                 Inertia.get(route('pumps.index'))
             }
         },

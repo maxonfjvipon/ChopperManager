@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FileUploadRequest;
+use App\Http\Resources\PumpResource;
 use App\Imports\PumpsDataImport;
 use App\Imports\PumpsImport;
 use App\Models\Pumps\Pump;
@@ -64,12 +65,14 @@ class PumpsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Pump $pump
+     * @return Response
      */
-    public function show($id)
+    public function show(Pump $pump): Response
     {
-        //
+        return Inertia::render('Pumps/Show', [
+            'pump' => new PumpResource($pump),
+        ]);
     }
 
     /**

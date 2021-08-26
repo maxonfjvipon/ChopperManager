@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class PumpProducer extends Model
@@ -25,8 +26,8 @@ class PumpProducer extends Model
         return $this->hasManyThrough(Pump::class, PumpSeries::class, 'producer_id', 'series_id');
     }
 
-    public function discount(): MorphOne
+    public function discounts(): MorphMany
     {
-        return $this->morphOne(Discount::class, 'discountable');
+        return $this->morphMany(Discount::class, 'discountable');
     }
 }

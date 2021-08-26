@@ -5,7 +5,7 @@ import {BoxFlexCenter} from "./Box/BoxFlexCenter";
 
 export const DashboardCard = ({title, src, onClick, style}) => {
     return (
-        <Card hoverable cover={<img alt="example" src={src}/>} onClick={onClick} style={{...style, borderRadius: 10}}>
+        <Card hoverable cover={<img style={{height: 350}} alt="example" src={src}/>} onClick={onClick} style={{...style, borderRadius: 10}}>
             <Meta
                 description={
                     <BoxFlexCenter>

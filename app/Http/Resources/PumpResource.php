@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Support\Selections\PumpPerformance;
+use App\Support\Selections\Regression;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,11 +12,14 @@ class PumpResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request): array
     {
+        $coefficients = $this->coefficients->firstWhere('count', 1);
+        $performanceLineData = (new PumpPerformance($this->performance))
+            ->asPerformanceLineData(1, Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c]));
         return [
             'id' => $this->id,
             'part_num_main' => $this->part_num_main,
@@ -35,10 +40,13 @@ class PumpResource extends JsonResource
             'dn_input' => $this->dn_input->value,
             'dn_output' => $this->dn_output->value,
             'category' => $this->category->name,
-            'performance' => $this->performance,
             'regulation' => $this->regulation->name,
-            'applications' => $this->with('applications'),
-            'types' => $this->with('types')
+            'applications' => $this->applications,
+            'types' => $this->types,
+            'performance' => [
+                'line_data' => $performanceLineData['line'],
+                'y_max' => $performanceLineData['yMax']
+            ]
         ];
     }
 }

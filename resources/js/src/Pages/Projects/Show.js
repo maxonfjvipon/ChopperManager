@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {Authenticated} from "../../Shared/Layout/Authenticated";
-import {usePage} from "@inertiajs/inertia-react";
+import {Link, usePage} from "@inertiajs/inertia-react";
 import {Button, Col, Form, Input, message, Popconfirm, Row, Space, Table, Tooltip} from "antd";
 import {BoxFlexEnd} from "../../Shared/Box/BoxFlexEnd";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
@@ -32,7 +32,14 @@ const Show = () => {
             defaultSortOrder: 'ascend'
         },
         {title: 'Подобранный насос', dataIndex: 'selected_pump_name', key: 'selected_pump_name'},
-        {title: 'Артикул', dataIndex: 'part_num_main', key: 'pump_part_num_main'},
+        {
+            title: 'Артикул', dataIndex: 'part_num_main', key: 'pump_part_num_main', render: (_, record) => {
+                console.log(record)
+                return (
+                    <Link href={route('pumps.show', record.id)}>{record.part_num_main}</Link>
+                )
+            }
+        },
         {title: 'Напор, м', dataIndex: 'pressure', key: 'pressure'},
         {title: 'Расход, м3/ч', dataIndex: 'consumption', key: 'consumption'},
         {title: 'Цена за 1', dataIndex: 'price', key: 'price', sorter: (a, b) => a.price - b.price},

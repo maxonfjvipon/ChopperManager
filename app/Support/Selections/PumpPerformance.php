@@ -58,7 +58,7 @@ class PumpPerformance
         return $data;
     }
 
-    public function asPerformanceLineData($count, Regression $regression)
+    public function asPerformanceLineData($count, Regression $regression): array
     {
         $xx = array_map(function ($performanceItem) {
             return $performanceItem[0];

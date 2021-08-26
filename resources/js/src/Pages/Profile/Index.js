@@ -138,7 +138,7 @@ const Index = () => {
                                 </PrimaryButton>
                             ]}
                         >
-                            <ItemsForm layout="horizontal" labelSpan={7} wrapperSpan={17} items={items}
+                            <ItemsForm layout="horizontal" labelSpan={6} items={items}
                                        onFinish={updateProfileHandler} name={profileFormName}/>
                         </Card>
                     </Col>
@@ -156,7 +156,7 @@ const Index = () => {
                                 </PrimaryButton>
                             ]}
                         >
-                            <ItemsForm labelSpan={7} items={updatePasswordItems}
+                            <ItemsForm labelSpan={6} items={updatePasswordItems}
                                        onFinish={changePasswordHandler} name={changePasswordForm}/>
                         </Card>
                     </Col>

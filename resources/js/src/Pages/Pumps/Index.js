@@ -83,7 +83,23 @@ const Index = () => {
                 </Space>
             )
         },
+        {
+            title: '', dataIndex: 'actions', key: 'actions', width: 50, render: (_, record) => {
+                return (
+                    <Tooltip placement="topRight" title={"Просмотреть"}>
+                        <Button
+                            onClick={showPumpClickHandler(record.id)}
+                            icon={<EditOutlined/>}
+                        />
+                    </Tooltip>
+                )
+            }
+        }
     ]
+
+    const showPumpClickHandler = id => () => {
+        Inertia.get(route('pumps.show', id))
+    }
 
     return (
         <Row gutter={[0, 10]}>
@@ -100,13 +116,9 @@ const Index = () => {
                         return {key: pump.id, ...pump}
                     })}
                     onRow={(record, _) => {
-                        return {
-                            onDoubleClick: _ => {
-                                message.info("Просмотр насоса находится в разрарботке")
-                            }
-                        }
+                        return {onDoubleClick: showPumpClickHandler(record.id)}
                     }}
-                    scroll={{x: 3400, y: 600}}
+                    scroll={{x: 3700, y: 600}}
                 />
             </Col>
         </Row>

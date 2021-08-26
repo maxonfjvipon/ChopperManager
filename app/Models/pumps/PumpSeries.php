@@ -3,14 +3,13 @@
 namespace App\Models\Pumps;
 
 use App\Models\Discount;
-use App\Models\SeriesDiscount;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class PumpSeries extends Model
 {
@@ -48,8 +47,8 @@ class PumpSeries extends Model
         return $this->belongsToMany(PumpApplication::class, 'pump_series_and_applications', 'series_id', 'application_id');
     }
 
-    public function discount(): MorphOne
+    public function discounts(): MorphMany
     {
-        return $this->morphOne(Discount::class, 'discountable');
+        return $this->morphMany(Discount::class, 'discountable');
     }
 }
