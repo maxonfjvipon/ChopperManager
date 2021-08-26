@@ -51,7 +51,7 @@ class SelectionsController extends Controller
     public function show(SinglePumpSelection $selection): Response
     {
         return Inertia::render('Selections/Single', [
-            'selection_props' => new SingleSelectionPropsResource($selection),
+            'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $selection->project_id,
             'selection' => new SinglePumpSelectionResource($selection)
         ]);

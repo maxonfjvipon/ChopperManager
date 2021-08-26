@@ -24,7 +24,6 @@ class SingleSelectionPropsResource extends JsonResource
     public function toArray($request): array
     {
         return [
-//            'project_id' => $this,
             'producers' => PumpProducer::all(),
             'producersWithSeries' => PumpProducer::with(['series' => function ($query) {
                 $query->orderBy('name');

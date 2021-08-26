@@ -22,20 +22,16 @@ class UserUpdateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|string|max:255',
-            'inn' => 'max:12|unique:users',
+            'inn' => 'max:12|unique:users,inn,' . $this->user()->id,
             'phone' => 'required|max:12',
             'city_id' => 'required|exists:cities,id',
-            'fio' => 'string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'current_password' => 'required_with_all:password,password_confirmation|current_password',
-            'password' => ['required_with_all:current_password,password_confirmation', 'confirmed', Rules\Password::default()],
-            'password_confirmation' => ['required_with_all:password,current_password', Rules\Password::default()],
+            'fio' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $this->user()->id,
             'business_id' => 'required|exists:businesses,id',
-            'role_id' => 'required|exists:roles,id'
         ];
     }
 }

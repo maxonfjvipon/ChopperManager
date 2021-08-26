@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpSeries;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,7 +13,7 @@ class UserResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request): array
@@ -19,12 +22,11 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'inn' => $this->inn,
             'phone' => $this->phone,
-            'area' => $this->city->area->name,
-            'city' => $this->city->name,
+            'area_id' => $this->city->area->id,
+            'city_id' => $this->city->id,
             'fio' => $this->fio,
             'email' => $this->email,
-            'business' => $this->business->name,
-            'role' => $this->role->name,
+            'business_id' => $this->business->id,
         ];
     }
 }

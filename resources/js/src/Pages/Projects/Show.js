@@ -15,9 +15,9 @@ const Show = () => {
     const {rules} = useInputRules()
     const {project} = usePage().props
 
-    useEffect(() => {
-        console.log(project)
-    }, [project])
+    // useEffect(() => {
+    //     console.log(project)
+    // }, [project])
 
 
     const {reducedBottomAntFormItemClassName} = useStyles()

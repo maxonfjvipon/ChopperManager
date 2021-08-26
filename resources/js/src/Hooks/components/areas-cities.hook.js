@@ -1,5 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {useIDs} from "../ids.hook";
+import React, {useEffect, useRef, useState} from "react";
 import {useCheck} from "../check.hook";
 
 export const useAreasCities = () => {
@@ -24,9 +23,7 @@ export const useAreasCities = () => {
     }, [areasWithCities])
 
     useEffect(() => {
-        if (cityValue) {
-            setCityValue(null)
-        }
+        setCityValue(null)
         if (areaValue) {
             setCitiesToShow(areasWithCities.find(area => area.id === areaValue).cities)
         }
@@ -43,10 +40,17 @@ export const useAreasCities = () => {
         citiesOptions: {
             placeholder: "Выберите город",
             options: citiesToShow,
-            disabled: areaValue == null
+            disabled: areaValue == null,
+            onChange: value => {
+                setCityValue(value)
+            }
         },
 
         setAreaValue,
-        setAreasWithCities
+        setAreasWithCities,
+        setCityValue,
+        citiesToShow,
+
+        areaValue
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+use App\Models\Discount;
 use App\Models\Project;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
-    protected $guarded = [];
+    protected $fillable = ['id', 'name', 'inn', 'phone', 'city_id', 'fio', 'email', 'password', 'business_id', 'role_id'];
 
     public $timestamps = false;
 
@@ -55,5 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function discounts(): HasMany
+    {
+        return $this->hasMany(Discount::class, 'user_id');
     }
 }

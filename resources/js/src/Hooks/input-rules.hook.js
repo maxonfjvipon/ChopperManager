@@ -8,8 +8,10 @@ const ruleObj = (field, value, message) => {
 export const useInputRules = () => {
     const incorrectTypeMessage = (type) => {
         switch (type) {
-            case 'email': return 'Неверный формат Email!'
-            case 'number': return 'Неверный формат. Должно быть число'
+            case 'email':
+                return 'Неверный формат Email!'
+            case 'number':
+                return 'Неверный формат. Должно быть число'
         }
     }
 
@@ -31,6 +33,11 @@ export const useInputRules = () => {
             password: [required],
             inn: [inn],
             phone: [required, phone],
+            city: citiesToShow => [required, {
+                validator: (_, cityId) => citiesToShow.some(cityToShow => cityToShow.id === cityId)
+                    ? Promise.resolve()
+                    : Promise.reject(new Error('Выберите подходящий для области город'))
+            }],
             required,
             number,
             max,

@@ -36,7 +36,7 @@ class RegisterRequest extends FormRequest
             'inn' => 'nullable|max:12|unique:users',
             'phone' => 'required|max:12',
             'city_id' => 'required|exists:cities,id',
-            'fio' => 'string|max:255',
+            'fio' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'business_id' => 'required|exists:businesses,id',

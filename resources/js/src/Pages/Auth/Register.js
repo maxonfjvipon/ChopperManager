@@ -12,12 +12,12 @@ import {Inertia} from "@inertiajs/inertia";
 
 
 function Register() {
-    const {setAreasWithCities, areasOptions, citiesOptions} = useAreasCities()
+    const {setAreasWithCities, areasOptions, citiesOptions, citiesToShow} = useAreasCities()
     const {textAlignCenter, fullWidth} = useStyles()
     const {rules} = useInputRules()
 
     // CONSTS
-    const {roles, businesses, areasWithCities} = usePage().props
+    const {businesses, areasWithCities} = usePage().props
 
     const formName = 'register-form'
     const items = [
@@ -36,8 +36,11 @@ function Register() {
             input: <Input placeholder="+7XXXXXXXXXX"/>,
         },
         {values: {name: 'area', label: 'Область', rules: [rules.required]}, input: <Selection {...areasOptions}/>},
-        {values: {name: 'city_id', label: 'Город', rules: [rules.required]}, input: <Selection {...citiesOptions}/>},
-        {values: {name: 'fio', label: 'ФИО', rules: [rules.max(255)]}, input: <Input/>},
+        {
+            values: {name: 'city_id', label: 'Город', rules: rules.city(citiesToShow)},
+            input: <Selection {...citiesOptions}/>
+        },
+        {values: {name: 'fio', label: 'ФИО', rules: [rules.required, rules.max(255)]}, input: <Input/>},
         {values: {name: 'email', label: 'E-mail', rules: rules.email}, input: <Input/>},
         {values: {name: 'password', label: 'Пароль', rules: rules.password}, input: <Input.Password/>},
         {
@@ -60,10 +63,10 @@ function Register() {
                 <Card
                     title={
                         <div style={textAlignCenter}>
-                        <Typography>
-                            Пожалуйста зарегистрируйтесь
-                        </Typography>
-                    </div>}
+                            <Typography>
+                                Пожалуйста зарегистрируйтесь
+                            </Typography>
+                        </div>}
                     style={{...fullWidth, borderRadius: 10}}
                 >
                     < ItemsForm

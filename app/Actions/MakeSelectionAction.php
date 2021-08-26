@@ -24,11 +24,11 @@ class MakeSelectionAction
         return $systemPerformance;
     }
 
-    public function execute(array $validated): JsonResponse
+    public function execute(array $validated)
     {
-        $dbPumps = Pump::with('series')
+        $dbPumps = Pump::with(['series', 'series.discount'])
             ->with('currency')
-            ->with('producer')
+            ->with(['producer', 'producer.discount'])
             ->with(['coefficients' => function ($query) use ($validated) {
                 $query->whereBetween(
                     'count',
@@ -162,6 +162,10 @@ class MakeSelectionAction
             return count($pump->pumpCountsAndIntersectionPoints) > 0;
         });
 
+//        return response()->json([
+//            'selected_pumps' => $dbPumps
+//        ]);
+
         if (count($dbPumps) === 0) {
             return response()->json(['info', 'Насосов не найдено']);
         }
@@ -190,6 +194,13 @@ class MakeSelectionAction
                 $pump_rub_price = $pump->currency->name === 'RUB'
                     ? $pump->price
                     : round($pump->price / $rates[$pump->currency->name], 2);
+                $pump_rub_price_with_discount = $pump_rub_price - ($pump->series->discount->value
+                        ? $pump_rub_price * $pump->series->discount->value / 100
+                        : ($pump->producer->discount->value
+                            ? $pump_rub_price * $pump->producer->discount->value / 100
+                            : 0
+                        )
+                    );
 
                 $selectedPumps[] = [
                     'key' => $num++,
@@ -198,9 +209,9 @@ class MakeSelectionAction
                     'name' => $pumpsCount . ' ' . $pump->producer->name . ' ' . $pump->series->name . ' ' . $pump->name,
                     'partNum' => $pump->part_num_main,
                     'retailPrice' => $pump_rub_price,
-                    'personalPrice' => $pump_rub_price,
+                    'personalPrice' => round($pump_rub_price_with_discount, 2),
                     'retailPriceSum' => round($pump_rub_price * $pumpsCount, 2),
-                    'personalPriceSum' => round($pump_rub_price * $pumpsCount, 2),
+                    'personalPriceSum' => round($pump_rub_price_with_discount * $pumpsCount, 2),
                     'dnInput' => $pump->dn_input->value,
                     'dnOutput' => $pump->dn_output->value,
                     'power' => $pump->power,

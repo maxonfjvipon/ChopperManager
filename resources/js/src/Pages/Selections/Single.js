@@ -69,7 +69,7 @@ const Single = () => {
 
     const page = usePage().props
 
-    console.log(page)
+    // console.log(page)
 
     const {
         selection,
@@ -335,7 +335,7 @@ const Single = () => {
         try {
             // Inertia.post(route('selections.select'), body)
             const data = await postRequest(route('selections.select'), body, true)
-            console.log(data)
+            // console.log(data)
             setSelectedPumps(data.selected_pumps)
             setWorkingPoint(data.working_point)
         } catch {

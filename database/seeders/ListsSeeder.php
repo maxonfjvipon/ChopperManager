@@ -7,6 +7,7 @@ use App\Models\Currency;
 use App\Models\CurrentPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
+use App\Models\Pumps\Pump;
 use App\Models\Pumps\PumpRegulation;
 use App\Models\Pumps\PumpApplication;
 use App\Models\Pumps\PumpCategory;

@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses('Auth\EmailVerificationController@verify');
     Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses('Auth\EmailVerificationController@resendVerification');
 
-    Route::middleware('verified')->group(function() {
+    Route::middleware('verified')->group(function () {
         // DASHBOARD
         Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
         Route::redirect('/', '/dashboard')->name('index');
@@ -59,7 +59,9 @@ Route::middleware('auth')->group(function () {
         // USERS
         Route::prefix('users')->group(function () {
             Route::get('profile')->name('users.profile')->uses('UsersController@profile');
-            Route::put('update')->name('users.update')->uses('UsersController@update');
+            Route::post('update')->name('users.update')->uses('UsersController@update');
+            Route::post('change-password')->name('users.password.change')->uses('UsersController@changePassword');
+            Route::post('update-discount')->name('users.discount.update')->uses('UsersController@updateDiscount');
         });
 
         // PUMPS
