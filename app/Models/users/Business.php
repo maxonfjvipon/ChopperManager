@@ -2,13 +2,13 @@
 
 namespace App\Models\Users;
 
+use App\Traits\HasUsersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Business extends HasUsersModel
+class Business extends Model
 {
     protected $fillable = ['name'];
     public $timestamps = false;
-    use HasFactory;
+    use HasFactory, HasUsersTrait;
 }
