@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses('Auth\EmailVerificationController@resendVerification');
 
     // ONLY WITH VERIFIED EMAIL
-    Route::middleware('verified')->group(function () {
+//    Route::middleware('verified')->group(function () {
         // DASHBOARD
         Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
         Route::redirect('/', '/dashboard')->name('index');
@@ -70,5 +70,5 @@ Route::middleware('auth')->group(function () {
         // PUMPS
         Route::post('pumps/import')->name('pumps.import')->uses('PumpsController@import');
         Route::resource('pumps', 'PumpsController')->except(['edit', 'create']);
-    });
+//    });
 });
