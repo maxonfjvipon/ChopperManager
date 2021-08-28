@@ -25,11 +25,13 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'organization_name' => 'required|string|max:255',
             'inn' => 'max:12|unique:users,inn,' . $this->user()->id,
             'phone' => 'required|max:12',
             'city_id' => 'required|exists:cities,id',
-            'fio' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->user()->id,
             'business_id' => 'required|exists:businesses,id',
         ];

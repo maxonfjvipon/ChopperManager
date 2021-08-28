@@ -21,7 +21,7 @@ function Register() {
 
     const formName = 'register-form'
     const items = [
-        {values: {name: 'name', label: 'Наименование организации', rules: [rules.required]}, input: <Input/>},
+        {values: {name: 'organization_name', label: 'Наименование организации', rules: [rules.required]}, input: <Input/>},
         {
             values: {
                 name: 'business_id',
@@ -40,7 +40,9 @@ function Register() {
             values: {name: 'city_id', label: 'Город', rules: rules.city(citiesToShow)},
             input: <Selection {...citiesOptions}/>
         },
-        {values: {name: 'fio', label: 'ФИО', rules: [rules.required, rules.max(255)]}, input: <Input/>},
+        {values: {name: 'first_name', label: 'Имя', rules: [rules.required, rules.max(255)]}, input: <Input/>},
+        {values: {name: 'middle_name', label: 'Фамилия', rules: [rules.required, rules.max(255)]}, input: <Input/>},
+        {values: {name: 'last_name', label: 'Отчество', rules: [rules.max(255)]}, input: <Input/>},
         {values: {name: 'email', label: 'E-mail', rules: rules.email}, input: <Input/>},
         {values: {name: 'password', label: 'Пароль', rules: rules.password}, input: <Input.Password/>},
         {

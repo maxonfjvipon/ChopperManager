@@ -17,12 +17,13 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'id' => 1,
-            'name' => "maxonfjvipon",
+            'organization_name' => "МБС",
             'inn' => "1111111111",
             'email' => 'maxonfjvipon@admin.com',
             'password' => Hash::make('maximtrun19'),
             'phone' => "89991231212",
-            'fio' => 'Трунников Максим Владиславович',
+            'first_name' => 'Максим',
+            'middle_name' => 'Трунников',
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,
@@ -32,12 +33,13 @@ class AdminSeeder extends Seeder
 
         User::create([
             'id' => 2,
-            'name' => "Титарев&Co",
+            'organization_name' => "МБС",
             'inn' => "1111111112",
             'email' => 'titatyov@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
-            'fio' => 'Титарев Дмитрий',
+            'first_name' => 'Дмитрий',
+            'middle_name' => 'Титарев',
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,
@@ -47,12 +49,13 @@ class AdminSeeder extends Seeder
 
         User::create([
             'id' => 3,
-            'name' => "Володин&Co",
+            'organization_name' => "МБС",
             'inn' => "1111111113",
             'email' => 'volodin@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
-            'fio' => 'Володин Павел',
+            'first_name' => 'Павел',
+            'middle_name' => 'Володин',
             'role_id' => 1,
             'city_id' => 1,
             'business_id' => 1,

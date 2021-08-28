@@ -47,10 +47,10 @@ const Index = () => {
     const items = [
         {
             values: {
-                name: 'name',
+                name: 'organization_name',
                 label: 'Наименование организации',
                 rules: [rules.required],
-                initialValue: userdata.name,
+                initialValue: userdata.organization_name,
                 // className: reducedAntFormItemClassName,
             }, input: <Input/>
         },
@@ -82,10 +82,9 @@ const Index = () => {
             values: {name: 'city_id', label: 'Город', rules: rules.city(citiesToShow), initialValue: userdata.city_id},
             input: <Selection {...citiesOptions}/>
         },
-        {
-            values: {name: 'fio', label: 'ФИО', rules: [rules.max(255)], initialValue: userdata.fio || ""},
-            input: <Input readOnly/>
-        },
+        {values: {name: 'first_name', label: 'Имя', rules: [rules.required, rules.max(255)], initialValue: userdata.first_name}, input: <Input readOnly/>},
+        {values: {name: 'middle_name', label: 'Фамилия', rules: [rules.required, rules.max(255)], initialValue: userdata.middle_name}, input: <Input readOnly/>},
+        {values: {name: 'last_name', label: 'Отчество', rules: [rules.max(255)], initialValue: userdata.last_name}, input: <Input/>},
         {
             values: {
                 name: 'email', label: 'E-mail', rules: rules.email, initialValue: userdata.email,
