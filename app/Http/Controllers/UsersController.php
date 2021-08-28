@@ -88,10 +88,14 @@ class UsersController extends Controller
      */
     public function changePassword(UserPasswordUpdateRequest $request): RedirectResponse
     {
-        Auth::user()->update([
-            'password' => Hash::make($request->validated()['password'])
-        ]);
-        return Redirect::back()->with('success', 'Пароль успешно обновлен');
+        $validated = $request->validated();
+        if (array_key_exists('password', $validated) && $validated['password'] != null) {
+            Auth::user()->update([
+                'password' => Hash::make($validated['password'])
+            ]);
+            return Redirect::back()->with('success', 'Пароль успешно обновлен');
+        }
+        Return Redirect::back();
     }
 
     /**
