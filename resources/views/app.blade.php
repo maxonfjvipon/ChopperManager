@@ -14,6 +14,7 @@
 {{--    <link href="{{ mix('/css/app.css') }}" rel="stylesheet"/>--}}
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <title>PumpManager</title>
+    @translations
     @routes
 </head>
 <body style="margin: 0">

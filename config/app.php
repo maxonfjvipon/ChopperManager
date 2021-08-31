@@ -1,5 +1,7 @@
 <?php
 
+use Pine\I18n\I18nServiceProvider;
+
 return [
 
     /*
@@ -95,6 +97,11 @@ return [
 
     'fallback_locale' => 'en',
 
+    'supported_locales' => [
+        'en',
+        'ru'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
@@ -162,9 +169,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
+        I18nServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        Mariuzzo\LaravelJsLocalization\LaravelJsLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +239,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
     ],
 

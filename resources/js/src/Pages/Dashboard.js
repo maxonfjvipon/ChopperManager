@@ -7,17 +7,17 @@ import {Inertia} from "@inertiajs/inertia";
 const Dashboard = () => {
     const cards = [
         {
-            title: 'Подбор насосных установок', src: 'img/dashboard/pumpselection.jpg', onClick: () => {
+            title: 'Подбор насосных установок', src: '/img/dashboard/pumpselection.jpg', onClick: () => {
                 Inertia.get(route('projects.index'))
             },
         },
         {
-            title: 'Маркетплейс', src: 'img/dashboard/marketplace.png', onClick: () => {
+            title: 'Маркетплейс', src: '/img/dashboard/marketplace.png', onClick: () => {
                 message.info('Сервис в разработке')
             }
         },
         {
-            title: 'Насосы', src: 'img/dashboard/pumps.jpg', onClick: () => {
+            title: 'Насосы', src: '/img/dashboard/pumps.jpg', onClick: () => {
                 Inertia.get(route('pumps.index'))
             }
         },
