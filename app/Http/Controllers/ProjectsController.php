@@ -38,7 +38,7 @@ class ProjectsController extends Controller
     public function store(ProjectStoreRequest $request): RedirectResponse
     {
         Auth::user()->projects()->create($request->validated());
-        return Redirect::route('projects.index')->with('success', 'Проект успешно создан');
+        return Redirect::route('projects.index')->with('success', __('flash.projects.created'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ProjectsController extends Controller
     public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
     {
         $project->update($request->validated());
-        return Redirect::back()->with('success', 'Проект успешно изменен');
+        return Redirect::back()->with('success', __('flash.projects.updated'));
     }
 
     /**
@@ -76,6 +76,6 @@ class ProjectsController extends Controller
     public function destroy(Project $project): RedirectResponse
     {
         $project->update(['deleted' => true]);
-        return Redirect::back()->with('success', 'Проект успешно удален');
+        return Redirect::back()->with('success', __('flash.projects.deleted'));
     }
 }

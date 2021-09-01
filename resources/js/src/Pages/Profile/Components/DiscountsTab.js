@@ -3,6 +3,7 @@ import {Card, Col, Form, InputNumber, Row, Table, Tabs} from "antd";
 import {PrimaryButton} from "../../../Shared/Buttons/PrimaryButton";
 import {useStyles} from "../../../Hooks/styles.hook";
 import {Inertia} from "@inertiajs/inertia";
+import {useLang} from "../../../Hooks/lang.hook";
 
 
 const EditableContext = React.createContext(null)
@@ -79,11 +80,12 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
 export const DiscountsTab = ({discounts}) => {
     const {fullWidth} = useStyles()
     const discountsForm = 'discounts-form'
+    const Lang = useLang()
 
     const discountsColumns = [
-        {title: 'Наименование', dataIndex: 'name', key: 'producer-name', width: "70%", editable: false},
+        {title: Lang.get('pages.profile.discounts.name'), dataIndex: 'name', key: 'producer-name', width: "70%", editable: false},
         {
-            title: 'Скидка, %',
+            title: Lang.get('pages.profile.discounts.discount'),
             dataIndex: 'value',
             key: 'discount',
             editable: true,
@@ -112,13 +114,8 @@ export const DiscountsTab = ({discounts}) => {
             <Row justify="space-around" align="middle" gutter={[0, 0]}>
                 <Col md={24} lg={20} xl={15} xxl={12}>
                     <Card
-                        title="Скидки производителей"
+                        title={Lang.get('pages.profile.discounts.tab')}
                         style={{...fullWidth, borderRadius: 10}}
-                        actions={[
-                            <PrimaryButton htmlType="submit" form={discountsForm}>
-                                Сохранить изменения
-                            </PrimaryButton>
-                        ]}
                     >
                         <Form name={discountsForm} onFinish={discountsSaveHandler}>
                             <Table

@@ -66,7 +66,7 @@ class SelectionsController extends Controller
     public function destroy(SinglePumpSelection $selection): RedirectResponse
     {
         $selection->update(['deleted' => true]);
-        return Redirect::back()->with('success', 'Подбор успешно удален');
+        return Redirect::back()->with('success', __('flash.selections.deleted'));
     }
 
     /**
@@ -78,7 +78,7 @@ class SelectionsController extends Controller
     public function store(StoreSelectionRequest $request): RedirectResponse
     {
         SinglePumpSelection::create($request->validated());
-        return Redirect::back()->with('success', "Подбор успешно добавлен к проекту");
+        return Redirect::back()->with('success', __('flash.selections.added'));
     }
 
     /**

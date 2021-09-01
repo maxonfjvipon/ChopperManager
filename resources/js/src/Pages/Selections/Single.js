@@ -30,6 +30,9 @@ import {Inertia} from "@inertiajs/inertia";
 import {BoxFlexEnd} from "../../Shared/Box/BoxFlexEnd";
 import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
+import Lang from '../../../translation/lang'
+import {useLang} from "../../Hooks/lang.hook";
+import {Common} from "../../Shared/Layout/Common";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -79,6 +82,7 @@ const Single = () => {
     const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint} = useGraphic()
     const {isArrayEmpty} = useCheck()
     const {postRequest, loading} = useHttp()
+    const Lang = useLang()
 
     const page = usePage().props
 
@@ -213,7 +217,7 @@ const Single = () => {
                         .includes(typeValue))
                     ) {
                         notification.info({
-                            message: 'Внимание',
+                            message: Lang.get('messages.selections.notification.attention'),
                             description: 'В выбранной серии ' + producer.series[index].name + ' отсутствуют насосы, соответствующие выбранным типам',
                         })
                     }
@@ -357,7 +361,7 @@ const Single = () => {
     // MAKE SELECTION HANDLER
     const makeSelectionHandler = async body => {
         if (isArrayEmpty(producersSeriesListValues)) {
-            message.warning('Не выбрана ни одна серия')
+            message.warning(Lang.get('messages.selections.no_series_selected'))
             return
         }
         setStationToShow(null)
@@ -781,14 +785,17 @@ const Single = () => {
                                     </LimitRow>
                                 </Col>
                                 <Col span={4}>
-                                    <PrimaryButton
-                                        style={{...fullWidth, ...margin.top(33)}}
-                                        htmlType="submit"
-                                        disabled={producersValue.length === 0}
-                                        loading={loading}
-                                    >
-                                        Подобрать
-                                    </PrimaryButton>
+                                    <Form.Item className={reducedAntFormItemClassName}/>
+                                    <Form.Item className={reducedAntFormItemClassName}>
+                                        <PrimaryButton
+                                            style={{...fullWidth}}
+                                            htmlType="submit"
+                                            disabled={producersValue.length === 0}
+                                            loading={loading}
+                                        >
+                                            Подобрать
+                                        </PrimaryButton>
+                                    </Form.Item>
                                 </Col>
                                 {selection && <Col xs={24}>
                                     <Typography.Title level={3}>
@@ -812,7 +819,7 @@ const Single = () => {
                                 }
                             }}
                             pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
-                            scroll={{x: 2000, y: 450}}
+                            scroll={{x: 1500, y: 550}}
                         />
                     </Col>
                     {/* GRAPHIC */}
@@ -851,7 +858,7 @@ const Single = () => {
     )
 }
 
-Single.layout = page => <Authenticated
+Single.layout = page => <Common
     title={window.location.href.includes("show") ? "Просмотр подбора" : "Подбор насоса"}
     backTo={true}
     children={page}

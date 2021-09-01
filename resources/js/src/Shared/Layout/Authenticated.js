@@ -1,8 +1,8 @@
-import {Breadcrumb, Dropdown, Layout, Menu, message, PageHeader} from "antd";
+import {Breadcrumb, Dropdown, Layout, Menu, message, PageHeader, Typography} from "antd";
 import {useStyles} from "../../Hooks/styles.hook";
 import {ProfileOutlined, LogoutOutlined, DownOutlined, HomeOutlined} from "@ant-design/icons";
 import {Link, usePage} from "@inertiajs/inertia-react";
-import React from "react";
+import React, {useEffect} from "react";
 import {PrimaryButton} from "../Buttons/PrimaryButton";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {MessagesLayout} from "./MessagesLayout";
@@ -11,23 +11,28 @@ export const Authenticated = ({title, children, backTo, breadcrumbs = []}) => {
     const {Content, Footer} = Layout
     const {backgroundColorWhite, fullWidth, textAlignCenter, margin, padding} = useStyles()
     const {auth} = usePage().props
-    const {breadcrumb} = useBreadcrumbs()
+    // const {breadcrumb} = useBreadcrumbs()
 
-    const routes = [
-        {
-            path: '/dashboard',
-            breadcrumbName: 'Дашборд',
-            icon: <HomeOutlined/>,
-        },
-        ...breadcrumbs
-    ]
+    // const routes = [
+    //     {
+    //         path: '/dashboard',
+    //         breadcrumbName: 'Дашборд',
+    //         icon: <HomeOutlined/>,
+    //     },
+    //     ...breadcrumbs
+    // ]
+
+    useEffect(() => {
+        // console.log(window.location.href.split('/')[3])
+        // console.log(Lang.get('auth.password'))
+    }, [])
 
     return (
         <MessagesLayout>
             <Layout>
                 <PageHeader
-                    onBack={backTo ? () => window.history.back() : null}
-                    title={"PUMP MANAGER"}
+                    onBack={backTo ? () => window.history.go(-1) : null}
+                    title={<Link href={route('dashboard')} style={{color: 'black'}}>PUMP MANAGER</Link>}
                     subTitle={title}
                     extra={[
                         <Dropdown key="user-actions" arrow trigger={['click']} overlay={
@@ -46,16 +51,17 @@ export const Authenticated = ({title, children, backTo, breadcrumbs = []}) => {
                             </PrimaryButton>
                         </Dropdown>
                     ]}
-                    breadcrumb={{routes}}
-                    breadcrumbRender={(props, origin) => <Breadcrumb
-                        itemRender={(_route, params, routes, paths) => {
-                            const last = routes.indexOf(_route) === routes.length - 1;
-                            return last
-                                ? <span>{_route.icon || ""} {_route.breadcrumbName}</span>
-                                : <Link href={_route.path}>{_route.icon || ""} {_route.breadcrumbName}</Link>
-                        }}
-                        routes={origin.props.routes}
-                    />}
+                    // breadcrumb={{routes}}
+                    // breadcrumbRender={(props, origin) => <Breadcrumb
+                    //     itemRender={(_route, params, routes, paths) => {
+                    //         const last = routes.indexOf(_route) === routes.length - 1;
+                    //         return last
+                    //             ? <span>{_route.icon || ""} {_route.breadcrumbName}</span>
+                    //             : <Link href={_route.path}>{_route.icon || ""} {_route.breadcrumbName}</Link>
+                    //     }}
+                    //     routes={origin.props.routes}
+                    // />
+                    // }
                 />
                 <Content style={{...backgroundColorWhite, padding: 10}}>
                     {children}

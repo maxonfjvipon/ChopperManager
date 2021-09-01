@@ -10,7 +10,8 @@ class RegisterRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'inn' =>  $this->inn
+            'itn' =>  $this->itn,
+            'last_name' =>  $this->last_name
         ]);
     }
 
@@ -32,11 +33,13 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'inn' => 'nullable|max:12|unique:users',
+            'organization_name' => 'required|string|max:255',
+            'itn' => 'nullable|max:12|unique:users',
             'phone' => 'required|max:12',
             'city_id' => 'required|exists:cities,id',
-            'fio' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'business_id' => 'required|exists:businesses,id',

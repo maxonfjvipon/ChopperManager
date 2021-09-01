@@ -5,7 +5,9 @@
  */
 
 // require('./bootstrap');
-require('antd/dist/antd.css')
+require('antd/dist/antd.compact.css')
+// require('antd/dist/antd.less')
+// require('antd/dist/antd.dark.css')
 require('../css/app.css')
 
 /**

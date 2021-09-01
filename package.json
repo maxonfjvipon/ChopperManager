@@ -31,6 +31,7 @@
         "@inertiajs/inertia-react": "^0.7.1",
         "@inertiajs/progress": "^0.2.6",
         "antd": "^4.16.11",
+        "lang.js": "^1.1.14",
         "rc-upload": "^4.3.1",
         "tailwindcss": "^2.2.7",
         "victory": "^35.10.1",

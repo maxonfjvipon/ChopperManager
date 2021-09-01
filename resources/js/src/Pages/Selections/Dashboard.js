@@ -5,6 +5,7 @@ import {DashboardCard} from "../../Shared/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
+import Lang from "../../../translation/lang";
 
 const Dashboard = () => {
     // CONSTS
@@ -29,7 +30,7 @@ const Dashboard = () => {
     }
 
     const serviceUnavailable = () => {
-        message.info('Сервис в разработке')
+        message.info(Lang.get('messages.service_development'))
     }
 
     const cards = [

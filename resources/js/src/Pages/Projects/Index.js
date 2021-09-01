@@ -10,6 +10,9 @@ import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import Modal from "antd/es/modal/Modal";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
+import {Common} from "../../Shared/Layout/Common";
+import Lang from "../../../translation/lang";
+import {useLang} from "../../Hooks/lang.hook";
 
 const Index = () => {
     // STATE
@@ -17,36 +20,37 @@ const Index = () => {
 
     // HOOKS
     const {rules} = useInputRules()
+    const Lang = useLang()
 
     // CONSTS
     const {projects} = usePage().props
 
     const columns = [
-        {title: 'Дата создания', dataIndex: 'created_at', key: 'created_at'},
+        {title: Lang.get('pages.projects.index.table.created_at'), dataIndex: 'created_at', key: 'created_at'},
         {
-            title: 'Наименование',
+            title: Lang.get('pages.projects.index.table.name'),
             dataIndex: 'name',
             key: 'name',
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
             width: '80%'
         },
-        {title: 'Количество подборов', dataIndex: 'selections_count', key: 'selections_count'},
+        {title: Lang.get('pages.projects.index.table.count'), dataIndex: 'selections_count', key: 'selections_count'},
         {
             title: '', dataIndex: 'actions', key: 'actions', render: (_, record) => {
                 return (
                     <Space size={'small'}>
-                        <Tooltip placement="topRight" title={"Просмотреть"}>
+                        <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
                             <Button
                                 onClick={showProjectHandler(record.id)}
                                 icon={<EditOutlined/>}
                             />
                         </Tooltip>
-                        <Tooltip placement="topRight" title={"Удалить"}>
+                        <Tooltip placement="topRight" title={Lang.get('tooltips.delete')}>
                             <Popconfirm
-                                title={'Вы точно хотите удалить проект?'}
+                                title={Lang.get('pages.projects.index.table.delete')}
                                 onConfirm={deleteProjectHandler(record.id)}
-                                okText={'Да'}
-                                cancelText={'Нет'}
+                                okText={Lang.get('tooltips.popconfirm.yes')}
+                                cancelText={Lang.get('tooltips.popconfirm.no')}
                             >
                                 <Button icon={<DeleteOutlined/>}/>
                             </Popconfirm>
@@ -79,7 +83,7 @@ const Index = () => {
                         <PrimaryButton onClick={() => {
                             setIsModalVisible(true)
                         }}>
-                            Новый проект
+                            {Lang.get('pages.projects.index.new.button')}
                         </PrimaryButton>
                     </BoxFlexEnd>
                 </Col>
@@ -104,21 +108,21 @@ const Index = () => {
                     <SecondaryButton onClick={() => {
                         Inertia.get(route('selections.dashboard', -1))
                     }}>
-                        Произвести подбор без возможности сохранения
+                        {Lang.get('pages.projects.index.selection')}
                     </SecondaryButton>
                 </Col>
             </Row>
             <Modal
-                title="Введите наименование нового проекта"
+                title={Lang.get('pages.projects.index.new.title')}
                 visible={isModalVisible}
                 footer={[
                     <Button key="cancel" onClick={() => {
                         setIsModalVisible(false)
                     }}>
-                        Отмена
+                        {Lang.get('pages.projects.index.new.cancel')}
                     </Button>,
                     <Button key="create" type="primary" htmlType="submit" form="new-proj-form">
-                        Создать
+                        {Lang.get('pages.projects.index.new.create')}
                     </Button>,
                 ]}
                 onCancel={() => {
@@ -126,8 +130,8 @@ const Index = () => {
                 }}
             >
                 <Form name="new-proj-form" onFinish={createNewProjectHandler} layout="vertical">
-                    <Form.Item name='name' rules={[rules.required]} label="Наименование">
-                        <Input placeholder="Введите наименование..."/>
+                    <Form.Item name='name' rules={[rules.required]} label={Lang.get('pages.projects.index.new.label')}>
+                        <Input placeholder={Lang.get('pages.projects.index.new.placeholder')}/>
                     </Form.Item>
                 </Form>
             </Modal>
@@ -135,7 +139,7 @@ const Index = () => {
     )
 }
 
-Index.layout = page => <Authenticated children={page} title={"Проекты"} backTo={true}
+Index.layout = page => <Common children={page} title={Lang.get('pages.projects.title')} backTo={true}
                                       breadcrumbs={useBreadcrumbs().projects}/>
 
 export default Index

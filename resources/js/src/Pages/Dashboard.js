@@ -1,23 +1,27 @@
 import React from 'react';
-import {Authenticated} from "../Shared/Layout/Authenticated";
 import {Col, message, Row} from "antd";
 import {DashboardCard} from "../Shared/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
+import {Common} from "../Shared/Layout/Common";
+import {useLang} from "../Hooks/lang.hook";
+import Lang from '../../translation/lang'
 
 const Dashboard = () => {
+    const Lang = useLang()
+
     const cards = [
         {
-            title: 'Подбор насосных установок', src: '/img/dashboard/pumpselection.jpg', onClick: () => {
+            title: Lang.get('pages.dashboard.select'), src: '/img/dashboard/pumpselection.jpg', onClick: () => {
                 Inertia.get(route('projects.index'))
             },
         },
         {
-            title: 'Маркетплейс', src: '/img/dashboard/marketplace.png', onClick: () => {
-                message.info('Сервис в разработке')
+            title: Lang.get('pages.dashboard.marketplace'), src: '/img/dashboard/marketplace.png', onClick: () => {
+                message.info(Lang.get('messages.service_development'))
             }
         },
         {
-            title: 'Насосы', src: '/img/dashboard/pumps.jpg', onClick: () => {
+            title: Lang.get('pages.dashboard.pumps'), src: '/img/dashboard/pumps.jpg', onClick: () => {
                 Inertia.get(route('pumps.index'))
             }
         },
@@ -34,6 +38,6 @@ const Dashboard = () => {
     )
 }
 
-Dashboard.layout = page => <Authenticated children={page} title={"Дашборд"}/>
+Dashboard.layout = page => <Common children={page} title={Lang.get('pages.dashboard.title')}/>
 
 export default Dashboard

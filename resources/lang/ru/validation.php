@@ -139,9 +139,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'city' => [
+            'correct' => 'Choose a correct city for area'
+        ]
     ],
 
     /*
@@ -164,7 +164,7 @@ return [
     'attributes' => [
         'name'                  => 'Имя',
         'username'              => 'Никнейм',
-        'email'                 => 'E-Mail адрес',
+        'email'                 => 'e-mail',
         'first_name'            => 'Имя',
         'last_name'             => 'Фамилия',
         'password'              => 'Пароль',
@@ -191,5 +191,6 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
+        'itn'                   => 'ИНН'
     ],
 ];

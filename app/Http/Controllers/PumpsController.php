@@ -122,7 +122,7 @@ class PumpsController extends Controller
             }, $exception->failures()));
         }
 
-        return Redirect::route('pumps.index')->with('success', 'Насосы успешно загружены');
+        return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
     }
 
 }

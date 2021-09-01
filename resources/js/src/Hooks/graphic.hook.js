@@ -1,10 +1,12 @@
 import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer} from "victory";
 import React, {useMemo, useState} from "react";
+import {useLang} from "./lang.hook";
 // import Paper from "@material-ui/core/Paper";
 
 export const useGraphic = () => {
     const [stationToShow, setStationToShow] = useState(null)
     const [workingPoint, setWorkingPoint] = useState(null)
+    const Lang = useLang()
 
     const defaultDiagramId = "chart"
 

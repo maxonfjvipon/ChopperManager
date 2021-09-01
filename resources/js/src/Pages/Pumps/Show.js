@@ -13,10 +13,14 @@ import {
     VictoryTooltip,
     VictoryAxis
 } from 'victory'
+import Lang from '../../../translation/lang'
+import {useLang} from "../../Hooks/lang.hook";
+import {Common} from "../../Shared/Layout/Common";
 
 const Show = () => {
     const {pump} = usePage().props
     const {reducedAntFormItemClassName, fullWidth} = useStyles()
+    const Lang = useLang()
 
     useEffect(() => {
         // console.log(pump)
@@ -26,7 +30,7 @@ const Show = () => {
         {
             values: {
                 name: 'part_num_main',
-                label: 'Артикул основной',
+                label: Lang.get('pages.pumps.data.part_num_main'),
                 initialValue: pump.data.part_num_main,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -34,7 +38,7 @@ const Show = () => {
         {
             values: {
                 name: 'part_num_backup',
-                label: 'Артикул резервный',
+                label: Lang.get('pages.pumps.data.part_num_backup'),
                 initialValue: pump.data.part_num_backup,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -42,7 +46,7 @@ const Show = () => {
         {
             values: {
                 name: 'part_num_archive',
-                label: 'Артикул архивный',
+                label: Lang.get('pages.pumps.data.part_num_archive'),
                 initialValue: pump.data.part_num_archive,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -50,7 +54,7 @@ const Show = () => {
         {
             values: {
                 name: 'price',
-                label: 'Цена',
+                label: Lang.get('pages.pumps.data.price'),
                 initialValue: pump.data.price,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -58,7 +62,7 @@ const Show = () => {
         {
             values: {
                 name: 'currency',
-                label: 'Валюта',
+                label: Lang.get('pages.pumps.data.currency'),
                 initialValue: pump.data.currency,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -66,7 +70,7 @@ const Show = () => {
         {
             values: {
                 name: 'weight',
-                label: 'Масса',
+                label: Lang.get('pages.pumps.data.weight'),
                 initialValue: pump.data.weight,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -74,7 +78,7 @@ const Show = () => {
         {
             values: {
                 name: 'power',
-                label: 'Мощность',
+                label: Lang.get('pages.pumps.data.power'),
                 initialValue: pump.data.power,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -82,7 +86,7 @@ const Show = () => {
         {
             values: {
                 name: 'amperage',
-                label: 'Потребляемый ток',
+                label: Lang.get('pages.pumps.data.amperage'),
                 initialValue: pump.data.amperage,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -90,7 +94,7 @@ const Show = () => {
         {
             values: {
                 name: 'connection_type',
-                label: 'Тип соединения',
+                label: Lang.get('pages.pumps.data.connection_type'),
                 initialValue: pump.data.connection_type,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -98,7 +102,7 @@ const Show = () => {
         {
             values: {
                 name: 'min_liquid_temp',
-                label: 'Мин.темп.жидкости',
+                label: Lang.get('pages.pumps.data.min_fluid_temp'),
                 initialValue: pump.data.min_liquid_temp,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -106,7 +110,7 @@ const Show = () => {
         {
             values: {
                 name: 'max_liquid_temp',
-                label: 'Макс.темп.жидкости',
+                label: Lang.get('pages.pumps.data.max_fluid_temp'),
                 initialValue: pump.data.max_liquid_temp,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -114,7 +118,7 @@ const Show = () => {
         {
             values: {
                 name: 'between_axes_dist',
-                label: 'Межосевое расстояние',
+                label: Lang.get('pages.pumps.data.between_axes_dist'),
                 initialValue: pump.data.between_axes_dist,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -122,7 +126,7 @@ const Show = () => {
         {
             values: {
                 name: 'dn_input',
-                label: 'ДУ входа',
+                label: Lang.get('pages.pumps.data.dn_input'),
                 initialValue: pump.data.dn_input,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -130,7 +134,7 @@ const Show = () => {
         {
             values: {
                 name: 'dn_output',
-                label: 'ДУ выхода',
+                label: Lang.get('pages.pumps.data.dn_output'),
                 initialValue: pump.data.dn_output,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -138,7 +142,7 @@ const Show = () => {
         {
             values: {
                 name: 'category',
-                label: 'Категория',
+                label: Lang.get('pages.pumps.data.category'),
                 initialValue: pump.data.category,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -146,7 +150,7 @@ const Show = () => {
         {
             values: {
                 name: 'regulation',
-                label: 'Встроенное регулирование',
+                label: Lang.get('pages.pumps.data.regulation'),
                 initialValue: pump.data.regulation,
                 className: reducedAntFormItemClassName,
             }, input: <Input bordered={false} readOnly/>
@@ -166,7 +170,7 @@ const Show = () => {
             <Col md={24} lg={15} xl={17} xxl={19}>
                 <Card
                     style={{...fullWidth, borderRadius: 10}}
-                    title={"Гидравлическая характеристика"}
+                    title={Lang.get('pages.pumps.hydraulic_perf')}
                 >
                     <Row justify="space-around">
                         <Col xs={18}>
@@ -182,10 +186,10 @@ const Show = () => {
                             >
                                 <VictoryAxis
                                     orientation="bottom"
-                                    label="Расход, м³/час"
+                                    label={Lang.get('pages.pumps.consumption')}
                                 />
                                 <VictoryAxis dependentAxis
-                                             label="Напор, м"
+                                             label={Lang.get('pages.pumps.pressure')}
                                 />
                                 <VictoryLine
                                     interpolation="linear" data={pump.data.performance.line_data}
@@ -212,10 +216,10 @@ const Show = () => {
     )
 }
 
-Show.layout = page => <Authenticated
+Show.layout = page => <Common
     children={page}
     backTo={true}
-    title={"Насосы"}
+    title={Lang.get('pages.pumps.title')}
     breadcrumbs={useBreadcrumbs().pumps}
 
 />

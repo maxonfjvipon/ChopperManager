@@ -5,7 +5,9 @@ namespace App\Http\Middleware;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class RedirectIfAuthenticated
 {
@@ -23,7 +25,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+//                return \redirect(app()->getLocale() . '/');
+//                return route('dashboard');
+                return Redirect::route('dashboard');
+//                return redirect(app()->getLocale() . RouteServiceProvider::HOME);
             }
         }
 

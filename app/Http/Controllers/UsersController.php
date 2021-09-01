@@ -77,7 +77,7 @@ class UsersController extends Controller
     public function update(UserUpdateRequest $request): RedirectResponse
     {
         Auth::user()->update($request->validated());
-        return Redirect::back()->with('success', 'Информация успешно обновлена');
+        return Redirect::back()->with('success', __('flash.users.updated'));
     }
 
     /**
@@ -93,7 +93,7 @@ class UsersController extends Controller
             Auth::user()->update([
                 'password' => Hash::make($validated['password'])
             ]);
-            return Redirect::back()->with('success', 'Пароль успешно обновлен');
+            return Redirect::back()->with('success', __('flash.users.password_changed'));
         }
         Return Redirect::back();
     }

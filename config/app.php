@@ -173,7 +173,6 @@ return [
         /*
          * Package Service Providers...
          */
-        I18nServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Mariuzzo\LaravelJsLocalization\LaravelJsLocalizationServiceProvider::class,
 

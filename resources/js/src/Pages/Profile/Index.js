@@ -12,6 +12,9 @@ import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {DiscountsTab} from "./Components/DiscountsTab";
+import Lang from '../../../translation/lang'
+import {useLang} from "../../Hooks/lang.hook";
+import {Common} from "../../Shared/Layout/Common";
 
 const Index = () => {
     const {
@@ -24,6 +27,7 @@ const Index = () => {
 
     const {fullWidth, reducedAntFormItemClassName} = useStyles()
     const {rules} = useInputRules()
+    const Lang = useLang()
 
     const {user, businesses, areasWithCities, discounts} = usePage().props
     const userdata = user.data
@@ -48,7 +52,7 @@ const Index = () => {
         {
             values: {
                 name: 'organization_name',
-                label: 'Наименование организации',
+                label: Lang.get('pages.profile.index.organization_name'),
                 rules: [rules.required],
                 initialValue: userdata.organization_name,
                 // className: reducedAntFormItemClassName,
@@ -57,7 +61,7 @@ const Index = () => {
         {
             values: {
                 name: 'business_id',
-                label: 'Основная деятельность',
+                label: Lang.get('pages.profile.index.main_business'),
                 rules: [rules.required],
                 initialValue: userdata.business_id
             },
@@ -65,29 +69,29 @@ const Index = () => {
         },
         {
             values: {
-                name: 'inn', label: 'ИНН', rules: rules.inn, initialValue: userdata.inn || "",
+                name: 'itn', label: Lang.get('pages.profile.index.itn'), rules: rules.itn, initialValue: userdata.itn || "",
             }, input: <Input/>
         },
         {
             values: {
-                name: 'phone', label: 'Контактный телефон', rules: rules.phone, initialValue: userdata.phone,
+                name: 'phone', label: Lang.get('pages.profile.index.phone'), rules: rules.phone, initialValue: userdata.phone,
             },
             input: <Input placeholder="+7XXXXXXXXXX" readOnly/>,
         },
         {
-            values: {name: 'area', label: 'Область', rules: [rules.required], initialValue: userdata.area_id},
+            values: {name: 'area', label: Lang.get('pages.profile.index.area'), rules: [rules.required], initialValue: userdata.area_id},
             input: <Selection {...areasOptions}/>
         },
         {
-            values: {name: 'city_id', label: 'Город', rules: rules.city(citiesToShow), initialValue: userdata.city_id},
+            values: {name: 'city_id', label: Lang.get('pages.profile.index.city'), rules: rules.city(citiesToShow), initialValue: userdata.city_id},
             input: <Selection {...citiesOptions}/>
         },
-        {values: {name: 'first_name', label: 'Имя', rules: [rules.required, rules.max(255)], initialValue: userdata.first_name}, input: <Input readOnly/>},
-        {values: {name: 'middle_name', label: 'Фамилия', rules: [rules.required, rules.max(255)], initialValue: userdata.middle_name}, input: <Input readOnly/>},
-        {values: {name: 'last_name', label: 'Отчество', rules: [rules.max(255)], initialValue: userdata.last_name}, input: <Input/>},
+        {values: {name: 'first_name', label: Lang.get('pages.profile.index.first_name'), rules: [rules.required, rules.max(255)], initialValue: userdata.first_name}, input: <Input readOnly/>},
+        {values: {name: 'middle_name', label: Lang.get('pages.profile.index.middle_name'), rules: [rules.required, rules.max(255)], initialValue: userdata.middle_name}, input: <Input readOnly/>},
+        {values: {name: 'last_name', label: Lang.get('pages.profile.index.last_name'), rules: [rules.max(255)], initialValue: userdata.last_name}, input: <Input/>},
         {
             values: {
-                name: 'email', label: 'E-mail', rules: rules.email, initialValue: userdata.email,
+                name: 'email', label: Lang.get('pages.profile.index.email'), rules: rules.email, initialValue: userdata.email,
                 className: reducedAntFormItemClassName
             },
             input: <Input readOnly/>
@@ -95,12 +99,12 @@ const Index = () => {
     ]
 
     const updatePasswordItems = [
-        {values: {name: 'current_password', label: 'Текущий пароль', rules: []}, input: <Input.Password/>},
-        {values: {name: 'password', label: 'Новый пароль', rules: []}, input: <Input.Password/>},
+        {values: {name: 'current_password', label: Lang.get('pages.profile.index.current_password'), rules: []}, input: <Input.Password/>},
+        {values: {name: 'password', label: Lang.get('pages.profile.index.new_password'), rules: []}, input: <Input.Password/>},
         {
             values: {
                 name: 'password_confirmation',
-                label: 'Повторите новый пароль',
+                label: Lang.get('pages.profile.index.new_password_confirmation'),
                 rules: [],
                 className: reducedAntFormItemClassName
             },
@@ -118,7 +122,7 @@ const Index = () => {
 
     return (
         <Tabs centered type="card" defaultActiveKey="user-info">
-            <Tabs.TabPane tab="Информация" key="user-info">
+            <Tabs.TabPane tab={Lang.get('pages.profile.index.tab')} key="user-info">
                 <Row justify="space-around" align="middle" gutter={[30, 30]}>
                     <Col md={24} lg={20} xl={15} xxl={13}>
                         <Card
@@ -133,7 +137,7 @@ const Index = () => {
                                 //     </PrimaryButton>
                                 // </div>
                                 <PrimaryButton htmlType="submit" form={profileFormName}>
-                                    Сохранить изменения
+                                    {Lang.get('pages.profile.index.save_changes')}
                                 </PrimaryButton>
                             ]}
                         >
@@ -151,7 +155,7 @@ const Index = () => {
                                 //     </PrimaryButton>
                                 // </div>
                                 <PrimaryButton htmlType="submit" form={changePasswordForm}>
-                                    Изменить пароль
+                                    {Lang.get('pages.profile.index.change_password')}
                                 </PrimaryButton>
                             ]}
                         >
@@ -161,7 +165,7 @@ const Index = () => {
                     </Col>
                 </Row>
             </Tabs.TabPane>
-            <Tabs.TabPane tab="Скидки производителей" key="producers-discounts">
+            <Tabs.TabPane tab={Lang.get('pages.profile.discounts.tab')} key="producers-discounts">
                 <DiscountsTab discounts={discounts}/>
                 {/*    <Row justify="space-around" align="middle" gutter={[0, 0]}>*/}
                 {/*        <Col md={24} lg={20} xl={15} xxl={12}>*/}
@@ -200,7 +204,7 @@ const Index = () => {
     )
 }
 
-Index.layout = page => <Authenticated children={page} title={"Профиль"} backTo={true}
+Index.layout = page => <Common children={page} title={Lang.get('pages.profile.title')} backTo={true}
                                       breadcrumbs={useBreadcrumbs().profile}/>
 
 export default Index

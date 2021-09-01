@@ -1,3 +1,5 @@
+import Lang from "../../translation/lang";
+
 const ruleObj = (field, value, message) => {
     const obj = {}
     obj[field] = value
@@ -9,9 +11,9 @@ export const useInputRules = () => {
     const incorrectTypeMessage = (type) => {
         switch (type) {
             case 'email':
-                return 'Неверный формат Email!'
+                return Lang.get('validation.email', {attribute: Lang.get('validation.attributes.email')})
             case 'number':
-                return 'Неверный формат. Должно быть число'
+                return Lang.get('validation.numeric')
         }
     }
 
@@ -20,23 +22,23 @@ export const useInputRules = () => {
     }
     const email = type('email')
     const number = type('number')
-    const inn = ruleObj('pattern', RegExp('^(\\d{10}|\\d{12})$'), 'Неверный формат ИНН')
-    const phone = ruleObj('pattern', RegExp('^((\\+7|7|8)+([0-9]){10})$'), 'Неверный формат телефона')
+    const itn = ruleObj('pattern', RegExp('^(\\d{10}|\\d{12})$'), Lang.get('validation.regex', {attribute: Lang.get('validation.attributes.itn')}))
+    const phone = ruleObj('pattern', RegExp('^((\\+7|7|8)+([0-9]){10})$'), Lang.get('validation.regex', {attribute: Lang.get('validation.attributes.phone')}))
 
-    const required = ruleObj('required', true, 'Поле должно быть заполнено!')
+    const required = ruleObj('required', true, Lang.get('validation.required', {attribute: ""}))
 
-    const max = (len) => ruleObj('max', len, 'Недопустимая длина поля: ' + len)
+    const max = (len) => ruleObj('max', len, Lang.get('validation.max.numeric', {max: len}))
 
     return {
         rules: {
             email: [required, email],
             password: [required],
-            inn: [inn],
+            itn: [itn],
             phone: [required, phone],
             city: citiesToShow => [required, {
                 validator: (_, cityId) => citiesToShow.some(cityToShow => cityToShow.id === cityId)
                     ? Promise.resolve()
-                    : Promise.reject(new Error('Выберите подходящий для области город'))
+                    : Promise.reject(new Error(Lang.get('validation.custom.city.correct')))
             }],
             required,
             number,

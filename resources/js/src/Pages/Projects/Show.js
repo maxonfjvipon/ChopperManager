@@ -10,71 +10,97 @@ import {useInputRules} from "../../Hooks/input-rules.hook";
 import {Inertia} from "@inertiajs/inertia";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {useStyles} from "../../Hooks/styles.hook";
+import {Common} from "../../Shared/Layout/Common";
+import Lang from "../../../translation/lang";
+import {useLang} from "../../Hooks/lang.hook";
 
 const Show = () => {
     const {rules} = useInputRules()
     const {project} = usePage().props
-
-    // useEffect(() => {
-    //     console.log(project)
-    // }, [project])
-
+    const Lang = useLang()
 
     const {reducedBottomAntFormItemClassName} = useStyles()
 
     const formName = 'project-name-form'
     const columns = [
         {
-            title: 'Дата подбора',
+            title: Lang.get('pages.projects.show.table.created_at'),
             dataIndex: 'created_at',
             key: 'created_at',
             sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
             defaultSortOrder: 'ascend'
         },
-        {title: 'Подобранный насос', dataIndex: 'selected_pump_name', key: 'selected_pump_name'},
         {
-            title: 'Артикул', dataIndex: 'part_num_main', key: 'pump_part_num_main', render: (_, record) => {
+            title: Lang.get('pages.projects.show.table.selected_pump'),
+            dataIndex: 'selected_pump_name',
+            key: 'selected_pump_name'
+        },
+        {
+            title: Lang.get('pages.projects.show.table.part_num'),
+            dataIndex: 'part_num_main',
+            key: 'pump_part_num_main',
+            render: (_, record) => {
                 // console.log(record)
                 return (
                     <Link href={route('pumps.show', record.id)}>{record.part_num_main}</Link>
                 )
             }
         },
-        {title: 'Напор, м', dataIndex: 'pressure', key: 'pressure'},
-        {title: 'Расход, м3/ч', dataIndex: 'consumption', key: 'consumption'},
-        {title: 'Цена за 1', dataIndex: 'price', key: 'price', sorter: (a, b) => a.price - b.price},
-        {title: 'Цена ИТОГО', dataIndex: 'sum_price', key: 'priceSum', sorter: (a, b) => a.sum_price - b.sum_price},
-        {title: 'P одного', dataIndex: 'power', key: 'power', sorter: (a, b) => a.power - b.power},
-        {title: 'P ИТОГО', dataIndex: 'sum_power', key: 'powerSum', sorter: (a, b) => a.sum_power - b.sum_power},
+        {title: Lang.get('pages.projects.show.table.consumption'), dataIndex: 'consumption', key: 'consumption'},
+        {title: Lang.get('pages.projects.show.table.pressure'), dataIndex: 'pressure', key: 'pressure'},
+        {
+            title: Lang.get('pages.projects.show.table.price'),
+            dataIndex: 'price',
+            key: 'price',
+            sorter: (a, b) => a.price - b.price
+        },
+        {
+            title: Lang.get('pages.projects.show.table.total_price'),
+            dataIndex: 'sum_price',
+            key: 'priceSum',
+            sorter: (a, b) => a.sum_price - b.sum_price
+        },
+        {
+            title: Lang.get('pages.projects.show.table.power'),
+            dataIndex: 'power',
+            key: 'power',
+            sorter: (a, b) => a.power - b.power
+        },
+        {
+            title: Lang.get('pages.projects.show.table.total_power'),
+            dataIndex: 'sum_power',
+            key: 'powerSum',
+            sorter: (a, b) => a.sum_power - b.sum_power
+        },
         {
             title: '', dataIndex: 'actions', key: 'actions', width: '5%', render: (_, record) => {
                 return (
                     <BoxFlexEnd>
                         <Space size={'small'}>
-                            <Tooltip placement="topRight" title={"Просмотреть"}>
+                            <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
                                 <Button
                                     onClick={showSelectionHandler(record.id)}
                                     icon={<EditOutlined/>}
                                 />
                             </Tooltip>
-                            <Tooltip placement="topRight" title={"Удалить"}>
+                            <Tooltip placement="topRight" title={Lang.get('tooltips.delete')}>
                                 <Popconfirm
-                                    title={'Вы точно хотите удалить подбор?'}
+                                    title={Lang.get('pages.projects.show.table.delete')}
                                     onConfirm={deleteSelectionHandler(record.id)}
-                                    okText={'Да'}
-                                    cancelText={'Нет'}
+                                    okText={Lang.get('tooltips.popconfirm.yes')}
+                                    cancelText={Lang.get('tooltips.popconfirm.no')}
                                 >
                                     <Button icon={<DeleteOutlined/>}/>
                                 </Popconfirm>
                             </Tooltip>
-                            <Tooltip placement="topRight" title="Печать">
+                            <Tooltip placement="topRight" title={Lang.get('tooltips.print')}>
                                 <Button icon={<PrinterOutlined/>} onClick={() => {
-                                    message.info('Функция в разработке')
+                                    message.info(Lang.get('messages.function_development'))
                                 }}/>
                             </Tooltip>
-                            <Tooltip placement="topRight" title="Экспорт">
+                            <Tooltip placement="topRight" title={Lang.get('tooltips.export')}>
                                 <Button icon={<ExportOutlined/>} onClick={() => {
-                                    message.info('Функция в разработке')
+                                    message.info(Lang.get('messages.function_development'))
                                 }}/>
                             </Tooltip>
                         </Space>
@@ -103,7 +129,7 @@ const Show = () => {
                 <Form name={formName} layout="vertical" onFinish={updateProjectHandler}>
                     <Form.Item
                         rules={[rules.required]}
-                        label="Наименование"
+                        label={Lang.get('pages.projects.show.label')}
                         name="name"
                         initialValue={project.data?.name}
                         className={reducedBottomAntFormItemClassName}
@@ -115,7 +141,7 @@ const Show = () => {
             <Col xs={24}>
                 <BoxFlexEnd>
                     <PrimaryButton form={formName} htmlType="submit">
-                        Сохранить изменения
+                        {Lang.get('pages.projects.show.save_changes')}
                     </PrimaryButton>
                 </BoxFlexEnd>
             </Col>
@@ -138,15 +164,15 @@ const Show = () => {
                 <SecondaryButton onClick={() => {
                     Inertia.get(route('selections.dashboard', project.data.id))
                 }}>
-                    Произвести подбор
+                    {Lang.get('pages.projects.show.selection')}
                 </SecondaryButton>
             </Col>
         </Row>
     )
 }
 
-Show.layout = page => <Authenticated children={page} backTo={true} title={"Проекты"}
-                                     breadcrumbs={useBreadcrumbs().projects}
+Show.layout = page => <Common children={page} backTo={true} title={Lang.get('pages.projects.title')}
+                              breadcrumbs={useBreadcrumbs().projects}
 />
 
 export default Show

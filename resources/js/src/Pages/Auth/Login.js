@@ -1,24 +1,26 @@
-import React from 'react'
-import Guest from "../../Shared/Layout/Guest";
+import React, {useEffect} from 'react'
 import {Card, Col, Divider, Input, Row, Typography} from "antd";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {useStyles} from "../../Hooks/styles.hook";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import {Inertia} from "@inertiajs/inertia";
+import {Common} from "../../Shared/Layout/Common";
+import {useLang} from "../../Hooks/lang.hook";
 
 const Login = () => {
     const {textAlignCenter, fullWidth} = useStyles()
     const {rules} = useInputRules()
+    const Lang = useLang()
     const formName = 'login-form'
 
     const items = [
-        {values: {name: 'email', label: 'E-mail', rules: rules.email}, input: <Input/>},
-        {values: {name: 'password', label: 'Пароль', rules: rules.password}, input: <Input.Password/>},
+        {values: {name: 'email', label: Lang.get('pages.login.email'), rules: rules.email}, input: <Input/>},
+        {values: {name: 'password', label: Lang.get('pages.login.password'), rules: rules.password}, input: <Input.Password/>},
     ]
 
     const loginHandler = body => {
-        Inertia.post(route('login.attempt', body))
+        Inertia.post(route('login.attempt'), body)
     }
 
     return (
@@ -28,7 +30,7 @@ const Login = () => {
                     title={
                         <div style={textAlignCenter}>
                             <Typography>
-                                Добро пожаловать!
+                                {Lang.get('pages.login.welcome')}
                             </Typography>
                         </div>}
                     style={{...fullWidth, borderRadius: 10}}
@@ -41,11 +43,11 @@ const Login = () => {
                     />
                     <Divider/>
                     <PrimaryButton style={{...fullWidth, marginBottom: 10}} htmlType="submit" form={formName}>
-                        Войти
+                        {Lang.get('pages.login.login')}
                     </PrimaryButton>
                     <div style={textAlignCenter}>
                         <Typography.Link href={route('register')}>
-                            Еще не зарегистрированы?
+                            {Lang.get('pages.login.not_registered')}
                         </Typography.Link>
                     </div>
                 </Card>
@@ -54,6 +56,7 @@ const Login = () => {
     )
 }
 
-Login.layout = page => <Guest children={page}/>
+// Login.layout = page => <Guest children={page}/>
+Login.layout = page => <Common children={page}/>
 
 export default Login

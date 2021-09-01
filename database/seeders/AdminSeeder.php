@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
         User::create([
             'id' => 1,
             'organization_name' => "МБС",
-            'inn' => "1111111111",
+            'itn' => "1111111111",
             'email' => 'maxonfjvipon@admin.com',
             'password' => Hash::make('maximtrun19'),
             'phone' => "89991231212",
@@ -34,7 +34,7 @@ class AdminSeeder extends Seeder
         User::create([
             'id' => 2,
             'organization_name' => "МБС",
-            'inn' => "1111111112",
+            'itn' => "1111111112",
             'email' => 'titatyov@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
@@ -50,7 +50,7 @@ class AdminSeeder extends Seeder
         User::create([
             'id' => 3,
             'organization_name' => "МБС",
-            'inn' => "1111111113",
+            'itn' => "1111111113",
             'email' => 'volodin@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",

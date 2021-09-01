@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\RegisterUserAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\Pumps\PumpProducer;
@@ -40,40 +41,12 @@ class RegisterController extends Controller
      * Register user
      *
      * @param RegisterRequest $request
+     * @param RegisterUserAction $action
      * @return Application|RedirectResponse|Redirector
      */
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request, RegisterUserAction $action)
     {
-        $validated = $request->validated();
-
-        $user = User::create([
-            'name' => $validated['name'],
-            'inn' => $validated['inn'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'phone' => $validated['phone'],
-            'fio' => $validated['fio'],
-            'city_id' => $validated['city_id'],
-            'business_id' => $validated['business_id'],
-        ]);
-
-//        $user->discounts()->insert(array_map(function ($series) use ($user) {
-//            return ['user_id' => $user->id, 'series_id' => $series['id']];
-//        }, PumpSeries::all()->toArray()));
-
-        $user->discounts()->insert(array_map(function ($series) use ($user) {
-            return ['user_id' => $user->id, 'discountable_id' => $series['id'], 'discountable_type' => 'pump_series'];
-        }, PumpSeries::all()->toArray()));
-
-        $user->discounts()->insert(array_map(function ($producer) use ($user) {
-            return ['user_id' => $user->id, 'discountable_id' => $producer['id'], 'discountable_type' => 'pump_producer'];
-        }, PumpProducer::all()->toArray()));
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-//        return Redirect::route('dashboard');
+        $action->execute($request->validated());
         return Redirect::route('verification.notice');
     }
 }

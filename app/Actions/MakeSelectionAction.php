@@ -11,7 +11,7 @@ use App\Support\Selections\Regression;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
-class MakeSelectionAction
+class MakeSelectionAction implements Executable
 {
     private function systemPerformance($intersectionPoint, $pressure, $consumption): array
     {
@@ -173,7 +173,7 @@ class MakeSelectionAction
 //        ]);
 
         if (count($dbPumps) === 0) {
-            return response()->json(['info', 'Насосов не найдено']);
+            return response()->json(['info', __('flash.selections.pumps_not_found')]);
         }
 
         $dbPumps->map(function ($pump) use ($backupPumpsCount, $rates, $pressure, $consumption, &$num, &$selectedPumps) {
