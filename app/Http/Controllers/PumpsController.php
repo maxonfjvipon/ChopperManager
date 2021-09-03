@@ -118,7 +118,7 @@ class PumpsController extends Controller
             (new PumpsDataImport())->import($file);
         } catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
             throw ValidationException::withMessages(array_map(function ($failure) {
-                return ["Строка " . $failure->row() . ": " . $failure->errors()[0]];
+                return [__('validation.pumps_import.row') . ' ' . $failure->row() . ": " . $failure->errors()[0]];
             }, $exception->failures()));
         }
 

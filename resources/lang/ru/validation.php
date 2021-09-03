@@ -140,8 +140,12 @@ return [
 
     'custom' => [
         'city' => [
-            'correct' => 'Choose a correct city for area'
+            'correct' => 'Выберите подходящий город из выбранной области'
         ]
+    ],
+
+    'pumps_import' => [
+        'row' => 'Строка'
     ],
 
     /*
@@ -191,6 +195,32 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
-        'itn'                   => 'ИНН'
+        'itn'                   => 'ИНН',
+        'pump' => [
+            'part_num_main'         => 'Основной артикул',
+            'part_num_backup'       => 'Резервный артикул',
+            'part_num_archive'      => 'Архивный артикул',
+            'producer'              => 'Бренд',
+            'series'                => 'Серия',
+            'name'                  => 'Наименование',
+            'price'                 => "Цена",
+            'currency'              => "Валюта",
+            'weight'                => "Масса",
+            'power'                 => "Мощность",
+            'amperage'              => "Ток",
+            'connection_type'       => 'Тип соединения',
+            'dn_input'              => 'ДУ входа',
+            'dn_output'             => 'ДУ выхода',
+            'min_temp'              => 'Макс. темп. жидкости',
+            'max_temp'              => 'Мин. темп. жидкости',
+            'between_axes_dist'     => 'Межосевое расстояние',
+            'performance'           => 'Характеристика',
+            'phase'                 => 'Фаза',
+            'applications'          => 'Применения',
+            'types'                 => 'Типы',
+            'category'              => 'Категория',
+            'regulation'            => 'Встроенное регулирование',
+        ],
+
     ],
 ];

@@ -136,9 +136,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'city' => [
+            'correct' => 'Choose a correct city for area'
+        ]
+    ],
+
+    'pumps_import' => [
+        'row' => 'Row'
     ],
 
     /*
@@ -183,7 +187,32 @@ return [
         'time'                  => 'Time',
         'available'             => 'Available',
         'size'                  => 'Size',
-        'itn'                   => 'ITN'
+        'itn'                   => 'ITN',
+        'pump' => [
+            'part_num_main'         => 'Main article number',
+            'part_num_backup'       => 'Reserve article number',
+            'part_num_archive'      => 'Archive article number',
+            'producer'              => 'Brand',
+            'series'                => 'Series',
+            'name'                  => 'Name',
+            'price'                 => "Price",
+            'currency'              => "Currency",
+            'weight'                => "Weight",
+            'power'                 => "Power",
+            'amperage'              => "Rated current",
+            'connection_type'       => 'Connection',
+            'dn_input'              => 'Suction side DN',
+            'dn_output'             => 'Pressure side DN',
+            'min_temp'              => 'Max. fluid temp',
+            'max_temp'              => 'Min. fluid temp',
+            'between_axes_dist'     => 'Between axes distance',
+            'performance'           => 'Performance',
+            'phase'                 => 'Current phase',
+            'applications'          => 'Applications',
+            'types'                 => 'Types',
+            'category'              => 'Category',
+            'regulation'            => 'Built-in regulation',
+        ],
     ],
 
 ];

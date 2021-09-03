@@ -91,7 +91,7 @@ class PumpsDataImport implements ToCollection
             $pumpTypes = explode(", ", $row[22]);
 
             foreach ($applications as $application) {
-                $applicationId = PumpApplication::whereName($application)->first()->id;
+                $applicationId = PumpApplication::where('name->ru', $application)->first()->id;
                 if (!in_array($applicationId, $seriesAndApplications[$series->id])) {
                     $seriesAndApplications[$series->id][] = $applicationId;
                 }
@@ -107,7 +107,7 @@ class PumpsDataImport implements ToCollection
             }
 
             foreach ($pumpTypes as $pumpType) {
-                $pumpTypeId = PumpType::whereName($pumpType)->first()->id;
+                $pumpTypeId = PumpType::where('name->ru', $pumpType)->first()->id;
                 if (!in_array($pumpTypeId, $seriesAndTypes[$series->id])) {
                     $seriesAndTypes[$series->id][] = $pumpTypeId;
                 }
