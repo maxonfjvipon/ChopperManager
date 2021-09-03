@@ -200,9 +200,10 @@ class MakeSelectionAction implements Executable
                 $pump_rub_price = $pump->currency->name === 'RUB'
                     ? $pump->price
                     : round($pump->price / $rates[$pump->currency->name], 2);
-                $pump_rub_price_with_discount = $pump_rub_price - ($pump->series->discounts[0]->value
+                $pump_rub_price_with_discount = $pump_rub_price -
+                    (count($pump->series->discounts) === 1
                         ? $pump_rub_price * $pump->series->discounts[0]->value / 100
-                        : ($pump->producer->discounts[0]->value
+                        : (count($pump->producer->discounts) === 1
                             ? $pump_rub_price * $pump->producer->discounts[0]->value / 100
                             : 0
                         )
