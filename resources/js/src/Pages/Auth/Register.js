@@ -22,6 +22,10 @@ const Register = () => {
     // CONSTS
     const {businesses, areasWithCities} = usePage().props
 
+    useEffect(() => {
+        console.log(areasWithCities)
+    }, [areasWithCities])
+
     const formName = 'register-form'
     const items = [
         {values: {name: 'organization_name', label: Lang.get('pages.register.organization_name'), rules: [rules.required]}, input: <Input/>},

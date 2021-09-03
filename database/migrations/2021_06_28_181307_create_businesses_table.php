@@ -16,7 +16,7 @@ class CreateBusinessesTable extends Migration
         Schema::dropIfExists('businesses');
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 64);
+            $table->json('name');
         });
     }
 

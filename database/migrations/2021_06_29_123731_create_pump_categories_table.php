@@ -16,7 +16,7 @@ class CreatePumpCategoriesTable extends Migration
         Schema::dropIfExists('pump_categories');
         Schema::create('pump_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
         });
     }
 

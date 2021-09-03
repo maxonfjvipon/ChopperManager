@@ -131,5 +131,68 @@ return [
             'name' => 'Name',
             'discount' => 'Discount, %'
         ]
+    ],
+    'selections' => [
+        'dashboard' => [
+            'title' => 'Hydraulic selections',
+            'single_prefs' => 'Single pump selection by preferences',
+            'double_prefs' => 'Double pump selection by preferences',
+            'water_station_prefs' => 'Watter supply pumping station selection by preferences',
+            'fire_station_prefs' => 'Fire extinguishing pumping station selection by preferences',
+            'single_analogy' => 'Single pump selection by analogy',
+            'double_analogy' => 'Double pump selection by analogy',
+            'water_station_analogy' => 'Watter supply pumping station selection by analogy',
+            'fire_station_analogy' => 'Fire extinguishing pumping station selection by analogy',
+        ],
+        'single' => [
+            'title_show' => 'Viewing the selection',
+            'title_new' => 'Single pump selection by preferences',
+            'grouping' => 'Grouping by brands',
+            'producers' => 'Brands',
+            'types' => [
+                'label' => 'Types',
+                'tooltip' => 'The presence of all the selected types for the series is checked!'
+            ],
+            'applications' => [
+                'label' => 'Applications',
+                'tooltip' => 'The presence of all the selected applications for the series is checked!'
+            ],
+            'regulations' => 'Built-in regulations',
+            'fluid_temp' => 'Fluid temperature, °C',
+            'pressure' => 'Delivery head, m',
+            'consumption' => 'Volume flow, m³/h',
+            'limit' => 'deviation, %',
+            'main_pumps_count' => 'Main pumps count',
+            'backup_pumps_count' => 'Reserve pumps count',
+            'connection_type' => 'Connection',
+            'phase' => 'Current phase',
+            'condition' => 'Condition',
+            'power_limit' => 'Limiting the pump power',
+            'between_axes_limit' => 'Limiting the between axes distance',
+            'dn_input_limit' => 'Limiting the suction side DN',
+            'dn_output_limit' => 'Limiting the pressure side DN',
+            'power' => 'Power, kW',
+            'between_axes_dist' => 'Between axes distance',
+            'dn_input' => 'Suction side DN',
+            'dn_output' => 'Pressure side DN',
+            'select' => 'Select',
+            'exit' => 'Exit',
+            'add' => 'Add to project',
+            'update' => 'Update selection',
+            'selected_pump' => 'Selected pump: ',
+            'table' => [
+                'name' => 'Name',
+                'part_num' => 'Article number',
+                'retail_price' => 'Retail price',
+                'discounted_price' => 'Discounted price',
+                'total_retail_price' => 'Total retail price',
+                'total_discounted_price' => 'Total discounted price',
+                'dn_input' => 'Suction side DN',
+                'dn_output' => 'Pressure side DN',
+                'power' => 'P, kW',
+                'total_power' => 'P total, kW',
+                'between_axes_dist' => 'Between axes distance'
+            ],
+        ]
     ]
 ];

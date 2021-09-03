@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useCheck} from "../check.hook";
+import Lang from '../../../translation/lang'
 
 export const useAreasCities = () => {
     const [areaValue, setAreaValue] = useState(null)
@@ -31,14 +32,14 @@ export const useAreasCities = () => {
 
     return {
         areasOptions: {
-            placeholder: "Выберите область",
+            placeholder: Lang.get('pages.register.area'),
             options: areas,
             onChange: value => {
                 setAreaValue(value)
             },
         },
         citiesOptions: {
-            placeholder: "Выберите город",
+            placeholder: Lang.get('pages.register.city'),
             options: citiesToShow,
             disabled: areaValue == null,
             onChange: value => {

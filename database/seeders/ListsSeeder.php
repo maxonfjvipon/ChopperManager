@@ -40,37 +40,76 @@ class ListsSeeder extends Seeder
         /**
          * Businesses
          */
-        Business::create(['id' => 1, 'name' => "Проектная организация"]);
-        Business::create(['id' => 2, 'name' => "Монтажная организация"]);
-        Business::create(['id' => 3, 'name' => "Оптовый продавец"]);
-        Business::create(['id' => 4, 'name' => "Розничный продавец"]);
-        Business::create(['id' => 5, 'name' => "Эксплуатирующая организация"]);
-        Business::create(['id' => 6, 'name' => "Заказчик/застройщик"]);
+        Business::create(['id' => 1, 'name' => [
+            'ru' => "Проектная организация",
+            'en' => 'Project organization'
+        ]]);
+        Business::create(['id' => 2, 'name' => [
+            'ru' => "Монтажная организация",
+            'en' => 'Installation organization'
+        ]]);
+        Business::create(['id' => 3, 'name' => [
+            'ru' => "Оптовый продавец",
+            'en' => 'Wholesale seller'
+        ]]);
+        Business::create(['id' => 4, 'name' => [
+            'ru' => "Розничный продавец",
+            'en' => 'Retailer'
+        ]]);
+        Business::create(['id' => 5, 'name' => [
+            'ru' => "Эксплуатирующая организация",
+            'en' => 'Operating organization'
+        ]]);
+        Business::create(['id' => 6, 'name' => [
+            'ru' => "Заказчик/застройщик",
+            'en' => 'Customer/builder'
+        ]]);
 
         /**
          * Areas
          */
-        Area::create(['id' => 32, 'name' => 'Брянская область']);
-        Area::create(['id' => 40, 'name' => 'Орловская область']);
-        Area::create(['id' => 57, 'name' => 'Калужская область']);
+        Area::create(['id' => 32, 'name' => [
+            'ru' => 'Брянская область',
+            'en' => 'Bryanskaya obl'
+        ]]);
+        Area::create(['id' => 40, 'name' => [
+            'ru' => 'Орловская область',
+            'en' => 'Orlovskaya obl'
+        ]]);
+        Area::create(['id' => 57, 'name' => [
+            'ru' => 'Калужская область',
+            'en' => 'Kalugskaya obl'
+        ]]);
 
         /**
          * Cities
          */
-        City::create(['name' => "Брянск", 'area_id' => 32]);
-        City::create(['name' => 'Клинцы', 'area_id' => 32]);
+        City::create(['name' => [
+            'ru' => "Брянск",
+            'en' => 'Bryansk'
+        ], 'area_id' => 32]);
 
-        City::create(['name' => 'Орел', 'area_id' => 40]);
-        City::create(['name' => 'Булава', 'area_id' => 40]);
+        City::create(['name' => [
+            'ru' => "Орел",
+            'en' => 'Orel'
+        ], 'area_id' => 40]);
 
-        City::create(['name' => 'Калуга', 'area_id' => 57]);
-        City::create(['name' => 'Болхов', 'area_id' => 57]);
+        City::create(['name' => [
+            'ru' => "Калуга",
+            'en' => 'Kaluga'
+        ], 'area_id' => 57]);
 
         /**
          * Roles
          */
-        Role::create(['id' => 1, 'name' => 'Администратор']);
-        Role::create(['id' => 2, 'name' => 'Пользователь']);
+        Role::create(['id' => 1, 'name' => [
+            'ru' => 'Администратор',
+            'en' => 'Admin'
+        ]]);
+        Role::create(['id' => 2, 'name' => [
+            'ru' => 'Пользователь',
+            'en' => 'User'
+        ]]);
 
         /**
          * Pump selection types
@@ -81,25 +120,58 @@ class ListsSeeder extends Seeder
         /**
          * Pump applications
          */
-        PumpApplication::create(['name' => "Водозабор"]);
-        PumpApplication::create(['name' => "Водоснабжение"]);
-        PumpApplication::create(['name' => "Горячее водоснабжение"]);
-        PumpApplication::create(['name' => "Дождевая вода"]);
-        PumpApplication::create(['name' => "Кондиционирование/охлаждение"]);
-        PumpApplication::create(['name' => "Отопление"]);
-        PumpApplication::create(['name' => "Повышение давления"]);
+        PumpApplication::create(['name' => [
+            'ru' => "Водозабор",
+            'en' => 'Water intake'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Водоснабжение",
+            'en' => 'Water supply'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Горячее водоснабжение",
+            'en' => 'Hot water supply'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Дождевая вода",
+            'en' => 'Rainwater'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Кондиционирование/охлаждение",
+            'en' => 'Air-conditioning/cooling'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Отопление",
+            'en' => 'Heating'
+        ]]);
+        PumpApplication::create(['name' => [
+            'ru' => "Повышение давления",
+            'en' => 'Increasing the pressure'
+        ]]);
 
         /**
          * Pump regulations
          */
-        PumpRegulation::create(['name' => "Нет"]);
-        PumpRegulation::create(['name' => "Есть"]);
+        PumpRegulation::create(['name' => [
+            'ru' => "Нет",
+            'en' => 'No'
+        ]]);
+        PumpRegulation::create(['name' => [
+            'ru' => "Есть",
+            'en' => 'Yes'
+        ]]);
 
         /**
          * Pump categories
          */
-        PumpCategory::create(['name' => "Одинарный"]);
-        PumpCategory::create(['name' => "Сдвоенный"]);
+        PumpCategory::create(['name' => [
+            'ru' => "Одинарный",
+            'en' => 'Single'
+        ]]);
+        PumpCategory::create(['name' => [
+            'ru' => "Сдвоенный",
+            'en' => 'Double'
+        ]]);
 
         /**
          * Current phases
@@ -128,16 +200,46 @@ class ListsSeeder extends Seeder
         /**
          * Pump filter types
          */
-        PumpType::create(['name' => 'Инлайн']);
-        PumpType::create(['name' => 'Консольно-моноблочный']);
-        PumpType::create(['name' => 'Консольный']);
-        PumpType::create(['name' => 'Мокрый ротор']);
-        PumpType::create(['name' => 'Сухой ротор']);
-        PumpType::create(['name' => 'Многоступенчатый']);
-        PumpType::create(['name' => 'Центробежный']);
-        PumpType::create(['name' => 'Самовсасывающий']);
-        PumpType::create(['name' => 'Погружной']);
-        PumpType::create(['name' => 'Дренажный']);
+        PumpType::create(['name' => [
+            'ru' => 'Инлайн',
+            'en' => 'Inline'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Консольно-моноблочный',
+            'en' => 'Console monoblock'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Консольный',
+            'en' => 'Console'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Мокрый ротор',
+            'en' => 'Wet rotor'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Сухой ротор',
+            'en' => 'Dry rotor'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Многоступенчатый',
+            'en' => 'Multi-stage'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Центробежный',
+            'en' => 'Centrifugal'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Самовсасывающий',
+            'en' => 'Self-priming'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Погружной',
+            'en' => 'Submersible'
+        ]]);
+        PumpType::create(['name' => [
+            'ru' => 'Дренажный',
+            'en' => 'Drainage'
+        ]]);
 
         /**
          * Limit conditions
@@ -149,8 +251,14 @@ class ListsSeeder extends Seeder
         /**
          * Connection types
          */
-        ConnectionType::create(['name' => 'Резьбовой']);
-        ConnectionType::create(['name' => 'Фланцевый']);
+        ConnectionType::create(['name' => [
+            'ru' => 'Резьбовой',
+            'en' => 'Threaded'
+        ]]);
+        ConnectionType::create(['name' => [
+            'ru' => 'Фланцевый',
+            'en' => 'Flanged'
+        ]]);
 
         /**
          * Pump producers

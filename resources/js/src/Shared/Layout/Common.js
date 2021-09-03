@@ -4,6 +4,7 @@ import {ProfileOutlined, LogoutOutlined, DownOutlined, HomeOutlined, Translation
 import {Link, usePage} from "@inertiajs/inertia-react";
 import React, {useEffect} from "react";
 import {MessagesLayout} from "./MessagesLayout";
+import Lang from "../../../translation/lang";
 
 export const Common = ({title, children, backTo, breadcrumbs = []}) => {
     const {Content, Footer} = Layout
@@ -57,11 +58,11 @@ export const Common = ({title, children, backTo, breadcrumbs = []}) => {
                         auth.username && <Dropdown key="user-actions" arrow trigger={['click']} overlay={
                             <Menu>
                                 <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    <Link href={route('users.profile')}>Профиль</Link>
+                                    <Link href={route('users.profile')}>{Lang.get('pages.profile.title')}</Link>
                                 </Menu.Item>
                                 <Menu.Divider/>
                                 <Menu.Item key="logout" icon={<LogoutOutlined/>}>
-                                    <Link method="post" href={route('logout')}>Выйти</Link>
+                                    <Link method="post" href={route('logout')}>{Lang.get('pages.email_verification.logout')}</Link>
                                 </Menu.Item>
                             </Menu>
                         }>

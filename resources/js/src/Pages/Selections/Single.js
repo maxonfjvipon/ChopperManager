@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import {Authenticated} from "../../Shared/Layout/Authenticated";
 import {
     Checkbox,
     Col,
@@ -12,7 +11,7 @@ import {
     Table,
     Tree,
     Typography,
-    notification
+    notification, Divider
 } from "antd";
 import {RequiredFormItem} from "../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../Shared/Inputs/MultipleSelection";
@@ -33,6 +32,7 @@ import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import Lang from '../../../translation/lang'
 import {useLang} from "../../Hooks/lang.hook";
 import {Common} from "../../Shared/Layout/Common";
+import {SelectedPumpsTable} from "./Components/SelectedPumpsTable";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -40,7 +40,7 @@ const ConditionSelectionFormItem = ({options, initialValue = null, name, disable
         <Form.Item name={name} initialValue={initialValue}>
             <Selection
                 style={fullWidth}
-                placeholder="Условие"
+                placeholder={Lang.get('pages.selections.single.condition')}
                 options={options}
                 disabled={disabled || false}
             />
@@ -83,16 +83,7 @@ const Single = () => {
     const {isArrayEmpty} = useCheck()
     const {postRequest, loading} = useHttp()
     const Lang = useLang()
-
-    const page = usePage().props
-
-    // console.log(page)
-
-    const {
-        selection,
-        project_id,
-        selection_props
-    } = page
+    const {selection, project_id, selection_props} = usePage().props
 
     const {
         producers,
@@ -125,60 +116,8 @@ const Single = () => {
 
     // CONSTS
     const mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(value => {
-        return {
-            value,
-            label: value,
-        }
+        return {value, label: value}
     })
-    const selectedPumpsColumns = [
-        {title: 'Наименование', dataIndex: 'name', key: 'name', width: '15%'},
-        {title: 'Артикул', dataIndex: 'partNum', key: 'partNum'},
-        {
-            title: 'Цена розничная',
-            dataIndex: 'retailPrice',
-            key: 'retailPrice',
-            sorter: (a, b) => a.retailPrice - b.retailPrice,
-        },
-        {
-            title: 'Цена персональная',
-            dataIndex: 'personalPrice',
-            key: 'personalPrice',
-            sorter: (a, b) => a.personalPrice - b.personalPrice,
-            defaultSortOrder: 'ascend'
-        },
-        {
-            title: 'Сумма розничная',
-            dataIndex: 'retailPriceSum',
-            key: 'retailPriceSum',
-            sorter: (a, b) => a.retailPriceSum - b.retailPriceSum
-        },
-        {
-            title: 'Сумма персональная',
-            dataIndex: 'personalPriceSum',
-            key: 'personalPriceSum',
-            sorter: (a, b) => a.personalPriceSum - b.personalPriceSum
-        },
-        {title: 'ДУ вход', dataIndex: 'dnInput', key: 'dnInput'},
-        {title: 'ДУ выход', dataIndex: 'dnOutput', key: 'dnOutput'},
-        {
-            title: 'Мощность насоса',
-            dataIndex: 'power',
-            key: 'power',
-            sorter: (a, b) => a.power - b.power
-        },
-        {
-            title: 'Мощность насосов',
-            dataIndex: 'powerSum',
-            key: 'powerSum',
-            sorter: (a, b) => a.powerSum - b.powerSum
-        },
-        {
-            title: 'Межосевое расстояние',
-            dataIndex: 'betweenAxesDist',
-            key: 'betweenAxesDist',
-            sorter: (a, b) => a.betweenAxesDist - b.betweenAxesDist
-        },
-    ]
     const fieldsDisabled = (isArrayEmpty(producersValue))
     const [selectionForm] = useForm()
     const [fullSelectionForm] = useForm()
@@ -202,8 +141,9 @@ const Single = () => {
         setTemperatureValue(value)
     }
 
+    const checkValueIncludesSeriesParams = (value, params) => value.some(_value => !params.map(param => param.id).includes(_value))
+
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
-    // TODO: somehow info user that series have no types/applications/regulation if they do ???
     const producerSeriesListValuesCheckedHandler = values => {
         const checked = values.find(value => !producersSeriesListValues.includes(value))
 
@@ -212,15 +152,34 @@ const Single = () => {
                 let index = producer.series.findIndex(series => series.id === checked)
                 // console.log(index, producer.series[index].types, producer.series[index])
                 if (index !== -1) {
-                    if (typesValue.some(typeValue => !producer.series[index].types
-                        .map(type => type.id)
-                        .includes(typeValue))
-                    ) {
+                    let array = []
+
+                    // check types
+                    if (checkValueIncludesSeriesParams(typesValue, producer.series[index].types)) {
+                        array.push('типам')
+                    }
+
+                    // check applications
+                    if (checkValueIncludesSeriesParams(applicationsValue, producer.series[index].applications)) {
+                        array.push('применениям')
+                    }
+
+                    // check regulation
+                    if (checkValueIncludesSeriesParams(regulationValue, producer.series[index].regulations)) {
+                        array.push("регулированиям")
+                    }
+
+                    if (array.length > 0) {
                         notification.info({
                             message: Lang.get('messages.selections.notification.attention'),
-                            description: 'В выбранной серии ' + producer.series[index].name + ' отсутствуют насосы, соответствующие выбранным типам',
+                            description: 'В выбранной серии ' + producer.series[index].name + ' отсутствуют насосы, соответствующие выбранным '
+                                + array.join(', '),
+                            placement: 'topLeft',
+                            duration: 5
                         })
                     }
+
+                    break
                 }
             }
         }
@@ -390,8 +349,9 @@ const Single = () => {
                         setShowBrandsList(e.target.checked)
                     }}
                 >
-                    Группировка по брендам
+                    {Lang.get('pages.selections.single.grouping')}
                 </Checkbox>
+                <Divider style={{marginTop: 5, marginBottom: 5}}/>
                 {showBrandsList && <Tree
                     defaultExpandAll
                     checkable
@@ -421,10 +381,10 @@ const Single = () => {
                                 className={reducedAntFormItemClassName}
                                 name="pump_producer_ids"
                                 initialValue={producersValue}
-                                label="Производитель"
+                                label={Lang.get('pages.selections.single.producers')}
                             >
                                 <MultipleSelection
-                                    placeholder="Производитель"
+                                    placeholder={Lang.get('pages.selections.single.producers')}
                                     style={fullWidth}
                                     options={producers}
                                     onChange={values => {
@@ -437,12 +397,12 @@ const Single = () => {
                             <Form.Item
                                 className={reducedAntFormItemClassName}
                                 name="pump_type_ids"
-                                label="Тип"
+                                label={Lang.get('pages.selections.single.types.label')}
                                 initialValue={selection?.data.pump_types}
-                                tooltip="Для серии проверяется наличие всех выбранных типов!"
+                                tooltip={Lang.get('pages.selections.single.types.tooltip')}
                             >
                                 <MultipleSelection
-                                    placeholder="Тип"
+                                    placeholder={Lang.get('pages.selections.single.types.label')}
                                     disabled={fieldsDisabled}
                                     style={fullWidth}
                                     options={types}
@@ -455,12 +415,12 @@ const Single = () => {
                             <Form.Item
                                 className={reducedAntFormItemClassName}
                                 name="pump_application_ids"
-                                label="Применение"
+                                label={Lang.get('pages.selections.single.applications.label')}
                                 initialValue={selection?.data.pump_applications}
-                                tooltip="Для серии проверяется наличие всех выбранных применений!"
+                                tooltip={Lang.get('pages.selections.single.applications.tooltip')}
                             >
                                 <MultipleSelection
-                                    placeholder="Применение"
+                                    placeholder={Lang.get('pages.selections.single.applications.label')}
                                     disabled={fieldsDisabled}
                                     style={fullWidth}
                                     options={applications}
@@ -472,7 +432,7 @@ const Single = () => {
                             {/* TEMPERATURE */}
                             <RequiredFormItem
                                 className={reducedAntFormItemClassName}
-                                label="Температура жидкости"
+                                label={Lang.get('pages.selections.single.fluid_temp')}
                                 name="liquid_temperature"
                                 initialValue={temperatureValue}
                                 style={margin.bottom(10)}
@@ -489,13 +449,13 @@ const Single = () => {
                             {/* REGULATION */}
                             <Form.Item
                                 className={reducedAntFormItemClassName}
-                                label={"Встроенное регулирование"}
+                                label={Lang.get('pages.selections.single.regulations')}
                                 name="pump_regulation_ids"
                                 initialValue={regulationValue}
                                 style={marginBottomTen}
                             >
                                 <MultipleSelection
-                                    placeholder="Встроенное регулирование"
+                                    placeholder={Lang.get('pages.selections.single.regulations')}
                                     disabled={fieldsDisabled}
                                     style={{...fullWidth, marginTop: 0}}
                                     options={regulations}
@@ -517,13 +477,13 @@ const Single = () => {
                             <Row gutter={[10, 1]}>
                                 <Col span={3}>
                                     <RequiredFormItem
-                                        label="Напор, м"
-                                        name="pressure"
-                                        initialValue={selection?.data.pressure}
+                                        label={Lang.get('pages.selections.single.consumption')}
+                                        name="consumption"
+                                        initialValue={selection?.data.consumption}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <InputNumber
-                                            placeholder="Напор, м"
+                                            placeholder={Lang.get('pages.selections.single.consumption')}
                                             style={fullWidth}
                                             min={0}
                                             max={10000}
@@ -533,13 +493,13 @@ const Single = () => {
                                 </Col>
                                 <Col span={3}>
                                     <RequiredFormItem
-                                        label="Расход, м3/ч"
-                                        name="consumption"
-                                        initialValue={selection?.data.consumption}
+                                        label={Lang.get('pages.selections.single.pressure')}
+                                        name="pressure"
+                                        initialValue={selection?.data.pressure}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <InputNumber
-                                            placeholder="Расход, м3/ч"
+                                            placeholder={Lang.get('pages.selections.single.pressure')}
                                             style={fullWidth}
                                             min={0}
                                             max={10000}
@@ -549,13 +509,13 @@ const Single = () => {
                                 </Col>
                                 <Col span={3}>
                                     <Form.Item
-                                        label="Допуск, %"
+                                        label={Lang.get('pages.selections.single.limit')}
                                         name="limit"
                                         initialValue={selection?.data.limit || 0}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <InputNumber
-                                            placeholder="Допуск, %"
+                                            placeholder={Lang.get('pages.selections.single.limit')}
                                             style={fullWidth}
                                             min={0}
                                             max={100}
@@ -566,7 +526,7 @@ const Single = () => {
                                 <Col span={4}>
                                     <RequiredFormItem
                                         className={reducedAntFormItemClassName}
-                                        label="Количество основных насосов"
+                                        label={Lang.get('pages.selections.single.main_pumps_count')}
                                         name="main_pumps_counts"
                                         initialValue={selection?.data.main_pumps_counts}
                                     >
@@ -576,7 +536,7 @@ const Single = () => {
                                 <Col span={4}>
                                     <Form.Item
                                         required name="backup_pumps_count"
-                                        label="Количество резервных насосов"
+                                        label={Lang.get('pages.selections.single.backup_pumps_count')}
                                         initialValue={selection?.data.backup_pumps_count || 0}
                                         className={reducedAntFormItemClassName}
                                     >
@@ -589,13 +549,13 @@ const Single = () => {
                                 </Col>
                                 <Col span={4}>
                                     <Form.Item
-                                        label="Тип соединения"
+                                        label={Lang.get('pages.selections.single.connection_type')}
                                         name="connection_type_ids"
                                         className={reducedAntFormItemClassName}
                                         initialValue={selection?.data.connection_types}
                                     >
                                         <MultipleSelection
-                                            placeholder="Тип соединения"
+                                            placeholder={Lang.get('pages.selections.single.connection_type')}
                                             style={nextBelowStyle}
                                             options={connectionTypes}
                                         />
@@ -603,13 +563,13 @@ const Single = () => {
                                 </Col>
                                 <Col span={3}>
                                     <Form.Item
-                                        label="Фазы"
+                                        label={Lang.get('pages.selections.single.phase')}
                                         name="current_phase_ids"
                                         className={reducedAntFormItemClassName}
                                         initialValue={selection?.data.phases}
                                     >
                                         <MultipleSelection
-                                            placeholder="Фазы"
+                                            placeholder={Lang.get('pages.selections.single.phase')}
                                             style={nextBelowStyle}
                                             options={phases.map(phase => {
                                                 return {
@@ -636,7 +596,7 @@ const Single = () => {
                                                 })
                                             }}
                                         >
-                                            Ограничение мощности насоса
+                                            {Lang.get('pages.selections.single.power_limit')}
                                         </Checkbox>
                                     </ConditionLimitCheckboxFormItem>
                                     <LimitRow>
@@ -656,7 +616,7 @@ const Single = () => {
                                                 <InputNumber
                                                     disabled={!limitChecks.power}
                                                     style={fullWidth}
-                                                    placeholder="Мощность"
+                                                    placeholder={Lang.get('pages.selections.single.power')}
                                                 />
                                             </Form.Item>
                                         </LimitCol>
@@ -676,7 +636,7 @@ const Single = () => {
                                                 })
                                             }}
                                         >
-                                            Ограничение межосевого расстояния
+                                            {Lang.get('pages.selections.single.between_axes_limit')}
                                         </Checkbox>
                                     </ConditionLimitCheckboxFormItem>
                                     <LimitRow>
@@ -696,7 +656,7 @@ const Single = () => {
                                                 <InputNumber
                                                     disabled={!limitChecks.betweenAxes}
                                                     style={fullWidth}
-                                                    placeholder="Межосевое расстояние"
+                                                    placeholder={Lang.get('pages.selections.single.between_axes_dist')}
                                                 />
                                             </Form.Item>
                                         </LimitCol>
@@ -716,7 +676,7 @@ const Single = () => {
                                                 })
                                             }}
                                         >
-                                            Ограничение ДУ вход
+                                            {Lang.get('pages.selections.single.dn_input_limit')}
                                         </Checkbox>
                                     </ConditionLimitCheckboxFormItem>
                                     <LimitRow>
@@ -734,7 +694,7 @@ const Single = () => {
                                                 initialValue={selection?.data.dn_input_limit_id}
                                             >
                                                 <Selection
-                                                    placeholder="ДУ вход"
+                                                    placeholder={Lang.get('pages.selections.single.dn_input')}
                                                     options={dns}
                                                     disabled={!limitChecks.dnInput}
                                                     style={fullWidth}
@@ -757,7 +717,7 @@ const Single = () => {
                                                 })
                                             }}
                                         >
-                                            Ограничение ДУ выход
+                                            {Lang.get('pages.selections.single.dn_output_limit')}
                                         </Checkbox>
                                     </ConditionLimitCheckboxFormItem>
                                     <LimitRow>
@@ -775,7 +735,7 @@ const Single = () => {
                                                 initialValue={selection?.data.dn_output_limit_id}
                                             >
                                                 <Selection
-                                                    placeholder="ДУ выход"
+                                                    placeholder={Lang.get('pages.selections.single.dn_output')}
                                                     options={dns}
                                                     disabled={!limitChecks.dnOutput}
                                                     style={fullWidth}
@@ -793,13 +753,13 @@ const Single = () => {
                                             disabled={producersValue.length === 0}
                                             loading={loading}
                                         >
-                                            Подобрать
+                                            {Lang.get('pages.selections.single.select')}
                                         </PrimaryButton>
                                     </Form.Item>
                                 </Col>
                                 {selection && <Col xs={24}>
                                     <Typography.Title level={3}>
-                                        {"Подобранный насос: " + selection.data.selected_pump_name}
+                                        {Lang.get('pages.selections.single.selected_pump') + selection.data.selected_pump_name}
                                     </Typography.Title>
                                 </Col>}
                             </Row>
@@ -807,20 +767,7 @@ const Single = () => {
                     </Col>
                     {/* TABLE */}
                     <Col xs={15}>
-                        <Table
-                            size="small"
-                            columns={selectedPumpsColumns}
-                            dataSource={selectedPumps}
-                            onRow={(record, _) => {
-                                return {
-                                    onClick: _ => {
-                                        setStationToShow(record);
-                                    }
-                                }
-                            }}
-                            pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
-                            scroll={{x: 1500, y: 550}}
-                        />
+                        <SelectedPumpsTable selectedPumps={selectedPumps} setStationToShow={setStationToShow}/>
                     </Col>
                     {/* GRAPHIC */}
                     <Col xs={9}>
@@ -835,20 +782,23 @@ const Single = () => {
                                 <SecondaryButton onClick={() => {
                                     Inertia.get(route('projects.show', project_id))
                                 }}>
-                                    Выйти
+                                    {Lang.get('pages.selections.single.exit')}
                                 </SecondaryButton>
                                 <PrimaryButton
                                     disabled={!stationToShow}
                                     htmlType="submit"
                                     form={fullSelectionFormName}
                                 >
-                                    {!selection ? "Добавить в проект" : "Обновить подбор"}
-                                </PrimaryButton>
+                                    {!selection
+                                        ? Lang.get('pages.selections.single.add')
+                                        : Lang.get('pages.selections.single.update')
+                                    }
+                                < /PrimaryButton>
                             </Space>}
                             {project_id === "-1" && <SecondaryButton onClick={() => {
                                 Inertia.get(route('projects.index'))
                             }}>
-                                Выйти
+                                {Lang.get('pages.selections.single.exit')}
                             </SecondaryButton>}
                         </BoxFlexEnd>
                     </Col>
@@ -859,7 +809,10 @@ const Single = () => {
 }
 
 Single.layout = page => <Common
-    title={window.location.href.includes("show") ? "Просмотр подбора" : "Подбор насоса"}
+    title={window.location.href.includes("show")
+        ? Lang.get('pages.selections.single.title_show')
+        : Lang.get('pages.selections.single.title_new')
+    }
     backTo={true}
     children={page}
     breadcrumbs={useBreadcrumbs().selections}

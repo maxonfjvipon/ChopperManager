@@ -16,7 +16,7 @@ class CreateCitiesTable extends Migration
         Schema::dropIfExists('cities');
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
             $table->bigInteger('area_id')->unsigned();
         });
 

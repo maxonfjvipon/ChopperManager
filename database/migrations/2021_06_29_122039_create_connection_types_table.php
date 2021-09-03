@@ -16,7 +16,7 @@ class CreateConnectionTypesTable extends Migration
         Schema::dropIfExists('connection_types');
         Schema::create('connection_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
         });
     }
 

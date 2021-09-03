@@ -23,18 +23,6 @@ class SinglePumpSelection extends Model
     protected $guarded = [];
     use HasFactory;
 
-//    public static function boot() {
-//        parent::boot();
-//
-//        static::saving(function($model){
-//            foreach ($model->toArray() as $name => $value) {
-//                if ($value === null) {
-//                    $model->{$name} = null;
-//                }
-//            }
-//        });
-//    }
-
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class, 'project_id');

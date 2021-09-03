@@ -16,7 +16,7 @@ class CreatePumpApplicationsTable extends Migration
         Schema::dropIfExists('pump_applications');
         Schema::create('pump_applications', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
         });
     }
 

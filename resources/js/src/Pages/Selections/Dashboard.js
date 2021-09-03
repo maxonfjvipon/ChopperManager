@@ -5,11 +5,14 @@ import {DashboardCard} from "../../Shared/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
-import Lang from "../../../translation/lang";
+import {Common} from "../../Shared/Layout/Common";
+import Lang from '../../../translation/lang'
+import {useLang} from "../../Hooks/lang.hook";
 
 const Dashboard = () => {
     // CONSTS
     const {project_id} = usePage().props
+    const Lang = useLang()
     const imgPath = "/img/selections-dashboard/"
     const paths = {
         singlePump: 'Nasos-',
@@ -35,44 +38,44 @@ const Dashboard = () => {
 
     const cards = [
         {
-            title: "Подбор насоса по парметрам",
+            title: Lang.get('pages.selections.dashboard.single_prefs'),
             src: imgPath + paths.singlePump + producers.singe + ext,
             onClick: () => {
                 Inertia.get(route('selections.create', project_id))
             }
         },
         {
-            title: "Подбор сдвоенного насоса по параметрам",
+            title: Lang.get('pages.selections.dashboard.double_prefs'),
             src: imgPath + paths.doublePump + producers.double + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор станции водоснабжения по параметрам",
+            title: Lang.get('pages.selections.dashboard.water_station_prefs'),
             src: imgPath + paths.station.water + producers.station.water + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор станции пожаротушения по параметрам",
+            title: Lang.get('pages.selections.dashboard.fire_station_prefs'),
             src: imgPath + paths.station.fire + producers.station.fire + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор насоса по аналогу",
+            title: Lang.get('pages.selections.dashboard.single_analogy'),
             src: imgPath + paths.singlePump + producers.singe + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор сдвоенного насоса по аналогу",
+            title: Lang.get('pages.selections.dashboard.double_analogy'),
             src: imgPath + paths.doublePump + producers.double + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор станции водоснабжения по аналогу",
+            title: Lang.get('pages.selections.dashboard.water_station_analogy'),
             src: imgPath + paths.station.water + producers.station.water + ext,
             onClick: serviceUnavailable
         },
         {
-            title: "Подбор станции пожаротушения по аналогу",
+            title: Lang.get('pages.selections.dashboard.fire_station_analogy'),
             src: imgPath + paths.station.fire + producers.station.fire + ext,
             onClick: serviceUnavailable
         },
@@ -90,6 +93,6 @@ const Dashboard = () => {
     )
 }
 
-Dashboard.layout = page => <Authenticated children={page} title={"Подборы"} backTo={true} breadcrumbs={useBreadcrumbs().selections}/>
+Dashboard.layout = page => <Common children={page} title={Lang.get('pages.selections.dashboard.title')} backTo={true} breadcrumbs={useBreadcrumbs().selections}/>
 
 export default Dashboard

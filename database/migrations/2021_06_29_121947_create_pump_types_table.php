@@ -16,7 +16,7 @@ class CreatePumpTypesTable extends Migration
         Schema::dropIfExists('pump_types');
         Schema::create('pump_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
         });
     }
 

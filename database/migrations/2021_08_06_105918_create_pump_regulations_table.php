@@ -16,7 +16,7 @@ class CreatePumpRegulationsTable extends Migration
         Schema::dropIfExists('pump_regulations');
         Schema::create('pump_regulations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
         });
     }
 

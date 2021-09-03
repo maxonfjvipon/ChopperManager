@@ -16,7 +16,7 @@ class CreateAreasTable extends Migration
         Schema::dropIfExists('areas');
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->json('name');
         });
     }
 
