@@ -16,7 +16,7 @@ class CreatePumpAndCoefficientsTable extends Migration
         Schema::dropIfExists('pumps_and_coefficients');
         Schema::create('pumps_and_coefficients', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pump_article_num')->unsigned();
+            $table->string('pump_article_num');
             $table->tinyInteger('position')->unsigned();
             $table->double('k', 7);
             $table->double('b', 7);

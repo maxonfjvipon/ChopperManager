@@ -19,7 +19,7 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->bigInteger('project_id')->unsigned();
-            $table->bigInteger('pump_article_num')->unsigned();
+            $table->string('pump_article_num');
             $table->string('selected_pump_name'); // fixme ???
             $table->integer('pumps_count')->unsigned();
             $table->float('flow');
@@ -57,7 +57,7 @@ class CreateSinglePumpSelectionsTable extends Migration
         Schema::table('single_pump_selections', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('power_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('center_distance_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('center_distance_limit_condition_id', 'spscdlci')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_limit_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();

@@ -16,7 +16,7 @@ class CreatePumpAndTypesTable extends Migration
         Schema::dropIfExists('pumps_and_types');
         Schema::create('pumps_and_types', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pump_article_num')->unsigned();
+            $table->string('pump_article_num');
             $table->bigInteger('type_id')->unsigned();
         });
 

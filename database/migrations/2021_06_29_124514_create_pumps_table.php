@@ -32,7 +32,6 @@ class CreatePumpsTable extends Migration
             $table->bigInteger('dn_pressure_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('phase_id')->unsigned();
-            $table->bigInteger('regulation_id')->unsigned();
             $table->string('performance')->nullable();
         });
 
