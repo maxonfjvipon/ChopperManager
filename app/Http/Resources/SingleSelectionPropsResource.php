@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\ConnectionType;
-use App\Models\CurrentPhase;
+use App\Models\MainsPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
 use App\Models\Pumps\PumpApplication;
@@ -32,7 +32,7 @@ class SingleSelectionPropsResource extends JsonResource
             'types' => PumpType::all(),
             'connectionTypes' => ConnectionType::all(),
             'applications' => PumpApplication::all(),
-            'phases' => CurrentPhase::all(),
+            'phases' => MainsPhase::all(),
             'dns' => DN::all(),
             'regulations' => PumpRegulation::all(),
             'limitConditions' => LimitCondition::all(),

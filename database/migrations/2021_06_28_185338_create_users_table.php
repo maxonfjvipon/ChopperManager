@@ -26,6 +26,10 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name')->nullable();
+            $table->string('city')->nullable();
+            $table->string('postcode')->nullable();
+            $table->bigInteger('country_id')->unsigned();
+            $table->bigInteger('currency_id')->unsigned();
             $table->bigInteger('business_id')->unsigned();
             $table->bigInteger('role_id')->unsigned()->default(2);
             $table->bigInteger('city_id')->unsigned();

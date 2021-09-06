@@ -19,14 +19,9 @@ class CreatePumpSeriesTemperatures extends Migration
             $table->bigInteger('series_id')->unsigned();
             $table->float('temp_min');
             $table->float('temp_max');
-//            $table->string('regulation')->nullable();
         });
         Schema::table('pump_series_temperatures', function (Blueprint $table) {
-            $table->foreign('series_id')
-                ->references('id')
-                ->on('pump_series')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

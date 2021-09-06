@@ -4,7 +4,7 @@ namespace App\Models\Pumps;
 
 use App\Models\ConnectionType;
 use App\Models\Currency;
-use App\Models\CurrentPhase;
+use App\Models\MainsPhase;
 use App\Models\DN;
 use App\Models\Selections\Single\SinglePumpSelection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +20,7 @@ class Pump extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
+    protected $primaryKey = 'article_num_main';
 
     use HasFactory;
     use BelongsToThrough;
@@ -44,17 +45,12 @@ class Pump extends Model
 
     public function applications(): BelongsToMany
     {
-        return $this->belongsToMany(PumpApplication::class, 'pumps_and_applications', 'pump_id', 'application_id');
+        return $this->belongsToMany(PumpApplication::class, 'pumps_and_applications', 'pump_article_num', 'application_id');
     }
 
     public function types(): BelongsToMany
     {
-        return $this->belongsToMany(PumpType::class, 'pumps_and_types', 'pump_id', 'type_id');
-    }
-
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class);
+        return $this->belongsToMany(PumpType::class, 'pumps_and_types', 'pump_article_num', 'type_id');
     }
 
     public function connection_type(): BelongsTo
@@ -62,14 +58,14 @@ class Pump extends Model
         return $this->belongsTo(ConnectionType::class);
     }
 
-    public function dn_input(): BelongsTo
+    public function dn_suction(): BelongsTo
     {
-        return $this->belongsTo(DN::class, 'dn_input_id');
+        return $this->belongsTo(DN::class, 'dn_suction_id');
     }
 
-    public function dn_output(): BelongsTo
+    public function dn_pressure(): BelongsTo
     {
-        return $this->belongsTo(DN::class, 'dn_output_id');
+        return $this->belongsTo(DN::class, 'dn_pressure_id');
     }
 
     public function category(): BelongsTo
@@ -84,11 +80,11 @@ class Pump extends Model
 
     public function phase(): BelongsTo
     {
-        return $this->belongsTo(CurrentPhase::class, 'phase_id');
+        return $this->belongsTo(MainsPhase::class, 'phase_id');
     }
 
     public function coefficients(): HasMany
     {
-        return $this->hasMany(PumpsAndCoefficients::class, 'pump_id');
+        return $this->hasMany(PumpsAndCoefficients::class, 'pump_article_num');
     }
 }

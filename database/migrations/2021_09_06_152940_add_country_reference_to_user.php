@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSelectionTypesTable extends Migration
+class AddCountryReferenceToUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateSelectionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('pump_selection_types');
-        Schema::create('pump_selection_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on('countries')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -27,6 +25,5 @@ class CreateSelectionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pump_selection_types');
     }
 }

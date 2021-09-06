@@ -16,15 +16,12 @@ class CreatePumpAndApplicationsTable extends Migration
         Schema::dropIfExists('pumps_and_applications');
         Schema::create('pumps_and_applications', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pump_id')->unsigned();
+            $table->bigInteger('pump_article_num')->unsigned();
             $table->bigInteger('application_id')->unsigned();
         });
 
         Schema::table('pumps_and_applications', function (Blueprint $table) {
-            $table->foreign('application_id')
-                ->references('id')
-                ->on('pump_applications')
-                ->cascadeOnUpdate();
+            $table->foreign('application_id')->references('id')->on('pump_applications')->cascadeOnUpdate();
         });
     }
 

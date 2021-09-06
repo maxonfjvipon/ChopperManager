@@ -15,11 +15,7 @@ class AddRegulationIdToPump extends Migration
     {
         Schema::table('pumps', function (Blueprint $table) {
             $table->bigInteger('regulation_id')->unsigned();
-            $table->foreign('regulation_id')
-                ->references('id')
-                ->on('pump_regulations')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('regulation_id')->references('id')->on('pump_regulations')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

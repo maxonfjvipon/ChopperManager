@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CurrentPhase extends Model
+class MainsPhase extends Model
 {
     protected $fillable = ['value', 'voltage'];
     public $timestamps = false;

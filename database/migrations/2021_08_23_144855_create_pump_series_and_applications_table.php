@@ -20,16 +20,8 @@ class CreatePumpSeriesAndApplicationsTable extends Migration
             $table->bigInteger('application_id')->unsigned();
         });
         Schema::table('pump_series_and_applications', function (Blueprint $table) {
-            $table->foreign('series_id')
-                ->references('id')
-                ->on('pump_series')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('application_id')
-                ->references('id')
-                ->on('pump_applications')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('application_id')->references('id')->on('pump_applications')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

@@ -16,68 +16,33 @@ class CreatePumpsTable extends Migration
         Schema::dropIfExists('pumps');
 
         Schema::create('pumps', function (Blueprint $table) {
-            $table->id();
-            $table->string('part_num_main')->unique();
-            $table->string('part_num_backup')->nullable();
-            $table->string('part_num_archive')->nullable();
+            $table->string('article_num_main')->unique()->primary();
+            $table->string('article_num_reserve')->nullable();
+            $table->string('article_num_archive')->nullable();
             $table->bigInteger('series_id')->unsigned();
             $table->string('name');
-            $table->float('price');
-            $table->bigInteger('currency_id')->unsigned();
             $table->float('weight');
-            $table->float('power');
-            $table->float('amperage');
+            $table->float('rated_power');
+            $table->float('rated_current');
             $table->bigInteger('connection_type_id')->unsigned();
-            $table->float('min_liquid_temp');
-            $table->float('max_liquid_temp');
-            $table->integer('between_axes_dist');
-            $table->bigInteger('dn_input_id')->unsigned();
-            $table->bigInteger('dn_output_id')->unsigned();
+            $table->float('fluid_temp_min');
+            $table->float('fluid_temp_max');
+            $table->integer('center_distance');
+            $table->bigInteger('dn_suction_id')->unsigned();
+            $table->bigInteger('dn_pressure_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('phase_id')->unsigned();
-//            $table->boolean('regulation');
+            $table->bigInteger('regulation_id')->unsigned();
             $table->string('performance')->nullable();
-//            $table->float('coef_a')->nullable();
-//            $table->float('coef_b')->nullable();
-//            $table->float('coef_c')->nullable();
         });
 
         Schema::table('pumps', function (Blueprint $table) {
-            $table->foreign('series_id')
-                ->references('id')
-                ->on('pump_series')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('currency_id')
-                ->references('id')
-                ->on('currencies')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
-            $table->foreign('connection_type_id')
-                ->references('id')
-                ->on('connection_types')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('dn_input_id')
-                ->references('id')
-                ->on('dns')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('dn_output_id')
-                ->references('id')
-                ->on('dns')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('phase_id')
-                ->references('id')
-                ->on('current_phases')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('pump_categories')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('connection_type_id')->references('id')->on('connection_types')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('dn_suction_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('dn_pressure_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('phase_id')->references('id')->on('mains_phases')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('pump_categories')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

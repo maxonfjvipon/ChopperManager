@@ -16,14 +16,14 @@ class CreatePumpAndCoefficientsTable extends Migration
         Schema::dropIfExists('pumps_and_coefficients');
         Schema::create('pumps_and_coefficients', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pump_id')->unsigned();
-            $table->tinyInteger('count')->unsigned();
+            $table->bigInteger('pump_article_num')->unsigned();
+            $table->tinyInteger('position')->unsigned();
             $table->double('k', 7);
             $table->double('b', 7);
             $table->double('c', 7);
         });
         Schema::table('pumps_and_coefficients', function (Blueprint $table) {
-            $table->foreign('pump_id')->references('id')->on('pumps')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('pump_article_num')->references('article_num_main')->on('pumps')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

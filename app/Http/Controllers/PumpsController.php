@@ -32,10 +32,10 @@ class PumpsController extends Controller
                 ->with('category')
                 ->with('applications')
                 ->with('types')
-                ->with('dn_input')
-                ->with('dn_output')
+                ->with('dn_suction')
+                ->with('dn_pressure')
                 ->with('currency')
-                ->with('phase')
+                ->with('mains_phase')
                 ->with('connection_type')
                 ->get()
         ]);

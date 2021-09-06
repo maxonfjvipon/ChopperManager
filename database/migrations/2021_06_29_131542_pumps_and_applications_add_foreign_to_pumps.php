@@ -14,11 +14,7 @@ class PumpsAndApplicationsAddForeignToPumps extends Migration
     public function up()
     {
         Schema::table('pumps_and_applications', function (Blueprint $table) {
-            $table->foreign('pump_id')
-                ->references('id')
-                ->on('pumps')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('pump_article_num')->references('article_num_main')->on('pumps')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

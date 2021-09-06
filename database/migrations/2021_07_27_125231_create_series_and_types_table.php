@@ -20,16 +20,8 @@ class CreateSeriesAndTypesTable extends Migration
             $table->bigInteger('type_id')->unsigned();
         });
         Schema::table('pump_series_and_types', function (Blueprint $table) {
-            $table->foreign('series_id')
-                ->references('id')
-                ->on('pump_series')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('type_id')
-                ->references('id')
-                ->on('pump_types')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('type_id')->references('id')->on('pump_types')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

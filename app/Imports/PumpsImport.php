@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\Models\ConnectionType;
 use App\Models\Currency;
-use App\Models\CurrentPhase;
+use App\Models\MainsPhase;
 use App\Models\DN;
 use App\Models\Pumps\Pump;
 use App\Models\Pumps\PumpCategory;
@@ -51,7 +51,7 @@ class PumpsImport implements ToModel, WithValidation, WithStartRow, WithUpserts,
             'performance' => trim($row[17]),
             'category_id' => PumpCategory::where('name->ru', $row[18])->first()->id,
             'regulation_id' => PumpRegulation::where('name->ru', $row[19])->first()->id,
-            'phase_id' => CurrentPhase::whereValue($row[20])->first()->id,
+            'phase_id' => MainsPhase::whereValue($row[20])->first()->id,
         ]);
     }
 

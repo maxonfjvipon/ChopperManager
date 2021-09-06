@@ -19,16 +19,8 @@ class CreatePumpSeriesAndRegulationsTable extends Migration
             $table->bigInteger('regulation_id')->unsigned();
         });
         Schema::table('pump_series_and_regulations', function (Blueprint $table) {
-            $table->foreign('series_id')
-                ->references('id')
-                ->on('pump_series')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('regulation_id')
-                ->references('id')
-                ->on('pump_regulations')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('regulation_id')->references('id')->on('pump_regulations')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

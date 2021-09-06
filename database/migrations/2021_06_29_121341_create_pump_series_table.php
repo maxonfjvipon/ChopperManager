@@ -21,11 +21,7 @@ class CreatePumpSeriesTable extends Migration
         });
 
         Schema::table('pump_series', function (Blueprint $table) {
-            $table->foreign('producer_id')
-                ->references('id')
-                ->on('pump_producers')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('producer_id')->references('id')->on('pump_producers')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

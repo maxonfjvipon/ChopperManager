@@ -16,21 +16,13 @@ class CreatePumpAndTypesTable extends Migration
         Schema::dropIfExists('pumps_and_types');
         Schema::create('pumps_and_types', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pump_id')->unsigned();
+            $table->bigInteger('pump_article_num')->unsigned();
             $table->bigInteger('type_id')->unsigned();
         });
 
         Schema::table('pumps_and_types', function (Blueprint $table) {
-            $table->foreign('pump_id')
-                ->references('id')
-                ->on('pumps')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->foreign('type_id')
-                ->references('id')
-                ->on('pump_types')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreign('pump_article_num')->references('article_num_main')->on('pumps')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('type_id')->references('id')->on('pump_types')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

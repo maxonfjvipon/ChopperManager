@@ -3,7 +3,7 @@
 namespace App\Models\Selections\Single;
 
 use App\Models\ConnectionType;
-use App\Models\CurrentPhase;
+use App\Models\MainsPhase;
 use App\Models\DN;
 use App\Models\LimitCondition;
 use App\Models\Project;
@@ -30,7 +30,7 @@ class SinglePumpSelection extends Model
 
     public function pump(): BelongsTo
     {
-        return $this->belongsTo(Pump::class, 'pump_id');
+        return $this->belongsTo(Pump::class, 'pump_article_num');
     }
 
     public function powerLimitCondition(): BelongsTo
@@ -40,27 +40,27 @@ class SinglePumpSelection extends Model
 
     public function dnInputLimitCondition(): BelongsTo
     {
-        return $this->belongsTo(LimitCondition::class, 'dn_input_limit_condition_id');
+        return $this->belongsTo(LimitCondition::class, 'dn_suction_limit_condition_id');
     }
 
     public function dnOutputLimitCondition(): BelongsTo
     {
-        return $this->belongsTo(LimitCondition::class, 'dn_output_limit_condition_id');
+        return $this->belongsTo(LimitCondition::class, 'dn_pressure_limit_condition_id');
     }
 
     public function betweenAxesLimitCondition(): BelongsTo
     {
-        return $this->belongsTo(LimitCondition::class, 'between_axes_limit_condition_id');
+        return $this->belongsTo(LimitCondition::class, 'center_distance_limit_condition_id');
     }
 
     public function dnInputLimit(): BelongsTo
     {
-        return $this->belongsTo(DN::class, 'dn_input_limit_id');
+        return $this->belongsTo(DN::class, 'dn_suction_limit_id');
     }
 
     public function dnOutputLimit(): BelongsTo
     {
-        return $this->belongsTo(DN::class, 'dn_output_limit_id');
+        return $this->belongsTo(DN::class, 'dn_pressure_limit_id');
     }
 
 //    TODO: MB sometimes later
@@ -75,7 +75,7 @@ class SinglePumpSelection extends Model
 //    public function phases(): BelongsToMany
 //    {
 //        return $this->belongsToMany(
-//            CurrentPhase::class, 'single_pump_selections_and_current_phases',
+//            MainsPhase::class, 'single_pump_selections_and_current_phases',
 //            'selection_id', 'phase_id'
 //        );
 //    }
