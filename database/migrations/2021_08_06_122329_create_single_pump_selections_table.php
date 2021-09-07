@@ -32,9 +32,9 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->bigInteger('power_limit_condition_id')->unsigned()->nullable();
             $table->integer('power_limit_value')->unsigned()->nullable();
 
-            $table->boolean('center_distance_limit_checked')->default(false);
-            $table->bigInteger('center_distance_limit_condition_id')->unsigned()->nullable();
-            $table->integer('center_distance_limit_value')->unsigned()->nullable();
+            $table->boolean('ptp_length_limit_checked')->default(false);
+            $table->bigInteger('ptp_length_limit_condition_id')->unsigned()->nullable();
+            $table->integer('ptp_length_limit_value')->unsigned()->nullable();
 
             $table->boolean('dn_suction_limit_checked')->default(false);
             $table->bigInteger('dn_suction_limit_condition_id')->unsigned()->nullable();
@@ -57,7 +57,7 @@ class CreateSinglePumpSelectionsTable extends Migration
         Schema::table('single_pump_selections', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('power_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('center_distance_limit_condition_id', 'spscdlci')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('ptp_length_limit_condition_id', 'spscdlci')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_limit_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();

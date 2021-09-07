@@ -27,11 +27,11 @@ class CreatePumpsTable extends Migration
             $table->bigInteger('connection_type_id')->unsigned();
             $table->float('fluid_temp_min');
             $table->float('fluid_temp_max');
-            $table->integer('center_distance');
+            $table->integer('ptp_length');
             $table->bigInteger('dn_suction_id')->unsigned();
             $table->bigInteger('dn_pressure_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('phase_id')->unsigned();
+            $table->bigInteger('connection_id')->unsigned();
             $table->string('performance')->nullable();
         });
 
@@ -40,7 +40,7 @@ class CreatePumpsTable extends Migration
             $table->foreign('connection_type_id')->references('id')->on('connection_types')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('phase_id')->references('id')->on('mains_phases')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('connection_id')->references('id')->on('mains_connections')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('category_id')->references('id')->on('pump_categories')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

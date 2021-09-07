@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMainsPhasesTable extends Migration
+class CreateMainsConnectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMainsPhasesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('mains_phases');
-        Schema::create('mains_phases', function (Blueprint $table) {
+        Schema::dropIfExists('mains_connections');
+        Schema::create('mains_connections', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('value');
+            $table->tinyInteger('phase');
             $table->integer('voltage');
         });
     }
@@ -28,6 +28,6 @@ class CreateMainsPhasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mains_phases');
+        Schema::dropIfExists('mains_connections');
     }
 }
