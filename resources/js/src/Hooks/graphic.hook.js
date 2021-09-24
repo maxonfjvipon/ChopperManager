@@ -1,12 +1,11 @@
 import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer} from "victory";
 import React, {useMemo, useState} from "react";
-import {useLang} from "./lang.hook";
+import {RoundedCard} from "../Shared/RoundedCard";
 // import Paper from "@material-ui/core/Paper";
 
 export const useGraphic = () => {
     const [stationToShow, setStationToShow] = useState(null)
     const [workingPoint, setWorkingPoint] = useState(null)
-    const Lang = useLang()
 
     const defaultDiagramId = "chart"
 
@@ -89,22 +88,21 @@ export const useGraphic = () => {
                     />
                 </VictoryChart>
             ),
-            // <Paper id={id} style={{height: height + 20, marginBottom: 10}} elevation={2}>
-
-            // </Paper>,
             [toShow, workingPoint]
         )
     }
 
     const PSHCDiagram = ({multiline, width = 600, height = 500}) => {
-        return <Diagram
-            id={defaultDiagramId}
-            toShow={stationToShow}
-            multiline={multiline}
-            height={height}
-            width={width}
-            workingPoint={workingPoint}
-        />
+        return <RoundedCard type="inner" title={stationToShow?.name}>
+            <Diagram
+                id={defaultDiagramId}
+                toShow={stationToShow}
+                multiline={multiline}
+                height={height}
+                width={width}
+                workingPoint={workingPoint}
+            />
+        </RoundedCard>
     }
 
     return {

@@ -11,7 +11,7 @@
 @import 'tailwindcss/utilities';
 
 .ant-form-vertical .ant-form-item-reduced .ant-form-item-label {
-    padding-bottom: 0px !important;
+    padding-bottom: 0 !important;
 }
 
 .ant-form-vertical .ant-form-item-reduced {
@@ -48,3 +48,58 @@
 /*.ant-btn, .ant-input, .ant-select, .ant-select-multiple {*/
 /*    border-radius: 7px !important;*/
 /*}*/
+
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout-sub-header-background {
+    background: #fff;
+}
+
+.site-layout-background {
+    background: #fff;
+}
+
+.trigger {
+    color: white;
+    /*padding: 0 24px;*/
+    font-size: 18px;
+    /*line-height: 64px;*/
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+button, input, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item {
+    border-radius: 7px !important;
+}
+
+.ant-input-number-handler-wrap {
+    border-radius: 0 7px 7px 0 !important;
+}
+
+.virtual-table-cell {
+    box-sizing: border-box;
+    padding: 16px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #FFF;
+}
+[data-theme="dark"]  .virtual-table-cell {
+    box-sizing: border-box;
+    padding: 16px;
+    border-bottom: 1px solid #303030;
+    background: #141414;
+}
+
+.auth-content-layout {
+    margin: 16px 16px 0;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}

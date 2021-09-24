@@ -18670,7 +18670,7 @@ var useStyles = function useStyles() {
 
 /***/ "./resources/js/src/Pages/Selections/Create.js":
 /*!*****************************************************!*\
-  !*** ./resources/js/src/Pages/Selections/Single.js ***!
+  !*** ./resources/js/src/Pages/Selections/Index.js ***!
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

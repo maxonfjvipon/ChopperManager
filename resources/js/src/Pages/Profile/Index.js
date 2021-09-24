@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {Card, Col, Divider, Form, Input, InputNumber, message, Row, Table, Tabs} from "antd";
+import {Card, Col, Divider, Form, Input, InputNumber, message, Row, Select, Table, Tabs} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {useForm} from "antd/es/form/Form";
 import {Inertia} from "@inertiajs/inertia";
@@ -7,44 +7,26 @@ import {useAreasCities} from "../../Hooks/components/areas-cities.hook";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import {useStyles} from "../../Hooks/styles.hook";
 import {Selection} from "../../Shared/Inputs/Selection";
-import {Authenticated} from "../../Shared/Layout/Authenticated";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {DiscountsTab} from "./Components/DiscountsTab";
 import Lang from '../../../translation/lang'
-import {useLang} from "../../Hooks/lang.hook";
-import {Common} from "../../Shared/Layout/Common";
+import {AuthLayout} from "../../Shared/Layout/AuthLayout";
+import {useTransRoutes} from "../../Hooks/routes.hook";
+import {RoundedCard} from "../../Shared/RoundedCard";
+import {Header} from "../../Shared/Layout/Header";
+import {Container} from "../../Shared/ResourcePanel/Index/Container";
+import {JustifiedRow} from "../../Shared/JustifiedRow";
+import {BoxFlex} from "../../Shared/Box/BoxFlex";
 
 const Index = () => {
-    const {
-        setAreasWithCities,
-        areasOptions,
-        citiesOptions,
-        setAreaValue,
-        citiesToShow
-    } = useAreasCities()
-
-    const {fullWidth, reducedAntFormItemClassName} = useStyles()
+    const {fullWidth, reducedAntFormItemClassName, margin} = useStyles()
     const {rules} = useInputRules()
-    const Lang = useLang()
+    const {user, businesses, countries, currencies, discounts} = usePage().props
+    const {tRoute} = useTransRoutes()
 
-    const {user, businesses, areasWithCities, discounts} = usePage().props
     const userdata = user.data
-
-    useEffect(() => {
-        // console.log(discounts)
-    }, [discounts])
-
-    useEffect(() => {
-        setAreasWithCities(areasWithCities)
-    }, [areasWithCities])
-
-    useEffect(() => {
-        setAreaValue(userdata.area_id)
-    }, [userdata])
-
-
     const profileFormName = 'profile-form'
     const changePasswordForm = 'change-password-form'
 
@@ -69,29 +51,74 @@ const Index = () => {
         },
         {
             values: {
-                name: 'itn', label: Lang.get('pages.profile.index.itn'), rules: rules.itn, initialValue: userdata.itn || "",
+                name: 'itn',
+                label: Lang.get('pages.profile.index.itn'),
+                rules: rules.itn,
+                initialValue: userdata.itn,
             }, input: <Input/>
         },
         {
             values: {
-                name: 'phone', label: Lang.get('pages.profile.index.phone'), rules: rules.phone, initialValue: userdata.phone,
+                name: 'phone',
+                label: Lang.get('pages.profile.index.phone'),
+                rules: rules.phone,
+                initialValue: userdata.phone,
             },
-            input: <Input placeholder="+7XXXXXXXXXX" readOnly/>,
+            input: <Input readOnly/>,
         },
-        {
-            values: {name: 'area', label: Lang.get('pages.profile.index.area'), rules: [rules.required], initialValue: userdata.area_id},
-            input: <Selection {...areasOptions}/>
-        },
-        {
-            values: {name: 'city_id', label: Lang.get('pages.profile.index.city'), rules: rules.city(citiesToShow), initialValue: userdata.city_id},
-            input: <Selection {...citiesOptions}/>
-        },
-        {values: {name: 'first_name', label: Lang.get('pages.profile.index.first_name'), rules: [rules.required, rules.max(255)], initialValue: userdata.first_name}, input: <Input readOnly/>},
-        {values: {name: 'middle_name', label: Lang.get('pages.profile.index.middle_name'), rules: [rules.required, rules.max(255)], initialValue: userdata.middle_name}, input: <Input readOnly/>},
-        {values: {name: 'last_name', label: Lang.get('pages.profile.index.last_name'), rules: [rules.max(255)], initialValue: userdata.last_name}, input: <Input/>},
         {
             values: {
-                name: 'email', label: Lang.get('pages.profile.index.email'), rules: rules.email, initialValue: userdata.email,
+                name: 'country_id',
+                label: Lang.get('pages.profile.index.country'),
+                rules: [rules.required],
+                initialValue: userdata.country_id
+            },
+            input: <Selection options={countries}/>
+        },
+        {
+            values: {name: 'city', label: Lang.get('pages.profile.index.city'), initialValue: userdata.city, rules: [rules.required]},
+            input: <Input/>
+        },
+        {
+            values: {
+                name: 'currency_id',
+                label: Lang.get('pages.profile.index.currency.label'),
+                initialValue: userdata.currency_id,
+                tooltip: Lang.get('pages.profile.index.currency.tooltip'),
+                rules: [rules.required]
+            },
+            input: <Selection options={currencies}/>
+        },
+        {
+            values: {
+                name: 'first_name',
+                label: Lang.get('pages.profile.index.first_name'),
+                rules: [rules.required, rules.max(255)],
+                initialValue: userdata.first_name
+            }, input: <Input readOnly/>
+        },
+        {
+            values: {
+                name: 'middle_name',
+                label: Lang.get('pages.profile.index.middle_name'),
+                rules: [rules.required, rules.max(255)],
+                initialValue: userdata.middle_name
+            }, input: <Input readOnly/>
+        },
+        {
+            values: {
+                name: 'last_name',
+                label: Lang.get('pages.profile.index.last_name'),
+                rules: [rules.max(255)],
+                initialValue: userdata.last_name
+            }, input: <Input/>
+        },
+        {
+            values: {
+                name: 'email',
+                label: Lang.get('pages.profile.index.email'),
+                rules: rules.email,
+                initialValue: userdata.email,
                 className: reducedAntFormItemClassName
             },
             input: <Input readOnly/>
@@ -99,8 +126,14 @@ const Index = () => {
     ]
 
     const updatePasswordItems = [
-        {values: {name: 'current_password', label: Lang.get('pages.profile.index.current_password'), rules: []}, input: <Input.Password/>},
-        {values: {name: 'password', label: Lang.get('pages.profile.index.new_password'), rules: []}, input: <Input.Password/>},
+        {
+            values: {name: 'current_password', label: Lang.get('pages.profile.index.current_password'), rules: []},
+            input: <Input.Password/>
+        },
+        {
+            values: {name: 'password', label: Lang.get('pages.profile.index.new_password'), rules: []},
+            input: <Input.Password/>
+        },
         {
             values: {
                 name: 'password_confirmation',
@@ -113,98 +146,70 @@ const Index = () => {
     ]
 
     const updateProfileHandler = async body => {
-        Inertia.post(route('users.update'), body)
+        Inertia.post(tRoute('users.update'), body)
     }
 
     const changePasswordHandler = body => {
-        Inertia.post(route('users.password.change'), body)
+        Inertia.post(tRoute('users.password.change'), body)
     }
 
     return (
-        <Tabs centered type="card" defaultActiveKey="user-info">
-            <Tabs.TabPane tab={Lang.get('pages.profile.index.tab')} key="user-info">
-                <Row justify="space-around" align="middle" gutter={[30, 30]}>
-                    <Col md={24} lg={20} xl={15} xxl={13}>
-                        <Card
-                            style={{...fullWidth, borderRadius: 10}}
-                            actions={[
-                                // <SecondaryButton type="default" disabled>
-                                //     Удалить пользователя
-                                // </SecondaryButton>,
-                                // <div style={{paddingLeft: 10, paddingRight: 10}}>
-                                //     <PrimaryButton style={fullWidth} htmlType="submit" form={profileFormName}>
-                                //         Сохранить изменения
-                                //     </PrimaryButton>
-                                // </div>
-                                <PrimaryButton htmlType="submit" form={profileFormName}>
-                                    {Lang.get('pages.profile.index.save_changes')}
-                                </PrimaryButton>
-                            ]}
-                        >
-                            <ItemsForm layout="horizontal" labelSpan={6} items={items}
-                                       onFinish={updateProfileHandler} name={profileFormName}/>
-                        </Card>
-                    </Col>
-                    <Col md={24} lg={20} xl={15} xxl={13}>
-                        <Card
-                            style={{...fullWidth, borderRadius: 10}}
-                            actions={[
-                                // <div style={{paddingLeft: 10, paddingRight: 10}}>
-                                //     <PrimaryButton style={fullWidth} htmlType="submit" form={changePasswordForm}>
-                                //         Изменить пароль
-                                //     </PrimaryButton>
-                                // </div>
-                                <PrimaryButton htmlType="submit" form={changePasswordForm}>
-                                    {Lang.get('pages.profile.index.change_password')}
-                                </PrimaryButton>
-                            ]}
-                        >
-                            <ItemsForm labelSpan={6} items={updatePasswordItems}
-                                       onFinish={changePasswordHandler} name={changePasswordForm}/>
-                        </Card>
-                    </Col>
-                </Row>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab={Lang.get('pages.profile.discounts.tab')} key="producers-discounts">
-                <DiscountsTab discounts={discounts}/>
-                {/*    <Row justify="space-around" align="middle" gutter={[0, 0]}>*/}
-                {/*        <Col md={24} lg={20} xl={15} xxl={12}>*/}
-                {/*            <Card*/}
-                {/*                title="Скидки производителей"*/}
-                {/*                style={{...fullWidth, borderRadius: 10}}*/}
-                {/*                actions={[*/}
-                {/*                    // <SecondaryButton type="default" disabled>*/}
-                {/*                    //     Удалить пользователя*/}
-                {/*                    // </SecondaryButton>,*/}
-                {/*                    <PrimaryButton htmlType="submit" form={discountsForm}>*/}
-                {/*                        Сохранить изменения*/}
-                {/*                    </PrimaryButton>*/}
-                {/*                ]}*/}
-                {/*            >*/}
-                {/*                <Form name={discountsForm} onFinish={discountsSaveHandler}>*/}
-                {/*                    <Table*/}
-                {/*                        rowClassName="editable-row"*/}
-                {/*                        components={{*/}
-                {/*                            body: {*/}
-                {/*                                cell: EditableCell,*/}
-                {/*                                row: EditableRow*/}
-                {/*                            },*/}
-                {/*                        }}*/}
-                {/*                        dataSource={discounts}*/}
-                {/*                        columns={discountsColumns}*/}
-                {/*                        size="small"*/}
-                {/*                        scroll={{y: 570}}*/}
-                {/*                    />*/}
-                {/*                </Form>*/}
-                {/*            </Card>*/}
-                {/*        </Col>*/}
-                {/*    </Row>*/}
-            </Tabs.TabPane>
-        </Tabs>
+        <Container>
+            <Tabs centered type="card" defaultActiveKey="user-info">
+                <Tabs.TabPane tab={Lang.get('pages.profile.index.tab')} key="user-info">
+                    <JustifiedRow>
+                        <Col xs={22} sm={20} md={18} lg={16} xl={11} xxl={9}>
+                            <Row>
+                                <Col xs={24}>
+                                    <RoundedCard
+                                        type="inner"
+                                        title={Lang.get('pages.profile.index.cards.user_info')}
+                                    >
+                                        <ItemsForm
+                                            layout="horizontal"
+                                            labelSpan={{xxl: 7, xl: 10, lg: 10, md: 12, sm: 12}}
+                                            items={items}
+                                            onFinish={updateProfileHandler}
+                                            name={profileFormName}
+                                        />
+                                    </RoundedCard>
+                                    <BoxFlex style={margin.top(16)}>
+                                        <PrimaryButton htmlType="submit" form={profileFormName}>
+                                            {Lang.get('pages.profile.index.save_changes')}
+                                        </PrimaryButton>
+                                    </BoxFlex>
+                                </Col>
+                                <Col xs={24}>
+                                    <RoundedCard
+                                        type="inner"
+                                        title={Lang.get('pages.profile.index.cards.password')}
+                                        style={margin.top(16)}
+                                    >
+                                        <ItemsForm
+                                            layout="horizontal"
+                                            labelSpan={{xxl: 6, xl: 10, lg: 10, md: 12, sm: 12}}
+                                            items={updatePasswordItems}
+                                            onFinish={changePasswordHandler} name={changePasswordForm}
+                                        />
+                                    </RoundedCard>
+                                    <BoxFlex style={margin.top(16)}>
+                                        <PrimaryButton htmlType="submit" form={changePasswordForm}>
+                                            {Lang.get('pages.profile.index.change_password')}
+                                        </PrimaryButton>
+                                    </BoxFlex>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </JustifiedRow>
+                </Tabs.TabPane>
+                <Tabs.TabPane tab={Lang.get('pages.profile.discounts.tab')} key="producers-discounts">
+                    <DiscountsTab discounts={discounts}/>
+                </Tabs.TabPane>
+            </Tabs>
+        </Container>
     )
 }
 
-Index.layout = page => <Common children={page} title={Lang.get('pages.profile.title')} backTo={true}
-                                      breadcrumbs={useBreadcrumbs().profile}/>
+Index.layout = page => <AuthLayout children={page} header={<Header/>}/>
 
 export default Index

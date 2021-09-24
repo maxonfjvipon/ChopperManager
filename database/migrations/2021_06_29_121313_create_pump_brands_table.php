@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePumpRegulationsTable extends Migration
+class CreatePumpBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePumpRegulationsTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('pump_regulations');
-        Schema::create('pump_regulations', function (Blueprint $table) {
+        Schema::dropIfExists('pump_brands');
+        Schema::create('pump_brands', function (Blueprint $table) {
             $table->id();
-            $table->json('name');
+            $table->string('name');
         });
     }
 
@@ -27,6 +27,6 @@ class CreatePumpRegulationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pump_regulations');
+        Schema::dropIfExists('pump_brands');
     }
 }

@@ -49,15 +49,15 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => function () use ($user) {
                 return [
-                    'username' => Auth::check() ? $user->first_name . " " . $user->middle_name : null,
-                    'isAdmin' => Auth::check() && $user->role->id === 1
+                    'full_name' => Auth::check() ? $user->full_name : null,
                 ];
             },
-            'locales' => function () use ($current_localized, $supported_locales) {
+            'locales' => function () use ($current_localized, $supported_locales, $request) {
                 return [
                     'current' => app()->getLocale(),
+                    'default' => config('app.fallback_locale'),
                     'supported' => $supported_locales,
-                    'current_localized' => $current_localized
+                    'current_localized' => $current_localized,
                 ];
             },
             'flash' => function () use ($request) {
@@ -67,7 +67,7 @@ class HandleInertiaRequests extends Middleware
                     'info' => $request->session()->get('info'),
                     'error' => $request->session()->get('error'),
                 ];
-            }
+            },
         ]);
     }
 }

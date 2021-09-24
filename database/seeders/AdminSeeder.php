@@ -18,49 +18,52 @@ class AdminSeeder extends Seeder
         User::create([
             'id' => 1,
             'organization_name' => "МБС",
-            'itn' => "1111111111",
+            'itn' => "0000000000",
             'email' => 'maxonfjvipon@admin.com',
             'password' => Hash::make('maximtrun19'),
             'phone' => "89991231212",
             'first_name' => 'Максим',
             'middle_name' => 'Трунников',
-            'role_id' => 1,
-            'city_id' => 1,
+            'city' => "Брянск",
             'business_id' => 1,
             'created_at' => now(),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'country_id' => 1,
+            'currency_id' => 121
         ]);
 
         User::create([
             'id' => 2,
             'organization_name' => "МБС",
-            'itn' => "1111111112",
+            'itn' => "0000000001",
             'email' => 'titatyov@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
             'first_name' => 'Дмитрий',
             'middle_name' => 'Титарев',
-            'role_id' => 1,
-            'city_id' => 1,
+            'city' => "Брянск",
             'business_id' => 1,
             'created_at' => now(),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'country_id' => 1,
+            'currency_id' => 121
         ]);
 
         User::create([
             'id' => 3,
             'organization_name' => "МБС",
-            'itn' => "1111111113",
+            'itn' => "0000000002",
             'email' => 'volodin@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
             'first_name' => 'Павел',
             'middle_name' => 'Володин',
-            'role_id' => 1,
-            'city_id' => 1,
+            'city' => "Брянск",
             'business_id' => 1,
             'created_at' => now(),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'country_id' => 1,
+            'currency_id' => 121
         ]);
     }
 }

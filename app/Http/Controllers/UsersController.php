@@ -6,10 +6,12 @@ use App\Http\Requests\DiscountUpdateRequest;
 use App\Http\Requests\UserPasswordUpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Currency;
 use App\Models\Discount;
-use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpBrand;
 use App\Models\Users\Area;
 use App\Models\Users\Business;
+use App\Models\Users\Country;
 use App\Models\Users\Role;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\RedirectResponse;
@@ -30,14 +32,19 @@ class UsersController extends Controller
     {
         return Inertia::render('Profile/Index', [
             'user' => new UserResource(auth()->user()),
-            'roles' => Role::where('id', '!=', 1)->get(),
             'businesses' => Business::all(),
-            'areasWithCities' => Area::with('cities')->get(),
+            'countries' => Country::all(),
+            'currencies' => Currency::all()->transform(function ($currency) {
+                return [
+                    'id' => $currency->id,
+                    'name' => $currency->code . ' - ' . $currency->name
+                ];
+            }),
             'discounts' => auth()->user()->discounts()
-                ->where('discountable_type', '=', 'pump_producer')
+                ->where('discountable_type', '=', 'pump_brand')
                 ->with(['discountable' => function (MorphTo $morphTo) {
                     $morphTo->morphWith([
-                        PumpProducer::class => ['series', 'series.discounts' => function ($query) {
+                        PumpBrand::class => ['series', 'series.discounts' => function ($query) {
                             $query->where('user_id', Auth::id());
                         }]
                     ]);
@@ -115,7 +122,7 @@ class UsersController extends Controller
         $discount->update($validated);
 
         // update series discounts as producer discount
-        if ($discount->discountable_type === 'pump_producer') {
+        if ($discount->discountable_type === 'pump_brand') {
             Discount::where('user_id', $request->user_id)
                 ->whereIn('discountable_id', $discount->discountable->series()->pluck('id')->all())
                 ->where('discountable_type', 'pump_series')

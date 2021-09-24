@@ -200,7 +200,7 @@ return [
             'part_num_main'         => 'Основной артикул',
             'part_num_backup'       => 'Резервный артикул',
             'part_num_archive'      => 'Архивный артикул',
-            'producer'              => 'Бренд',
+            'brand'              => 'Бренд',
             'series'                => 'Серия',
             'name'                  => 'Наименование',
             'price'                 => "Цена",

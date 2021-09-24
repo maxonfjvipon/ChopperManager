@@ -17,9 +17,9 @@ class PumpSeries extends Model
     public $timestamps = false;
     use HasFactory;
 
-    public function producer(): BelongsTo
+    public function brand(): BelongsTo
     {
-        return $this->belongsTo(PumpProducer::class, 'producer_id', 'id');
+        return $this->belongsTo(PumpBrand::class, 'brand_id', 'id');
     }
 
     public function pump(): HasMany
@@ -27,19 +27,14 @@ class PumpSeries extends Model
         return $this->hasMany(Pump::class, 'series_id');
     }
 
-    public function temperatures(): HasOne
+    public function power_adjustment(): BelongsTo
     {
-        return $this->hasOne(PumpSeriesTemperatures::class, 'series_id');
+        return $this->belongsTo(ElPowerAdjustment::class, 'regulation_adjustment_id');
     }
 
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(PumpType::class, 'pump_series_and_types', 'series_id', 'type_id');
-    }
-
-    public function regulations(): BelongsToMany
-    {
-        return $this->belongsToMany(PumpRegulation::class, 'pump_series_and_regulations', 'series_id', 'regulation_id');
     }
 
     public function applications(): BelongsToMany

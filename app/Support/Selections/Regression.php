@@ -3,7 +3,6 @@
 
 namespace App\Support\Selections;
 
-
 use JetBrains\PhpStorm\Pure;
 
 class Regression

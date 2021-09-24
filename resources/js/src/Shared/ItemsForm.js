@@ -7,7 +7,8 @@ export const ItemsForm = ({
                               layout = "horizontal",
                               items,
                               labelSpan = 5,
-                              wrapperSpan = 19,
+                              onFinish,
+                              // wrapperSpan = 19,
                               ...rest
                           }) => {
     const formItem = item => (
@@ -29,14 +30,16 @@ export const ItemsForm = ({
 
 
     return (
-        <Form form={form} layout={layout}
-              labelCol={{xs: labelSpan - 5, md: labelSpan - 3 ,xxl: labelSpan}}
-              // labelCol={{xs: 10, sm: ,md:}}
-              {...rest}>
-            {withRow && <Row gutter={[10, 0]}>
-                {formItems()}
-            </Row>}
-            {!withRow && formItems()}
+        <Form onFinish={onFinish} form={form} layout={layout} labelCol={labelSpan}{...rest}>
+            {items.map(item => (
+                <Form.Item {...item.values} key={item.values.name}>
+                    {item.input}
+                </Form.Item>
+            ))}
+            {/*{withRow && <Row gutter={[10, 0]}>*/}
+            {/*    {formItems()}*/}
+            {/*</Row>}*/}
+            {/*{!withRow && formItems()}*/}
         </Form>
     )
 }

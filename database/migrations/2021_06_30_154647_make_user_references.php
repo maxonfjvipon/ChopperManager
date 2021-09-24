@@ -14,8 +14,8 @@ class MakeUserReferences extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->bigInteger('business_id')->unsigned();
             $table->foreign('business_id')->references('id')->on('businesses')->cascadeOnUpdate();
-            $table->foreign('role_id')->references('id')->on('roles')->cascadeOnUpdate();
         });
     }
 

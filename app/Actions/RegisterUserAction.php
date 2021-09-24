@@ -4,37 +4,32 @@
 namespace App\Actions;
 
 
-use App\Models\Pumps\PumpProducer;
-use App\Models\Pumps\PumpSeries;
+use App\Http\Requests\RegisterRequest;
+use App\Models\Users\Country;
 use App\Models\Users\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterUserAction implements Executable
+class RegisterUserAction
 {
-    public function execute(array $validated)
+    public function execute(RegisterRequest $request)
     {
         $user = User::create([
-            'organization_name' => $validated['organization_name'],
-            'itn' => $validated['itn'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'phone' => $validated['phone'],
-            'first_name' => $validated['first_name'],
-            'middle_name' => $validated['middle_name'],
-            'last_name' => $validated['last_name'],
-            'city_id' => $validated['city_id'],
-            'business_id' => $validated['business_id'],
+            'organization_name' => $request->organization_name,
+            'itn' => $request->itn,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'city' => $request->city,
+            'postcode' => $request->postcode,
+            'country_id' => $request->country_id,
+            'currency_id' => Country::find($request->country_id)->first()->currency_id,
+            'business_id' => $request->business_id,
         ]);
-
-        $user->discounts()->insert(array_map(function ($series) use ($user) {
-            return ['user_id' => $user->id, 'discountable_id' => $series['id'], 'discountable_type' => 'pump_series'];
-        }, PumpSeries::all()->toArray()));
-
-        $user->discounts()->insert(array_map(function ($producer) use ($user) {
-            return ['user_id' => $user->id, 'discountable_id' => $producer['id'], 'discountable_type' => 'pump_producer'];
-        }, PumpProducer::all()->toArray()));
 
         event(new Registered($user));
 

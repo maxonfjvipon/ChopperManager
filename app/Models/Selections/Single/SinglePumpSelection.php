@@ -3,25 +3,31 @@
 namespace App\Models\Selections\Single;
 
 use App\Models\ConnectionType;
-use App\Models\MainsPhase;
+use App\Models\MainsConnection;
 use App\Models\DN;
 use App\Models\LimitCondition;
 use App\Models\Project;
 use App\Models\Pumps\Pump;
-use App\Models\Pumps\PumpProducer;
-use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpBrand;
+use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\PumpType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SinglePumpSelection extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    protected $casts = [
+        'created_at' => 'datetime:d.m.Y',
+        'updated_at' => 'datetime:d.m.Y'
+    ];
 
     public function project(): BelongsTo
     {
@@ -30,7 +36,7 @@ class SinglePumpSelection extends Model
 
     public function pump(): BelongsTo
     {
-        return $this->belongsTo(Pump::class, 'pump_article_num');
+        return $this->belongsTo(Pump::class);
     }
 
     public function powerLimitCondition(): BelongsTo
@@ -38,27 +44,27 @@ class SinglePumpSelection extends Model
         return $this->belongsTo(LimitCondition::class, 'power_limit_condition_id');
     }
 
-    public function dnInputLimitCondition(): BelongsTo
+    public function dnSuctionLimitCondition(): BelongsTo
     {
         return $this->belongsTo(LimitCondition::class, 'dn_suction_limit_condition_id');
     }
 
-    public function dnOutputLimitCondition(): BelongsTo
+    public function dnPressureLimitCondition(): BelongsTo
     {
         return $this->belongsTo(LimitCondition::class, 'dn_pressure_limit_condition_id');
     }
 
-    public function betweenAxesLimitCondition(): BelongsTo
+    public function ptpLengthLimitCondition(): BelongsTo
     {
-        return $this->belongsTo(LimitCondition::class, 'center_distance_limit_condition_id');
+        return $this->belongsTo(LimitCondition::class, 'ptp_length_limit_condition_id');
     }
 
-    public function dnInputLimit(): BelongsTo
+    public function dnSuctionLimit(): BelongsTo
     {
         return $this->belongsTo(DN::class, 'dn_suction_limit_id');
     }
 
-    public function dnOutputLimit(): BelongsTo
+    public function dnPressureLimit(): BelongsTo
     {
         return $this->belongsTo(DN::class, 'dn_pressure_limit_id');
     }
@@ -96,7 +102,7 @@ class SinglePumpSelection extends Model
 //    public function pumpRegulations(): BelongsToMany
 //    {
 //        return $this->belongsToMany(
-//            PumpRegulation::class, 'single_pump_selections_and_pump_regulations',
+//            ElPowerAdjustment::class, 'single_pump_selections_and_pump_regulations',
 //            'selection_id', 'regulation_id'
 //        );
 //    }

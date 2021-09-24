@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('organization_name');
-            $table->string('itn', 20)->unique()->nullable();
+            $table->string('itn', 20)->unique()->nullable(); // ИНН
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
@@ -26,15 +26,10 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name')->nullable();
-            $table->string('city')->nullable();
+            $table->string('city');
             $table->string('postcode')->nullable();
-            $table->bigInteger('country_id')->unsigned();
-            $table->bigInteger('currency_id')->unsigned();
-            $table->bigInteger('business_id')->unsigned();
-            $table->bigInteger('role_id')->unsigned()->default(2);
-            $table->bigInteger('city_id')->unsigned();
             $table->timestamp('created_at', 0)->useCurrent();
-            $table->boolean('deleted')->default(false);
+            $table->softDeletes();
         });
     }
 

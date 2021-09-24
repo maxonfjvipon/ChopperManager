@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class PumpProducer extends Model
+class PumpBrand extends Model
 {
     protected $fillable = ['name'];
     public $timestamps = false;
@@ -17,12 +17,12 @@ class PumpProducer extends Model
 
     public function series(): HasMany
     {
-        return $this->hasMany(PumpSeries::class, 'producer_id');
+        return $this->hasMany(PumpSeries::class, 'brand_id');
     }
 
     public function pumps(): HasManyThrough
     {
-        return $this->hasManyThrough(Pump::class, PumpSeries::class, 'producer_id', 'series_id');
+        return $this->hasManyThrough(Pump::class, PumpSeries::class, 'brand_id', 'series_id');
     }
 
     public function discounts(): MorphMany

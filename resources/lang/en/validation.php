@@ -192,7 +192,7 @@ return [
             'part_num_main'         => 'Main article number',
             'part_num_backup'       => 'Reserve article number',
             'part_num_archive'      => 'Archive article number',
-            'producer'              => 'Brand',
+            'brand'              => 'Brand',
             'series'                => 'Series',
             'name'                  => 'Name',
             'price'                 => "Price",

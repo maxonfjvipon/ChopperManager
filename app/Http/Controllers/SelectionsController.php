@@ -36,7 +36,7 @@ class SelectionsController extends Controller
      */
     public function create($project_id): Response
     {
-        return Inertia::render('Selections/Single', [
+        return Inertia::render('Selections/Single/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $project_id
         ]);
@@ -50,7 +50,7 @@ class SelectionsController extends Controller
      */
     public function show(SinglePumpSelection $selection): Response
     {
-        return Inertia::render('Selections/Single', [
+        return Inertia::render('Selections/Single/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $selection->project_id,
             'selection' => new SinglePumpSelectionResource($selection)
@@ -65,7 +65,7 @@ class SelectionsController extends Controller
      */
     public function destroy(SinglePumpSelection $selection): RedirectResponse
     {
-        $selection->update(['deleted' => true]);
+        $selection->delete();
         return Redirect::back()->with('success', __('flash.selections.deleted'));
     }
 
@@ -103,6 +103,6 @@ class SelectionsController extends Controller
      */
     public function select(MakeSelectionRequest $request, MakeSelectionAction $makeSelectionAction): JsonResponse
     {
-        return $makeSelectionAction->execute($request->validated());
+        return $makeSelectionAction->execute($request);
     }
 }

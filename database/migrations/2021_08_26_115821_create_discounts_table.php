@@ -15,7 +15,7 @@ class CreateDiscountsTable extends Migration
     {
         Schema::dropIfExists('discounts');
         Schema::create('discounts', function (Blueprint $table) {
-            $table->float('value')->unsigned()->nullable();
+            $table->float('value')->unsigned()->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('discountable_id')->unsigned();
             $table->string('discountable_type');

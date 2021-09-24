@@ -2,15 +2,13 @@
 
 namespace App\Imports;
 
+use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\Pump;
-use App\Models\Pumps\PumpAndApplication;
-use App\Models\Pumps\PumpAndType;
 use App\Models\Pumps\PumpApplication;
-use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpsAndCoefficients;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpSeriesAndApplication;
-use App\Models\Pumps\PumpSeriesAndRegulation;
 use App\Models\Pumps\PumpSeriesAndType;
 use App\Models\Pumps\PumpSeriesTemperatures;
 use App\Models\Pumps\PumpType;
@@ -18,9 +16,10 @@ use App\Support\Selections\PumpPerformance;
 use App\Support\Selections\Regression;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class PumpsDataImport implements ToCollection
+class PumpsDataImport implements ToCollection, SkipsEmptyRows
 {
     use Importable;
 
@@ -32,18 +31,21 @@ class PumpsDataImport implements ToCollection
     {
         $rows->shift();
 
+        $seriesStaticInfo = [];
         $seriesAndTemperatures = [];
         $seriesAndTypes = [];
-        $seriesAndRegulations = [];
+//        $seriesAndPowerAdjustments = [];
         $seriesAndApplications = [];
 
         foreach ($rows as $row) {
             $pumpPerformance = new PumpPerformance(trim($row[17]));
-            for ($count = 1; $count < 10; ++$count) {
-                $coefficients = Regression::withData($pumpPerformance->lineData($count))->polynomial()->coefficients();
+            $pump = Pump::where('article_num_main', trim($row[0]))->first();
+
+            for ($position = 1; $position < 10; ++$position) {
+                $coefficients = Regression::withData($pumpPerformance->lineData($position))->polynomial()->coefficients();
                 PumpsAndCoefficients::create([
-                    'pump_id' => Pump::wherePartNumMain(trim($row[0]))->first()->id,
-                    'count' => $count,
+                    'pump_id' => $pump->id,
+                    'position' => $position,
                     'k' => $coefficients[0],
                     'b' => $coefficients[1],
                     'c' => $coefficients[2]
@@ -51,88 +53,79 @@ class PumpsDataImport implements ToCollection
             }
 
             $series = PumpSeries::whereName($row[4])
-                ->whereProducerId(PumpProducer::whereName($row[3])->first()->id)
+                ->whereBrandId(PumpBrand::firstWhere('name', $row[3])->id)
                 ->first();
-//
-            if (!array_key_exists($series->id, $seriesAndTemperatures)) {
-                $seriesAndTemperatures[$series->id] = [
+
+            if (!array_key_exists($series->id, $seriesStaticInfo)) {
+                $seriesStaticInfo[$series->id] = [
+                    'regulation_adjustment_id' => $row[19],
                     'temp_min' => 1000,
                     'temp_max' => -100,
                 ];
             }
+
+//            if (!array_key_exists($series->id, $seriesAndTemperatures)) {
+//                $seriesAndTemperatures[$series->id] = [
+//                    'temp_min' => 1000,
+//                    'temp_max' => -100,
+//                ];
+//            }
             if (!array_key_exists($series->id, $seriesAndTypes)) {
                 $seriesAndTypes[$series->id] = [];
             }
             if (!array_key_exists($series->id, $seriesAndApplications)) {
                 $seriesAndApplications[$series->id] = [];
             }
-            if (!array_key_exists($series->id, $seriesAndRegulations)) {
-                $seriesAndRegulations[$series->id] = [];
-            }
-
-            $pump = Pump::wherePartNumMain($row[0])->first();
+//            if (!array_key_exists($series->id, $seriesAndPowerAdjustments)) {
+//                $seriesAndPowerAdjustments[$series->id] = [];
+//            }
 
             // temp min
-            if ($pump->min_liquid_temp < $seriesAndTemperatures[$series->id]['temp_min']) {
-                $seriesAndTemperatures[$series->id]['temp_min'] = $pump->min_liquid_temp;
+            if ($pump->fluid_temp_min < $seriesStaticInfo[$series->id]['temp_min']) {
+                $seriesStaticInfo[$series->id]['temp_min'] = $pump->fluid_temp_min;
             }
 
             // temp max
-            if ($pump->max_liquid_temp > $seriesAndTemperatures[$series->id]['temp_max']) {
-                $seriesAndTemperatures[$series->id]['temp_max'] = $pump->max_liquid_temp;
+            if ($pump->fluid_temp_max > $seriesStaticInfo[$series->id]['temp_max']) {
+                $seriesStaticInfo[$series->id]['temp_max'] = $pump->fluid_temp_max;
             }
 
-            // regulations
-            if (!in_array($pump->regulation_id, $seriesAndRegulations[$series->id])) {
-                $seriesAndRegulations[$series->id][] = $pump->regulation_id;
-            }
+//            // regulations
+//            if (!in_array($pump->regulation_id, $seriesAndPowerAdjustments[$series->id])) {
+//                $seriesAndPowerAdjustments[$series->id][] = $pump->regulation_id;
+//            }
 
-            $applications = explode(", ", $row[21]);
-            $pumpTypes = explode(", ", $row[22]);
+            $applications = explode(",", $row[21]);
+            $pumpTypes = explode(",", $row[22]);
 
-            foreach ($applications as $application) {
-                $applicationId = PumpApplication::where('name->ru', $application)->first()->id;
+            foreach ($applications as $applicationId) {
                 if (!in_array($applicationId, $seriesAndApplications[$series->id])) {
                     $seriesAndApplications[$series->id][] = $applicationId;
                 }
-                PumpAndApplication::firstOrCreate(
-                    [
-                        'pump_id' => $pump->id,
-                        'application_id' => $applicationId
-                    ],
-                    [
-                        'pump_id' => $pump->id,
-                        'application_id' => $applicationId
-                    ]);
             }
 
-            foreach ($pumpTypes as $pumpType) {
-                $pumpTypeId = PumpType::where('name->ru', $pumpType)->first()->id;
+            foreach ($pumpTypes as $pumpTypeId) {
                 if (!in_array($pumpTypeId, $seriesAndTypes[$series->id])) {
                     $seriesAndTypes[$series->id][] = $pumpTypeId;
                 }
-                PumpAndType::firstOrCreate(
-                    [
-                        'pump_id' => $pump->id,
-                        'type_id' => $pumpTypeId
-                    ],
-                    [
-                        'pump_id' => $pump->id,
-                        'type_id' => $pumpTypeId
-                    ]);
             }
         }
 
-        // series and temperatures
-        foreach ($seriesAndTemperatures as $seriesId => $temp) {
-            PumpSeriesTemperatures::updateOrCreate(
-                ['series_id' => $seriesId],
-                [
-                    'series_id' => $seriesId,
-                    'temp_min' => $temp['temp_min'],
-                    'temp_max' => $temp['temp_max'],
-                ]);
+        foreach ($seriesStaticInfo as $seriesId => $info) {
+            PumpSeries::find($seriesId)->update([
+                'regulation_adjustment_id' => $info['regulation_adjustment_id'],
+                'temp_min' => $info['temp_min'],
+                'temp_max' => $info['temp_max']
+            ]);
         }
+
+//        // series and temperatures
+//        foreach ($seriesAndTemperatures as $seriesId => $temp) {
+//            PumpSeries::find($seriesId)->update([
+//                'temp_min' => $temp['temp_min'],
+//                'temp_max' => $temp['temp_max']
+//            ]);
+//        }
 
         // series and types
         foreach ($seriesAndTypes as $seriesId => $typeIds) {
@@ -147,18 +140,18 @@ class PumpsDataImport implements ToCollection
             }
         }
 
-        // series and regulations
-        foreach ($seriesAndRegulations as $seriesId => $regulationIds) {
-            foreach ($regulationIds as $regulationId) {
-                PumpSeriesAndRegulation::firstOrCreate([
-                    'series_id' => $seriesId,
-                    'regulation_id' => $regulationId
-                ], [
-                    'series_id' => $seriesId,
-                    'regulation_id' => $regulationId
-                ]);
-            }
-        }
+//        // series and regulations
+//        foreach ($seriesAndPowerAdjustments as $seriesId => $regulationIds) {
+//            foreach ($regulationIds as $regulationId) {
+//                PumpSeriesAndPowerAdjustment::firstOrCreate([
+//                    'series_id' => $seriesId,
+//                    'regulation_id' => $regulationId
+//                ], [
+//                    'series_id' => $seriesId,
+//                    'regulation_id' => $regulationId
+//                ]);
+//            }
+//        }
 
         // series and applications
         foreach ($seriesAndApplications as $seriesId => $applicationIds) {

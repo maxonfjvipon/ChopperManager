@@ -19,7 +19,7 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->bigInteger('project_id')->unsigned();
-            $table->string('pump_article_num');
+            $table->bigInteger('pump_id')->unsigned();
             $table->string('selected_pump_name'); // fixme ???
             $table->integer('pumps_count')->unsigned();
             $table->float('flow');
@@ -47,12 +47,12 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->string('connection_type_ids', 1024)->nullable();
             $table->string('mains_phase_ids', 3)->nullable();
             $table->string('main_pumps_counts', 20);
-            $table->string('pump_producer_ids');
-            $table->string('pump_regulation_ids', 3)->nullable();
+            $table->string('pump_brands_ids');
+            $table->string('power_adjustment_ids', 3)->nullable();
             $table->string('pump_type_ids')->nullable();
             $table->string('pump_application_ids')->nullable();
 
-            $table->boolean('deleted')->default(false);
+            $table->softDeletes();
         });
         Schema::table('single_pump_selections', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('projects')->cascadeOnUpdate()->cascadeOnDelete();
@@ -62,7 +62,7 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->foreign('dn_suction_limit_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_limit_condition_id')->references('id')->on('limit_conditions')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_limit_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('pump_article_num')->references('article_num_main')->on('pumps')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('pump_id')->references('id')->on('pumps')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

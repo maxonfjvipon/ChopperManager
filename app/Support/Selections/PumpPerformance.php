@@ -45,13 +45,16 @@ class PumpPerformance
         }, explode(" ", $this->performance));
     }
 
-    public function lineData($count): array
+    public function lineData($position): array
     {
         $data = [];
         $performanceAsArray = $this->asArray();
+        if (count($performanceAsArray) < 5) {
+            dd($performanceAsArray);
+        }
         for ($i = 0; $i < count($performanceAsArray); $i += 2) {
             $data[] = [
-                '0' => $performanceAsArray[$i] * $count,
+                '0' => $performanceAsArray[$i] * $position,
                 '1' => $performanceAsArray[$i + 1]
             ];
         }

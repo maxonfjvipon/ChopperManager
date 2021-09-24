@@ -1,46 +1,53 @@
-import Guest from "../../Shared/Layout/Guest";
-import {Card, Col, Row, Typography} from "antd";
+import {Col, Row, Typography, Button} from "antd";
 import {useStyles} from "../../Hooks/styles.hook";
 import React from "react";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
-import {Link} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
-import {useLang} from "../../Hooks/lang.hook";
+import Lang from "../../../translation/lang";
+import {JustifiedRow} from "../../Shared/JustifiedRow";
+import {RoundedCard} from "../../Shared/RoundedCard";
+import {GuestLayout} from "../../Shared/Layout/GuestLayout";
+import {useTransRoutes} from "../../Hooks/routes.hook";
 
 function VerifyEmail() {
-    const {textAlignCenter, fullWidth} = useStyles()
-    const Lang = useLang()
+    const {textAlignCenter, fullWidth, margin} = useStyles()
+    const {tRoute} = useTransRoutes()
     return (
-        <Row style={{minHeight: 600}} justify="space-around" align="middle" gutter={[0, 0]}>
+        <JustifiedRow>
             <Col xs={20} md={20} lg={20} xl={15} xxl={10}>
-                <Card
+                <RoundedCard
                     title={
                         <div style={textAlignCenter}>
-                            <Typography>
-                                {Lang.trans('pages.email_verification.thanks')}
-                            </Typography>
+                            {Lang.get('pages.email_verification.thanks')}
                         </div>}
-                    style={{...fullWidth, borderRadius: 10}}
-                    actions={[
-                        <PrimaryButton onClick={() => {
-                            Inertia.post(route('verification.send'))
-                        }}>
-                            {Lang.trans('pages.email_verification.send_again')}
-                        </PrimaryButton>,
-                        <Link method="post" href={route('logout')}>{Lang.get('pages.email_verification.logout')}</Link>
-                    ]}
                 >
                     <Typography>
                         {Lang.trans('pages.email_verification.text1')}
                         <br/>
                         {Lang.trans('pages.email_verification.text2')}
                     </Typography>
-                </Card>
+                </RoundedCard>
+                <Row style={margin.top(16)} gutter={16}>
+                    <Col xs={12}>
+                        <PrimaryButton style={fullWidth} onClick={() => {
+                            Inertia.post(tRoute('verification.send'))
+                        }}>
+                            {Lang.get('pages.email_verification.send_again')}
+                        </PrimaryButton>
+                    </Col>
+                    <Col xs={12}>
+                        <Button style={fullWidth} onClick={() => {
+                            Inertia.post(tRoute('logout'))
+                        }}>
+                            {Lang.get('pages.email_verification.logout')}
+                        </Button>
+                    </Col>
+                </Row>
             </Col>
-        </Row>
+        </JustifiedRow>
     )
 }
 
-VerifyEmail.layout = page => <Guest children={page}/>
+VerifyEmail.layout = page => <GuestLayout children={page}/>
 
 export default VerifyEmail

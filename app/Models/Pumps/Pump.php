@@ -4,7 +4,7 @@ namespace App\Models\Pumps;
 
 use App\Models\ConnectionType;
 use App\Models\Currency;
-use App\Models\MainsPhase;
+use App\Models\MainsConnection;
 use App\Models\DN;
 use App\Models\Selections\Single\SinglePumpSelection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,7 +20,7 @@ class Pump extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
-    protected $primaryKey = 'article_num_main';
+//    protected $primaryKey = 'article_num_main';
 
     use HasFactory;
     use BelongsToThrough;
@@ -30,10 +30,10 @@ class Pump extends Model
         return $this->belongsTo(PumpSeries::class, 'series_id');
     }
 
-    public function producer(): \Znck\Eloquent\Relations\BelongsToThrough
+    public function brand(): \Znck\Eloquent\Relations\BelongsToThrough
     {
-        return $this->belongsToThrough(PumpProducer::class, PumpSeries::class, null, '', [
-            PumpProducer::class => 'producer_id',
+        return $this->belongsToThrough(PumpBrand::class, PumpSeries::class, null, '', [
+            PumpBrand::class => 'brand_id',
             PumpSeries::class => 'series_id'
         ]);
     }
@@ -43,15 +43,21 @@ class Pump extends Model
         return $this->hasMany(SinglePumpSelection::class);
     }
 
-    public function applications(): BelongsToMany
+//    public function applications(): BelongsToMany
+//    {
+//        return $this->belongsToMany(PumpApplication::class, 'pumps_and_applications', 'pump_article_num', 'application_id');
+//    }
+//
+//    public function types(): BelongsToMany
+//    {
+//        return $this->belongsToMany(PumpType::class, 'pumps_and_types', 'pump_article_num', 'type_id');
+//    }
+
+    public function currency(): BelongsTo
     {
-        return $this->belongsToMany(PumpApplication::class, 'pumps_and_applications', 'pump_article_num', 'application_id');
+        return $this->belongsTo(Currency::class);
     }
 
-    public function types(): BelongsToMany
-    {
-        return $this->belongsToMany(PumpType::class, 'pumps_and_types', 'pump_article_num', 'type_id');
-    }
 
     public function connection_type(): BelongsTo
     {
@@ -73,18 +79,13 @@ class Pump extends Model
         return $this->belongsTo(PumpCategory::class, 'category_id');
     }
 
-    public function regulation(): BelongsTo
+    public function connection(): BelongsTo
     {
-        return $this->belongsTo(PumpRegulation::class, 'regulation_id');
-    }
-
-    public function phase(): BelongsTo
-    {
-        return $this->belongsTo(MainsPhase::class, 'phase_id');
+        return $this->belongsTo(MainsConnection::class, 'connection_id');
     }
 
     public function coefficients(): HasMany
     {
-        return $this->hasMany(PumpsAndCoefficients::class, 'pump_article_num');
+        return $this->hasMany(PumpsAndCoefficients::class);
     }
 }

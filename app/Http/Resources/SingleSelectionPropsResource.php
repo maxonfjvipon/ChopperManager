@@ -3,12 +3,12 @@
 namespace App\Http\Resources;
 
 use App\Models\ConnectionType;
-use App\Models\MainsPhase;
+use App\Models\MainsConnection;
 use App\Models\DN;
 use App\Models\LimitCondition;
 use App\Models\Pumps\PumpApplication;
-use App\Models\Pumps\PumpProducer;
-use App\Models\Pumps\PumpRegulation;
+use App\Models\Pumps\PumpBrand;
+use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\PumpType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,21 +24,21 @@ class SingleSelectionPropsResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'producers' => PumpProducer::all(),
-            'producersWithSeries' => PumpProducer::with(['series' => function ($query) {
+            'brands' => PumpBrand::all(),
+            'brandsWithSeries' => PumpBrand::with(['series' => function ($query) {
                 $query->orderBy('name');
-            }, 'series.temperatures', 'series.types', 'series.applications', 'series.regulations'])
+            }, 'series.types', 'series.applications', 'series.power_adjustment'])
                 ->get(),
             'types' => PumpType::all(),
             'connectionTypes' => ConnectionType::all(),
             'applications' => PumpApplication::all(),
-            'phases' => MainsPhase::all(),
+            'mainsConnections' => MainsConnection::all(),
             'dns' => DN::all(),
-            'regulations' => PumpRegulation::all(),
+            'powerAdjustments' => ElPowerAdjustment::all(),
             'limitConditions' => LimitCondition::all(),
             'defaults' => [
-                'producers' => PumpProducer::whereName('Wilo')->pluck('id')->all(), // todo: default producers
-                'regulations' => [PumpRegulation::firstWhere('id', 1)->id]
+                'brands' => PumpBrand::whereName('Wilo')->pluck('id')->all(), // todo: default
+                'powerAdjustments' => [ElPowerAdjustment::firstWhere('id', 2)->id]
             ],
         ];
     }

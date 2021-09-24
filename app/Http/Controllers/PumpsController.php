@@ -9,6 +9,7 @@ use App\Imports\PumpsImport;
 use App\Models\Pumps\Pump;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
@@ -24,20 +25,45 @@ class PumpsController extends Controller
      */
     public function index(): Response
     {
-        // TODO: make one simple request
         return Inertia::render('Pumps/Index', [
-            'pumps' => Pump::with('regulation')
-                ->with('series')
-                ->with('producer')
+            'pumps' => Pump::with([
+                'series',
+                'series.brand',
+                'series.power_adjustment',
+                'series.applications',
+                'series.types'
+            ])
                 ->with('category')
-                ->with('applications')
-                ->with('types')
+                ->with('connection')
                 ->with('dn_suction')
                 ->with('dn_pressure')
-                ->with('currency')
-                ->with('mains_phase')
                 ->with('connection_type')
+                ->with('currency:id,code')
                 ->get()
+                ->map(fn($pump) => [
+                    'id' => $pump->id,
+                    'article_num_main' => $pump->article_num_main,
+                    'article_num_reserve' => $pump->article_num_reserve,
+                    'article_num_archive' => $pump->article_num_archive,
+                    'brand' => $pump->series->brand->name,
+                    'series' => $pump->series->name,
+                    'name' => $pump->name,
+                    'weight' => $pump->weight,
+                    'price' => $pump->price,
+                    'currency' => $pump->currency->name,
+                    'rated_power' => $pump->rated_power,
+                    'rated_current' => $pump->rated_current,
+                    'connection_type' => $pump->connection_type->name,
+                    'fluid_temp_min' => $pump->fluid_temp_min,
+                    'fluid_temp_max' => $pump->fluid_temp_max,
+                    'ptp_length' => $pump->ptp_length,
+                    'dn_suction' => $pump->dn_suction->value,
+                    'dn_pressure' => $pump->dn_pressure->value,
+                    'category' => $pump->category->name,
+                    'power_adjustment' => $pump->series->power_adjustment->value,
+                    'applications' => implode(", ", $pump->series->applications->map(fn($application) => $application->name)->toArray()),
+                    'types' => implode(", ", $pump->series->types->map(fn($type) => $type->name)->toArray()),
+                ])
         ]);
     }
 
@@ -111,7 +137,7 @@ class PumpsController extends Controller
 
     public function import(FileUploadRequest $request): RedirectResponse
     {
-        $file = $request->validated()['file'];
+        $file = $request->file;
 
         try {
             (new PumpsImport())->import($file);

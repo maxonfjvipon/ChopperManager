@@ -23,9 +23,10 @@ class ProjectsController extends Controller
     public function index(): Response
     {
         return Inertia::render('Projects/Index', [
-            'projects' => auth()->user()->projects()->withCount(['selections' => function ($query) {
-                $query->where('deleted', false);
-            }])->where('deleted', false)->get()->all()
+//            'projects' => auth()->user()->projects()->withCount(['selections' => function ($query) {
+//                $query->where('deleted', false);
+//            }])->where('deleted', false)->get()->all()
+            'projects' => \auth()->user()->projects
         ]);
     }
 
@@ -75,7 +76,17 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project): RedirectResponse
     {
-        $project->update(['deleted' => true]);
+        $project->delete();
         return Redirect::back()->with('success', __('flash.projects.deleted'));
+    }
+
+    /**
+     * Display the create resource form.
+     *
+     * @return Response
+     */
+    public function create(): Response
+    {
+        return Inertia::render('Projects/Create');
     }
 }

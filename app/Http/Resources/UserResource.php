@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Pumps\PumpProducer;
+use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpSeries;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Request;
@@ -22,13 +22,15 @@ class UserResource extends JsonResource
             'organization_name' => $this->organization_name,
             'itn' => $this->itn,
             'phone' => $this->phone,
-            'area_id' => $this->city->area->id,
-            'city_id' => $this->city->id,
+            'country_id' => $this->country_id,
+            'city' => $this->city,
+            'postcode' => $this->postcode,
+            'currency_id' => $this->currency_id,
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'business_id' => $this->business->id,
+            'business_id' => $this->business_id,
         ];
     }
 }

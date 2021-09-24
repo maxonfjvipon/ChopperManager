@@ -64,6 +64,7 @@ export const useStyles = () => {
     const justifies = {
         center: 'center',
         flexEnd: 'flex-end',
+        spaceBetween: 'space-between'
     }
 
     const justifyContent = value => {
@@ -76,10 +77,18 @@ export const useStyles = () => {
 
         margin,
         padding,
+
         width,
         fullWidth,
+
+        minHeight: value => layout('minHeight', value),
+
         textAlign,
         textAlignCenter,
+
+        borderRadius: value => layout("borderRadius", value),
+
+        color: color => layout('color', color),
 
         backgroundColorWhite: backgroundColor(colors.white),
 
@@ -87,6 +96,7 @@ export const useStyles = () => {
 
         justifyContentCenter: justifyContent(justifies.center),
         justifyContentFlexEnd: justifyContent(justifies.flexEnd),
+        justifyContentSpaceBetween: justifyContent(justifies.spaceBetween)
 
 
     }

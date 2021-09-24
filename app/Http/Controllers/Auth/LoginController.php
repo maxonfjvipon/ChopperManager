@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class LoginController extends Controller
 {
@@ -27,6 +28,7 @@ class LoginController extends Controller
      */
     public function showLoginForm(): Response
     {
+//        dd(app()->getLocale(), LaravelLocalization::getCurrentLocale(), route('register'));
         return Inertia::render("Auth/Login");
     }
 
@@ -43,7 +45,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return Redirect::route('dashboard');
+        return Redirect::route('projects.index');
     }
 
     /**

@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import {usePage} from "@inertiajs/inertia-react";
-import {Authenticated} from "../../Shared/Layout/Authenticated";
 import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {Card, Col, Input, Row} from "antd";
@@ -14,13 +13,10 @@ import {
     VictoryAxis
 } from 'victory'
 import Lang from '../../../translation/lang'
-import {useLang} from "../../Hooks/lang.hook";
-import {Common} from "../../Shared/Layout/Common";
 
 const Show = () => {
     const {pump} = usePage().props
     const {reducedAntFormItemClassName, fullWidth} = useStyles()
-    const Lang = useLang()
 
     useEffect(() => {
         // console.log(pump)
@@ -162,7 +158,7 @@ const Show = () => {
             <Col md={24} lg={15} xl={7} xxl={5}>
                 <Card
                     style={{...fullWidth, borderRadius: 10}}
-                    title={`${pump.data.producer} ${pump.data.series} ${pump.data.name}`}
+                    title={`${pump.data.brand} ${pump.data.series} ${pump.data.name}`}
                 >
                     <ItemsForm layout="horizontal" labelSpan={15} items={items}/>
                 </Card>

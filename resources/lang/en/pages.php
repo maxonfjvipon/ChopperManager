@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'change_locale' => 'Change locale',
     'login' => [
         'welcome' => 'Welcome!',
         'email' => 'E-mail',
@@ -14,8 +15,9 @@ return [
         'main_business' => 'Main business',
         'itn' => 'Individual taxpayer number',
         'phone' => 'Phone',
-        'area' => 'Area',
+        'country' => 'Country',
         'city' => 'City',
+        'postcode' => 'Postcode',
         'first_name' => 'First name',
         'middle_name' => 'Middle name',
         'last_name' => 'Last name',
@@ -39,16 +41,10 @@ return [
         'pumps' => 'Pumps'
     ],
     'projects' => [
+        'back' => 'Back to projects',
         'title' => 'Projects',
         'index' => [
-            'new' => [
-                'button' => 'New project',
-                'title' => 'Enter the name of the new project',
-                'label' => 'Name',
-                'placeholder' => 'Enter the name...',
-                'cancel' => 'Cancel',
-                'create' => 'Create'
-            ],
+            'button' => 'New project',
             'selection' => 'Hydraulic selection without saving',
             'table' => [
                 'created_at' => 'Created at',
@@ -58,7 +54,7 @@ return [
             ],
         ],
         'show' => [
-            'save_changes' => 'Save changes',
+            'save_button' => 'Save changes',
             'selection' => 'Hydraulic selection',
             'label' => 'Name',
             'table' => [
@@ -73,31 +69,38 @@ return [
                 'total_power' => 'P total, kW',
                 'delete' => 'Are you sure you want to delete the selection?'
             ]
+        ],
+        'create' => [
+            'title' => 'Create project',
+            'form' => [
+                'name' => 'Name',
+            ],
+            'button' => 'Create'
         ]
     ],
     'pumps' => [
         'title' => 'Pumps',
         'data' => [
-            'part_num_main' => 'Main article number',
-            'part_num_backup' => 'Reserve article number',
-            'part_num_archive' => 'Archive article number',
-            'producer' => 'Brand',
+            'article_num_main' => 'Main article number',
+            'article_num_reserve' => 'Reserve article number',
+            'article_num_archive' => 'Archive article number',
+            'brand' => 'Brand',
             'series' => 'Series',
             'name' => 'Name',
             'category' => 'Category',
             'price' => 'Price',
             'currency' => 'Currency',
             'weight' => 'Weight, kg',
-            'power' => 'P, kW',
-            'amperage' => 'Rated current, A', // fixme
+            'rated_power' => 'P, kW',
+            'rated_current' => 'Rated current, A', // fixme
             'connection_type' => 'Connection',
-            'min_fluid_temp' => 'Min. fluid temp, °C',
-            'max_fluid_temp' => 'Max. fluid temp, °C',
-            'between_axes_dist' => 'Between axes dist, mm',
-            'dn_input' => 'Suction side DN',
-            'dn_output' => 'Pressure side DN',
-            'regulation' => 'Built-in regulation',
-            'phase' => 'Current phase',
+            'fluid_temp_min' => 'Min. fluid temp, °C',
+            'fluid_temp_max' => 'Max. fluid temp, °C',
+            'ptp_length' => 'Port-to-port dist, mm',
+            'dn_suction' => 'Suction side DN',
+            'dn_pressure' => 'Pressure side DN',
+            'power_adjustment' => 'El. power adjustment',
+            'connection' => 'Connection',
             'types' => 'Types',
             'applications' => 'Applications'
         ],
@@ -110,12 +113,21 @@ return [
         'title' => 'Profile',
         'index' => [
             'tab' => 'User info',
+            'cards' => [
+                'user_info' => 'Update user info',
+                'password' => 'Change password'
+            ],
             'organization_name' => 'Name of the organization',
             'main_business' => 'Main business',
             'itn' => 'Individual taxpayer number',
             'phone' => 'Phone',
-            'area' => 'Area',
+            'country' => 'Country',
             'city' => 'City',
+            'postcode' => 'Postcode',
+            'currency' => [
+                'label' => 'Currency',
+                'tooltip' => 'Currency affects on ...'
+            ],
             'first_name' => 'First name',
             'middle_name' => 'Middle name',
             'last_name' => 'Last name',
@@ -133,8 +145,14 @@ return [
         ]
     ],
     'selections' => [
+        'back_to_dashboard' => 'Back to selections dashboard',
         'dashboard' => [
             'title' => 'Hydraulic selections',
+            'subtitle' => 'Choose selection type',
+            'back' => [
+                'to_project' => 'Back to project',
+                'to_projects' => 'Back to projects'
+            ],
             'single_prefs' => 'Single pump selection by preferences',
             'double_prefs' => 'Double pump selection by preferences',
             'water_station_prefs' => 'Watter supply pumping station selection by preferences',
@@ -148,7 +166,7 @@ return [
             'title_show' => 'Viewing the selection',
             'title_new' => 'Single pump selection by preferences',
             'grouping' => 'Grouping by brands',
-            'producers' => 'Brands',
+            'brands' => 'Brands',
             'types' => [
                 'label' => 'Types',
                 'tooltip' => 'The presence of all the selected types for the series is checked!'
@@ -157,15 +175,15 @@ return [
                 'label' => 'Applications',
                 'tooltip' => 'The presence of all the selected applications for the series is checked!'
             ],
-            'regulations' => 'Built-in regulations',
+            'power_adjustments' => 'Power adjustments',
             'fluid_temp' => 'Fluid temperature, °C',
             'pressure' => 'Delivery head, m',
             'consumption' => 'Volume flow, m³/h',
-            'limit' => 'deviation, %',
+            'limit' => 'Deviation, %',
             'main_pumps_count' => 'Main pumps count',
             'backup_pumps_count' => 'Reserve pumps count',
-            'connection_type' => 'Connection',
-            'phase' => 'Current phase',
+            'connection_type' => 'Connection type',
+            'phase' => 'Mains connection',
             'condition' => 'Condition',
             'power_limit' => 'Limiting the pump power',
             'between_axes_limit' => 'Limiting the between axes distance',

@@ -13,7 +13,7 @@ export const Selection = ({placeholder, defaultValue, options, ...rest}) => {
             showSearch
             allowClear
             filterOption={(input, option) => {
-                return option.label.toString().toLowerCase().startsWith(input.toLowerCase())
+                return option.label.toString().toLowerCase().includes(input.toLowerCase())
             }}
             placeholder={placeholder || ""}
             {...rest}

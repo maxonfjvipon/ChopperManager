@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Actions\RegisterUserAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Pumps\PumpProducer;
+use App\Http\Resources\CountryResource;
+use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpSeries;
+use App\Models\Users\Country;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use App\Models\Users\Area;
@@ -33,7 +35,9 @@ class RegisterController extends Controller
     {
         return Inertia::render('Auth/Register', [
             'businesses' => Business::all(),
-            'areasWithCities' => Area::with('cities')->get(),
+            'countries' => Country::all()->map(function ($country) {
+                return new CountryResource($country);
+            })
         ]);
     }
 
@@ -42,11 +46,11 @@ class RegisterController extends Controller
      *
      * @param RegisterRequest $request
      * @param RegisterUserAction $action
-     * @return Application|RedirectResponse|Redirector
+     * @return RedirectResponse
      */
-    public function register(RegisterRequest $request, RegisterUserAction $action)
+    public function register(RegisterRequest $request, RegisterUserAction $action): RedirectResponse
     {
-        $action->execute($request->validated());
+        $action->execute($request);
         return Redirect::route('verification.notice');
     }
 }

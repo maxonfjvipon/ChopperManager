@@ -1,13 +1,23 @@
 import React, {useMemo} from 'react'
 import {Table} from "antd";
 import Lang from '../../../../translation/lang'
+import {usePage} from "@inertiajs/inertia-react";
 
 export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
-
+    const {locales} = usePage().props
 
     const selectedPumpsColumns = [
-        {title: Lang.get('pages.selections.single.table.name'), dataIndex: 'name', key: 'name', width: '15%'},
-        {title: Lang.get('pages.selections.single.table.part_num'), dataIndex: 'partNum', key: 'partNum'},
+        {
+            title: Lang.get('pages.selections.single.table.name'),
+            dataIndex: 'name',
+            key: 'name',
+            width: '15%'
+        },
+        {
+            title: Lang.get('pages.selections.single.table.part_num'),
+            dataIndex: 'partNum',
+            key: 'partNum'
+        },
         {
             title: Lang.get('pages.selections.single.table.retail_price'),
             dataIndex: 'retailPrice',
@@ -33,8 +43,16 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
             key: 'personalPriceSum',
             sorter: (a, b) => a.personalPriceSum - b.personalPriceSum
         },
-        {title: Lang.get('pages.selections.single.table.dn_input'), dataIndex: 'dnInput', key: 'dnInput'},
-        {title: Lang.get('pages.selections.single.table.dn_output'), dataIndex: 'dnOutput', key: 'dnOutput'},
+        {
+            title: Lang.get('pages.selections.single.table.dn_input'),
+            dataIndex: 'dnInput',
+            key: 'dnInput'
+        },
+        {
+            title: Lang.get('pages.selections.single.table.dn_output'),
+            dataIndex: 'dnOutput',
+            key: 'dnOutput'
+        },
         {
             title: Lang.get('pages.selections.single.table.power'),
             dataIndex: 'power',
@@ -71,6 +89,6 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
                 scroll={{x: 1500, y: 520}}
             />
         )
-        , [selectedPumps])
+        , [selectedPumps, locales])
 
 }

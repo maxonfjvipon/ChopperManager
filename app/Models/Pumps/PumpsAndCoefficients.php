@@ -9,6 +9,6 @@ class PumpsAndCoefficients extends Model
 {
     use HasFactory;
     protected $table = "pumps_and_coefficients";
-    protected $fillable = ['pump_article_num', 'position', 'k', 'b', 'c'];
+    protected $fillable = ['pump_id', 'position', 'k', 'b', 'c'];
     public $timestamps = false;
 }

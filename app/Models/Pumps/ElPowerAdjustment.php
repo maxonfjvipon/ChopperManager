@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models\Pumps;
 
-use App\Traits\HasUsersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 
-class Role extends Model
+class ElPowerAdjustment extends Model
 {
     use HasTranslations;
 
+    protected $table = "electronic_power_adjustments";
     public $translatable = ['name'];
-    protected $fillable = ['name'];
+    use HasFactory;
+
+    protected $guarded = [];
     public $timestamps = false;
-    use HasFactory, HasUsersTrait;
+
 }

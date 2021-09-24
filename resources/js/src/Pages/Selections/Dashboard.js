@@ -1,18 +1,23 @@
 import React from 'react';
 import {Col, message, Row} from "antd";
-import {Authenticated} from "../../Shared/Layout/Authenticated";
 import {DashboardCard} from "../../Shared/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
-import {Common} from "../../Shared/Layout/Common";
 import Lang from '../../../translation/lang'
-import {useLang} from "../../Hooks/lang.hook";
+import {AuthLayout} from "../../Shared/Layout/AuthLayout";
+import {Container} from "../../Shared/ResourcePanel/Index/Container";
+import {useTransRoutes} from "../../Hooks/routes.hook";
 
 const Dashboard = () => {
-    // CONSTS
+    // HOOKS
     const {project_id} = usePage().props
-    const Lang = useLang()
+    const {tRoute} = useTransRoutes()
+
+    const serviceUnavailable = () => {
+        message.info(Lang.get('messages.service_development'))
+    }
+
+    // CONSTS
     const imgPath = "/img/selections-dashboard/"
     const paths = {
         singlePump: 'Nasos-',
@@ -31,17 +36,12 @@ const Dashboard = () => {
             fire: 'Grundfos'
         }
     }
-
-    const serviceUnavailable = () => {
-        message.info(Lang.get('messages.service_development'))
-    }
-
     const cards = [
         {
             title: Lang.get('pages.selections.dashboard.single_prefs'),
             src: imgPath + paths.singlePump + producers.singe + ext,
             onClick: () => {
-                Inertia.get(route('selections.create', project_id))
+                Inertia.get(tRoute('selections.create', project_id))
             }
         },
         {
@@ -81,18 +81,27 @@ const Dashboard = () => {
         },
     ]
 
-
     return (
-        <Row style={{minHeight: 600}} justify="space-around" align="middle" gutter={[0, 10]}>
-            {cards.map(card => (
-                <Col key={card.title} xs={11} md={5}>
-                    <DashboardCard {...card} key={card.title}/>
-                </Col>
-            ))}
-        </Row>
+        <Container
+            title={Lang.get('pages.selections.dashboard.subtitle')}
+            backTitle={project_id !== "-1"
+                ? Lang.get('pages.selections.dashboard.back.to_project')
+                : Lang.get('pages.selections.dashboard.back.to_projects')}
+            backHref={project_id !== "-1"
+                ? tRoute('projects.show', project_id)
+                : tRoute('projects.index')}
+        >
+            <Row justify="space-around" gutter={[0, 10]}>
+                {cards.map(card => (
+                    <Col key={card.title} xs={11} md={5}>
+                        <DashboardCard {...card} key={card.title}/>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     )
 }
 
-Dashboard.layout = page => <Common children={page} title={Lang.get('pages.selections.dashboard.title')} backTo={true} breadcrumbs={useBreadcrumbs().selections}/>
+Dashboard.layout = page => <AuthLayout children={page}/>
 
 export default Dashboard

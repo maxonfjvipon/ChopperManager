@@ -1,14 +1,11 @@
 import React from 'react';
-import {Col, message, Row} from "antd";
+import {Col, message} from "antd";
 import {DashboardCard} from "../Shared/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
-import {Common} from "../Shared/Layout/Common";
-import {useLang} from "../Hooks/lang.hook";
 import Lang from '../../translation/lang'
+import {JustifiedRow} from "../Shared/JustifiedRow";
 
 const Dashboard = () => {
-    const Lang = useLang()
-
     const cards = [
         {
             title: Lang.get('pages.dashboard.select'), src: '/img/dashboard/pumpselection.jpg', onClick: () => {
@@ -28,13 +25,13 @@ const Dashboard = () => {
     ]
 
     return (
-        <Row style={{minHeight: 600}} justify="space-around" align="middle" gutter={[0, 0]}>
+        <JustifiedRow>
             {cards.map(card => (
                 <Col key={card.title} md={7} xs={11}>
                     <DashboardCard {...card} key={card.title}/>
                 </Col>
             ))}
-        </Row>
+        </JustifiedRow>
     )
 }
 

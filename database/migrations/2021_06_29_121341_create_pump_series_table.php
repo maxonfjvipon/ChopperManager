@@ -17,11 +17,11 @@ class CreatePumpSeriesTable extends Migration
         Schema::create('pump_series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('producer_id')->unsigned();
+            $table->bigInteger('brand_id')->unsigned();
         });
 
         Schema::table('pump_series', function (Blueprint $table) {
-            $table->foreign('producer_id')->references('id')->on('pump_producers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('brand_id')->references('id')->on('pump_brands')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

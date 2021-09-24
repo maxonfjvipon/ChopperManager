@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import {Card, Col, Form, InputNumber, Row, Table, Tabs} from "antd";
-import {PrimaryButton} from "../../../Shared/Buttons/PrimaryButton";
+import {Col, Form, InputNumber, Row, Table} from "antd";
 import {useStyles} from "../../../Hooks/styles.hook";
 import {Inertia} from "@inertiajs/inertia";
-import {useLang} from "../../../Hooks/lang.hook";
+import Lang from "../../../../translation/lang";
+import {RoundedCard} from "../../../Shared/RoundedCard";
+import {useTransRoutes} from "../../../Hooks/routes.hook";
 
 
 const EditableContext = React.createContext(null)
@@ -78,12 +79,18 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
 }
 
 export const DiscountsTab = ({discounts}) => {
-    const {fullWidth} = useStyles()
     const discountsForm = 'discounts-form'
-    const Lang = useLang()
+
+    const {tRoute} = useTransRoutes()
 
     const discountsColumns = [
-        {title: Lang.get('pages.profile.discounts.name'), dataIndex: 'name', key: 'producer-name', width: "70%", editable: false},
+        {
+            title: Lang.get('pages.profile.discounts.name'),
+            dataIndex: 'name',
+            key: 'brand-name',
+            width: "70%",
+            editable: false
+        },
         {
             title: Lang.get('pages.profile.discounts.discount'),
             dataIndex: 'value',
@@ -104,37 +111,35 @@ export const DiscountsTab = ({discounts}) => {
     })
 
     const discountsSaveHandler = row => {
-        Inertia.post(route('users.discount.update'), row, {
+        Inertia.post(tRoute('users.discount.update'), row, {
             only: ['discounts'],
         })
     }
 
     return (
-        // <Tabs.TabPane tab="Скидки производителей" key="producers-discounts">
-            <Row justify="space-around" align="middle" gutter={[0, 0]}>
-                <Col md={24} lg={20} xl={15} xxl={12}>
-                    <Card
-                        title={Lang.get('pages.profile.discounts.tab')}
-                        style={{...fullWidth, borderRadius: 10}}
-                    >
-                        <Form name={discountsForm} onFinish={discountsSaveHandler}>
-                            <Table
-                                rowClassName="editable-row"
-                                components={{
-                                    body: {
-                                        cell: EditableCell,
-                                        row: EditableRow
-                                    },
-                                }}
-                                dataSource={discounts}
-                                columns={discountsColumns}
-                                size="small"
-                                scroll={{y: 570}}
-                            />
-                        </Form>
-                    </Card>
-                </Col>
-            </Row>
-        // </Tabs.TabPane>
+        <Row justify="space-around" align="middle" gutter={[0, 0]}>
+            <Col xs={22} sm={20} md={18} lg={16} xl={11} xxl={9}>
+                <RoundedCard
+                    type="inner"
+                    title={Lang.get('pages.profile.discounts.tab')}
+                >
+                    <Form name={discountsForm} onFinish={discountsSaveHandler}>
+                        <Table
+                            rowClassName="editable-row"
+                            components={{
+                                body: {
+                                    cell: EditableCell,
+                                    row: EditableRow
+                                },
+                            }}
+                            dataSource={discounts}
+                            columns={discountsColumns}
+                            size="small"
+                            // scroll={{y: 570}}
+                        />
+                    </Form>
+                </RoundedCard>
+            </Col>
+        </Row>
     )
 }

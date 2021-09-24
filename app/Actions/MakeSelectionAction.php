@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use AmrShawky\LaravelCurrency\Facade\Currency;
+use App\Http\Requests\MakeSelectionRequest;
 use App\Models\LimitCondition;
 use App\Models\Pumps\Pump;
 use App\Support\Selections\IntersectionPoint;
@@ -11,7 +12,7 @@ use App\Support\Selections\Regression;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
-class MakeSelectionAction implements Executable
+class MakeSelectionAction
 {
     private function systemPerformance($intersectionPoint, $pressure, $consumption): array
     {
@@ -25,62 +26,63 @@ class MakeSelectionAction implements Executable
         return $systemPerformance;
     }
 
-    public function execute(array $validated): JsonResponse
+    public function execute(MakeSelectionRequest $request): JsonResponse
     {
         $dbPumps = Pump
             ::with(['series', 'series.discounts' => function ($query) {
                 $query->where('user_id', Auth::id());
             }])
             ->with('currency')
-            ->with(['producer', 'producer.discounts' => function ($query) {
+            ->with(['brand', 'brand.discounts' => function ($query) {
                 $query->where('user_id', Auth::id());
             }])
-            ->with(['coefficients' => function ($query) use ($validated) {
+            ->with(['coefficients' => function ($query) use ($request) {
                 $query->whereBetween(
-                    'count',
-                    [1, max($validated['main_pumps_counts']) + $validated['backup_pumps_count']]
+                    'position',
+                    [1, max($request->main_pumps_counts) + $request->reserve_pumps_count]
                 );
             }])
-            ->whereIn('series_id', $validated['series_ids']);
+            ->whereIn('series_id', $request->series_ids);
 
+        // TODO: from here
         // PHASES
-        if ($validated['current_phase_ids'] && count($validated['current_phase_ids']) > 0) {
-            $dbPumps = $dbPumps->whereIn('phase_id', $validated['current_phase_ids']);
+        if ($request->current_phase_ids && count($request->current_phase_ids) > 0) {
+            $dbPumps = $dbPumps->whereIn('phase_id', $request->current_phase_ids);
         }
 
         // CONNECTION TYPES
-        if ($validated['connection_type_ids'] && count($validated['connection_type_ids']) > 0) {
-            $dbPumps = $dbPumps->whereIn('connection_type_id', $validated['current_phase_ids']);
+        if ($request->connection_type_ids && count($request->connection_type_ids) > 0) {
+            $dbPumps = $dbPumps->whereIn('connection_type_id', $request->current_phase_ids);
         }
 
         // DNS
         $dnInputLimit = false;
         $dnOutputLimit = false;
 
-        if ($validated['dn_input_limit_checked']
-            && $validated['dn_input_limit_condition_id']
-            && $validated['dn_input_limit_id']
+        if ($request->dn_input_limit_checked
+            && $request->dn_input_limit_condition_id
+            && $request->dn_input_limit_id
         ) {
             $dnInputLimit = true;
-            $dbPumps = $dbPumps->with(['dn_input' => function ($query) use ($validated) {
+            $dbPumps = $dbPumps->with(['dn_input' => function ($query) use ($request) {
                 $query->where(
                     'id',
-                    LimitCondition::find($validated['dn_input_limit_condition_id'])->value,
-                    $validated['dn_input_limit_id']
+                    LimitCondition::find($request->dn_input_limit_condition_id)->value,
+                    $request->dn_input_limit_id
                 );
             }]);
         }
 
-        if ($validated['dn_output_limit_checked']
-            && $validated['dn_output_limit_condition_id']
-            && $validated['dn_output_limit_id']
+        if ($request->dn_output_limit_checked
+            && $request->dn_output_limit_condition_id
+            && $request->dn_output_limit_id
         ) {
             $dnOutputLimit = true;
             $dbPumps = $dbPumps->with(['dn_output' => function ($query) use ($validated) {
                 $query->where(
                     'id',
-                    LimitCondition::find($validated['dn_output_limit_condition_id'])->value,
-                    $validated['dn_output_limit_id']
+                    LimitCondition::find($request->dn_output_limit_condition_id)->value,
+                    $request->dn_output_limit_id
                 );
             }]);
         }
@@ -94,33 +96,33 @@ class MakeSelectionAction implements Executable
         }
 
         // POWER LIMIT
-        if ($validated['power_limit_checked']
-            && $validated['power_limit_condition_id']
-            && $validated['power_limit_value']
+        if ($request->power_limit_checked
+            && $request->power_limit_condition_id
+            && $request->power_limit_value
         ) {
             $dbPumps = $dbPumps->where(
                 'power',
-                LimitCondition::find($validated['power_limit_condition_id'])->value,
-                $validated['power_limit_value']
+                LimitCondition::find($request->power_limit_condition_id)->value,
+                $request->power_limit_value
             );
         }
 
         // BETWEEN AXES DISTANCE LIMIT
-        if ($validated['between_axes_limit_checked']
-            && $validated['between_axes_limit_condition_id']
-            && $validated['between_axes_limit_value']
+        if ($request->between_axes_limit_checked
+            && $request->between_axes_limit_condition_id
+            && $request->between_axes_limit_value
         ) {
             $dbPumps = $dbPumps->where(
                 'between_axes_dist',
-                LimitCondition::find($validated['between_axes_limit_condition_id'])->value,
-                $validated['between_axes_limit_value']
+                LimitCondition::find($request->between_axes_limit_condition_id)->value,
+                $request->between_axes_limit_value
             );
         }
 
-        $pressure = $validated['pressure'];
-        $consumption = $validated['consumption'];
-        $backupPumpsCount = $validated['backup_pumps_count'];
-        $limit = $validated['limit'] ?? 0;
+        $pressure = $request->pressure;
+        $consumption = $request->consumption;
+        $backupPumpsCount = $request->backup_pumps_count;
+        $limit = $request->limit ?? 0;
 
         $rates = Currency::rates()
             ->latest()
@@ -139,7 +141,7 @@ class MakeSelectionAction implements Executable
         ])->transform(function ($pump) use ($validated, $pressure, $consumption, $backupPumpsCount, $limit) {
             $performanceAsArray = (new PumpPerformance($pump->performance))->asArray();
             $pumpCountsAndIntersectionPoints = [];
-            foreach ($validated['main_pumps_counts'] as $mainPumpsCount) {
+            foreach ($request->main_pumps_counts as $mainPumpsCount) {
                 $coefficients = $pump->coefficients->firstWhere('count', $mainPumpsCount);
                 $qStart = $performanceAsArray[0] * $mainPumpsCount;
                 $qEnd = $performanceAsArray[(count($performanceAsArray) - 2)] * $mainPumpsCount;
@@ -211,7 +213,6 @@ class MakeSelectionAction implements Executable
 
                 $selectedPumps[] = [
                     'key' => $num++,
-                    'pump_id' => $pump->id,
                     'pumps_count' => $pumpsCount,
                     'name' => $pumpsCount . ' ' . $pump->producer->name . ' ' . $pump->series->name . ' ' . $pump->name,
                     'partNum' => $pump->part_num_main,

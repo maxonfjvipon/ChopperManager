@@ -19,7 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->timestamp('created_at', 0)->useCurrent();
             $table->bigInteger('user_id')->unsigned();
-            $table->boolean('deleted')->default(false);
+            $table->softDeletes();
         });
 
         Schema::table('projects', function (Blueprint $table) {

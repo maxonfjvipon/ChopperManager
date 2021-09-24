@@ -22,7 +22,7 @@ class PumpCollection extends ResourceCollection
             'part_num_main',
             'part_num_backup',
             'part_num_archive',
-            'producer',
+            'brand',
             'series',
             'name',
             'price',

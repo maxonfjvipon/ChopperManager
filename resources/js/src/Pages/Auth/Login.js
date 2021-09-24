@@ -1,62 +1,75 @@
-import React, {useEffect} from 'react'
-import {Card, Col, Divider, Input, Row, Typography} from "antd";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {useStyles} from "../../Hooks/styles.hook";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import {Inertia} from "@inertiajs/inertia";
-import {Common} from "../../Shared/Layout/Common";
-import {useLang} from "../../Hooks/lang.hook";
+import {JustifiedRow} from "../../Shared/JustifiedRow";
+import {Col, Input} from "antd";
+import React from "react";
+import {RoundedCard} from "../../Shared/RoundedCard";
+import {GuestLayout} from "../../Shared/Layout/GuestLayout";
+import {Link} from "@inertiajs/inertia-react";
+import {useTransRoutes} from "../../Hooks/routes.hook";
+import Lang from "../../../translation/lang";
 
 const Login = () => {
-    const {textAlignCenter, fullWidth} = useStyles()
+    // HOOKS
+    const {textAlignCenter, fullWidth, margin} = useStyles()
     const {rules} = useInputRules()
-    const Lang = useLang()
-    const formName = 'login-form'
+    const {tRoute} = useTransRoutes()
 
+    // CONST
+    const formName = 'login-form'
     const items = [
-        {values: {name: 'email', label: Lang.get('pages.login.email'), rules: rules.email}, input: <Input/>},
-        {values: {name: 'password', label: Lang.get('pages.login.password'), rules: rules.password}, input: <Input.Password/>},
+        {
+            values: {name: 'email', label: Lang.get('pages.login.email'), rules: rules.email},
+            input: <Input/>
+        },
+        {
+            values: {
+                name: 'password',
+                label: Lang.get('pages.login.password'),
+                rules: rules.password
+            },
+            input: <Input.Password/>
+        },
     ]
 
+    // HANDLERS
     const loginHandler = body => {
-        Inertia.post(route('login.attempt'), body)
+        Inertia.post(tRoute('login.attempt'), body)
     }
 
+    // RENDER
     return (
-        <Row style={{minHeight: 600}} justify="space-around" align="middle" gutter={[0, 0]}>
-            <Col md={24} lg={20} xl={15} xxl={12}>
-                <Card
-                    title={
-                        <div style={textAlignCenter}>
-                            <Typography>
-                                {Lang.get('pages.login.welcome')}
-                            </Typography>
-                        </div>}
-                    style={{...fullWidth, borderRadius: 10}}
-                >
+        <JustifiedRow>
+            <Col xs={17} sm={13} md={11} lg={9} xl={7} xxl={5}>
+                <RoundedCard title={<div style={textAlignCenter}>{Lang.get('pages.login.welcome')}</div>}>
                     <ItemsForm
-                        labelSpan={6}
+                        layout="vertical"
+                        labelSpan={7}
                         items={items}
                         name={formName}
                         onFinish={loginHandler}
                     />
-                    <Divider/>
-                    <PrimaryButton style={{...fullWidth, marginBottom: 10}} htmlType="submit" form={formName}>
+                </RoundedCard>
+                <div style={margin.top(16)}>
+                    <PrimaryButton style={fullWidth} htmlType="submit" form={formName}>
                         {Lang.get('pages.login.login')}
                     </PrimaryButton>
+                </div>
+                <div style={margin.top(16)}>
                     <div style={textAlignCenter}>
-                        <Typography.Link href={route('register')}>
+                        <Link href={tRoute('register')}>
                             {Lang.get('pages.login.not_registered')}
-                        </Typography.Link>
+                        </Link>
                     </div>
-                </Card>
+                </div>
             </Col>
-        </Row>
+        </JustifiedRow>
     )
 }
 
-// Login.layout = page => <Guest children={page}/>
-Login.layout = page => <Common children={page}/>
+Login.layout = page => <GuestLayout children={page}/>
 
 export default Login
