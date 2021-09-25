@@ -108,7 +108,7 @@ const Register = () => {
 
     // HANDLERS
     const registerHandler = body => {
-        console.log(tRoute('register.attempt'))
+        // console.log(tRoute('register.attempt'))
         Inertia.post(tRoute('register.attempt'), body)
     }
 

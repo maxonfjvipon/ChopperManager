@@ -22,9 +22,9 @@ const Show = () => {
     const {reducedAntFormItemClassName} = useStyles()
     const {tRoute} = useTransRoutes()
 
-    useEffect(() => {
-        console.log(pump)
-    }, [pump])
+    // useEffect(() => {
+    //     console.log(pump)
+    // }, [pump])
 
     const items = [
         {

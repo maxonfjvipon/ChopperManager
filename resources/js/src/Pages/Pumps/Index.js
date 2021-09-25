@@ -17,9 +17,9 @@ import {EditOutlined} from "@ant-design/icons";
 const Index = () => {
     const {pumps, _pumps} = usePage().props
 
-    useEffect(() => {
-        console.log("pumps", pumps)
-    }, [pumps])
+    // useEffect(() => {
+    //     console.log("pumps", pumps)
+    // }, [pumps])
 
     // const columns = [
     //     {
