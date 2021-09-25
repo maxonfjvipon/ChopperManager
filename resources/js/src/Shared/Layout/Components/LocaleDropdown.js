@@ -13,7 +13,7 @@ export const LocaleDropdown = () => {
                 {locales.supported.map(locale => (
                     <Menu.Item key={locale}>
                         <Link
-                            // preserveState
+                            preserveState
                             preserveScroll
                             method="GET"
                             href={locales.current_localized[locale]}

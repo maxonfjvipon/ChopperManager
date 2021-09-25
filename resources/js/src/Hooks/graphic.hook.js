@@ -1,6 +1,7 @@
 import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer} from "victory";
 import React, {useMemo, useState} from "react";
 import {RoundedCard} from "../Shared/RoundedCard";
+import Lang from "../../translation/lang";
 // import Paper from "@material-ui/core/Paper";
 
 export const useGraphic = () => {
@@ -33,11 +34,11 @@ export const useGraphic = () => {
                 >
                     <VictoryAxis
                         orientation="bottom"
-                        label="Расход, м³/час"
+                        label={Lang.get('graphic.axis.flow')}
                     />
                     <VictoryAxis
                         dependentAxis
-                        label="Напор, м"
+                        label={Lang.get('graphic.axis.head')}
                     />
                     {multiline
                         ? (toShow
@@ -79,11 +80,16 @@ export const useGraphic = () => {
                         gutter={20}
                         colorScale={["red", "green"]}
                         data={(workingPoint && toShow) ? [
-                            {name: "Рабочая точка\nРасход: " + workingPoint.x + "\nНапор: " + workingPoint.y},
                             {
-                                name: "Точка пересечения\nРасход: " + (toShow.intersectionPoint.x).toFixed(1)
-                                    + "\nНапор: " + (toShow.intersectionPoint.y).toFixed(1)
-                            }
+                                name: Lang.get('graphic.legend.working_point') +
+                                    "\n" + Lang.get('graphic.legend.flow') + ": " + workingPoint.x +
+                                    "\n" + Lang.get('graphic.legend.head') + ": " + workingPoint.y
+                            },
+                            {
+                                name: Lang.get('graphic.legend.intersection_point') +
+                                    "\n" + Lang.get('graphic.legend.flow') + ": " + (toShow.intersectionPoint.x).toFixed(1) +
+                                    "\n" + Lang.get('graphic.legend.head') + ": " + (toShow.intersectionPoint.y).toFixed(1)
+                            },
                         ] : []}
                     />
                 </VictoryChart>
