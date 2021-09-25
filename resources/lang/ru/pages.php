@@ -80,6 +80,8 @@ return [
     ],
     'pumps' => [
         'title' => 'Насосы',
+        'props' => 'Свойтва',
+        'back' => 'Назад к насосам',
         'data' => [
             'article_num_main' => 'Артикул основной',
             'article_num_reserve' => 'Артикул резернвый',

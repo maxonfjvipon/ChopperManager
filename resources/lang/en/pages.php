@@ -81,7 +81,7 @@ return [
     'pumps' => [
         'title' => 'Pumps',
         'props' => 'Properties',
-        'back' => 'Back to projects',
+        'back' => 'Back to pumps',
         'data' => [
             'article_num_main' => 'Main article number',
             'article_num_reserve' => 'Reserve article number',
