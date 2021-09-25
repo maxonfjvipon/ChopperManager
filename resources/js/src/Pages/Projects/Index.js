@@ -6,7 +6,6 @@ import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import Lang from "../../../translation/lang";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
-import route from "ziggy-js/src/js";
 import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {useTransRoutes} from "../../Hooks/routes.hook";
@@ -65,7 +64,7 @@ const Index = () => {
     return (
         <Container
             title={Lang.get('pages.projects.title')}
-            mainActionRoute={route('projects.create')}
+            mainActionRoute={tRoute('projects.create')}
             mainActionButtonLabel={Lang.get('pages.projects.index.button')}
             buttons={[<SecondaryButton onClick={() => {
                 Inertia.get(tRoute('selections.dashboard', -1))
