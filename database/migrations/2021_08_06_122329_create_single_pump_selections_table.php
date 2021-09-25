@@ -24,7 +24,7 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->integer('pumps_count')->unsigned();
             $table->float('flow');
             $table->float('head');
-            $table->float('fluid_temp')->default(20);
+            $table->float('fluid_temperature')->default(20);
             $table->float('deviation')->nullable()->default(0);
             $table->tinyInteger('reserve_pumps_count')->unsigned();
 
@@ -45,9 +45,9 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->bigInteger('dn_pressure_limit_id')->unsigned()->nullable();
 
             $table->string('connection_type_ids', 1024)->nullable();
-            $table->string('mains_phase_ids', 3)->nullable();
+            $table->string('mains_connection_ids', 3)->nullable();
             $table->string('main_pumps_counts', 20);
-            $table->string('pump_brands_ids');
+            $table->string('pump_brand_ids');
             $table->string('power_adjustment_ids', 3)->nullable();
             $table->string('pump_type_ids')->nullable();
             $table->string('pump_application_ids')->nullable();

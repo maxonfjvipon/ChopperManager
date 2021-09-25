@@ -250,7 +250,7 @@ const Index = () => {
         },
         {
             title: Lang.get('pages.pumps.data.connection'),
-            dataIndex: 'connection',
+            dataIndex: 'mains_connection',
             // render: connection => connection.phase + "(" + connection.voltage + ")",
             width: 90
         },
@@ -305,7 +305,7 @@ const Index = () => {
                 columns={columns}
                 dataSource={pumps}
                 showHandler={showPumpClickHandler}
-                scroll={{x: 4000, y: 600}}
+                scroll={{x: 4000, y: 630}}
             />
         </Container>
     )

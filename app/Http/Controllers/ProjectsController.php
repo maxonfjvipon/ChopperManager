@@ -23,10 +23,7 @@ class ProjectsController extends Controller
     public function index(): Response
     {
         return Inertia::render('Projects/Index', [
-//            'projects' => auth()->user()->projects()->withCount(['selections' => function ($query) {
-//                $query->where('deleted', false);
-//            }])->where('deleted', false)->get()->all()
-            'projects' => \auth()->user()->projects
+            'projects' => auth()->user()->projects()->withCount('selections')->get(),
         ]);
     }
 

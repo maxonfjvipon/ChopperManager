@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
 import {usePage} from "@inertiajs/inertia-react";
-import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {ItemsForm} from "../../Shared/ItemsForm";
-import {Card, Col, Input, Row} from "antd";
+import {Col, Input, Row} from "antd";
 import {useStyles} from "../../Hooks/styles.hook";
 import {
     VictoryChart,
@@ -13,39 +12,50 @@ import {
     VictoryAxis
 } from 'victory'
 import Lang from '../../../translation/lang'
+import {AuthLayout} from "../../Shared/Layout/AuthLayout";
+import {RoundedCard} from "../../Shared/RoundedCard";
+import {Container} from "../../Shared/ResourcePanel/Index/Container";
+import {useTransRoutes} from "../../Hooks/routes.hook";
 
 const Show = () => {
     const {pump} = usePage().props
-    const {reducedAntFormItemClassName, fullWidth} = useStyles()
+    const {reducedAntFormItemClassName} = useStyles()
+    const {tRoute} = useTransRoutes()
 
     useEffect(() => {
-        // console.log(pump)
+        console.log(pump)
     }, [pump])
 
     const items = [
         {
             values: {
-                name: 'part_num_main',
-                label: Lang.get('pages.pumps.data.part_num_main'),
-                initialValue: pump.data.part_num_main,
+                name: 'article_num_main',
+                label: Lang.get('pages.pumps.data.article_num_main'),
+                initialValue: pump.data.article_num_main,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'part_num_backup',
-                label: Lang.get('pages.pumps.data.part_num_backup'),
-                initialValue: pump.data.part_num_backup,
+                name: 'article_num_reserve',
+                label: Lang.get('pages.pumps.data.article_num_reserve'),
+                initialValue: pump.data.article_num_reserve,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'part_num_archive',
-                label: Lang.get('pages.pumps.data.part_num_archive'),
-                initialValue: pump.data.part_num_archive,
+                name: 'article_num_archive',
+                label: Lang.get('pages.pumps.data.article_num_archive'),
+                initialValue: pump.data.article_num_archive,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
@@ -53,7 +63,9 @@ const Show = () => {
                 label: Lang.get('pages.pumps.data.price'),
                 initialValue: pump.data.price,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
@@ -61,7 +73,9 @@ const Show = () => {
                 label: Lang.get('pages.pumps.data.currency'),
                 initialValue: pump.data.currency,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
@@ -69,23 +83,29 @@ const Show = () => {
                 label: Lang.get('pages.pumps.data.weight'),
                 initialValue: pump.data.weight,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'power',
-                label: Lang.get('pages.pumps.data.power'),
-                initialValue: pump.data.power,
+                name: 'rated_power',
+                label: Lang.get('pages.pumps.data.rated_power'),
+                initialValue: pump.data.rated_power,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'amperage',
-                label: Lang.get('pages.pumps.data.amperage'),
-                initialValue: pump.data.amperage,
+                name: 'rated_current',
+                label: Lang.get('pages.pumps.data.rated_current'),
+                initialValue: pump.data.rated_current,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
@@ -93,47 +113,59 @@ const Show = () => {
                 label: Lang.get('pages.pumps.data.connection_type'),
                 initialValue: pump.data.connection_type,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'min_liquid_temp',
-                label: Lang.get('pages.pumps.data.min_fluid_temp'),
-                initialValue: pump.data.min_liquid_temp,
+                name: 'fluid_temp_min',
+                label: Lang.get('pages.pumps.data.fluid_temp_min'),
+                initialValue: pump.data.fluid_temp_min,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'max_liquid_temp',
-                label: Lang.get('pages.pumps.data.max_fluid_temp'),
-                initialValue: pump.data.max_liquid_temp,
+                name: 'fluid_temp_max',
+                label: Lang.get('pages.pumps.data.fluid_temp_max'),
+                initialValue: pump.data.fluid_temp_max,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'between_axes_dist',
-                label: Lang.get('pages.pumps.data.between_axes_dist'),
-                initialValue: pump.data.between_axes_dist,
+                name: 'ptp_length',
+                label: Lang.get('pages.pumps.data.ptp_length'),
+                initialValue: pump.data.ptp_length,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'dn_input',
-                label: Lang.get('pages.pumps.data.dn_input'),
-                initialValue: pump.data.dn_input,
+                name: 'dn_suction',
+                label: Lang.get('pages.pumps.data.dn_suction'),
+                initialValue: pump.data.dn_suction,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'dn_output',
-                label: Lang.get('pages.pumps.data.dn_output'),
-                initialValue: pump.data.dn_output,
+                name: 'dn_pressure',
+                label: Lang.get('pages.pumps.data.dn_pressure'),
+                initialValue: pump.data.dn_pressure,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
@@ -141,83 +173,119 @@ const Show = () => {
                 label: Lang.get('pages.pumps.data.category'),
                 initialValue: pump.data.category,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
         },
         {
             values: {
-                name: 'regulation',
-                label: Lang.get('pages.pumps.data.regulation'),
-                initialValue: pump.data.regulation,
+                name: 'connection',
+                label: Lang.get('pages.pumps.data.connection'),
+                initialValue: pump.data.connection,
                 className: reducedAntFormItemClassName,
-            }, input: <Input bordered={false} readOnly/>
+            }, input: <Input
+                //bordered={false}
+                readOnly/>
+        },
+        {
+            values: {
+                name: 'types',
+                label: Lang.get('pages.pumps.data.types'),
+                initialValue: pump.data.types,
+                className: reducedAntFormItemClassName,
+            }, input: <Input.TextArea
+                autoSize
+                //bordered={false}
+                readOnly/>
+        },
+        {
+            values: {
+                name: 'applications',
+                label: Lang.get('pages.pumps.data.applications'),
+                initialValue: pump.data.applications,
+                className: reducedAntFormItemClassName,
+            }, input: <Input.TextArea
+                autoSize
+                //bordered={false}
+                readOnly/>
         },
     ]
 
+    const width = 1000
+
     return (
-        <Row justify="space-around" gutter={[10, 10]}>
-            <Col md={24} lg={15} xl={7} xxl={5}>
-                <Card
-                    style={{...fullWidth, borderRadius: 10}}
-                    title={`${pump.data.brand} ${pump.data.series} ${pump.data.name}`}
+        <Container
+            title={pump.data.full_name}
+            backTitle={Lang.get('pages.pumps.back')}
+            backHref={tRoute('pumps.index')}
+        >
+            <Row justify="space-around" gutter={[10, 10]} style={{flex: 'auto'}}>
+                <Col xs={24} sm={20} md={16} lg={13} xl={10} xxl={7} style={{display: 'flex'}}>
+                    <RoundedCard
+                        type="inner"
+                        title={Lang.get('pages.pumps.props')}
+                        style={{flex: 'auto'}}
+                    >
+                        <ItemsForm
+                            layout="horizontal"
+                            labelSpan={{xs: 9}}
+                            items={items}
+                        />
+                    </RoundedCard>
+                </Col>
+                <Col xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}
+                     style={{flex: 'auto', display: 'flex'}}
                 >
-                    <ItemsForm layout="horizontal" labelSpan={15} items={items}/>
-                </Card>
-            </Col>
-            <Col md={24} lg={15} xl={17} xxl={19}>
-                <Card
-                    style={{...fullWidth, borderRadius: 10}}
-                    title={Lang.get('pages.pumps.hydraulic_perf')}
-                >
-                    <Row justify="space-around">
-                        <Col xs={18}>
-                            <VictoryChart
-                                width={1000}
-                                height={529}
-                                // responsive={false}
-                                domain={{y: [0, pump.data.performance.y_max]}}
-                                // standalone={false}
-                                containerComponent={<VictoryVoronoiContainer
-                                    responsive={false}
-                                />}
-                            >
-                                <VictoryAxis
-                                    orientation="bottom"
-                                    label={Lang.get('pages.pumps.consumption')}
-                                />
-                                <VictoryAxis dependentAxis
-                                             label={Lang.get('pages.pumps.pressure')}
-                                />
-                                <VictoryLine
-                                    interpolation="linear" data={pump.data.performance.line_data}
-                                    style={{data: {stroke: "blue"}}}
-                                />
-                                <VictoryScatter
-                                    data={pump.data.performance.line_data}
-                                    size={5}
-                                    style={{
-                                        data: {fill: "blue"},
-                                        labels: {fill: "blue"}
-                                    }}
-                                    labels={({datum}) => {
-                                        return "Q: " + datum.x + ", H: " + datum.y
-                                    }}
-                                    labelComponent={<VictoryTooltip/>}
-                                />
-                            </VictoryChart>
-                        </Col>
-                    </Row>
-                </Card>
-            </Col>
-        </Row>
+                    <RoundedCard
+                        type="inner"
+                        className={'flex-rounded-card'}
+                        title={Lang.get('pages.pumps.hydraulic_perf')}
+                    >
+                        <Row justify="space-around" align="middle" style={{flex: "auto"}}>
+                            <Col>
+                                <VictoryChart
+                                    width={width}
+                                    height={width / 2 + 100}
+                                    // responsive={false}
+                                    domain={{y: [0, pump.data.performance.y_max]}}
+                                    // standalone={false}
+                                    containerComponent={<VictoryVoronoiContainer
+                                        // responsive={false}
+                                    />}
+                                >
+                                    <VictoryAxis
+                                        orientation="bottom"
+                                        label={Lang.get('pages.pumps.consumption')}
+                                    />
+                                    <VictoryAxis dependentAxis
+                                                 label={Lang.get('pages.pumps.pressure')}
+                                    />
+                                    <VictoryLine
+                                        interpolation="linear" data={pump.data.performance.line_data}
+                                        style={{data: {stroke: "blue"}}}
+                                    />
+                                    <VictoryScatter
+                                        data={pump.data.performance.line_data}
+                                        size={5}
+                                        style={{
+                                            data: {fill: "blue"},
+                                            labels: {fill: "blue"}
+                                        }}
+                                        labels={({datum}) => {
+                                            return "Q: " + datum.x + ", H: " + datum.y
+                                        }}
+                                        labelComponent={<VictoryTooltip/>}
+                                    />
+                                </VictoryChart>
+                            </Col>
+                        </Row>
+                    </RoundedCard>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
-Show.layout = page => <Common
-    children={page}
-    backTo={true}
-    title={Lang.get('pages.pumps.title')}
-    breadcrumbs={useBreadcrumbs().pumps}
-
-/>
+Show.layout = page => <AuthLayout children={page}/>
 
 export default Show

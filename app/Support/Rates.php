@@ -22,6 +22,11 @@ class Rates
             ->get();
     }
 
+    public function base(): string
+    {
+        return $this->base;
+    }
+
     public function rate(string $code)
     {
         return $this->rates[array_key_exists($code, $this->rates) ? $code : $this->base];

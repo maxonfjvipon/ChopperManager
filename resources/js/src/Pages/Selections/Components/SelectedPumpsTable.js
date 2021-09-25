@@ -6,7 +6,7 @@ import {usePage} from "@inertiajs/inertia-react";
 export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
     const {locales} = usePage().props
 
-    const selectedPumpsColumns = [
+    const columns = [
         {
             title: Lang.get('pages.selections.single.table.name'),
             dataIndex: 'name',
@@ -15,8 +15,8 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
         },
         {
             title: Lang.get('pages.selections.single.table.part_num'),
-            dataIndex: 'partNum',
-            key: 'partNum'
+            dataIndex: 'articleNum',
+            key: 'articleNum'
         },
         {
             title: Lang.get('pages.selections.single.table.retail_price'),
@@ -26,9 +26,9 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
         },
         {
             title: Lang.get('pages.selections.single.table.discounted_price'),
-            dataIndex: 'personalPrice',
-            key: 'personalPrice',
-            sorter: (a, b) => a.personalPrice - b.personalPrice,
+            dataIndex: 'discountedPrice',
+            key: 'discountedPrice',
+            sorter: (a, b) => a.discountedPrice - b.discountedPrice,
             defaultSortOrder: 'ascend'
         },
         {
@@ -39,25 +39,25 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
         },
         {
             title: Lang.get('pages.selections.single.table.total_discounted_price'),
-            dataIndex: 'personalPriceSum',
-            key: 'personalPriceSum',
-            sorter: (a, b) => a.personalPriceSum - b.personalPriceSum
+            dataIndex: 'discountedPriceSum',
+            key: 'discountedPriceSum',
+            sorter: (a, b) => a.discountedPriceSum - b.discountedPriceSum
         },
         {
             title: Lang.get('pages.selections.single.table.dn_input'),
-            dataIndex: 'dnInput',
-            key: 'dnInput'
+            dataIndex: 'dnSuction',
+            key: 'dnSuction'
         },
         {
             title: Lang.get('pages.selections.single.table.dn_output'),
-            dataIndex: 'dnOutput',
-            key: 'dnOutput'
+            dataIndex: 'dnPressure',
+            key: 'dnPressure'
         },
         {
             title: Lang.get('pages.selections.single.table.power'),
-            dataIndex: 'power',
-            key: 'power',
-            sorter: (a, b) => a.power - b.power
+            dataIndex: 'rated_power',
+            key: 'rated_power',
+            sorter: (a, b) => a.rated_power - b.rated_power
         },
         {
             title: Lang.get('pages.selections.single.table.total_power'),
@@ -67,28 +67,27 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
         },
         {
             title: Lang.get('pages.selections.single.table.between_axes_dist'),
-            dataIndex: 'betweenAxesDist',
-            key: 'betweenAxesDist',
-            sorter: (a, b) => a.betweenAxesDist - b.betweenAxesDist
+            dataIndex: 'ptpLength',
+            key: 'ptpLength',
+            sorter: (a, b) => a.ptpLength - b.ptpLength
         },
     ]
 
     return useMemo(() => (
-            <Table
-                size="small"
-                columns={selectedPumpsColumns}
-                dataSource={selectedPumps}
-                onRow={(record, _) => {
-                    return {
-                        onClick: _ => {
-                            setStationToShow(record);
-                        }
+        <Table
+            size="small"
+            columns={columns}
+            dataSource={selectedPumps}
+            onRow={(record, _) => {
+                return {
+                    onClick: _ => {
+                        setStationToShow(record);
                     }
-                }}
-                pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
-                scroll={{x: 1500, y: 520}}
-            />
-        )
-        , [selectedPumps, locales])
+                }
+            }}
+            pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
+            scroll={{x: 1500, y: 430}}
+        />
+    ), [selectedPumps, locales])
 
 }

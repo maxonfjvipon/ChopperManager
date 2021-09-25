@@ -111,6 +111,8 @@ return [
     ],
     'profile' => [
         'title' => 'Профиль',
+        'props' => 'Свойства',
+        'back' => 'Назад к насосам',
         'index' => [
             'cards' => [
                 'user_info' => 'Обновить информацию о пользователе',
@@ -145,7 +147,10 @@ return [
         ]
     ], // TODO
     'selections' => [
-        'back_to_dashboard' => 'Назад к типам подборов',
+        'back' => [
+            'to_selections_dashboard' => 'Назад к дашборду подборов',
+            'to_project' => 'Назад к проекту'
+        ],
         'dashboard' => [
             'title' => 'Гидравлический подбор',
             'subtitle' => 'Выберите тип подбора',

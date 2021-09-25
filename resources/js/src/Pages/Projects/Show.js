@@ -45,37 +45,37 @@ const Show = () => {
         },
         {
             title: Lang.get('pages.projects.show.table.part_num'),
-            dataIndex: 'part_num_main',
+            dataIndex: 'article_num',
             render: (_, record) => <Link
-                href={tRoute('pumps.show', record.id)}>{record.part_num_main}</Link>
+                href={tRoute('pumps.show', record.pump_id)}>{record.article_num}</Link>
         },
         {
             title: Lang.get('pages.projects.show.table.consumption'),
-            dataIndex: 'consumption',
+            dataIndex: 'flow',
         },
         {
             title: Lang.get('pages.projects.show.table.pressure'),
-            dataIndex: 'pressure',
+            dataIndex: 'head',
         },
         {
             title: Lang.get('pages.projects.show.table.price'),
-            dataIndex: 'price',
-            sorter: (a, b) => a.price - b.price
+            dataIndex: 'discounted_price',
+            sorter: (a, b) => a.discounted_price - b.discounted_price
         },
         {
             title: Lang.get('pages.projects.show.table.total_price'),
-            dataIndex: 'sum_price',
-            sorter: (a, b) => a.sum_price - b.sum_price
+            dataIndex: 'total_discounted_price',
+            sorter: (a, b) => a.total_discounted_price - b.total_discounted_price
         },
         {
             title: Lang.get('pages.projects.show.table.power'),
-            dataIndex: 'power',
-            sorter: (a, b) => a.power - b.power
+            dataIndex: 'rated_power',
+            sorter: (a, b) => a.rated_power - b.rated_power
         },
         {
             title: Lang.get('pages.projects.show.table.total_power'),
-            dataIndex: 'sum_power',
-            sorter: (a, b) => a.sum_power - b.sum_power
+            dataIndex: 'total_rated_power',
+            sorter: (a, b) => a.total_rated_power - b.total_rated_power
         },
         {
             key: 'actions', width: '5%', render: (_, record) => {
@@ -98,16 +98,16 @@ const Show = () => {
                                     <Button icon={<DeleteOutlined/>}/>
                                 </Popconfirm>
                             </Tooltip>
-                            <Tooltip placement="topRight" title={Lang.get('tooltips.print')}>
-                                <Button icon={<PrinterOutlined/>} onClick={() => {
-                                    message.info(Lang.get('messages.function_development'))
-                                }}/>
-                            </Tooltip>
-                            <Tooltip placement="topRight" title={Lang.get('tooltips.export')}>
-                                <Button icon={<ExportOutlined/>} onClick={() => {
-                                    message.info(Lang.get('messages.function_development'))
-                                }}/>
-                            </Tooltip>
+                            {/*<Tooltip placement="topRight" title={Lang.get('tooltips.print')}>*/}
+                            {/*    <Button icon={<PrinterOutlined/>} onClick={() => {*/}
+                            {/*        message.info(Lang.get('messages.function_development'))*/}
+                            {/*    }}/>*/}
+                            {/*</Tooltip>*/}
+                            {/*<Tooltip placement="topRight" title={Lang.get('tooltips.export')}>*/}
+                            {/*    <Button icon={<ExportOutlined/>} onClick={() => {*/}
+                            {/*        message.info(Lang.get('messages.function_development'))*/}
+                            {/*    }}/>*/}
+                            {/*</Tooltip>*/}
                         </Space>
                     </BoxFlexEnd>
                 )

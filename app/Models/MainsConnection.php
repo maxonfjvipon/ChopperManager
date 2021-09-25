@@ -11,8 +11,11 @@ class MainsConnection extends Model
     public $timestamps = false;
     use HasFactory;
 
+    protected $appends = ['full_value'];
+
     public function getFullValueAttribute()
     {
-        return "{$this->value} ({$this->voltage})";
+        return "{$this->phase}({$this->voltage})";
     }
+
 }

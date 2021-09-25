@@ -19,7 +19,9 @@ export const Container = ({
                           }) => {
     const backLink = (backHref && backTitle)
         ? <Link href={backHref}>{"<<" + backTitle}</Link>
-        : null
+        : (backTitle && !backHref)
+            ? <a href={"javascript:history.back()"}>{"<<" + backTitle}</a>
+            : null
 
     const [noActions, setNoActions] = useState(true)
 

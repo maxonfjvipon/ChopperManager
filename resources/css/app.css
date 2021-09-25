@@ -76,7 +76,7 @@
     color: #1890ff;
 }
 
-button, input, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item {
+button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item {
     border-radius: 7px !important;
 }
 
@@ -102,4 +102,15 @@ button, input, .ant-select-selector, .ant-input-password, .ant-input-number, .an
     display: flex;
     flex: auto;
     flex-direction: column;
+}
+
+.flex-rounded-card {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-rounded-card .ant-card-body {
+    display: flex;
+    flex: auto;
 }

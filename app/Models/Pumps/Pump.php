@@ -20,10 +20,23 @@ class Pump extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
-//    protected $primaryKey = 'article_num_main';
 
-    use HasFactory;
-    use BelongsToThrough;
+    use HasFactory, BelongsToThrough;
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->brand->name} {$this->series->name} {$this->name}";
+    }
+
+    public function getImplodedTypesAttribute()
+    {
+        return implode(", ", $this->series->types->map(fn($type) => $type->name)->toArray());
+    }
+
+    public function getImplodedApplicationsAttribute()
+    {
+        return implode(", ", $this->series->applications->map(fn($application) => $application->name)->toArray());
+    }
 
     public function series(): BelongsTo
     {

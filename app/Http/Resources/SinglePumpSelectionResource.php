@@ -12,7 +12,7 @@ class SinglePumpSelectionResource extends JsonResource
      */
     private function arrayOfIntsFromString($string): array
     {
-        return $string === null ? [] : array_map('intval', explode($this->separator, $string));
+        return $string === null ? [] : array_map('intval', explode(",", $string));
     }
 
     /**
@@ -25,34 +25,34 @@ class SinglePumpSelectionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'pressure' => $this->pressure,
-            'consumption' => $this->consumption,
-            'liquid_temperature' => $this->liquid_temperature,
-            'limit' => $this->limit,
-            'backup_pumps_count' => $this->backup_pumps_count,
+            'head' => $this->head,
+            'flow' => $this->flow,
+            'fluid_temperature' => $this->fluid_temperature,
+            'deviation' => $this->deviation,
+            'reserve_pumps_count' => $this->reserve_pumps_count,
             'selected_pump_name' => $this->selected_pump_name,
 
             'power_limit_checked' => $this->power_limit_checked,
-            'power_limit_condition_id' => $this->powerLimitCondition->id ?? null,
+            'power_limit_condition_id' => $this->power_limit_condition_id,
             'power_limit_value' => $this->power_limit_value,
 
-            'between_axes_limit_checked' => $this->between_axes_limit_checked,
-            'between_axes_limit_condition_id' => $this->betweenAxesLimitCondition->id ?? null,
-            'between_axes_limit_value' => $this->betwee_axes_limit_value,
+            'ptp_length_limit_checked' => $this->ptp_length_limit_checked,
+            'ptp_length_limit_condition_id' => $this->ptp_length_limit_condition_id,
+            'ptp_length_limit_value' => $this->ptp_length_limit_value,
 
-            'dn_input_limit_checked' => $this->dn_input_limit_checked,
-            'dn_input_limit_condition_id' => $this->dnInputLimitCondition->id ?? null,
-            'dn_input_limit_id' => $this->dnInputLimit->id ?? null,
+            'dn_suction_limit_checked' => $this->dn_suction_limit_checked,
+            'dn_suction_limit_condition_id' => $this->dn_suction_limit_condition_id,
+            'dn_suction_limit_id' => $this->dn_suction_limit_id,
 
-            'dn_output_limit_checked' => $this->dn_output_limit_checked,
-            'dn_output_limit_condition_id' => $this->dnOutputLimitCondition->id ?? null,
-            'dn_output_limit_id' => $this->dnOutputLimit->id ?? null,
+            'dn_pressure_limit_checked' => $this->dn_pressure_limit_checked,
+            'dn_pressure_limit_condition_id' => $this->dn_pressure_limit_condition_id,
+            'dn_pressure_limit_id' => $this->dn_pressure_limit_id,
 
             'connection_types' => $this->arrayOfIntsFromString($this->connection_type_ids),
-            'phases' => $this->arrayOfIntsFromString($this->current_phase_ids),
+            'power_adjustments' => $this->arrayOfIntsFromString($this->power_adjustment_ids),
             'main_pumps_counts' => $this->arrayOfIntsFromString($this->main_pumps_counts),
             'pump_producers' => $this->arrayOfIntsFromString($this->pump_producer_ids),
-            'pump_regulations' => $this->arrayOfIntsFromString($this->pump_regulation_ids),
+            'mains_connections' => $this->arrayOfIntsFromString($this->mains_connection_ids),
             'pump_types' => $this->arrayOfIntsFromString($this->pump_type_ids),
             'pump_applications' => $this->arrayOfIntsFromString($this->pump_application_ids)
 

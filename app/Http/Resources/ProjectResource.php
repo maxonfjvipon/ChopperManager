@@ -20,13 +20,51 @@ class ProjectResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $rates = new Rates('RUB'); // fixme
+        $rates = new Rates(Auth::user()->currency->code); // fixme
 
         // TODO: make selections
 
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'selections' => $this->selections()->with([
+                'pump' => function ($query) {
+                    $query->select('id', 'name', 'price', 'rated_power', 'currency_id', 'series_id', 'article_num_main');
+                },
+                'pump.currency',
+                'pump.series',
+                'pump.series.discounts' => function ($query) {
+                    $query->where('user_id', Auth::id());
+                },
+                'pump.brand',
+                'pump.brand.discounts' => function ($query) {
+                    $query->where('user_id', Auth::id());
+                },
+            ])
+                ->get(['pump_id', 'selected_pump_name', 'pumps_count', 'head', 'flow', 'id', 'created_at'])
+                ->map(function ($selection) use ($rates) {
+                    $pump_price = $selection->pump->currency->code === $rates->base()
+                        ? $selection->pump->price
+                        : round($selection->pump->price / $rates->rate($selection->pump->currency->code), 2);
+                    $discounted_pump_price = $pump_price - $pump_price * $selection->pump->series->discounts[0]->value / 100;
+
+                    return [
+                        'id' => $selection->id,
+                        'pump_id' => $selection->pump->id,
+                        'article_num' => $selection->pump->article_num_main,
+                        'created_at' => $selection->created_at->format('d.m.Y'),
+                        'flow' => $selection->flow,
+                        'head' => $selection->head,
+                        'selected_pump_name' => $selection->pumps_count . ' '
+                            . $selection->pump->brand->name . ' '
+                            . $selection->pump->series->name . ' '
+                            . $selection->pump->name,
+                        'discounted_price' => round($discounted_pump_price, 1),
+                        'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1),
+                        'rated_power' => $selection->pump->rated_power,
+                        'total_rated_power' => round($selection->pump->rated_power * $selection->pumps_count, 1)
+                    ];
+                })->all(),
 //            'selections' => SinglePumpSelection::with([
 //                'pump' => function ($query) {
 //                    $query->select('id', 'name', 'price', 'power', 'currency_id', 'series_id', 'part_num_main');

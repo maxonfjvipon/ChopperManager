@@ -6,19 +6,19 @@ namespace App\Support\Selections;
 
 class IntersectionPoint
 {
-    private $coefficients, $pressure, $consumption, $point;
+    private $coefficients, $head, $flow, $point;
     private $isCalculated = false;
 
-    public function __construct($coefficients, $pressure, $consumption)
+    public function __construct($coefficients, $head, $flow)
     {
         $this->coefficients = $coefficients;
-        $this->pressure = $pressure;
-        $this->consumption = $consumption;
+        $this->head = $head;
+        $this->flow = $flow;
     }
 
     private function calculatedCoefficients()
     {
-        $aCoef = $this->coefficients[0] - ($this->pressure / ($this->consumption * $this->consumption));
+        $aCoef = $this->coefficients[0] - ($this->head / ($this->flow * $this->flow));
         $d = $this->coefficients[1] * $this->coefficients[1] - 4 * $aCoef * $this->coefficients[2];
         $x1 = (-$this->coefficients[1] + sqrt($d)) / (2 * $aCoef);
         $x2 = (-$this->coefficients[1] - sqrt($d)) / (2 * $aCoef);

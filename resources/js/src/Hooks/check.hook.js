@@ -23,12 +23,17 @@ export const useCheck = () => {
         return JSON.stringify(obj) === JSON.stringify({})
     }
 
+    const prepareRequestBody = body => {
+        Object.keys(body).filter(k => body[k] === undefined).forEach(k => body[k] = null)
+    }
+
     return {
         isEmptyStr,
         isArrayEmpty,
         isNull,
         isUndefined,
         valueFromDocById,
-        isEmptyObj
+        isEmptyObj,
+        prepareRequestBody
     }
 }

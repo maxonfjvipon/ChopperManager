@@ -80,6 +80,8 @@ return [
     ],
     'pumps' => [
         'title' => 'Pumps',
+        'props' => 'Properties',
+        'back' => 'Back to projects',
         'data' => [
             'article_num_main' => 'Main article number',
             'article_num_reserve' => 'Reserve article number',
@@ -100,7 +102,7 @@ return [
             'dn_suction' => 'Suction side DN',
             'dn_pressure' => 'Pressure side DN',
             'power_adjustment' => 'El. power adjustment',
-            'connection' => 'Connection',
+            'connection' => 'Mains connection',
             'types' => 'Types',
             'applications' => 'Applications'
         ],
@@ -145,7 +147,10 @@ return [
         ]
     ],
     'selections' => [
-        'back_to_dashboard' => 'Back to selections dashboard',
+        'back' => [
+            'to_selections_dashboard' => 'Back to selections dashboard',
+            'to_project' => 'Back to project'
+        ],
         'dashboard' => [
             'title' => 'Hydraulic selections',
             'subtitle' => 'Choose selection type',

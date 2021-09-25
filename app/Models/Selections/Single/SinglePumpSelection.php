@@ -26,7 +26,11 @@ class SinglePumpSelection extends Model
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y',
-        'updated_at' => 'datetime:d.m.Y'
+        'updated_at' => 'datetime:d.m.Y',
+        'power_limit_checked' => 'boolean',
+        'ptp_length_limit_checked' => 'boolean',
+        'dn_suction_limit_checked' => 'boolean',
+        'dn_pressure_limit_checked' => 'boolean'
     ];
 
     public function project(): BelongsTo

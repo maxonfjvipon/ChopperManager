@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Currency extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'code'];
     public $timestamps = false;
     use HasFactory;
+
+    public function getNameCodeAttribute()
+    {
+        return "{$this->code} / {$this->name}";
+    }
 }

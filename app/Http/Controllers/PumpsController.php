@@ -60,7 +60,8 @@ class PumpsController extends Controller
                     'dn_suction' => $pump->dn_suction->value,
                     'dn_pressure' => $pump->dn_pressure->value,
                     'category' => $pump->category->name,
-                    'power_adjustment' => $pump->series->power_adjustment->value,
+                    'power_adjustment' => $pump->series->power_adjustment->name,
+                    'mains_connection' => $pump->connection->full_value,
                     'applications' => implode(", ", $pump->series->applications->map(fn($application) => $application->name)->toArray()),
                     'types' => implode(", ", $pump->series->types->map(fn($type) => $type->name)->toArray()),
                 ])

@@ -31,6 +31,7 @@ import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
+import {RoundedCard} from "../../../Shared/RoundedCard";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -76,7 +77,7 @@ const Index = () => {
 
     // HOOKS
     const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint} = useGraphic()
-    const {isArrayEmpty} = useCheck()
+    const {isArrayEmpty, prepareRequestBody} = useCheck()
     const {postRequest, loading} = useHttp()
     const {selection, project_id, selection_props} = usePage().props
 
@@ -94,19 +95,19 @@ const Index = () => {
     } = selection_props.data
 
     const [brandsValue, setBrandsValue] = useState(selection?.data.pump_brands || defaults.brands)
-    const [powerAdjustmentValue, setPowerAdjustmentValue] = useState(selection?.data.pump_regulations || defaults.powerAdjustments)
+    const [powerAdjustmentValue, setPowerAdjustmentValue] = useState(selection?.data.power_adjustments || defaults.powerAdjustments)
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
-    const [temperatureValue, setTemperatureValue] = useState(selection?.data.liquid_temperature || 20)
+    const [temperatureValue, setTemperatureValue] = useState(selection?.data.fluid_temperature || 20)
     const [prevTemperatureValue, setPrevTemperatureValue] = useState(-100)
     const debouncedTemperature = useDebounce(temperatureValue, 500)
 
     const [limitChecks, setLimitChecks] = useState({
         power: selection?.data.power_limit_checked || false,
-        betweenAxes: selection?.data.between_axes_limit_checked || false,
-        dnInput: selection?.data.dn_input_limit_checked || false,
-        dnOutput: selection?.data.dn_output_limit_checked || false,
+        ptpLength: selection?.data.ptp_length_limit_checked || false,
+        dnSuction: selection?.data.dn_suction_limit_checked || false,
+        dnPressure: selection?.data.dn_pressure_limit_checked || false,
     })
 
     // CONSTS
@@ -289,23 +290,24 @@ const Index = () => {
     // SAVE HANDLER
     const addSelectionToProjectClickHandler = async fullSelectionFormData => {
         const selectionFormData = await selectionForm.validateFields()
-        const separator = "|" // FIXME: some how make it global
+        const separator = "," // FIXME: some how make it global
 
         const body = {
             ...selectionFormData,
             ...fullSelectionFormData,
-            pump_producer_ids: fullSelectionFormData.pump_producer_ids.join(separator),
-            pump_regulation_ids: fullSelectionFormData.pump_regulation_ids?.join(separator),
+            pump_brand_ids: fullSelectionFormData.pump_brand_ids.join(separator),
+            power_adjustment_ids: fullSelectionFormData.power_adjustment_ids?.join(separator),
             pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
             pump_application_ids: fullSelectionFormData.pump_application_ids?.join(separator),
             main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
             connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
-            current_phase_ids: selectionFormData.current_phase_ids?.join(separator),
+            mains_connection_ids: selectionFormData.mains_connection_ids?.join(separator),
             pump_id: stationToShow.pump_id,
             selected_pump_name: stationToShow.name,
             pumps_count: stationToShow.pumps_count,
             project_id,
         }
+        prepareRequestBody(body)
         Inertia.post(selection
             ? tRoute('selections.update', selection.data.id)
             : tRoute('selections.store'), body,
@@ -327,6 +329,7 @@ const Index = () => {
             ...body,
             series_ids: brandsSeriesListValues,
         }
+        prepareRequestBody(body)
         try {
             // Inertia.post(tRoute('selections.select'), body)
             const data = await postRequest(tRoute('selections.select'), body, true)
@@ -343,8 +346,8 @@ const Index = () => {
                 title={selection
                     ? selection.data.selected_pump_name
                     : Lang.get('pages.selections.single.title_new')}
-                backTitle={Lang.get('pages.selections.back_to_dashboard')}
-                backHref={tRoute('selections.dashboard', project_id)}
+                backTitle={Lang.get(selection ? 'pages.selections.back.to_project' : 'pages.selections.back.to_selections_dashboard')}
+                backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
             >
                 <Row justify="space-around" gutter={[10, 10]}>
                     <Col xs={2}>
@@ -494,7 +497,7 @@ const Index = () => {
                                             <RequiredFormItem
                                                 label={Lang.get('pages.selections.single.consumption')}
                                                 name="flow"
-                                                initialValue={selection?.data.consumption}
+                                                initialValue={selection?.data.flow}
                                                 className={reducedAntFormItemClassName}
                                             >
                                                 <InputNumber
@@ -511,7 +514,7 @@ const Index = () => {
                                             <RequiredFormItem
                                                 label={Lang.get('pages.selections.single.pressure')}
                                                 name="head"
-                                                initialValue={selection?.data.pressure}
+                                                initialValue={selection?.data.head}
                                                 className={reducedAntFormItemClassName}
                                             >
                                                 <InputNumber
@@ -528,7 +531,7 @@ const Index = () => {
                                             <Form.Item
                                                 label={Lang.get('pages.selections.single.limit')}
                                                 name="deviation"
-                                                initialValue={selection?.data.limit || 0}
+                                                initialValue={selection?.data.deviation}
                                                 className={reducedAntFormItemClassName}
                                             >
                                                 <InputNumber
@@ -557,7 +560,7 @@ const Index = () => {
                                             <Form.Item
                                                 required name="reserve_pumps_count"
                                                 label={Lang.get('pages.selections.single.backup_pumps_count')}
-                                                initialValue={selection?.data.backup_pumps_count || 0}
+                                                initialValue={selection?.data.reserve_pumps_count || 0}
                                                 className={reducedAntFormItemClassName}
                                             >
                                                 <Radio.Group value={0}>
@@ -589,15 +592,15 @@ const Index = () => {
                                                 label={Lang.get('pages.selections.single.phase')}
                                                 name="mains_connection_ids"
                                                 className={reducedAntFormItemClassName}
-                                                initialValue={selection?.data.mainsConnections}
+                                                initialValue={selection?.data.mains_connections}
                                             >
                                                 <MultipleSelection
                                                     placeholder={Lang.get('pages.selections.single.phase')}
                                                     style={nextBelowStyle}
-                                                    options={mainsConnections.map(phase => {
+                                                    options={mainsConnections.map(connection => {
                                                         return {
-                                                            customValue: phase.full_value,
-                                                            ...phase,
+                                                            customValue: connection.full_value,
+                                                            ...connection,
                                                         }
                                                     })}
                                                 />
@@ -649,14 +652,14 @@ const Index = () => {
                                         <Col span={5}>
                                             <ConditionLimitCheckboxFormItem
                                                 name="ptp_length_limit_checked"
-                                                initialValue={selection?.data.between_axes_limit_checked}
+                                                initialValue={selection?.data.ptp_length_limit_checked}
                                             >
                                                 <Checkbox
-                                                    checked={limitChecks.betweenAxes}
+                                                    checked={limitChecks.ptpLength}
                                                     onChange={e => {
                                                         setLimitChecks({
                                                             ...limitChecks,
-                                                            betweenAxes: e.target.checked
+                                                            ptpLength: e.target.checked
                                                         })
                                                     }}
                                                 >
@@ -668,17 +671,17 @@ const Index = () => {
                                                     <ConditionSelectionFormItem
                                                         options={limitConditions}
                                                         name="ptp_length_limit_condition_id"
-                                                        disabled={!limitChecks.betweenAxes}
-                                                        initialValue={selection?.data.between_axes_limit_condition_id}
+                                                        disabled={!limitChecks.ptpLength}
+                                                        initialValue={selection?.data.ptp_length_limit_condition_id}
                                                     />
                                                 </LimitCol>
                                                 <LimitCol>
                                                     <Form.Item
                                                         name="ptp_length_limit_value"
-                                                        initialValue={selection?.data.between_axes_limit_value}
+                                                        initialValue={selection?.data.ptp_length_limit_value}
                                                     >
                                                         <InputNumber
-                                                            disabled={!limitChecks.betweenAxes}
+                                                            disabled={!limitChecks.ptpLength}
                                                             style={fullWidth}
                                                             placeholder={Lang.get('pages.selections.single.between_axes_dist')}
                                                         />
@@ -690,14 +693,14 @@ const Index = () => {
                                         <Col span={5}>
                                             <ConditionLimitCheckboxFormItem
                                                 name="dn_suction_limit_checked"
-                                                initialValue={selection?.data.dn_input_limit_checked}
+                                                initialValue={selection?.data.dn_suction_limit_checked}
                                             >
                                                 <Checkbox
-                                                    checked={limitChecks.dnInput}
+                                                    checked={limitChecks.dnSuction}
                                                     onChange={e => {
                                                         setLimitChecks({
                                                             ...limitChecks,
-                                                            dnInput: e.target.checked
+                                                            dnSuction: e.target.checked
                                                         })
                                                     }}
                                                 >
@@ -707,21 +710,21 @@ const Index = () => {
                                             <LimitRow>
                                                 <LimitCol>
                                                     <ConditionSelectionFormItem
-                                                        initialValue={selection?.data.dn_input_limit_condition_id}
+                                                        initialValue={selection?.data.dn_suction_limit_condition_id}
                                                         options={limitConditions}
                                                         name="dn_suction_limit_condition_id"
-                                                        disabled={!limitChecks.dnInput}
+                                                        disabled={!limitChecks.dnSuction}
                                                     />
                                                 </LimitCol>
                                                 <LimitCol>
                                                     <Form.Item
                                                         name="dn_suction_limit_id"
-                                                        initialValue={selection?.data.dn_input_limit_id}
+                                                        initialValue={selection?.data.dn_suction_limit_id}
                                                     >
                                                         <Selection
                                                             placeholder={Lang.get('pages.selections.single.dn_input')}
                                                             options={dns}
-                                                            disabled={!limitChecks.dnInput}
+                                                            disabled={!limitChecks.dnSuction}
                                                             style={fullWidth}
                                                         />
                                                     </Form.Item>
@@ -732,14 +735,14 @@ const Index = () => {
                                         <Col span={5}>
                                             <ConditionLimitCheckboxFormItem
                                                 name="dn_pressure_limit_checked"
-                                                initialValue={selection?.data.dn_output_limit_checked}
+                                                initialValue={selection?.data.dn_pressure_limit_checked}
                                             >
                                                 <Checkbox
-                                                    checked={limitChecks.dnOutput}
+                                                    checked={limitChecks.dnPressure}
                                                     onChange={e => {
                                                         setLimitChecks({
                                                             ...limitChecks,
-                                                            dnOutput: e.target.checked
+                                                            dnPressure: e.target.checked
                                                         })
                                                     }}
                                                 >
@@ -749,21 +752,21 @@ const Index = () => {
                                             <LimitRow>
                                                 <LimitCol>
                                                     <ConditionSelectionFormItem
-                                                        initialValue={selection?.data.dn_output_limit_condition_id}
+                                                        initialValue={selection?.data.dn_pressure_limit_condition_id}
                                                         options={limitConditions}
                                                         name="dn_pressure_limit_condition_id"
-                                                        disabled={!limitChecks.dnOutput}
+                                                        disabled={!limitChecks.dnPressure}
                                                     />
                                                 </LimitCol>
                                                 <LimitCol>
                                                     <Form.Item
                                                         name="dn_pressure_limit_id"
-                                                        initialValue={selection?.data.dn_output_limit_id}
+                                                        initialValue={selection?.data.dn_pressure_limit_id}
                                                     >
                                                         <Selection
                                                             placeholder={Lang.get('pages.selections.single.dn_output')}
                                                             options={dns}
-                                                            disabled={!limitChecks.dnOutput}
+                                                            disabled={!limitChecks.dnPressure}
                                                             style={fullWidth}
                                                         />
                                                     </Form.Item>

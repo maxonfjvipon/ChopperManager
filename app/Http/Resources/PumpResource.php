@@ -25,26 +25,27 @@ class PumpResource extends JsonResource
             'article_num_main' => $this->article_num_main,
             'article_num_reserve' => $this->article_num_reserve,
             'article_num_archive' => $this->article_num_archive,
-            'brand' => $this->series->brand->name,
-            'series' => $this->series->name,
-            'name' => $this->name,
+            'full_name' => $this->full_name,
             'weight' => $this->weight,
+            'price' => $this->price,
+            'currency' => $this->currency->name_code,
             'rated_power' => $this->rated_power,
             'rated_current' => $this->rated_current,
             'connection_type' => $this->connection_type->name,
             'fluid_temp_min' => $this->fluid_temp_min,
             'fluid_temp_max' => $this->fluid_temp_max,
-            'ptp_distance' => $this->ptp_distance,
+            'ptp_length' => $this->php_length,
             'dn_suction' => $this->dn_suction->value,
             'dn_pressure' => $this->dn_pressure->value,
             'category' => $this->category->name,
-            'power_adjustment' => $this->series->power_adjustment->value,
-            'applications' => $this->applications,
-            'types' => $this->types,
-//            'performance' => [
-//                'line_data' => $performanceLineData['line'],
-//                'y_max' => $performanceLineData['yMax']
-//            ]
+            'power_adjustment' => $this->series->power_adjustment->name,
+            'connection' => $this->connection->full_value,
+            'applications' => $this->imploded_applications,
+            'types' => $this->imploded_types,
+            'performance' => [
+                'line_data' => $performanceLineData['line'],
+                'y_max' => $performanceLineData['yMax']
+            ]
         ];
     }
 }

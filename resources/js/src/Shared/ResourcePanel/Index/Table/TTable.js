@@ -1,6 +1,5 @@
-import {Table, Tag} from "antd";
+import {Table} from "antd";
 import React from "react";
-import {Inertia} from "@inertiajs/inertia";
 
 export const TTable = ({columns, dataSource, showHandler, ...rest}) => {
     const ccolumns = columns.map(column => {
@@ -21,10 +20,9 @@ export const TTable = ({columns, dataSource, showHandler, ...rest}) => {
             })}
             onRow={(record, _) => {
                 return {
-                    onDoubleClick: showHandler ?
-                        showHandler(record.id) :
-                        (() => {
-                        })
+                    onDoubleClick: showHandler
+                        ? showHandler(record.id)
+                        : (() => {})
                 }
             }}
             {...rest}
