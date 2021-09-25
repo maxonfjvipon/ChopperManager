@@ -36,7 +36,7 @@ class AdminSeeder extends Seeder
             'id' => 2,
             'organization_name' => "МБС",
             'itn' => "0000000001",
-            'email' => 'titatyov@admin.com',
+            'email' => 'titaryov@admin.com',
             'password' => Hash::make('admin'),
             'phone' => "89991231212",
             'first_name' => 'Дмитрий',
