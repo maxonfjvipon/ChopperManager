@@ -52,27 +52,29 @@ export const Header = () => {
     return (
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
             <BoxFlexSpaceBetween>
-                <Space>
+                <Space style={{ flex: "auto"}}>
                     <AppTitle/>
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        // defaultSelectedKeys={getMenuKey()}
+                        // onClick={menuClickHandler}
+                    >
+                        {menuItems.map(item => (
+                            <Menu.Item {...item.itemProps}>
+                                <Link href={tRoute(item.route)}>
+                                    {item.label}
+                                </Link>
+                            </Menu.Item>
+                        ))}
+                    </Menu>
                 </Space>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    // defaultSelectedKeys={getMenuKey()}
-                    // onClick={menuClickHandler}
-                >
-                    {menuItems.map(item => (
-                        <Menu.Item {...item.itemProps}>
-                            <Link href={tRoute(item.route)}>
-                                {item.label}
-                            </Link>
-                        </Menu.Item>
-                    ))}
-                </Menu>
+                {/*<div style={{marginLeft: 30, flex: "auto"}}>*/}
+                {/*</div>*/}
                 {/*<Space>*/}
 
                 {/*</Space>*/}
-                <Space>
+                <Space style={{}}>
                     <LocaleDropdown/>
                     {auth.full_name &&
                     <Dropdown
