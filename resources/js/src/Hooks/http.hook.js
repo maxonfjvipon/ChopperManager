@@ -17,17 +17,18 @@ export const useHttp = () => {
         const response = await fetch(url, {method, body, headers})
         const data = await response.json()
 
-        // if (!response.ok) {
-        //     setLoading(false)
+        if (!response.ok) {
+            setLoading(false)
             for (let key in data) {
-                if (message.hasOwnProperty(key)) {
-                    message[key](data[key])
-                } else {
-                    message.error(data[key])
-                }
+                message.error(data[key])
             }
-            // throw new Error();
-        // }
+            throw new Error()
+        }
+        for (let key in data) {
+            if (message.hasOwnProperty(key)) {
+                message[key](data[key])
+            }
+        }
         setLoading(false)
         return data
     }
