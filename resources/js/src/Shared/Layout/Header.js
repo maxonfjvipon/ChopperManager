@@ -51,29 +51,26 @@ export const Header = () => {
 
     return (
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
-            <BoxFlexSpaceBetween>
-                <Space style={{ flexGrow: 1}}>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Space>
                     <AppTitle/>
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        // defaultSelectedKeys={getMenuKey()}
-                        // onClick={menuClickHandler}
-                    >
-                        {menuItems.map(item => (
-                            <Menu.Item {...item.itemProps}>
-                                <Link href={tRoute(item.route)}>
-                                    {item.label}
-                                </Link>
-                            </Menu.Item>
-                        ))}
-                    </Menu>
                 </Space>
-                {/*<div style={{marginLeft: 30, flex: "auto"}}>*/}
-                {/*</div>*/}
-                {/*<Space>*/}
 
-                {/*</Space>*/}
+                <Menu
+                    style={{marginLeft: 10, flexGrow: 1}}
+                    theme="dark"
+                    mode="horizontal"
+                    // defaultSelectedKeys={getMenuKey()}
+                    // onClick={menuClickHandler}
+                >
+                    {menuItems.map(item => (
+                        <Menu.Item {...item.itemProps}>
+                            <Link href={tRoute(item.route)}>
+                                {item.label}
+                            </Link>
+                        </Menu.Item>
+                    ))}
+                </Menu>
                 <Space>
                     <LocaleDropdown/>
                     {auth.full_name &&
@@ -109,7 +106,7 @@ export const Header = () => {
                         </Button>
                     </Dropdown>}
                 </Space>
-            </BoxFlexSpaceBetween>
+            </div>
         </Layout.Header>
     )
 }
