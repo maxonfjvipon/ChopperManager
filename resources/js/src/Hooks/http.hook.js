@@ -17,8 +17,8 @@ export const useHttp = () => {
         const response = await fetch(url, {method, body, headers})
         const data = await response.json()
 
-        if (!response.ok) {
-            setLoading(false)
+        // if (!response.ok) {
+        //     setLoading(false)
             for (let key in data) {
                 if (message.hasOwnProperty(key)) {
                     message[key](data[key])
@@ -26,8 +26,8 @@ export const useHttp = () => {
                     message.error(data[key])
                 }
             }
-            throw new Error();
-        }
+            // throw new Error();
+        // }
         setLoading(false)
         return data
     }
