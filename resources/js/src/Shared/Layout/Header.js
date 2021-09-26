@@ -54,21 +54,21 @@ export const Header = () => {
             <BoxFlexSpaceBetween>
                 <Space>
                     <AppTitle/>
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        // defaultSelectedKeys={getMenuKey()}
-                        // onClick={menuClickHandler}
-                    >
-                        {menuItems.map(item => (
-                            <Menu.Item {...item.itemProps}>
-                                <Link href={tRoute(item.route)}>
-                                    {item.label}
-                                </Link>
-                            </Menu.Item>
-                        ))}
-                    </Menu>
                 </Space>
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    // defaultSelectedKeys={getMenuKey()}
+                    // onClick={menuClickHandler}
+                >
+                    {menuItems.map(item => (
+                        <Menu.Item {...item.itemProps}>
+                            <Link href={tRoute(item.route)}>
+                                {item.label}
+                            </Link>
+                        </Menu.Item>
+                    ))}
+                </Menu>
                 {/*<Space>*/}
 
                 {/*</Space>*/}
