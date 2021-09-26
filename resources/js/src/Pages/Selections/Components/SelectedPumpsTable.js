@@ -29,7 +29,6 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
             dataIndex: 'discountedPrice',
             key: 'discountedPrice',
             sorter: (a, b) => a.discountedPrice - b.discountedPrice,
-            defaultSortOrder: 'ascend'
         },
         {
             title: Lang.get('pages.selections.single.table.total_retail_price'),
@@ -41,7 +40,8 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
             title: Lang.get('pages.selections.single.table.total_discounted_price'),
             dataIndex: 'discountedPriceSum',
             key: 'discountedPriceSum',
-            sorter: (a, b) => a.discountedPriceSum - b.discountedPriceSum
+            sorter: (a, b) => a.discountedPriceSum - b.discountedPriceSum,
+            defaultSortOrder: 'ascend'
         },
         {
             title: Lang.get('pages.selections.single.table.dn_input'),
@@ -66,7 +66,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
             sorter: (a, b) => a.powerSum - b.powerSum
         },
         {
-            title: Lang.get('pages.selections.single.table.between_axes_dist'),
+            title: Lang.get('pages.selections.single.table.ptp_length'),
             dataIndex: 'ptpLength',
             key: 'ptpLength',
             sorter: (a, b) => a.ptpLength - b.ptpLength

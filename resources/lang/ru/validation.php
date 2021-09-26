@@ -213,7 +213,7 @@ return [
             'dn_output'             => 'ДУ выхода',
             'min_temp'              => 'Макс. темп. жидкости',
             'max_temp'              => 'Мин. темп. жидкости',
-            'between_axes_dist'     => 'Межосевое расстояние',
+            'ptp_length'     => 'Монтажная длина',
             'performance'           => 'Характеристика',
             'phase'                 => 'Фаза',
             'applications'          => 'Применения',

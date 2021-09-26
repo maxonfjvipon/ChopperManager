@@ -663,7 +663,7 @@ const Index = () => {
                                                         })
                                                     }}
                                                 >
-                                                    {Lang.get('pages.selections.single.between_axes_limit')}
+                                                    {Lang.get('pages.selections.single.ptp_length_limit')}
                                                 </Checkbox>
                                             </ConditionLimitCheckboxFormItem>
                                             <LimitRow>
@@ -683,7 +683,7 @@ const Index = () => {
                                                         <InputNumber
                                                             disabled={!limitChecks.ptpLength}
                                                             style={fullWidth}
-                                                            placeholder={Lang.get('pages.selections.single.between_axes_dist')}
+                                                            placeholder={Lang.get('pages.selections.single.ptp_length')}
                                                         />
                                                     </Form.Item>
                                                 </LimitCol>

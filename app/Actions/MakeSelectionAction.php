@@ -162,7 +162,7 @@ class MakeSelectionAction
         });
 
         if (count($dbPumps) === 0) {
-            return response()->json(['info', __('flash.selections.pumps_not_found')]);
+            return response()->json(['info' => __('flash.selections.pumps_not_found')], 404);
         }
 
         $dbPumps->map(function ($pump) use ($reservePumpsCount, $rates, $head, $flow, &$num, &$selectedPumps) {

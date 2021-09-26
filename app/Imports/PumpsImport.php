@@ -155,7 +155,7 @@ class PumpsImport implements ToModel, SkipsEmptyRows, WithValidation, WithStartR
             '13.required' => 'Отсутствует ДУ выхода',
             '14.required' => 'Отсутствует минимальная температура',
             '15.required' => 'Отсутствует максимальная температура',
-            '16.required' => 'Отсутствует межосевое расстояние',
+            '16.required' => 'Отсутствует монтажная длина',
             '17.required' => 'Отсутствует характеристика',
             '18.required' => 'Отсутствуют категория',
             '19.required' => 'Отсутствует регулирование ',

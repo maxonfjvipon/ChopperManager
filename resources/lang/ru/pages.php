@@ -84,7 +84,7 @@ return [
         'back' => 'Назад к насосам',
         'data' => [
             'article_num_main' => 'Артикул основной',
-            'article_num_reserve' => 'Артикул резернвый',
+            'article_num_reserve' => 'Артикул резервный',
             'article_num_archive' => 'Артикул архивный',
             'brand' => 'Производитель',
             'series' => 'Серия',
@@ -98,7 +98,7 @@ return [
             'connection_type' => 'Тип соединения',
             'fluid_temp_min' => 'Мин.темп.жидк, °C',
             'fluid_temp_max' => 'Макс.темп.жидк, °C',
-            'ptp_length' => 'Межосевое расстояние, мм',
+            'ptp_length' => 'Монтажная длина, мм',
             'dn_suction' => 'ДУ входа',
             'dn_pressure' => 'ДУ выхода',
             'power_adjustment' => 'Встроенное регулирование',
@@ -193,11 +193,11 @@ return [
             'phase' => 'Фаза',
             'condition' => 'Условие',
             'power_limit' => 'Ограничение мощности насоса',
-            'between_axes_limit' => 'Ограничение межосевого расстояния',
+            'ptp_length_limit' => 'Ограничение монтажной длины',
             'dn_input_limit' => 'Ограничение ДУ входа',
             'dn_output_limit' => 'Ограничение ДУ выхода',
             'power' => 'Мощность, кВ',
-            'between_axes_dist' => 'Межосевое расстояние',
+            'ptp_length' => 'Монтажная длина',
             'dn_input' => 'ДУ входа',
             'dn_output' => 'ДУ выхода',
             'select' => 'Подобрать',
@@ -216,7 +216,7 @@ return [
                 'dn_output' => 'ДУ выхода',
                 'power' => 'P, кВ',
                 'total_power' => 'P итого, кВ',
-                'between_axes_dist' => 'Межосевое расстояние'
+                'ptp_length' => 'Монтажная длина'
             ],
         ]
     ]

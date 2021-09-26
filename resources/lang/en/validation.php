@@ -205,7 +205,7 @@ return [
             'dn_output'             => 'Pressure side DN',
             'min_temp'              => 'Max. fluid temp',
             'max_temp'              => 'Min. fluid temp',
-            'between_axes_dist'     => 'Between axes distance',
+            'ptp_length'     => 'Between axes distance',
             'performance'           => 'Performance',
             'phase'                 => 'Current phase',
             'applications'          => 'Applications',

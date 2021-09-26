@@ -105,12 +105,17 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 }
 
 .flex-rounded-card {
-    flex: auto;
+    /*flex: auto;*/
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .flex-rounded-card .ant-card-body {
-    display: flex;
-    flex: auto;
+    /*display: flex;*/
+    /*flex: auto;*/
+    /*margin-top: 25%;*/
+    /*height: 100%;*/
+    margin-top: auto;
+    margin-bottom: auto;
 }

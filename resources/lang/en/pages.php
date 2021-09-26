@@ -191,11 +191,11 @@ return [
             'phase' => 'Mains connection',
             'condition' => 'Condition',
             'power_limit' => 'Limiting the pump power',
-            'between_axes_limit' => 'Limiting the between axes distance',
+            'ptp_length_limit' => 'Limiting the between axes distance',
             'dn_input_limit' => 'Limiting the suction side DN',
             'dn_output_limit' => 'Limiting the pressure side DN',
             'power' => 'Power, kW',
-            'between_axes_dist' => 'Between axes distance',
+            'ptp_length' => 'Between axes distance',
             'dn_input' => 'Suction side DN',
             'dn_output' => 'Pressure side DN',
             'select' => 'Select',
@@ -214,7 +214,7 @@ return [
                 'dn_output' => 'Pressure side DN',
                 'power' => 'P, kW',
                 'total_power' => 'P total, kW',
-                'between_axes_dist' => 'Between axes distance'
+                'ptp_length' => 'Between axes distance'
             ],
         ]
     ]

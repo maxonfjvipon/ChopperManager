@@ -16,7 +16,7 @@ return [
     'selections' => [
         'deleted' => 'Selection was deleted successfully',
         'added' => 'Selection was successfully added to project',
-        'pumps_not_fount' => 'No pumps were found for the specified parameters'
+        'pumps_not_found' => 'No pumps were found for the specified parameters'
     ],
     'users' => [
         'updated' => 'User info was updated successfully',

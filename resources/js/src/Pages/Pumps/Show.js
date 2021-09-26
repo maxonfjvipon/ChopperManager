@@ -219,12 +219,12 @@ const Show = () => {
             backTitle={Lang.get('pages.pumps.back')}
             backHref={tRoute('pumps.index')}
         >
-            <Row justify="space-around" gutter={[10, 10]} style={{flex: 'auto'}}>
-                <Col xs={24} sm={20} md={16} lg={13} xl={10} xxl={7} style={{display: 'flex'}}>
+            <Row justify="space-around" gutter={[10, 10]} style={{display: 'flex', alignItems: 'stretch'}}>
+                <Col xs={24} sm={20} md={16} lg={13} xl={10} xxl={7}>
                     <RoundedCard
                         type="inner"
                         title={Lang.get('pages.pumps.props')}
-                        style={{flex: 'auto'}}
+                        style={{height: "100%"}}
                     >
                         <ItemsForm
                             layout="horizontal"
@@ -233,52 +233,54 @@ const Show = () => {
                         />
                     </RoundedCard>
                 </Col>
-                <Col xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}
-                     style={{flex: 'auto', display: 'flex'}}
-                >
+                <Col xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}>
                     <RoundedCard
                         type="inner"
+                        // style={{height: "100%"}}
                         className={'flex-rounded-card'}
                         title={Lang.get('pages.pumps.hydraulic_perf')}
                     >
-                        <Row justify="space-around" align="middle" style={{flex: "auto"}}>
-                            <Col>
-                                <VictoryChart
-                                    width={width}
-                                    height={width / 2 + 100}
-                                    // responsive={false}
-                                    domain={{y: [0, pump.data.performance.y_max]}}
-                                    // standalone={false}
-                                    containerComponent={<VictoryVoronoiContainer
-                                        // responsive={false}
-                                    />}
-                                >
-                                    <VictoryAxis
-                                        orientation="bottom"
-                                        label={Lang.get('pages.pumps.consumption')}
-                                    />
-                                    <VictoryAxis dependentAxis
-                                                 label={Lang.get('pages.pumps.pressure')}
-                                    />
-                                    <VictoryLine
-                                        interpolation="linear" data={pump.data.performance.line_data}
-                                        style={{data: {stroke: "blue"}}}
-                                    />
-                                    <VictoryScatter
-                                        data={pump.data.performance.line_data}
-                                        size={5}
-                                        style={{
-                                            data: {fill: "blue"},
-                                            labels: {fill: "blue"}
-                                        }}
-                                        labels={({datum}) => {
-                                            return "Q: " + datum.x + ", H: " + datum.y
-                                        }}
-                                        labelComponent={<VictoryTooltip/>}
-                                    />
-                                </VictoryChart>
-                            </Col>
-                        </Row>
+                        <VictoryChart
+                            width={1000}
+                            height={500}
+                            // responsive={false}
+                            domain={{y: [0, pump.data.performance.y_max]}}
+                            // standalone={false}
+                            containerComponent={<VictoryVoronoiContainer
+                                // responsive={false}
+                            />}
+                        >
+                            <VictoryAxis
+                                orientation="bottom"
+                                label={Lang.get('pages.pumps.consumption')}
+                            />
+                            <VictoryAxis dependentAxis
+                                         label={Lang.get('pages.pumps.pressure')}
+                            />
+                            <VictoryLine
+                                interpolation="linear" data={pump.data.performance.line_data}
+                                style={{data: {stroke: "blue"}}}
+                            />
+                            <VictoryScatter
+                                data={pump.data.performance.line_data}
+                                size={5}
+                                style={{
+                                    data: {fill: "blue"},
+                                    labels: {fill: "blue"}
+                                }}
+                                labels={({datum}) => {
+                                    return "Q: " + datum.x + ", H: " + datum.y
+                                }}
+                                labelComponent={<VictoryTooltip/>}
+                            />
+                        </VictoryChart>
+                        {/*<Row justify="space-around" align="middle"*/}
+                        {/*     // style={{flex: "auto"}}*/}
+                        {/*>*/}
+                        {/*    <Col>*/}
+                        {/*        */}
+                        {/*    </Col>*/}
+                        {/*</Row>*/}
                     </RoundedCard>
                 </Col>
             </Row>
