@@ -52,7 +52,7 @@ export const Header = () => {
     return (
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
             <BoxFlexSpaceBetween>
-                <Space style={{ flex: "auto"}}>
+                <Space style={{ flexGrow: 1}}>
                     <AppTitle/>
                     <Menu
                         theme="dark"
@@ -74,7 +74,7 @@ export const Header = () => {
                 {/*<Space>*/}
 
                 {/*</Space>*/}
-                <Space style={{}}>
+                <Space>
                     <LocaleDropdown/>
                     {auth.full_name &&
                     <Dropdown
