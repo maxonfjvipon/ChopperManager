@@ -1,19 +1,21 @@
 import React from 'react';
-import {Button, Popconfirm, Space, Tooltip} from "antd";
+import {Button, notification, Popconfirm, Space, Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {DeleteOutlined, EditOutlined, EyeOutlined} from "@ant-design/icons";
 import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import Lang from "../../../translation/lang";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {useNotifications} from "../../Hooks/notifications.hook";
 
 const Index = () => {
     // HOOKS
     const {projects} = usePage().props
     const {tRoute} = useTransRoutes()
+    const {openRestoreNotification} = useNotifications()
 
     // CONSTS
     const columns = [
@@ -32,6 +34,12 @@ const Index = () => {
                         <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
                             <Button
                                 onClick={showProjectHandler(record.id)}
+                                icon={<EyeOutlined/>}
+                            />
+                        </Tooltip>
+                        <Tooltip placement="topRight" title={Lang.get('tooltips.edit')}>
+                            <Button
+                                onClick={editProjectHandler(record.id)}
                                 icon={<EditOutlined/>}
                             />
                         </Tooltip>
@@ -54,6 +62,15 @@ const Index = () => {
     // HANDLERS
     const deleteProjectHandler = id => () => {
         Inertia.delete(tRoute('projects.destroy', id))
+        openRestoreNotification(
+            Lang.get('pages.projects.index.restore.title'),
+            tRoute('projects.restore', id),
+            Lang.get('pages.projects.index.restore.button')
+        )
+    }
+
+    const editProjectHandler = id => () => {
+        Inertia.get(tRoute('projects.edit', id))
     }
 
     const showProjectHandler = id => () => {
@@ -66,7 +83,7 @@ const Index = () => {
             title={Lang.get('pages.projects.title')}
             mainActionRoute={tRoute('projects.create')}
             mainActionButtonLabel={Lang.get('pages.projects.index.button')}
-            buttons={[<SecondaryButton onClick={() => {
+            extraButtons={[<SecondaryButton onClick={() => {
                 Inertia.get(tRoute('selections.dashboard', -1))
             }}>
                 {Lang.get('pages.projects.index.selection')}

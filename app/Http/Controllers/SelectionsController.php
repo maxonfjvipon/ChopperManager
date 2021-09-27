@@ -66,7 +66,7 @@ class SelectionsController extends Controller
     public function destroy(SinglePumpSelection $selection): RedirectResponse
     {
         $selection->delete();
-        return Redirect::back()->with('success', __('flash.selections.deleted'));
+        return Redirect::back();
     }
 
     /**
@@ -104,5 +104,14 @@ class SelectionsController extends Controller
     public function select(MakeSelectionRequest $request, MakeSelectionAction $makeSelectionAction): JsonResponse
     {
         return $makeSelectionAction->execute($request);
+    }
+
+    /*
+     * Restore the specified resource
+     */
+    public function restore($id): RedirectResponse
+    {
+        SinglePumpSelection::withTrashed()->find($id)->restore();
+        return Redirect::back();
     }
 }

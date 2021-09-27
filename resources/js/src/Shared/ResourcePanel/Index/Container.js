@@ -12,7 +12,7 @@ export const Container = ({
                               mainActionComponent,
                               title,
                               children,
-                              buttons,
+                              extraButtons,
                               backHref,
                               backTitle,
                               type,
@@ -42,7 +42,7 @@ export const Container = ({
                     }}>
                         {mainActionButtonLabel}
                     </PrimaryButton>}
-                    {buttons}
+                    {extraButtons}
                 </Space>
             </BoxFlex>
             <RoundedCard

@@ -1,23 +1,23 @@
 import React from 'react'
 import {Link, usePage} from "@inertiajs/inertia-react";
-import {Button, Input, message, Popconfirm, Space, Tooltip} from "antd";
+import {Button, Input, Popconfirm, Space, Tooltip} from "antd";
 import {BoxFlexEnd} from "../../Shared/Box/BoxFlexEnd";
-import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
-import {DeleteOutlined, EditOutlined, ExportOutlined, PrinterOutlined} from "@ant-design/icons";
-import {useInputRules} from "../../Hooks/input-rules.hook";
+import {DeleteOutlined, EyeOutlined} from "@ant-design/icons";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
-import {Container} from "../../Shared/ResourcePanel/Resource/Container";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {Container} from "../../Shared/ResourcePanel/Show/Container";
+import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
+import {useNotifications} from "../../Hooks/notifications.hook";
 
 const Show = () => {
     // HOOKS
-    const {rules} = useInputRules()
     const {project} = usePage().props
     const {tRoute} = useTransRoutes()
+    const {openRestoreNotification} = useNotifications()
 
     // CONSTS
     const formName = 'project-form'
@@ -26,9 +26,8 @@ const Show = () => {
             values: {
                 name: 'name',
                 label: Lang.get('pages.projects.create.form.name'),
-                rules: [rules.required],
                 initialValue: project.data.name,
-            }, input: <Input/>,
+            }, input: <Input readOnly/>,
         }
     ]
 
@@ -85,7 +84,7 @@ const Show = () => {
                             <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
                                 <Button
                                     onClick={showSelectionHandler(record.id)}
-                                    icon={<EditOutlined/>}
+                                    icon={<EyeOutlined/>}
                                 />
                             </Tooltip>
                             <Tooltip placement="topRight" title={Lang.get('tooltips.delete')}>
@@ -120,33 +119,31 @@ const Show = () => {
         Inertia.get(tRoute('selections.show', id))
     }
 
-    const updateProjectHandler = body => {
-        Inertia.put(tRoute('projects.update', project.data.id), body)
-    }
-
     const deleteSelectionHandler = id => () => {
         Inertia.delete(tRoute('selections.destroy', id))
+        openRestoreNotification(
+            Lang.get('pages.projects.show.restore.title'),
+            tRoute('selections.restore', id),
+            Lang.get('pages.projects.show.restore.button'),
+        )
     }
 
     // RENDER
     return (
         <Container
             title={project.data.name}
-            buttonLabel={Lang.get('pages.projects.show.save_button')}
-            form={formName}
             backTitle={Lang.get('pages.projects.back')}
             backHref={tRoute('projects.index')}
-            extraButtons={[<SecondaryButton onClick={() => {
+            actionButtons={[<PrimaryButton onClick={() => {
                 Inertia.get(tRoute('selections.dashboard', project.data.id))
             }}>
                 {Lang.get('pages.projects.show.selection')}
-            </SecondaryButton>]}
+            </PrimaryButton>]}
         >
             <ItemsForm
                 name={formName}
                 layout={"vertical"}
                 items={items}
-                onFinish={updateProjectHandler}
             />
             <TTable
                 columns={columns}

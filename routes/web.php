@@ -58,14 +58,15 @@ Route::prefix(LaravelLocalization::setLocale())
                 Route::redirect('/', app()->getLocale() . '/projects')->name('index');
 
                 // PROJECTS
-                Route::resource('projects', ProjectsController::class)->except
-                (['edit']);
+                Route::get('projects/{project}/restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
+                Route::resource('projects', ProjectsController::class);
 
                 // SELECTIONS
                 Route::prefix('selections')->group(function () {
                     Route::get('dashboard/{project}')->name('selections.dashboard')->uses([SelectionsController::class, 'dashboard']);
                     Route::get('create/{project}')->name('selections.create')->uses([SelectionsController::class, 'create']);
                     Route::get('show/{selection}')->name('selections.show')->uses([SelectionsController::class, 'show']);
+                    Route::get('{selection}/restore')->name('selections.restore')->uses([SelectionsController::class, 'restore']);
 
                     Route::post('select')->name('selections.select')->uses([SelectionsController::class, 'select']);
                     Route::post('store')->name('selections.store')->uses([SelectionsController::class, 'store']);

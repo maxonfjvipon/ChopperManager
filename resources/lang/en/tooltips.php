@@ -5,6 +5,7 @@ return [
         'yes' => 'Yes',
         'no' => 'No'
     ],
+    'edit' => 'Edit',
     'view' => 'View',
     'export' => 'Export',
     'print' => 'Print',

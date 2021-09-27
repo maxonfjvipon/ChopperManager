@@ -29,9 +29,9 @@ export const Container = ({
             </RoundedCard>
             <BoxFlex style={margin.top(16)}>
                 <Space>
-                    <PrimaryButton htmlType="submit" form={form}>
+                    {<PrimaryButton htmlType="submit" form={form}>
                         {buttonLabel}
-                    </PrimaryButton>
+                    </PrimaryButton>}
                     {extraButtons}
                 </Space>
             </BoxFlex>

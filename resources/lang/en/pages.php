@@ -44,6 +44,10 @@ return [
         'back' => 'Back to projects',
         'title' => 'Projects',
         'index' => [
+            'restore' => [
+                'title' => 'Restore project?',
+                'button' => 'Restore'
+            ],
             'button' => 'New project',
             'selection' => 'Hydraulic selection without saving',
             'table' => [
@@ -54,6 +58,10 @@ return [
             ],
         ],
         'show' => [
+            'restore' => [
+                'title' => 'Restore selection?',
+                'button' => 'Restore'
+            ],
             'save_button' => 'Save changes',
             'selection' => 'Hydraulic selection',
             'label' => 'Name',
@@ -76,7 +84,14 @@ return [
                 'name' => 'Name',
             ],
             'button' => 'Create'
-        ]
+        ],
+        'edit' => [
+            'title' => 'Update project',
+            'form' => [
+                'name' => 'Name',
+            ],
+            'button' => 'Update project',
+        ],
     ],
     'pumps' => [
         'title' => 'Pumps',
@@ -157,6 +172,18 @@ return [
             'back' => [
                 'to_project' => 'Back to project',
                 'to_projects' => 'Back to projects'
+            ],
+            'preferences' => [
+                'pump' => [
+                    'single' => 'Single pump selection',
+                    'double' => 'Double pump selection',
+                    'borehole' => 'Borehole pump selection',
+                    'drainage' => 'Drainage pump selection',
+                ],
+                'station' => [
+                    'water' => 'Water supply pumping station selection',
+                    'fire' => 'Fire extinguishing pumping station selection'
+                ]
             ],
             'single_prefs' => 'Single pump selection by preferences',
             'double_prefs' => 'Double pump selection by preferences',

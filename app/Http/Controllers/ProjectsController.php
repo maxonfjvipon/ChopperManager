@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Requests\ProjectUpdateRequest;
-use App\Http\Resources\ProjectResource;
+use App\Http\Resources\EditProjectResource;
+use App\Http\Resources\ShowProjectResource;
 use App\Models\Project;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-use Matrix\Builder;
 
 class ProjectsController extends Controller
 {
@@ -36,7 +36,7 @@ class ProjectsController extends Controller
     public function store(ProjectStoreRequest $request): RedirectResponse
     {
         Auth::user()->projects()->create($request->validated());
-        return Redirect::route('projects.index')->with('success', __('flash.projects.created'));
+        return Redirect::route('projects.index');
     }
 
     /**
@@ -48,7 +48,20 @@ class ProjectsController extends Controller
     public function show(Project $project): Response
     {
         return Inertia::render('Projects/Show', [
-            'project' => new ProjectResource($project),
+            'project' => new ShowProjectResource($project),
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Project $project
+     * @return Response
+     */
+    public function edit(Project $project): Response
+    {
+        return Inertia::render('Projects/Edit', [
+            'project' => new EditProjectResource($project)
         ]);
     }
 
@@ -62,7 +75,17 @@ class ProjectsController extends Controller
     public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
     {
         $project->update($request->validated());
-        return Redirect::back()->with('success', __('flash.projects.updated'));
+        return Redirect::route('projects.index');
+    }
+
+    /**
+     * Display the create resource form.
+     *
+     * @return Response
+     */
+    public function create(): Response
+    {
+        return Inertia::render('Projects/Create');
     }
 
     /**
@@ -74,16 +97,15 @@ class ProjectsController extends Controller
     public function destroy(Project $project): RedirectResponse
     {
         $project->delete();
-        return Redirect::back()->with('success', __('flash.projects.deleted'));
+        return Redirect::back();
     }
 
-    /**
-     * Display the create resource form.
-     *
-     * @return Response
+    /*
+     * Restore the specified resource
      */
-    public function create(): Response
+    public function restore($id): RedirectResponse
     {
-        return Inertia::render('Projects/Create');
+        Project::withTrashed()->find($id)->restore();
+        return Redirect::route('projects.index');
     }
 }
