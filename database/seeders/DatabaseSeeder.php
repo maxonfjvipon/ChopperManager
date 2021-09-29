@@ -103,6 +103,9 @@ class DatabaseSeeder extends Seeder
         PumpSeries::create(['name' => 'IL-E', 'brand_id' => 1, 'regulation_adjustment_id' => 1]);
         PumpSeries::create(['name' => 'IPL', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
         PumpSeries::create(['name' => 'IL', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
+        PumpSeries::create(['name' => 'MVI', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
+        PumpSeries::create(['name' => 'Helix First', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
+        PumpSeries::create(['name' => 'Helix V', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
 
         /** * Currencies */
         DB::table('currencies')->insert([
