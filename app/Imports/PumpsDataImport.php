@@ -138,6 +138,7 @@ class PumpsDataImport implements ToCollection, SkipsEmptyRows
                     'type_id' => $typeId
                 ]);
             }
+            PumpSeriesAndType::where('series_id', $seriesId)->whereNotIn('type_id', $typeIds)->delete();
         }
 
 //        // series and regulations
@@ -164,6 +165,7 @@ class PumpsDataImport implements ToCollection, SkipsEmptyRows
                     'application_id' => $applicationId
                 ]);
             }
+            PumpSeriesAndApplication::where('series_id', $seriesId)->whereNotIn('application_id', $applicationIds)->delete();
         }
 
         return "success";

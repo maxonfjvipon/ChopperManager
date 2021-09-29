@@ -5,9 +5,10 @@ import {Inertia} from "@inertiajs/inertia";
 
 export const useNotifications = () => {
 
-    const openRestoreNotification = (message, restoreRoute, buttonLabel, width = 240) => {
+    const openRestoreNotification = (message, restoreRoute, buttonLabel, width = 220) => {
         notification.open({
             message,
+            // message: <div style={{textAlign: 'center'}}>{message}</div>,
             key: 'restore',
             btn: <PrimaryButton onClick={() => {
                 Inertia.get(restoreRoute)

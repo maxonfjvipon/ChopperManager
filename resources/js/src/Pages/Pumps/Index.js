@@ -4,7 +4,7 @@ import {
 } from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
-import React from "react";
+import React, {useEffect} from "react";
 import {FileUploader} from "../../Shared/Buttons/FileUploader";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
@@ -14,8 +14,12 @@ import {EditOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 
 const Index = () => {
-    const {pumps} = usePage().props
+    const {pumps, filter_data} = usePage().props
     const {tRoute} = useTransRoutes()
+
+    // useEffect(() => {
+    //     console.log(filter_data)
+    // }, [filter_data])
 
     const columns = [
         {
@@ -37,13 +41,17 @@ const Index = () => {
             title: Lang.get('pages.pumps.data.brand'),
             dataIndex: 'brand',
             width: 100,
+            filters: filter_data.brands,
+            onFilter: (brand, record) => record.brand === brand
             // render: series => series.brand.name,
         },
         {
             title: Lang.get('pages.pumps.data.series'),
             dataIndex: 'series',
             // render: series => series.name,
-            width: 100
+            width: 100,
+            filters: filter_data.series,
+            onFilter: (series, record) => record.series === series
         },
         {
             title: Lang.get('pages.pumps.data.name'),
@@ -54,9 +62,16 @@ const Index = () => {
             title: Lang.get('pages.pumps.data.category'),
             dataIndex: 'category',
             // render: category => category.name,
-            width: 100
+            width: 100,
+            filters: filter_data.categories,
+            onFilter: (category, record) => record.category === category
         },
-        {title: Lang.get('pages.pumps.data.price'), dataIndex: 'price', width: 70},
+        {
+            title: Lang.get('pages.pumps.data.price'),
+            dataIndex: 'price',
+            width: 70,
+            sorter: {compare: (a, b) => a.price - b.price}
+        },
         {
             title: Lang.get('pages.pumps.data.currency'),
             dataIndex: 'currency',
@@ -64,62 +79,102 @@ const Index = () => {
             // render: currency => currency.code,
             width: 70
         },
-        {title: Lang.get('pages.pumps.data.weight'), dataIndex: 'weight', key: 'weight', width: 90},
-        {title: Lang.get('pages.pumps.data.rated_power'), dataIndex: 'rated_power', width: 95},
+        {
+            title: Lang.get('pages.pumps.data.weight'),
+            dataIndex: 'weight',
+            key: 'weight',
+            width: 90,
+            sorter: {compare: (a, b) => a.weight - b.weight}
+        },
+        {
+            title: Lang.get('pages.pumps.data.rated_power'),
+            dataIndex: 'rated_power',
+            width: 95,
+            sorter: {compare: (a, b) => a.rated_power - b.rated_power}
+        },
         {
             title: Lang.get('pages.pumps.data.rated_current'),
             dataIndex: 'rated_current',
-            width: 80
+            width: 80,
+            sorter: {compare: (a, b) => a.rated_current - b.rated_current}
         },
         {
             title: Lang.get('pages.pumps.data.connection_type'),
             dataIndex: 'connection_type',
             // render: connectionType => connectionType.name,
-            width: 120
+            width: 120,
+            filters: filter_data.connection_types,
+            onFilter: (connection_type, record) => record.connection_type === connection_type
         },
         {
             title: Lang.get('pages.pumps.data.fluid_temp_min'),
             dataIndex: 'fluid_temp_min',
-            width: 160
+            width: 160,
+            sorter: {
+                compare: (a, b) => a.fluid_temp_min - b.fluid_temp_min
+            },
         },
         {
             title: Lang.get('pages.pumps.data.fluid_temp_max'),
             dataIndex: 'fluid_temp_max',
-            width: 170
+            width: 170,
+            sorter: {
+                compare: (a, b) => a.fluid_temp_max - b.fluid_temp_max
+            },
         },
         {
             title: Lang.get('pages.pumps.data.ptp_length'),
             dataIndex: 'ptp_length',
-            width: 150
+            width: 150,
+            sorter: {
+                compare: (a, b) => a.ptp_length - b.ptp_length
+            },
+
         },
         {
             title: Lang.get('pages.pumps.data.dn_suction'),
             dataIndex: 'dn_suction',
             // render: dn => dn.value,
-            width: 90
+            width: 90,
+            sorter: {
+                compare: (a, b) => a.dn_suction - b.dn_suction
+            },
+            filters: filter_data.dns,
+            onFilter: (dn_suction, record) => record.dn_suction === dn_suction
         },
         {
             title: Lang.get('pages.pumps.data.dn_pressure'),
             dataIndex: 'dn_pressure',
             // render: dn => dn.value,
-            width: 90
+            width: 90,
+            sorter: {
+                compare: (a, b) => a.dn_pressure - b.dn_pressure
+            },
+            filters: filter_data.dns,
+            onFilter: (dn_pressure, record) => record.dn_pressure === dn_pressure
         },
         {
             title: Lang.get('pages.pumps.data.power_adjustment'),
             dataIndex: 'power_adjustment',
             // render: series => series.power_adjustment.name,
-            width: 140
+            width: 140,
+            filters: filter_data.power_adjustments,
+            onFilter: (power_adjustment, record) => record.power_adjustment === power_adjustment
         },
         {
             title: Lang.get('pages.pumps.data.connection'),
             dataIndex: 'mains_connection',
             // render: connection => connection.phase + "(" + connection.voltage + ")",
-            width: 90
+            width: 90,
+            filters: filter_data.mains_connections,
+            onFilter: (mains_connection, record) => record.mains_connection === mains_connection
         },
         {
             title: Lang.get('pages.pumps.data.types'),
             dataIndex: 'types',
             width: 360,
+            filters: filter_data.types,
+            onFilter: (type, record) => record.types.split(', ').includes(type)
             // render: series => (
             //     <Space size={[0, 5]} wrap>
             //         {series.types.map(type => <Tag color="green" key={type.name}>{type.name}</Tag>)}
@@ -130,6 +185,8 @@ const Index = () => {
             title: Lang.get('pages.pumps.data.applications'),
             dataIndex: 'applications',
             width: 450,
+            filters: filter_data.applications,
+            onFilter: (application, record) => record.applications.split(', ').includes(application)
             // render: series => (
             //     <Space size={[0, 5]} wrap>
             //         {series.applications.map(application => <Tag color="blue"

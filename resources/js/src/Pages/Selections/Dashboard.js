@@ -39,34 +39,34 @@ const Dashboard = () => {
     const cards = [
         {
             title: Lang.get('pages.selections.dashboard.preferences.pump.single'),
-            src: imgPath + "01.jpg",
+            src: imgPath + "01.png",
             onClick: () => {
                 Inertia.get(tRoute('selections.create', project_id))
             }
         },
         {
             title: Lang.get('pages.selections.dashboard.preferences.pump.double'),
-            src: imgPath + "02.jpg",
+            src: imgPath + "02.png",
             onClick: serviceUnavailable
         },
         {
             title: Lang.get('pages.selections.dashboard.preferences.pump.borehole'),
-            src: imgPath + "03.jpg",
+            src: imgPath + "03.png",
             onClick: serviceUnavailable
         },
         {
             title: Lang.get('pages.selections.dashboard.preferences.pump.drainage'),
-            src: imgPath + "04.jpg",
+            src: imgPath + "04.png",
             onClick: serviceUnavailable
         },
         {
             title: Lang.get('pages.selections.dashboard.preferences.station.water'),
-            src: imgPath + "05.jpg",
+            src: imgPath + "05.png",
             onClick: serviceUnavailable
         },
         {
             title: Lang.get('pages.selections.dashboard.preferences.station.fire'),
-            src: imgPath + "06.jpg",
+            src: imgPath + "06.png",
             onClick: serviceUnavailable
         },
     ]

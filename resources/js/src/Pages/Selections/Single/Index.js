@@ -10,7 +10,7 @@ import {
     Space,
     Tree,
     Typography,
-    notification, Divider
+    Divider
 } from "antd";
 import {RequiredFormItem} from "../../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
@@ -31,7 +31,6 @@ import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
-import {RoundedCard} from "../../../Shared/RoundedCard";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -72,6 +71,7 @@ const Index = () => {
     const [showBrandsList, setShowBrandsList] = useState(false)
     const [brandsSeriesList, setBrandsSeriesList] = useState([])
     const [brandsSeriesListValues, setBrandsSeriesListValues] = useState([])
+    const [checkedBrandsSeriesListValues, setCheckedBrandsSeriesListValues] = useState([])
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
     const [selectedPumps, setSelectedPumps] = useState([])
 
@@ -130,7 +130,7 @@ const Index = () => {
     }
 
     // STYLES
-    const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName} = useStyles()
+    const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName, color} = useStyles()
     const nextBelowStyle = {...fullWidth, ...marginBottomTen}
 
     // TEMPERATURE CHANGE HANDLER
@@ -140,10 +140,24 @@ const Index = () => {
 
     const checkValueIncludesSeriesParams = (value, params) => value.some(_value => !params.map(param => param.id).includes(_value))
 
+    useEffect(() => {
+        console.log("_", checkedBrandsSeriesListValues)
+    }, [checkedBrandsSeriesListValues])
+
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
     const brandsSeriesListValuesCheckedHandler = values => {
-        // const checked = values.find(value => !brandsSeriesListValues.includes(value))
-        //
+        let clicked = values.filter(value => !brandsSeriesListValues.includes(value))
+        if (clicked.length === 0) {
+            clicked = brandsSeriesListValues.filter(value => !values.includes(value))
+            if (clicked.length === 0) {
+                return
+            }
+            setCheckedBrandsSeriesListValues(checkedBrandsSeriesListValues.filter(value => !clicked.includes(value)))
+        } else {
+            setCheckedBrandsSeriesListValues([...checkedBrandsSeriesListValues, ...clicked.filter(value => !checkedBrandsSeriesListValues.includes(value))])
+        }
+
+
         // if (checked !== undefined) {
         //     for (let producer of filteredBrandsWithSeries()) {
         //         let index = producer.series.findIndex(series => series.id === checked)
@@ -219,13 +233,16 @@ const Index = () => {
             const _producersSeriesList = []
             const _producersSeriesTree = []
             const temperatureWasChanged = debouncedTemperature !== prevTemperatureValue
+            const hasTypes = typesValue.length <= 0
+            const hasApplications = applications.length <= 0
+            const hasPowerAdjustments = powerAdjustmentValue <= 0
             filteredBrandsWithSeries().forEach(brand => {
                 let children = []
                 brand.series.forEach(series => {
                     const brandsSeries = brand.name + " " + series.name
-                    let hasType = typesValue.length <= 0
-                    let hasApplication = applicationsValue.length <= 0
-                    let hasPowerAdjustment = powerAdjustmentValue <= 0
+                    let hasType = hasTypes
+                    let hasApplication = hasApplications
+                    let hasPowerAdjustment = hasPowerAdjustments
                     let hasTemp = series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature
                     if (!hasType) {
                         if (typesValue.every(typeValue => series.types
@@ -252,16 +269,16 @@ const Index = () => {
                         _producersSeriesListValues.push(series.id)
                     }
                     if (temperatureWasChanged) {
+                        const colorStyle = color(hasTemp ? 'black' : 'red')
                         _producersSeriesList.push({
-                            label: <Typography
-                                style={{color: hasTemp ? 'black' : 'red'}}>{brandsSeries}</Typography>,
+                            label: <span
+                                style={colorStyle}>{brandsSeries}</span>,
                             value: series.id,
                             disabled: !hasTemp
-
                         })
                         children.push({
-                            title: <Typography
-                                style={{color: hasTemp ? 'black' : 'red'}}>{series.name}</Typography>,
+                            title: <span
+                                style={colorStyle}>{series.name}</span>,
                             key: series.id,
                             disabled: !hasTemp
                         })

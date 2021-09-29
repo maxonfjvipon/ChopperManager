@@ -6,7 +6,16 @@ use App\Http\Requests\FileUploadRequest;
 use App\Http\Resources\PumpResource;
 use App\Imports\PumpsDataImport;
 use App\Imports\PumpsImport;
+use App\Models\ConnectionType;
+use App\Models\DN;
+use App\Models\MainsConnection;
+use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\Pump;
+use App\Models\Pumps\PumpApplication;
+use App\Models\Pumps\PumpBrand;
+use App\Models\Pumps\PumpCategory;
+use App\Models\Pumps\PumpSeries;
+use App\Models\Pumps\PumpType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +26,15 @@ use Inertia\Response;
 
 class PumpsController extends Controller
 {
+
+    private function asFilterData($data)
+    {
+        return array_map(fn($d) => [
+            'text' => $d,
+            'value' => $d,
+        ], $data);
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -50,7 +68,7 @@ class PumpsController extends Controller
                     'name' => $pump->name,
                     'weight' => $pump->weight,
                     'price' => $pump->price,
-                    'currency' => $pump->currency->name,
+                    'currency' => $pump->currency->code,
                     'rated_power' => $pump->rated_power,
                     'rated_current' => $pump->rated_current,
                     'connection_type' => $pump->connection_type->name,
@@ -64,7 +82,19 @@ class PumpsController extends Controller
                     'mains_connection' => $pump->connection->full_value,
                     'applications' => implode(", ", $pump->series->applications->map(fn($application) => $application->name)->toArray()),
                     'types' => implode(", ", $pump->series->types->map(fn($type) => $type->name)->toArray()),
-                ])
+                ]),
+            'filter_data' => [
+                'brands' => $this->asFilterData(PumpBrand::pluck('name')->all()),
+                'series' => $this->asFilterData(PumpSeries::pluck('name')->all()),
+//                'brands_series' => PumpBrand::with('series')->get()->all(),
+                'categories' => $this->asFilterData(PumpCategory::pluck('name')->all()),
+                'connections' => $this->asFilterData(ConnectionType::pluck('name')->all()),
+                'dns' => $this->asFilterData(DN::pluck('value')->all()),
+                'power_adjustments' => $this->asFilterData(ElPowerAdjustment::pluck('name')->all()),
+                'mains_connections' => $this->asFilterData(MainsConnection::all()->map(fn($mc) => $mc->full_value)->toArray()),
+                'types' => $this->asFilterData(PumpType::pluck('name')->all()),
+                'applications' => $this->asFilterData(PumpApplication::pluck('name')->all()),
+            ]
         ]);
     }
 
