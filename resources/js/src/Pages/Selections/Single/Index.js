@@ -10,7 +10,7 @@ import {
     Space,
     Tree,
     Typography,
-    Divider
+    Divider, notification
 } from "antd";
 import {RequiredFormItem} from "../../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
@@ -31,6 +31,7 @@ import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
+import {RoundedCard} from "../../../Shared/RoundedCard";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -146,16 +147,42 @@ const Index = () => {
 
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
     const brandsSeriesListValuesCheckedHandler = values => {
-        let clicked = values.filter(value => !brandsSeriesListValues.includes(value))
-        if (clicked.length === 0) {
-            clicked = brandsSeriesListValues.filter(value => !values.includes(value))
-            if (clicked.length === 0) {
-                return
-            }
-            setCheckedBrandsSeriesListValues(checkedBrandsSeriesListValues.filter(value => !clicked.includes(value)))
-        } else {
-            setCheckedBrandsSeriesListValues([...checkedBrandsSeriesListValues, ...clicked.filter(value => !checkedBrandsSeriesListValues.includes(value))])
-        }
+        // let clicked = values.filter(value => !brandsSeriesListValues.includes(value))
+        // if (clicked.length === 0) { // uncheck
+        //     clicked = brandsSeriesListValues.filter(value => !values.includes(value))
+        //     if (clicked.length === 0) {
+        //         return
+        //     }
+        //     setCheckedBrandsSeriesListValues(checkedBrandsSeriesListValues.filter(value => !clicked.includes(value)))
+        // } else { // check
+            let checked = values.find(value => !brandsSeriesListValues.includes(value))
+            // const _checkedBrandsSeriesListValues = [...checkedBrandsSeriesListValues, ...clicked.filter(value => !checkedBrandsSeriesListValues.includes(value))]
+            // setCheckedBrandsSeriesListValues(_checkedBrandsSeriesListValues)
+            filteredBrandsWithSeries().forEach(brand => {
+                const index = brand.series.findIndex(series => series.id === checked)
+                if (index !== -1) {
+                    let array = []
+                    if (checkValueIncludesSeriesParams(typesValue, brand.series[index].types)) {
+                        array.push("types")
+                    }
+                    if (checkValueIncludesSeriesParams(applicationsValue, brand.series[index].applications)) {
+                        array.push('applications')
+                    }
+                    if (!powerAdjustmentValue.includes(brand.series[index].power_adjustment.id)) {
+                        array.push('power adjustments')
+                    }
+                    if (array.length > 0) {
+                        notification.info({
+                            message: Lang.get('messages.selections.notification.attention'),
+                            description: 'Selected series ' + brand.series[index].name + ' does not match to filter params: '
+                                + array.join(', '),
+                            placement: 'topLeft',
+                            duration: 5
+                        })
+                    }
+                }
+            })
+        // }
 
 
         // if (checked !== undefined) {
@@ -265,6 +292,7 @@ const Index = () => {
                             hasPowerAdjustment = true
                         }
                     }
+                    // checkedBrandsSeriesListValues - checked by user
                     if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
                         _producersSeriesListValues.push(series.id)
                     }
@@ -326,8 +354,8 @@ const Index = () => {
         }
         prepareRequestBody(body)
         Inertia.post(selection
-            ? tRoute('selections.update', selection.data.id)
-            : tRoute('selections.store'), body,
+                ? tRoute('selections.update', selection.data.id)
+                : tRoute('selections.store'), body,
             {
                 preserveScroll: true
             }
@@ -367,7 +395,7 @@ const Index = () => {
                 backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
             >
                 <Row justify="space-around" gutter={[10, 10]}>
-                    <Col xs={2}>
+                    <Col xxl={2} xl={3}>
                         <Checkbox
                             checked={showBrandsList}
                             onChange={e => {
@@ -391,7 +419,7 @@ const Index = () => {
                             onChange={brandsSeriesListValuesCheckedHandler}
                         />}
                     </Col>
-                    <Col xs={22}>
+                    <Col xxl={22} xl={21}>
                         <Row gutter={[10, 10]}>
                             <Col xs={24}>
                                 <Form
@@ -416,6 +444,24 @@ const Index = () => {
                                                     onChange={values => {
                                                         setBrandsValue(values)
                                                     }}
+                                                />
+                                            </RequiredFormItem>
+                                        </Col>
+                                        <Col xs={3}>
+                                            {/* TEMPERATURE */}
+                                            <RequiredFormItem
+                                                className={reducedAntFormItemClassName}
+                                                label={Lang.get('pages.selections.single.fluid_temp')}
+                                                name="fluid_temperature"
+                                                initialValue={temperatureValue}
+                                                style={margin.bottom(10)}
+                                            >
+                                                <InputNumber
+                                                    disabled={fieldsDisabled}
+                                                    style={fullWidth}
+                                                    min={0}
+                                                    max={200}
+                                                    onChange={temperatureChangeHandler()}
                                                 />
                                             </RequiredFormItem>
                                         </Col>
@@ -460,25 +506,7 @@ const Index = () => {
                                             </Form.Item>
                                         </Col>
                                         <Col xs={3}>
-                                            {/* TEMPERATURE */}
-                                            <RequiredFormItem
-                                                className={reducedAntFormItemClassName}
-                                                label={Lang.get('pages.selections.single.fluid_temp')}
-                                                name="fluid_temperature"
-                                                initialValue={temperatureValue}
-                                                style={margin.bottom(10)}
-                                            >
-                                                <InputNumber
-                                                    disabled={fieldsDisabled}
-                                                    style={fullWidth}
-                                                    min={0}
-                                                    max={200}
-                                                    onChange={temperatureChangeHandler()}
-                                                />
-                                            </RequiredFormItem>
-                                        </Col>
-                                        <Col xs={3}>
-                                            {/* REGULATION */}
+                                            {/* POWER ADJUSTMENT */}
                                             <Form.Item
                                                 className={reducedAntFormItemClassName}
                                                 label={Lang.get('pages.selections.single.power_adjustments')}
@@ -808,11 +836,19 @@ const Index = () => {
                                 </Form>
                             </Col>
                             {/* TABLE */}
+                        </Row>
+                        <Row gutter={[10, 10]} style={{display: "flex", alignItems: 'stretch'}}>
                             <Col xs={15}>
-                                <SelectedPumpsTable
-                                    selectedPumps={selectedPumps}
-                                    setStationToShow={setStationToShow}
-                                />
+                                <RoundedCard
+                                    className="table-rounded-card"
+                                    type="inner"
+                                    title={Lang.get('pages.selections.single.table.title')}
+                                >
+                                    <SelectedPumpsTable
+                                        selectedPumps={selectedPumps}
+                                        setStationToShow={setStationToShow}
+                                    />
+                                </RoundedCard>
                             </Col>
                             {/* GRAPHIC */}
                             <Col xs={9}>

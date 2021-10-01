@@ -14,8 +14,13 @@ export const useHttp = () => {
         if (auth) {
             headers['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content
         }
-        const response = await fetch(url, {method, body, headers})
-        const data = await response.json()
+        let response, data
+        try {
+            response = await fetch(url, {method, body, headers})
+            data = await response.json()
+        } catch (e) {
+            console.log(e)
+        }
 
         if (!response.ok) {
             setLoading(false)

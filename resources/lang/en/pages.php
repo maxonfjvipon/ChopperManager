@@ -113,7 +113,7 @@ return [
             'connection_type' => 'Connection',
             'fluid_temp_min' => 'Min. fluid temp, °C',
             'fluid_temp_max' => 'Max. fluid temp, °C',
-            'ptp_length' => 'Port-to-port dist, mm',
+            'ptp_length' => 'Port-to-port length, mm',
             'dn_suction' => 'Suction side DN',
             'dn_pressure' => 'Pressure side DN',
             'power_adjustment' => 'El. power adjustment',
@@ -218,11 +218,11 @@ return [
             'phase' => 'Mains connection',
             'condition' => 'Condition',
             'power_limit' => 'Limiting the pump power',
-            'ptp_length_limit' => 'Limiting the between axes distance',
+            'ptp_length_limit' => 'Limiting the port-to-port length',
             'dn_input_limit' => 'Limiting the suction side DN',
             'dn_output_limit' => 'Limiting the pressure side DN',
             'power' => 'Power, kW',
-            'ptp_length' => 'Between axes distance',
+            'ptp_length' => 'Port-to-port length',
             'dn_input' => 'Suction side DN',
             'dn_output' => 'Pressure side DN',
             'select' => 'Select',
@@ -231,6 +231,7 @@ return [
             'update' => 'Update selection',
             'selected_pump' => 'Selected pump: ',
             'table' => [
+                'title' => 'Selected pumps',
                 'name' => 'Name',
                 'part_num' => 'Article number',
                 'retail_price' => 'Retail price',
@@ -241,7 +242,7 @@ return [
                 'dn_output' => 'Pressure side DN',
                 'power' => 'P, kW',
                 'total_power' => 'P total, kW',
-                'ptp_length' => 'Between axes distance'
+                'ptp_length' => 'Port-to-port length, mm'
             ],
         ]
     ]

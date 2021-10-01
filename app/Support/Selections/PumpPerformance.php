@@ -6,6 +6,7 @@ namespace App\Support\Selections;
 
 class PumpPerformance
 {
+    private static $instance;
     private string $performance;
 
     private function dist($xx)
@@ -33,9 +34,17 @@ class PumpPerformance
         return $dist;
     }
 
-    public function __construct($performance)
+    private function __construct()
     {
-        $this->performance = $performance;
+    }
+
+    public static function by($performance): PumpPerformance
+    {
+        if (self::$instance === null) {
+            self::$instance = new self;
+        }
+        self::$instance->performance = $performance;
+        return self::$instance;
     }
 
     public function asArray(): array
@@ -49,9 +58,6 @@ class PumpPerformance
     {
         $data = [];
         $performanceAsArray = $this->asArray();
-        if (count($performanceAsArray) < 5) {
-            dd($performanceAsArray);
-        }
         for ($i = 0; $i < count($performanceAsArray); $i += 2) {
             $data[] = [
                 '0' => $performanceAsArray[$i] * $position,
@@ -69,7 +75,7 @@ class PumpPerformance
         $dist = $this->dist($xx);
         $yMax = 0;
         $line = array();
-        for ($x = $xx[0]; $x <= $xx[count($xx) - 1]; $x += $dist) {
+        for ($x = $xx[0]; $x <= $xx[count($xx) - 1]; $x += $dist * $count) {
             $y = $regression->calculatedY($x);
             if ($y > $yMax) {
                 $yMax = $y;

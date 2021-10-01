@@ -32,13 +32,11 @@ class PumpsDataImport implements ToCollection, SkipsEmptyRows
         $rows->shift();
 
         $seriesStaticInfo = [];
-        $seriesAndTemperatures = [];
         $seriesAndTypes = [];
-//        $seriesAndPowerAdjustments = [];
         $seriesAndApplications = [];
 
         foreach ($rows as $row) {
-            $pumpPerformance = new PumpPerformance(trim($row[17]));
+            $pumpPerformance = PumpPerformance::by(trim($row[17]));
             $pump = Pump::where('article_num_main', trim($row[0]))->first();
 
             for ($position = 1; $position < 10; ++$position) {

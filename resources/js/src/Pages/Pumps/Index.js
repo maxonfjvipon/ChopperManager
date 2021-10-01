@@ -43,12 +43,10 @@ const Index = () => {
             width: 100,
             filters: filter_data.brands,
             onFilter: (brand, record) => record.brand === brand
-            // render: series => series.brand.name,
         },
         {
             title: Lang.get('pages.pumps.data.series'),
             dataIndex: 'series',
-            // render: series => series.name,
             width: 100,
             filters: filter_data.series,
             onFilter: (series, record) => record.series === series
@@ -61,7 +59,6 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.category'),
             dataIndex: 'category',
-            // render: category => category.name,
             width: 100,
             filters: filter_data.categories,
             onFilter: (category, record) => record.category === category
@@ -76,7 +73,6 @@ const Index = () => {
             title: Lang.get('pages.pumps.data.currency'),
             dataIndex: 'currency',
             key: 'currency',
-            // render: currency => currency.code,
             width: 70
         },
         {
@@ -95,13 +91,12 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.rated_current'),
             dataIndex: 'rated_current',
-            width: 80,
+            width: 100,
             sorter: {compare: (a, b) => a.rated_current - b.rated_current}
         },
         {
             title: Lang.get('pages.pumps.data.connection_type'),
             dataIndex: 'connection_type',
-            // render: connectionType => connectionType.name,
             width: 120,
             filters: filter_data.connection_types,
             onFilter: (connection_type, record) => record.connection_type === connection_type
@@ -109,7 +104,7 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.fluid_temp_min'),
             dataIndex: 'fluid_temp_min',
-            width: 160,
+            width: 110,
             sorter: {
                 compare: (a, b) => a.fluid_temp_min - b.fluid_temp_min
             },
@@ -117,7 +112,7 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.fluid_temp_max'),
             dataIndex: 'fluid_temp_max',
-            width: 170,
+            width: 110,
             sorter: {
                 compare: (a, b) => a.fluid_temp_max - b.fluid_temp_max
             },
@@ -134,8 +129,7 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.dn_suction'),
             dataIndex: 'dn_suction',
-            // render: dn => dn.value,
-            width: 90,
+            width: 110,
             sorter: {
                 compare: (a, b) => a.dn_suction - b.dn_suction
             },
@@ -145,8 +139,7 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.dn_pressure'),
             dataIndex: 'dn_pressure',
-            // render: dn => dn.value,
-            width: 90,
+            width: 110,
             sorter: {
                 compare: (a, b) => a.dn_pressure - b.dn_pressure
             },
@@ -156,7 +149,6 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.power_adjustment'),
             dataIndex: 'power_adjustment',
-            // render: series => series.power_adjustment.name,
             width: 140,
             filters: filter_data.power_adjustments,
             onFilter: (power_adjustment, record) => record.power_adjustment === power_adjustment
@@ -164,7 +156,6 @@ const Index = () => {
         {
             title: Lang.get('pages.pumps.data.connection'),
             dataIndex: 'mains_connection',
-            // render: connection => connection.phase + "(" + connection.voltage + ")",
             width: 90,
             filters: filter_data.mains_connections,
             onFilter: (mains_connection, record) => record.mains_connection === mains_connection
@@ -175,11 +166,6 @@ const Index = () => {
             width: 360,
             filters: filter_data.types,
             onFilter: (type, record) => record.types.split(', ').includes(type)
-            // render: series => (
-            //     <Space size={[0, 5]} wrap>
-            //         {series.types.map(type => <Tag color="green" key={type.name}>{type.name}</Tag>)}
-            //     </Space>
-            // )
         },
         {
             title: Lang.get('pages.pumps.data.applications'),
@@ -187,12 +173,6 @@ const Index = () => {
             width: 450,
             filters: filter_data.applications,
             onFilter: (application, record) => record.applications.split(', ').includes(application)
-            // render: series => (
-            //     <Space size={[0, 5]} wrap>
-            //         {series.applications.map(application => <Tag color="blue"
-            //                                                      key={application.name}>{application.name}</Tag>)}
-            //     </Space>
-            // )
         },
         {
             key: 'actions', width: "1%", render: (_, record) => {

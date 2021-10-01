@@ -99,7 +99,11 @@ export const useGraphic = () => {
     }
 
     const PSHCDiagram = ({multiline, width = 600, height = 450}) => {
-        return <RoundedCard type="inner" title={stationToShow?.name}>
+        return <RoundedCard
+            className={'flex-rounded-card'}
+            type="inner"
+            title={stationToShow?.name}
+        >
             <Diagram
                 id={defaultDiagramId}
                 toShow={stationToShow}

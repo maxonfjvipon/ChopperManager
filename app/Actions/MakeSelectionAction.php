@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\Auth;
 
 class MakeSelectionAction
 {
-    private function systemPerformance($intersectionPoint, $head, $flow): array
+    private function systemPerformance($intersectionPoint, $flow, $head): array
     {
         $systemPerformance = [];
-        for ($q = 0.2; $q < $intersectionPoint['x'] + 0.4; $q += 0.2) {
+        $y = 0;
+        for ($q = 0.2; $y < $intersectionPoint->y(); $q += 1) {
+            $y = round($head / ($flow * $flow) * $q * $q, 1); // to fixed 1
             $systemPerformance[] = [
-                'x' => round($q, 1),// to fixed 1
-                'y' => round($head / ($flow * $flow) * $q * $q, 1) // to fixed 1
+                'x' => round($q, 1), // to fixed 1
+                'y' => $y
             ];
         }
         return $systemPerformance;
@@ -29,8 +31,10 @@ class MakeSelectionAction
 
     public function execute(MakeSelectionRequest $request): JsonResponse
     {
+        ini_set('memory_limit', '300M');
         $dbPumps = Pump
-            ::with(['series', 'series.discounts' => function ($query) {
+            ::whereIn('series_id', $request->series_ids)
+            ->with(['series', 'series.discounts' => function ($query) {
                 $query->where('user_id', Auth::id());
             }])
             ->with('currency')
@@ -42,8 +46,7 @@ class MakeSelectionAction
                     'position',
                     [1, max($request->main_pumps_counts) + $request->reserve_pumps_count]
                 );
-            }])
-            ->whereIn('series_id', $request->series_ids);
+            }]);
 
         // MAINS CONNECTIONS
         if ($request->mains_connection_ids && count($request->mains_connection_ids) > 0) {
@@ -125,97 +128,86 @@ class MakeSelectionAction
         $selectedPumps = [];
         $num = 1;
 
+//        dd(memory_get_usage());
+
         $dbPumps = $dbPumps->get([
             'id', 'article_num_main', 'series_id', 'currency_id', 'dn_suction_id',
             'dn_pressure_id', 'price', 'name', 'rated_power', 'ptp_length', 'performance'
-        ])->transform(function ($pump) use ($request, $head, $flow, $reservePumpsCount, $deviation) {
-            $performanceAsArray = (new PumpPerformance($pump->performance))->asArray();
-            $pumpCountsAndIntersectionPoints = [];
-            foreach ($request->main_pumps_counts as $mainPumpsCount) {
-                $coefficients = $pump->coefficients->firstWhere('position', $mainPumpsCount);
-                $qStart = $performanceAsArray[0] * $mainPumpsCount;
-                $qEnd = $performanceAsArray[(count($performanceAsArray) - 2)] * $mainPumpsCount;
-                $intersectionPoint = new IntersectionPoint(
-                    [$coefficients->k, $coefficients->b, $coefficients->c],
-                    $head,
-                    $flow
-                );
-                $x = $intersectionPoint->x();
-                $y = $intersectionPoint->y();
+        ]);
 
-                // appropriate
-                if (round($y, 2) >= $head - round($head * $deviation / 100, 2)
-                    && $x >= $qStart && $x <= $qEnd) {
-                    $pumpCountsAndIntersectionPoints[] = [
-                        'mainPumpsCount' => $mainPumpsCount,
+        foreach ($dbPumps as $pump) {
+            $pumpPerformance = PumpPerformance::by($pump->performance);
+            $performanceAsArray = $pumpPerformance->asArray();
+            $performanceAsArrayLength = count($performanceAsArray);
+            foreach ($request->main_pumps_counts as $mainPumpsCount) {
+                $qEnd = $performanceAsArray[$performanceAsArrayLength - 2] * $mainPumpsCount;
+                if ($flow >= $qEnd) {
+                    continue;
+                }
+                $coefficients = $pump->coefficients->firstWhere('position', $mainPumpsCount);
+                if ($head > ($coefficients->k * $flow * $flow + $coefficients->b * $flow + $coefficients->c)) {
+                    continue;
+                }
+                $qStart = $performanceAsArray[0] * $mainPumpsCount;
+                $intersectionPoint = IntersectionPoint::by($coefficients, $flow, $head);
+
+//                dd($intersectionPoint->x(), $intersectionPoint->y(), $qStart, $qEnd);
+
+                // pump with current main pumps count is appropriate
+                if ($intersectionPoint->x() <= $qEnd && $intersectionPoint->x() >= $qStart
+                    && $intersectionPoint->y() >= $head - $head * $deviation / 100
+                ) {
+                    $pumpsCount = $mainPumpsCount + $reservePumpsCount;
+                    $pump_price = $pump->currency->code === $rates->base()
+                        ? $pump->price
+                        : round($pump->price / $rates->rate($pump->currency->code), 2);
+                    $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discounts[0]->value / 100;
+                    $performanceLines = [];
+                    $yMax = 0;
+                    $systemPerformance = [];
+                    for ($currentPumpsCount = 1; $currentPumpsCount <= $pumpsCount; ++$currentPumpsCount) {
+                        if ($currentPumpsCount === $mainPumpsCount) {
+                            $systemPerformance = $this->systemPerformance($intersectionPoint, $flow, $head);
+                        }
+                        $coefficients = $pump->coefficients->firstWhere('position', $currentPumpsCount);
+                        $performanceLineData = $pumpPerformance->asPerformanceLineData(
+                            $currentPumpsCount,
+                            Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c])
+                        );
+                        $performanceLines[] = $performanceLineData['line'];
+                        if ($performanceLineData['yMax'] > $yMax) {
+                            $yMax = $performanceLineData['yMax'];
+                        }
+                    }
+
+                    $selectedPumps[] = [
+                        'key' => $num++,
+                        'pumps_count' => $pumpsCount,
+                        'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->series->name . ' ' . $pump->name,
+                        'pump_id' => $pump->id,
+                        'articleNum' => $pump->article_num_main,
+                        'retailPrice' => $pump_price,
+                        'discountedPrice' => round($pump_price_with_discount, 2),
+                        'retailPriceSum' => round($pump_price * $pumpsCount, 2),
+                        'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
+                        'dnSuction' => $pump->dn_suction->value,
+                        'dnPressure' => $pump->dn_pressure->value,
+                        'rated_power' => $pump->rated_power,
+                        'powerSum' => round($pump->rated_power * $pumpsCount, 1),
+                        'ptpLength' => $pump->ptp_length,
                         'intersectionPoint' => [
-                            'x' => $x,
-                            'y' => $y
-                        ]
+                            'x' => round($intersectionPoint->x(), 1),
+                            'y' => round($intersectionPoint->y(), 1),
+                        ],
+                        'systemPerformance' => $systemPerformance,
+                        'yMax' => $yMax,
+                        'lines' => $performanceLines
                     ];
                 }
             }
-            $pump['pumpCountsAndIntersectionPoints'] = $pumpCountsAndIntersectionPoints;
-            return $pump;
-        })->filter(function ($pump) {
-            return count($pump->pumpCountsAndIntersectionPoints) > 0;
-        });
-
-        if (count($dbPumps) === 0) {
-            return response()->json(['info' => __('flash.selections.pumps_not_found')]);
         }
 
-        $dbPumps->map(function ($pump) use ($reservePumpsCount, $rates, $head, $flow, &$num, &$selectedPumps) {
-            $performance = new PumpPerformance($pump->performance);
-            foreach ($pump->pumpCountsAndIntersectionPoints as $pumpCountAndIntersectionPoint) {
-                $pumpsCount = $pumpCountAndIntersectionPoint['mainPumpsCount'] + $reservePumpsCount;
-                $yMax = 0;
-                $performanceLines = [];
-                $systemPerformance = [];
-                for ($currentPumpsCount = 1; $currentPumpsCount <= $pumpsCount; ++$currentPumpsCount) {
-                    if ($currentPumpsCount === $pumpCountAndIntersectionPoint['mainPumpsCount']) {
-                        $systemPerformance = $this->systemPerformance($pumpCountAndIntersectionPoint['intersectionPoint'], $head, $flow);
-                    }
-                    $coefficients = $pump->coefficients->firstWhere('position', $currentPumpsCount);
-                    $performanceLineData = $performance->asPerformanceLineData(
-                        $currentPumpsCount,
-                        Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c])
-                    );
-                    $performanceLines[] = $performanceLineData['line'];
-                    if ($performanceLineData['yMax'] > $yMax) {
-                        $yMax = $performanceLineData['yMax'];
-                    }
-                }
-                $pump_price = $pump->currency->code === $rates->base()
-                    ? $pump->price
-                    : round($pump->price / $rates->rate($pump->currency->code), 2);
-                $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discounts[0]->value / 100;
-
-                $selectedPumps[] = [
-                    'key' => $num++,
-                    'pumps_count' => $pumpsCount,
-                    'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->series->name . ' ' . $pump->name,
-                    'pump_id' => $pump->id,
-                    'articleNum' => $pump->article_num_main,
-                    'retailPrice' => $pump_price,
-                    'discountedPrice' => round($pump_price_with_discount, 2),
-                    'retailPriceSum' => round($pump_price * $pumpsCount, 2),
-                    'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
-                    'dnSuction' => $pump->dn_suction->value,
-                    'dnPressure' => $pump->dn_pressure->value,
-                    'rated_power' => $pump->rated_power,
-                    'powerSum' => round($pump->rated_power * $pumpsCount, 1),
-                    'ptpLength' => $pump->ptp_length,
-                    'intersectionPoint' => [
-                        'x' => $pumpCountAndIntersectionPoint['intersectionPoint']['x'],
-                        'y' => $pumpCountAndIntersectionPoint['intersectionPoint']['y']
-                    ],
-                    'systemPerformance' => $systemPerformance,
-                    'yMax' => $yMax,
-                    'lines' => $performanceLines
-                ];
-            }
-        });
+//        dd(memory_get_usage());
 
         return response()->json([
             'selected_pumps' => $selectedPumps,

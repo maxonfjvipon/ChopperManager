@@ -18,7 +18,7 @@ class PumpResource extends JsonResource
     public function toArray($request): array
     {
         $coefficients = $this->coefficients->firstWhere('position', 1);
-        $performanceLineData = (new PumpPerformance($this->performance))
+        $performanceLineData = PumpPerformance::by($this->performance)
             ->asPerformanceLineData(1, Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c]));
         return [
             'id' => $this->id,
@@ -34,7 +34,7 @@ class PumpResource extends JsonResource
             'connection_type' => $this->connection_type->name,
             'fluid_temp_min' => $this->fluid_temp_min,
             'fluid_temp_max' => $this->fluid_temp_max,
-            'ptp_length' => $this->php_length,
+            'ptp_length' => $this->ptp_length,
             'dn_suction' => $this->dn_suction->value,
             'dn_pressure' => $this->dn_pressure->value,
             'category' => $this->category->name,

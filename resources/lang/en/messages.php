@@ -6,7 +6,8 @@ return [
     'selections' => [
         'no_series_selected' => 'No series selected',
         'notification' => [
-            'attention' => 'Attention!'
+            'attention' => 'Attention!',
+            '',
         ]
     ],
 ];

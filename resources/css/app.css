@@ -90,7 +90,8 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
     border-bottom: 1px solid #e8e8e8;
     background: #FFF;
 }
-[data-theme="dark"]  .virtual-table-cell {
+
+[data-theme="dark"] .virtual-table-cell {
     box-sizing: border-box;
     padding: 16px;
     border-bottom: 1px solid #303030;
@@ -118,4 +119,10 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
     /*height: 100%;*/
     margin-top: auto;
     margin-bottom: auto;
+    padding: 0 !important;
+}
+
+.table-rounded-card .ant-card-body {
+    height: "100%";
+    padding: 0 !important;
 }

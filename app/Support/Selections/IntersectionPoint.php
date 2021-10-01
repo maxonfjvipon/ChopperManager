@@ -6,14 +6,40 @@ namespace App\Support\Selections;
 
 class IntersectionPoint
 {
-    private $coefficients, $head, $flow, $point;
-    private $isCalculated = false;
+    private static $instance;
+    private $coefficients, $head, $flow, $x, $y;
 
-    public function __construct($coefficients, $head, $flow)
+    private function __construct()
     {
-        $this->coefficients = $coefficients;
-        $this->head = $head;
-        $this->flow = $flow;
+    }
+
+    public static function by($coefficients, $flow, $head): IntersectionPoint
+    {
+        if (self::$instance === null) {
+            self::$instance = new self;
+        }
+//        self::$instance->coefficients = $coefficients;
+//        self::$instance->head = $head;
+//        self::$instance->flow = $flow;
+//        self::$instance->calculatedCoefficients();
+        self::$instance->calculatePoint($coefficients, $flow, $head);
+        return self::$instance;
+    }
+
+    private function calculatePoint($coefficients, $flow, $head)
+    {
+        $z = $head / ($flow * $flow);
+        $t = $coefficients->k - $z;
+        $d = $coefficients->b * $coefficients->b - 4 * $t * $coefficients->c;
+        $sqrtD = sqrt($d);
+//        $x1 = (-$coefficients->b + $sqrtD) / (2 * $t);
+//        $x2 = (-$coefficients->b - $sqrtD) / (2 * $t);
+        $this->x = (-$coefficients->b - $sqrtD) / (2 * $t);
+//        $this->x = $x1 > $x2 ? $x1 : $x2;
+//        dd($coefficients->k * $x2 * $x2 + $coefficients->b * $x2 + $coefficients->c, $z * $this->x * $this->x);
+//        $this->y = $coefficients->k * $x2 * $x2 + $coefficients->b * $x2 + $coefficients->c;
+        $this->y = $z * $this->x * $this->x;
+//        dd($this->y);
     }
 
     private function calculatedCoefficients()
@@ -23,25 +49,17 @@ class IntersectionPoint
         $x1 = (-$this->coefficients[1] + sqrt($d)) / (2 * $aCoef);
         $x2 = (-$this->coefficients[1] - sqrt($d)) / (2 * $aCoef);
         $x = $x1 > $x2 ? $x1 : $x2;
-        $this->point = new Point($x, $this->coefficients[0] * $x * $x + $this->coefficients[1] * $x + $this->coefficients[2]);
-        $this->isCalculated = true;
-    }
-
-    private function checkCalculation() {
-        if (!$this->isCalculated) {
-            $this->calculatedCoefficients();
-        }
+        $this->x = $x;
+        $this->y = $this->coefficients[0] * $x * $x + $this->coefficients[1] * $x + $this->coefficients[2];
     }
 
     public function x()
     {
-        $this->checkCalculation();
-        return $this->point->x();
+        return $this->x;
     }
 
     public function y() {
-        $this->checkCalculation();
-        return $this->point->y();
+        return $this->y;
     }
 
 }

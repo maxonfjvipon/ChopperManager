@@ -28,6 +28,7 @@ use Illuminate\Http\Request;
 // CHECK LOCALE
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware('localizationRedirect')
+    ->middleware('localeSessionRedirect')
     ->group(function () {
         Route::middleware('guest')->group(function () {
             // LOGIN

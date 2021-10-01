@@ -17,7 +17,7 @@ export const LocaleDropdown = () => {
                             preserveScroll
                             method="GET"
                             href={locales.current_localized[locale]}
-                            only={['locales', 'pumps', 'pump']}
+                            only={['locales', 'pumps', 'pump', 'filter_data']}
                         >
                             {locale.toUpperCase()}
                         </Link>
