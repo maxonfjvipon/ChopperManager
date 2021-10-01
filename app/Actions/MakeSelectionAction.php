@@ -125,6 +125,7 @@ class MakeSelectionAction
 
         $rates = new Rates(Auth::user()->currency->code);
         $selectedPumps = [];
+        $defaultSystemPerformance = null;
         $num = 1;
 
 //        dd(memory_get_usage());
@@ -165,6 +166,9 @@ class MakeSelectionAction
                     for ($currentPumpsCount = 1; $currentPumpsCount <= $pumpsCount; ++$currentPumpsCount) {
                         if ($currentPumpsCount === $mainPumpsCount) {
                             $systemPerformance = $this->systemPerformance($intersectionPoint, $flow, $head);
+                            if (!$defaultSystemPerformance) {
+                                $defaultSystemPerformance = $systemPerformance;
+                            }
                         }
                         $coefficients = $pump->coefficients->firstWhere('position', $currentPumpsCount);
                         $performanceLineData = $pumpPerformance->asPerformanceLineData(
@@ -213,7 +217,8 @@ class MakeSelectionAction
             'working_point' => [
                 'x' => $flow,
                 'y' => $head
-            ]
+            ],
+            'default_system_performance' => $defaultSystemPerformance
         ]);
     }
 }

@@ -84,7 +84,7 @@ const Index = () => {
                 name: 'currency_id',
                 label: Lang.get('pages.profile.index.currency.label'),
                 initialValue: userdata.currency_id,
-                tooltip: Lang.get('pages.profile.index.currency.tooltip'),
+                // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
                 rules: [rules.required]
             },
             input: <Selection options={currencies}/>

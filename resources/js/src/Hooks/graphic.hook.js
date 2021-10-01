@@ -7,6 +7,7 @@ import Lang from "../../translation/lang";
 export const useGraphic = () => {
     const [stationToShow, setStationToShow] = useState(null)
     const [workingPoint, setWorkingPoint] = useState(null)
+    const [defaultSystemPerformance, setDefaultSystemPerformance] = useState([])
 
     const defaultDiagramId = "chart"
 
@@ -25,77 +26,75 @@ export const useGraphic = () => {
             }
         }
         return useMemo(() => (
-                <VictoryChart
-                    width={width}
-                    height={height - 20}
-                    domain={{y: [0, toShow?.yMax || 100]}} // todo
-                    containerComponent={<VictoryVoronoiContainer/>}
-                    id={'victory-chart'}
-                >
-                    <VictoryAxis
-                        orientation="bottom"
-                        label={Lang.get('graphic.axis.flow')}
-                    />
-                    <VictoryAxis
-                        dependentAxis
-                        label={Lang.get('graphic.axis.head')}
-                    />
-                    {multiline
-                        ? (toShow
-                            ? [...toShow?.lines].map((line, index) => (
-                                diagramLine(line, index)
-                            )) : <></>)
-                        : (diagramLine(toShow?.line || [], 1))
+            <VictoryChart
+                width={width}
+                height={height - 20}
+                domain={{y: [0, toShow?.yMax || 100]}} // todo
+                containerComponent={<VictoryVoronoiContainer/>}
+                id={'victory-chart'}
+            >
+                <VictoryAxis
+                    orientation="bottom"
+                    label={Lang.get('graphic.axis.flow')}
+                />
+                <VictoryAxis
+                    dependentAxis
+                    label={Lang.get('graphic.axis.head')}
+                />
+                {multiline
+                    ? (toShow
+                        ? [...toShow?.lines].map((line, index) => (
+                            diagramLine(line, index)
+                        )) : <></>)
+                    : (diagramLine(toShow?.line || [], 1))
+                }
+                <VictoryLine
+                    interpolation="linear"
+                    data={
+                        toShow?.systemPerformance || defaultSystemPerformance || []
                     }
-                    <VictoryLine
-                        interpolation="linear"
-                        data={
-                            toShow?.systemPerformance || []
-                        }
-                        style={{data: {stroke: "red"}}}
-                    />
-                    <VictoryScatter
-                        data={toShow != null
-                            ? [{
-                                x: +toShow.intersectionPoint.x,
-                                y: +toShow.intersectionPoint.y
-                            }]
-                            : []}
-                        size={6}
-                        style={scatterStyle('green')}
-                    />
+                    style={{data: {stroke: "red"}}}
+                />
+                <VictoryScatter
+                    data={toShow != null
+                        ? [{
+                            x: +toShow.intersectionPoint.x,
+                            y: +toShow.intersectionPoint.y
+                        }]
+                        : []}
+                    size={6}
+                    style={scatterStyle('green')}
+                />
 
-                    <VictoryScatter
-                        data={workingPoint ? [{
-                            x: +workingPoint.x,
-                            y: +workingPoint.y
-                        }] : []}
-                        size={6}
-                        style={scatterStyle('red')}
-                    />
-                    <VictoryLegend
-                        x={450} y={20}
-                        centerTitle
-                        orientation="vertical"
-                        gutter={20}
-                        colorScale={["red", "green"]}
-                        data={(workingPoint && toShow) ? [
-                            {
-                                name: Lang.get('graphic.legend.working_point') +
-                                    "\n" + Lang.get('graphic.legend.flow') + ": " + workingPoint.x +
-                                    "\n" + Lang.get('graphic.legend.head') + ": " + workingPoint.y
-                            },
-                            {
-                                name: Lang.get('graphic.legend.intersection_point') +
-                                    "\n" + Lang.get('graphic.legend.flow') + ": " + (toShow.intersectionPoint.x).toFixed(1) +
-                                    "\n" + Lang.get('graphic.legend.head') + ": " + (toShow.intersectionPoint.y).toFixed(1)
-                            },
-                        ] : []}
-                    />
-                </VictoryChart>
-            ),
-            [toShow, workingPoint]
-        )
+                <VictoryScatter
+                    data={workingPoint ? [{
+                        x: +workingPoint.x,
+                        y: +workingPoint.y
+                    }] : []}
+                    size={6}
+                    style={scatterStyle('red')}
+                />
+                <VictoryLegend
+                    x={450} y={20}
+                    centerTitle
+                    orientation="vertical"
+                    gutter={20}
+                    colorScale={["red", "green"]}
+                    data={(workingPoint && toShow) ? [
+                        {
+                            name: Lang.get('graphic.legend.working_point') +
+                                "\n" + Lang.get('graphic.legend.flow') + ": " + workingPoint.x +
+                                "\n" + Lang.get('graphic.legend.head') + ": " + workingPoint.y
+                        },
+                        {
+                            name: Lang.get('graphic.legend.intersection_point') +
+                                "\n" + Lang.get('graphic.legend.flow') + ": " + (toShow.intersectionPoint.x).toFixed(1) +
+                                "\n" + Lang.get('graphic.legend.head') + ": " + (toShow.intersectionPoint.y).toFixed(1)
+                        },
+                    ] : []}
+                />
+            </VictoryChart>
+        ), [toShow, workingPoint, defaultSystemPerformance])
     }
 
     const PSHCDiagram = ({multiline, width = 600, height = 450}) => {
@@ -121,5 +120,6 @@ export const useGraphic = () => {
         setWorkingPoint,
         stationToShow,
         setStationToShow,
+        setDefaultSystemPerformance,
     }
 }

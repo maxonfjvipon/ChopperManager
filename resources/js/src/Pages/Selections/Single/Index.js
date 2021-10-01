@@ -77,7 +77,7 @@ const Index = () => {
     const [selectedPumps, setSelectedPumps] = useState([])
 
     // HOOKS
-    const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint} = useGraphic()
+    const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint, setDefaultSystemPerformance} = useGraphic()
     const {isArrayEmpty, prepareRequestBody} = useCheck()
     const {postRequest, loading} = useHttp()
     const {selection, project_id, selection_props} = usePage().props
@@ -159,18 +159,21 @@ const Index = () => {
                 if (index !== -1) {
                     let array = []
                     if (checkValueIncludesSeriesParams(typesValue, brand.series[index].types)) {
-                        array.push("types")
+                        array.push(Lang.get('messages.selections.notification.description.types'))
                     }
                     if (checkValueIncludesSeriesParams(applicationsValue, brand.series[index].applications)) {
-                        array.push('applications')
+                        array.push(Lang.get('messages.selections.notification.description.applications'))
                     }
                     if (!powerAdjustmentValue.includes(brand.series[index].power_adjustment.id)) {
-                        array.push('power adjustments')
+                        array.push(Lang.get('messages.selections.notification.description.power_adjustment'))
                     }
                     if (array.length > 0) {
                         notification.info({
                             message: Lang.get('messages.selections.notification.attention'),
-                            description: 'Selected series ' + brand.series[index].name + ' does not match to filter params: '
+                            description:
+                                Lang.get('messages.selections.notification.description.1') + " " +
+                                    brand.series[index].name + " " +
+                                Lang.get('messages.selections.notification.description.2') + " "
                                 + array.join(', '),
                             placement: 'topLeft',
                             duration: 5
@@ -366,19 +369,18 @@ const Index = () => {
         }
         setStationToShow(null)
         setWorkingPoint(null)
+        setDefaultSystemPerformance([])
         body = {
             ...body,
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
         try {
-            // Inertia.post(tRoute('selections.select'), body)
             const data = await postRequest(tRoute('selections.select'), body, true)
-            // console.log(data)
-            setSelectedPumps(data.selected_pumps)
             setWorkingPoint(data.working_point)
+            setDefaultSystemPerformance(data.default_system_performance)
+            setSelectedPumps(data.selected_pumps)
         } catch (e) {
-            // console.log("s", e)
         }
     }
 
