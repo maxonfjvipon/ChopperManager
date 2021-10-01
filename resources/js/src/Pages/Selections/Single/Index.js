@@ -141,10 +141,6 @@ const Index = () => {
 
     const checkValueIncludesSeriesParams = (value, params) => value.some(_value => !params.map(param => param.id).includes(_value))
 
-    useEffect(() => {
-        console.log("Hello", limitChecks)
-    }, [limitChecks])
-
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
     const brandsSeriesListValuesCheckedHandler = values => {
         // let clicked = values.filter(value => !brandsSeriesListValues.includes(value))
@@ -377,11 +373,12 @@ const Index = () => {
         prepareRequestBody(body)
         try {
             // Inertia.post(tRoute('selections.select'), body)
-            const data = await postRequest(tRoute('selections.select'), body, true)
+            const data = await postRequest(tRoute('selections.select'), body)
             // console.log(data)
             setSelectedPumps(data.selected_pumps)
             setWorkingPoint(data.working_point)
-        } catch {
+        } catch (e) {
+            // console.log("s", e)
         }
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use AmrShawky\LaravelCurrency\Facade\Currency;
 use App\Http\Requests\MakeSelectionRequest;
 use App\Models\LimitCondition;
 use App\Models\Pumps\Pump;
@@ -151,8 +150,6 @@ class MakeSelectionAction
                 $qStart = $performanceAsArray[0] * $mainPumpsCount;
                 $intersectionPoint = IntersectionPoint::by($coefficients, $flow, $head);
 
-//                dd($intersectionPoint->x(), $intersectionPoint->y(), $qStart, $qEnd);
-
                 // pump with current main pumps count is appropriate
                 if ($intersectionPoint->x() <= $qEnd && $intersectionPoint->x() >= $qStart
                     && $intersectionPoint->y() >= $head - $head * $deviation / 100
@@ -207,7 +204,9 @@ class MakeSelectionAction
             }
         }
 
-//        dd(memory_get_usage());
+        if (count($selectedPumps) === 0) {
+            return response()->json(['info' => __('flash.selections.pumps_not_found')]);
+        }
 
         return response()->json([
             'selected_pumps' => $selectedPumps,

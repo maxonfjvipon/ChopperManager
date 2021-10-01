@@ -19,7 +19,11 @@ export const useHttp = () => {
             response = await fetch(url, {method, body, headers})
             data = await response.json()
         } catch (e) {
-            console.log(e)
+            setLoading(false)
+            if (!headers.hasOwnProperty("X-CSRF-TOKEN")) {
+                message.info("Your session may be expired. Try reload the page")
+            }
+            throw new Error(e)
         }
 
         if (!response.ok) {
