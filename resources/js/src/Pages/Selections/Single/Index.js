@@ -141,9 +141,9 @@ const Index = () => {
 
     const checkValueIncludesSeriesParams = (value, params) => value.some(_value => !params.map(param => param.id).includes(_value))
 
-    // useEffect(() => {
-    //     console.log("_", checkedBrandsSeriesListValues)
-    // }, [checkedBrandsSeriesListValues])
+    useEffect(() => {
+        console.log(limitChecks)
+    }, [limitChecks])
 
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
     const brandsSeriesListValuesCheckedHandler = values => {
