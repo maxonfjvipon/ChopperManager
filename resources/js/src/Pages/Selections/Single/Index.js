@@ -373,7 +373,7 @@ const Index = () => {
         prepareRequestBody(body)
         try {
             // Inertia.post(tRoute('selections.select'), body)
-            const data = await postRequest(tRoute('selections.select'), body)
+            const data = await postRequest(tRoute('selections.select'), body, true)
             // console.log(data)
             setSelectedPumps(data.selected_pumps)
             setWorkingPoint(data.working_point)
