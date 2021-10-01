@@ -13,8 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
     {{--    <link href="{{ mix('/css/app.css') }}" rel="stylesheet"/>--}}
-{{--    <script src="{{ mix('/js/app.js') }}" defer></script>--}}
-    <script type="text/javascript" src="/resources/js/app.js?1.0"></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
     <title>PumpManager</title>
     @translations
 </head>
