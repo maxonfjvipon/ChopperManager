@@ -1,32 +1,29 @@
 import {useState} from 'react'
 import {message} from "antd";
 
-
 export const useHttp = () => {
     const [loading, setLoading] = useState(false)
 
     const request = async (url, method = 'GET', body = null, headers = {}, auth = false) => {
         setLoading(true)
-        if (body) {
-            body = JSON.stringify(body)
-            headers['Content-type'] = 'application/json'
-        }
-        if (auth) {
-            headers['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content
-        }
         let response, data
         try {
-            response = await fetch(url, {method, body, headers})
-            data = await response.json()
+            response = await axios.request({
+                url,
+                method,
+                data: body,
+            })
+            data = response.data
         } catch (e) {
             setLoading(false)
-            if (!headers.hasOwnProperty("X-CSRF-TOKEN")) {
-                message.info("Your session may be expired. Try reload the page")
-            }
             throw new Error(e)
         }
-
-        if (!response.ok) {
+        if (response.status === 419) {
+            setLoading(false)
+            message.info('Your session may be expired. Reload the page')
+            throw new Error()
+        }
+        if (response.statusText !== "OK") {
             setLoading(false)
             for (let key in data) {
                 message.error(data[key])

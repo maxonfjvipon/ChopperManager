@@ -4,7 +4,7 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-// require('./bootstrap');
+require('./bootstrap');
 require('antd/dist/antd.compact.css')
 // require('antd/dist/antd.css')
 // require('antd/dist/antd.less')
