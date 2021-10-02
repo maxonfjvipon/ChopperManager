@@ -50,6 +50,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => function () use ($user) {
                 return [
                     'full_name' => Auth::check() ? $user->full_name : null,
+                    'currency' => Auth::check() ? strtolower($user->currency->symbol) : null,
                 ];
             },
             'locales' => function () use ($current_localized, $supported_locales, $request) {

@@ -15,7 +15,7 @@ import {useNotifications} from "../../Hooks/notifications.hook";
 
 const Show = () => {
     // HOOKS
-    const {project} = usePage().props
+    const {project, auth} = usePage().props
     const {tRoute} = useTransRoutes()
     const {openRestoreNotification} = useNotifications()
 
@@ -57,12 +57,12 @@ const Show = () => {
             dataIndex: 'head',
         },
         {
-            title: Lang.get('pages.projects.show.table.price'),
+            title: Lang.get('pages.projects.show.table.price') + ", " + auth.currency,
             dataIndex: 'discounted_price',
             sorter: (a, b) => a.discounted_price - b.discounted_price
         },
         {
-            title: Lang.get('pages.projects.show.table.total_price'),
+            title: Lang.get('pages.projects.show.table.total_price') + ", " + auth.currency,
             dataIndex: 'total_discounted_price',
             sorter: (a, b) => a.total_discounted_price - b.total_discounted_price
         },

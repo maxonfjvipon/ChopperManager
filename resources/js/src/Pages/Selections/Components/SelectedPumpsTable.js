@@ -4,7 +4,7 @@ import Lang from '../../../../translation/lang'
 import {usePage} from "@inertiajs/inertia-react";
 
 export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
-    const {locales} = usePage().props
+    const {locales, auth} = usePage().props
 
     const columns = [
         {
@@ -16,48 +16,56 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
         {
             title: Lang.get('pages.selections.single.table.part_num'),
             dataIndex: 'articleNum',
-            key: 'articleNum'
+            key: 'articleNum',
+            width: 110,
         },
         {
-            title: Lang.get('pages.selections.single.table.retail_price'),
+            title: Lang.get('pages.selections.single.table.retail_price') + ", " + auth.currency,
             dataIndex: 'retailPrice',
             key: 'retailPrice',
             sorter: (a, b) => a.retailPrice - b.retailPrice,
+            width: 135,
         },
         {
-            title: Lang.get('pages.selections.single.table.discounted_price'),
+            title: Lang.get('pages.selections.single.table.discounted_price') + ", " + auth.currency,
             dataIndex: 'discountedPrice',
             key: 'discountedPrice',
             sorter: (a, b) => a.discountedPrice - b.discountedPrice,
+            width: 140,
         },
         {
-            title: Lang.get('pages.selections.single.table.total_retail_price'),
+            title: Lang.get('pages.selections.single.table.total_retail_price') + ", " + auth.currency,
             dataIndex: 'retailPriceSum',
             key: 'retailPriceSum',
-            sorter: (a, b) => a.retailPriceSum - b.retailPriceSum
+            sorter: (a, b) => a.retailPriceSum - b.retailPriceSum,
+            width: 140,
         },
         {
-            title: Lang.get('pages.selections.single.table.total_discounted_price'),
+            title: Lang.get('pages.selections.single.table.total_discounted_price') + ", " + auth.currency,
             dataIndex: 'discountedPriceSum',
             key: 'discountedPriceSum',
             sorter: (a, b) => a.discountedPriceSum - b.discountedPriceSum,
-            defaultSortOrder: 'ascend'
+            defaultSortOrder: 'ascend',
+            width: 170,
         },
         {
             title: Lang.get('pages.selections.single.table.dn_input'),
             dataIndex: 'dnSuction',
-            key: 'dnSuction'
+            key: 'dnSuction',
+            width: 120,
         },
         {
             title: Lang.get('pages.selections.single.table.dn_output'),
             dataIndex: 'dnPressure',
-            key: 'dnPressure'
+            key: 'dnPressure',
+            width: 120,
         },
         {
             title: Lang.get('pages.selections.single.table.power'),
             dataIndex: 'rated_power',
             key: 'rated_power',
-            sorter: (a, b) => a.rated_power - b.rated_power
+            sorter: (a, b) => a.rated_power - b.rated_power,
+            width: 80,
         },
         {
             title: Lang.get('pages.selections.single.table.total_power'),
@@ -86,8 +94,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
                 }
             }}
             pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
-            scroll={{x: 1500, y: 300}}
-            style={{borderRadius: 10}}
+            scroll={{x: 1550, y: 300}}
         />
     ), [selectedPumps, locales])
 

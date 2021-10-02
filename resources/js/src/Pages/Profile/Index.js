@@ -1,13 +1,10 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {Card, Col, Divider, Form, Input, InputNumber, message, Row, Select, Table, Tabs} from "antd";
+import React from 'react';
+import {Col, Input, Row, Tabs} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
-import {useForm} from "antd/es/form/Form";
 import {Inertia} from "@inertiajs/inertia";
-import {useAreasCities} from "../../Hooks/components/areas-cities.hook";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import {useStyles} from "../../Hooks/styles.hook";
 import {Selection} from "../../Shared/Inputs/Selection";
-import {useBreadcrumbs} from "../../Hooks/breadcrumbs.hook";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {DiscountsTab} from "./Components/DiscountsTab";
@@ -21,7 +18,7 @@ import {JustifiedRow} from "../../Shared/JustifiedRow";
 import {BoxFlex} from "../../Shared/Box/BoxFlex";
 
 const Index = () => {
-    const {fullWidth, reducedAntFormItemClassName, margin} = useStyles()
+    const {reducedAntFormItemClassName, margin} = useStyles()
     const {rules} = useInputRules()
     const {user, businesses, countries, currencies, discounts} = usePage().props
     const {tRoute} = useTransRoutes()
@@ -37,7 +34,6 @@ const Index = () => {
                 label: Lang.get('pages.profile.index.organization_name'),
                 rules: [rules.required],
                 initialValue: userdata.organization_name,
-                // className: reducedAntFormItemClassName,
             }, input: <Input/>
         },
         {
@@ -146,11 +142,15 @@ const Index = () => {
     ]
 
     const updateProfileHandler = async body => {
-        Inertia.post(tRoute('users.update'), body)
+        Inertia.post(tRoute('users.update'), body, {
+            preserveScroll: true,
+        })
     }
 
     const changePasswordHandler = body => {
-        Inertia.post(tRoute('users.password.change'), body)
+        Inertia.post(tRoute('users.password.change'), body, {
+            preserveScroll: true
+        })
     }
 
     return (

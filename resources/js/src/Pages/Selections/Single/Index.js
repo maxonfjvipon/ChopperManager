@@ -72,7 +72,6 @@ const Index = () => {
     const [showBrandsList, setShowBrandsList] = useState(false)
     const [brandsSeriesList, setBrandsSeriesList] = useState([])
     const [brandsSeriesListValues, setBrandsSeriesListValues] = useState([])
-    const [checkedBrandsSeriesListValues, setCheckedBrandsSeriesListValues] = useState([])
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
     const [selectedPumps, setSelectedPumps] = useState([])
 
