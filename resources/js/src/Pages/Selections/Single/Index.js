@@ -99,7 +99,7 @@ const Index = () => {
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
-    const [temperatureValue, setTemperatureValue] = useState(selection?.data.fluid_temperature || 20)
+    const [temperatureValue, setTemperatureValue] = useState(selection?.data.fluid_temperature || null)
     const [prevTemperatureValue, setPrevTemperatureValue] = useState(-100)
     const debouncedTemperature = useDebounce(temperatureValue, 500)
 
@@ -150,36 +150,36 @@ const Index = () => {
         //     }
         //     setCheckedBrandsSeriesListValues(checkedBrandsSeriesListValues.filter(value => !clicked.includes(value)))
         // } else { // check
-            let checked = values.find(value => !brandsSeriesListValues.includes(value))
-            // const _checkedBrandsSeriesListValues = [...checkedBrandsSeriesListValues, ...clicked.filter(value => !checkedBrandsSeriesListValues.includes(value))]
-            // setCheckedBrandsSeriesListValues(_checkedBrandsSeriesListValues)
-            filteredBrandsWithSeries().forEach(brand => {
-                const index = brand.series.findIndex(series => series.id === checked)
-                if (index !== -1) {
-                    let array = []
-                    if (checkValueIncludesSeriesParams(typesValue, brand.series[index].types)) {
-                        array.push(Lang.get('messages.selections.notification.description.types'))
-                    }
-                    if (checkValueIncludesSeriesParams(applicationsValue, brand.series[index].applications)) {
-                        array.push(Lang.get('messages.selections.notification.description.applications'))
-                    }
-                    if (!powerAdjustmentValue.includes(brand.series[index].power_adjustment.id)) {
-                        array.push(Lang.get('messages.selections.notification.description.power_adjustment'))
-                    }
-                    if (array.length > 0) {
-                        notification.info({
-                            message: Lang.get('messages.selections.notification.attention'),
-                            description:
-                                Lang.get('messages.selections.notification.description.1') + " " +
-                                    brand.series[index].name + " " +
-                                Lang.get('messages.selections.notification.description.2') + " "
-                                + array.join(', '),
-                            placement: 'topLeft',
-                            duration: 5
-                        })
-                    }
+        let checked = values.find(value => !brandsSeriesListValues.includes(value))
+        // const _checkedBrandsSeriesListValues = [...checkedBrandsSeriesListValues, ...clicked.filter(value => !checkedBrandsSeriesListValues.includes(value))]
+        // setCheckedBrandsSeriesListValues(_checkedBrandsSeriesListValues)
+        filteredBrandsWithSeries().forEach(brand => {
+            const index = brand.series.findIndex(series => series.id === checked)
+            if (index !== -1) {
+                let array = []
+                if (checkValueIncludesSeriesParams(typesValue, brand.series[index].types)) {
+                    array.push(Lang.get('messages.selections.notification.description.types'))
                 }
-            })
+                if (checkValueIncludesSeriesParams(applicationsValue, brand.series[index].applications)) {
+                    array.push(Lang.get('messages.selections.notification.description.applications'))
+                }
+                if (!powerAdjustmentValue.includes(brand.series[index].power_adjustment.id)) {
+                    array.push(Lang.get('messages.selections.notification.description.power_adjustment'))
+                }
+                if (array.length > 0) {
+                    notification.info({
+                        message: Lang.get('messages.selections.notification.attention'),
+                        description:
+                            Lang.get('messages.selections.notification.description.1') + " " +
+                            brand.series[index].name + " " +
+                            Lang.get('messages.selections.notification.description.2') + " "
+                            + array.join(', '),
+                        placement: 'topLeft',
+                        duration: 5
+                    })
+                }
+            }
+        })
         // }
 
 
@@ -268,7 +268,7 @@ const Index = () => {
                     let hasType = hasTypes
                     let hasApplication = hasApplications
                     let hasPowerAdjustment = hasPowerAdjustments
-                    let hasTemp = series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature
+                    let hasTemp = debouncedTemperature == null || (series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature)
                     if (!hasType) {
                         if (typesValue.every(typeValue => series.types
                             .map(type => type.id)
@@ -331,17 +331,17 @@ const Index = () => {
     }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList])
 
     // SAVE HANDLER
-    const addSelectionToProjectClickHandler = async fullSelectionFormData => {
-        const selectionFormData = await selectionForm.validateFields()
+    const addSelectionToProjectClickHandler = async () => {
+        const selectionFormData = await fullSelectionForm.validateFields()
         const separator = "," // FIXME: some how make it global
 
         const body = {
             ...selectionFormData,
-            ...fullSelectionFormData,
-            pump_brand_ids: fullSelectionFormData.pump_brand_ids.join(separator),
-            power_adjustment_ids: fullSelectionFormData.power_adjustment_ids?.join(separator),
-            pump_type_ids: fullSelectionFormData.pump_type_ids?.join(separator),
-            pump_application_ids: fullSelectionFormData.pump_application_ids?.join(separator),
+            // ...fullSelectionFormData,
+            pump_brand_ids: selectionFormData.pump_brand_ids.join(separator),
+            power_adjustment_ids: selectionFormData.power_adjustment_ids?.join(separator),
+            pump_type_ids: selectionFormData.pump_type_ids?.join(separator),
+            pump_application_ids: selectionFormData.pump_application_ids?.join(separator),
             main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
             connection_type_ids: selectionFormData.connection_type_ids?.join(separator),
             mains_connection_ids: selectionFormData.mains_connection_ids?.join(separator),
@@ -352,8 +352,8 @@ const Index = () => {
         }
         prepareRequestBody(body)
         Inertia.post(selection
-                ? tRoute('selections.update', selection.data.id)
-                : tRoute('selections.store'), body,
+            ? tRoute('selections.update', selection.data.id)
+            : tRoute('selections.store'), body,
             {
                 preserveScroll: true
             }
@@ -361,7 +361,7 @@ const Index = () => {
     }
 
     // MAKE SELECTION HANDLER
-    const makeSelectionHandler = async body => {
+    const makeSelectionHandler = async () => {
         if (isArrayEmpty(brandsSeriesListValues)) {
             message.warning(Lang.get('messages.selections.no_series_selected'))
             return
@@ -369,8 +369,8 @@ const Index = () => {
         setStationToShow(null)
         setWorkingPoint(null)
         setDefaultSystemPerformance([])
-        body = {
-            ...body,
+        const body = {
+            ...await fullSelectionForm.validateFields(),
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
@@ -419,13 +419,13 @@ const Index = () => {
                     </Col>
                     <Col xxl={22} xl={21}>
                         <Row gutter={[10, 10]}>
-                            <Col xs={24}>
-                                <Form
-                                    name={fullSelectionFormName}
-                                    form={fullSelectionForm}
-                                    onFinish={addSelectionToProjectClickHandler}
-                                    layout="vertical"
-                                >
+                            <Form
+                                name={fullSelectionFormName}
+                                form={fullSelectionForm}
+                                // onFinish={addSelectionToProjectClickHandler}
+                                layout="vertical"
+                            >
+                                <Col xs={24}>
                                     <Row gutter={10}>
                                         <Col xs={4}>
                                             {/* BRANDS */}
@@ -460,6 +460,7 @@ const Index = () => {
                                                     min={0}
                                                     max={200}
                                                     onChange={temperatureChangeHandler()}
+                                                    placeholder={Lang.get('pages.selections.single.fluid_temp')}
                                                 />
                                             </RequiredFormItem>
                                         </Col>
@@ -524,16 +525,10 @@ const Index = () => {
                                             </Form.Item>
                                         </Col>
                                     </Row>
-                                </Form>
-                            </Col>
-                            <Divider style={margin.all(0)}/>
-                            <Col span={24}>
-                                <Form
-                                    form={selectionForm}
-                                    name={selectionFormName}
-                                    onFinish={makeSelectionHandler}
-                                    layout="vertical"
-                                >
+                                    {/*</Form>*/}
+                                </Col>
+                                <Divider style={margin.all("10px 0 10px")}/>
+                                <Col span={24}>
                                     <Row gutter={[10, 1]}>
                                         <Col span={3}>
                                             {/* VOLUME FLOW */}
@@ -822,7 +817,8 @@ const Index = () => {
                                             <Form.Item className={reducedAntFormItemClassName}>
                                                 <PrimaryButton
                                                     style={fullWidth}
-                                                    htmlType="submit"
+                                                    onClick={makeSelectionHandler}
+                                                    // htmlType="submit"
                                                     disabled={brandsValue.length === 0}
                                                     loading={loading}
                                                 >
@@ -831,8 +827,8 @@ const Index = () => {
                                             </Form.Item>
                                         </Col>
                                     </Row>
-                                </Form>
-                            </Col>
+                                </Col>
+                            </Form>
                             {/* TABLE */}
                         </Row>
                         <Row gutter={[10, 10]} style={{display: "flex", alignItems: 'stretch'}}>
@@ -865,8 +861,9 @@ const Index = () => {
                     </SecondaryButton>
                     <PrimaryButton
                         disabled={!stationToShow}
-                        htmlType="submit"
-                        form={fullSelectionFormName}
+                        onClick={addSelectionToProjectClickHandler}
+                        // htmlType="submit"
+                        // form={fullSelectionFormName}
                     >
                         {!selection
                             ? Lang.get('pages.selections.single.add')

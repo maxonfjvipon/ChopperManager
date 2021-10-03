@@ -123,6 +123,6 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 }
 
 .table-rounded-card .ant-card-body {
-    height: "100%";
+    height: 100%;
     padding: 0 !important;
 }
