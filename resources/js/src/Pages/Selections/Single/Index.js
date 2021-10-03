@@ -70,6 +70,7 @@ const LimitCol = ({children}) =>
 const Index = () => {
     // STATE
     const [showBrandsList, setShowBrandsList] = useState(false)
+    const [addLoading, setAddLoading] = useState(false)
     const [brandsSeriesList, setBrandsSeriesList] = useState([])
     const [brandsSeriesListValues, setBrandsSeriesListValues] = useState([])
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
@@ -332,6 +333,7 @@ const Index = () => {
 
     // SAVE HANDLER
     const addSelectionToProjectClickHandler = async () => {
+        setAddLoading(true)
         const selectionFormData = await fullSelectionForm.validateFields()
         const separator = "," // FIXME: some how make it global
 
@@ -355,7 +357,10 @@ const Index = () => {
             ? tRoute('selections.update', selection.data.id)
             : tRoute('selections.store'), body,
             {
-                preserveScroll: true
+                preserveScroll: true,
+                onFinish: () => {
+                    setAddLoading(false)
+                }
             }
         )
     }
@@ -862,6 +867,7 @@ const Index = () => {
                     <PrimaryButton
                         disabled={!stationToShow}
                         onClick={addSelectionToProjectClickHandler}
+                        loading={addLoading}
                         // htmlType="submit"
                         // form={fullSelectionFormName}
                     >
