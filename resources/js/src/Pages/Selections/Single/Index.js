@@ -373,6 +373,7 @@ const Index = () => {
         }
         setStationToShow(null)
         setWorkingPoint(null)
+        setSelectedPumps([])
         setDefaultSystemPerformance([])
         const body = {
             ...await fullSelectionForm.validateFields(),
