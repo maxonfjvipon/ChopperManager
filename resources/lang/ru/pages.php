@@ -122,6 +122,7 @@ return [
             'applications' => 'Применения'
         ],
         'upload' => 'Загрузить насосы',
+        'errors_title' => 'Ошибки загрузки:',
         'hydraulic_perf' => 'Гидравлическая характеристика',
         'pressure' => 'Напор, м',
         'consumption' => 'Расход, м³/ч',

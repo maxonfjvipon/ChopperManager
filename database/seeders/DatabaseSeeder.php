@@ -51,8 +51,8 @@ class DatabaseSeeder extends Seeder
         PumpCategory::create(['name' => ['ru' => "Сдвоенный", 'en' => 'Double']]);
 
         /** * Mains phases */
-        MainsConnection::create(['phase' => 1, 'voltage' => 220]);
-        MainsConnection::create(['phase' => 3, 'voltage' => 380]);
+        MainsConnection::create(['id' => 1, 'phase' => 1, 'voltage' => 220]);
+        MainsConnection::create(['id' => 3, 'phase' => 3, 'voltage' => 380]);
 
         /** * DNs */
         DN::create(['value' => 15]);
@@ -499,5 +499,8 @@ class DatabaseSeeder extends Seeder
 (232, '{\"be\": \"Ватыкан\", \"de\": \"Vatikan\", \"en\": \"Vatican\", \"es\": \"Vaticano\", \"fr\": \"Vatican\", \"it\": \"Vaticano\", \"ja\": \"ヴァチカン\", \"lt\": \"Vatikanas\", \"lv\": \"Vatican\", \"pl\": \"Watykan\", \"pt\": \"Vaticano\", \"ru\": \"Ватикан\", \"uk\": \"Ватикан\"}', 1, 'VAT'),
 (233, '{\"be\": \"Сінт-Мартэн\", \"de\": \"Sint Maarten\", \"en\": \"Sint Maarten\", \"es\": \"Sint Maarten\", \"fr\": \"Saint-Martin\", \"it\": \"Sint Maarten\", \"ja\": \"シント・マールテン\", \"lt\": \"Sint Martenas \", \"lv\": \"Sint Maarten\", \"pl\": \"Saint Martin\", \"pt\": \"São Martinho (Caraíbas)\", \"ru\": \"Синт-Мартен\", \"uk\": \"Сінт-Мартен\"}', 41, 'SXM')"
         );
+
+        (new AdminSeeder())->run();
+
     }
 }

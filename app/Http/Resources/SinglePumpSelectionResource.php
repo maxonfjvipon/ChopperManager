@@ -2,6 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Pumps\Pump;
+use App\Support\Pumps\PumpCoefficientsHelper;
+use App\Support\Selections\IntersectionPoint;
+use App\Support\Selections\PumpPerformance;
+use App\Support\Selections\Regression;
+use App\Support\Selections\SystemPerformance;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,6 +29,29 @@ class SinglePumpSelectionResource extends JsonResource
      */
     public function toArray($request): array
     {
+        $pump = Pump::find($this->pump_id);
+        $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $this->pumps_count - $this->reserve_pumps_count);
+        $intersectionPoint = IntersectionPoint::by($coefficients, $this->flow, $this->head);
+        $pumpPerformance = PumpPerformance::by($pump->performance);
+
+        $performanceLines = [];
+        $yMax = 0;
+        $systemPerformance = [];
+        for ($currentPumpsCount = 1; $currentPumpsCount <= $this->pumps_count; ++$currentPumpsCount) {
+            if ($currentPumpsCount === $this->pumps_count - $this->reserve_pumps_count) {
+                $systemPerformance = SystemPerformance::by($intersectionPoint, $this->flow, $this->head)->asLineData();
+            }
+            $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $currentPumpsCount);
+            $performanceLineData = $pumpPerformance->asPerformanceLineData(
+                $currentPumpsCount,
+                Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c])
+            );
+            $performanceLines[] = $performanceLineData['line'];
+            if ($performanceLineData['yMax'] > $yMax) {
+                $yMax = $performanceLineData['yMax'];
+            }
+        }
+
         return [
             'id' => $this->id,
             'head' => $this->head,
@@ -54,8 +83,18 @@ class SinglePumpSelectionResource extends JsonResource
             'pump_producers' => $this->arrayOfIntsFromString($this->pump_producer_ids),
             'mains_connections' => $this->arrayOfIntsFromString($this->mains_connection_ids),
             'pump_types' => $this->arrayOfIntsFromString($this->pump_type_ids),
-            'pump_applications' => $this->arrayOfIntsFromString($this->pump_application_ids)
+            'pump_applications' => $this->arrayOfIntsFromString($this->pump_application_ids),
 
+            'to_show' => [
+                'name' => $this->selected_pump_name,
+                'intersectionPoint' => [
+                    'x' => round($intersectionPoint->x(), 1),
+                    'y' => round($intersectionPoint->y(), 1),
+                ],
+                'systemPerformance' => $systemPerformance,
+                'yMax' => $yMax,
+                'lines' => $performanceLines
+            ],
         ];
     }
 }

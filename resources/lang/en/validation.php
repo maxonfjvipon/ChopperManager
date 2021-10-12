@@ -135,14 +135,16 @@ return [
     |
     */
 
+    'pumps_import' => [
+        'in_array'          => 'The :attribute is invalid. Not found in database',
+        'in_array_complex'  => 'The :attribute is invalid. Follow ids dont exist in database',
+        'exception'         => "Pumps weren't fully uploaded. Reload the page and try again"
+     ],
+
     'custom' => [
         'city' => [
             'correct' => 'Choose a correct city for area'
         ]
-    ],
-
-    'pumps_import' => [
-        'row' => 'Row'
     ],
 
     /*
@@ -188,30 +190,30 @@ return [
         'available'             => 'Available',
         'size'                  => 'Size',
         'itn'                   => 'ITN',
-        'pump' => [
-            'part_num_main'         => 'Main article number',
-            'part_num_backup'       => 'Reserve article number',
-            'part_num_archive'      => 'Archive article number',
-            'brand'              => 'Brand',
+        'pumps_import' => [
+            'article_num_main'      => 'Main article number',
+            'article_num_reserve'   => 'Reserve article number',
+            'article_num_archive'   => 'Archive article number',
+            'brand'                 => 'Brand',
             'series'                => 'Series',
             'name'                  => 'Name',
-            'price'                 => "Price",
-            'currency'              => "Currency",
+            'price'                 => 'Price',
+            'currency'              => 'Currency',
             'weight'                => "Weight",
-            'power'                 => "Power",
-            'amperage'              => "Rated current",
-            'connection_type'       => 'Connection',
-            'dn_input'              => 'Suction side DN',
-            'dn_output'             => 'Pressure side DN',
-            'min_temp'              => 'Max. fluid temp',
-            'max_temp'              => 'Min. fluid temp',
-            'ptp_length'     => 'Between axes distance',
+            'rated_power'           => "Rated power",
+            'rated_current'         => "Rated current",
+            'connection_type'       => 'Connection type',
+            'dn_suction'            => 'Suction side DN',
+            'dn_pressure'           => 'Pressure side DN',
+            'fluid_temp_min'        => 'Max. fluid temp',
+            'fluid_temp_max'        => 'Min. fluid temp',
+            'ptp_length'            => 'Port-to-port length',
             'performance'           => 'Performance',
-            'phase'                 => 'Current phase',
+            'category'              => 'Category',
+            'power_adjustment'      => 'El. power adjustment',
+            'mains_connection'      => 'Mains connection',
             'applications'          => 'Applications',
             'types'                 => 'Types',
-            'category'              => 'Category',
-            'regulation'            => 'Built-in regulation',
         ],
     ],
 

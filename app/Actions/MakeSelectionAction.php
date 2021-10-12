@@ -5,32 +5,20 @@ namespace App\Actions;
 use App\Http\Requests\MakeSelectionRequest;
 use App\Models\LimitCondition;
 use App\Models\Pumps\Pump;
+use App\Support\Pumps\PumpCoefficientsHelper;
 use App\Support\Rates;
 use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\PumpPerformance;
 use App\Support\Selections\Regression;
+use App\Support\Selections\SystemPerformance;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class MakeSelectionAction
 {
-    private function systemPerformance($intersectionPoint, $flow, $head): array
-    {
-        $systemPerformance = [];
-        $y = 0;
-        for ($q = 0.2; $y < $intersectionPoint->y(); $q += 1) {
-            $y = round($head / ($flow * $flow) * $q * $q, 1); // to fixed 1
-            $systemPerformance[] = [
-                'x' => round($q, 1), // to fixed 1
-                'y' => $y
-            ];
-        }
-        return $systemPerformance;
-    }
-
     public function execute(MakeSelectionRequest $request): JsonResponse
     {
-        ini_set('memory_limit', '300M');
+        ini_set('memory_limit', '128M');
         $dbPumps = Pump
             ::whereIn('series_id', $request->series_ids)
             ->with(['series', 'series.discounts' => function ($query) {
@@ -128,8 +116,6 @@ class MakeSelectionAction
         $defaultSystemPerformance = null;
         $num = 1;
 
-//        dd(memory_get_usage());
-
         $dbPumps = $dbPumps->get([
             'id', 'article_num_main', 'series_id', 'currency_id', 'dn_suction_id',
             'dn_pressure_id', 'price', 'name', 'rated_power', 'ptp_length', 'performance'
@@ -144,7 +130,7 @@ class MakeSelectionAction
                 if ($flow >= $qEnd) {
                     continue;
                 }
-                $coefficients = $pump->coefficients->firstWhere('position', $mainPumpsCount);
+                $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $mainPumpsCount);
                 if ($head > ($coefficients->k * $flow * $flow + $coefficients->b * $flow + $coefficients->c)) {
                     continue;
                 }
@@ -165,12 +151,12 @@ class MakeSelectionAction
                     $systemPerformance = [];
                     for ($currentPumpsCount = 1; $currentPumpsCount <= $pumpsCount; ++$currentPumpsCount) {
                         if ($currentPumpsCount === $mainPumpsCount) {
-                            $systemPerformance = $this->systemPerformance($intersectionPoint, $flow, $head);
+                            $systemPerformance = SystemPerformance::by($intersectionPoint, $flow, $head)->asLineData();
                             if (!$defaultSystemPerformance) {
                                 $defaultSystemPerformance = $systemPerformance;
                             }
                         }
-                        $coefficients = $pump->coefficients->firstWhere('position', $currentPumpsCount);
+                        $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $currentPumpsCount);
                         $performanceLineData = $pumpPerformance->asPerformanceLineData(
                             $currentPumpsCount,
                             Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c])

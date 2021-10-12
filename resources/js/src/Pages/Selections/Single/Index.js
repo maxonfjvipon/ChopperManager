@@ -32,6 +32,7 @@ import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
 import {RoundedCard} from "../../../Shared/RoundedCard";
+import {CContainer} from "../../../Shared/ResourcePanel/Index/CContainer";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -224,6 +225,13 @@ const Index = () => {
         setBrandsSeriesListValues(values)
     }
 
+    useEffect(() => {
+        if (selection) {
+            setStationToShow(selection?.data.to_show)
+            setWorkingPoint({x: selection?.data.flow, y: selection?.data.head})
+        }
+    }, [selection])
+
     // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
     useEffect(() => {
         const _brandsSeriesList = [];
@@ -391,12 +399,30 @@ const Index = () => {
 
     return (
         <>
-            <Container
+            <CContainer
                 title={selection
                     ? selection.data.selected_pump_name
                     : Lang.get('pages.selections.single.title_new')}
-                backTitle={Lang.get(selection ? 'pages.selections.back.to_project' : 'pages.selections.back.to_selections_dashboard')}
-                backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
+                // backTitle={Lang.get(selection ? 'pages.selections.back.to_project' : 'pages.selections.back.to_selections_dashboard')}
+                // backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
+                back={selection
+                    ? [{
+                        title: Lang.get('pages.selections.back.to_project'),
+                        href: tRoute('projects.show', project_id),
+                    }]
+                    : project_id === "-1"
+                        ? [{
+                            title: Lang.get('pages.selections.back.to_selections_dashboard'),
+                            href: tRoute('selections.dashboard', project_id),
+                        }]
+                        : [{
+                            title: Lang.get('pages.selections.back.to_selections_dashboard'),
+                            href: tRoute('selections.dashboard', project_id),
+                        }, {
+                            title: Lang.get('pages.selections.back.to_project'),
+                            href: tRoute('projects.show', project_id),
+                        },]
+                }
             >
                 <Row justify="space-around" gutter={[10, 10]}>
                     <Col xxl={2} xl={3}>
@@ -857,7 +883,7 @@ const Index = () => {
                         </Row>
                     </Col>
                 </Row>
-            </Container>
+            </CContainer>
             <BoxFlexEnd style={margin.top(16)}>
                 {project_id !== "-1" && <Space size={10}>
                     <SecondaryButton onClick={() => {

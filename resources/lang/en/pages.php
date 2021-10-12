@@ -122,6 +122,7 @@ return [
             'applications' => 'Applications'
         ],
         'upload' => 'Upload pumps',
+        'errors_title' => 'Import errors:',
         'hydraulic_perf' => 'Hydraulic performance',
         'pressure' => 'Delivery head, m',
         'consumption' => 'Volume flow, m³/h',

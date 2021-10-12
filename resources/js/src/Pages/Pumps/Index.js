@@ -1,6 +1,6 @@
 import {
     Button,
-    Tooltip,
+    Tooltip, Upload,
 } from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
@@ -10,8 +10,10 @@ import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
-import {EditOutlined} from "@ant-design/icons";
+import {EditOutlined, UploadOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
+import {ImportErrorBagDrawer} from "../../Shared/ImportErrorBagDrawer";
 
 const Index = () => {
     const {pumps, filter_data} = usePage().props
@@ -193,24 +195,29 @@ const Index = () => {
     }
 
     return (
-        <Container
-            mainActionComponent={<FileUploader
-                route={tRoute('pumps.import')}
-                title={Lang.get('pages.pumps.upload')}
-            />}
-            title={Lang.get('pages.pumps.title')}
-        >
-            <TTable
-                columns={columns}
-                dataSource={pumps}
-                showHandler={showPumpClickHandler}
-                scroll={{x: 4000, y: 630}}
+        <>
+            <ImportErrorBagDrawer
+                head={{key: Lang.get('validation.attributes.pumps_import.article_num_main'), value: "article_num"}}
+                title={Lang.get('pages.pumps.errors_title')}
             />
-        </Container>
+            <Container
+                mainActionComponent={<FileUploader
+                    route={tRoute('pumps.import')}
+                    title={Lang.get('pages.pumps.upload')}
+                />}
+                title={Lang.get('pages.pumps.title')}
+            >
+                <TTable
+                    columns={columns}
+                    dataSource={pumps}
+                    showHandler={showPumpClickHandler}
+                    scroll={{x: 4000, y: 630}}
+                />
+            </Container>
+        </>
     )
 }
 
-Index.layout = page =>
-    <AuthLayout children={page} title={Lang.get('pages.pumps.title')}/>
+Index.layout = page => <AuthLayout children={page} title={Lang.get('pages.pumps.title')}/>
 
 export default Index

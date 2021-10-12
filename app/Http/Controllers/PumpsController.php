@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ImportPumpsAction;
 use App\Http\Requests\FileUploadRequest;
 use App\Http\Resources\PumpResource;
 use App\Imports\PumpsDataImport;
+use App\Imports\PumpsDataImportt;
 use App\Imports\PumpsImport;
 use App\Models\ConnectionType;
 use App\Models\DN;
@@ -16,6 +18,11 @@ use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpCategory;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpType;
+use Box\Spout\Common\Exception\IOException;
+use Box\Spout\Common\Exception\UnsupportedTypeException;
+use Box\Spout\Reader\Exception\ReaderNotOpenedException;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +30,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use phpDocumentor\Reflection\Types\Boolean;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class PumpsController extends Controller
 {
@@ -168,18 +177,7 @@ class PumpsController extends Controller
 
     public function import(FileUploadRequest $request): RedirectResponse
     {
-        $file = $request->file;
-
-        try {
-            (new PumpsImport())->import($file);
-            (new PumpsDataImport())->import($file);
-        } catch (\Maatwebsite\Excel\Validators\ValidationException $exception) {
-            throw ValidationException::withMessages(array_map(function ($failure) {
-                return [__('validation.pumps_import.row') . ' ' . $failure->row() . ": " . $failure->errors()[0]];
-            }, $exception->failures()));
-        }
-
-        return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
+         return (new ImportPumpsAction())->execute($request->file);
     }
 
 }

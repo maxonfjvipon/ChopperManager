@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\Pumps\PumpCoefficientsHelper;
 use App\Support\Selections\PumpPerformance;
 use App\Support\Selections\Regression;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class PumpResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $coefficients = $this->coefficients->firstWhere('position', 1);
+        $coefficients = PumpCoefficientsHelper::coefficientsForPump($this, 1);
         $performanceLineData = PumpPerformance::by($this->performance)
             ->asPerformanceLineData(1, Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c]));
         return [

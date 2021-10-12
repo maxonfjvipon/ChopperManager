@@ -23,6 +23,7 @@ class FileUploadRequest extends FormRequest
      */
     public function rules(): array
     {
+//        dd($this);
         return [
             'file' => 'required'
         ];
