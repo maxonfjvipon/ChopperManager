@@ -158,6 +158,9 @@ class ImportPumpsAction
                 ]);
                 if ($createCoefs) {
                     $pumpBySeries->with('coefficients')->select('id', 'performance')->chunk(100, function ($pumps) {
+                        DB::table('pumps_and_coefficients')
+                            ->whereIn('pump_id', array_map(fn($pump) => $pump['id'], $pumps->toArray()))
+                            ->delete();
                         $pumpsAndCoefficients = [];
                         foreach ($pumps as $pump) {
                             if ($pump->coefficients->isEmpty()) {
