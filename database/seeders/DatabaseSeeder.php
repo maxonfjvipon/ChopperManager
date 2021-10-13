@@ -106,6 +106,7 @@ class DatabaseSeeder extends Seeder
         PumpSeries::create(['name' => 'MVI', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
         PumpSeries::create(['name' => 'Helix First', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
         PumpSeries::create(['name' => 'Helix V', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
+        PumpSeries::create(['name' => 'Stres', 'brand_id' => 1, 'regulation_adjustment_id' => 2]);
 
         /** * Currencies */
         DB::insert("INSERT INTO currencies (id, code, name, symbol) VALUES
