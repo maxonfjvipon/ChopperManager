@@ -73,7 +73,8 @@ class ImportPumpsAction
                             '14' => ['required'], // min temp
                             '15' => ['required'], // max temp
                             '16' => ['required'], // ptp length
-                            '17' => ['required', 'regex:/^\s*\d+(.\d+)?(\s{1}\d+(.\d+)?){9,19}\s*$/'], // performance
+//                            '17' => ['required', 'regex:/^\s*\d+(.\d+)?(\s{1}\d+(.\d+)?){9,19}\s*$/'], // performance
+                            '17' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,19}\s*$/'], // performance
                             '18' => ['required', new ExistsInArray($db['categories'])], // category
                             '19' => ['required', new ExistsInArray($db['powerAdjustments'])], // power adjustment
                             '20' => ['required', new ExistsInArray($db['mainsConnections'])], // mains connection
