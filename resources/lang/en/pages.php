@@ -212,7 +212,7 @@ return [
             'fluid_temp' => 'Fluid temperature, °C',
             'pressure' => 'Delivery head, m',
             'consumption' => 'Volume flow, m³/h',
-            'limit' => 'Deviation, %',
+            'limit' => 'Reserve/deviation, %',
             'main_pumps_count' => 'Main pumps count',
             'backup_pumps_count' => 'Reserve pumps count',
             'connection_type' => 'Connection type',

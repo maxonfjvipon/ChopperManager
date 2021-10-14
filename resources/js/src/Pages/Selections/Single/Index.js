@@ -607,7 +607,7 @@ const Index = () => {
                                                 <InputNumber
                                                     placeholder={Lang.get('pages.selections.single.limit')}
                                                     style={fullWidth}
-                                                    min={0}
+                                                    min={-100}
                                                     max={100}
                                                     precision={1}
                                                 />

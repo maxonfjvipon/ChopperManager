@@ -29,7 +29,8 @@ class SystemPerformance
     {
         $systemPerformance = [];
         $y = 0;
-        for ($q = 0.2; $y < $this->intersectionPoint->y(); $q += 1) {
+        $dist = $this->intersectionPoint->x() < 50 ? 0.5 : 1;
+        for ($q = 0.1; $y < $this->intersectionPoint->y(); $q += $dist) {
             $y = round($this->head / ($this->flow * $this->flow) * $q * $q, 1); // to fixed 1
             $systemPerformance[] = [
                 'x' => round($q, 1), // to fixed 1

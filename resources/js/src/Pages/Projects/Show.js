@@ -59,11 +59,13 @@ const Show = () => {
         {
             title: Lang.get('pages.projects.show.table.price') + ", " + auth.currency,
             dataIndex: 'discounted_price',
+            render: (_, record) => record.discounted_price.toLocaleString(),
             sorter: (a, b) => a.discounted_price - b.discounted_price
         },
         {
             title: Lang.get('pages.projects.show.table.total_price') + ", " + auth.currency,
             dataIndex: 'total_discounted_price',
+            render: (_, record) => record.total_discounted_price.toLocaleString(),
             sorter: (a, b) => a.total_discounted_price - b.total_discounted_price
         },
         {

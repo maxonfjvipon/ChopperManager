@@ -214,7 +214,7 @@ return [
             'fluid_temp' => 'Температура жидкости, °C',
             'pressure' => 'Напор, м',
             'consumption' => 'Расход, м³/ч',
-            'limit' => 'Допуск, %',
+            'limit' => 'Запас/допуск, %',
             'main_pumps_count' => 'Количество основных насосов',
             'backup_pumps_count' => 'Количество резервных насосов',
             'connection_type' => 'Тип соединения',
