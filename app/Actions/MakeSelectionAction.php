@@ -18,7 +18,7 @@ class MakeSelectionAction
 {
     public function execute(MakeSelectionRequest $request): JsonResponse
     {
-        ini_set('memory_limit', '128M');
+        ini_set('memory_limit', '200M');
         $dbPumps = Pump
             ::whereIn('series_id', $request->series_ids)
             ->with(['series', 'series.discounts' => function ($query) {
@@ -197,6 +197,8 @@ class MakeSelectionAction
         if (count($selectedPumps) === 0) {
             return response()->json(['info' => __('flash.selections.pumps_not_found')]);
         }
+
+//        dd(memory_get_peak_usage(), memory_get_usage());
 
         return response()->json([
             'selected_pumps' => $selectedPumps,
