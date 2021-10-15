@@ -1,4 +1,4 @@
-import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer} from "victory";
+import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer, VictoryTheme} from "victory";
 import React, {useMemo, useState} from "react";
 import {RoundedCard} from "../Shared/RoundedCard";
 import Lang from "../../translation/lang";
@@ -32,12 +32,21 @@ export const useGraphic = () => {
                 domain={{y: [0, toShow?.yMax || 100]}} // todo
                 containerComponent={<VictoryVoronoiContainer/>}
                 id={'victory-chart'}
+                theme={VictoryTheme.material}
             >
                 <VictoryAxis
+                    style={{
+                        tickLabels: {padding: 1},
+                        axisLabel: {padding: 20}
+                    }}
                     orientation="bottom"
                     label={Lang.get('graphic.axis.flow')}
                 />
                 <VictoryAxis
+                    style={{
+                        tickLabels: {padding: 1},
+                        axisLabel: {padding: 20}
+                    }}
                     dependentAxis
                     label={Lang.get('graphic.axis.head')}
                 />
