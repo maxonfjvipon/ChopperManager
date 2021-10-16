@@ -4,7 +4,7 @@ import {
 } from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {FileUploader} from "../../Shared/Buttons/FileUploader";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
@@ -18,6 +18,36 @@ import {ImportErrorBagDrawer} from "../../Shared/ImportErrorBagDrawer";
 const Index = () => {
     const {pumps, filter_data} = usePage().props
     const {tRoute} = useTransRoutes()
+    const [loading, setLoading] = useState(true)
+
+    if (pumps === undefined)
+        Inertia.reload({
+            preserveScroll: true,
+            preserveState: true,
+            only: ['pumps']
+        })
+
+    useEffect(() => {
+        if (pumps !== undefined) {
+            setLoading(false)
+        }
+    }, [pumps])
+
+    // useEffect(() => {
+    //     if (pumps === undefined) {
+    //         Inertia.reload({
+    //             preserveScroll: true,
+    //             preserveState: true,
+    //             only: ['pumps']
+    //         })
+    //     }
+    // }, [])
+    //
+    // useEffect(() => {
+    //     if (pumps !== undefined) {
+    //         setLoading(false)
+    //     }
+    // }, [pumps])
 
     // useEffect(() => {
     //     console.log(filter_data)
@@ -212,6 +242,7 @@ const Index = () => {
                     dataSource={pumps}
                     showHandler={showPumpClickHandler}
                     scroll={{x: 4000, y: 630}}
+                    loading={loading}
                 />
             </Container>
         </>

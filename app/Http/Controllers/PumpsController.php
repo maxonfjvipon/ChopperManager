@@ -53,7 +53,7 @@ class PumpsController extends Controller
     public function index(): Response
     {
         return Inertia::render('Pumps/Index', [
-            'pumps' => Pump::with([
+            'pumps' => Inertia::lazy(fn() => Pump::with([
                 'series',
                 'series.brand',
                 'series.power_adjustment',
@@ -91,7 +91,7 @@ class PumpsController extends Controller
                     'mains_connection' => $pump->connection->full_value,
                     'applications' => implode(", ", $pump->series->applications->map(fn($application) => $application->name)->toArray()),
                     'types' => implode(", ", $pump->series->types->map(fn($type) => $type->name)->toArray()),
-                ]),
+                ])),
             'filter_data' => [
                 'brands' => $this->asFilterData(PumpBrand::pluck('name')->all()),
                 'series' => $this->asFilterData(PumpSeries::pluck('name')->all()),
