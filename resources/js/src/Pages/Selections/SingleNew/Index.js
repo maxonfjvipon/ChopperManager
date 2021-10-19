@@ -940,6 +940,7 @@ const Index = () => {
                     </Row>
                     <BoxFlexEnd>
                         <PrimaryButton onClick={() => {
+                            setUseAdditionalFilters(true)
                             setFiltersDrawerVisible(false)
                         }}>
                             {Lang.get('pages.selections.single.additional_filters.apply')}
