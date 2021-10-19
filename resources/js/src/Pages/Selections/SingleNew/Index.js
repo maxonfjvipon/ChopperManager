@@ -102,6 +102,8 @@ const Index = () => {
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
+    const [useAdditionalFilters, setUseAdditionalFilters] = useState(selection?.data.use_additional_filters || false)
+
     const [temperatureValue, setTemperatureValue] = useState(selection?.data.fluid_temperature || null)
     const [prevTemperatureValue, setPrevTemperatureValue] = useState(-100)
     const debouncedTemperature = useDebounce(temperatureValue, 500)
@@ -305,7 +307,7 @@ const Index = () => {
         const body = {
             ...selectionFormData,
             ...additionalFiltersFormData,
-            // ...fullSelectionFormData,
+            use_additional_filters: useAdditionalFilters,
             pump_brand_ids: selectionFormData.pump_brand_ids.join(separator),
             power_adjustment_ids: selectionFormData.power_adjustment_ids?.join(separator),
             pump_type_ids: selectionFormData.pump_type_ids?.join(separator),
@@ -346,6 +348,7 @@ const Index = () => {
         const body = {
             ...await fullSelectionForm.validateFields(),
             ...await additionalFiltersForm.validateFields(),
+            use_additional_filters: useAdditionalFilters,
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
@@ -640,14 +643,9 @@ const Index = () => {
                                 <Col span={4}>
                                     <Row gutter={[10, 0]}>
                                         <Col span={24}>
-                                            <Form.Item
-                                                initialValue={selection?.data.use_additional_filters || false}
-                                                valuePropName="checked"
-                                                name="use_additional_filters"
-                                                className={reducedAntFormItemClassName}
-                                            >
-                                                <Checkbox>{Lang.get('pages.selections.single.additional_filters.checkbox')}</Checkbox>
-                                            </Form.Item>
+                                            <Checkbox checked={useAdditionalFilters} onClick={e => {
+                                                setUseAdditionalFilters(e.target.checked)
+                                            }}>{Lang.get('pages.selections.single.additional_filters.checkbox')}</Checkbox>
                                         </Col>
                                         <Col span={12}>
                                             <Form.Item className={reducedAntFormItemClassName}>
