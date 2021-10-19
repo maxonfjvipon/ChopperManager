@@ -5,14 +5,17 @@ namespace App\Actions;
 use App\Http\Requests\MakeSelectionRequest;
 use App\Models\LimitCondition;
 use App\Models\Pumps\Pump;
+use App\Models\Selections\SelectionRange;
 use App\Support\Pumps\PumpCoefficientsHelper;
 use App\Support\Rates;
 use App\Support\Selections\IntersectionPoint;
 use App\Support\Selections\PumpPerformance;
 use App\Support\Selections\Regression;
 use App\Support\Selections\SystemPerformance;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use ParseError;
 
 class MakeSelectionAction
 {
@@ -35,74 +38,79 @@ class MakeSelectionAction
                 );
             }]);
 
-        // MAINS CONNECTIONS
-        if ($request->mains_connection_ids && count($request->mains_connection_ids) > 0) {
-            $dbPumps = $dbPumps->whereIn('connection_id', $request->mains_connection_ids);
-        }
-
-        // CONNECTION TYPES
-        if ($request->connection_type_ids && count($request->connection_type_ids) > 0) {
-            $dbPumps = $dbPumps->whereIn('connection_type_id', $request->connection_type_ids);
-        }
-
         // DNS
         $dnSuctionLimit = false;
         $dnPressureLimit = false;
 
-        if ($request->dn_suction_limit_checked
-            && $request->dn_suction_limit_condition_id
-            && $request->dn_suction_limit_id
-        ) {
-            $dnSuctionLimit = true;
-            $dbPumps = $dbPumps->whereRelation('dn_suction',
-                'id',
-                LimitCondition::find($request->dn_suction_limit_condition_id)->value,
-                $request->dn_suction_limit_id
-            );
+        // ADDITIONAL FILTERS
+        if ($request->use_additional_filters) {
+            // MAINS CONNECTIONS
+            if ($request->mains_connection_ids && count($request->mains_connection_ids) > 0) {
+                $dbPumps = $dbPumps->whereIn('connection_id', $request->mains_connection_ids);
+            }
+
+            // CONNECTION TYPES
+            if ($request->connection_type_ids && count($request->connection_type_ids) > 0) {
+                $dbPumps = $dbPumps->whereIn('connection_type_id', $request->connection_type_ids);
+            }
+
+            // DN SUCTION LIMITING
+            if ($request->dn_suction_limit_checked
+                && $request->dn_suction_limit_condition_id
+                && $request->dn_suction_limit_id
+            ) {
+                $dnSuctionLimit = true;
+                $dbPumps = $dbPumps->whereRelation('dn_suction',
+                    'id',
+                    LimitCondition::find($request->dn_suction_limit_condition_id)->value,
+                    $request->dn_suction_limit_id
+                );
+            }
+
+            // DN PRESSURE LIMITING
+            if ($request->dn_pressure_limit_checked
+                && $request->dn_pressure_limit_condition_id
+                && $request->dn_pressure_limit_id
+            ) {
+                $dnPressureLimit = true;
+                $dbPumps = $dbPumps->whereRelation('dn_pressure',
+                    'id',
+                    LimitCondition::find($request->dn_pressure_limit_condition_id)->value,
+                    $request->dn_pressure_limit_id
+                );
+            }
+
+            // POWER LIMITING
+            if ($request->power_limit_checked
+                && $request->power_limit_condition_id
+                && $request->power_limit_value
+            ) {
+                $dbPumps = $dbPumps->where(
+                    'rated_power',
+                    LimitCondition::find($request->power_limit_condition_id)->value,
+                    $request->power_limit_value
+                );
+            }
+
+            // PTP LENGTH DISTANCE LIMITING
+            if ($request->ptp_length_limit_checked
+                && $request->ptp_length_limit_condition_id
+                && $request->ptp_length_limit_value
+            ) {
+                $dbPumps = $dbPumps->where(
+                    'ptp_length',
+                    LimitCondition::find($request->ptp_length_limit_condition_id)->value,
+                    $request->ptp_length_limit_value
+                );
+            }
         }
 
-        if ($request->dn_pressure_limit_checked
-            && $request->dn_pressure_limit_condition_id
-            && $request->dn_pressure_limit_id
-        ) {
-            $dnPressureLimit = true;
-            $dbPumps = $dbPumps->whereRelation('dn_pressure',
-                'id',
-                LimitCondition::find($request->dn_pressure_limit_condition_id)->value,
-                $request->dn_pressure_limit_id
-            );
-        }
-
-        // DNS x2
+        // DNS
         if (!$dnSuctionLimit) {
             $dbPumps = $dbPumps->with('dn_suction');
         }
         if (!$dnPressureLimit) {
             $dbPumps = $dbPumps->with('dn_pressure');
-        }
-
-        // POWER deviation
-        if ($request->power_limit_checked
-            && $request->power_limit_condition_id
-            && $request->power_limit_value
-        ) {
-            $dbPumps = $dbPumps->where(
-                'rated_power',
-                LimitCondition::find($request->power_limit_condition_id)->value,
-                $request->power_limit_value
-            );
-        }
-
-        // PTP LENGTH DISTANCE deviation
-        if ($request->ptp_length_limit_checked
-            && $request->ptp_length_limit_condition_id
-            && $request->ptp_length_limit_value
-        ) {
-            $dbPumps = $dbPumps->where(
-                'ptp_length',
-                LimitCondition::find($request->ptp_length_limit_condition_id)->value,
-                $request->ptp_length_limit_value
-            );
         }
 
         $head = $request->head;
@@ -115,6 +123,8 @@ class MakeSelectionAction
         $selectedPumps = [];
         $defaultSystemPerformance = null;
         $num = 1;
+
+        $range = SelectionRange::find($request->range_id);
 
         $dbPumps = $dbPumps->get([
             'id', 'article_num_main', 'series_id', 'currency_id', 'dn_suction_id',
@@ -137,9 +147,25 @@ class MakeSelectionAction
                 $qStart = $performanceAsArray[0] * $mainPumpsCount;
                 $intersectionPoint = IntersectionPoint::by($coefficients, $flow, $head);
 
+                // range length
+                $rDiff = $qEnd - $qStart;
+
                 // pump with current main pumps count is appropriate
-                if ($intersectionPoint->x() <= $qEnd && $intersectionPoint->x() >= $qStart
+                // custom range
+                if ($request->range_id === SelectionRange::$CUSTOM) {
+//                if ($request->range === "Custom") {
+                    $rStart = $request->custom_range[0] / 100;
+                    $rEnd = $request->custom_range[1] / 100;
+                } else {
+                    $rStart = (1 - $range->value) / 2;
+                    $rEnd = $rStart + $range->value;
+                }
+
+                if ($intersectionPoint->x() >= $qStart + $rDiff * $rStart
+                    && $intersectionPoint->x() <= $qStart + $rDiff * $rEnd
                     && $intersectionPoint->y() >= $head - $head * $deviation / 100
+//                if ($intersectionPoint->x() <= $qEnd && $intersectionPoint->x() >= $qStart
+//                    && $intersectionPoint->y() >= $head - $head * $deviation / 100
                 ) {
                     $pumpsCount = $mainPumpsCount + $reservePumpsCount;
                     $pump_price = $pump->currency->code === $rates->base()
@@ -197,8 +223,6 @@ class MakeSelectionAction
         if (count($selectedPumps) === 0) {
             return response()->json(['info' => __('flash.selections.pumps_not_found')]);
         }
-
-//        dd(memory_get_peak_usage(), memory_get_usage());
 
         return response()->json([
             'selected_pumps' => $selectedPumps,

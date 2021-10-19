@@ -216,6 +216,19 @@ return [
             'main_pumps_count' => 'Main pumps count',
             'backup_pumps_count' => 'Reserve pumps count',
             'connection_type' => 'Connection type',
+            'range' => [
+                'label' => 'Range',
+                'custom' => [
+                    'label' => 'Custom range',
+                    'value' => 'Custom'
+                ]
+            ],
+            'additional_filters' => [
+                'checkbox' => 'Use additional filters',
+                'title' => 'Additional filters',
+                'apply' => 'Apply',
+                'button' => 'More filters'
+            ],
             'phase' => 'Mains connection',
             'condition' => 'Condition',
             'power_limit' => 'Limiting the pump power',

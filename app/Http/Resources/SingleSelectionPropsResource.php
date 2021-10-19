@@ -10,6 +10,7 @@ use App\Models\Pumps\PumpApplication;
 use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\PumpType;
+use App\Models\Selections\SelectionRange;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -36,6 +37,7 @@ class SingleSelectionPropsResource extends JsonResource
             'dns' => DN::all(),
             'powerAdjustments' => ElPowerAdjustment::all(),
             'limitConditions' => LimitCondition::all(),
+            'selectionRanges' => SelectionRange::all(),
             'defaults' => [
                 'brands' => PumpBrand::whereName('Wilo')->pluck('id')->all(), // todo: default
                 'powerAdjustments' => [ElPowerAdjustment::firstWhere('id', 2)->id]

@@ -27,6 +27,9 @@ class CreateSinglePumpSelectionsTable extends Migration
             $table->float('fluid_temperature')->default(20);
             $table->float('deviation')->nullable()->default(0);
             $table->tinyInteger('reserve_pumps_count')->unsigned();
+            $table->bigInteger('range_id')->unsigned();
+            $table->string('custom_range', 7);
+            $table->boolean('use_additional_filters')->default(false);
 
             $table->boolean('power_limit_checked')->default(false);
             $table->bigInteger('power_limit_condition_id')->unsigned()->nullable();

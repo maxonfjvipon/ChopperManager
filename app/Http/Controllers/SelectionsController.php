@@ -36,7 +36,7 @@ class SelectionsController extends Controller
      */
     public function create($project_id): Response
     {
-        return Inertia::render('Selections/Single/Index', [
+        return Inertia::render('Selections/SingleNew/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $project_id
         ]);
@@ -50,7 +50,7 @@ class SelectionsController extends Controller
      */
     public function show(SinglePumpSelection $selection): Response
     {
-        return Inertia::render('Selections/Single/Index', [
+        return Inertia::render('Selections/SingleNew/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $selection->project_id,
             'selection' => new SinglePumpSelectionResource($selection)

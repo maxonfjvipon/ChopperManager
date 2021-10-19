@@ -12,6 +12,7 @@ use App\Models\Pumps\PumpCategory;
 use App\Models\Pumps\ElPowerAdjustment;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpType;
+use App\Models\Selections\SelectionRange;
 use App\Models\Users\Business;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -91,6 +92,11 @@ class DatabaseSeeder extends Seeder
         /** * Connection types */
         ConnectionType::create(['name' => ['ru' => 'Резьбовой', 'en' => 'Threaded']]);
         ConnectionType::create(['name' => ['ru' => 'Фланцевый', 'en' => 'Flanged']]);
+
+        /** * Selection ranges */
+        SelectionRange::create(['id' => 1, 'name' => ['en' => '1/3'], 'value' => 0.33]);
+        SelectionRange::create(['id' => 2, 'name' => ['en' => '3/5'], 'value' => 0.2]);
+        SelectionRange::create(['id' => 3, 'name' => ['en' => 'Custom', 'ru' => 'Произв.'], 'value' => null]);
 
         /** * Pump Brands */
         PumpBrand::create(['name' => 'Wilo']);

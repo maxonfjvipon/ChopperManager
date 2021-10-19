@@ -30,7 +30,8 @@ class SinglePumpSelection extends Model
         'power_limit_checked' => 'boolean',
         'ptp_length_limit_checked' => 'boolean',
         'dn_suction_limit_checked' => 'boolean',
-        'dn_pressure_limit_checked' => 'boolean'
+        'dn_pressure_limit_checked' => 'boolean',
+        'use_additional_filters' => 'boolean',
     ];
 
     public function project(): BelongsTo
