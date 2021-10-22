@@ -41,8 +41,8 @@ export const Header = () => {
         },
         {
             itemProps: {key: 'series', icon: <SnippetsOutlined/>},
-            route: Lang.get('pages.pump_series.index.title'),
-            label: "Series",
+            route: 'pump_series.index',
+            label: Lang.get('pages.pump_series.index.title'),
         },
         {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},
