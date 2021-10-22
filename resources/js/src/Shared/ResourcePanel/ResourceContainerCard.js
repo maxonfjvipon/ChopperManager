@@ -1,5 +1,5 @@
 import {Link} from "@inertiajs/inertia-react";
-import {RoundedCard} from "../RoundedCard";
+import {RoundedCard} from "../Cards/RoundedCard";
 import React from "react";
 
 export const ResourceContainerCard = ({title, backHref, backTitle, children}) => {

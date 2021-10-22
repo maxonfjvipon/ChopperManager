@@ -4,9 +4,11 @@ import {Inertia} from "@inertiajs/inertia";
 import {useInputRules} from "../../Hooks/input-rules.hook";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
-import {Container} from "../../Shared/ResourcePanel/Resource/Container";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {ResourceContainer} from "../../Shared/Resource/Containers/ResourceContainer";
+import {SubmitAction} from "../../Shared/Resource/Actions/SubmitAction";
+import {BackToProjectsLink} from "../../Shared/Resource/BackLinks/BackToProjectsLink";
 
 const Create = () => {
     // HOOKS
@@ -30,12 +32,10 @@ const Create = () => {
     }
 
     return (
-        <Container
+        <ResourceContainer
             title={Lang.get('pages.projects.create.title')}
-            buttonLabel={Lang.get('pages.projects.create.button')}
-            form={formName}
-            backTitle={Lang.get('pages.projects.back')}
-            backHref={tRoute('projects.index')}
+            actions={<SubmitAction label={Lang.get('pages.projects.create.button')} form={formName}/>}
+            back={<BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"
@@ -43,7 +43,7 @@ const Create = () => {
                 name={formName}
                 onFinish={createProjectHandler}
             />
-        </Container>
+        </ResourceContainer>
     )
 }
 

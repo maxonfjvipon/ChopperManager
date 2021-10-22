@@ -16,34 +16,13 @@ export const AuthLayout = ({children, header = <Header/>}) => {
     return (
         <MessagesLayout>
             <LocaleLayout>
-                <Layout style={minHeight("100vh")}>
+                <Layout className="main-layout">
                     {header}
-                    <Layout style={{marginTop: 64}} className="site-layout">
-                        {/*<Sider theme={"light"} collapsedWidth={0} trigger={null} collapsible*/}
-                        {/*       collapsed={collapsed}>*/}
-                        {/*    <Menu*/}
-                        {/*        // theme={"dark"}*/}
-                        {/*        mode="inline"*/}
-                        {/*    >*/}
-                        {/*        {menuItems.map(item => (*/}
-                        {/*            <Menu.Item {...item.itemProps}>*/}
-                        {/*                <Link href={item.href}>*/}
-                        {/*                    {item.label}*/}
-                        {/*                </Link>*/}
-                        {/*            </Menu.Item>*/}
-                        {/*        ))}*/}
-                        {/*    </Menu>*/}
-                        {/*</Sider>*/}
-                        <Layout>
-                            <Content className={"auth-content-layout"}>
-                                {children}
-                                {/*<Breadcrumb style={{ margin: '16px 0' }}>*/}
-                                {/*    <Breadcrumb.Item>User</Breadcrumb.Item>*/}
-                                {/*    <Breadcrumb.Item>Bill</Breadcrumb.Item>*/}
-                                {/*</Breadcrumb>*/}
-                            </Content>
-                            <Footer/>
-                        </Layout>
+                    <Layout className="outer-content-layout">
+                        <Content className="inner-content-layout">
+                            {children}
+                        </Content>
+                        <Footer/>
                     </Layout>
                 </Layout>
             </LocaleLayout>

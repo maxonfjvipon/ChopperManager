@@ -8,7 +8,7 @@ import React from "react";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {Inertia} from "@inertiajs/inertia";
 import {JustifiedRow} from "../../Shared/JustifiedRow";
-import {RoundedCard} from "../../Shared/RoundedCard";
+import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {GuestLayout} from "../../Shared/Layout/GuestLayout";
 import Lang from "../../../translation/lang";
 import {useTransRoutes} from "../../Hooks/routes.hook";

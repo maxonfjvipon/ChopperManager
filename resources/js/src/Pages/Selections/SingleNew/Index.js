@@ -31,7 +31,7 @@ import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
-import {RoundedCard} from "../../../Shared/RoundedCard";
+import {RoundedCard} from "../../../Shared/Cards/RoundedCard";
 import {CContainer} from "../../../Shared/ResourcePanel/Index/CContainer";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {

@@ -5,7 +5,7 @@ import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../translation/lang";
 import {JustifiedRow} from "../../Shared/JustifiedRow";
-import {RoundedCard} from "../../Shared/RoundedCard";
+import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {GuestLayout} from "../../Shared/Layout/GuestLayout";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 

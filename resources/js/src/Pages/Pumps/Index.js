@@ -9,7 +9,7 @@ import {FileUploader} from "../../Shared/Buttons/FileUploader";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
-import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
+import {TTable} from "../../Shared/Resource/Table/TTable";
 import {EditOutlined, UploadOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
@@ -240,7 +240,7 @@ const Index = () => {
                 <TTable
                     columns={columns}
                     dataSource={pumps}
-                    showHandler={showPumpClickHandler}
+                    doubleClickHandler={showPumpClickHandler}
                     scroll={{x: 4000, y: 630}}
                     loading={loading}
                 />

@@ -11,7 +11,7 @@ import {DiscountsTab} from "./Components/DiscountsTab";
 import Lang from '../../../translation/lang'
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {useTransRoutes} from "../../Hooks/routes.hook";
-import {RoundedCard} from "../../Shared/RoundedCard";
+import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {Header} from "../../Shared/Layout/Header";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {JustifiedRow} from "../../Shared/JustifiedRow";

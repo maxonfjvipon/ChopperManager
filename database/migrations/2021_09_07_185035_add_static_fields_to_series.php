@@ -14,11 +14,14 @@ class AddStaticFieldsToSeries extends Migration
     public function up()
     {
         Schema::table('pump_series', function (Blueprint $table) {
-            $table->bigInteger('regulation_adjustment_id')->unsigned();
+            $table->bigInteger('power_adjustment_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
             $table->float('temp_min')->nullable();
             $table->float('temp_max')->nullable();
 
-            $table->foreign('regulation_adjustment_id')->references('id')->on('electronic_power_adjustments')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('power_adjustment_id')->references('id')->on('electronic_power_adjustments')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('category_id')->references('id')->on('pump_categories')->cascadeOnUpdate()->cascadeOnDelete();
+
         });
     }
 

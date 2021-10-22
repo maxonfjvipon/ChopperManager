@@ -3,7 +3,7 @@ import {Col, Form, InputNumber, Row, Table} from "antd";
 import {useStyles} from "../../../Hooks/styles.hook";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../../translation/lang";
-import {RoundedCard} from "../../../Shared/RoundedCard";
+import {RoundedCard} from "../../../Shared/Cards/RoundedCard";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
 
 

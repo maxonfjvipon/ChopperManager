@@ -10,6 +10,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* FORMS */
 .ant-form-vertical .ant-form-item-reduced .ant-form-item-label {
     padding-bottom: 0 !important;
 }
@@ -26,6 +27,7 @@
     margin-bottom: 5px;
 }
 
+/* EDITABLE TABLE */
 .editable-cell {
     position: relative;
 }
@@ -45,14 +47,26 @@
     border: 1px solid #434343;
 }
 
-/*.ant-btn, .ant-input, .ant-select, .ant-select-multiple {*/
-/*    border-radius: 7px !important;*/
-/*}*/
-
 .logo {
     height: 32px;
     margin: 16px;
     background: rgba(255, 255, 255, 0.2);
+}
+
+/*LAYOUTS*/
+.main-layout {
+    min-height: 100vh;
+}
+
+.main-layout .outer-content-layout {
+    margin-top: 64px;
+}
+
+.main-layout .outer-content-layout .inner-content-layout {
+    margin: 16px 16px 0;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
 }
 
 .site-layout-sub-header-background {
@@ -63,18 +77,18 @@
     background: #fff;
 }
 
-.trigger {
-    color: white;
-    /*padding: 0 24px;*/
-    font-size: 18px;
-    /*line-height: 64px;*/
-    cursor: pointer;
-    transition: color 0.3s;
-}
+/*.trigger {*/
+/*    color: white;*/
+/*    !*padding: 0 24px;*!*/
+/*    font-size: 18px;*/
+/*    !*line-height: 64px;*!*/
+/*    cursor: pointer;*/
+/*    transition: color 0.3s;*/
+/*}*/
 
-.trigger:hover {
-    color: #1890ff;
-}
+/*.trigger:hover {*/
+/*    color: #1890ff;*/
+/*}*/
 
 button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item {
     border-radius: 7px !important;
@@ -84,45 +98,50 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
     border-radius: 0 7px 7px 0 !important;
 }
 
-.virtual-table-cell {
-    box-sizing: border-box;
-    padding: 16px;
-    border-bottom: 1px solid #e8e8e8;
-    background: #FFF;
-}
+/*.virtual-table-cell {*/
+/*    box-sizing: border-box;*/
+/*    padding: 16px;*/
+/*    border-bottom: 1px solid #e8e8e8;*/
+/*    background: #FFF;*/
+/*}*/
 
-[data-theme="dark"] .virtual-table-cell {
-    box-sizing: border-box;
-    padding: 16px;
-    border-bottom: 1px solid #303030;
-    background: #141414;
-}
+/*[data-theme="dark"] .virtual-table-cell {*/
+/*    box-sizing: border-box;*/
+/*    padding: 16px;*/
+/*    border-bottom: 1px solid #303030;*/
+/*    background: #141414;*/
+/*}*/
 
-.auth-content-layout {
-    margin: 16px 16px 0;
-    display: flex;
-    flex: auto;
-    flex-direction: column;
-}
+/*.auth-content-layout {*/
+/*    margin: 16px 16px 0;*/
+/*    display: flex;*/
+/*    flex: auto;*/
+/*    flex-direction: column;*/
+/*}*/
 
-.flex-rounded-card {
-    /*flex: auto;*/
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+/*.flex-rounded-card {*/
+/*    !*flex: auto;*!*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*}*/
 
-.flex-rounded-card .ant-card-body {
-    /*display: flex;*/
-    /*flex: auto;*/
-    /*margin-top: 25%;*/
-    /*height: 100%;*/
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 0 !important;
-}
+/*.flex-rounded-card .ant-card-body {*/
+/*    !*display: flex;*!*/
+/*    !*flex: auto;*!*/
+/*    !*margin-top: 25%;*!*/
+/*    !*height: 100%;*!*/
+/*    margin-top: auto;*/
+/*    margin-bottom: auto;*/
+/*    padding: 0 !important;*/
+/*}*/
 
 .table-rounded-card .ant-card-body {
     height: 100%;
     padding: 0 !important;
+}
+
+/* ROUNDED CARD */
+.rounded-card {
+    border-radius: 10px;
 }

@@ -5,7 +5,7 @@ import {Card, Divider, Space} from "antd";
 import {BoxFlex} from "../../Box/BoxFlex";
 import {Link} from "@inertiajs/inertia-react";
 import {useStyles} from "../../../Hooks/styles.hook";
-import {RoundedCard} from "../../RoundedCard";
+import {RoundedCard} from "../../Cards/RoundedCard";
 
 export const Container = ({
                               form,

@@ -1,6 +1,6 @@
 import {VictoryAxis, VictoryChart, VictoryLegend, VictoryLine, VictoryScatter, VictoryVoronoiContainer, VictoryTheme} from "victory";
 import React, {useMemo, useState} from "react";
-import {RoundedCard} from "../Shared/RoundedCard";
+import {RoundedCard} from "../Shared/Cards/RoundedCard";
 import Lang from "../../translation/lang";
 // import Paper from "@material-ui/core/Paper";
 

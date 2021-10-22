@@ -6,7 +6,7 @@ import {Inertia} from "@inertiajs/inertia";
 import {JustifiedRow} from "../../Shared/JustifiedRow";
 import {Col, Input} from "antd";
 import React from "react";
-import {RoundedCard} from "../../Shared/RoundedCard";
+import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {GuestLayout} from "../../Shared/Layout/GuestLayout";
 import {Link} from "@inertiajs/inertia-react";
 import {useTransRoutes} from "../../Hooks/routes.hook";

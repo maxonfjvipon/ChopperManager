@@ -7,12 +7,15 @@ use App\Models\Currency;
 use App\Models\MainsConnection;
 use App\Models\DN;
 use App\Models\Selections\Single\SinglePumpSelection;
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Inertia\Testing\Concerns\Has;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
@@ -20,22 +23,23 @@ class Pump extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
+    protected $softCascade = ['selections'];
 
-    use HasFactory, BelongsToThrough;
+    use SoftDeletes, HasFactory, BelongsToThrough, SoftCascadeTrait;
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return "{$this->brand->name} {$this->series->name} {$this->name}";
     }
 
-    public function getImplodedTypesAttribute()
+    public function getTypesAttribute(): string
     {
-        return implode(", ", $this->series->types->map(fn($type) => $type->name)->toArray());
+        return $this->series->imploded_types;
     }
 
-    public function getImplodedApplicationsAttribute()
+    public function getApplicationsAttribute(): string
     {
-        return implode(", ", $this->series->applications->map(fn($application) => $application->name)->toArray());
+        return $this->series->imploded_applications;
     }
 
     public function series(): BelongsTo
@@ -71,7 +75,6 @@ class Pump extends Model
         return $this->belongsTo(Currency::class);
     }
 
-
     public function connection_type(): BelongsTo
     {
         return $this->belongsTo(ConnectionType::class);
@@ -85,11 +88,6 @@ class Pump extends Model
     public function dn_pressure(): BelongsTo
     {
         return $this->belongsTo(DN::class, 'dn_pressure_id');
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(PumpCategory::class, 'category_id');
     }
 
     public function connection(): BelongsTo

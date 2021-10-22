@@ -17,6 +17,7 @@ class CreatePumpBrandsTable extends Migration
         Schema::create('pump_brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->softDeletes();
         });
     }
 

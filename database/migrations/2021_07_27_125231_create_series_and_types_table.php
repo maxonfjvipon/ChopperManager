@@ -15,9 +15,9 @@ class CreateSeriesAndTypesTable extends Migration
     {
         Schema::dropIfExists('pump_series_and_types');
         Schema::create('pump_series_and_types', function (Blueprint $table) {
-            $table->id();
             $table->bigInteger('series_id')->unsigned();
             $table->bigInteger('type_id')->unsigned();
+            $table->primary(['series_id', 'type_id']);
         });
         Schema::table('pump_series_and_types', function (Blueprint $table) {
             $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();

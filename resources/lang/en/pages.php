@@ -93,6 +93,78 @@ return [
             'button' => 'Update project',
         ],
     ],
+    'pump_brands' => [
+        'index' => [
+            'restore' => [
+                'title' => 'Restore brand?',
+                'button' => 'Restore'
+            ],
+            'title' => 'Brands',
+            'button' => 'New brand',
+            'table' => [
+                'name' => 'Name',
+                'delete' => 'Are you sure you want to delete the brand?'
+            ]
+        ],
+        'create' => [
+            'title' => 'Create brand',
+            'form' => [
+                'name' => 'Name',
+            ],
+            'button' => 'Create'
+        ],
+        'edit' => [
+            'title' => 'Update brand',
+            'form' => [
+                'name' => 'Name',
+            ],
+            'button' => 'Update brand',
+        ],
+    ],
+    'pump_series' => [
+        'back' => 'Back to series',
+        'index' => [
+            'restore' => [
+                'title' => 'Restore series?',
+                'button' => 'Restore'
+            ],
+            'title' => 'Series',
+            'button' => 'New series',
+            'table' => [
+                'brand' => 'Brand',
+                'name' => 'Name',
+                'category' => 'Category',
+                'power_adjustment' => 'El.power adjustment',
+                'applications' => 'Applications',
+                'types' => 'Types',
+                'delete' => 'Are you sure you want to delete the series?'
+            ],
+        ],
+        'create' => [
+            'title' => 'Create series',
+            'button' => 'Create',
+            'form' => [
+                'brand' => 'Brand',
+                'name' => 'Name',
+                'category' => 'Category',
+                'power_adjustment' => 'El.power adjustment',
+                'applications' => 'Applications',
+                'types' => 'Types'
+            ],
+        ],
+        'edit' => [
+            'title' => 'Edit series',
+            'button' => 'Update',
+            'form' => [
+                'brand' => 'Brand',
+                'name' => 'Name',
+                'category' => 'Category',
+                'power_adjustment' => 'El.power adjustment',
+                'applications' => 'Applications',
+                'types' => 'Types'
+            ],
+        ],
+    ],
     'pumps' => [
         'title' => 'Pumps',
         'props' => 'Properties',

@@ -15,9 +15,9 @@ class CreatePumpSeriesAndApplicationsTable extends Migration
     {
         Schema::dropIfExists('pump_series_and_applications');
         Schema::create('pump_series_and_applications', function (Blueprint $table) {
-            $table->id();
             $table->bigInteger('series_id')->unsigned();
             $table->bigInteger('application_id')->unsigned();
+            $table->primary(['series_id', 'application_id']);
         });
         Schema::table('pump_series_and_applications', function (Blueprint $table) {
             $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();

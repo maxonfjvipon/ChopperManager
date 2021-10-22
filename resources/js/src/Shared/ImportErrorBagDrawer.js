@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Col, Drawer, List, Typography} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import Row from "antd/es/descriptions/Row";
-import {RoundedCard} from "./RoundedCard";
+import {RoundedCard} from "./Cards/RoundedCard";
 
 export const ImportErrorBagDrawer = ({head, title}) => {
     const {errorBag} = usePage().props.flash

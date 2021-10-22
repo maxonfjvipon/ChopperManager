@@ -33,9 +33,9 @@ class CreatePumpsTable extends Migration
             $table->integer('ptp_length');
             $table->bigInteger('dn_suction_id')->unsigned();
             $table->bigInteger('dn_pressure_id')->unsigned();
-            $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('connection_id')->unsigned();
             $table->string('performance')->nullable();
+            $table->softDeletes();
         });
 
         Schema::table('pumps', function (Blueprint $table) {
@@ -45,7 +45,6 @@ class CreatePumpsTable extends Migration
             $table->foreign('dn_suction_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_pressure_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('connection_id')->references('id')->on('mains_connections')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('category_id')->references('id')->on('pump_categories')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

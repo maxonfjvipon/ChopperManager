@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\PumpBrandsController;
 use App\Http\Controllers\PumpsController;
+use App\Http\Controllers\PumpSeriesController;
 use App\Http\Controllers\SelectionsController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\UsersController;
@@ -75,6 +77,14 @@ Route::prefix(LaravelLocalization::setLocale())
 
                     Route::delete('{selection}')->name('selections.destroy')->uses([SelectionsController::class, 'destroy']);
                 });
+
+                // PUMP BRANDS
+                Route::get('pump_brands/{brand}/restore')->name('pump_brands.restore')->uses([PumpBrandsController::class, 'restore']);
+                Route::resource('pump_brands', PumpBrandsController::class)->except(['index', 'show']);
+
+                // PUMP SERIES
+                Route::get('pump_series/{series}/restore')->name('pump_series.restore')->uses([PumpSeriesController::class, 'restore']);
+                Route::resource('pump_series', PumpSeriesController::class)->except(['show']);
 
                 // USERS
                 Route::prefix('users')->group(function () {

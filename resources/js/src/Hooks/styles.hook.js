@@ -89,6 +89,7 @@ export const useStyles = () => {
         borderRadius: value => layout("borderRadius", value),
 
         color: color => layout('color', color),
+        flex: value => layout('flex', value),
 
         backgroundColorWhite: backgroundColor(colors.white),
 

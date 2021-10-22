@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {PrimaryButton} from "../../Buttons/PrimaryButton";
 import {Inertia} from "@inertiajs/inertia";
 import {Card, Input, Space} from "antd";
-import {RoundedCard} from "../../RoundedCard";
+import {RoundedCard} from "../../Cards/RoundedCard";
 import {BoxFlex} from "../../Box/BoxFlex";
 import {Link} from "@inertiajs/inertia-react";
 

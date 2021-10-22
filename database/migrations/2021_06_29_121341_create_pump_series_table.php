@@ -18,6 +18,7 @@ class CreatePumpSeriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('brand_id')->unsigned();
+            $table->softDeletes();
         });
 
         Schema::table('pump_series', function (Blueprint $table) {

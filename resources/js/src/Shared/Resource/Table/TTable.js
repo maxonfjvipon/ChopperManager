@@ -1,8 +1,8 @@
 import {Table} from "antd";
 import React from "react";
 
-export const TTable = ({columns, dataSource, showHandler, ...rest}) => {
-    const ccolumns = columns.map(column => {
+export const TTable = ({columns, dataSource, doubleClickHandler, ...rest}) => {
+    const _columns = columns.map(column => {
         return {
             title: column.title || "",
             dataIndex: column.dataIndex,
@@ -14,16 +14,14 @@ export const TTable = ({columns, dataSource, showHandler, ...rest}) => {
     return (
         <Table
             size="small"
-            columns={ccolumns}
+            columns={_columns}
             dataSource={dataSource?.map(item => {
                 return {key: item.id, ...item}
             })}
             onRow={(record, _) => {
-                return {
-                    onDoubleClick: showHandler
-                        ? showHandler(record.id)
-                        : (() => {})
-                }
+                return doubleClickHandler
+                    ? {onDoubleClick: doubleClickHandler(record.id)}
+                    : null
             }}
             {...rest}
         />

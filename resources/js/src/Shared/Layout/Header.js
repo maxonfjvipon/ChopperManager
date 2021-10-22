@@ -8,7 +8,8 @@ import {
     DownOutlined,
     LogoutOutlined,
     ProfileOutlined,
-    UnorderedListOutlined
+    UnorderedListOutlined,
+    SnippetsOutlined,
 } from "@ant-design/icons";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../translation/lang";
@@ -37,6 +38,11 @@ export const Header = () => {
             itemProps: {key: 'projects', icon: <UnorderedListOutlined/>},
             route: 'projects.index',
             label: Lang.get('pages.projects.title')
+        },
+        {
+            itemProps: {key: 'series', icon: <SnippetsOutlined/>},
+            route: 'pump_series.index',
+            label: "Series",
         },
         {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},

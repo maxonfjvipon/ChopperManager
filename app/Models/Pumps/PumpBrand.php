@@ -3,17 +3,20 @@
 namespace App\Models\Pumps;
 
 use App\Models\Discount;
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PumpBrand extends Model
 {
     protected $fillable = ['name'];
+    protected $softCascade = ['series'];
     public $timestamps = false;
-    use HasFactory;
+    use HasFactory, SoftDeletes, SoftCascadeTrait;
 
     public function series(): HasMany
     {

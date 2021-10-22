@@ -1,15 +1,19 @@
 import React from 'react';
-import {Button, notification, Popconfirm, Space, Tooltip} from "antd";
+import {Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import {DeleteOutlined, EditOutlined, EyeOutlined} from "@ant-design/icons";
-import {SecondaryButton} from "../../Shared/Buttons/SecondaryButton";
 import Lang from "../../../translation/lang";
-import {Container} from "../../Shared/ResourcePanel/Index/Container";
-import {TTable} from "../../Shared/ResourcePanel/Index/Table/TTable";
+import {TTable} from "../../Shared/Resource/Table/TTable";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {useNotifications} from "../../Hooks/notifications.hook";
+import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
+import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
+import {SecondaryAction} from "../../Shared/Resource/Actions/SecondaryAction";
+import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
+import {View} from "../../Shared/Resource/Table/Actions/View";
+import {Edit} from "../../Shared/Resource/Table/Actions/Edit";
+import {Delete} from "../../Shared/Resource/Table/Actions/Delete";
 
 const Index = () => {
     // HOOKS
@@ -30,30 +34,14 @@ const Index = () => {
         {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
-                    <Space size={'small'}>
-                        <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
-                            <Button
-                                onClick={showProjectHandler(record.id)}
-                                icon={<EyeOutlined/>}
-                            />
-                        </Tooltip>
-                        <Tooltip placement="topRight" title={Lang.get('tooltips.edit')}>
-                            <Button
-                                onClick={editProjectHandler(record.id)}
-                                icon={<EditOutlined/>}
-                            />
-                        </Tooltip>
-                        <Tooltip placement="topRight" title={Lang.get('tooltips.delete')}>
-                            <Popconfirm
-                                title={Lang.get('pages.projects.index.table.delete')}
-                                onConfirm={deleteProjectHandler(record.id)}
-                                okText={Lang.get('tooltips.popconfirm.yes')}
-                                cancelText={Lang.get('tooltips.popconfirm.no')}
-                            >
-                                <Button icon={<DeleteOutlined/>}/>
-                            </Popconfirm>
-                        </Tooltip>
-                    </Space>
+                    <TableActionsContainer>
+                        <View clickHandler={showProjectHandler(record.id)}/>
+                        <Edit clickHandler={editProjectHandler(record.id)}/>
+                        <Delete
+                            confirmHandler={deleteProjectHandler(record.id)}
+                            sureDeleteTitle={Lang.get('pages.projects.index.table.delete')}
+                        />
+                    </TableActionsContainer>
                 )
             }
         },
@@ -79,22 +67,25 @@ const Index = () => {
 
     // RENDER
     return (
-        <Container
+        <IndexContainer
             title={Lang.get('pages.projects.title')}
-            mainActionRoute={tRoute('projects.create')}
-            mainActionButtonLabel={Lang.get('pages.projects.index.button')}
-            extraButtons={[<SecondaryButton onClick={() => {
-                Inertia.get(tRoute('selections.dashboard', -1))
-            }}>
-                {Lang.get('pages.projects.index.selection')}
-            </SecondaryButton>]}
+            actions={[
+                <PrimaryAction
+                    label={Lang.get('pages.projects.index.button')}
+                    route={tRoute('projects.create')}
+                />,
+                <SecondaryAction
+                    label={Lang.get('pages.projects.index.selection')}
+                    route={tRoute('selections.dashboard', -1)}
+                />
+            ]}
         >
             <TTable
                 columns={columns}
                 dataSource={projects}
-                showHandler={showProjectHandler}
+                doubleClickHandler={showProjectHandler}
             />
-        </Container>
+        </IndexContainer>
     )
 }
 

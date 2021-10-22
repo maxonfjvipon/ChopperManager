@@ -7,8 +7,10 @@
     "require": {
         "php": "^7.3|^8.0",
         "amrshawky/laravel-currency": "^4.0",
+        "askedio/laravel-soft-cascade": "^8.1",
         "codezero/laravel-unique-translation": "^3.4",
         "conedevelopment/i18n": "^1.1",
+        "dyrynda/laravel-cascade-soft-deletes": "^4.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.4.4",

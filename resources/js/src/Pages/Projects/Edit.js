@@ -7,7 +7,9 @@ import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {ItemsForm} from "../../Shared/ItemsForm";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {usePage} from "@inertiajs/inertia-react";
-import {Container} from "../../Shared/ResourcePanel/Edit/Container";
+import {SubmitAction} from "../../Shared/Resource/Actions/SubmitAction";
+import {ResourceContainer} from "../../Shared/Resource/Containers/ResourceContainer";
+import {BackToProjectsLink} from "../../Shared/Resource/BackLinks/BackToProjectsLink";
 
 const Edit = () => {
     // HOOKS
@@ -33,12 +35,10 @@ const Edit = () => {
     }
 
     return (
-        <Container
+        <ResourceContainer
             title={Lang.get('pages.projects.edit.title')}
-            updateButtonLabel={Lang.get('pages.projects.edit.button')}
-            form={formName}
-            backTitle={Lang.get('pages.projects.back')}
-            backHref={tRoute('projects.index')}
+            actions={<SubmitAction label={Lang.get('pages.projects.edit.button')} form={formName}/>}
+            back={<BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"
@@ -46,7 +46,7 @@ const Edit = () => {
                 name={formName}
                 onFinish={updateProjectHandler}
             />
-        </Container>
+        </ResourceContainer>
     )
 }
 

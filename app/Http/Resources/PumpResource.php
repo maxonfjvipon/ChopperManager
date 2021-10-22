@@ -41,8 +41,8 @@ class PumpResource extends JsonResource
             'category' => $this->category->name,
             'power_adjustment' => $this->series->power_adjustment->name,
             'connection' => $this->connection->full_value,
-            'applications' => $this->imploded_applications,
-            'types' => $this->imploded_types,
+            'applications' => $this->applications,
+            'types' => $this->types,
             'performance' => [
                 'line_data' => $performanceLineData['line'],
                 'y_max' => $performanceLineData['yMax']

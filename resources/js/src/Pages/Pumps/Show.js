@@ -13,7 +13,7 @@ import {
 } from 'victory'
 import Lang from '../../../translation/lang'
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
-import {RoundedCard} from "../../Shared/RoundedCard";
+import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 
