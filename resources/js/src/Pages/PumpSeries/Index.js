@@ -56,7 +56,7 @@ const Index = () => {
         {
             title: Lang.get('pages.pump_series.index.table.name'),
             dataIndex: 'name',
-            sorter: (a, b) => a.name > b.name ? 1 : (b > a) ? -1 : 0,
+            sorter: (a, b) => a.name > b.name ? 1 : (b.name > a.name) ? -1 : 0,
             defaultSortOrder: 'ascend',
         },
         {
