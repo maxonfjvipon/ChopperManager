@@ -53,7 +53,12 @@ const Index = () => {
             filters: filter_data.brands,
             onFilter: (brand, record) => record.brand === brand
         },
-        {title: Lang.get('pages.pump_series.index.table.name'), dataIndex: 'name',},
+        {
+            title: Lang.get('pages.pump_series.index.table.name'),
+            dataIndex: 'name',
+            sorter: (a, b) => a.name > b.name ? 1 : (b > a) ? -1 : 0,
+            defaultSortOrder: 'ascend',
+        },
         {
             title: Lang.get('pages.pump_series.index.table.category'),
             dataIndex: 'category',
