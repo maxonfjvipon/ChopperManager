@@ -39,7 +39,6 @@ class PumpSeriesController extends Controller
             ]),
             'brands' => PumpBrand::all(),
             'series' => PumpSeries::with(['brand', 'category', 'power_adjustment'])
-                ->orderBy('name')
                 ->get()
                 ->map(fn($series) => [
                     'id' => $series->id,
