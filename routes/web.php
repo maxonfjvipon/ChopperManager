@@ -96,7 +96,6 @@ Route::prefix(LaravelLocalization::setLocale())
                 });
 
                 // PUMPS
-                Route::post('pumps/lazy-load')->name('pumps.load_lazy')->uses([PumpsController::class, 'loadLazy']);
                 Route::post('pumps/import')->name('pumps.import')->uses([PumpsController::class, 'import']);
                 Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);
 

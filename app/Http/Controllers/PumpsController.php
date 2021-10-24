@@ -28,10 +28,15 @@ class PumpsController extends Controller
 {
     use HasFilterData;
 
-    public function loadLazy(): JsonResponse
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index(): Response
     {
-        return response()->json([
-            'pumps' => Pump::with([
+        return Inertia::render('Pumps/Index', [
+            'pumps' => Inertia::lazy(fn() => Pump::with([
                 'series',
                 'series.brand',
                 'series.power_adjustment',
@@ -72,18 +77,7 @@ class PumpsController extends Controller
                     'mains_connection' => $pump->connection->full_value,
                     'applications' => $pump->applications,
                     'types' => $pump->types,
-                ]),
-        ]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
-    {
-        return Inertia::render('Pumps/Index', [
+                ])),
             'filter_data' => $this->asFilterData([
                 'brands' => PumpBrand::pluck('name')->all(),
                 'series' => PumpSeries::pluck('name')->all(),

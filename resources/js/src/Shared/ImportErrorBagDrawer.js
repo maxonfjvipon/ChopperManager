@@ -26,7 +26,7 @@ export const ImportErrorBagDrawer = ({head, title}) => {
             }}
         >
             <Typography.Title level={3}>{title}</Typography.Title>
-            <List
+            {errorBag && <List
                 itemLayout="horizontal"
                 dataSource={errorBag}
                 renderItem={item => (
@@ -39,9 +39,7 @@ export const ImportErrorBagDrawer = ({head, title}) => {
                         </List.Item>
                     </RoundedCard>
                 )}
-            >
-
-            </List>
+            />}
 
             {/*/!*<Row gutter={[10, 10]}>*!/*/}
             {/*    {errorBag && errorBag.map(error => (*/}

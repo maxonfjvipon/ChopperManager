@@ -13,21 +13,36 @@ import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
 import {useHttp} from "../../Hooks/http.hook";
 
 const Index = () => {
-    const [pumps, setPumps] = useState(pumps)
-    const {filter_data} = usePage().props
+    // const [pumps, setPumps] = useState(pumps)
+    const {pumps, filter_data} = usePage().props
     const {postRequest} = useHttp()
     const {tRoute} = useTransRoutes()
     const [loading, setLoading] = useState(true)
 
+    if (pumps === undefined) {
+        Inertia.reload( {
+            replace: true,
+            preserveScroll: true,
+            preserveState: true,
+            only: ['pumps']
+        })
+    }
+
     useEffect(() => {
-        if (pumps === undefined) {
-            postRequest(tRoute('pumps.load_lazy'), {}, true).then(res => {
-                setPumps(res.pumps)
-            })
-        } else {
+        if (pumps !== undefined) {
             setLoading(false)
         }
     }, [pumps])
+
+    // useEffect(() => {
+    //     if (pumps === undefined) {
+    //         postRequest(tRoute('pumps.load_lazy'), {}, true).then(res => {
+    //             setPumps(res.pumps)
+    //         })
+    //     } else {
+    //         setLoading(false)
+    //     }
+    // }, [pumps])
 
     const columns = [
         {
