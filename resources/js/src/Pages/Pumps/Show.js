@@ -9,13 +9,19 @@ import {
     VictoryScatter,
     VictoryVoronoiContainer,
     VictoryTooltip,
-    VictoryAxis
+    VictoryAxis, VictoryTheme
 } from 'victory'
 import Lang from '../../../translation/lang'
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {RoundedCard} from "../../Shared/Cards/RoundedCard";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {FlexCol} from "../../Shared/FlexCol";
+import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
+import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
+import {TTable} from "../../Shared/Resource/Table/TTable";
+import {SecondaryAction} from "../../Shared/Resource/Actions/SecondaryAction";
+import {BackLink} from "../../Shared/Resource/BackLinks/BackLink";
 
 const Show = () => {
     const {pump} = usePage().props
@@ -214,49 +220,58 @@ const Show = () => {
     const width = 1000
 
     return (
-        <Container
+        <IndexContainer
             title={pump.data.full_name}
-            backTitle={Lang.get('pages.pumps.back')}
-            backHref={tRoute('pumps.index')}
+            back={<BackLink title={Lang.get('pages.pumps.back')} href={tRoute('pumps.index')}/>}
         >
-            <Row justify="space-around" gutter={[10, 10]} style={{display: 'flex', alignItems: 'stretch'}}>
-                <Col xs={24} sm={20} md={16} lg={13} xl={10} xxl={7}>
-                    <RoundedCard
-                        type="inner"
+            <Row gutter={[16, 16]} style={{flex: "auto"}}>
+                <FlexCol xs={24} sm={20} md={16} lg={13} xl={10} xxl={7}>
+                    <IndexContainer
                         title={Lang.get('pages.pumps.props')}
-                        style={{height: "100%"}}
+                        type="inner"
                     >
                         <ItemsForm
                             layout="horizontal"
                             labelSpan={{xs: 9}}
                             items={items}
                         />
-                    </RoundedCard>
-                </Col>
-                <Col xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}>
-                    <RoundedCard
+                    </IndexContainer>
+                </FlexCol>
+                <FlexCol xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}>
+                    <IndexContainer
                         type="inner"
-                        // style={{height: "100%"}}
-                        className={'flex-rounded-card'}
                         title={Lang.get('pages.pumps.hydraulic_perf')}
+                        className="rounded-card-full-body"
                     >
                         <VictoryChart
                             width={1000}
                             height={500}
-                            // responsive={false}
+                            theme={VictoryTheme.material}
                             domain={{y: [0, pump.data.performance.y_max]}}
-                            // standalone={false}
-                            containerComponent={<VictoryVoronoiContainer
-                                // responsive={false}
-                            />}
+                            containerComponent={<VictoryVoronoiContainer/>}
                         >
                             <VictoryAxis
+                                style={{
+                                    tickLabels: {padding: 1},
+                                    axisLabel: {padding: 20}
+                                }}
                                 orientation="bottom"
-                                label={Lang.get('pages.pumps.consumption')}
+                                label={Lang.get('graphic.axis.flow')}
                             />
-                            <VictoryAxis dependentAxis
-                                         label={Lang.get('pages.pumps.pressure')}
+                            <VictoryAxis
+                                style={{
+                                    tickLabels: {padding: 1},
+                                    axisLabel: {padding: 20}
+                                }}
+                                dependentAxis
+                                label={Lang.get('graphic.axis.head')}
                             />
+                            {/*<VictoryAxis*/}
+                            {/*    orientation="bottom"*/}
+                            {/*    label={Lang.get('pages.pumps.consumption')}*/}
+                            {/*/>*/}
+                            {/*<VictoryAxis dependentAxis label={Lang.get('pages.pumps.pressure')}*/}
+                            {/*/>*/}
                             <VictoryLine
                                 interpolation="linear" data={pump.data.performance.line_data}
                                 style={{data: {stroke: "blue"}}}
@@ -274,17 +289,10 @@ const Show = () => {
                                 labelComponent={<VictoryTooltip/>}
                             />
                         </VictoryChart>
-                        {/*<Row justify="space-around" align="middle"*/}
-                        {/*     // style={{flex: "auto"}}*/}
-                        {/*>*/}
-                        {/*    <Col>*/}
-                        {/*        */}
-                        {/*    </Col>*/}
-                        {/*</Row>*/}
-                    </RoundedCard>
-                </Col>
+                    </IndexContainer>
+                </FlexCol>
             </Row>
-        </Container>
+        </IndexContainer>
     )
 }
 

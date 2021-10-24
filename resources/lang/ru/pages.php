@@ -194,6 +194,7 @@ return [
             'applications' => 'Применения'
         ],
         'upload' => 'Загрузить насосы',
+        'upload_price_lists' => 'Загрузить прайс-листы',
         'errors_title' => 'Ошибки загрузки:',
         'hydraulic_perf' => 'Гидравлическая характеристика',
         'pressure' => 'Напор, м',

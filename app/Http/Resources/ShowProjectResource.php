@@ -29,9 +29,12 @@ class ShowProjectResource extends JsonResource
             'name' => $this->name,
             'selections' => $this->selections()->with([
                 'pump' => function ($query) {
-                    $query->select('id', 'name', 'price', 'rated_power', 'currency_id', 'series_id', 'article_num_main');
+                    $query->select('id', 'name', 'rated_power', 'series_id', 'article_num_main');
                 },
-                'pump.currency',
+                'pump.price_lists' => function($query) {
+                    $query->where('country_id', Auth::user()->id);
+                },
+                'pump.price_lists.currency',
                 'pump.series',
                 'pump.series.discounts' => function ($query) {
                     $query->where('user_id', Auth::id());
@@ -43,10 +46,16 @@ class ShowProjectResource extends JsonResource
             ])
                 ->get(['pump_id', 'selected_pump_name', 'pumps_count', 'head', 'flow', 'id', 'created_at'])
                 ->map(function ($selection) use ($rates) {
-                    $pump_price = $selection->pump->currency->code === $rates->base()
-                        ? $selection->pump->price
-                        : round($selection->pump->price / $rates->rate($selection->pump->currency->code), 2);
-                    $discounted_pump_price = $pump_price - $pump_price * $selection->pump->series->discounts[0]->value / 100;
+                    $pump_price_list = null;
+                    $pump_price = null;
+                    $discounted_pump_price = null;
+                    if (count($selection->pump->price_lists) === 1) {
+                        $pump_price_list = $selection->pump->price_lists[0];
+                        $pump_price = $pump_price_list->currency->code === $rates->base()
+                            ? $pump_price_list->price
+                            : round($pump_price_list->price / $rates->rate($pump_price_list->currency->code), 2);
+                        $discounted_pump_price = $pump_price - $pump_price * $selection->pump->series->discounts[0]->value / 100;
+                    }
 
                     return [
                         'id' => $selection->id,
@@ -59,8 +68,8 @@ class ShowProjectResource extends JsonResource
                             . $selection->pump->brand->name . ' '
                             . $selection->pump->series->name . ' '
                             . $selection->pump->name,
-                        'discounted_price' => round($discounted_pump_price, 1),
-                        'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1),
+                        'discounted_price' => round($discounted_pump_price, 1) ?? null,
+                        'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1) ?? null,
                         'rated_power' => $selection->pump->rated_power,
                         'total_rated_power' => round($selection->pump->rated_power * $selection->pumps_count, 1)
                     ];

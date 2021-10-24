@@ -47,6 +47,6 @@ class ExistsInArrayComplex extends InArrayFromDB
      */
     public function message(): string
     {
-        return __('validation.pump_import.in_array_complex') . ": " . implode(", ", $this->invalidValues);
+        return __('validation.import.in_array_complex') . ": " . implode(", ", $this->invalidValues);
     }
 }

@@ -194,6 +194,7 @@ return [
             'applications' => 'Applications'
         ],
         'upload' => 'Upload pumps',
+        'upload_price_lists' => 'Upload price lists',
         'errors_title' => 'Import errors:',
         'hydraulic_perf' => 'Hydraulic performance',
         'pressure' => 'Delivery head, m',

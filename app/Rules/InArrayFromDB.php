@@ -25,7 +25,7 @@ class InArrayFromDB implements Rule
      */
     public function message(): string
     {
-        return __('validation.pumps_import.in_array');
+        return __('validation.import.in_array');
     }
 
     public function passes($attribute, $value): bool

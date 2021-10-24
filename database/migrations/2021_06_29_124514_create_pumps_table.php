@@ -23,8 +23,8 @@ class CreatePumpsTable extends Migration
             $table->bigInteger('series_id')->unsigned();
             $table->string('name');
             $table->float('weight');
-            $table->float('price')->unsigned();
-            $table->bigInteger('currency_id')->unsigned();
+//            $table->float('price')->unsigned();
+//            $table->bigInteger('currency_id')->unsigned();
             $table->float('rated_power');
             $table->float('rated_current');
             $table->bigInteger('connection_type_id')->unsigned();
@@ -39,7 +39,7 @@ class CreatePumpsTable extends Migration
         });
 
         Schema::table('pumps', function (Blueprint $table) {
-            $table->foreign('currency_id')->references('id')->on('currencies')->cascadeOnUpdate()->cascadeOnDelete();
+//            $table->foreign('currency_id')->references('id')->on('currencies')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('series_id')->references('id')->on('pump_series')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('connection_type_id')->references('id')->on('connection_types')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dn_suction_id')->references('id')->on('dns')->cascadeOnUpdate()->cascadeOnDelete();

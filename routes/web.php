@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\PumpBrandsController;
 use App\Http\Controllers\PumpsController;
 use App\Http\Controllers\PumpSeriesController;
+use App\Http\Controllers\PumpsPriceListsController;
 use App\Http\Controllers\SelectionsController;
 use App\Http\Controllers\SetLocaleController;
 use App\Http\Controllers\UsersController;
@@ -97,6 +98,9 @@ Route::prefix(LaravelLocalization::setLocale())
                 // PUMPS
                 Route::post('pumps/import')->name('pumps.import')->uses([PumpsController::class, 'import']);
                 Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);
+
+                // PUMPS PRICE LISTS
+                Route::post('pumps_price_lists/import')->name('pumps_price_lists.import')->uses(PumpsPriceListsController::class);
             });
         });
     });

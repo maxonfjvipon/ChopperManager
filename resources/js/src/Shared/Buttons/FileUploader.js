@@ -5,24 +5,24 @@ import React from "react";
 import {PrimaryButton} from "./PrimaryButton";
 
 export const FileUploader = ({title, route}) => {
-    const {data, setData, post, processing} = useForm({file: null})
+    const {data, setData, post, processing} = useForm({files: null})
 
     const ref = useRef()
 
     useEffect(() => {
-        if (data.file) {
+        if (data.files) {
             post(route, data)
-            setData({file: null})
+            setData({files: null})
         }
     }, [data])
 
     return (
         <>
-            <input hidden type="file" onClick={(e) => {
+            <input hidden type="file" multiple onClick={(e) => {
                 e.target.value = null
             }} ref={ref} onChange={e => {
                 // console.log(e)
-                setData('file', e.target.files[0])
+                setData('files', e.target.files)
             }}/>
             <PrimaryButton
                 loading={processing}

@@ -3,20 +3,17 @@
 namespace App\Models\Pumps;
 
 use App\Models\ConnectionType;
-use App\Models\Currency;
 use App\Models\MainsConnection;
 use App\Models\DN;
+use App\Models\PumpsPriceList;
 use App\Models\Selections\Single\SinglePumpSelection;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
-use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Inertia\Testing\Concerns\Has;
+use Illuminate\Support\Facades\Auth;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 class Pump extends Model
@@ -42,6 +39,15 @@ class Pump extends Model
         return $this->series->imploded_applications;
     }
 
+    public function getPriceListAttribute()
+    {
+        $price_lists = $this->price_lists;
+        if (count($price_lists) === 0) {
+            return null;
+        }
+        return $price_lists->where('country_id', Auth::user()->country_id)->first();
+    }
+
     public function series(): BelongsTo
     {
         return $this->belongsTo(PumpSeries::class, 'series_id');
@@ -60,6 +66,11 @@ class Pump extends Model
         return $this->hasMany(SinglePumpSelection::class);
     }
 
+    public function price_lists(): HasMany
+    {
+        return $this->hasMany(PumpsPriceList::class);
+    }
+
 //    public function applications(): BelongsToMany
 //    {
 //        return $this->belongsToMany(PumpApplication::class, 'pumps_and_applications', 'pump_article_num', 'application_id');
@@ -70,10 +81,10 @@ class Pump extends Model
 //        return $this->belongsToMany(PumpType::class, 'pumps_and_types', 'pump_article_num', 'type_id');
 //    }
 
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class);
-    }
+//    public function currency(): BelongsTo
+//    {
+//        return $this->belongsTo(Currency::class);
+//    }
 
     public function connection_type(): BelongsTo
     {

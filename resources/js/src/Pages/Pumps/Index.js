@@ -14,6 +14,11 @@ import {EditOutlined, UploadOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {ImportErrorBagDrawer} from "../../Shared/ImportErrorBagDrawer";
+import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
+import {View} from "../../Shared/Resource/Table/Actions/View";
+import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
+import {SecondaryAction} from "../../Shared/Resource/Actions/SecondaryAction";
+import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
 
 const Index = () => {
     const {pumps, filter_data} = usePage().props
@@ -209,12 +214,9 @@ const Index = () => {
         {
             key: 'actions', width: "1%", render: (_, record) => {
                 return (
-                    <Tooltip placement="topRight" title={Lang.get('tooltips.view')}>
-                        <Button
-                            onClick={showPumpClickHandler(record.id)}
-                            icon={<EditOutlined/>}
-                        />
-                    </Tooltip>
+                    <TableActionsContainer>
+                        <View clickHandler={showPumpClickHandler(record.id)}/>
+                    </TableActionsContainer>
                 )
             }
         }
@@ -230,12 +232,18 @@ const Index = () => {
                 head={{key: Lang.get('validation.attributes.pumps_import.article_num_main'), value: "article_num"}}
                 title={Lang.get('pages.pumps.errors_title')}
             />
-            <Container
-                mainActionComponent={<FileUploader
-                    route={tRoute('pumps.import')}
-                    title={Lang.get('pages.pumps.upload')}
-                />}
+            <IndexContainer
                 title={Lang.get('pages.pumps.title')}
+                actions={[
+                    <FileUploader
+                        route={tRoute('pumps.import')}
+                        title={Lang.get('pages.pumps.upload')}
+                    />,
+                    <FileUploader
+                        route={tRoute('pumps_price_lists.import')}
+                        title={Lang.get('pages.pumps.upload_price_lists')}
+                    />
+                ]}
             >
                 <TTable
                     columns={columns}
@@ -244,7 +252,7 @@ const Index = () => {
                     scroll={{x: 4000, y: 630}}
                     loading={loading}
                 />
-            </Container>
+            </IndexContainer>
         </>
     )
 }

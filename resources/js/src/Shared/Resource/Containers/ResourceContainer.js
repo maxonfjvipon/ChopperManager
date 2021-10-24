@@ -3,7 +3,7 @@ import {ActionsContainer} from "./ActionsContainer";
 import {useStyles} from "../../../Hooks/styles.hook";
 import {Container} from "./Container";
 
-export const ResourceContainer = ({title, actions, back, children}) => {
+export const ResourceContainer = ({title, actions, back, children, ...rest}) => {
     const {margin} = useStyles()
 
     return (
@@ -12,6 +12,7 @@ export const ResourceContainer = ({title, actions, back, children}) => {
                 title={title}
                 extra={back && <ActionsContainer actions={back}/>}
                 style={actions && margin.bottom(16)}
+                {...rest}
             >
                 {children}
             </RoundedCard>

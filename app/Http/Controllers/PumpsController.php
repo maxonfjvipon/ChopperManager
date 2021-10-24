@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ImportPumpsAction;
+use App\Http\Requests\FilesUploadRequest;
 use App\Http\Requests\FileUploadRequest;
 use App\Http\Resources\PumpResource;
 use App\Models\ConnectionType;
@@ -18,6 +19,7 @@ use App\Models\Pumps\PumpType;
 use App\Traits\HasFilterData;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -37,15 +39,18 @@ class PumpsController extends Controller
                 'series',
                 'series.brand',
                 'series.power_adjustment',
+                'series.category',
                 'series.applications',
                 'series.types'
+
             ])
-                ->with('category')
                 ->with('connection')
                 ->with('dn_suction')
                 ->with('dn_pressure')
                 ->with('connection_type')
-                ->with('currency:id,code')
+                ->with(['price_lists' => function ($query) {
+                    $query->where('country_id', Auth::user()->country_id);
+                }, 'price_lists.currency'])
                 ->get()
                 ->map(fn($pump) => [
                     'id' => $pump->id,
@@ -56,8 +61,8 @@ class PumpsController extends Controller
                     'series' => $pump->series->name,
                     'name' => $pump->name,
                     'weight' => $pump->weight,
-                    'price' => $pump->price,
-                    'currency' => $pump->currency->code,
+                    'price' => $pump->price_lists[0]->price ?? null,
+                    'currency' => $pump->price_lists[0]->currency->code ?? null,
                     'rated_power' => $pump->rated_power,
                     'rated_current' => $pump->rated_current,
                     'connection_type' => $pump->connection_type->name,
@@ -66,7 +71,7 @@ class PumpsController extends Controller
                     'ptp_length' => $pump->ptp_length,
                     'dn_suction' => $pump->dn_suction->value,
                     'dn_pressure' => $pump->dn_pressure->value,
-                    'category' => $pump->category->name,
+                    'category' => $pump->series->category->name,
                     'power_adjustment' => $pump->series->power_adjustment->name,
                     'mains_connection' => $pump->connection->full_value,
                     'applications' => $pump->applications,
@@ -155,9 +160,9 @@ class PumpsController extends Controller
         //
     }
 
-    public function import(FileUploadRequest $request): RedirectResponse
+    public function import(FilesUploadRequest $request): RedirectResponse
     {
-         return (new ImportPumpsAction())->execute($request->file);
+        return (new ImportPumpsAction())->execute($request->file('files'));
     }
 
 }

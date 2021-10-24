@@ -145,3 +145,7 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 .rounded-card {
     border-radius: 10px;
 }
+
+.rounded-card .rounded-card-full-body .ant-card-body {
+    height: 100%;
+}
