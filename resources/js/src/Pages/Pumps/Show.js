@@ -248,7 +248,7 @@ const Show = () => {
                             height={500}
                             theme={VictoryTheme.material}
                             domain={{y: [0, pump.data.performance.y_max]}}
-                            containerComponent={<VictoryVoronoiContainer/>}
+                            containerComponent={<VictoryVoronoiContainer style={{display: "flex"}}/>}
                         >
                             <VictoryAxis
                                 style={{
