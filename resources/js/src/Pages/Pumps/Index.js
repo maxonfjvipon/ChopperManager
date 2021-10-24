@@ -25,12 +25,14 @@ const Index = () => {
     const {tRoute} = useTransRoutes()
     const [loading, setLoading] = useState(true)
 
-    if (pumps === undefined)
-        Inertia.reload({
-            preserveScroll: true,
-            preserveState: true,
-            only: ['pumps']
-        })
+    useEffect(() => {
+        if (pumps === undefined)
+            Inertia.reload({
+                preserveScroll: true,
+                preserveState: true,
+                only: ['pumps']
+            })
+    }, [pumps])
 
     useEffect(() => {
         if (pumps !== undefined) {
