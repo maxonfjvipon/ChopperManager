@@ -192,7 +192,7 @@ class ImportPumpsAction
             }
 
             if (!empty($errorBar)) {
-                return Redirect::back()->with('errorBag', $errorBar);
+                return Redirect::back()->with('errorBag', array_splice($errorBar, 0, 50));
             }
             foreach ($sheets as $sheet) {
                 foreach (array_chunk($sheet, 100) as $chunkedSheet) {

@@ -74,7 +74,7 @@ class ImportPumpsPriceListsAction
             }
 
             if (!empty($errorBar)) {
-                return Redirect::back()->with('errorBag', $errorBar);
+                return Redirect::back()->with('errorBag', array_splice($errorBar, 0, 50));
             }
             foreach ($sheets as $sheet) {
                 foreach (array_chunk($sheet, 100) as $chunkedSheet) {
@@ -86,6 +86,6 @@ class ImportPumpsPriceListsAction
             return Redirect::route('pumps.index')
                 ->withErrors(__('validation.import.exception', ['attribute' => __('validation.attributes.price_lists')]));
         }
-        return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
+        return Redirect::route('pumps.index')->with('success', __('flash.price_lists.imported'));
     }
 }

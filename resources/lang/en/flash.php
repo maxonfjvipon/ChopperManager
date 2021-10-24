@@ -13,6 +13,9 @@ return [
     'pumps' => [
         'imported' => 'Pumps were imported successfully'
     ],
+    'price_lists' => [
+        'imported' => 'Price lists were imported successfully'
+    ],
     'selections' => [
         'deleted' => 'Selection was deleted successfully',
         'added' => 'Selection was successfully added to project',
