@@ -20,7 +20,7 @@ const Create = () => {
     const {pump_series_props, series} = usePage().props
     const {brands, categories, power_adjustments, applications, types} = pump_series_props.data
 
-    console.log(usePage().props)
+    // console.log(usePage().props)
 
     const formName = 'create-series-form'
     const items = [

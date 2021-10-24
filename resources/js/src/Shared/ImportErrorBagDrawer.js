@@ -12,7 +12,7 @@ export const ImportErrorBagDrawer = ({head, title}) => {
         if (errorBag) {
             setVisible(true)
         }
-        console.log("error bag", errorBag)
+        // console.log("error bag", errorBag)
     }, [errorBag])
 
     return (

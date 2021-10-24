@@ -1,64 +1,33 @@
-import {
-    Button,
-    Tooltip, Upload,
-} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
 import React, {useEffect, useState} from "react";
 import {FileUploader} from "../../Shared/Buttons/FileUploader";
 import Lang from "../../../translation/lang";
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
-import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {TTable} from "../../Shared/Resource/Table/TTable";
-import {EditOutlined, UploadOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../Hooks/routes.hook";
-import {PrimaryButton} from "../../Shared/Buttons/PrimaryButton";
 import {ImportErrorBagDrawer} from "../../Shared/ImportErrorBagDrawer";
 import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../Shared/Resource/Table/Actions/View";
-import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
-import {SecondaryAction} from "../../Shared/Resource/Actions/SecondaryAction";
 import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
+import {useHttp} from "../../Hooks/http.hook";
 
 const Index = () => {
-    const {pumps, filter_data} = usePage().props
+    const [pumps, setPumps] = useState(pumps)
+    const {filter_data} = usePage().props
+    const {postRequest} = useHttp()
     const {tRoute} = useTransRoutes()
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        if (pumps === undefined)
-            Inertia.reload({
-                preserveScroll: true,
-                preserveState: true,
-                only: ['pumps']
+        if (pumps === undefined) {
+            postRequest(tRoute('pumps.load_lazy'), {}, true).then(res => {
+                setPumps(res.pumps)
             })
-    }, [pumps])
-
-    useEffect(() => {
-        if (pumps !== undefined) {
+        } else {
             setLoading(false)
         }
     }, [pumps])
-
-    // useEffect(() => {
-    //     if (pumps === undefined) {
-    //         Inertia.reload({
-    //             preserveScroll: true,
-    //             preserveState: true,
-    //             only: ['pumps']
-    //         })
-    //     }
-    // }, [])
-    //
-    // useEffect(() => {
-    //     if (pumps !== undefined) {
-    //         setLoading(false)
-    //     }
-    // }, [pumps])
-
-    // useEffect(() => {
-    //     console.log(filter_data)
-    // }, [filter_data])
 
     const columns = [
         {

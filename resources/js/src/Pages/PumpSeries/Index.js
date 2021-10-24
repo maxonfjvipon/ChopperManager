@@ -20,9 +20,9 @@ const Index = () => {
     const {tRoute} = useTransRoutes()
     const {openRestoreNotification} = useNotifications()
 
-    useEffect(() => {
-        console.log(filter_data)
-    }, [filter_data])
+    // useEffect(() => {
+    //     console.log(filter_data)
+    // }, [filter_data])
 
     // CONSTS
     const brandsColumns = [

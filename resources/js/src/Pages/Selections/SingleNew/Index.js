@@ -352,7 +352,7 @@ const Index = () => {
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
-        console.log(body)
+        // console.log(body)
         try {
             const data = await postRequest(tRoute('selections.select'), body, true)
             setWorkingPoint(data.working_point)

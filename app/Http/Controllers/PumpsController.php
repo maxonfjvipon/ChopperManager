@@ -17,6 +17,7 @@ use App\Models\Pumps\PumpCategory;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpType;
 use App\Traits\HasFilterData;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,15 +28,10 @@ class PumpsController extends Controller
 {
     use HasFilterData;
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
+    public function loadLazy(): JsonResponse
     {
-        return Inertia::render('Pumps/Index', [
-            'pumps' => Inertia::lazy(fn() => Pump::with([
+        return response()->json([
+            'pumps' => Pump::with([
                 'series',
                 'series.brand',
                 'series.power_adjustment',
@@ -76,7 +72,18 @@ class PumpsController extends Controller
                     'mains_connection' => $pump->connection->full_value,
                     'applications' => $pump->applications,
                     'types' => $pump->types,
-                ])),
+                ]),
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index(): Response
+    {
+        return Inertia::render('Pumps/Index', [
             'filter_data' => $this->asFilterData([
                 'brands' => PumpBrand::pluck('name')->all(),
                 'series' => PumpSeries::pluck('name')->all(),
