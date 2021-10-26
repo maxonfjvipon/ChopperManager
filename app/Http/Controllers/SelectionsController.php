@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateSelectionRequest;
 use App\Http\Resources\SinglePumpSelectionResource;
 use App\Http\Resources\SingleSelectionPropsResource;
 use App\Models\Selections\Single\SinglePumpSelection;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -33,9 +34,11 @@ class SelectionsController extends Controller
      *
      * @param $project_id
      * @return Response
+     * @throws AuthorizationException
      */
     public function create($project_id): Response
     {
+        $this->authorize('selection_create');
         return Inertia::render('Selections/SingleNew/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $project_id
@@ -47,9 +50,11 @@ class SelectionsController extends Controller
      *
      * @param SinglePumpSelection $selection
      * @return Response
+     * @throws AuthorizationException
      */
     public function show(SinglePumpSelection $selection): Response
     {
+        $this->authorize('selection_show');
         return Inertia::render('Selections/SingleNew/Index', [
             'selection_props' => new SingleSelectionPropsResource(null),
             'project_id' => $selection->project_id,
@@ -62,9 +67,11 @@ class SelectionsController extends Controller
      *
      * @param SinglePumpSelection $selection
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(SinglePumpSelection $selection): RedirectResponse
     {
+        $this->authorize('selection_delete');
         $selection->delete();
         return Redirect::back();
     }
@@ -74,9 +81,11 @@ class SelectionsController extends Controller
      *
      * @param StoreSelectionRequest $request
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(StoreSelectionRequest $request): RedirectResponse
     {
+        $this->authorize('selection_create');
         SinglePumpSelection::create($request->validated());
         return Redirect::back()->with('success', __('flash.selections.added'));
     }
@@ -87,9 +96,11 @@ class SelectionsController extends Controller
      * @param UpdateSelectionRequest $request
      * @param SinglePumpSelection $selection
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(UpdateSelectionRequest $request, SinglePumpSelection $selection): RedirectResponse
     {
+        $this->authorize('selection_edit');
         $selection->update($request->validated());
         return Redirect::route('projects.show', $request->project_id);
     }
@@ -100,9 +111,12 @@ class SelectionsController extends Controller
      * @param MakeSelectionRequest $request
      * @param MakeSelectionAction $makeSelectionAction
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function select(MakeSelectionRequest $request, MakeSelectionAction $makeSelectionAction): JsonResponse
     {
+        $this->authorize('selection_create');
+        $this->authorize('selection_edit');
         return $makeSelectionAction->execute($request);
     }
 
@@ -111,6 +125,7 @@ class SelectionsController extends Controller
      */
     public function restore($id): RedirectResponse
     {
+        $this->authorize('selection_restore');
         SinglePumpSelection::withTrashed()->find($id)->restore();
         return Redirect::back();
     }

@@ -14,11 +14,13 @@ import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
 import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../Shared/Resource/Table/Actions/View";
 import {Delete} from "../../Shared/Resource/Table/Actions/Delete";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Show = () => {
     // HOOKS
     const {project, auth} = usePage().props
     const {tRoute} = useTransRoutes()
+    const {has} = usePermissions()
     const {openRestoreNotification} = useNotifications()
 
     // CONSTS
@@ -84,11 +86,11 @@ const Show = () => {
             key: 'actions', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        <View clickHandler={showSelectionHandler(record.id)}/>
-                        <Delete
+                        {has('selection_show') && <View clickHandler={showSelectionHandler(record.id)}/>}
+                        {has('selection_delete') && <Delete
                             sureDeleteTitle={Lang.get('pages.projects.show.table.delete')}
                             confirmHandler={deleteSelectionHandler(record.id)}
-                        />
+                        />}
                     </TableActionsContainer>
                 )
             }
@@ -102,38 +104,38 @@ const Show = () => {
 
     const deleteSelectionHandler = id => () => {
         Inertia.delete(tRoute('selections.destroy', id))
-        openRestoreNotification(
-            Lang.get('pages.projects.show.restore.title'),
-            tRoute('selections.restore', id),
-            Lang.get('pages.projects.show.restore.button'),
-        )
+        if (has('selection_restore'))
+            openRestoreNotification(
+                Lang.get('pages.projects.show.restore.title'),
+                tRoute('selections.restore', id),
+                Lang.get('pages.projects.show.restore.button'),
+            )
     }
 
     // RENDER
     return (
         <ResourceContainer
             title={project.data.name}
-            actions={<PrimaryAction
+            actions={has('selection_create') && <PrimaryAction
                 label={Lang.get('pages.projects.show.selection')}
                 route={tRoute('selections.dashboard', project.data.id)}
             />}
-            back={<BackToProjectsLink/>}
+            back={has('project_access') && <BackToProjectsLink/>}
         >
             <ItemsForm
                 name={formName}
                 layout={"vertical"}
                 items={items}
             />
-            <TTable
+            {has('selection_access') && <TTable
                 columns={columns}
                 dataSource={project.data?.selections}
-                doubleClickHandler={showSelectionHandler}
-            />
+                doubleClickHandler={has('selection_show') && showSelectionHandler}
+            />}
         </ResourceContainer>
     )
 }
 
-Show.layout = page =>
-    <AuthLayout children={page}/>
+Show.layout = page => <AuthLayout children={page}/>
 
 export default Show

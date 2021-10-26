@@ -13,24 +13,15 @@ import {
 } from 'victory'
 import Lang from '../../../translation/lang'
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
-import {RoundedCard} from "../../Shared/Cards/RoundedCard";
-import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {FlexCol} from "../../Shared/FlexCol";
 import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
-import {PrimaryAction} from "../../Shared/Resource/Actions/PrimaryAction";
-import {TTable} from "../../Shared/Resource/Table/TTable";
-import {SecondaryAction} from "../../Shared/Resource/Actions/SecondaryAction";
 import {BackLink} from "../../Shared/Resource/BackLinks/BackLink";
 
 const Show = () => {
     const {pump} = usePage().props
     const {reducedAntFormItemClassName} = useStyles()
     const {tRoute} = useTransRoutes()
-
-    // useEffect(() => {
-    //     console.log(pump)
-    // }, [pump])
 
     const items = [
         {
@@ -266,12 +257,6 @@ const Show = () => {
                                 dependentAxis
                                 label={Lang.get('graphic.axis.head')}
                             />
-                            {/*<VictoryAxis*/}
-                            {/*    orientation="bottom"*/}
-                            {/*    label={Lang.get('pages.pumps.consumption')}*/}
-                            {/*/>*/}
-                            {/*<VictoryAxis dependentAxis label={Lang.get('pages.pumps.pressure')}*/}
-                            {/*/>*/}
                             <VictoryLine
                                 interpolation="linear" data={pump.data.performance.line_data}
                                 style={{data: {stroke: "blue"}}}

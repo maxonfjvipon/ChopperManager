@@ -9,11 +9,13 @@ import {useTransRoutes} from "../../Hooks/routes.hook";
 import {ResourceContainer} from "../../Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../Shared/Resource/Actions/SubmitAction";
 import {BackToProjectsLink} from "../../Shared/Resource/BackLinks/BackToProjectsLink";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Create = () => {
     // HOOKS
     const {rules} = useInputRules()
     const {tRoute} = useTransRoutes()
+    const {has} = usePermissions()
 
     const formName = 'create-project-form'
     const items = [
@@ -34,8 +36,8 @@ const Create = () => {
     return (
         <ResourceContainer
             title={Lang.get('pages.projects.create.title')}
-            actions={<SubmitAction label={Lang.get('pages.projects.create.button')} form={formName}/>}
-            back={<BackToProjectsLink/>}
+            actions={has('project_create') && <SubmitAction label={Lang.get('pages.projects.create.button')} form={formName}/>}
+            back={has('project_access') && <BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"

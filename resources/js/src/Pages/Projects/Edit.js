@@ -10,11 +10,13 @@ import {usePage} from "@inertiajs/inertia-react";
 import {SubmitAction} from "../../Shared/Resource/Actions/SubmitAction";
 import {ResourceContainer} from "../../Shared/Resource/Containers/ResourceContainer";
 import {BackToProjectsLink} from "../../Shared/Resource/BackLinks/BackToProjectsLink";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Edit = () => {
     // HOOKS
     const {rules} = useInputRules()
     const {tRoute} = useTransRoutes()
+    const {has} = usePermissions()
     const {project} = usePage().props
 
     const formName = 'edit-project-form'
@@ -37,8 +39,8 @@ const Edit = () => {
     return (
         <ResourceContainer
             title={Lang.get('pages.projects.edit.title')}
-            actions={<SubmitAction label={Lang.get('pages.projects.edit.button')} form={formName}/>}
-            back={<BackToProjectsLink/>}
+            actions={has('project_edit') && <SubmitAction label={Lang.get('pages.projects.edit.button')} form={formName}/>}
+            back={has('project_access') && <BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"

@@ -22,6 +22,7 @@ class ProjectsController extends Controller
      */
     public function index(): Response
     {
+        $this->authorize('project_access');
         return Inertia::render('Projects/Index', [
             'projects' => auth()->user()->projects()->withCount('selections')->get(),
         ]);
@@ -35,6 +36,7 @@ class ProjectsController extends Controller
      */
     public function store(ProjectStoreRequest $request): RedirectResponse
     {
+        $this->authorize('project_create');
         Auth::user()->projects()->create($request->validated());
         return Redirect::route('projects.index');
     }
@@ -47,6 +49,8 @@ class ProjectsController extends Controller
      */
     public function show(Project $project): Response
     {
+        $this->authorize('project_show');
+        $this->authorize('selection_access');
         return Inertia::render('Projects/Show', [
             'project' => new ShowProjectResource($project),
         ]);
@@ -60,6 +64,7 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project): Response
     {
+        $this->authorize('project_edit');
         return Inertia::render('Projects/Edit', [
             'project' => new EditProjectResource($project)
         ]);
@@ -74,6 +79,7 @@ class ProjectsController extends Controller
      */
     public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
     {
+        $this->authorize('project_edit');
         $project->update($request->validated());
         return Redirect::route('projects.index');
     }
@@ -85,6 +91,7 @@ class ProjectsController extends Controller
      */
     public function create(): Response
     {
+        $this->authorize('project_create');
         return Inertia::render('Projects/Create');
     }
 
@@ -96,6 +103,7 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project): RedirectResponse
     {
+        $this->authorize('project_delete');
         $project->delete();
         return Redirect::back();
     }
@@ -105,6 +113,7 @@ class ProjectsController extends Controller
      */
     public function restore($id): RedirectResponse
     {
+        $this->authorize('project_restore');
         Project::withTrashed()->find($id)->restore();
         return Redirect::route('projects.index');
     }

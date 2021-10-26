@@ -14,11 +14,13 @@ import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableAc
 import {View} from "../../Shared/Resource/Table/Actions/View";
 import {Edit} from "../../Shared/Resource/Table/Actions/Edit";
 import {Delete} from "../../Shared/Resource/Table/Actions/Delete";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Index = () => {
     // HOOKS
     const {projects} = usePage().props
     const {tRoute} = useTransRoutes()
+    const {has, filterPermissionsArray} = usePermissions()
     const {openRestoreNotification} = useNotifications()
 
     // CONSTS
@@ -35,12 +37,12 @@ const Index = () => {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        <View clickHandler={showProjectHandler(record.id)}/>
-                        <Edit clickHandler={editProjectHandler(record.id)}/>
-                        <Delete
+                        {has('project_show') && <View clickHandler={showProjectHandler(record.id)}/>}
+                        {has('project_edit') && <Edit clickHandler={editProjectHandler(record.id)}/>}
+                        {has('project_delete') && <Delete
                             confirmHandler={deleteProjectHandler(record.id)}
                             sureDeleteTitle={Lang.get('pages.projects.index.table.delete')}
-                        />
+                        />}
                     </TableActionsContainer>
                 )
             }
@@ -50,11 +52,12 @@ const Index = () => {
     // HANDLERS
     const deleteProjectHandler = id => () => {
         Inertia.delete(tRoute('projects.destroy', id))
-        openRestoreNotification(
-            Lang.get('pages.projects.index.restore.title'),
-            tRoute('projects.restore', id),
-            Lang.get('pages.projects.index.restore.button')
-        )
+        if (has('project_restore'))
+            openRestoreNotification(
+                Lang.get('pages.projects.index.restore.title'),
+                tRoute('projects.restore', id),
+                Lang.get('pages.projects.index.restore.button')
+            )
     }
 
     const editProjectHandler = id => () => {
@@ -69,21 +72,21 @@ const Index = () => {
     return (
         <IndexContainer
             title={Lang.get('pages.projects.title')}
-            actions={[
-                <PrimaryAction
+            actions={filterPermissionsArray([
+                has('project_create') && <PrimaryAction
                     label={Lang.get('pages.projects.index.button')}
                     route={tRoute('projects.create')}
                 />,
-                <SecondaryAction
+                has('project_create_without_saving') && <SecondaryAction
                     label={Lang.get('pages.projects.index.selection')}
                     route={tRoute('selections.dashboard', -1)}
                 />
-            ]}
+            ])}
         >
             <TTable
                 columns={columns}
                 dataSource={projects}
-                doubleClickHandler={showProjectHandler}
+                doubleClickHandler={has('project_show') && showProjectHandler}
             />
         </IndexContainer>
     )

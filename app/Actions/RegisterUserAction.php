@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Actions;
-
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\Users\Country;

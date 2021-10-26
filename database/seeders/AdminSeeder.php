@@ -15,7 +15,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $max = User::create([
             'id' => 1,
             'organization_name' => "МБС",
             'itn' => "0000000000",
@@ -31,8 +31,9 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
+        $max->assignRole('Landlord');
 
-        User::create([
+        $dt = User::create([
             'id' => 2,
             'organization_name' => "МБС",
             'itn' => "0000000001",
@@ -48,8 +49,9 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
+        $dt->assignRole('Landlord');
 
-        User::create([
+        $vp = User::create([
             'id' => 3,
             'organization_name' => "МБС",
             'itn' => "0000000002",
@@ -65,5 +67,6 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
+        $vp->assignRole('Landlord');
     }
 }

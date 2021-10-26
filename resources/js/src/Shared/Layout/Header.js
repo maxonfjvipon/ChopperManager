@@ -16,44 +16,46 @@ import Lang from "../../../translation/lang";
 import React from "react";
 import {useTransRoutes} from "../../Hooks/routes.hook";
 import {useStyles} from "../../Hooks/styles.hook";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 export const Header = () => {
-    const menuKey = 'menu'
+    // const menuKey = 'menu'
 
-    const getMenuKey = () => {
-        let _key = localStorage.getItem(menuKey)
-        if (_key == null) {
-            _key = 'projects'
-            localStorage.setItem(menuKey, _key)
-        }
-        return _key
-    }
+    // const getMenuKey = () => {
+    //     let _key = localStorage.getItem(menuKey)
+    //     if (_key == null) {
+    //         _key = 'projects'
+    //         localStorage.setItem(menuKey, _key)
+    //     }
+    //     return _key
+    // }
 
     const {auth} = usePage().props
     const {tRoute} = useTransRoutes()
-    const {minHeight, padding} = useStyles()
+    const {has, filterPermissionsArray} = usePermissions()
+    const {padding} = useStyles()
 
-    const menuItems = [
-        {
+    const menuItems = filterPermissionsArray([
+        has('project_access') && {
             itemProps: {key: 'projects', icon: <UnorderedListOutlined/>},
             route: 'projects.index',
             label: Lang.get('pages.projects.title')
         },
-        {
+        has('series_access', 'brand_access') && {
             itemProps: {key: 'series', icon: <SnippetsOutlined/>},
             route: 'pump_series.index',
             label: Lang.get('pages.pump_series.index.title'),
         },
-        {
+        has('pump_access') && {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},
             route: 'pumps.index',
             label: Lang.get('pages.pumps.title')
         },
-    ]
+    ])
 
-    const menuClickHandler = event => {
-        localStorage.setItem(menuKey, event.key)
-    }
+    // const menuClickHandler = event => {
+    //     localStorage.setItem(menuKey, event.key)
+    // }
 
     return (
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
@@ -61,13 +63,10 @@ export const Header = () => {
                 <Space>
                     <AppTitle/>
                 </Space>
-
                 <Menu
                     style={{marginLeft: 10, flexGrow: 1}}
                     theme="dark"
                     mode="horizontal"
-                    // defaultSelectedKeys={getMenuKey()}
-                    // onClick={menuClickHandler}
                 >
                     {menuItems.map(item => (
                         <Menu.Item {...item.itemProps}>
@@ -85,12 +84,6 @@ export const Header = () => {
                         overlay={
                             <Menu>
                                 <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    {/*<div onClick={event => {*/}
-                                    {/*    console.log("click", tRoute('users.profile'))*/}
-                                    {/*    Inertia.get(tRoute('users.profile'))*/}
-                                    {/*}}>*/}
-                                    {/*    {Lang.get('pages.profile.title')}*/}
-                                    {/*</div>*/}
                                     <Link href={tRoute('users.profile')}>
                                         {Lang.get('pages.profile.title')}
                                     </Link>

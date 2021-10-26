@@ -10,13 +10,12 @@ import {ImportErrorBagDrawer} from "../../Shared/ImportErrorBagDrawer";
 import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../Shared/Resource/Table/Actions/View";
 import {IndexContainer} from "../../Shared/Resource/Containers/IndexContainer";
-import {useHttp} from "../../Hooks/http.hook";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Index = () => {
-    // const [pumps, setPumps] = useState(pumps)
     const {pumps, filter_data} = usePage().props
-    const {postRequest} = useHttp()
     const {tRoute} = useTransRoutes()
+    const {has, filterPermissionsArray} = usePermissions()
     const [loading, setLoading] = useState(true)
 
     if (pumps === undefined) {
@@ -33,16 +32,6 @@ const Index = () => {
             setLoading(false)
         }
     }, [pumps])
-
-    // useEffect(() => {
-    //     if (pumps === undefined) {
-    //         postRequest(tRoute('pumps.load_lazy'), {}, true).then(res => {
-    //             setPumps(res.pumps)
-    //         })
-    //     } else {
-    //         setLoading(false)
-    //     }
-    // }, [pumps])
 
     const columns = [
         {
@@ -201,7 +190,7 @@ const Index = () => {
             key: 'actions', width: "1%", render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        <View clickHandler={showPumpClickHandler(record.id)}/>
+                        {has('pump_show') && <View clickHandler={showPumpClickHandler(record.id)}/>}
                     </TableActionsContainer>
                 )
             }
@@ -220,21 +209,21 @@ const Index = () => {
             />
             <IndexContainer
                 title={Lang.get('pages.pumps.title')}
-                actions={[
-                    <FileUploader
+                actions={filterPermissionsArray([
+                    has('pump_import') && <FileUploader
                         route={tRoute('pumps.import')}
                         title={Lang.get('pages.pumps.upload')}
                     />,
-                    <FileUploader
-                        route={tRoute('pumps_price_lists.import')}
+                    has('price_list_import') && <FileUploader
+                        route={tRoute('pumps.import.price_lists')}
                         title={Lang.get('pages.pumps.upload_price_lists')}
                     />
-                ]}
+                ])}
             >
                 <TTable
                     columns={columns}
                     dataSource={pumps}
-                    doubleClickHandler={showPumpClickHandler}
+                    doubleClickHandler={has('pump_show') && showPumpClickHandler}
                     scroll={{x: 4000, y: 630}}
                     loading={loading}
                 />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ImportPumpsAction;
+use App\Actions\ImportPumpsPriceListsAction;
 use App\Http\Requests\FilesUploadRequest;
 use App\Http\Requests\FileUploadRequest;
 use App\Http\Resources\PumpResource;
@@ -35,6 +36,7 @@ class PumpsController extends Controller
      */
     public function index(): Response
     {
+        $this->authorize('pump_access');
         return Inertia::render('Pumps/Index', [
             'pumps' => Inertia::lazy(fn() => Pump::with([
                 'series',
@@ -122,6 +124,7 @@ class PumpsController extends Controller
      */
     public function show(Pump $pump): Response
     {
+        $this->authorize('pump_show');
         return Inertia::render('Pumps/Show', [
             'pump' => new PumpResource($pump),
         ]);
@@ -163,7 +166,14 @@ class PumpsController extends Controller
 
     public function import(FilesUploadRequest $request): RedirectResponse
     {
-        return (new ImportPumpsAction())->execute($request->file('files'));
+        $this->authorize('pump_import');
+        return (new ImportPumpsAction($request->file('files')))->execute();
+    }
+
+    public function importPriceLists(FilesUploadRequest $request): RedirectResponse
+    {
+        $this->authorize('price_list_import');
+        return (new ImportPumpsPriceListsAction($request->file('files')))->execute();
     }
 
 }

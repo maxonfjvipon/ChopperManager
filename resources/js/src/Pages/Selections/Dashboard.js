@@ -7,11 +7,13 @@ import Lang from '../../../translation/lang'
 import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 import {Container} from "../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../Hooks/routes.hook";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Dashboard = () => {
     // HOOKS
     const {project_id} = usePage().props
     const {tRoute} = useTransRoutes()
+    const {has, filterPermissionsArray} = usePermissions()
 
     const serviceUnavailable = () => {
         message.info(Lang.get('messages.service_development'))
@@ -19,25 +21,25 @@ const Dashboard = () => {
 
     // CONSTS
     const imgPath = "/img/selections-dashboard/"
-    const paths = {
-        singlePump: 'Nasos-',
-        doublePump: 'NasosSD-',
-        station: {
-            water: 'StanVoda-',
-            fire: 'StanPoz-'
-        }
-    }
-    const ext = '.png'
-    const producers = {
-        singe: 'Wilo',
-        double: 'Grundfos',
-        station: {
-            water: 'Wilo',
-            fire: 'Grundfos'
-        }
-    }
-    const cards = [
-        {
+    // const paths = {
+    //     singlePump: 'Nasos-',
+    //     doublePump: 'NasosSD-',
+    //     station: {
+    //         water: 'StanVoda-',
+    //         fire: 'StanPoz-'
+    //     }
+    // }
+    // const ext = '.png'
+    // const producers = {
+    //     singe: 'Wilo',
+    //     double: 'Grundfos',
+    //     station: {
+    //         water: 'Wilo',
+    //         fire: 'Grundfos'
+    //     }
+    // }
+    const cards = filterPermissionsArray([
+        has('selection_create') && {
             title: Lang.get('pages.selections.dashboard.preferences.pump.single'),
             src: imgPath + "01.png",
             onClick: () => {
@@ -69,15 +71,15 @@ const Dashboard = () => {
             src: imgPath + "06.png",
             onClick: serviceUnavailable
         },
-    ]
+    ])
 
     return (
         <Container
             title={Lang.get('pages.selections.dashboard.subtitle')}
-            backTitle={project_id !== "-1"
+            backTitle={has('project_access') && project_id !== "-1"
                 ? Lang.get('pages.selections.dashboard.back.to_project')
                 : Lang.get('pages.selections.dashboard.back.to_projects')}
-            backHref={project_id !== "-1"
+            backHref={has('project_access') && project_id !== "-1"
                 ? tRoute('projects.show', project_id)
                 : tRoute('projects.index')}
         >

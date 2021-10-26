@@ -12,11 +12,13 @@ import {BackToSeriesLink} from "../../Shared/Resource/BackLinks/BackToSeriesLink
 import {Selection} from "../../Shared/Inputs/Selection";
 import {usePage} from "@inertiajs/inertia-react";
 import {MultipleSelection} from "../../Shared/Inputs/MultipleSelection";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Create = () => {
     // HOOKS
     const {rules} = useInputRules()
     const {tRoute} = useTransRoutes()
+    const {has} = usePermissions()
     const {brands, categories, power_adjustments, applications, types} = usePage().props.pump_series_props.data
 
     const formName = 'create-series-form'
@@ -66,8 +68,8 @@ const Create = () => {
     return (
         <ResourceContainer
             title={Lang.get('pages.pump_series.create.title')}
-            actions={<SubmitAction label={Lang.get('pages.pump_series.create.button')} form={formName}/>}
-            back={<BackToSeriesLink/>}
+            actions={has('series_create') && <SubmitAction label={Lang.get('pages.pump_series.create.button')} form={formName}/>}
+            back={has('series_access', 'brand_access') && <BackToSeriesLink/>}
         >
             <ItemsForm
                 layout="vertical"

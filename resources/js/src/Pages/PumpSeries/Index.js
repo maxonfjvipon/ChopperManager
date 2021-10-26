@@ -13,16 +13,14 @@ import {FlexCol} from "../../Shared/FlexCol";
 import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableActionsContainer";
 import {Edit} from "../../Shared/Resource/Table/Actions/Edit";
 import {Delete} from "../../Shared/Resource/Table/Actions/Delete";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Index = () => {
     // HOOKS
     const {filter_data, brands, series} = usePage().props
     const {tRoute} = useTransRoutes()
     const {openRestoreNotification} = useNotifications()
-
-    // useEffect(() => {
-    //     console.log(filter_data)
-    // }, [filter_data])
+    const {has} = usePermissions()
 
     // CONSTS
     const brandsColumns = [
@@ -35,11 +33,11 @@ const Index = () => {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        <Edit clickHandler={editBrandHandler(record.id)}/>
-                        <Delete
+                        {has('brand_edit') && <Edit clickHandler={editBrandHandler(record.id)}/>}
+                        {has('brand_delete') && <Delete
                             sureDeleteTitle={Lang.get('pages.pump_brands.index.table.delete')}
                             confirmHandler={deleteBrandHandler(record.id)}
-                        />
+                        />}
                     </TableActionsContainer>
                 )
             }
@@ -87,11 +85,11 @@ const Index = () => {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        <Edit clickHandler={editSeriesHandler(record.id)}/>
-                        <Delete
+                        {has('series_edit') && <Edit clickHandler={editSeriesHandler(record.id)}/>}
+                        {has('series_delete') && <Delete
                             confirmHandler={deleteSeriesHandler(record.id)}
                             sureDeleteTitle={Lang.get('pages.pump_series.index.table.delete')}
-                        />
+                        />}
                     </TableActionsContainer>
                 )
             }
@@ -101,11 +99,12 @@ const Index = () => {
     // HANDLERS
     const deleteBrandHandler = id => () => {
         Inertia.delete(tRoute('pump_brands.destroy', id))
-        openRestoreNotification(
-            Lang.get('pages.pump_brands.index.restore.title'),
-            tRoute('pump_brands.restore', id),
-            Lang.get('pages.pump_brands.index.restore.button')
-        )
+        if (has('brand_restore'))
+            openRestoreNotification(
+                Lang.get('pages.pump_brands.index.restore.title'),
+                tRoute('pump_brands.restore', id),
+                Lang.get('pages.pump_brands.index.restore.button')
+            )
     }
 
     const editBrandHandler = id => () => {
@@ -114,11 +113,12 @@ const Index = () => {
 
     const deleteSeriesHandler = id => () => {
         Inertia.delete(tRoute('pump_series.destroy', id))
-        openRestoreNotification(
-            Lang.get('pages.pump_series.index.restore.title'),
-            tRoute('pump_series.restore', id),
-            Lang.get('pages.pump_series.index.restore.button')
-        )
+        if (has('series_restore'))
+            openRestoreNotification(
+                Lang.get('pages.pump_series.index.restore.title'),
+                tRoute('pump_series.restore', id),
+                Lang.get('pages.pump_series.index.restore.button')
+            )
     }
 
     const editSeriesHandler = id => () => {
@@ -131,7 +131,7 @@ const Index = () => {
             <FlexCol span={4}>
                 <IndexContainer
                     title={Lang.get('pages.pump_brands.index.title')}
-                    actions={<PrimaryAction
+                    actions={has('brand_create') && <PrimaryAction
                         label={Lang.get('pages.pump_brands.index.button')}
                         route={tRoute('pump_brands.create')}
                     />}
@@ -139,14 +139,14 @@ const Index = () => {
                     <TTable
                         columns={brandsColumns}
                         dataSource={brands}
-                        doubleClickHandler={editBrandHandler}
+                        doubleClickHandler={has('brand_edit') && editBrandHandler}
                     />
                 </IndexContainer>
             </FlexCol>
             <FlexCol span={20}>
                 <IndexContainer
                     title={Lang.get('pages.pump_series.index.title')}
-                    actions={<PrimaryAction
+                    actions={has('series_create') && <PrimaryAction
                         label={Lang.get('pages.pump_series.index.button')}
                         route={tRoute('pump_series.create')}
                     />}
@@ -154,7 +154,7 @@ const Index = () => {
                     <TTable
                         columns={seriesColumns}
                         dataSource={series}
-                        doubleClickHandler={editSeriesHandler}
+                        doubleClickHandler={has('series_edit') && editSeriesHandler}
                     />
                 </IndexContainer>
             </FlexCol>

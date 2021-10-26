@@ -57,11 +57,9 @@ Route::prefix(LaravelLocalization::setLocale())
 
             // ONLY WITH VERIFIED EMAIL
             Route::middleware('verified')->group(function () {
-                // DASHBOARD
-//                Route::get('/dashboard')->name('dashboard')->uses('DashboardController');
-                Route::redirect('/', app()->getLocale() . '/projects')->name('index');
 
                 // PROJECTS
+                Route::redirect('/', app()->getLocale() . '/projects')->name('index');
                 Route::get('projects/{project}/restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
                 Route::resource('projects', ProjectsController::class);
 
@@ -96,11 +94,11 @@ Route::prefix(LaravelLocalization::setLocale())
                 });
 
                 // PUMPS
-                Route::post('pumps/import')->name('pumps.import')->uses([PumpsController::class, 'import']);
+                Route::prefix('pumps/import')->group(function() {
+                    Route::post('/')->name('pumps.import')->uses([PumpsController::class, 'import']);
+                    Route::post('price_list')->name('pumps.import.price_lists')->uses([PumpsController::class, 'importPriceLists']);
+                });
                 Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);
-
-                // PUMPS PRICE LISTS
-                Route::post('pumps_price_lists/import')->name('pumps_price_lists.import')->uses(PumpsPriceListsController::class);
             });
         });
     });

@@ -18,6 +18,9 @@ use App\Models\Selections\SelectionRange;
 use App\Models\Users\Business;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +31,117 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+        /** * Permissions */
+        $models = ['role', 'user', 'project', 'pump', 'selection', 'brand', 'series'];
+        $actions = ['access', 'create', 'show', 'edit', 'delete', 'restore'];
+        $permissions = [];
+        foreach ($models as $model) {
+            foreach ($actions as $action) {
+                $permissions[] = $model . '_' . $action;
+            }
+        }
+        $permissions[] = 'price_list_import';
+        $permissions[] = 'pump_import';
+        $permissions[] = 'pump_export';
+        $permissions[] = 'selection_export_xlsx';
+        $permissions[] = 'selection_export_pdf';
+        $permissions[] = 'selection_create_without_saving';
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
+
+        /** * ROLES AND PERMISSIONS */
+        $landlordRole = Role::create(['name' => 'Landlord']); // check AuthServiceProvider
+        foreach ($permissions as $permission) {
+            $landlordRole->givePermissionTo($permission);
+        }
+
+        /** ADMIN ROLE */
+        $adminRole = Role::create(['name' => 'Admin']);
+        $adminPermissions = [
+            'role_access',
+            'role_create',
+            'role_show',
+            'role_edit',
+            'role_delete',
+            'role_restore',
+
+            'user_access',
+            'user_create',
+            'user_show',
+
+            'project_access',
+            'project_create',
+            'project_show',
+            'project_edit',
+            'project_delete',
+            'project_restore',
+
+            'pump_access',
+            'pump_create',
+            'pump_show',
+            'pump_edit',
+            'pump_delete',
+            'pump_restore',
+
+            'selection_access',
+            'selection_create',
+            'selection_create_without_saving',
+            'selection_show',
+            'selection_edit',
+            'selection_delete',
+            'selection_restore',
+
+            'brand_access',
+            'brand_create',
+            'brand_show',
+            'brand_edit',
+            'brand_delete',
+            'brand_restore',
+
+            'series_access',
+            'series_create',
+            'series_show',
+            'series_edit',
+            'series_delete',
+            'series_restore',
+        ];
+
+        foreach ($adminPermissions as $permission) {
+            $adminRole->givePermissionTo($permission);
+        }
+
+        /** CLIENT ROLE */
+        $clientRole = Role::create(['name' => 'Client']);
+        $clientPermissions = [
+            'project_access',
+            'project_create',
+            'project_show',
+            'project_edit',
+            'project_delete',
+            'project_restore',
+
+//            'brand_access',
+//            'series_access',
+
+            'pump_access',
+            'pump_show',
+
+            'selection_access',
+            'selection_create',
+            'selection_create_without_saving',
+            'selection_show',
+            'selection_edit',
+            'selection_delete',
+            'selection_restore',
+        ];
+        foreach ($clientPermissions as $permission) {
+            $clientRole->givePermissionTo($permission);
+        }
+
         /** * Businesses */
         Business::create(['id' => 1, 'name' => ['ru' => "Проектная организация", 'en' => 'Project organization']]);
         Business::create(['id' => 2, 'name' => ['ru' => "Монтажная организация", 'en' => 'Installation organization']]);
@@ -183,15 +297,15 @@ class DatabaseSeeder extends Seeder
             (2, 'AED', 'Dirham', '.د.ب'),
             (3, 'AFN', 'Afghani', '؋'),
             (4, 'XCD', 'Dollar', 'EC$'),
-(5, 'ALL', 'Lek', 'lek'),
-(6, 'AMD', 'Dram', '֏'),
-(7, 'AOA', 'Kwanza', 'Kz'),
-(8, 'ARS', 'Peso', '$'),
-(9, 'USD', 'Dollar', '$'),
-(10, 'AUD', 'Dollar', '$'),
-(11, 'AWG', 'Guilder', 'ƒ'),
-(12, 'AZN', 'Manat', 'ман'),
-(13, 'BAM', 'Marka', 'KM'),
+            (5, 'ALL', 'Lek', 'lek'),
+            (6, 'AMD', 'Dram', '֏'),
+            (7, 'AOA', 'Kwanza', 'Kz'),
+            (8, 'ARS', 'Peso', '$'),
+            (9, 'USD', 'Dollar', '$'),
+            (10, 'AUD', 'Dollar', '$'),
+            (11, 'AWG', 'Guilder', 'ƒ'),
+            (12, 'AZN', 'Manat', 'ман'),
+            (13, 'BAM', 'Marka', 'KM'),
 (14, 'BBD', 'Dollar', '$'),
 (15, 'BDT', 'Taka', 'Tk'),
 (16, 'XOF', 'Franc', 'CFA'),

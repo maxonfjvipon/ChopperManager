@@ -12,8 +12,11 @@ use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpCategory;
 use App\Models\Pumps\PumpSeries;
 use App\Models\Pumps\PumpType;
+use App\Models\Users\User;
 use App\Traits\HasFilterData;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -26,9 +29,12 @@ class PumpSeriesController extends Controller
      * Display a listing of the resource.
      *
      * @return Response
+     * @throws AuthorizationException
      */
     public function index(): Response
     {
+        $this->authorize('series_access');
+        $this->authorize('brand_access');
         return Inertia::render('PumpSeries/Index', [
             'filter_data' => $this->asFilterData([
                 'brands' => PumpBrand::pluck('name')->all(),
@@ -57,9 +63,11 @@ class PumpSeriesController extends Controller
      * Show the form for creating a new resource.
      *
      * @return Response
+     * @throws AuthorizationException
      */
     public function create(): Response
     {
+        $this->authorize('series_create');
         return Inertia::render('PumpSeries/Create', [
             'pump_series_props' => new PumpSeriesPropsResource(null),
         ]);
@@ -70,9 +78,11 @@ class PumpSeriesController extends Controller
      *
      * @param PumpSeriesStoreRequest $request
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(PumpSeriesStoreRequest $request): RedirectResponse
     {
+        $this->authorize('series_create');
         PumpSeries::createFromRequest($request);
         return Redirect::route('pump_series.index');
     }
@@ -82,9 +92,11 @@ class PumpSeriesController extends Controller
      *
      * @param PumpSeries $pumpSeries
      * @return Response
+     * @throws AuthorizationException
      */
     public function edit(PumpSeries $pumpSeries): Response
     {
+        $this->authorize('series_edit');
         return Inertia::render('PumpSeries/Edit', [
             'pump_series_props' => new PumpSeriesPropsResource(null),
             'series' => new PumpSeriesResource($pumpSeries)
@@ -97,9 +109,11 @@ class PumpSeriesController extends Controller
      * @param PumpSeriesUpdateRequest $request
      * @param PumpSeries $pumpSeries
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function update(PumpSeriesUpdateRequest $request, PumpSeries $pumpSeries): RedirectResponse
     {
+        $this->authorize('series_edit');
         $pumpSeries->updateFromRequest($request);
         return Redirect::route('pump_series.index');
     }
@@ -109,9 +123,11 @@ class PumpSeriesController extends Controller
      *
      * @param PumpSeries $pumpSeries
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(PumpSeries $pumpSeries): RedirectResponse
     {
+        $this->authorize('series_delete');
         $pumpSeries->delete();
         return Redirect::route('pump_series.index');
 
@@ -122,6 +138,7 @@ class PumpSeriesController extends Controller
      */
     public function restore($id): RedirectResponse
     {
+        $this->authorize('series_restore');
         PumpSeries::withTrashed()->find($id)->restore();
         return Redirect::route('pump_series.index');
     }

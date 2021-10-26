@@ -9,8 +9,7 @@ import {
     Row,
     Space,
     Tree,
-    Typography,
-    Divider, notification, Slider, List, Drawer
+    Divider, notification, Slider, Drawer
 } from "antd";
 import {RequiredFormItem} from "../../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
@@ -29,10 +28,10 @@ import {PrimaryButton} from "../../../Shared/Buttons/PrimaryButton";
 import Lang from '../../../../translation/lang'
 import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
-import {Container} from "../../../Shared/ResourcePanel/Index/Container";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
 import {RoundedCard} from "../../../Shared/Cards/RoundedCard";
 import {CContainer} from "../../../Shared/ResourcePanel/Index/CContainer";
+import {usePermissions} from "../../../Hooks/permissions.hook";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -81,7 +80,7 @@ const Index = () => {
     const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint, setDefaultSystemPerformance} = useGraphic()
     const {isArrayEmpty, prepareRequestBody} = useCheck()
     const {postRequest, loading} = useHttp()
-    const {selection, project_id, selection_props} = usePage().props
+    const {pump, selection, project_id, selection_props} = usePage().props
 
     const {
         brands,
@@ -117,6 +116,7 @@ const Index = () => {
 
     const [rangeDisabled, setRangeDisabled] = useState(selection ? selection?.data.range_id !== selectionRanges[selectionRanges.length - 1].id : false)
     const [filtersDrawerVisible, setFiltersDrawerVisible] = useState(false)
+    const [pumpInfoDrawerVisible, setPumpInfoDrawerVisible] = useState(false)
 
     // CONSTS
     const mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(value => {
@@ -693,7 +693,16 @@ const Index = () => {
                             </Col>
                             {/* GRAPHIC */}
                             <Col xs={9}>
-                                <PSHCDiagram multiline/>
+                                <RoundedCard
+                                    className={'flex-rounded-card'}
+                                    type="inner"
+                                    title={stationToShow && <a onClick={event => {
+                                        event.preventDefault()
+                                        setPumpInfoDrawerVisible(true)
+                                    }}>{stationToShow?.name}</a>}
+                                >
+                                    <PSHCDiagram multiline/>
+                                </RoundedCard>
                             </Col>
                         </Row>
                     </Col>
@@ -715,7 +724,7 @@ const Index = () => {
                             ? Lang.get('pages.selections.single.add')
                             : Lang.get('pages.selections.single.update')
                         }
-                    < /PrimaryButton>
+                    </PrimaryButton>
                 </Space>}
                 {project_id === "-1" && <SecondaryButton onClick={() => {
                     Inertia.get(tRoute('projects.index'))
@@ -723,6 +732,34 @@ const Index = () => {
                     {Lang.get('pages.selections.single.exit')}
                 </SecondaryButton>}
             </BoxFlexEnd>
+            {/*<Drawer*/}
+            {/*    width={800}*/}
+            {/*    placement="right"*/}
+            {/*    title="Pump info"*/}
+            {/*    visible={pumpInfoDrawerVisible}*/}
+            {/*    closable={false}*/}
+            {/*    onClose={() => {*/}
+            {/*        setPumpInfoDrawerVisible(false)*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    {pump && <Tabs type="card" defaultActiveKey="curve">*/}
+            {/*        <Tabs.TabPane tab="Perf.curve" key="curve">*/}
+
+            {/*        </Tabs.TabPane>*/}
+            {/*        <Tabs.TabPane tab="Product properties" key="props">*/}
+
+            {/*        </Tabs.TabPane>*/}
+            {/*        <Tabs.TabPane tab="Model picture" key="model_pic">*/}
+
+            {/*        </Tabs.TabPane>*/}
+            {/*        <Tabs.TabPane tab="Size picture" key="size_pic">*/}
+
+            {/*        </Tabs.TabPane>*/}
+            {/*        <Tabs.TabPane tab="Exploded view" key="expl_pic">*/}
+
+            {/*        </Tabs.TabPane>*/}
+            {/*    </Tabs>}*/}
+            {/*</Drawer>*/}
             <Drawer
                 width={600}
                 placement="right"

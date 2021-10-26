@@ -9,10 +9,12 @@ import {useTransRoutes} from "../../Hooks/routes.hook";
 import {ResourceContainer} from "../../Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../Shared/Resource/Actions/SubmitAction";
 import {BackToSeriesLink} from "../../Shared/Resource/BackLinks/BackToSeriesLink";
+import {usePermissions} from "../../Hooks/permissions.hook";
 
 const Create = () => {
     // HOOKS
     const {rules} = useInputRules()
+    const {has} = usePermissions()
     const {tRoute} = useTransRoutes()
 
     const formName = 'create-brand-form'
@@ -34,8 +36,8 @@ const Create = () => {
     return (
         <ResourceContainer
             title={Lang.get('pages.pump_brands.create.title')}
-            actions={<SubmitAction label={Lang.get('pages.pump_brands.create.button')} form={formName}/>}
-            back={<BackToSeriesLink/>}
+            actions={has('brand_create') && <SubmitAction label={Lang.get('pages.pump_brands.create.button')} form={formName}/>}
+            back={has('brand_access', 'series_access') && <BackToSeriesLink/>}
         >
             <ItemsForm
                 layout="vertical"
