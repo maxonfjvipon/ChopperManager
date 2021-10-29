@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpSeries extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
     protected $softCascade = ['pump'];
-    use HasFactory, SoftDeletes, SoftCascadeTrait;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection;
 
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {

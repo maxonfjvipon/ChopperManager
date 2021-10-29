@@ -2,130 +2,105 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DiscountUpdateRequest;
-use App\Http\Requests\UserPasswordUpdateRequest;
-use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
-use App\Models\Currency;
-use App\Models\Discount;
-use App\Models\Pumps\PumpBrand;
-use App\Models\Users\Business;
-use App\Models\Users\Country;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
+use App\Http\Resources\UserTableResource;
+use App\Models\Users\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
-use Inertia\Response;
 
 class UsersController extends Controller
 {
     /**
-     * Display a user profile.
+     * Display a listing of the resource.
+     *
+     * @return \Inertia\Response
+     */
+    public function index(): \Inertia\Response
+    {
+        return Inertia::render('Users/Index', [
+            'users' => User::allExceptLandlord()->map(fn($user) => [
+                'id' => $user->id,
+                'created_at' => $user->created_at,
+                'organization_name' => $user->organization_name,
+                'itn' => $user->itn,
+                'phone' => $user->phone,
+                'country' => $user->country->name,
+                'city' => $user->city,
+                'postcode' => $user->postcode,
+                'currency' => $user->currency->code,
+                'full_name' => $user->full_name,
+                'email' => $user->email,
+                'main_business' => $user->business->name,
+                'series' => "BL, TOP-S, TOP-Z",
+                'selections' => 'Single pump, Pumping station water'
+            ])->toArray()
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
      *
      * @return Response
      */
-    public function profile(): Response
+    public function create()
     {
-        return Inertia::render('Profile/Index', [
-            'user' => new UserResource(auth()->user()),
-            'businesses' => Business::all(),
-            'countries' => Country::all(),
-            'currencies' => Currency::all()->transform(function ($currency) {
-                return [
-                    'id' => $currency->id,
-                    'name' => $currency->code . ' - ' . $currency->name
-                ];
-            }),
-            'discounts' => auth()->user()->discounts()
-                ->where('discountable_type', '=', 'pump_brand')
-                ->with(['discountable' => function (MorphTo $morphTo) {
-                    $morphTo->morphWith([
-                        PumpBrand::class => ['series', 'series.discounts' => function ($query) {
-                            $query->where('user_id', Auth::id());
-                        }]
-                    ]);
-                }])
-                ->get()
-                ->map(function ($discount) {
-                    return [
-                        'key' => $discount->discountable_id . '-' . $discount->discountable_type . '-' . $discount->user_id,
-                        'discountable_id' => $discount->discountable_id,
-                        'discountable_type' => $discount->discountable_type,
-                        'user_id' => $discount->user_id,
-                        'name' => $discount->discountable->name,
-                        'value' => $discount->value,
-                        'children' => $discount->discountable->series->map(function ($series) {
-                            return [
-                                'key' => $series->discounts[0]->discountable_id
-                                    . '-' . $series->discounts[0]->discountable_type
-                                    . '-' . $series->discounts[0]->user_id,
-                                'discountable_id' => $series->discounts[0]->discountable_id,
-                                'discountable_type' => $series->discounts[0]->discountable_type,
-                                'user_id' => $series->discounts[0]->user_id,
-                                'name' => $series->name,
-                                'value' => $series->discounts[0]->value,
-                            ];
-                        })
-                    ];
-                })
-        ]);
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UserUpdateRequest $request
-     * @return RedirectResponse
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return Response
      */
-    public function update(UserUpdateRequest $request): RedirectResponse
+    public function update(Request $request, $id)
     {
-        Auth::user()->update($request->validated());
-        return Redirect::back()->with('success', __('flash.users.updated'));
+        //
     }
 
     /**
-     * Update user password
+     * Remove the specified resource from storage.
      *
-     * @param UserPasswordUpdateRequest $request
-     * @return RedirectResponse
+     * @param int $id
+     * @return Response
      */
-    public function changePassword(UserPasswordUpdateRequest $request): RedirectResponse
+    public function destroy($id)
     {
-        $validated = $request->validated();
-        if (array_key_exists('password', $validated) && $validated['password'] != null) {
-            Auth::user()->update([
-                'password' => Hash::make($validated['password'])
-            ]);
-            return Redirect::back()->with('success', __('flash.users.password_changed'));
-        }
-        Return Redirect::back();
-    }
-
-    /**
-     * Update user discounts
-     * TODO: update or create ???
-     *
-     * @param DiscountUpdateRequest $request
-     * @return RedirectResponse
-     */
-    public function updateDiscount(DiscountUpdateRequest $request): RedirectResponse
-    {
-        $validated = $request->validated();
-        $discount = Discount::where('user_id', $request->user_id)
-            ->where('discountable_id', $request->discountable_id)
-            ->where('discountable_type', $request->discountable_type)
-            ->first();
-        $discount->update($validated);
-
-        // update series discounts as producer discount
-        if ($discount->discountable_type === 'pump_brand') {
-            Discount::where('user_id', $request->user_id)
-                ->whereIn('discountable_id', $discount->discountable->series()->pluck('id')->all())
-                ->where('discountable_type', 'pump_series')
-                ->update(['value' => $request->value]);
-        }
-        return Redirect::back();
+        //
     }
 }

@@ -1,4 +1,3 @@
-import {BoxFlexSpaceBetween} from "../Box/BoxFlexSpaceBetween";
 import {Button, Dropdown, Menu, Space, Layout} from "antd";
 import {AppTitle} from "./Components/AppTitle";
 import {Link, usePage} from "@inertiajs/inertia-react";
@@ -10,6 +9,7 @@ import {
     ProfileOutlined,
     UnorderedListOutlined,
     SnippetsOutlined,
+    UserOutlined,
 } from "@ant-design/icons";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../translation/lang";
@@ -18,7 +18,7 @@ import {useTransRoutes} from "../../Hooks/routes.hook";
 import {useStyles} from "../../Hooks/styles.hook";
 import {usePermissions} from "../../Hooks/permissions.hook";
 
-export const Header = () => {
+export const Header = ({title = "Pump Manager"}) => {
     // const menuKey = 'menu'
 
     // const getMenuKey = () => {
@@ -51,6 +51,11 @@ export const Header = () => {
             route: 'pumps.index',
             label: Lang.get('pages.pumps.title')
         },
+        // has('user_access') && {
+        //     itemProps: {key: 'users', icon: <UserOutlined/>},
+        //     route: 'users.index',
+        //     label: Lang.get('pages.users.title')
+        // },
     ])
 
     // const menuClickHandler = event => {
@@ -61,7 +66,7 @@ export const Header = () => {
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Space>
-                    <AppTitle/>
+                    <AppTitle title={title}/>
                 </Space>
                 <Menu
                     style={{marginLeft: 10, flexGrow: 1}}
@@ -84,7 +89,7 @@ export const Header = () => {
                         overlay={
                             <Menu>
                                 <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    <Link href={tRoute('users.profile')}>
+                                    <Link href={tRoute('profile.index')}>
                                         {Lang.get('pages.profile.title')}
                                     </Link>
                                 </Menu.Item>

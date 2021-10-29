@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpSeriesAndApplication extends Model
 {
@@ -16,7 +17,7 @@ class PumpSeriesAndApplication extends Model
     public $timestamps = false;
     public $incrementing = false;
     protected $primaryKey = ['series_id', 'application_id'];
-    use HasFactory, HasCompositePrimaryKey;
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 
     public static function createFromRequestForSeries(PumpSeriesStoreRequest $request, PumpSeries $series, $method = "insert")
     {

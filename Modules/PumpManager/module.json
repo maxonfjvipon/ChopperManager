@@ -1,0 +1,13 @@
+{
+    "name": "PumpManager",
+    "alias": "pumpmanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PumpManager\\Providers\\PumpManagerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

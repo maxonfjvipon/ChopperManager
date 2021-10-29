@@ -332,5 +332,29 @@ return [
                 'ptp_length' => 'Port-to-port length, mm'
             ],
         ]
-    ]
+    ],
+    'users' => [
+        'title' => 'Users',
+        'index' => [
+            'table' => [
+                'created_at' => 'Created at',
+                'organization_name' => 'Name of the organization',
+                'main_business' => 'Main business',
+                'itn' => 'Individual taxpayer number',
+                'phone' => 'Phone',
+                'country' => 'Country',
+                'city' => 'City',
+                'postcode' => 'Postcode',
+                'currency' => 'Currency',
+                'full_name' => 'Full name',
+                'email' => 'E-mail',
+                'delete' => 'Are you sure you want to delete the user?'
+            ],
+            'button' => 'New user',
+            'restore' => [
+                'title' => 'Restore user?',
+                'button' => 'Restore'
+            ],
+        ]
+    ],
 ];

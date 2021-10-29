@@ -111,7 +111,7 @@ export const DiscountsTab = ({discounts}) => {
     })
 
     const discountsSaveHandler = row => {
-        Inertia.post(tRoute('users.discount.update'), row, {
+        Inertia.post(tRoute('profile.discount.update'), row, {
             only: ['discounts'],
         })
     }

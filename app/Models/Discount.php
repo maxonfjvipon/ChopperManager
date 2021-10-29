@@ -6,10 +6,11 @@ use App\Traits\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Discount extends Model
 {
-    use HasFactory, HasCompositePrimaryKey;
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
     public $timestamps = false;
     protected $fillable = ['user_id', 'value', 'discountable_id', 'discountable_type'];
     protected $primaryKey = ['discountable_id', 'user_id', 'discountable_type'];

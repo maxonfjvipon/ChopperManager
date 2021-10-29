@@ -77,7 +77,7 @@ const Index = () => {
                     label={Lang.get('pages.projects.index.button')}
                     route={tRoute('projects.create')}
                 />,
-                has('project_create_without_saving') && <SecondaryAction
+                has('selection_create_without_saving') && <SecondaryAction
                     label={Lang.get('pages.projects.index.selection')}
                     route={tRoute('selections.dashboard', -1)}
                 />

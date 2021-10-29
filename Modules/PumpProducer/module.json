@@ -1,0 +1,13 @@
+{
+    "name": "PumpProducer",
+    "alias": "pumpproducer",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PumpProducer\\Providers\\PumpProducerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

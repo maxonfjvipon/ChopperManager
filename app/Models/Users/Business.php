@@ -6,13 +6,13 @@ use App\Traits\HasUsersTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Business extends Model
 {
-    use HasTranslations;
+    use HasFactory, HasUsersTrait, HasTranslations, UsesTenantConnection;
 
     public $translatable = ['name'];
     protected $fillable = ['name'];
     public $timestamps = false;
-    use HasFactory, HasUsersTrait;
 }

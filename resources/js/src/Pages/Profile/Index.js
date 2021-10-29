@@ -142,13 +142,13 @@ const Index = () => {
     ]
 
     const updateProfileHandler = async body => {
-        Inertia.post(tRoute('users.update'), body, {
+        Inertia.post(tRoute('profile.update'), body, {
             preserveScroll: true,
         })
     }
 
     const changePasswordHandler = body => {
-        Inertia.post(tRoute('users.password.change'), body, {
+        Inertia.post(tRoute('profile.password.change'), body, {
             preserveScroll: true
         })
     }

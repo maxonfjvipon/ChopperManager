@@ -5,6 +5,7 @@ namespace App\Models\Pumps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpType extends Model
 {
@@ -14,5 +15,5 @@ class PumpType extends Model
     protected $table = 'pump_types';
     protected $fillable = ['name'];
     public $timestamps = false;
-    use HasFactory;
+    use HasFactory, UsesTenantConnection;
 }

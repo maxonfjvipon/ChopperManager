@@ -20,7 +20,7 @@ require('../css/app.css')
 import React from 'react'
 import {render} from 'react-dom'
 import {createInertiaApp, InertiaApp} from '@inertiajs/inertia-react'
-import { InertiaProgress } from '@inertiajs/progress';
+import {InertiaProgress} from '@inertiajs/progress';
 
 InertiaProgress.init({
     color: '#ED8936',
@@ -28,7 +28,14 @@ InertiaProgress.init({
 });
 
 createInertiaApp({
-    resolve: name => require(`./src/Pages/${name}`),
+    resolve: name => {
+        const splited = name.split('::')
+        if (splited.length === 1)
+            return require(`./src/Pages/${name}`)
+        const [module, path] = splited
+        const component = `../../Modules/${module}/Resources/assets/js/${path}`
+        return require(`../../Modules/${module}/Resources/assets/js/${path}`)
+    },
     setup({el, App, props}) {
         render(<App {...props} />, el)
     },

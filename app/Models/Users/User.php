@@ -8,17 +8,20 @@ use App\Models\Project;
 use App\Models\Pumps\PumpBrand;
 use App\Models\Pumps\PumpSeries;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, SoftDeletes, HasRoles;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles, UsesTenantConnection;
 
     protected $fillable = [
         'id', 'organization_name', 'itn', 'phone', 'city', 'first_name', 'middle_name',
@@ -43,7 +46,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime:d.m.Y H:i',
     ];
 
     public function business(): BelongsTo
@@ -70,6 +73,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function discounts(): HasMany
     {
         return $this->hasMany(Discount::class, 'user_id');
+    }
+
+    public static function allExceptLandlord(): Collection|array
+    {
+        return User::where('id', '!=', Auth::id())->whereHas('roles', function ($query) {
+            $query->where('name', '!=', 'Landlord');
+        })->get();
     }
 
     protected static function booted()

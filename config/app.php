@@ -242,4 +242,10 @@ return [
 
     ],
 
+    'modules' => [
+        'admin_panel' => 'AdminPanel',
+        'pump_manager' => 'PumpManager',
+        'pump_producer' => 'PumpProducer'
+    ]
+
 ];

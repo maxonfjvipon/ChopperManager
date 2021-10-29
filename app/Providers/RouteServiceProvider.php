@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,8 @@ class RouteServiceProvider extends ServiceProvider
 //    protected $namespace = 'App\Http\Controllers';
 
     public const HOME = '/';
+
+    use UsesTenantModel;
 
     /**
      * Define your route model bindings, pattern filters, etc.

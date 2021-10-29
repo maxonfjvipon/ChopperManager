@@ -6,10 +6,11 @@ use App\Traits\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpsPriceList extends Model
 {
-    use HasFactory, HasCompositePrimaryKey;
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 
     public $timestamps = false;
     protected $guarded = ['id'];

@@ -7,6 +7,7 @@ use App\Models\MainsConnection;
 use App\Models\DN;
 use App\Models\PumpsPriceList;
 use App\Models\Selections\Single\SinglePumpSelection;
+use App\Traits\HasTranslations;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 class Pump extends Model
@@ -22,7 +24,7 @@ class Pump extends Model
     public $timestamps = false;
     protected $softCascade = ['selections'];
 
-    use SoftDeletes, HasFactory, BelongsToThrough, SoftCascadeTrait;
+    use SoftDeletes, HasFactory, BelongsToThrough, SoftCascadeTrait, UsesTenantConnection;
 
     public function getFullNameAttribute(): string
     {
