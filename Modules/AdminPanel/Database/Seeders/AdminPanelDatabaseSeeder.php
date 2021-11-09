@@ -48,7 +48,7 @@ class AdminPanelDatabaseSeeder extends Seeder
         /* PUMP MANAGER TENANT */
         $pmt = $this->getTenantModel()::create([
             'name' => 'Pump Manager',
-            'domain' => 'localhost',
+            'domain' => config('app.url'),
             'database' => 'pump_manager',
             'type_id' => $pm->id,
         ]);
