@@ -18,7 +18,7 @@ import {useTransRoutes} from "../../Hooks/routes.hook";
 import {useStyles} from "../../Hooks/styles.hook";
 import {usePermissions} from "../../Hooks/permissions.hook";
 
-export const Header = ({title = "Pump Manager"}) => {
+export const Header = () => {
     // const menuKey = 'menu'
 
     // const getMenuKey = () => {
@@ -30,7 +30,7 @@ export const Header = ({title = "Pump Manager"}) => {
     //     return _key
     // }
 
-    const {auth} = usePage().props
+    const {auth, title} = usePage().props
     const {tRoute} = useTransRoutes()
     const {has, filterPermissionsArray} = usePermissions()
     const {padding} = useStyles()
@@ -51,11 +51,11 @@ export const Header = ({title = "Pump Manager"}) => {
             route: 'pumps.index',
             label: Lang.get('pages.pumps.title')
         },
-        // has('user_access') && {
-        //     itemProps: {key: 'users', icon: <UserOutlined/>},
-        //     route: 'users.index',
-        //     label: Lang.get('pages.users.title')
-        // },
+        has('user_access') && {
+            itemProps: {key: 'users', icon: <UserOutlined/>},
+            route: 'users.index',
+            label: Lang.get('pages.users.title')
+        },
     ])
 
     // const menuClickHandler = event => {
@@ -66,7 +66,7 @@ export const Header = ({title = "Pump Manager"}) => {
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Space>
-                    <AppTitle title={title}/>
+                    <AppTitle/>
                 </Space>
                 <Menu
                     style={{marginLeft: 10, flexGrow: 1}}

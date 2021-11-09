@@ -3,12 +3,9 @@
 namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
-use App\Http\Middleware\CheckLocale;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\HandleInertiaRequests;
-use App\Http\Middleware\Locale;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
@@ -23,7 +20,11 @@ use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Modules\AdminPanel\Http\Middleware\AuthenticateAdmin;
+use Modules\AdminPanel\Http\Middleware\CheckTenantIsActive;
+use Modules\AdminPanel\Http\Middleware\HasRegistration;
 use Modules\AdminPanel\Http\Middleware\RedirectIfAuthenticatedAdmin;
+use Modules\Auth\Http\Middleware\AuthenticateInModule;
+use Modules\Auth\Http\Middleware\RedirectIfAuthenticatedInModule;
 use Spatie\Multitenancy\Http\Middleware\EnsureValidTenantSession;
 use Spatie\Multitenancy\Http\Middleware\NeedsTenant;
 
@@ -51,7 +52,6 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    // TODO: add locale middleware to default middleware (???)
     protected $middlewareGroups = [
         'web' => [
             EncryptCookies::class,
@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'tenant' => [
             NeedsTenant::class,
             EnsureValidTenantSession::class,
+            CheckTenantIsActive::class,
         ],
 
         'api' => [
@@ -87,22 +88,27 @@ class Kernel extends HttpKernel
         'auth.admin' => AuthenticateAdmin::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
 
+        'auth.module' => AuthenticateInModule::class,
+
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,
 
         'guest' => RedirectIfAuthenticated::class,
         'guest.admin' => RedirectIfAuthenticatedAdmin::class,
+        'guest.module' => RedirectIfAuthenticatedInModule::class,
+
+        'has_registration' => HasRegistration::class,
 
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
 
-        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
 
     ];
 }

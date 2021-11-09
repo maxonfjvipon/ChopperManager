@@ -128,7 +128,7 @@ return [
                 'title' => 'Restore series?',
                 'button' => 'Restore'
             ],
-            'title' => 'Series',
+            'title' => 'Brands&series',
             'button' => 'New series',
             'table' => [
                 'brand' => 'Brand',
@@ -335,6 +335,7 @@ return [
     ],
     'users' => [
         'title' => 'Users',
+        'back' => 'Back to users',
         'index' => [
             'table' => [
                 'created_at' => 'Created at',
@@ -355,6 +356,25 @@ return [
                 'title' => 'Restore user?',
                 'button' => 'Restore'
             ],
-        ]
+        ],
+        'edit' => [
+            'title' => 'Edit user',
+            'button' => 'Update',
+            'form' => [
+                'organization_name' => 'Name of the organization',
+                'main_business' => 'Main business',
+                'itn' => 'Individual taxpayer number',
+                'phone' => 'Phone',
+                'country' => 'Country',
+                'city' => 'City',
+                'postcode' => 'Postcode',
+                'first_name' => 'First name',
+                'middle_name' => 'Middle name',
+                'last_name' => 'Last name',
+                'email' => 'E-mail',
+                'available_series' => 'Available series',
+                'available_selection_types' => 'Available selection types',
+            ],
+        ],
     ],
 ];

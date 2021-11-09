@@ -9,7 +9,7 @@ import {
     Row,
     Space,
     Tree,
-    Divider, notification, Slider, Drawer
+    Divider, notification, Slider,
 } from "antd";
 import {RequiredFormItem} from "../../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
@@ -31,40 +31,8 @@ import {AuthLayout} from "../../../Shared/Layout/AuthLayout";
 import {useTransRoutes} from "../../../Hooks/routes.hook";
 import {RoundedCard} from "../../../Shared/Cards/RoundedCard";
 import {CContainer} from "../../../Shared/ResourcePanel/Index/CContainer";
-import {usePermissions} from "../../../Hooks/permissions.hook";
-
-const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
-    const {fullWidth} = useStyles()
-    return (
-        <Form.Item name={name} initialValue={initialValue}>
-            <Selection
-                style={fullWidth}
-                placeholder={Lang.get('pages.selections.single.condition')}
-                options={options}
-                disabled={disabled || false}
-            />
-        </Form.Item>
-    )
-}
-
-const ConditionLimitCheckboxFormItem = ({name, initialValue, children}) => {
-    return (
-        <Form.Item className="ant-form-item-reduced" name={name} valuePropName="checked"
-                   initialValue={initialValue || false}>
-            {children}
-        </Form.Item>
-    )
-}
-
-const LimitRow = ({children}) =>
-    <Row gutter={[10, 0]}>
-        {children}
-    </Row>
-
-const LimitCol = ({children}) =>
-    <Col xs={12}>
-        {children}
-    </Col>
+import {PumpPropsDrawer} from "../Components/PumpPropsDrawer";
+import {FiltersDrawer} from "../Components/FiltersDrawer";
 
 
 const Index = () => {
@@ -80,19 +48,15 @@ const Index = () => {
     const {PSHCDiagram, setStationToShow, stationToShow, setWorkingPoint, setDefaultSystemPerformance} = useGraphic()
     const {isArrayEmpty, prepareRequestBody} = useCheck()
     const {postRequest, loading} = useHttp()
-    const {pump, selection, project_id, selection_props} = usePage().props
+    const {selection, project_id, selection_props} = usePage().props
 
     const {
         brands,
         brandsWithSeries,
-        dns,
-        limitConditions,
-        mainsConnections,
         powerAdjustments,
         applications,
         types,
         defaults,
-        connectionTypes,
         selectionRanges,
     } = selection_props.data
 
@@ -128,7 +92,6 @@ const Index = () => {
     const {tRoute} = useTransRoutes()
 
     const fullSelectionFormName = "full-selection-form"
-    const additionalFiltersFormName = "additional-filters-form"
 
     // FILTERED PRODUCERS WITH SERIES BY brandsValue // DONE
     const filteredBrandsWithSeries = () => {
@@ -181,6 +144,15 @@ const Index = () => {
 
         // console.log(checked)
         setBrandsSeriesListValues(values)
+    }
+
+    const filtersDrawerProps = {
+        selection,
+        selection_props,
+        setUseAdditionalFilters,
+        form: additionalFiltersForm,
+        visible: filtersDrawerVisible,
+        setVisible: setFiltersDrawerVisible,
     }
 
     useEffect(() => {
@@ -323,8 +295,8 @@ const Index = () => {
         }
         prepareRequestBody(body)
         Inertia.post(selection
-            ? tRoute('selections.update', selection.data.id)
-            : tRoute('selections.store'), body,
+            ? tRoute('selections.pump.single.update', selection.data.id)
+            : tRoute('selections.pump.single.store'), body,
             {
                 preserveScroll: true,
                 onFinish: () => {
@@ -352,9 +324,10 @@ const Index = () => {
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
-        // console.log(body)
+        console.log(body)
         try {
-            const data = await postRequest(tRoute('selections.select'), body, true)
+            const data = await postRequest(tRoute('selections.pump.single.select'), body, true)
+            console.log(data.selected_pumps)
             setWorkingPoint(data.working_point)
             setDefaultSystemPerformance(data.default_system_performance)
             setSelectedPumps(data.selected_pumps)
@@ -732,259 +705,8 @@ const Index = () => {
                     {Lang.get('pages.selections.single.exit')}
                 </SecondaryButton>}
             </BoxFlexEnd>
-            {/*<Drawer*/}
-            {/*    width={800}*/}
-            {/*    placement="right"*/}
-            {/*    title="Pump info"*/}
-            {/*    visible={pumpInfoDrawerVisible}*/}
-            {/*    closable={false}*/}
-            {/*    onClose={() => {*/}
-            {/*        setPumpInfoDrawerVisible(false)*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    {pump && <Tabs type="card" defaultActiveKey="curve">*/}
-            {/*        <Tabs.TabPane tab="Perf.curve" key="curve">*/}
-
-            {/*        </Tabs.TabPane>*/}
-            {/*        <Tabs.TabPane tab="Product properties" key="props">*/}
-
-            {/*        </Tabs.TabPane>*/}
-            {/*        <Tabs.TabPane tab="Model picture" key="model_pic">*/}
-
-            {/*        </Tabs.TabPane>*/}
-            {/*        <Tabs.TabPane tab="Size picture" key="size_pic">*/}
-
-            {/*        </Tabs.TabPane>*/}
-            {/*        <Tabs.TabPane tab="Exploded view" key="expl_pic">*/}
-
-            {/*        </Tabs.TabPane>*/}
-            {/*    </Tabs>}*/}
-            {/*</Drawer>*/}
-            <Drawer
-                width={600}
-                placement="right"
-                title={Lang.get('pages.selections.single.additional_filters.title')}
-                visible={filtersDrawerVisible}
-                closable={false}
-                onClose={() => {
-                    setFiltersDrawerVisible(false)
-                }}
-            >
-                <Form layout="vertical" form={additionalFiltersForm} name={additionalFiltersFormName}>
-                    <Row gutter={[10, 10]}>
-                        <Col span={12}>
-                            {/* CONNECTION TYPES */}
-                            <Form.Item
-                                label={Lang.get('pages.selections.single.connection_type')}
-                                name="connection_type_ids"
-                                // className={reducedAntFormItemClassName}
-                                initialValue={selection?.data.connection_types}
-                            >
-                                <MultipleSelection
-                                    placeholder={Lang.get('pages.selections.single.connection_type')}
-                                    style={nextBelowStyle}
-                                    options={connectionTypes}
-                                />
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            {/* MAINS CONNECTION */}
-                            <Form.Item
-                                label={Lang.get('pages.selections.single.phase')}
-                                name="mains_connection_ids"
-                                // className={reducedAntFormItemClassName}
-                                initialValue={selection?.data.mains_connections}
-                            >
-                                <MultipleSelection
-                                    placeholder={Lang.get('pages.selections.single.phase')}
-                                    style={nextBelowStyle}
-                                    options={mainsConnections.map(connection => {
-                                        return {
-                                            customValue: connection.full_value,
-                                            ...connection,
-                                        }
-                                    })}
-                                />
-                            </Form.Item>
-                        </Col>
-                        {/*LIMITS */}
-                        {/*POWER LIMIT */}
-                        <Col span={12}>
-                            <ConditionLimitCheckboxFormItem
-                                name="power_limit_checked"
-                                initialValue={selection?.data.power_limit_checked}
-                            >
-                                <Checkbox
-                                    checked={limitChecks.power}
-                                    onChange={e => {
-                                        setLimitChecks({
-                                            ...limitChecks,
-                                            power: e.target.checked
-                                        })
-                                    }}
-                                >
-                                    {Lang.get('pages.selections.single.power_limit')}
-                                </Checkbox>
-                            </ConditionLimitCheckboxFormItem>
-                            <LimitRow>
-                                <LimitCol>
-                                    <ConditionSelectionFormItem
-                                        options={limitConditions}
-                                        name="power_limit_condition_id"
-                                        disabled={!limitChecks.power}
-                                        initialValue={selection?.data.power_limit_condition_id}
-                                    />
-                                </LimitCol>
-                                <LimitCol>
-                                    <Form.Item
-                                        name="power_limit_value"
-                                        initialValue={selection?.data.power_limit_value}
-                                    >
-                                        <InputNumber
-                                            disabled={!limitChecks.power}
-                                            style={fullWidth}
-                                            placeholder={Lang.get('pages.selections.single.power')}
-                                        />
-                                    </Form.Item>
-                                </LimitCol>
-                            </LimitRow>
-                        </Col>
-                        {/*PTP LENGTH LIMIT */}
-                        <Col span={12}>
-                            <ConditionLimitCheckboxFormItem
-                                name="ptp_length_limit_checked"
-                                initialValue={selection?.data.ptp_length_limit_checked}
-                            >
-                                <Checkbox
-                                    checked={limitChecks.ptpLength}
-                                    onChange={e => {
-                                        setLimitChecks({
-                                            ...limitChecks,
-                                            ptpLength: e.target.checked
-                                        })
-                                    }}
-                                >
-                                    {Lang.get('pages.selections.single.ptp_length_limit')}
-                                </Checkbox>
-                            </ConditionLimitCheckboxFormItem>
-                            <LimitRow>
-                                <LimitCol>
-                                    <ConditionSelectionFormItem
-                                        options={limitConditions}
-                                        name="ptp_length_limit_condition_id"
-                                        disabled={!limitChecks.ptpLength}
-                                        initialValue={selection?.data.ptp_length_limit_condition_id}
-                                    />
-                                </LimitCol>
-                                <LimitCol>
-                                    <Form.Item
-                                        name="ptp_length_limit_value"
-                                        initialValue={selection?.data.ptp_length_limit_value}
-                                    >
-                                        <InputNumber
-                                            disabled={!limitChecks.ptpLength}
-                                            style={fullWidth}
-                                            placeholder={Lang.get('pages.selections.single.ptp_length')}
-                                        />
-                                    </Form.Item>
-                                </LimitCol>
-                            </LimitRow>
-                        </Col>
-                        {/*DN SUCTION */}
-                        <Col span={12}>
-                            <ConditionLimitCheckboxFormItem
-                                name="dn_suction_limit_checked"
-                                initialValue={selection?.data.dn_suction_limit_checked}
-                            >
-                                <Checkbox
-                                    checked={limitChecks.dnSuction}
-                                    onChange={e => {
-                                        setLimitChecks({
-                                            ...limitChecks,
-                                            dnSuction: e.target.checked
-                                        })
-                                    }}
-                                >
-                                    {Lang.get('pages.selections.single.dn_input_limit')}
-                                </Checkbox>
-                            </ConditionLimitCheckboxFormItem>
-                            <LimitRow>
-                                <LimitCol>
-                                    <ConditionSelectionFormItem
-                                        initialValue={selection?.data.dn_suction_limit_condition_id}
-                                        options={limitConditions}
-                                        name="dn_suction_limit_condition_id"
-                                        disabled={!limitChecks.dnSuction}
-                                    />
-                                </LimitCol>
-                                <LimitCol>
-                                    <Form.Item
-                                        name="dn_suction_limit_id"
-                                        initialValue={selection?.data.dn_suction_limit_id}
-                                    >
-                                        <Selection
-                                            placeholder={Lang.get('pages.selections.single.dn_input')}
-                                            options={dns}
-                                            disabled={!limitChecks.dnSuction}
-                                            style={fullWidth}
-                                        />
-                                    </Form.Item>
-                                </LimitCol>
-                            </LimitRow>
-                        </Col>
-                        {/*DN PRESSURE LIMIT */}
-                        <Col span={12}>
-                            <ConditionLimitCheckboxFormItem
-                                name="dn_pressure_limit_checked"
-                                initialValue={selection?.data.dn_pressure_limit_checked}
-                            >
-                                <Checkbox
-                                    checked={limitChecks.dnPressure}
-                                    onChange={e => {
-                                        setLimitChecks({
-                                            ...limitChecks,
-                                            dnPressure: e.target.checked
-                                        })
-                                    }}
-                                >
-                                    {Lang.get('pages.selections.single.dn_output_limit')}
-                                </Checkbox>
-                            </ConditionLimitCheckboxFormItem>
-                            <LimitRow>
-                                <LimitCol>
-                                    <ConditionSelectionFormItem
-                                        initialValue={selection?.data.dn_pressure_limit_condition_id}
-                                        options={limitConditions}
-                                        name="dn_pressure_limit_condition_id"
-                                        disabled={!limitChecks.dnPressure}
-                                    />
-                                </LimitCol>
-                                <LimitCol>
-                                    <Form.Item
-                                        name="dn_pressure_limit_id"
-                                        initialValue={selection?.data.dn_pressure_limit_id}
-                                    >
-                                        <Selection
-                                            placeholder={Lang.get('pages.selections.single.dn_output')}
-                                            options={dns}
-                                            disabled={!limitChecks.dnPressure}
-                                            style={fullWidth}
-                                        />
-                                    </Form.Item>
-                                </LimitCol>
-                            </LimitRow>
-                        </Col>
-                    </Row>
-                    <BoxFlexEnd>
-                        <PrimaryButton onClick={() => {
-                            setUseAdditionalFilters(true)
-                            setFiltersDrawerVisible(false)
-                        }}>
-                            {Lang.get('pages.selections.single.additional_filters.apply')}
-                        </PrimaryButton>
-                    </BoxFlexEnd>
-                </Form>
-            </Drawer>
+            {stationToShow && <PumpPropsDrawer visible={pumpInfoDrawerVisible} setVisible={setPumpInfoDrawerVisible} pumpInfo={stationToShow?.pump_info}/>}
+            <FiltersDrawer {...filtersDrawerProps}/>
         </>
     )
 }

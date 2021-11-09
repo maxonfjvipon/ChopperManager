@@ -92,4 +92,6 @@ return [
         CallQueuedListener::class => 'class',
         BroadcastEvent::class => 'event',
     ],
+
+    'module_name' => 'admin_panel',
 ];

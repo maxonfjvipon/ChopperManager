@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Users\Permission;
-use App\Models\Users\Role;
+
+use Modules\User\Entities\Permission;
+use Modules\User\Entities\Role;
 
 return [
 

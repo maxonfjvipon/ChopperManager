@@ -25,10 +25,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-//                return \redirect(app()->getLocale() . '/');
-//                return route('dashboard');
                 return Redirect::route('projects.index');
-//                return redirect(app()->getLocale() . RouteServiceProvider::HOME);
             }
         }
 

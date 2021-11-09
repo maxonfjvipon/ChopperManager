@@ -1,0 +1,13 @@
+{
+    "name": "Selection",
+    "alias": "selection",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Selection\\Providers\\SelectionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

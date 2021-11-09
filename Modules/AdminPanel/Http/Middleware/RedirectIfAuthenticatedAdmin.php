@@ -12,8 +12,8 @@ class RedirectIfAuthenticatedAdmin
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param Request $request
+     * @param Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -21,7 +21,6 @@ class RedirectIfAuthenticatedAdmin
         if (Auth::guard('admin')->check()) {
             return Redirect::route('admin.tenants.index');
         }
-
         return $next($request);
     }
 }

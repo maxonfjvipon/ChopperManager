@@ -2,7 +2,6 @@
 
 namespace Modules\AdminPanel\Http\Controllers\Auth;
 
-use App\Traits\InModule;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +16,7 @@ use Modules\AdminPanel\Http\Requests\LoginRequest;
 class LoginController extends Controller
 {
 
-    use AuthenticatesUsers, InModule;
+    use AuthenticatesUsers;
 
     /**
      * Show login form
@@ -38,7 +37,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $request->authenticate('admin', 'login');
 
         $request->session()->regenerate();
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Pump\Database\Seeders\TenantSpecificSeeder;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class DatabaseSeeder extends Seeder

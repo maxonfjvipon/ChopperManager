@@ -4,6 +4,8 @@ import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
 import {Selection} from "../../../Shared/Inputs/Selection";
 import React, {useState} from "react";
 import {useStyles} from "../../../Hooks/styles.hook";
+import {BoxFlexEnd} from "../../../Shared/Box/BoxFlexEnd";
+import {PrimaryButton} from "../../../Shared/Buttons/PrimaryButton";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -38,7 +40,7 @@ const LimitCol = ({children}) =>
         {children}
     </Col>
 
-export const FiltersDrawer = ({selection, selection_props, visible}) => {
+export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selection_props, visible, setVisible}) => {
     const {
         dns,
         limitConditions,
@@ -62,11 +64,11 @@ export const FiltersDrawer = ({selection, selection_props, visible}) => {
             placement="right"
             visible={visible}
             closable={false}
-            // onClose={() => {
-            //     (false)
-            // }}
+            onClose={() => {
+                setVisible(false)
+            }}
         >
-            <Form layout="vertical">
+            <Form layout="vertical" form={form}>
                 <Row gutter={[10, 10]}>
                     <Col span={12}>
                         {/* CONNECTION TYPES */}
@@ -271,6 +273,14 @@ export const FiltersDrawer = ({selection, selection_props, visible}) => {
                         </LimitRow>
                     </Col>
                 </Row>
+                <BoxFlexEnd>
+                    <PrimaryButton onClick={() => {
+                        setUseAdditionalFilters(true)
+                        setVisible(false)
+                    }}>
+                        {Lang.get('pages.selections.single.additional_filters.apply')}
+                    </PrimaryButton>
+                </BoxFlexEnd>
             </Form>
         </Drawer>
     )

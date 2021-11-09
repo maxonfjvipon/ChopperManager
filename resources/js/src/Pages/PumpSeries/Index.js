@@ -20,7 +20,7 @@ const Index = () => {
     const {filter_data, brands, series} = usePage().props
     const {tRoute} = useTransRoutes()
     const {openRestoreNotification} = useNotifications()
-    const {has} = usePermissions()
+    const {has, filterPermissionsArray} = usePermissions()
 
     // CONSTS
     const brandsColumns = [
@@ -127,39 +127,67 @@ const Index = () => {
 
     // RENDER
     return (
-        <Row gutter={[16, 0]} style={{flex: "auto"}}>
-            <FlexCol span={4}>
-                <IndexContainer
-                    title={Lang.get('pages.pump_brands.index.title')}
-                    actions={has('brand_create') && <PrimaryAction
-                        label={Lang.get('pages.pump_brands.index.button')}
-                        route={tRoute('pump_brands.create')}
-                    />}
-                >
-                    <TTable
-                        columns={brandsColumns}
-                        dataSource={brands}
-                        doubleClickHandler={has('brand_edit') && editBrandHandler}
-                    />
-                </IndexContainer>
-            </FlexCol>
-            <FlexCol span={20}>
-                <IndexContainer
-                    title={Lang.get('pages.pump_series.index.title')}
-                    actions={has('series_create') && <PrimaryAction
-                        label={Lang.get('pages.pump_series.index.button')}
-                        route={tRoute('pump_series.create')}
-                    />}
-                >
-                    <TTable
+        <IndexContainer
+            title={Lang.get('pages.pump_series.index.title')}
+            actions={filterPermissionsArray([
+                has('brand_create') && <PrimaryAction
+                    label={Lang.get('pages.pump_brands.index.button')}
+                    route={tRoute('pump_brands.create')}
+                />,
+                has('series_create') && <PrimaryAction
+                    label={Lang.get('pages.pump_series.index.button')}
+                    route={tRoute('pump_series.create')}
+                />
+            ])}
+        >
+            <TTable
+                columns={brandsColumns}
+                dataSource={brands}
+                doubleClickHandler={has('brand_edit') && editBrandHandler}
+                expandable={{
+                    expandedRowRender: <TTable
                         columns={seriesColumns}
                         dataSource={series}
                         doubleClickHandler={has('series_edit') && editSeriesHandler}
                     />
-                </IndexContainer>
-            </FlexCol>
-        </Row>
-    )
+                }}
+            />
+        </IndexContainer>
+
+
+    // <Row gutter={[16, 0]} style={{flex: "auto"}}>
+    //     <FlexCol span={4}>
+    //         <IndexContainer
+    //             title={Lang.get('pages.pump_brands.index.title')}
+    //             actions={has('brand_create') && <PrimaryAction
+    //                 label={Lang.get('pages.pump_brands.index.button')}
+    //                 route={tRoute('pump_brands.create')}
+    //             />}
+    //         >
+    //             <TTable
+    //                 columns={brandsColumns}
+    //                 dataSource={brands}
+    //                 doubleClickHandler={has('brand_edit') && editBrandHandler}
+    //             />
+    //         </IndexContainer>
+    //     </FlexCol>
+    //     <FlexCol span={20}>
+    //         <IndexContainer
+    //             title={Lang.get('pages.pump_series.index.title')}
+    //             actions={has('series_create') && <PrimaryAction
+    //                 label={Lang.get('pages.pump_series.index.button')}
+    //                 route={tRoute('pump_series.create')}
+    //             />}
+    //         >
+    //             <TTable
+    //                 columns={seriesColumns}
+    //                 dataSource={series}
+    //                 doubleClickHandler={has('series_edit') && editSeriesHandler}
+    //             />
+    //         </IndexContainer>
+    //     </FlexCol>
+    // </Row>
+)
 }
 
 Index.layout = page => <AuthLayout children={page}/>
