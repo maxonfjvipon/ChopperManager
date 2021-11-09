@@ -4,8 +4,6 @@ namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Modules\Core\Entities\Selections\LimitCondition;
-use Modules\Core\Entities\Selections\SelectionRange;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\ElPowerAdjustment;
@@ -17,6 +15,8 @@ use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpSeriesAndApplication;
 use Modules\Pump\Entities\PumpSeriesAndType;
 use Modules\Pump\Entities\PumpType;
+use Modules\Selection\Entities\LimitCondition;
+use Modules\Selection\Entities\SelectionRange;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Permission;
 use Modules\User\Entities\Role;
