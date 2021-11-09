@@ -19,7 +19,7 @@ require('../css/app.css')
 
 import React from 'react'
 import {render} from 'react-dom'
-import {createInertiaApp, InertiaApp} from '@inertiajs/inertia-react'
+import {InertiaApp, createInertiaApp} from '@inertiajs/inertia-react'
 import {InertiaProgress} from '@inertiajs/progress';
 
 InertiaProgress.init({
@@ -27,14 +27,43 @@ InertiaProgress.init({
     // showSpinner: true
 });
 
+// const app = document.getElementById('app');
+
+// render(
+//     <InertiaApp
+//         initialPage={JSON.parse(app.dataset.page)}
+//         resolveComponent={async name => {
+//             let parts = name.split('::')
+//             if (parts.length > 1) {
+//                 if (parts[0] === "AdminPanel")
+//                     return import(`~/AdminPanel/Resources/assets/js/${parts[1]}`).then(module => module.default)
+//                 if (parts[0] === "Pump")
+//                     return import(`~/Pump/Resources/assets/js/${parts[1]}`).then(module => module.default)
+//                 if (parts[0] === "PumpProducer")
+//                     return import(`~/PumpProducer/Resources/assets/js/${parts[1]}`).then(module => module.default)
+//             } else {
+//                 return import('./src/Pages/' + name).then(module => module.default)
+//             }
+//         }}
+//     />,
+//     app
+// );
+
 createInertiaApp({
     resolve: name => {
-        const splited = name.split('::')
-        if (splited.length === 1)
-            return require(`./src/Pages/${name}`)
-        const [module, path] = splited
-        const component = `../../Modules/${module}/Resources/assets/js/${path}`
-        return require(`../../Modules/${module}/Resources/assets/js/${path}`)
+        let parts = name.split('::')
+        if (parts.length > 1) {
+            switch (parts[0]) {
+                case "AdminPanel": return require(`~/AdminPanel/Resources/assets/js/Pages/${parts[1]}`)
+                case "Pump": return require(`~/Pump/Resources/assets/js/Pages/${parts[1]}`)
+                case "Core": return require(`~/Core/Resources/assets/js/Pages/${parts[1]}`)
+                case "Auth": return require(`~/Auth/Resources/assets/js/Pages/${parts[1]}`)
+                case "User": return require(`~/User/Resources/assets/js/Pages/${parts[1]}`)
+                case "PumpProducer": return require(`~/PumpProducer/Resources/assets/js/Pages/${parts[1]}`)
+            }
+        } else {
+            return require('./src/Pages/' + name)
+        }
     },
     setup({el, App, props}) {
         render(<App {...props} />, el)

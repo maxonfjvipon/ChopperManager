@@ -94,6 +94,10 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
     border-radius: 7px !important;
 }
 
+.ant-switch {
+    border-radius: 100px !important;
+}
+
 .ant-input-number-handler-wrap {
     border-radius: 0 7px 7px 0 !important;
 }

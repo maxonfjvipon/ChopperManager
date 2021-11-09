@@ -2,12 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Users\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class AdminSeeder extends Seeder
 {
+    use UsesTenantModel;
+
     /**
      * Run the database seeds.
      *
@@ -15,7 +17,8 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $max = User::create([
+        $userModel = new ($this->getTenantModel()::current()->getUserClass());
+        $max = $userModel::create([
             'id' => 1,
             'organization_name' => "МБС",
             'itn' => "0000000000",
@@ -31,9 +34,9 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
-        $max->assignRole('Landlord');
+        $max->assignRole('SuperAdmin');
 
-        $dt = User::create([
+        $dt = $userModel::create([
             'id' => 2,
             'organization_name' => "МБС",
             'itn' => "0000000001",
@@ -49,9 +52,9 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
-        $dt->assignRole('Landlord');
+        $dt->assignRole('SuperAdmin');
 
-        $vp = User::create([
+        $vp = $userModel::create([
             'id' => 3,
             'organization_name' => "МБС",
             'itn' => "0000000002",
@@ -67,6 +70,6 @@ class AdminSeeder extends Seeder
             'country_id' => 1,
             'currency_id' => 121
         ]);
-        $vp->assignRole('Landlord');
+        $vp->assignRole('SuperAdmin');
     }
 }

@@ -12,8 +12,8 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <title>Pump Manager</title>
     @translations
-    @routes
 </head>
+@routes
 <body style="margin: 0">
 @inertia
 </body>

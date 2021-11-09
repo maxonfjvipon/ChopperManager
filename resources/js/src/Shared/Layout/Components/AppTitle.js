@@ -1,9 +1,11 @@
 import React from 'react'
 import {useStyles} from "../../../Hooks/styles.hook";
 import {Typography} from "antd";
+import {usePage} from "@inertiajs/inertia-react";
 
-export const AppTitle = ({title = "Pump Manager"}) => {
+export const AppTitle = () => {
     const {margin, color} = useStyles()
+    const {title} = usePage().props
 
     return (
         <div style={margin.top(0)}>

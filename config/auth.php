@@ -1,6 +1,7 @@
 <?php
 
 use Modules\AdminPanel\Entities\Admin;
+use Modules\PumpManager\Entities\User;
 
 return [
 
@@ -42,6 +43,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'pumpmanager' => [
+            'driver' => 'session',
+            'provider' => 'pm_users'
+        ],
+        'pumpproducer' => [
+            'driver' => 'session',
+            'provider' => 'pp_users',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -74,7 +83,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Users\User::class,
+            'model' => \Modules\User\Entities\User::class,
+        ],
+        'pm_users' => [
+            'driver' => 'eloquent',
+            'model' => User::class,
+        ],
+        'pp_users' => [
+            'driver' => 'eloquent',
+            'model' => \Modules\PumpProducer\Entities\User::class
         ],
         'admins' => [
             'driver' => 'eloquent',
