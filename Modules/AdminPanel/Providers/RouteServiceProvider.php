@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->as('admin.')
-            ->domain('admin.localhost')
+            ->domain('admin.localhost') // TODO: вынести в .env
             ->group(module_path('AdminPanel', '/Routes/web.php'));
     }
 

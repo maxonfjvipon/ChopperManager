@@ -2,8 +2,8 @@
 
 namespace Modules\AdminPanel\Listeners;
 
-use App\Support\DatabaseManager;
 use JetBrains\PhpStorm\Pure;
+use Modules\AdminPanel\Support\DatabaseManager;
 
 class TenantDatabaseListener
 {

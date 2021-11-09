@@ -2,17 +2,22 @@
 
 namespace Modules\AdminPanel\Http\Controllers;
 
-use App\Traits\InModule;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\AdminPanel\Entities\SelectionType;
+use Modules\AdminPanel\Entities\Tenant;
+use Modules\AdminPanel\Entities\TenantType;
+use Modules\AdminPanel\Http\Requests\StoreTenantRequest;
+use Modules\AdminPanel\Http\Requests\UpdateTenantRequest;
+use Modules\AdminPanel\Transformers\TenantResource;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class TenantsController extends Controller
 {
-    use InModule, UsesTenantModel;
+    use UsesTenantModel;
 
     /**
      * Display a listing of the resource.
@@ -21,67 +26,59 @@ class TenantsController extends Controller
     public function index(): Response
     {
         return Inertia::render('AdminPanel::Tenants/Index', [
-            'tenants' => $this->getTenantModel()::with('type')->get()->all()
+            'tenants' => $this->getTenantModel()::with(['type' => function ($query) {
+                $query->select('id', 'name');
+            }])->get()->all()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
-     * @return Renderable
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
-        return view('adminpanel::create');
+        return Inertia::render('AdminPanel::Tenants/Create', [
+            'tenant_types' => TenantType::all(['id', 'name']),
+            'selection_types' => SelectionType::all(['id', 'name']),
+            'default_selection_types' => SelectionType::pluck('id')->all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
+     * @param StoreTenantRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreTenantRequest $request): RedirectResponse
     {
-        //
+        Tenant::createFromRequest($request);
+        return Redirect::route('admin.tenants.index');
     }
 
     /**
      * Show the specified resource.
      * @param int $id
-     * @return Renderable
+     * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
-        return view('adminpanel::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('adminpanel::edit');
+        return Inertia::render('AdminPanel::Tenants/Show', [
+            'tenant' => new TenantResource($this->getTenantModel()::find($id)),
+            'selection_types' => SelectionType::all(['id', 'name']),
+            'tenant_types' => TenantType::get(['id', 'name'])->all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
+     * @param UpdateTenantRequest $request
      * @param int $id
-     * @return Renderable
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTenantRequest $request, int $id): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        $this->getTenantModel()::find($id)->updateFromRequest($request);
+        return Redirect::route('admin.tenants.index');
     }
 }

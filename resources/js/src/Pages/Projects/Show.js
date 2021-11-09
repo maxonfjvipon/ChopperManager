@@ -99,7 +99,7 @@ const Show = () => {
 
     // HANDLERS
     const showSelectionHandler = id => () => {
-        Inertia.get(tRoute('selections.show', id))
+        Inertia.get(tRoute('selections.pump.single.show', id))
     }
 
     const deleteSelectionHandler = id => () => {

@@ -15,4 +15,15 @@ const path = require('path')
 mix.js('resources/js/app.js', 'public/js')
     .react()
     .sass('resources/sass/app.scss', 'public/css')
+    .webpackConfig({
+        // output: {chunkFilename: 'js/[name].js?id=[chunkhash]'},
+        resolve: {
+            alias: {
+                // '@': path.resolve(__dirname, 'resources/js'),
+                '~': path.resolve(__dirname, 'Modules'),
+            }
+        },
+    })
+
+if (mix.inProduction())
     mix.version()

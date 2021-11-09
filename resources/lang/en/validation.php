@@ -216,6 +216,12 @@ return [
                 'mains_connection' => 'Mains connection',
                 'applications' => 'Applications',
                 'types' => 'Types',
+                'description' => 'Description',
+                'pump_image' => 'Pump image',
+                'pump_sizes_image' => 'Pump sizes image',
+                'pump_electric_diagram_image' => 'Pump electric diagram image',
+                'pump_cross_sectional_drawing_image' => 'Pump cross sectional drawing image',
+                'pump_files' => 'Pump files'
             ],
             'price_lists' => [
                 'article_num_main' => 'Main article number',
