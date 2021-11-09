@@ -41,19 +41,26 @@ export const PumpTechInfoUploader = () => {
         </Menu.Item>
     }
 
-    const FileInput = ({id, images = true, accept}) => {
-        return <input id={id} hidden type="file" multiple onClick={(e) => {
+    // const FileInput = ({id, images = true, accept}) => {
+    //     return <input id={id} hidden type="file" multiple onClick={(e) => {
+    //         e.target.value = null
+    //     }} ref={imagesRef} onChange={e => {
+    //         setData({
+    //             ...data,
+    //             files: e.target.files
+    //         })
+    //     }} accept={accept}/>
+    // }
+
+    return <>
+        <input id={"input-images"} hidden type="file" multiple onClick={(e) => {
             e.target.value = null
         }} ref={imagesRef} onChange={e => {
             setData({
                 ...data,
                 files: e.target.files
             })
-        }} accept={accept}/>
-    }
-
-    return <>
-        <FileInput id="input-images" accept=".jpg, .jpeg, .png"/>
+        }} accept=".jpeg, .jpg, .png"/>
         <input id={"input-files"} hidden type="file" multiple onClick={(e) => {
             e.target.value = null
         }} ref={filesRef} onChange={e => {
