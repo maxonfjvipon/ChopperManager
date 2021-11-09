@@ -35,6 +35,11 @@ class CreatePumpsTable extends Migration
             $table->bigInteger('dn_pressure_id')->unsigned();
             $table->bigInteger('connection_id')->unsigned();
             $table->string('performance')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('sizes_image')->nullable();
+            $table->string('electric_diagram_image')->nullable();
+            $table->string('cross_sectional_drawing_image')->nullable();
             $table->softDeletes();
         });
 

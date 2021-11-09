@@ -20,6 +20,7 @@ class CreateTenantsTable extends Migration
             $table->string('domain');
             $table->string('database');
             $table->boolean('is_active')->default(true);
+            $table->boolean('has_registration')->default(true);
             $table->bigInteger('type_id')->unsigned();
             $table->timestamps();
         });

@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTenantTypesTable extends Migration
+class PumpProducerMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,11 @@ class CreateTenantTypesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('tenant_types');
-        Schema::create('tenant_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('module_name');
-        });
+        Artisan::call('module:migrate', [
+            'module' => 'Core',
+            '--force' => true,
+            '--database' => 'tenant'
+        ]);
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateTenantTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tenant_types');
+        //
     }
 }
