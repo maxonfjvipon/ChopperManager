@@ -192,7 +192,7 @@ class PumpsController extends Controller
         $this->authorize('pump_import_media');
         foreach ($request->file('files') as $image)
         {
-            Storage::disk('media')->putFileAs('pumps/' . $request->folder, $image, $image->getClientOriginalName());
+            Storage::disk('media')->putFileAs($request->folder, $image, $image->getClientOriginalName());
         }
 //        return Redirect::route('pumps.index')
         return Redirect::back()
