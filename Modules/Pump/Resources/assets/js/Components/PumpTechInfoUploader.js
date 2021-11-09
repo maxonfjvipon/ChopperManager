@@ -72,16 +72,16 @@ export const PumpTechInfoUploader = () => {
         <Dropdown key="upload-actions" trigger={['click']} arrow overlay={
             <Menu key="menu">
                 <Menu.ItemGroup key="menu-item-group-1" title="Images (max 300, .jpg, .jpeg, .png)">
-                    <MenuItem key="images" folder="pumps">
+                    <MenuItem key="images" folder="pumps/images">
                         Pumps
                     </MenuItem>
-                    <MenuItem key="images/sizes" folder="pumps/sizes">
+                    <MenuItem key="images/sizes" folder="pumps/images/sizes">
                         Pump sizes
                     </MenuItem>
-                    <MenuItem key="images/electric_diagrams" folder="pumps/electric_diagrams">
+                    <MenuItem key="images/electric_diagrams" folder="pumps/images/electric_diagrams">
                         Pump electric diagrams
                     </MenuItem>
-                    <MenuItem key="images/cross_sectional_drawings" folder="pumps/cross_sectional_drawings">
+                    <MenuItem key="images/cross_sectional_drawings" folder="pumps/images/cross_sectional_drawings">
                         Pump cross sectional drawings
                     </MenuItem>
                 </Menu.ItemGroup>
