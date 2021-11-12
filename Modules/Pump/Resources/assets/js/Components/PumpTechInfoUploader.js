@@ -72,7 +72,7 @@ export const PumpTechInfoUploader = () => {
                     </MenuItem>
                 </Menu.ItemGroup>
                 <Menu.ItemGroup key="menu-item-group-2" title="Files (max 300, .pdf)">
-                    <MenuItem key="files" folder="files" images={false} icon={<FilePdfOutlined />}>
+                    <MenuItem key="files" folder="pumps/files" images={false} icon={<FilePdfOutlined/>}>
                         Files
                     </MenuItem>
                 </Menu.ItemGroup>
