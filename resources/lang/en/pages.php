@@ -128,7 +128,7 @@ return [
                 'title' => 'Restore series?',
                 'button' => 'Restore'
             ],
-            'title' => 'Brands&series',
+            'title' => 'Brands and series',
             'button' => 'New series',
             'table' => [
                 'brand' => 'Brand',

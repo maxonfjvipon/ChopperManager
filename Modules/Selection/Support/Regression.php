@@ -3,6 +3,8 @@
 
 namespace Modules\Selection\Support;
 
+use function Symfony\Component\String\s;
+
 class Regression
 {
     private static $instance;

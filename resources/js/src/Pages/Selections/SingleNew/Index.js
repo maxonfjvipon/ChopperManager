@@ -669,10 +669,13 @@ const Index = () => {
                                 <RoundedCard
                                     className={'flex-rounded-card'}
                                     type="inner"
-                                    title={stationToShow && <a onClick={event => {
-                                        event.preventDefault()
+                                    title={stationToShow?.name}
+                                    extra={stationToShow && <a onClick={e => {
+                                        e.preventDefault()
                                         setPumpInfoDrawerVisible(true)
-                                    }}>{stationToShow?.name}</a>}
+                                    }}>
+                                        Описание насоса>>
+                                    </a>}
                                 >
                                     <PSHCDiagram multiline/>
                                 </RoundedCard>

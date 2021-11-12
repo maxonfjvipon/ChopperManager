@@ -1,15 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Dropdown, Menu} from "antd";
-import {ImageUploader} from "../../../../../../resources/js/src/Shared/Buttons/ImageUploader";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {DownOutlined, FileImageOutlined, FilePdfOutlined, UploadOutlined} from "@ant-design/icons";
-import {useForm} from "@inertiajs/inertia-react";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {Inertia} from "@inertiajs/inertia";
 
 export const PumpTechInfoUploader = () => {
     const [data, setData] = useState({files: null, folder: null})
-    // const {data, setData, post} = useForm({files: null, folder: null})
     const imagesRef = useRef()
     const filesRef = useRef()
     const {tRoute} = useTransRoutes()
@@ -40,17 +37,6 @@ export const PumpTechInfoUploader = () => {
             {children}
         </Menu.Item>
     }
-
-    // const FileInput = ({id, images = true, accept}) => {
-    //     return <input id={id} hidden type="file" multiple onClick={(e) => {
-    //         e.target.value = null
-    //     }} ref={imagesRef} onChange={e => {
-    //         setData({
-    //             ...data,
-    //             files: e.target.files
-    //         })
-    //     }} accept={accept}/>
-    // }
 
     return <>
         <input id={"input-images"} hidden type="file" multiple onClick={(e) => {

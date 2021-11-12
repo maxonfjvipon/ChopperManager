@@ -2,6 +2,7 @@
 
 namespace Modules\PumpManager\Entities;
 
+use Closure;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,6 +10,8 @@ use Modules\AdminPanel\Entities\SelectionType;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Core\Entities\Currency;
 use Modules\Core\Entities\Project;
+use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\PumpManager\Http\Requests\UpdateUserRequest;
 use Modules\User\Entities\Business;
@@ -74,6 +77,16 @@ class  User extends \Modules\User\Entities\User
         return "{$this->first_name} {$this->middle_name}";
     }
 
+    public function getAvailablePumpsAttribute()
+    {
+        return $this->available_pumps()->get()->all();
+    }
+
+    public function getAvailableBrandsAttribute()
+    {
+        return $this->available_brands()->get()->all();
+    }
+
     public function updateAvailablePropsFromRequest(UpdateUserRequest $request): bool
     {
         UserAndPumpSeries::updateAvailableSeriesForUserFromRequest($request, $this);
@@ -81,11 +94,29 @@ class  User extends \Modules\User\Entities\User
         return true;
     }
 
+    private function availableSeriesRelationQuery(): Closure
+    {
+        return function ($query) {
+            $query->whereIn('id', $this->available_series()->pluck('id')->all());
+        };
+    }
+
+    public function available_pumps()
+    {
+        return Pump::whereHas('series', $this->availableSeriesRelationQuery());
+    }
+
+    public function available_brands()
+    {
+        return PumpBrand::whereHas('series', $this->availableSeriesRelationQuery());
+    }
+
     public function available_series(): BelongsToMany
     {
         $curTenantDB = Tenant::current()->database;
         return $this->belongsToMany(PumpSeries::class, $curTenantDB . '.users_and_pump_series', 'user_id', 'series_id');
     }
+
 
     public function available_selection_types(): BelongsToMany
     {

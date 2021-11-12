@@ -78,7 +78,7 @@ class HandleInertiaRequests extends Middleware
                 'locales' => function () use ($current_localized, $supported_locales, $request) {
                     return [
                         'current' => app()->getLocale(),
-                        'default' => config('app.fallback_locale'),
+                        'default' => app()->getLocale(),
                         'supported' => $supported_locales,
                         'current_localized' => $current_localized,
                     ];

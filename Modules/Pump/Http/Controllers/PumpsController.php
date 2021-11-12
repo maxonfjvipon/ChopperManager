@@ -3,10 +3,12 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Closure;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Modules\Core\Http\Requests\FilesUploadRequest;
-use Modules\Core\Http\Requests\ImagesUploadRequest;
+use Modules\Core\Http\Requests\MediaUploadRequest;
+use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Actions\ImportPumpsAction;
 use Modules\Pump\Actions\ImportPumpsPriceListsAction;
 use Modules\Pump\Entities\ConnectionType;
@@ -27,10 +29,71 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Pump\Transformers\PumpResource;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class PumpsController extends Controller
 {
-    use HasFilterData;
+    use HasFilterData, UsesTenantModel;
+
+    protected function pumpFilterData(): array
+    {
+        return $this->asFilterData([
+            'brands' => PumpBrand::pluck('name')->all(),
+            'series' => PumpSeries::pluck('name')->all(),
+            'categories' => PumpCategory::pluck('name')->all(),
+            'connections' => ConnectionType::pluck('name')->all(),
+            'dns' => DN::pluck('value')->all(),
+            'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
+            'mains_connections' => MainsConnection::all()->map(fn($mc) => $mc->full_value)->toArray(),
+            'types' => PumpType::pluck('name')->all(),
+            'applications' => PumpApplication::pluck('name')->all(),
+        ]);
+    }
+
+    protected function lazyLoadedPumps($pumps = null): Closure
+    {
+        return fn() => ($pumps ?: new Pump)->with([
+            'series',
+            'series.brand',
+            'series.power_adjustment',
+            'series.category',
+            'series.applications',
+            'series.types'
+        ])
+            ->with('connection')
+            ->with('dn_suction')
+            ->with('dn_pressure')
+            ->with('connection_type')
+            ->with(['price_lists' => function ($query) {
+                $query->where('country_id', Auth::user()->country_id);
+            }, 'price_lists.currency'])
+            ->get()
+            ->map(fn($pump) => [
+                'id' => $pump->id,
+                'article_num_main' => $pump->article_num_main,
+                'article_num_reserve' => $pump->article_num_reserve,
+                'article_num_archive' => $pump->article_num_archive,
+                'brand' => $pump->series->brand->name,
+                'series' => $pump->series->name,
+                'name' => $pump->name,
+                'weight' => $pump->weight,
+                'price' => $pump->price_lists[0]->price ?? null,
+                'currency' => $pump->price_lists[0]->currency->code ?? null,
+                'rated_power' => $pump->rated_power,
+                'rated_current' => $pump->rated_current,
+                'connection_type' => $pump->connection_type->name,
+                'fluid_temp_min' => $pump->fluid_temp_min,
+                'fluid_temp_max' => $pump->fluid_temp_max,
+                'ptp_length' => $pump->ptp_length,
+                'dn_suction' => $pump->dn_suction->value,
+                'dn_pressure' => $pump->dn_pressure->value,
+                'category' => $pump->series->category->name,
+                'power_adjustment' => $pump->series->power_adjustment->name,
+                'mains_connection' => $pump->connection->full_value,
+                'applications' => $pump->applications,
+                'types' => $pump->types,
+            ])->all();
+    }
 
     /**
      * Display a listing of the resource.
@@ -42,59 +105,8 @@ class PumpsController extends Controller
     {
         $this->authorize('pump_access');
         return Inertia::render('Pump::Pumps/Index', [
-            'pumps' => Inertia::lazy(fn() => Pump::with([
-                'series',
-                'series.brand',
-                'series.power_adjustment',
-                'series.category',
-                'series.applications',
-                'series.types'
-            ])
-                ->with('connection')
-                ->with('dn_suction')
-                ->with('dn_pressure')
-                ->with('connection_type')
-                ->with(['price_lists' => function ($query) {
-                    $query->where('country_id', Auth::user()->country_id);
-                }, 'price_lists.currency'])
-                ->get()
-                ->map(fn($pump) => [
-                    'id' => $pump->id,
-                    'article_num_main' => $pump->article_num_main,
-                    'article_num_reserve' => $pump->article_num_reserve,
-                    'article_num_archive' => $pump->article_num_archive,
-                    'brand' => $pump->series->brand->name,
-                    'series' => $pump->series->name,
-                    'name' => $pump->name,
-                    'weight' => $pump->weight,
-                    'price' => $pump->price_lists[0]->price ?? null,
-                    'currency' => $pump->price_lists[0]->currency->code ?? null,
-                    'rated_power' => $pump->rated_power,
-                    'rated_current' => $pump->rated_current,
-                    'connection_type' => $pump->connection_type->name,
-                    'fluid_temp_min' => $pump->fluid_temp_min,
-                    'fluid_temp_max' => $pump->fluid_temp_max,
-                    'ptp_length' => $pump->ptp_length,
-                    'dn_suction' => $pump->dn_suction->value,
-                    'dn_pressure' => $pump->dn_pressure->value,
-                    'category' => $pump->series->category->name,
-                    'power_adjustment' => $pump->series->power_adjustment->name,
-                    'mains_connection' => $pump->connection->full_value,
-                    'applications' => $pump->applications,
-                    'types' => $pump->types,
-                ])->all()),
-            'filter_data' => $this->asFilterData([
-                'brands' => PumpBrand::pluck('name')->all(),
-                'series' => PumpSeries::pluck('name')->all(),
-//                'brands_series' => PumpBrand::with('series')->get()->all(),
-                'categories' => PumpCategory::pluck('name')->all(),
-                'connections' => ConnectionType::pluck('name')->all(),
-                'dns' => DN::pluck('value')->all(),
-                'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
-                'mains_connections' => MainsConnection::all()->map(fn($mc) => $mc->full_value)->toArray(),
-                'types' => PumpType::pluck('name')->all(),
-                'applications' => PumpApplication::pluck('name')->all(),
-            ])
+            'pumps' => Inertia::lazy($this->lazyLoadedPumps()),
+            'filter_data' => $this->pumpFilterData()
         ]);
     }
 
@@ -181,22 +193,34 @@ class PumpsController extends Controller
         return (new ImportPumpsAction($request->file('files')))->execute();
     }
 
+    /**
+     * Import price lists
+     *
+     * @param FilesUploadRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
     public function importPriceLists(FilesUploadRequest $request): RedirectResponse
     {
         $this->authorize('price_list_import');
         return (new ImportPumpsPriceListsAction($request->file('files')))->execute();
     }
 
-    public function importMedia(ImagesUploadRequest $request): RedirectResponse
+    /**
+     * Import media
+     *
+     * @param MediaUploadRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function importMedia(MediaUploadRequest $request): RedirectResponse
     {
         $this->authorize('pump_import_media');
+        $tenantStorage = new TenantStorage();
         foreach ($request->file('files') as $image)
-        {
-            Storage::disk('media')->putFileAs($request->folder, $image, $image->getClientOriginalName());
-        }
-//        return Redirect::route('pumps.index')
-        return Redirect::back()
-            ->with('success', 'Media were imported successfully to directory: ' . $request->folder);
+            if (!$tenantStorage->putFileTo($request->folder, $image))
+                Redirect::back()->with('error', 'Media were not imported. Please contact to administrator');
+        return Redirect::back()->with('success', 'Media were imported successfully to directory: ' . $request->folder);
     }
 
 }

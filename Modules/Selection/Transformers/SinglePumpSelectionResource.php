@@ -4,7 +4,7 @@ namespace Modules\Selection\Transformers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Core\Support\StorageMediaHelper;
+use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Support\PumpCoefficientsHelper;
 use Modules\Selection\Support\IntersectionPoint;
@@ -121,13 +121,13 @@ class SinglePumpSelectionResource extends JsonResource
                     'types' => $pump->types, //
                     'description' => $pump->description,
                     'images' => [
-                        'pump' => StorageMediaHelper::getImage($pump->image),
-                        'sizes' => StorageMediaHelper::getImage($pump->sizes_image),
-                        'electric_diagram' => StorageMediaHelper::getImage($pump->electric_diagram_image),
-                        'cross_sectional_drawing' => StorageMediaHelper::getImage($pump->cross_sectional_drawing_image),
+                        'pump' => TenantStorage::getImage($pump->image),
+                        'sizes' => TenantStorage::getImage($pump->sizes_image),
+                        'electric_diagram' => TenantStorage::getImage($pump->electric_diagram_image),
+                        'cross_sectional_drawing' => TenantStorage::getImage($pump->cross_sectional_drawing_image),
                     ],
                     'files' => $pump->files
-                        ->map(fn($file) => StorageMediaHelper::getFile($file->file_name))
+                        ->map(fn($file) => TenantStorage::getFile($file->file_name))
                         ->filter(fn($file) => $file != null)
                         ->map(fn($file) => [
                             'name' => basename($file),

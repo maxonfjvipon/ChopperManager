@@ -20,24 +20,21 @@ class PumpSeriesController extends \Modules\Pump\Http\Controllers\PumpSeriesCont
     {
         $this->authorize('series_access');
         $this->authorize('brand_access');
-        $series = Auth::user()->available_series()->with(['brand', 'category', 'power_adjustment'])
-            ->get()
-            ->map(fn($series) => [
-                'id' => $series->id,
-                'brand' => $series->brand->name,
-                'name' => $series->name,
-                'category' => $series->category->name,
-                'power_adjustment' => $series->power_adjustment->name,
-                'applications' => $series->imploded_applications,
-                'types' => $series->imploded_types
-            ])
-            ->all();
         return Inertia::render('Pump::PumpSeries/Index', [
             'filter_data' => $this->indexFilterData(),
-            'brands' => PumpBrand::whereHas('series', function ($query) use ($series) {
-                $query->whereIn('id', array_map(fn($_series) => $_series['id'], $series));
-            })->get()->all(),
-            'series' => $series,
+            'brands' => Auth::user()->available_brands,
+            'series' => Auth::user()->available_series()->with(['brand', 'category', 'power_adjustment'])
+                ->get()
+                ->map(fn($series) => [
+                    'id' => $series->id,
+                    'brand' => $series->brand->name,
+                    'name' => $series->name,
+                    'category' => $series->category->name,
+                    'power_adjustment' => $series->power_adjustment->name,
+                    'applications' => $series->imploded_applications,
+                    'types' => $series->imploded_types
+                ])
+                ->all()
         ]);
     }
 }

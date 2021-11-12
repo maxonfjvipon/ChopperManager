@@ -5,7 +5,7 @@ namespace Modules\Selection\Actions;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\Support\Rates;
-use Modules\Core\Support\StorageMediaHelper;
+use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Support\PumpCoefficientsHelper;
 use Modules\Selection\Entities\LimitCondition;
@@ -196,6 +196,8 @@ class MakeSelectionAction
 
 //        $storageMedia = Storage::disk('media');
 
+        $tenantStorage = new TenantStorage();
+
         foreach ($dbPumps as $pump) {
             if (count($pump->price_lists) === 1) { // FIXME ???
                 $pumpPerformance = PumpPerformance::by($pump->performance);
@@ -301,13 +303,13 @@ class MakeSelectionAction
                                 'types' => $pump->types, //
                                 'description' => $pump->description,
                                 'images' => [
-                                    'pump' => StorageMediaHelper::getImage($pump->image),
-                                    'sizes' => StorageMediaHelper::getImage($pump->sizes_image),
-                                    'electric_diagram' => StorageMediaHelper::getImage($pump->electric_diagram_image),
-                                    'cross_sectional_drawing' => StorageMediaHelper::getImage($pump->cross_sectional_drawing_image),
+                                    'pump' => $tenantStorage->urlToImage($pump->image),
+                                    'sizes' => $tenantStorage->urlToImage($pump->sizes_image),
+                                    'electric_diagram' => $tenantStorage->urlToImage($pump->electric_diagram_image),
+                                    'cross_sectional_drawing' => $tenantStorage->urlToImage($pump->cross_sectional_drawing_image),
                                 ],
                                 'files' => $pump->files
-                                    ->map(fn($file) => StorageMediaHelper::getFile($file->file_name))
+                                    ->map(fn($file) => $tenantStorage->urlToFile($file->file_name))
                                     ->filter(fn($file) => $file != null)
                                     ->map(fn($file) => [
                                         'name' => basename($file),
