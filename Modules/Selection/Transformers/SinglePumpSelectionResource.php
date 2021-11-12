@@ -52,6 +52,7 @@ class SinglePumpSelectionResource extends JsonResource
                 $yMax = $performanceLineData['yMax'];
             }
         }
+        $tenantStorage = new TenantStorage();
 
         return [
             'id' => $this->id,
@@ -121,13 +122,13 @@ class SinglePumpSelectionResource extends JsonResource
                     'types' => $pump->types, //
                     'description' => $pump->description,
                     'images' => [
-                        'pump' => TenantStorage::getImage($pump->image),
-                        'sizes' => TenantStorage::getImage($pump->sizes_image),
-                        'electric_diagram' => TenantStorage::getImage($pump->electric_diagram_image),
-                        'cross_sectional_drawing' => TenantStorage::getImage($pump->cross_sectional_drawing_image),
+                        'pump' => $tenantStorage->urlToImage($pump->image),
+                        'sizes' => $tenantStorage->urlToImage($pump->sizes_image),
+                        'electric_diagram' => $tenantStorage->urlToImage($pump->electric_diagram_image),
+                        'cross_sectional_drawing' => $tenantStorage->urlToImage($pump->cross_sectional_drawing_image),
                     ],
                     'files' => $pump->files
-                        ->map(fn($file) => TenantStorage::getFile($file->file_name))
+                        ->map(fn($file) => $tenantStorage->urlToFile($file->file_name))
                         ->filter(fn($file) => $file != null)
                         ->map(fn($file) => [
                             'name' => basename($file),

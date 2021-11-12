@@ -51,7 +51,10 @@ class ShowProjectResource extends JsonResource
                         $pump_price = $pump_price_list->currency->code === $rates->base()
                             ? $pump_price_list->price
                             : round($pump_price_list->price / $rates->rate($pump_price_list->currency->code), 2);
-                        $discounted_pump_price = $pump_price - $pump_price * $selection->pump->series->discounts[0]->value / 100;
+                        $discount = count($selection->pump->series->discounts) == 1
+                            ? $selection->pump->series->discounts[0]->value
+                            : 0;
+                        $discounted_pump_price = $pump_price - $pump_price * $discount / 100;
                     }
 
                     return [
@@ -71,64 +74,6 @@ class ShowProjectResource extends JsonResource
                         'total_rated_power' => round($selection->pump->rated_power * $selection->pumps_count, 1)
                     ];
                 })->all(),
-//            'selections' => SinglePumpSelection::with([
-//                'pump' => function ($query) {
-//                    $query->select('id', 'name', 'price', 'power', 'currency_id', 'series_id', 'part_num_main');
-//                },
-//                'pump.currency',
-//                'pump.producer.discounts' => function ($query) {
-//                    $query->where('user_id', Auth::id());
-//                },
-//                'pump.series.discounts' => function ($query) {
-//                    $query->where('user_id', Auth::id());
-//                }
-//            ])
-//                ->where('project_id', $this->id)
-//                ->where('deleted', false)
-//                ->get(['pump_id', 'selected_pump_name', 'pumps_count', 'pressure', 'consumption', 'id', 'created_at'])
-//                ->map(function ($selection) use ($rates) {
-//                    $pump_rub_price = $selection->pump->currency->name === 'RUB'
-//                        ? $selection->pump->price
-//                        : round($selection->pump->price / $rates[$selection->pump->currency->name], 2);
-//
-//                    $pump_price = $pump_rub_price - ($selection->pump->series->discounts[0]->value
-//                            ? $pump_rub_price * $selection->pump->series->discounts[0]->value / 100
-//                            : ($selection->pump->producer->discounts[0]->value
-//                                ? $pump_rub_price * $selection->pump->producer->discounts[0]->value / 100
-//                                : 0
-//                            )
-//                        );
-//                    return [
-//                        'id' => $selection->id,
-//                        'created_at' => $selection->created_at,
-//                        'consumption' => $selection->consumption,
-//                        'pressure' => $selection->pressure,
-//                        'selected_pump_name' => $selection->pumps_count . ' '
-//                            . $selection->pump->producer->name . ' '
-//                            . $selection->pump->series->name . ' '
-//                            . $selection->pump->name,
-//                        'part_num_main' => $selection->pump->part_num_main,
-//                        'price' => round($pump_price, 1),
-//                        'sum_price' => round($pump_price * $selection->pumps_count, 1),
-//                        'power' => $selection->pump->power,
-//                        'sum_power' => $selection->pump->power * $selection->pumps_count
-//                    ];
-//                })->all(),
-//            'selections-2' => DB::table('single_pump_selections')
-//                ->join('pumps', 'pump_id', '=', 'pumps.id')
-//                ->join('currencies', 'pumps.currency_id', '=', 'currencies.id')
-//                ->where('deleted', '=', false)
-//                ->where('project_id', '=', $this->id)
-//                ->select('price', 'power', 'created_at', 'selected_pump_name', 'pumps_count',
-//                    'pumps.part_num_main', 'pressure', 'consumption', 'single_pump_selections.id', 'currencies.name as currency')
-//                ->selectRaw('(price * pumps_count) as sum_price, round((power * pumps_count), 1) as sum_power')
-//                ->get()->transform(function ($item) use ($rates) { // TODO: оптимизированть количество вычислений
-//                    if ($item->currency !== 'RUB') {
-//                        $item->sum_price = round($item->sum_price / $rates[$item->currency], 2);
-//                        $item->price = round($item->price / $rates[$item->currency], 2);
-//                    }
-//                    return $item;
-//                })->all(),
         ];
     }
 }

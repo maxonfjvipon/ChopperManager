@@ -60,10 +60,9 @@ class SelectionsController extends Controller
      * Display selection
      *
      * @param SinglePumpSelection $selection
-     * @return Response
      * @throws AuthorizationException
      */
-    public function show(SinglePumpSelection $selection): Response
+    public function show(SinglePumpSelection $selection)
     {
         $this->authorize('selection_show');
         return Inertia::render('Selections/SingleNew/Index', [
