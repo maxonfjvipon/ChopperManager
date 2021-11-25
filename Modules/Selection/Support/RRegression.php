@@ -19,7 +19,7 @@ abstract class RRegression
         return self::fromCoefficients([$pumpCoefficients->k, $pumpCoefficients->b, $pumpCoefficients->c]);
     }
 
-    private function __construct($coefficients)
+    protected function __construct($coefficients)
     {
         $this->coefficients = $coefficients;
     }
