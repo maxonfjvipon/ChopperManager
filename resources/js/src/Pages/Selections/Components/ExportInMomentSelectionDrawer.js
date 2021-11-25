@@ -12,7 +12,7 @@ export const ExportInMomentSelectionDrawer = ({stationToShow, visible, setVisibl
 
     const exportHandler = async () => {
         axios.post(tRoute('selections.pump.single.export_in_moment'), {
-            ...form.getFieldsValue(true),
+            ...await form.validateFields(),
             selected_pump_name: stationToShow?.name,
             pump_id: stationToShow?.pump_id,
             reserve_pumps_count: stationToShow?.pumps_count - stationToShow?.main_pumps_count,

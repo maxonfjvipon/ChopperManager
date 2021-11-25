@@ -10,9 +10,9 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
     const {tRoute} = useTransRoutes()
     const [form] = Form.useForm()
 
-    const exportHandler = () => {
+    const exportHandler = async () => {
         axios.post(tRoute('selections.pump.single.export', selection_id), {
-            ...form.getFieldsValue(true),
+            ...await form.validateFields(),
         }, {
             responseType: 'blob',
         }).then(res => {

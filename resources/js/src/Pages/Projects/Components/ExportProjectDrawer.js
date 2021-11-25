@@ -13,9 +13,9 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
     const [form] = Form.useForm()
     const {rules} = useInputRules()
 
-    const exportHandler = () => {
+    const exportHandler = async () => {
         axios.post(tRoute('projects.export', project.id), {
-            ...form.getFieldsValue(true),
+            ...await form.validateFields(),
         }, {
             responseType: 'blob',
         }).then(res => {
