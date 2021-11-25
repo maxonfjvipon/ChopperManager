@@ -21,7 +21,7 @@ const Index = () => {
     const {has} = usePermissions()
     const {openRestoreNotification} = useNotifications()
 
-    console.log(users)
+    // console.log(users)
 
     // CONSTS
     const columns = [

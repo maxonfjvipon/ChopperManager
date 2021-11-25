@@ -10,7 +10,7 @@ const Index = () => {
     // HOOKS
     const {users} = usePage().props
 
-    console.log(users)
+    // console.log(users)
 
     // CONSTS
     const columns = [

@@ -377,7 +377,7 @@ const Index = () => {
             // })
 
             const data = await postRequest(tRoute('selections.pump.single.select'), body, true)
-            console.log(data)
+            // console.log(data)
             // setWorkingPoint(data.working_point)
             // setDefaultSystemPerformance(data.default_system_performance)
             setSelectedPumps(data.selected_pumps)
@@ -413,7 +413,7 @@ const Index = () => {
                         stationToShow.svg = res.data
                     })
                 } catch (e) {
-                    console.log(e)
+                    // console.log(e)
                 }
             } else {
                 document.getElementById('for-graphic').innerHTML = stationToShow.svg

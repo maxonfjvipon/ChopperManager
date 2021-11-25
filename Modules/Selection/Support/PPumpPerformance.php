@@ -5,6 +5,8 @@ namespace Modules\Selection\Support;
 
 
 use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpsAndCoefficients;
+use Modules\Pump\Support\PumpCoefficientsHelper;
 
 class PPumpPerformance
 {
@@ -77,9 +79,22 @@ class PPumpPerformance
         return $data;
     }
 
+    private function createdCoefficients($position)
+    {
+        $coefficients = PolynomialRegression::fromData($this->asArrayData($position))->coefficients();
+        return PumpsAndCoefficients::create([
+            'pump_id' => $this->pump->id,
+            'position' => $position,
+            'k' => $coefficients[0],
+            'b' => $coefficients[1],
+            'c' => $coefficients[2],
+        ]);
+    }
+
     public function coefficientsForPosition($position)
     {
-        return $this->pump->coefficients->firstWhere('position', $position);
+        $coefficients = $this->pump->coefficients->firstWhere('position', $position);
+        return $coefficients ?? $this->createdCoefficients($position);
     }
 
     public function hMax(): float

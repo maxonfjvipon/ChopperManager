@@ -4,6 +4,8 @@
 namespace Modules\Pump\Support;
 
 use Modules\Pump\Entities\PumpsAndCoefficients;
+use Modules\Selection\Support\PolynomialRegression;
+use Modules\Selection\Support\PPumpPerformance;
 use Modules\Selection\Support\PumpPerformance;
 use Modules\Selection\Support\Regression;
 
@@ -20,6 +22,9 @@ class PumpCoefficientsHelper
 
     public static function createdSingle($pump, $position)
     {
+        $pumpPerformance = new PPumpPerformance($pump);
+        $coefficients = PolynomialRegression::fromData($pumpPerformance->asArrayData($pos))->coefficients();
+
         $coefficients = Regression::withData(PumpPerformance::by($pump->performance)->asLineData($position))->polynomial()->coefficients();
         return PumpsAndCoefficients::create([
             'pump_id' => $pump->id,

@@ -28,7 +28,7 @@ const Dashboard = () => {
     const imgPath = "/img/selections-dashboard/"
 
     const _cards = filterPermissionsArray(selection_types.map(type => {
-        console.log(type.img)
+        // console.log(type.img)
         return has('selection_create') && {
             title: type.name,
             src: type.img,

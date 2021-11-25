@@ -23,7 +23,7 @@ const Index = () => {
     const {user, businesses, countries, currencies, discounts} = usePage().props
     const {tRoute} = useTransRoutes()
 
-    console.log(discounts)
+    // console.log(discounts)
 
     const userdata = user.data
     const profileFormName = 'profile-form'

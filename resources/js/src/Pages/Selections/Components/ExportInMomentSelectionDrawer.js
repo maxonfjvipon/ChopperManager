@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Checkbox, Drawer, Form, Input, List, Tabs} from "antd";
 import {ItemsForm} from "../../../Shared/ItemsForm";
 import {PrimaryButton} from "../../../Shared/Buttons/PrimaryButton";
@@ -7,10 +7,13 @@ import download from 'downloadjs'
 import Lang from "../../../../translation/lang";
 
 export const ExportInMomentSelectionDrawer = ({stationToShow, visible, setVisible}) => {
+    const [loading, setLoading] = useState(false)
+
     const {tRoute} = useTransRoutes()
     const [form] = Form.useForm()
 
     const exportHandler = async () => {
+        setLoading(true)
         axios.post(tRoute('selections.pump.single.export_in_moment'), {
             ...await form.validateFields(),
             selected_pump_name: stationToShow?.name,
@@ -23,7 +26,7 @@ export const ExportInMomentSelectionDrawer = ({stationToShow, visible, setVisibl
         }, {
             responseType: 'blob',
         }).then(res => {
-            console.log(res)
+            setLoading(false)
             const content = res.headers['content-type'];
             download(res.data, stationToShow.name + ".pdf", content)
         })
@@ -68,7 +71,7 @@ export const ExportInMomentSelectionDrawer = ({stationToShow, visible, setVisibl
         },
         {
             values: {}, input:
-                <PrimaryButton onClick={exportHandler}>{Lang.get('pages.selections.single.export.button')}</PrimaryButton>
+                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single.export.button')}</PrimaryButton>
         }
     ]
 
