@@ -48,7 +48,7 @@ return [
                 'title' => 'Restore project?',
                 'button' => 'Restore'
             ],
-            'button' => 'New project',
+            'button' => 'Create project',
             'selection' => 'Hydraulic selection without saving',
             'table' => [
                 'created_at' => 'Created at',
@@ -92,6 +92,22 @@ return [
             ],
             'button' => 'Update project',
         ],
+        'export' => [
+            'title' => 'Export project',
+            'choose_selections' => 'Choose selection to export',
+            'print' => [
+                'retail_price' => 'Print retail price',
+                'personal_price' => 'Print personal price',
+                'pump_info' => 'Print pump info',
+                'pump_image' => 'Print pump image',
+                'sizes_image' => 'Print pump sizes',
+                'electric_diagram' => 'Print pump electric diagram',
+                'exploded_view' => 'Print pump exploded view',
+            ],
+            'button' => 'Export',
+            'm3h' => 'm³/h',
+            'm' => 'm'
+        ]
     ],
     'pump_brands' => [
         'index' => [
@@ -100,7 +116,7 @@ return [
                 'button' => 'Restore'
             ],
             'title' => 'Brands',
-            'button' => 'New brand',
+            'button' => 'Create brand',
             'table' => [
                 'name' => 'Name',
                 'delete' => 'Are you sure you want to delete the brand?'
@@ -122,14 +138,24 @@ return [
         ],
     ],
     'pump_series' => [
+        'errors_title' => 'Import errors:',
         'back' => 'Back to series',
         'index' => [
             'restore' => [
                 'title' => 'Restore series?',
                 'button' => 'Restore'
             ],
+            'upload_images' => [
+                'title' => 'Upload images',
+                'images' => [
+                    'title' => 'Images (max 300, .jpg, .jpeg, .png)',
+                    'icons' => 'Icons',
+                ],
+            ],
+            'upload' => 'Upload series',
+            'create' => 'Create',
             'title' => 'Brands and series',
-            'button' => 'New series',
+            'button' => 'Create series',
             'table' => [
                 'brand' => 'Brand',
                 'name' => 'Name',
@@ -191,10 +217,25 @@ return [
             'power_adjustment' => 'El. power adjustment',
             'connection' => 'Mains connection',
             'types' => 'Types',
-            'applications' => 'Applications'
+            'applications' => 'Applications',
+            'description' => 'Description',
         ],
         'upload' => 'Upload pumps',
         'upload_price_lists' => 'Upload price lists',
+        'upload_tech_info' => [
+            'title' => 'Upload tech-info',
+            'images' => [
+                'title' => 'Images (max 300, .jpg, .jpeg, .png)',
+                'pumps' => 'Pumps images',
+                'pump_sizes' => 'Pump sizes images',
+                'pump_electric_diagrams' => 'Electrical diagram images',
+                'pump_cross_sectional_drawings' => 'Cross sectional drawings images',
+            ],
+            'files' => [
+                'title' => 'Files (max 300, .pdf)',
+                'files' => 'Files'
+            ]
+        ],
         'errors_title' => 'Import errors:',
         'hydraulic_perf' => 'Hydraulic performance',
         'pressure' => 'Delivery head, m',
@@ -259,6 +300,11 @@ return [
                     'fire' => 'Fire extinguishing pumping station selection'
                 ]
             ],
+            '404' => [
+                'title' => "Sorry, you don't have access to any of selection types",
+                'subtitle' => 'Please contact the administrator',
+                'back' => 'Back to projects',
+            ],
             'single_prefs' => 'Single pump selection by preferences',
             'double_prefs' => 'Double pump selection by preferences',
             'water_station_prefs' => 'Watter supply pumping station selection by preferences',
@@ -272,6 +318,7 @@ return [
             'title_show' => 'Viewing the selection',
             'title_new' => 'Single pump selection by preferences',
             'grouping' => 'Grouping by brands',
+            'hide_icons' => 'Hide icons',
             'brands' => 'Brands',
             'types' => [
                 'label' => 'Types',
@@ -317,6 +364,18 @@ return [
             'add' => 'Add to project',
             'update' => 'Update selection',
             'selected_pump' => 'Selected pump: ',
+            'graphic' => [
+                'export' => 'Export',
+                'info' => 'Pump info',
+            ],
+            'pump_info' => [
+                'props' => 'Product properties',
+                'model_picture' => 'Model picture',
+                'sizes_picture' => 'Sizes',
+                'electric_diagram' => 'Electric diagram',
+                'exploded_view' => 'Exploded view',
+                'files' => 'Files',
+            ],
             'table' => [
                 'title' => 'Selected pumps',
                 'name' => 'Name',
@@ -330,6 +389,16 @@ return [
                 'power' => 'P, kW',
                 'total_power' => 'P total, kW',
                 'ptp_length' => 'Port-to-port length, mm'
+            ],
+            'export' => [
+                'title' => 'Export selection',
+                'print' => [
+                    'pump_image' => 'Print pump image',
+                    'sizes_image' => 'Print pump sizes',
+                    'electric_diagram' => 'Print pump electric diagram',
+                    'exploded_view' => 'Print pump exploded view',
+                ],
+                'button' => 'Export',
             ],
         ]
     ],

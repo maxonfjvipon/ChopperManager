@@ -58,6 +58,11 @@ const Create = () => {
                 name: 'applications',
                 label: Lang.get('pages.pump_series.create.form.applications'),
             }, input: <MultipleSelection options={applications}/>,
+        }, {
+            values: {
+                name: 'image',
+                label: 'Image path',
+            }, input: <Input/>,
         }
     ]
 
@@ -70,7 +75,7 @@ const Create = () => {
         <ResourceContainer
             title={Lang.get('pages.pump_series.create.title')}
             actions={has('series_create') && <SubmitAction label={Lang.get('pages.pump_series.create.button')} form={formName}/>}
-            back={has('series_access', 'brand_access') && <BackToSeriesLink/>}
+            extra={has('series_access', 'brand_access') && <BackToSeriesLink/>}
         >
             <ItemsForm
                 layout="vertical"

@@ -34,17 +34,9 @@ class PumpPerformance
         return $dist;
     }
 
-    private function __construct()
+    public function __construct($performance)
     {
-    }
-
-    public static function by($performance): PumpPerformance
-    {
-        if (self::$instance === null) {
-            self::$instance = new self;
-        }
-        self::$instance->performance = $performance;
-        return self::$instance;
+        $this->performance = $performance;
     }
 
     public function asArray(): array
@@ -54,7 +46,7 @@ class PumpPerformance
         }, explode(" ", $this->performance));
     }
 
-    public function lineData($position): array
+    public function asLineData($position): array
     {
         $data = [];
         $performanceAsArray = $this->asArray();
@@ -71,7 +63,7 @@ class PumpPerformance
     {
         $xx = array_map(function ($performanceItem) {
             return $performanceItem[0];
-        }, $this->lineData($count));
+        }, $this->asLineData($count));
         $dist = $this->dist($xx);
         $yMax = 0;
         $line = array();

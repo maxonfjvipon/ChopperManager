@@ -16,5 +16,8 @@ use Modules\Core\Http\Controllers\ProjectsController;
 
 // PROJECTS
 Route::redirect('/', app()->getLocale() . '/projects')->name('index');
-Route::get('projects/{project}/restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
+Route::prefix('projects')->group(function () {
+    Route::post('{project}/export')->name('projects.export')->uses([ProjectsController::class, 'export']);
+    Route::get('{project}/restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
+});
 Route::resource('projects', ProjectsController::class);

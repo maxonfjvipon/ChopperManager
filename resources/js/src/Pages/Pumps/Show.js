@@ -213,7 +213,7 @@ const Show = () => {
     return (
         <IndexContainer
             title={pump.data.full_name}
-            back={<BackLink title={Lang.get('pages.pumps.back')} href={tRoute('pumps.index')}/>}
+            extra={<BackLink title={Lang.get('pages.pumps.back')} href={tRoute('pumps.index')}/>}
         >
             <Row gutter={[16, 16]} style={{flex: "auto"}}>
                 <FlexCol xs={24} sm={20} md={16} lg={13} xl={10} xxl={7}>

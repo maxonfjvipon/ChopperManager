@@ -3,6 +3,11 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Core\Http\Requests\FilesUploadRequest;
+use Modules\Core\Http\Requests\MediaUploadRequest;
+use Modules\Core\Support\TenantStorage;
+use Modules\Pump\Actions\ImportPumpsAction;
+use Modules\Pump\Actions\ImportPumpSeriesAction;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Modules\Pump\Entities\ElPowerAdjustment;
@@ -136,13 +141,48 @@ class PumpSeriesController extends Controller
         return Redirect::route('pump_series.index');
     }
 
-    /*
-     * Restore the specified resource
+    /**
+     * Restore series
+     *
+     * @param $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function restore($id): RedirectResponse
     {
         $this->authorize('series_restore');
         PumpSeries::withTrashed()->find($id)->restore();
         return Redirect::route('pump_series.index');
+    }
+
+    /**
+     * Upload series
+     *
+     * @param FilesUploadRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function import(FilesUploadRequest $request): RedirectResponse
+    {
+        $this->authorize('series_import');
+        return (new ImportPumpSeriesAction($request->file('files')))->execute();
+    }
+
+    /**
+     * Upload series media
+     *
+     * @param MediaUploadRequest $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function importMedia(MediaUploadRequest $request): RedirectResponse
+    {
+        $this->authorize('series_import_media');
+        $tenantStorage = new TenantStorage();
+        foreach ($request->file('files') as $image)
+            if (!$tenantStorage->putFileTo($request->folder, $image))
+                Redirect::back()->with('error', 'Media were not imported. Please contact to administrator');
+        return Redirect::back()->with('success', 'Media were imported successfully to directory: ' . $request->folder);
+
     }
 }

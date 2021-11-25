@@ -35,8 +35,11 @@ class ImportPumpsPriceListsAction extends ImportAction
     protected function errorBagEntity($entity, $message): array
     {
         return [
+            'head' => [
+                'key' => __('validation.attributes.import.pumps.article_num_main'),
+                'value' => $entity[0] !== "" ? $entity[0] : 'Unknown',
+            ],
             'file' => '', // TODO
-            'article_num' => $entity[0] !== "" ? $entity[0] : 'Unknown',
             'message' => $message[0],
         ];
     }

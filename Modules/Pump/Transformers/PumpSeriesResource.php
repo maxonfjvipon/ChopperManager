@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
+use Modules\Core\Support\TenantStorage;
 
 class PumpSeriesResource extends JsonResource
 {
@@ -25,6 +26,8 @@ class PumpSeriesResource extends JsonResource
             'category_id' => $this->category_id,
             'types' => $this->types()->pluck('pump_types.id')->all(),
             'applications' => $this->applications()->pluck('pump_applications.id')->all(),
+            'image' => $this->image,
+            'picture' => (new TenantStorage())->urlToImage($this->image),
         ];
     }
 }

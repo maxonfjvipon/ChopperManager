@@ -20,7 +20,7 @@ const Create = () => {
 
     const {tenant_types, selection_types, default_selection_types} = usePage().props
 
-    console.log(tenant_types, selection_types)
+    // console.log(tenant_types, selection_types)
 
     const items = [
         {
@@ -91,7 +91,7 @@ const Create = () => {
         <ResourceContainer
             title={"Create tenant"}
             actions={<SubmitAction label={"Create"} form={formName}/>}
-            back={<BackToTenantsLink/>}
+            extra={<BackToTenantsLink/>}
         >
             <ItemsForm
                 name={formName}

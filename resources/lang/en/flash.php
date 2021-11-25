@@ -10,6 +10,9 @@ return [
         'updated' => 'Project was updated successfully',
         'deleted' => 'Project was deleted successfully'
     ],
+    'pump_series' => [
+        'imported' => 'Pump series were imported successfully',
+    ],
     'pumps' => [
         'imported' => 'Pumps were imported successfully'
     ],

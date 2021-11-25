@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class ExistsInArrayComplex extends InArrayFromDB
+class ExistsInIdsArray extends InArrayFromDB
 {
     protected string $separator;
     private array $invalidValues = [];

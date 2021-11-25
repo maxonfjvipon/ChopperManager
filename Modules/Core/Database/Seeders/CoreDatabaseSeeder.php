@@ -36,7 +36,7 @@ class CoreDatabaseSeeder extends Seeder
         try {
             /** * Permissions */
             $models = ['role', 'user', 'project', 'pump', 'selection', 'brand', 'series'];
-            $actions = ['access', 'create', 'show', 'edit', 'delete', 'restore'];
+            $actions = ['access', 'create', 'show', 'edit', 'delete', 'restore', 'export'];
             $permissions = [];
             foreach ($models as $model) {
                 foreach ($actions as $action) {
@@ -46,10 +46,12 @@ class CoreDatabaseSeeder extends Seeder
             $permissions[] = 'price_list_import';
             $permissions[] = 'pump_import';
             $permissions[] = 'pump_import_media';
-            $permissions[] = 'pump_export';
-            $permissions[] = 'selection_export_xlsx';
-            $permissions[] = 'selection_export_pdf';
+//            $permissions[] = 'pump_export';
+//            $permissions[] = 'selection_export_xlsx';
+//            $permissions[] = 'selection_export_pdf';
             $permissions[] = 'selection_create_without_saving';
+            $permissions[] = 'series_import';
+            $permissions[] = 'series_import_media';
 
             $tenantGuard = $this->getTenantModel()::current()->getGuard();
 
@@ -214,8 +216,8 @@ class CoreDatabaseSeeder extends Seeder
             ConnectionType::create(['name' => ['ru' => 'Фланцевый', 'en' => 'Flanged']]);
 
             /** * Selection ranges */
-            SelectionRange::create(['id' => 1, 'name' => ['en' => '1/3'], 'value' => 0.33]);
-            SelectionRange::create(['id' => 2, 'name' => ['en' => '3/5'], 'value' => 0.2]);
+            SelectionRange::create(['id' => 1, 'name' => ['en' => '1/3', 'ru' => '1/3'], 'value' => 0.33]);
+            SelectionRange::create(['id' => 2, 'name' => ['en' => '3/5', 'ru' => '3/5'], 'value' => 0.2]);
             SelectionRange::create(['id' => 3, 'name' => ['en' => 'Custom', 'ru' => 'Произв.'], 'value' => null]);
 
             /** * Pump Brands */

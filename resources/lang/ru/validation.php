@@ -224,6 +224,12 @@ return [
                 'mains_connection' => 'Подключение к сети',
                 'applications' => 'Применения',
                 'types' => 'Типы',
+                'description' => 'Описание',
+                'pump_image' => 'Изображение насоса',
+                'pump_sizes_image' => 'Изображение размеров насоса',
+                'pump_electric_diagram_image' => 'Изображение электрической схемы',
+                'pump_cross_sectional_drawing_image' => 'Изображение взрыв-модели',
+                'pump_files' => 'Файлы'
             ],
             'price_lists' => [
                 'article_num_main' => 'Основной артикул',
@@ -231,6 +237,15 @@ return [
                 'currency' => 'Валюта',
                 'price' => 'Цена'
             ],
+            'pump_series' => [
+                'brand' => 'Бренд',
+                'name' => 'Наименованте',
+                'category' => 'Категория',
+                'power_adjustment' => 'Встроенное регулирование',
+                'applications' => 'Применения',
+                'types' => 'Типы',
+                'icon' => 'Иконка'
+            ]
         ]
     ],
 ];

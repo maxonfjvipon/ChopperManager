@@ -78,7 +78,7 @@ const Create = () => {
         <ResourceContainer
             title={Lang.get('pages.pump_series.edit.title')}
             actions={has('series_edit') && <SubmitAction label={Lang.get('pages.pump_series.edit.button')} form={formName}/>}
-            back={has('series_access', 'brand_access') && <BackToSeriesLink/>}
+            extra={has('series_access', 'brand_access') && <BackToSeriesLink/>}
         >
             <ItemsForm
                 layout="vertical"

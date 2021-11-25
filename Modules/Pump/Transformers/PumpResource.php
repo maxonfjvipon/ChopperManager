@@ -5,6 +5,7 @@ namespace Modules\Pump\Transformers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Pump\Support\PumpCoefficientsHelper;
+use Modules\Selection\Support\PPumpPerformance;
 use Modules\Selection\Support\PumpPerformance;
 use Modules\Selection\Support\Regression;
 
@@ -18,9 +19,7 @@ class PumpResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $coefficients = PumpCoefficientsHelper::coefficientsForPump($this, 1);
-        $performanceLineData = PumpPerformance::by($this->performance)
-            ->asPerformanceLineData(1, Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c]));
+        $pumpPerformance = new PPumpPerformance($this->resource);
         return [
             'id' => $this->id,
             'article_num_main' => $this->article_num_main,
@@ -44,8 +43,8 @@ class PumpResource extends JsonResource
             'applications' => $this->applications,
             'types' => $this->types,
             'performance' => [
-                'line_data' => $performanceLineData['line'],
-                'y_max' => $performanceLineData['yMax']
+                'line_data' => $pumpPerformance->asRegressedPointArray(1),
+                'y_max' => $pumpPerformance->hMax()
             ]
         ];
     }

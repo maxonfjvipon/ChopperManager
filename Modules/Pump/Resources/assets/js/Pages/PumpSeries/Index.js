@@ -14,6 +14,11 @@ import Lang from '../../../../../../../resources/js/translation/lang'
 import {FlexCol} from "../../../../../../../resources/js/src/Shared/FlexCol";
 import {Delete} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete";
 import {Edit} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
+import {FileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/FileUploader";
+import {ImportErrorBagDrawer} from "../../../../../../../resources/js/src/Shared/ImportErrorBagDrawer";
+import {ComplexPrimaryAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/ComplexPrimaryAction";
+import {FileAddOutlined} from "@ant-design/icons";
+import {PumpSeriesTechInfoUploader} from "../../Components/PumpSeriesTechInfoUploader";
 
 const Index = () => {
     // HOOKS
@@ -127,69 +132,45 @@ const Index = () => {
     }
 
     return (
-        <IndexContainer
-            title={Lang.get('pages.pump_series.index.title')}
-            actions={filterPermissionsArray([
-                has('brand_create') && <PrimaryAction
-                    label={Lang.get('pages.pump_brands.index.button')}
-                    route={tRoute('pump_brands.create')}
-                />,
-                has('series_create') && <PrimaryAction
-                    label={Lang.get('pages.pump_series.index.button')}
-                    route={tRoute('pump_series.create')}
+        <>
+            <ImportErrorBagDrawer title={Lang.get('pages.pump_series.errors_title')}/>
+            <IndexContainer
+                title={Lang.get('pages.pump_series.index.title')}
+                actions={filterPermissionsArray([
+                    (has('brand_create', 'series_create') && <ComplexPrimaryAction
+                        label={Lang.get('pages.pump_series.index.create')}
+                        actions={[{
+                            label: Lang.get('pages.pump_brands.index.button'),
+                            route: tRoute('pump_brands.create'),
+                            icon: <FileAddOutlined/>
+                        }, {
+                            label: Lang.get('pages.pump_series.index.button'),
+                            route: tRoute('pump_series.create'),
+                            icon: <FileAddOutlined/>
+                        }]}
+                    />),
+                    has('series_import') && <FileUploader
+                        route={tRoute('pump_series.import')}
+                        title={Lang.get('pages.pump_series.index.upload')}
+                    />,
+                    has('series_import_media') && <PumpSeriesTechInfoUploader/>,
+                ])}
+            >
+                <TTable
+                    columns={brandsColumns}
+                    dataSource={brands}
+                    doubleClickHandler={has('brand_edit') && editBrandHandler}
+                    expandable={{
+                        expandedRowRender: (record) => <TTable
+                            columns={seriesColumns}
+                            dataSource={series.filter(_series => _series.brand === record.name)}
+                            doubleClickHandler={has('series_edit') && editSeriesHandler}
+                        />
+                    }}
                 />
-            ])}
-        >
-            <TTable
-                columns={brandsColumns}
-                dataSource={brands}
-                doubleClickHandler={has('brand_edit') && editBrandHandler}
-                expandable={{
-                    expandedRowRender: (record) => <TTable
-                        columns={seriesColumns}
-                        dataSource={series.filter(_series => _series.brand === record.name)}
-                        doubleClickHandler={has('series_edit') && editSeriesHandler}
-                    />
-                }}
-            />
-        </IndexContainer>
+            </IndexContainer>
+        </>
     )
-
-    // // RENDER
-    // return (
-    //     <Row gutter={[16, 0]} style={{flex: "auto"}}>
-    //         <FlexCol span={4}>
-    //             <IndexContainer
-    //                 title={Lang.get('pages.pump_brands.index.title')}
-    //                 actions={has('brand_create') && <PrimaryAction
-    //                     label={Lang.get('pages.pump_brands.index.button')}
-    //                     route={tRoute('pump_brands.create')}
-    //                 />}
-    //             >
-    //                 <TTable
-    //                     columns={brandsColumns}
-    //                     dataSource={brands}
-    //                     doubleClickHandler={has('brand_edit') && editBrandHandler}
-    //                 />
-    //             </IndexContainer>
-    //         </FlexCol>
-    //         <FlexCol span={20}>
-    //             <IndexContainer
-    //                 title={Lang.get('pages.pump_series.index.title')}
-    //                 actions={has('series_create') && <PrimaryAction
-    //                     label={Lang.get('pages.pump_series.index.button')}
-    //                     route={tRoute('pump_series.create')}
-    //                 />}
-    //             >
-    //                 <TTable
-    //                     columns={seriesColumns}
-    //                     dataSource={series}
-    //                     doubleClickHandler={has('series_edit') && editSeriesHandler}
-    //                 />
-    //             </IndexContainer>
-    //         </FlexCol>
-    //     </Row>
-    // )
 }
 
 Index.layout = page => <AuthLayout children={page}/>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link, usePage} from "@inertiajs/inertia-react";
 import {Input} from "antd";
 import {Inertia} from "@inertiajs/inertia";
@@ -15,12 +15,20 @@ import {TableActionsContainer} from "../../Shared/Resource/Table/Actions/TableAc
 import {View} from "../../Shared/Resource/Table/Actions/View";
 import {Delete} from "../../Shared/Resource/Table/Actions/Delete";
 import {usePermissions} from "../../Hooks/permissions.hook";
+import {Export} from "../../Shared/Resource/Table/Actions/Export";
+import {ExportSelectionDrawer} from "./Components/ExportSelectionDrawer";
+import {ExportProjectDrawer} from "./Components/ExportProjectDrawer";
 
 const Show = () => {
+    // STATE
+    const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
+    const [exportProjectVisible, setExportProjectVisible] = useState(false)
+    const [exportableId, setExportableId] = useState(0)
+
     // HOOKS
     const {project, auth} = usePage().props
     const {tRoute} = useTransRoutes()
-    const {has} = usePermissions()
+    const {has, filterPermissionsArray} = usePermissions()
     const {openRestoreNotification} = useNotifications()
 
     // CONSTS
@@ -87,6 +95,8 @@ const Show = () => {
                 return (
                     <TableActionsContainer>
                         {has('selection_show') && <View clickHandler={showSelectionHandler(record.id)}/>}
+                        <Export clickHandler={exportSelectionHandler(record.id)}/>
+                        {/*{has('selection_export') && <Export clickHandler={exportSelectionHandler(record.id)}/>}*/}
                         {has('selection_delete') && <Delete
                             sureDeleteTitle={Lang.get('pages.projects.show.table.delete')}
                             confirmHandler={deleteSelectionHandler(record.id)}
@@ -112,27 +122,43 @@ const Show = () => {
             )
     }
 
+    const exportSelectionHandler = id => () => {
+        setExportableId(id)
+        setExportDrawerVisible(true)
+    }
+
     // RENDER
     return (
-        <ResourceContainer
-            title={project.data.name}
-            actions={has('selection_create') && <PrimaryAction
-                label={Lang.get('pages.projects.show.selection')}
-                route={tRoute('selections.dashboard', project.data.id)}
-            />}
-            back={has('project_access') && <BackToProjectsLink/>}
-        >
-            <ItemsForm
-                name={formName}
-                layout={"vertical"}
-                items={items}
-            />
-            {has('selection_access') && <TTable
-                columns={columns}
-                dataSource={project.data?.selections}
-                doubleClickHandler={has('selection_show') && showSelectionHandler}
-            />}
-        </ResourceContainer>
+        <>
+            <ResourceContainer
+                title={project.data.name}
+                actions={has('selection_create') && <PrimaryAction
+                    label={Lang.get('pages.projects.show.selection')}
+                    route={tRoute('selections.dashboard', project.data.id)}
+                />}
+                extra={filterPermissionsArray([
+                    // has('project_export') &&
+                    <a onClick={event => {
+                        event.preventDefault()
+                        setExportProjectVisible(true)
+                    }}>Export project</a>,
+                    <BackToProjectsLink/>
+                ])}
+            >
+                <ItemsForm
+                    name={formName}
+                    layout={"vertical"}
+                    items={items}
+                />
+                {has('selection_access') && <TTable
+                    columns={columns}
+                    dataSource={project.data?.selections}
+                    doubleClickHandler={has('selection_show') && showSelectionHandler}
+                />}
+            </ResourceContainer>
+            <ExportSelectionDrawer selection_id={exportableId} visible={exportDrawerVisible} setVisible={setExportDrawerVisible}/>
+            <ExportProjectDrawer project={project.data} visible={exportProjectVisible} setVisible={setExportProjectVisible}/>
+        </>
     )
 }
 

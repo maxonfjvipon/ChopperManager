@@ -93,7 +93,7 @@ const Show = () => {
         <ResourceContainer
             title={tenant.data.name}
             actions={<SubmitAction form={formName} label={"Save"}/>}
-            back={<BackToTenantsLink/>}
+            extra={<BackToTenantsLink/>}
         >
             <ItemsForm
                 name={formName}

@@ -36,6 +36,7 @@ class ShowProjectResource extends JsonResource
                 'pump.series.discounts' => function ($query) {
                     $query->where('user_id', Auth::id());
                 },
+
                 'pump.brand',
                 'pump.brand.discounts' => function ($query) {
                     $query->where('user_id', Auth::id());

@@ -229,6 +229,15 @@ return [
                 'currency' => 'Currency',
                 'price' => 'Price'
             ],
+            'pump_series' => [
+                'brand' => 'Brand',
+                'name' => 'Name',
+                'category' => 'Category',
+                'power_adjustment' => 'El power adjustment',
+                'applications' => 'Applications',
+                'types' => 'Types',
+                'icon' => 'Icon image'
+            ]
         ],
     ],
 

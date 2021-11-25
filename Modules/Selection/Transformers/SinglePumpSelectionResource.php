@@ -5,12 +5,7 @@ namespace Modules\Selection\Transformers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Core\Support\TenantStorage;
-use Modules\Pump\Entities\Pump;
-use Modules\Pump\Support\PumpCoefficientsHelper;
-use Modules\Selection\Support\IntersectionPoint;
-use Modules\Selection\Support\PumpPerformance;
-use Modules\Selection\Support\Regression;
-use Modules\Selection\Support\SystemPerformance;
+use Modules\Selection\Actions\MakeSelectionCurvesAction;
 
 class SinglePumpSelectionResource extends JsonResource
 {
@@ -30,28 +25,7 @@ class SinglePumpSelectionResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $pump = Pump::find($this->pump_id);
-        $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $this->pumps_count - $this->reserve_pumps_count);
-        $intersectionPoint = IntersectionPoint::by($coefficients, $this->flow, $this->head);
-        $pumpPerformance = PumpPerformance::by($pump->performance);
-
-        $performanceLines = [];
-        $yMax = 0;
-        $systemPerformance = [];
-        for ($currentPumpsCount = 1; $currentPumpsCount <= $this->pumps_count; ++$currentPumpsCount) {
-            if ($currentPumpsCount === $this->pumps_count - $this->reserve_pumps_count) {
-                $systemPerformance = SystemPerformance::by($intersectionPoint, $this->flow, $this->head)->asLineData();
-            }
-            $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $currentPumpsCount);
-            $performanceLineData = $pumpPerformance->asPerformanceLineData(
-                $currentPumpsCount,
-                Regression::withCoefficients([$coefficients->k, $coefficients->b, $coefficients->c])
-            );
-            $performanceLines[] = $performanceLineData['line'];
-            if ($performanceLineData['yMax'] > $yMax) {
-                $yMax = $performanceLineData['yMax'];
-            }
-        }
+        $pump = $this->pump;
         $tenantStorage = new TenantStorage();
 
         return [
@@ -92,15 +66,20 @@ class SinglePumpSelectionResource extends JsonResource
 
             'to_show' => [
                 'name' => $this->selected_pump_name,
-                'intersectionPoint' => [
-                    'x' => round($intersectionPoint->x(), 1),
-                    'y' => round($intersectionPoint->y(), 1),
-                ],
                 'pump_id' => $this->pump_id,
                 'pumps_count' => $this->pumps_count,
-                'systemPerformance' => $systemPerformance,
-                'yMax' => $yMax,
-                'lines' => $performanceLines,
+                'main_pumps_count' => $this->pumps_count - $this->reserve_pumps_count,
+                'flow' => $this->flow,
+                'head' => $this->head,
+                'fluid_temperature' => $this->fluid_temperature,
+                'svg' => view('selection::selection_perf_curves', (new MakeSelectionCurvesAction())
+                    ->selectionPerfCurvesData(
+                        $pump,
+                        $this->pumps_count - $this->reserve_pumps_count,
+                        $this->pumps_count,
+                        $this->flow,
+                        $this->head
+                    ))->render(),
                 'pump_info' => [
                     'article_num_main' => $pump->article_num_main, //
                     'article_num_reserve' => $pump->article_num_reserve, //

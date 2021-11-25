@@ -15,10 +15,6 @@ const Dashboard = () => {
     const {tRoute} = useTransRoutes()
     const {has, filterPermissionsArray} = usePermissions()
 
-    const serviceUnavailable = () => {
-        message.info(Lang.get('messages.service_development'))
-    }
-
     const span = () => {
         if (selection_types.length === 1) {
             return 16
@@ -43,41 +39,6 @@ const Dashboard = () => {
         }
     }))
 
-    // const cards = filterPermissionsArray([
-    //     has('selection_create') && {
-    //         title: Lang.get('pages.selections.dashboard.preferences.pump.single'),
-    //         src: imgPath + "01.png",
-    //         onClick: () => {
-    //             Inertia.get(tRoute('selections.create', project_id))
-    //         }
-    //     },
-    //     {
-    //         title: Lang.get('pages.selections.dashboard.preferences.pump.double'),
-    //         src: imgPath + "02.png",
-    //         onClick: serviceUnavailable
-    //     },
-    //     {
-    //         title: Lang.get('pages.selections.dashboard.preferences.pump.borehole'),
-    //         src: imgPath + "03.png",
-    //         onClick: serviceUnavailable
-    //     },
-    //     {
-    //         title: Lang.get('pages.selections.dashboard.preferences.pump.drainage'),
-    //         src: imgPath + "04.png",
-    //         onClick: serviceUnavailable
-    //     },
-    //     {
-    //         title: Lang.get('pages.selections.dashboard.preferences.station.water'),
-    //         src: imgPath + "05.png",
-    //         onClick: serviceUnavailable
-    //     },
-    //     {
-    //         title: Lang.get('pages.selections.dashboard.preferences.station.fire'),
-    //         src: imgPath + "06.png",
-    //         onClick: serviceUnavailable
-    //     },
-    // ])
-
     return (
         <Container
             title={Lang.get('pages.selections.dashboard.subtitle')}
@@ -97,11 +58,11 @@ const Dashboard = () => {
             </Row>}
             {_cards.length === 0 && <Result
                 status="404"
-                title="Sorry, you don't have access to any of selection types"
-                subTitle="Please contact the administrator"
+                title={Lang.get('pages.selections.dashboard.404.title')}
+                subTitle={Lang.get('pages.selections.dashboard.404.subtitle')}
                 extra={<Button type="primary" onClick={() => {
                     Inertia.get(tRoute('projects.index'))
-                }}>Go to projects</Button>}
+                }}>{Lang.get('pages.selections.dashboard.404.back')}</Button>}
             />}
         </Container>
     )

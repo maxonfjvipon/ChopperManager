@@ -22,13 +22,12 @@ class PumpSeries extends Model
     protected $softCascade = ['pump'];
     use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection;
 
-    // TODO: create discounts for User
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
         $series = self::create($request->getSeriesFields());
         if ($series) {
-            PumpSeriesAndType::createFromRequestForSeries($request, $series);
-            PumpSeriesAndApplication::createFromRequestForSeries($request, $series);
+            PumpSeriesAndType::createForSeries($series, $request->types);
+            PumpSeriesAndApplication::createForSeries($series, $request->applications);
         }
         return $series;
     }
@@ -37,8 +36,8 @@ class PumpSeries extends Model
     {
         $updated = $this->update($request->getSeriesFields());
         if ($updated) {
-            PumpSeriesAndType::updateFromRequestForSeries($request, $this);
-            PumpSeriesAndApplication::updateFromRequestForSeries($request, $this);
+            PumpSeriesAndType::updateForSeries($this, $request->types);
+            PumpSeriesAndApplication::updateForSeries($this, $request->applications);
         }
         return $updated;
     }

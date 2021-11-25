@@ -22,7 +22,8 @@ class PumpSeriesStoreRequest extends FormRequest
             'name' => $this->name,
             'brand_id' => $this->brand_id,
             'category_id' => $this->category_id,
-            'power_adjustment_id' => $this->power_adjustment_id
+            'power_adjustment_id' => $this->power_adjustment_id,
+            'image' => $this->image,
         ];
     }
 
@@ -35,11 +36,12 @@ class PumpSeriesStoreRequest extends FormRequest
     {
         return [
             'brand_id' => ['required', 'exists:tenant.pump_brands,id'],
-            'name' => ['required', 'unique:tenant.pump_series,name'], // TODO: unique only for current brand
+            'name' => ['required'], // TODO: unique only for current brand
             'power_adjustment_id' => ['required', 'exists:tenant.electronic_power_adjustments,id'],
             'category_id' => ['required', 'exists:tenant.pump_categories,id'],
             'types' => ['array'], // TODO: every elem in array should exists in DB
             'applications' => ['array'], // TODO: every elem in array should exists in DB
+            'image' => ['sometimes', 'nullable', 'string']
         ];
     }
 }

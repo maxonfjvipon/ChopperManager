@@ -153,3 +153,7 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 .rounded-card .rounded-card-full-body .ant-card-body {
     height: 100%;
 }
+
+.ant-tree .ant-tree-node-content-wrapper {
+    padding: 0 0px !important;
+}

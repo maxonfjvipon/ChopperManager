@@ -140,7 +140,7 @@ const Edit = () => {
         <ResourceContainer
             title={Lang.get('pages.users.edit.title')}
             actions={has('user_edit') && <SubmitAction label={Lang.get('pages.users.edit.button')} form={formName}/>}
-            back={has('user_access') && <BackToUsersLink/>}
+            extra={has('user_access') && <BackToUsersLink/>}
         >
             <ItemsForm
                 layout="vertical"

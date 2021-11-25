@@ -4,6 +4,7 @@ import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/P
 import {DownOutlined, FileImageOutlined, FilePdfOutlined, UploadOutlined} from "@ant-design/icons";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {Inertia} from "@inertiajs/inertia";
+import Lang from '../../../../../../resources/js/translation/lang'
 
 export const PumpTechInfoUploader = () => {
     const [data, setData] = useState({files: null, folder: null})
@@ -57,29 +58,29 @@ export const PumpTechInfoUploader = () => {
         }} accept=".pdf"/>
         <Dropdown key="upload-actions" trigger={['click']} arrow overlay={
             <Menu key="menu">
-                <Menu.ItemGroup key="menu-item-group-1" title="Images (max 300, .jpg, .jpeg, .png)">
+                <Menu.ItemGroup key="menu-item-group-1" title={Lang.get('pages.pumps.upload_tech_info.images.title')}>
                     <MenuItem key="images" folder="pumps/images">
-                        Pumps
+                        {Lang.get('pages.pumps.upload_tech_info.images.pumps')}
                     </MenuItem>
                     <MenuItem key="images/sizes" folder="pumps/images/sizes">
-                        Pump sizes
+                        {Lang.get('pages.pumps.upload_tech_info.images.pump_sizes')}
                     </MenuItem>
                     <MenuItem key="images/electric_diagrams" folder="pumps/images/electric_diagrams">
-                        Pump electric diagrams
+                        {Lang.get('pages.pumps.upload_tech_info.images.pump_electric_diagrams')}
                     </MenuItem>
                     <MenuItem key="images/cross_sectional_drawings" folder="pumps/images/cross_sectional_drawings">
-                        Pump cross sectional drawings
+                        {Lang.get('pages.pumps.upload_tech_info.images.pump_cross_sectional_drawings')}
                     </MenuItem>
                 </Menu.ItemGroup>
-                <Menu.ItemGroup key="menu-item-group-2" title="Files (max 300, .pdf)">
+                <Menu.ItemGroup key="menu-item-group-2" title={Lang.get('pages.pumps.upload_tech_info.files.title')}>
                     <MenuItem key="files" folder="pumps/files" images={false} icon={<FilePdfOutlined/>}>
-                        Files
+                        {Lang.get('pages.pumps.upload_tech_info.files.files')}
                     </MenuItem>
                 </Menu.ItemGroup>
             </Menu>
         }>
             <PrimaryButton>
-                <UploadOutlined/>Upload tech-info<DownOutlined/>
+                <UploadOutlined/>{Lang.get('pages.pumps.upload_tech_info.title')}<DownOutlined/>
             </PrimaryButton>
         </Dropdown>
     </>

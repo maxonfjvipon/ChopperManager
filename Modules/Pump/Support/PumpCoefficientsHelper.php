@@ -20,7 +20,7 @@ class PumpCoefficientsHelper
 
     public static function createdSingle($pump, $position)
     {
-        $coefficients = Regression::withData(PumpPerformance::by($pump->performance)->lineData($position))->polynomial()->coefficients();
+        $coefficients = Regression::withData(PumpPerformance::by($pump->performance)->asLineData($position))->polynomial()->coefficients();
         return PumpsAndCoefficients::create([
             'pump_id' => $pump->id,
             'position' => $position,

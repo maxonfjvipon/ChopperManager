@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from "antd";
+import {Input, Image} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {useInputRules} from "../../../../../../../resources/js/src/Hooks/input-rules.hook";
 import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permissions.hook";
@@ -66,6 +66,19 @@ const Create = () => {
                 label: Lang.get('pages.pump_series.edit.form.applications'),
                 initialValue: series.data.applications,
             }, input: <MultipleSelection options={applications}/>,
+        }, {
+            values: {
+                name: 'image',
+                label: 'Image path',
+                initialValue: series.data.image,
+            }, input: <Input/>,
+        }, {
+            values: {
+                name: 'picture',
+                // label: Lang.get('pages.pump_series.edit.form.applications'),
+                label: 'Image',
+                // initialValue: series.data.image,
+            }, input: <Image src={series.data.picture} width={300}/>,
         }
     ]
 
@@ -78,7 +91,7 @@ const Create = () => {
         <ResourceContainer
             title={Lang.get('pages.pump_series.edit.title')}
             actions={has('series_edit') && <SubmitAction label={Lang.get('pages.pump_series.edit.button')} form={formName}/>}
-            back={has('series_access', 'brand_access') && <BackToSeriesLink/>}
+            extra={has('series_access', 'brand_access') && <BackToSeriesLink/>}
         >
             <ItemsForm
                 layout="vertical"

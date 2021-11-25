@@ -9,12 +9,11 @@ import {
     Row,
     Space,
     Tree,
-    Divider, notification, Slider,
+    Divider, notification, Slider, List, Image, Spin,
 } from "antd";
 import {RequiredFormItem} from "../../../Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../Shared/Inputs/MultipleSelection";
 import {useStyles} from "../../../Hooks/styles.hook";
-import {Selection} from "../../../Shared/Inputs/Selection";
 import {useCheck} from "../../../Hooks/check.hook";
 import {useHttp} from "../../../Hooks/http.hook";
 import {useGraphic} from "../../../Hooks/graphic.hook";
@@ -33,14 +32,22 @@ import {RoundedCard} from "../../../Shared/Cards/RoundedCard";
 import {CContainer} from "../../../Shared/ResourcePanel/Index/CContainer";
 import {PumpPropsDrawer} from "../Components/PumpPropsDrawer";
 import {FiltersDrawer} from "../Components/FiltersDrawer";
+import {LoadingOutlined} from "@ant-design/icons";
+import {ExportSelectionDrawer} from "../../Projects/Components/ExportSelectionDrawer";
+import {ExportInMomentSelectionDrawer} from "../Components/ExportInMomentSelectionDrawer";
 
 
 const Index = () => {
     // STATE
     const [showBrandsList, setShowBrandsList] = useState(false)
     const [addLoading, setAddLoading] = useState(false)
+    const [baseImage, setBaseImage] = useState(null)
+    // const [checkedAll, setCheckedAll] = useState(false)
+    // const [indeterminate, setIndeteminate] = useState(true)
+    const [hideIcons, setHideIcons] = useState(false)
     const [brandsSeriesList, setBrandsSeriesList] = useState([])
     const [brandsSeriesListValues, setBrandsSeriesListValues] = useState([])
+    // const [allSeriesListOptions, setAllSeriesLitOptions] = useState([])
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
     const [selectedPumps, setSelectedPumps] = useState([])
 
@@ -58,6 +65,7 @@ const Index = () => {
         types,
         defaults,
         selectionRanges,
+        media_path,
     } = selection_props.data
 
     const [brandsValue, setBrandsValue] = useState(selection?.data.pump_brands || defaults.brands)
@@ -71,16 +79,17 @@ const Index = () => {
     const [prevTemperatureValue, setPrevTemperatureValue] = useState(-100)
     const debouncedTemperature = useDebounce(temperatureValue, 500)
 
-    const [limitChecks, setLimitChecks] = useState({
-        power: selection?.data.power_limit_checked || false,
-        ptpLength: selection?.data.ptp_length_limit_checked || false,
-        dnSuction: selection?.data.dn_suction_limit_checked || false,
-        dnPressure: selection?.data.dn_pressure_limit_checked || false,
-    })
+    // const [limitChecks, setLimitChecks] = useState({
+    //     power: selection?.data.power_limit_checked || false,
+    //     ptpLength: selection?.data.ptp_length_limit_checked || false,
+    //     dnSuction: selection?.data.dn_suction_limit_checked || false,
+    //     dnPressure: selection?.data.dn_pressure_limit_checked || false,
+    // })
 
     const [rangeDisabled, setRangeDisabled] = useState(selection ? selection?.data.range_id !== selectionRanges[selectionRanges.length - 1].id : false)
     const [filtersDrawerVisible, setFiltersDrawerVisible] = useState(false)
     const [pumpInfoDrawerVisible, setPumpInfoDrawerVisible] = useState(false)
+    const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
 
     // CONSTS
     const mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(value => {
@@ -102,7 +111,7 @@ const Index = () => {
 
     // STYLES
     const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName, color} = useStyles()
-    const nextBelowStyle = {...fullWidth, ...marginBottomTen}
+    // const nextBelowStyle = {...fullWidth, ...marginBottomTen}
 
     // TEMPERATURE CHANGE HANDLER
     const temperatureChangeHandler = () => value => {
@@ -113,36 +122,40 @@ const Index = () => {
 
     // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
     const brandsSeriesListValuesCheckedHandler = values => {
-        let checked = values.find(value => !brandsSeriesListValues.includes(value))
-        filteredBrandsWithSeries().forEach(brand => {
-            const index = brand.series.findIndex(series => series.id === checked)
-            if (index !== -1) {
-                let array = []
-                if (checkValueIncludesSeriesParams(typesValue, brand.series[index].types)) {
-                    array.push(Lang.get('messages.selections.notification.description.types'))
-                }
-                if (checkValueIncludesSeriesParams(applicationsValue, brand.series[index].applications)) {
-                    array.push(Lang.get('messages.selections.notification.description.applications'))
-                }
-                if (!powerAdjustmentValue.includes(brand.series[index].power_adjustment.id)) {
-                    array.push(Lang.get('messages.selections.notification.description.power_adjustment'))
-                }
-                if (array.length > 0) {
-                    notification.info({
-                        message: Lang.get('messages.selections.notification.attention'),
-                        description:
-                            Lang.get('messages.selections.notification.description.1') + " " +
-                            brand.series[index].name + " " +
-                            Lang.get('messages.selections.notification.description.2') + " "
-                            + array.join(', '),
-                        placement: 'topLeft',
-                        duration: 5
-                    })
-                }
-            }
-        })
-
+        values.sort()
+        let checked = values.filter(value => !brandsSeriesListValues.includes(value) && typeof value === "number")
         // console.log(checked)
+
+        filteredBrandsWithSeries().forEach(brand => {
+            brand.series.forEach(series => {
+                let index = checked.findIndex(ch => series.id === ch)
+                if (index !== -1) {
+                    let array = []
+                    if (checkValueIncludesSeriesParams(typesValue, series.types)) {
+                        array.push(Lang.get('messages.selections.notification.description.types'))
+                    }
+                    if (checkValueIncludesSeriesParams(applicationsValue, series.applications)) {
+                        array.push(Lang.get('messages.selections.notification.description.applications'))
+                    }
+                    if (!powerAdjustmentValue.includes(series.power_adjustment.id)) {
+                        array.push(Lang.get('messages.selections.notification.description.power_adjustment'))
+                    }
+                    if (array.length > 0) {
+                        notification.info({
+                            message: Lang.get('messages.selections.notification.attention'),
+                            description:
+                                Lang.get('messages.selections.notification.description.1') + " " +
+                                series.name + " " +
+                                Lang.get('messages.selections.notification.description.2') + " " +
+                                array.join(', '),
+                            placement: 'topLeft',
+                            duration: 5
+                        })
+                    }
+                }
+
+            })
+        })
         setBrandsSeriesListValues(values)
     }
 
@@ -162,22 +175,37 @@ const Index = () => {
         }
     }, [selection])
 
+    // TODO: fix alt path
+    const seriesIcon = (src) => (src == null || src === "")
+        ? <></>
+        : <img src={media_path + src} alt={media_path + 'no_image.jpg'} width={60}/>
+
     // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
     useEffect(() => {
-        const _brandsSeriesList = [];
+        const _brandsSeriesList = []
         const _brandsSeriesTree = []
+        // const _allSeriesListOptions = []
         if (brandsValue.length > 0) {
             filteredBrandsWithSeries().forEach(brand => {
                 let children = []
                 brand.series.forEach(series => {
                     _brandsSeriesList.push({
-                        label: brand.name + " " + series.name,
-                        value: series.id
+                        label: <>
+                            {!hideIcons && seriesIcon(series.image)}
+                            <span style={{marginLeft: hideIcons ? 0 : 5}}>{brand.name + " " + series.name}</span>
+                        </>,
+                        value: series.id,
+                        image: series.image,
                     })
                     children.push({
-                        title: series.name,
+                        title: <>
+                            {!hideIcons && seriesIcon(series.image)}
+                            <span style={{marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
+                        </>,
                         key: series.id,
+                        image: series.image,
                     })
+                    // _allSeriesListOptions.push(series.id)
                 })
                 _brandsSeriesTree.push({
                     title: brand.name,
@@ -186,9 +214,10 @@ const Index = () => {
                 })
             })
         }
+        // setAllSeriesLitOptions(_allSeriesListOptions)
         setBrandsSeriesList(_brandsSeriesList)
         setBrandsSeriesTree(_brandsSeriesTree)
-    }, [brandsValue, brandsWithSeries])
+    }, [brandsValue, brandsWithSeries, hideIcons])
 
     // FILTER BRANDS HANDLER
     useEffect(() => {
@@ -233,17 +262,22 @@ const Index = () => {
                     if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
                         _producersSeriesListValues.push(series.id)
                     }
+                    // todo check if hide icons were clicked
                     if (temperatureWasChanged) {
                         const colorStyle = color(hasTemp ? 'black' : 'red')
                         _producersSeriesList.push({
-                            label: <span
-                                style={colorStyle}>{brandsSeries}</span>,
+                            label: <>
+                                {!hideIcons && seriesIcon(series.image)}
+                                <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{brandsSeries}</span>
+                            </>,
                             value: series.id,
-                            disabled: !hasTemp
+                            disabled: !hasTemp,
                         })
                         children.push({
-                            title: <span
-                                style={colorStyle}>{series.name}</span>,
+                            title: <>
+                                {!hideIcons && seriesIcon(series.image)}
+                                <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
+                            </>,
                             key: series.id,
                             disabled: !hasTemp
                         })
@@ -268,6 +302,15 @@ const Index = () => {
             setBrandsSeriesListValues(_producersSeriesListValues)
         }
     }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList])
+
+    // useEffect(() => {
+    //     filteredBrandsWithSeries().forEach(brand => {
+    //         let children = []
+    //         brand.series.forEach(series => {
+    //
+    //         })
+    //     })
+    // }, [hideIcons])
 
     // SAVE HANDLER
     const addSelectionToProjectClickHandler = async () => {
@@ -324,16 +367,66 @@ const Index = () => {
             series_ids: brandsSeriesListValues,
         }
         prepareRequestBody(body)
-        console.log(body)
         try {
+            // axios.request({
+            //     url: tRoute('selections.pump.single.select'),
+            //     method: 'POST',
+            //     data: body,
+            // }).then(resp => {
+            //     console.log(resp.data)
+            // })
+
             const data = await postRequest(tRoute('selections.pump.single.select'), body, true)
-            console.log(data.selected_pumps)
-            setWorkingPoint(data.working_point)
-            setDefaultSystemPerformance(data.default_system_performance)
+            console.log(data)
+            // setWorkingPoint(data.working_point)
+            // setDefaultSystemPerformance(data.default_system_performance)
             setSelectedPumps(data.selected_pumps)
         } catch (e) {
         }
     }
+
+    useEffect(() => {
+        if (stationToShow) {
+            // setBaseImage(null)
+            // document.getElementById('for-graphic').innerHTML = ""
+            if (stationToShow.svg === undefined) {
+                const body = {
+                    pump_id: stationToShow.pump_id,
+                    pumps_count: stationToShow.pumps_count,
+                    main_pumps_count: stationToShow.main_pumps_count,
+                    head: stationToShow.head,
+                    flow: stationToShow.flow,
+                    intersection_point: {
+                        flow: stationToShow.intersection_point.flow,
+                        head: stationToShow.intersection_point.head,
+                    }
+                }
+                try {
+                    axios.request({
+                        url: tRoute('selections.pump.curves'),
+                        method: 'POST',
+                        data: body,
+                    }).then(res => {
+                        // console.log(baseImage)
+                        // setBaseImage(res.data)
+                        document.getElementById('for-graphic').innerHTML = res.data
+                        stationToShow.svg = res.data
+                    })
+                } catch (e) {
+                    console.log(e)
+                }
+            } else {
+                document.getElementById('for-graphic').innerHTML = stationToShow.svg
+            }
+        }
+    }, [stationToShow])
+
+    // const onCheckAllChange = e => {
+    //     setCheckedAll(e.target.checked)
+    //     setIndeteminate(false)
+    //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
+    //     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
+    // }
 
     return (
         <>
@@ -343,7 +436,7 @@ const Index = () => {
                     : Lang.get('pages.selections.single.title_new')}
                 // backTitle={Lang.get(selection ? 'pages.selections.back.to_project' : 'pages.selections.back.to_selections_dashboard')}
                 // backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
-                back={selection
+                extra={selection
                     ? [{
                         title: Lang.get('pages.selections.back.to_project'),
                         href: tRoute('projects.show', project_id),
@@ -363,15 +456,34 @@ const Index = () => {
                 }
             >
                 <Row justify="space-around" gutter={[16, 16]}>
-                    <Col xxl={2} xl={3}>
-                        <Checkbox
-                            checked={showBrandsList}
-                            onChange={e => {
-                                setShowBrandsList(e.target.checked)
-                            }}
-                        >
-                            {Lang.get('pages.selections.single.grouping')}
-                        </Checkbox>
+                    <Col xxl={hideIcons ? 2 : 3} xl={hideIcons ? 3 : 4}>
+                        <Row>
+                            <Col xs={24}>
+                                <Checkbox
+                                    checked={showBrandsList}
+                                    onChange={e => {
+                                        setShowBrandsList(e.target.checked)
+                                    }}
+                                >
+                                    <span
+                                        style={{marginLeft: hideIcons ? 0 : 5}}>{Lang.get('pages.selections.single.grouping')}</span>
+                                </Checkbox>
+                            </Col>
+                            {/*<Col xs={24}>*/}
+                            {/*    <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkedAll}>*/}
+                            {/*        Check all*/}
+                            {/*    </Checkbox>*/}
+                            {/*</Col>*/}
+                            <Col xs={24}>
+                                <Checkbox checked={hideIcons} onChange={e => {
+                                    setHideIcons(e.target.checked)
+                                }}>
+                                    <span style={{marginLeft: hideIcons ? 0 : 5}}>
+                                        {Lang.get('pages.selections.single.hide_icons')}
+                                    </span>
+                                </Checkbox>
+                            </Col>
+                        </Row>
                         <Divider style={margin.all("5px 0 5px")}/>
                         {showBrandsList && <Tree
                             defaultExpandAll
@@ -379,20 +491,31 @@ const Index = () => {
                             treeData={brandsSeriesTree}
                             checkedKeys={brandsSeriesListValues}
                             onCheck={brandsSeriesListValuesCheckedHandler}
-
                         />}
+                        {/*{!showBrandsList && <List*/}
+                        {/*    size="small"*/}
+                        {/*    style={{overflow: "scroll", height: "100%", flex: "auto"}}*/}
+                        {/*    dataSource={brandsSeriesList}*/}
+                        {/*    renderItem={item => (*/}
+                        {/*        <List.Item extra={<Image width={50} src={'/media/1/' + item.img}/>}>*/}
+                        {/*            <List.Item.Meta*/}
+                        {/*                avatar={<Checkbox/>}*/}
+                        {/*                title={item.label}*/}
+                        {/*            />*/}
+                        {/*        </List.Item>*/}
+                        {/*    )}*/}
+                        {/*/>}*/}
                         {!showBrandsList && <Checkbox.Group
                             options={brandsSeriesList}
                             value={brandsSeriesListValues}
                             onChange={brandsSeriesListValuesCheckedHandler}
                         />}
                     </Col>
-                    <Col xxl={22} xl={21}>
+                    <Col xxl={hideIcons ? 22 : 21} xl={hideIcons ? 21 : 20}>
                         {/*<Row gutter={[10, 10]}>*/}
                         <Form
                             name={fullSelectionFormName}
                             form={fullSelectionForm}
-                            // onFinish={addSelectionToProjectClickHandler}
                             layout="vertical"
                         >
                             {/*<Col xs={24}>*/}
@@ -668,16 +791,27 @@ const Index = () => {
                             <Col xs={9}>
                                 <RoundedCard
                                     className={'flex-rounded-card'}
+                                    style={{height: "100%"}}
                                     type="inner"
                                     title={stationToShow?.name}
-                                    extra={stationToShow && <a onClick={e => {
-                                        e.preventDefault()
-                                        setPumpInfoDrawerVisible(true)
-                                    }}>
-                                        Описание насоса>>
-                                    </a>}
+                                    extra={stationToShow && <Space>
+                                        <a onClick={e => {
+                                            e.preventDefault()
+                                            // console.log(stationToShow)
+                                            setExportDrawerVisible(true)
+                                        }}>{Lang.get('pages.selections.single.graphic.export')}</a>
+                                        <a onClick={e => {
+                                            e.preventDefault()
+                                            setPumpInfoDrawerVisible(true)
+                                        }}>
+                                            {Lang.get('pages.selections.single.graphic.info')}>>
+                                        </a>
+                                    </Space>}
                                 >
-                                    <PSHCDiagram multiline/>
+                                    <div id="for-graphic"/>
+                                    {/*{(stationToShow && !baseImage) && <Spin style={{margin: "0 auto"}} indicator={<LoadingOutlined style={{fontSize: 50}} spin/>}/>}*/}
+                                    {/*{baseImage && <img src={"data:image/svg+xml;utf-8;base64," + baseImage}/>}*/}
+                                    {/*<PSHCDiagram multiline/>*/}
                                 </RoundedCard>
                             </Col>
                         </Row>
@@ -708,8 +842,11 @@ const Index = () => {
                     {Lang.get('pages.selections.single.exit')}
                 </SecondaryButton>}
             </BoxFlexEnd>
-            {stationToShow && <PumpPropsDrawer visible={pumpInfoDrawerVisible} setVisible={setPumpInfoDrawerVisible} pumpInfo={stationToShow?.pump_info}/>}
+            {stationToShow && <PumpPropsDrawer visible={pumpInfoDrawerVisible} setVisible={setPumpInfoDrawerVisible}
+                                               pumpInfo={stationToShow?.pump_info}/>}
             <FiltersDrawer {...filtersDrawerProps}/>
+            {stationToShow && <ExportInMomentSelectionDrawer visible={exportDrawerVisible} setVisible={setExportDrawerVisible}
+                                           stationToShow={stationToShow}/>}
         </>
     )
 }

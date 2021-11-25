@@ -3,16 +3,25 @@
 namespace Modules\Selection\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\AdminPanel\Entities\SelectionType;
+use Modules\Core\Support\TenantStorage;
+use Modules\Selection\Actions\ExportInMomentSelectionAction;
+use Modules\Selection\Actions\ExportSelectionAction;
+use Modules\Selection\Actions\MakeSelectionCurvesAction;
 use Modules\Selection\Actions\MakeSelectionAction;
 use Modules\Selection\Entities\SinglePumpSelection;
+use Modules\Selection\Http\Requests\ExportInMomentSinglePumpSelectionRequest;
+use Modules\Selection\Http\Requests\ExportSinglePumpSelectionRequest;
+use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 use Modules\Selection\Http\Requests\MakeSelectionRequest;
 use Modules\Selection\Http\Requests\StoreSelectionRequest;
 use Modules\Selection\Http\Requests\UpdateSelectionRequest;
@@ -60,6 +69,7 @@ class SelectionsController extends Controller
      * Display selection
      *
      * @param SinglePumpSelection $selection
+     * @return Response
      * @throws AuthorizationException
      */
     public function show(SinglePumpSelection $selection)
@@ -130,13 +140,61 @@ class SelectionsController extends Controller
         return $makeSelectionAction->execute($request);
     }
 
-    /*
-     * Restore the specified resource
+    /**
+     * Restore selection
+     *
+     * @param $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function restore($id): RedirectResponse
     {
         $this->authorize('selection_restore');
         SinglePumpSelection::withTrashed()->find($id)->restore();
         return Redirect::back();
+    }
+
+    /**
+     * Get image for selection
+     *
+     * @param CurvesForSelectionRequest $request
+     * @param MakeSelectionCurvesAction $action
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function curves(CurvesForSelectionRequest $request, MakeSelectionCurvesAction $action): JsonResponse
+    {
+        $this->authorize('selection_create');
+        $this->authorize('selection_edit');
+        return $action->execute($request);
+    }
+
+    /**
+     * Export the selection
+     *
+     * @param ExportSinglePumpSelectionRequest $request
+     * @param SinglePumpSelection $selection
+     * @param ExportSelectionAction $action
+     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
+     */
+    public function export(ExportSinglePumpSelectionRequest $request, SinglePumpSelection $selection, ExportSelectionAction $action): \Illuminate\Http\Response
+    {
+        $this->authorize('selection_export');
+        return $action->execute($request, $selection);
+    }
+
+    /**
+     * Export selection in moment
+     *
+     * @param ExportInMomentSinglePumpSelectionRequest $request
+     * @param ExportInMomentSelectionAction $action
+     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
+     */
+    public function exportInMoment(ExportInMomentSinglePumpSelectionRequest $request, ExportInMomentSelectionAction $action): \Illuminate\Http\Response
+    {
+        $this->authorize('selection_export');
+        return $action->execute($request);
     }
 }

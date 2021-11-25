@@ -27,28 +27,21 @@ InertiaProgress.init({
     // showSpinner: true
 });
 
-// const app = document.getElementById('app');
-
-// render(
-//     <InertiaApp
-//         initialPage={JSON.parse(app.dataset.page)}
-//         resolveComponent={async name => {
-//             let parts = name.split('::')
-//             if (parts.length > 1) {
-//                 if (parts[0] === "AdminPanel")
-//                     return import(`~/AdminPanel/Resources/assets/js/${parts[1]}`).then(module => module.default)
-//                 if (parts[0] === "Pump")
-//                     return import(`~/Pump/Resources/assets/js/${parts[1]}`).then(module => module.default)
-//                 if (parts[0] === "PumpProducer")
-//                     return import(`~/PumpProducer/Resources/assets/js/${parts[1]}`).then(module => module.default)
-//             } else {
-//                 return import('./src/Pages/' + name).then(module => module.default)
-//             }
-//         }}
-//     />,
-//     app
-// );
-
+const app = document.getElementById('app');
+// const init = JSON.parse(app.dataset.page)
+// const context = require.context("../../Modules", true, /Pages\/(.+)\.js$/, "lazy");
+//
+// const resolver = name => {
+//     let parts = name.split('::')
+//     if (parts.length > 1) {
+//         return context("./" + parts[0] + '/Resources/assets/js/Pages/' + parts[1] + '.js').then(module => module.default)
+//     } else {
+//         return import('./src/Pages/' + name).then(module => module.default)
+//     }
+// }
+//
+// render(<InertiaApp initialPage={init} resolveComponent={resolver}/>, app);
+//
 createInertiaApp({
     resolve: name => {
         let parts = name.split('::')

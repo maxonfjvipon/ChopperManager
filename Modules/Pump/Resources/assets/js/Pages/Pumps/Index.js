@@ -204,10 +204,7 @@ const Index = () => {
 
     return (
         <>
-            <ImportErrorBagDrawer
-                head={{key: Lang.get('validation.attributes.import.pumps.article_num_main'), value: "article_num"}}
-                title={Lang.get('pages.pumps.errors_title')}
-            />
+            <ImportErrorBagDrawer title={Lang.get('pages.pumps.errors_title')}/>
             <IndexContainer
                 title={Lang.get('pages.pumps.title')}
                 actions={filterPermissionsArray([

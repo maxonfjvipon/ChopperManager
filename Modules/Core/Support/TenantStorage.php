@@ -18,9 +18,14 @@ class TenantStorage
         $this->storage = Storage::disk($disk);
     }
 
-    private function currentTenantFolder(): string
+    public function currentTenantFolder(): string
     {
         return $this->getTenantModel()::current()->id . '/';
+    }
+
+    public function urlToTenantFolder(): string
+    {
+        return $this->storage->url($this->currentTenantFolder());
     }
 
     public function urlToImage($name): string

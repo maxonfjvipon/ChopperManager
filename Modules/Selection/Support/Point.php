@@ -4,7 +4,7 @@ namespace Modules\Selection\Support;
 
 class Point
 {
-    private $x, $y;
+    private float $x, $y;
 
     public function __construct($x, $y)
     {
@@ -12,21 +12,22 @@ class Point
         $this->y = $y;
     }
 
-    public function x()
-    {
-        return $this->x;
-    }
-
-    public function y()
-    {
-        return $this->y;
-    }
-
     public function asArray(): array
     {
         return [
             'x' => $this->x,
-            'y' => $this->y
+            'y' => $this->y,
         ];
     }
+
+    public function x(): float
+    {
+        return $this->x;
+    }
+
+    public function y(): float
+    {
+        return $this->y;
+    }
+
 }

@@ -405,7 +405,7 @@ const Index = () => {
                     : Lang.get('pages.selections.single.title_new')}
                 // backTitle={Lang.get(selection ? 'pages.selections.back.to_project' : 'pages.selections.back.to_selections_dashboard')}
                 // backHref={tRoute(selection ? 'projects.show' : 'selections.dashboard', project_id)}
-                back={selection
+                extra={selection
                     ? [{
                         title: Lang.get('pages.selections.back.to_project'),
                         href: tRoute('projects.show', project_id),

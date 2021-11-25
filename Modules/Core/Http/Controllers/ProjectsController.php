@@ -4,12 +4,15 @@ namespace Modules\Core\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Core\Actions\ExportProjectAction;
 use Modules\Core\Entities\Project;
+use Modules\Core\Http\Requests\ExportProjectRequest;
 use Modules\Core\Http\Requests\ProjectStoreRequest;
 use Modules\Core\Http\Requests\ProjectUpdateRequest;
 use Modules\Core\Transformers\EditProjectResource;
@@ -27,7 +30,12 @@ class ProjectsController extends Controller
     {
         $this->authorize('project_access');
         return Inertia::render('Projects/Index', [
-            'projects' => auth()->user()->projects()->withCount('selections')->get(),
+            'projects' => auth()->user()->projects()
+                ->withCount('selections')
+                ->with(['selections' => function ($query) {
+                    $query->select('id', 'project_id', 'selected_pump_name', 'flow', 'head');
+                }])
+                ->get(),
         ]);
     }
 
@@ -117,13 +125,30 @@ class ProjectsController extends Controller
         return Redirect::back();
     }
 
-    /*
-     * Restore the specified resource
+    /**
+     * @param $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function restore($id): RedirectResponse
     {
         $this->authorize('project_restore');
         Project::withTrashed()->find($id)->restore();
         return Redirect::route('projects.index');
+    }
+
+    /**
+     * Export project
+     *
+     * @param ExportProjectRequest $request
+     * @param Project $project
+     * @param ExportProjectAction $action
+     * @return \Illuminate\Http\Response
+     * @throws AuthorizationException
+     */
+    public function export(ExportProjectRequest $request, Project $project, ExportProjectAction $action): \Illuminate\Http\Response
+    {
+        $this->authorize('project_export');
+        return $action->execute($project, $request);
     }
 }

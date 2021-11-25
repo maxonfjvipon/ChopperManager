@@ -26,6 +26,9 @@ class LoginController extends Controller
      */
     public function showLoginForm(): Response
     {
+        if (!session()->has('url.intended')) {
+            session(['url.intended' => url()->previous()]);
+        }
         return Inertia::render("Auth::Login");
     }
 

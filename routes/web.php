@@ -17,12 +17,12 @@ use Modules\User\Http\Controllers\ProfileController;
 */
 
 // CHECK LOCALE
-Route::prefix(LaravelLocalization::setLocale())
-    ->middleware('localizationRedirect')
-    ->middleware('localeSessionRedirect')
-    ->group(function () {
-        if (Tenant::checkCurrent()) {
-            Route::domain(Tenant::current()->domain)->group(function () {
+//Route::prefix(LaravelLocalization::setLocale())
+//    ->middleware('localizationRedirect')
+//    ->middleware('localeSessionRedirect')
+//    ->group(function () {
+//        if (Tenant::checkCurrent()) {
+//            Route::domain(Tenant::current()->domain)->group(function () {
 //                Route::middleware('guest')->group(function () {
 //                    // LOGIN
 //                    Route::get('login')->name('login')->uses([LoginController::class, 'showLoginForm']);
@@ -37,7 +37,7 @@ Route::prefix(LaravelLocalization::setLocale())
 //                Route::post('logout')->name('logout')->uses([LoginController::class, 'logout']);
 
                 // AUTHORIZED
-                Route::middleware('auth.module')->group(function () {
+//                Route::middleware('auth.module')->group(function () {
 
                     // EMAIL VERIFICATION
 //                    Route::get('/email/verify')->name('verification.notice')->uses([EmailVerificationController::class, 'notice']);
@@ -46,7 +46,7 @@ Route::prefix(LaravelLocalization::setLocale())
 //                        ->middleware('throttle:6,1')->uses([EmailVerificationController::class, 'resendVerification']);
 
                     // ONLY WITH VERIFIED EMAIL
-                    Route::middleware('verified')->group(function () {
+//                    Route::middleware('verified')->group(function () {
 
                         // PROJECTS
 //                        Route::redirect('/', app()->getLocale() . '/projects')->name('index');
@@ -92,8 +92,8 @@ Route::prefix(LaravelLocalization::setLocale())
 //                            Route::post('price_list')->name('pumps.import.price_lists')->uses([PumpsController::class, 'importPriceLists']);
 //                        });
 //                        Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);
-                    });
-                });
-            });
-        }
-    });
+//                    });
+//                });
+//            });
+//        }
+//    });

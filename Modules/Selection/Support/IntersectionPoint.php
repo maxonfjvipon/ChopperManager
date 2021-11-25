@@ -12,7 +12,7 @@ class IntersectionPoint
     {
     }
 
-    public static function by($coefficients, $flow, $head): IntersectionPoint
+    public static function byCoefficients($coefficients, $flow, $head): IntersectionPoint
     {
         if (self::$instance === null) {
             self::$instance = new self;

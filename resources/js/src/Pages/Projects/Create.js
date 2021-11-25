@@ -37,7 +37,7 @@ const Create = () => {
         <ResourceContainer
             title={Lang.get('pages.projects.create.title')}
             actions={has('project_create') && <SubmitAction label={Lang.get('pages.projects.create.button')} form={formName}/>}
-            back={has('project_access') && <BackToProjectsLink/>}
+            extra={has('project_access') && <BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"

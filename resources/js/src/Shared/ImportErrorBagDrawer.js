@@ -4,7 +4,7 @@ import {usePage} from "@inertiajs/inertia-react";
 import Row from "antd/es/descriptions/Row";
 import {RoundedCard} from "./Cards/RoundedCard";
 
-export const ImportErrorBagDrawer = ({head, title}) => {
+export const ImportErrorBagDrawer = ({title}) => {
     const {errorBag} = usePage().props.flash
     const [visible, setVisible] = useState(false)
 
@@ -24,8 +24,9 @@ export const ImportErrorBagDrawer = ({head, title}) => {
             onClose={() => {
                 setVisible(false)
             }}
+            title={title}
         >
-            <Typography.Title level={3}>{title}</Typography.Title>
+            {/*<Typography.Title level={3}>{title}</Typography.Title>*/}
             {errorBag && <List
                 itemLayout="horizontal"
                 dataSource={errorBag}
@@ -33,29 +34,15 @@ export const ImportErrorBagDrawer = ({head, title}) => {
                     <RoundedCard style={{backgroundColor: "#FF604F", border: "3px solid #c44538", margin: "10px 0px"}}>
                         <List.Item>
                             <List.Item.Meta
-                                title={<span style={{color: "white"}}>{head.key + ": " + item[head.value]}</span>}
+                                title={<span style={{color: "white"}}>
+                                    {item.head.key + ": " + item.head.value}
+                                </span>}
                                 description={<span style={{color: "white"}}>{item.message}</span>}
                             />
                         </List.Item>
                     </RoundedCard>
                 )}
             />}
-
-            {/*/!*<Row gutter={[10, 10]}>*!/*/}
-            {/*    {errorBag && errorBag.map(error => (*/}
-            {/*        // <Col xs={24}>*/}
-            {/*            <RoundedCard style={{backgroundColor: "red"}}>*/}
-            {/*                <span>{error.message}</span>*/}
-            {/*                /!*{items.map(item => (*!/*/}
-            {/*                /!*    <span>{item.value}</span>*!/*/}
-            {/*                /!*))}*!/*/}
-            {/*                /!*{items !== undefined && items.map(item => (*!/*/}
-            {/*                /!*    <span style={{color: 'white'}}>{item.key + ": " + error[item.value]}</span>*!/*/}
-            {/*                /!*))}*!/*/}
-            {/*            </RoundedCard>*/}
-            {/*        // </Col>*/}
-            {/*    ))}*/}
-            {/*/!*</Row>*!/*/}
         </Drawer>
     )
 }

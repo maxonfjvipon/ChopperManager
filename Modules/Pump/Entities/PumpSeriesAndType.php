@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
+use Modules\AdminPanel\Entities\Tenant;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class PumpSeriesAndType extends Model
 {
@@ -18,25 +20,25 @@ class PumpSeriesAndType extends Model
     public $incrementing = false;
     protected $guarded = [];
     public $timestamps = false;
-    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection, UsesTenantModel;
 
-    public static function createFromRequestForSeries(PumpSeriesStoreRequest $request, PumpSeries $series, $method = "insert")
+    public static function createForSeries(PumpSeries $series, $types)
     {
-        if ($request->types) {
-            return DB::table('pump_series_and_types')
+        if ($types) {
+            return DB::table(Tenant::current()->database . '.pump_series_and_types')
                 ->insertOrIgnore(array_map(function ($type_id) use ($series) {
                     return ['type_id' => $type_id, 'series_id' => $series->id];
-                }, $request->types));
+                }, $types));
         }
     }
 
-    public static function updateFromRequestForSeries(PumpSeriesUpdateRequest $request, PumpSeries $series)
+    public static function updateForSeries(PumpSeries $series, $types)
     {
-        if ($request->types) {
+        if ($types) {
             self::whereSeriesId($series->id)
-                ->whereNotIn('type_id', $request->types)
+                ->whereNotIn('type_id', $types)
                 ->delete();
-            return self::createFromRequestForSeries($request, $series, 'upsert');
+            return self::createForSeries($series, $types);
         }
     }
 

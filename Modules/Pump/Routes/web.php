@@ -24,7 +24,13 @@ Route::get('pump_brands/{brand}/restore')->name('pump_brands.restore')->uses([$b
 Route::resource('pump_brands', $brandsController)->except(['index', 'show']);
 
 // PUMP SERIES
-Route::get('pump_series/{series}/restore')->name('pump_series.restore')->uses([$seriesController, 'restore']);
+Route::prefix('pump_series')->group(function () use ($seriesController) {
+    Route::get('{series}/restore')->name('pump_series.restore')->uses([$seriesController, 'restore']);
+    Route::prefix('import')->group(function () use ($seriesController) {
+        Route::post('/')->name('pump_series.import')->uses([$seriesController, 'import']);
+        Route::post('media')->name('pump_series.import.media')->uses([$seriesController, 'importMedia']);
+    });
+});
 Route::resource('pump_series', $seriesController)->except(['show']);
 
 // PUMPS

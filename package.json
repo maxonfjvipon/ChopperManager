@@ -31,6 +31,7 @@
         "@inertiajs/progress": "^0.2.6",
         "antd": "^4.16.11",
         "classnames": "^2.3.1",
+        "downloadjs": "^1.4.7",
         "ignore-loader": "^0.1.2",
         "lang.js": "^1.1.14",
         "laravel-mix-merge-manifest": "^2.0.0",

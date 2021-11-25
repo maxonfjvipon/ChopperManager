@@ -31,6 +31,11 @@ class ImportAction
         $this->flashMessageSuccess = $flashMessageSuccess;
     }
 
+    protected function idsArrayFromString($string, $separator = ","): array
+    {
+        return array_map(fn($id) => trim($id), explode($separator, $string));
+    }
+
     public function execute()
     {
         ini_set('max_execution_time', $this->MAX_EXECUTION_TIME);
@@ -42,12 +47,6 @@ class ImportAction
                     ->withoutHeaders()
                     ->startRow(2)
                     ->importSheets($file, function ($entity) use (&$errorBar) {
-//                        $keysCount = count(array_keys($entity));
-//                        if ($keysCount != 23) {
-//                            for ($index = $keysCount; $index < 23; $index++) {
-//                                $entity[$index] = null;
-//                            }
-//                        }
                         try {
                             validator()->make($entity, $this->rules, $this->messages, $this->attributes)->validate();
                         } catch (ValidationException $exception) {
@@ -68,6 +67,7 @@ class ImportAction
             }
             return Redirect::back()->with('success', 'Import was successful');
         } catch (IOException | UnsupportedTypeException | ReaderNotOpenedException | Exception $exception) {
+            Log::error($exception->getTraceAsString());
             Log::error($exception->getMessage());
             return Redirect::route($this->redirectRouteName)
                 ->withErrors(__('validation.import.exception', ['attribute' => $this->flashMessageSuccess]));

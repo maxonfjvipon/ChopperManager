@@ -40,7 +40,7 @@ const Edit = () => {
         <ResourceContainer
             title={Lang.get('pages.projects.edit.title')}
             actions={has('project_edit') && <SubmitAction label={Lang.get('pages.projects.edit.button')} form={formName}/>}
-            back={has('project_access') && <BackToProjectsLink/>}
+            extra={has('project_access') && <BackToProjectsLink/>}
         >
             <ItemsForm
                 layout="vertical"

@@ -14,6 +14,8 @@ use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
+use Modules\Selection\Support\PolynomialRegression;
+use Modules\Selection\Support\PPumpPerformance;
 use Modules\Selection\Support\PumpPerformance;
 use Modules\Selection\Support\Regression;
 
@@ -86,8 +88,11 @@ class ImportPumpsAction extends ImportAction
     protected function errorBagEntity($entity, $message): array
     {
         return [
+            'head' => [
+                'key' => __('validation.attributes.import.pumps.article_num_main'),
+                'value' => $entity[0] !== "" ? $entity[0] : 'Unknown',
+            ],
             'file' => '', // TODO
-            'article_num' => $entity[0] !== "" ? $entity[0] : 'Unknown',
             'message' => $message[0],
         ];
     }
@@ -118,7 +123,7 @@ class ImportPumpsAction extends ImportAction
                 'electric_diagram_image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
                 'cross_sectional_drawing_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
             ],
-            'files' => array_key_exists(22, $entity) ? explode(",", $entity[22]) : []
+            'files' => array_key_exists(22, $entity) ? $this->idsArrayFromString($entity[22]) : []
         ];
     }
 
@@ -161,9 +166,11 @@ class ImportPumpsAction extends ImportAction
                 $pumpsAndCoefficients = [];
                 foreach ($pumps as $pump) {
                     if ($pump->coefficients->isEmpty()) {
-                        $pumpPerformance = PumpPerformance::by($pump->performance);
+//                        $pumpPerformance = new PumpPerformance($pump->performance);
+                        $pumpPerformance = new PPumpPerformance($pump);
                         for ($pos = 1; $pos < 10; ++$pos) {
-                            $coefficients = Regression::withData($pumpPerformance->lineData($pos))->polynomial()->coefficients();
+                            $coefficients = PolynomialRegression::fromData($pumpPerformance->asArrayData($pos))->coefficients();
+//                            $coefficients = Regression::withData($pumpPerformance->asLineData($pos))->polynomial()->coefficients();
                             $pumpsAndCoefficients[] = [
                                 'pump_id' => $pump->id,
                                 'position' => $pos,

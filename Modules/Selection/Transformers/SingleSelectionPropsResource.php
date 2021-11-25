@@ -4,6 +4,7 @@ namespace Modules\Selection\Transformers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\ElPowerAdjustment;
@@ -30,6 +31,7 @@ class SingleSelectionPropsResource extends JsonResource
                 $query->orderBy('name');
             }, 'series.types', 'series.applications', 'series.power_adjustment'])
                 ->get(),
+            'media_path' => (new TenantStorage())->urlToTenantFolder(), // TODO: fix this
             'types' => PumpType::all(),
             'connectionTypes' => ConnectionType::all(),
             'applications' => PumpApplication::all(),

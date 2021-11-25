@@ -13,9 +13,7 @@ export const CContainer = ({
                                title,
                                children,
                                extraButtons,
-                               back,
-                               // backHref,
-                               // backTitle,
+                               extra,
                                type,
                            }) => {
 
@@ -24,12 +22,6 @@ export const CContainer = ({
         : (title && !href)
             ? <a href={"javascript:history.back()"}>{"<<s" + title}</a>
             : null
-
-    // const backLink = (backHref && backTitle)
-    //     ? <Link href={backHref}>{"<<" + backTitle}</Link>
-    //     : (backTitle && !backHref)
-    //         ? <a href={"javascript:history.back()"}>{"<<" + backTitle}</a>
-    //         : null
 
     const [noActions, setNoActions] = useState(true)
 
@@ -60,9 +52,8 @@ export const CContainer = ({
                 }}
                 title={title}
                 extra={<Space>
-                    {back?.map(b => backLink(b.title, b.href))}
+                    {extra?.map(b => backLink(b.title, b.href))}
                 </Space>}
-                // extra={backLink}
                 type={type}
             >
                 <div className="site-layout-background">
