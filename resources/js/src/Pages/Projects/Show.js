@@ -141,7 +141,7 @@ const Show = () => {
                     <a onClick={event => {
                         event.preventDefault()
                         setExportProjectVisible(true)
-                    }}>Export project</a>,
+                    }}>{Lang.get('pages.projects.export.title')}</a>,
                     <BackToProjectsLink/>
                 ])}
             >
