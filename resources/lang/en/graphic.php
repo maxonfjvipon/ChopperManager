@@ -11,5 +11,4 @@ return [
         'head' => 'Head',
         'intersection_point' => 'Intersection point'
     ]
-
 ];
