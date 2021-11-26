@@ -12,7 +12,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\PumpManager\Entities\UserAndPumpSeries;
 use Modules\User\Entities\Discount;
+use Modules\User\Entities\User;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpSeries extends Model

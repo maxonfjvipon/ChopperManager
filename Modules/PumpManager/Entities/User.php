@@ -87,11 +87,22 @@ class  User extends \Modules\User\Entities\User
         return $this->available_brands()->get()->all();
     }
 
+    public static function addNewSeriesForSuperAdmins(PumpSeries $series)
+    {
+        foreach (self::with(['available_series' => function ($query) {
+            $query->select('id');
+        }])->role('SuperAdmin')->get(['id'])->all() as $user) {
+            UserAndPumpSeries::updateAvailableSeriesForUser(
+                array_merge($user->available_series->map(fn($series) => $series->id)->toArray(), [$series->id]),
+                $user
+            );
+        }
+    }
+
     public function updateAvailablePropsFromRequest(UpdateUserRequest $request): bool
     {
-        UserAndPumpSeries::updateAvailableSeriesForUserFromRequest($request, $this);
-        UserAndSelectionType::updateAvailableSelectionTypesForUserFromRequest($request, $this);
-        return true;
+        return UserAndPumpSeries::updateAvailableSeriesForUser($request->available_series_ids, $this)
+            && UserAndSelectionType::updateAvailableSelectionTypesForUser($request->available_selection_type_ids, $this);
     }
 
     private function availableSeriesRelationQuery(): Closure

@@ -37,22 +37,22 @@ class Discount extends Model
 
     }
 
-    private static function updateFromRequestForUserForSeries($request, $user): int
+    private static function updateFromRequestForUserForSeries(array $available_series_ids, $user): int
     {
-        return self::updateFromArrayForUserFor('pump_series', $user, $request->available_series_ids);
+        return self::updateFromArrayForUserFor('pump_series', $user, $available_series_ids);
     }
 
-    private static function updateFromRequestForUserForBrand($request, $user): int
+    private static function updateFromRequestForUserForBrand(array $available_series_ids, $user): int
     {
-        return self::updateFromArrayForUserFor('pump_brand', $user, PumpBrand::whereHas('series', function ($query) use ($request) {
-            $query->whereIn('id', $request->available_series_ids)->select('id', 'brand_id');
+        return self::updateFromArrayForUserFor('pump_brand', $user, PumpBrand::whereHas('series', function ($query) use ($available_series_ids) {
+            $query->whereIn('id', $available_series_ids)->select('id', 'brand_id');
         })->get('id')->pluck('id')->all());
     }
 
-    public static function updateFromRequestForUser($request, $user): bool
+    public static function updateForUser(array $available_series_ids, User $user): bool
     {
-        self::updateFromRequestForUserForSeries($request, $user);
-        self::updateFromRequestForUserForBrand($request, $user);
+        self::updateFromRequestForUserForSeries($available_series_ids, $user);
+        self::updateFromRequestForUserForBrand($available_series_ids, $user);
         return true;
     }
 }
