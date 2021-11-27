@@ -189,21 +189,25 @@ const Index = () => {
             filteredBrandsWithSeries().forEach(brand => {
                 let children = []
                 brand.series.forEach(series => {
+                    let hasTemp = debouncedTemperature == null
+                        || (series.temp_max >= debouncedTemperature
+                            && series.temp_min <= debouncedTemperature)
+                    const colorStyle = color(hasTemp ? 'black' : 'red')
                     _brandsSeriesList.push({
                         label: <>
                             {!hideIcons && seriesIcon(series.image)}
-                            <span style={{marginLeft: hideIcons ? 0 : 5}}>{brand.name + " " + series.name}</span>
+                            <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{brand.name + " " + series.name}</span>
                         </>,
                         value: series.id,
-                        image: series.image,
+                        disabled: !hasTemp,
                     })
                     children.push({
                         title: <>
                             {!hideIcons && seriesIcon(series.image)}
-                            <span style={{marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
+                            <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
                         </>,
                         key: series.id,
-                        image: series.image,
+                        disabled: !hasTemp,
                     })
                     // _allSeriesListOptions.push(series.id)
                 })
@@ -846,7 +850,7 @@ const Index = () => {
                                                pumpInfo={stationToShow?.pump_info}/>}
             <FiltersDrawer {...filtersDrawerProps}/>
             {stationToShow && <ExportInMomentSelectionDrawer visible={exportDrawerVisible} setVisible={setExportDrawerVisible}
-                                           stationToShow={stationToShow}/>}
+                                                             stationToShow={stationToShow}/>}
         </>
     )
 }
