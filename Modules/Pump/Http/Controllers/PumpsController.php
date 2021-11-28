@@ -2,10 +2,9 @@
 
 namespace Modules\Pump\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ModuleResourceController;
 use Closure;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
@@ -31,9 +30,19 @@ use Inertia\Response;
 use Modules\Pump\Transformers\PumpResource;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
-class PumpsController extends Controller
+class PumpsController extends ModuleResourceController
 {
     use HasFilterData, UsesTenantModel;
+
+    public function __construct()
+    {
+        parent::__construct(
+            'Pump::Pumps/Index',
+            null,
+            'Pump::Pumps/Show',
+            null,
+        );
+    }
 
     protected function pumpFilterData(): array
     {
@@ -104,7 +113,7 @@ class PumpsController extends Controller
     public function index(): Response
     {
         $this->authorize('pump_access');
-        return Inertia::render('Pump::Pumps/Index', [
+        return Inertia::render($this->indexPath, [
             'pumps' => Inertia::lazy($this->lazyLoadedPumps()),
             'filter_data' => $this->pumpFilterData()
         ]);
@@ -141,7 +150,7 @@ class PumpsController extends Controller
     public function show(Pump $pump): Response
     {
         $this->authorize('pump_show');
-        return Inertia::render('Pump::Pumps/Show', [
+        return Inertia::render($this->showPath, [
             'pump' => new PumpResource($pump),
         ]);
     }

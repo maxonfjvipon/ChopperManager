@@ -17,7 +17,7 @@ class UsersController extends \Modules\User\Http\Controllers\UsersController
      */
     public function index(): Response
     {
-        return Inertia::render('PumpProducer::Users/Index', [
+        return Inertia::render('PumpProducer::Users/Profile', [
             'users' => User::with(['country' => function ($query) {
                 $query->select('id', 'name');
             }, 'business'])->get(['id', 'created_at', 'email', 'organization_name',

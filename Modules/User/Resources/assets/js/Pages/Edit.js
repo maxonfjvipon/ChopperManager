@@ -3,21 +3,19 @@ import {Input} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import {AuthLayout} from "../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from "../../../../../../resources/js/translation/lang";
 import {SubmitAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
-import {BackToUsersLink} from "../../../../../../resources/js/src/Shared/Resource/BackLinks/BackToUsersLink";
 import {ResourceContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {usePage} from "@inertiajs/inertia-react";
 import {useInputRules} from "../../../../../../resources/js/src/Hooks/input-rules.hook";
-import {Selection} from "../../../../../../resources/js/src/Shared/Inputs/Selection";
 import {MultipleSelection} from "../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
+import {BackToUsersLink} from "../Components/BackToUsersLink";
 
-const Edit = () => {
+export default function Edit () {
     // HOOKS
     const {rules} = useInputRules()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {has} = usePermissions()
     const {user, filter_data} = usePage().props
 
@@ -151,7 +149,3 @@ const Edit = () => {
         </ResourceContainer>
     )
 }
-
-Edit.layout = page => <AuthLayout children={page}/>
-
-export default Edit

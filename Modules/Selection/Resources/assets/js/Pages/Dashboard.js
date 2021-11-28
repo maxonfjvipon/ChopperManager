@@ -1,24 +1,22 @@
 import React from 'react';
-import {Button, Col, message, Result, Row} from "antd";
+import {Button, Col, Result, Row} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
+import Lang from "../../../../../../resources/js/translation/lang";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import {DashboardCard} from "../../../../../../resources/js/src/Shared/DashboardCard";
-import {AuthLayout} from "../../../../../../resources/js/src/Shared/Layout/AuthLayout";
-import {Container} from "../../../../../../resources/js/src/Shared/ResourcePanel/Index/Container";
-import Lang from "../../../../../../resources/js/translation/lang";
+import {DashboardCard} from "../Components/DashboardCard";
+import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
+import {BackToProjectsLink} from "../../../../../Core/Resources/assets/js/Components/BackToProjectsLink";
+import {BackLink} from "../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
 
-const Dashboard = () => {
+export default function Dashboard() {
     // HOOKS
     const {project_id, selection_types} = usePage().props
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {has, filterPermissionsArray} = usePermissions()
 
-    // const serviceUnavailable = () => {
-    //     message.info(Lang.get('messages.service_development'))
-    // }
-
+    // CONSTS
     const span = () => {
         if (selection_types.length === 1) {
             return 16
@@ -28,29 +26,24 @@ const Dashboard = () => {
         return 8
     }
 
-    // CONSTS
-    // const imgPath = "/img/selections-dashboard/"
-
     const _cards = filterPermissionsArray(selection_types.map(type => {
         return has('selection_create') && {
             title: type.name,
             src: type.img,
             onClick: () => {
-                const route = 'selections.' + type.prefix + '.create'
+                const route = 'projects.' + type.prefix + '_selections.create'
                 Inertia.get(tRoute(route, project_id))
             }
         }
     }))
 
     return (
-        <Container
+        <IndexContainer
             title={Lang.get('pages.selections.dashboard.subtitle')}
-            backTitle={has('project_access') && project_id !== "-1"
-                ? Lang.get('pages.selections.dashboard.back.to_project')
-                : Lang.get('pages.selections.dashboard.back.to_projects')}
-            backHref={has('project_access') && project_id !== "-1"
-                ? tRoute('projects.show', project_id)
-                : tRoute('projects.index')}
+            extra={project_id === "-1"
+                ? <BackToProjectsLink/>
+                : <BackLink href={tRoute('projects.show', project_id)} title={Lang.get('pages.selections.dashboard.back.to_project')}/>
+            }
         >
             {_cards.length > 0 && <Row justify="space-around" gutter={[48, 16]}>
                 {_cards.map(card => (
@@ -67,10 +60,6 @@ const Dashboard = () => {
                     Inertia.get(tRoute('projects.index'))
                 }}>{Lang.get('pages.selections.dashboard.404.back')}</Button>}
             />}
-        </Container>
+        </IndexContainer>
     )
 }
-
-Dashboard.layout = page => <AuthLayout children={page}/>
-
-export default Dashboard

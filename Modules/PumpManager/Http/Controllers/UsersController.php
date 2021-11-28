@@ -2,7 +2,6 @@
 
 namespace Modules\PumpManager\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +13,7 @@ use Modules\PumpManager\Entities\User;
 use Modules\PumpManager\Http\Requests\UpdateUserRequest;
 use Modules\PumpManager\Transformers\UserResource;
 
-class UsersController extends Controller
+class UsersController extends \Modules\User\Http\Controllers\UsersController
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +23,7 @@ class UsersController extends Controller
     public function index(): Response
     {
         $this->authorize('user_access');
-        return Inertia::render('User::Index', [
+        return Inertia::render($this->indexPath, [
             'users' => User::with(['country' => function ($query) {
                 $query->select('id', 'name');
             }])->get(['id', 'created_at', 'email', 'organization_name',
@@ -41,7 +40,7 @@ class UsersController extends Controller
     public function edit(int $id): Response
     {
         $this->authorize('user_edit');
-        return Inertia::render('User::Edit', [
+        return Inertia::render($this->editPath, [
             'user' => new UserResource(User::find($id)),
             'filter_data' => [
                 'selection_types' => SelectionType::all(['id', 'name']),
@@ -56,14 +55,14 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      * @param UpdateUserRequest $request
-     * @param User $user
+     * @param $user_id
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function update(UpdateUserRequest $request, User $user): RedirectResponse
+    public function update(UpdateUserRequest $request, $user_id): RedirectResponse
     {
         $this->authorize('user_edit');
-        $user->updateAvailablePropsFromRequest($request);
+        User::find($user_id)->updateAvailablePropsFromRequest($request);
         return Redirect::route('users.index');
     }
 

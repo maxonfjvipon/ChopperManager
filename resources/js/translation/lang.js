@@ -3,8 +3,8 @@ import translations from './translations'
 
 const Lang = new lang({
     messages: translations,
-    locale: 'en',
-    fallback: 'en'
+    locale: 'ru',
+    fallback: 'ru'
 })
 
 export default Lang

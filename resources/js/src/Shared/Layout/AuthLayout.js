@@ -1,6 +1,4 @@
-import {
-    Layout,
-} from "antd";
+import {Layout} from "antd";
 import React from "react";
 import {Footer} from "../Footer";
 import {MessagesLayout} from "./MessagesLayout";
@@ -9,7 +7,7 @@ import {Header} from "./Header";
 
 const {Content} = Layout;
 
-export const AuthLayout = ({children, header = <Header/>}) => {
+export default function AuthLayout({children, header = <Header/>}) {
     return (
         <MessagesLayout>
             <LocaleLayout>

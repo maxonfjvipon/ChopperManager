@@ -38,7 +38,7 @@ class PumpSeriesController extends \Modules\Pump\Http\Controllers\PumpSeriesCont
                 'types' => $series->imploded_types
             ])
             ->all();
-        return Inertia::render('Pump::PumpSeries/Index', [
+        return Inertia::render('Pump::PumpSeries/Profile', [
             'filter_data' => $this->indexFilterData(),
             'brands' => PumpBrand::all(),
             'series' => $series,

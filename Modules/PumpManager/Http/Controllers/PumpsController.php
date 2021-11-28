@@ -42,7 +42,7 @@ class PumpsController extends \Modules\Pump\Http\Controllers\PumpsController
     public function index(): Response
     {
         $this->authorize('pump_access');
-        return Inertia::render('Pump::Pumps/Index', [
+        return Inertia::render($this->indexPath, [
             'pumps' => Inertia::lazy($this->lazyLoadedPumps(Auth::user()->available_pumps())),
             'filter_data' => $this->pumpFilterData()
         ]);
@@ -59,7 +59,7 @@ class PumpsController extends \Modules\Pump\Http\Controllers\PumpsController
     {
         $this->authorize('pump_show');
         abort_if(!in_array($pump->id, Auth::user()->available_pumps()->pluck('id')->all()), 401);
-        return Inertia::render('Pump::Pumps/Show', [
+        return Inertia::render($this->showPath, [
             'pump' => new PumpResource($pump),
         ]);
     }

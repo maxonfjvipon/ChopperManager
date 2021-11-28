@@ -3,8 +3,8 @@
 namespace Modules\Core\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ModuleResourceController;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -18,8 +18,18 @@ use Modules\Core\Http\Requests\ProjectUpdateRequest;
 use Modules\Core\Transformers\EditProjectResource;
 use Modules\Core\Transformers\ShowProjectResource;
 
-class ProjectsController extends Controller
+class ProjectsController extends ModuleResourceController
 {
+    public function __construct()
+    {
+        parent::__construct(
+            'Core::Projects/Index',
+            'Core::Projects/Create',
+            'Core::Projects/Show',
+            'Core::Projects/Edit'
+        );
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +39,7 @@ class ProjectsController extends Controller
     public function index(): Response
     {
         $this->authorize('project_access');
-        return Inertia::render('Projects/Index', [
+        return Inertia::render($this->indexPath, [
             'projects' => auth()->user()->projects()
                 ->withCount('selections')
                 ->with(['selections' => function ($query) {
@@ -37,6 +47,18 @@ class ProjectsController extends Controller
                 }])
                 ->get(),
         ]);
+    }
+
+    /**
+     * Display the create resource form.
+     *
+     * @return Response
+     * @throws AuthorizationException
+     */
+    public function create(): Response
+    {
+        $this->authorize('project_create');
+        return Inertia::render($this->createPath);
     }
 
     /**
@@ -64,7 +86,7 @@ class ProjectsController extends Controller
     {
         $this->authorize('project_show');
         $this->authorize('selection_access');
-        return Inertia::render('Projects/Show', [
+        return Inertia::render($this->showPath, [
             'project' => new ShowProjectResource($project),
         ]);
     }
@@ -79,7 +101,7 @@ class ProjectsController extends Controller
     public function edit(Project $project): Response
     {
         $this->authorize('project_edit');
-        return Inertia::render('Projects/Edit', [
+        return Inertia::render($this->editPath, [
             'project' => new EditProjectResource($project)
         ]);
     }
@@ -97,18 +119,6 @@ class ProjectsController extends Controller
         $this->authorize('project_edit');
         $project->update($request->validated());
         return Redirect::route('projects.index');
-    }
-
-    /**
-     * Display the create resource form.
-     *
-     * @return Response
-     * @throws AuthorizationException
-     */
-    public function create(): Response
-    {
-        $this->authorize('project_create');
-        return Inertia::render('Projects/Create');
     }
 
     /**

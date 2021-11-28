@@ -174,7 +174,8 @@ return [
                 'category' => 'Категория',
                 'power_adjustment' => 'Встроенное регулирование',
                 'applications' => 'Применения',
-                'types' => 'Типы'
+                'types' => 'Типы',
+                'image_path' => 'Путь к иконке',
             ],
         ],
         'edit' => [
@@ -186,7 +187,8 @@ return [
                 'category' => 'Категория',
                 'power_adjustment' => 'Встроенное регулирование',
                 'applications' => 'Применения',
-                'types' => 'Типы'
+                'types' => 'Типы',
+                'image_path' => 'Путь к иконке',
             ],
         ],
     ],

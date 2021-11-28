@@ -14,14 +14,13 @@ import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm"
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {FlexCol} from "../../../../../../../resources/js/src/Shared/FlexCol";
 import {BackLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
 
-const Show = () => {
+export default function Show() {
     const {pump} = usePage().props
     const {reducedAntFormItemClassName} = useStyles()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
 
     const items = [
         {
@@ -208,8 +207,6 @@ const Show = () => {
         },
     ]
 
-    const width = 1000
-
     return (
         <IndexContainer
             title={pump.data.full_name}
@@ -280,7 +277,3 @@ const Show = () => {
         </IndexContainer>
     )
 }
-
-Show.layout = page => <AuthLayout children={page}/>
-
-export default Show

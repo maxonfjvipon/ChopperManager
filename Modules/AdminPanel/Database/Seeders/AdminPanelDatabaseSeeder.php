@@ -31,19 +31,19 @@ class AdminPanelDatabaseSeeder extends Seeder
         SelectionType::create(['name' => [
             'en' => 'Single pump selection',
             'ru' => 'Подбор одинарного насоса'
-        ], 'prefix' => 'pump.single', 'default_img' => $imgPath . '01.png']);
+        ], 'prefix' => 'sp', 'default_img' => $imgPath . '01.png']);
         SelectionType::create(['name' => [
             'en' => 'Double pump selection',
             'ru' => 'Подбор сдвоенного насоса'
-        ], 'prefix' => 'pump.double', 'default_img' => $imgPath . '02.png']);
+        ], 'prefix' => 'dp', 'default_img' => $imgPath . '02.png']);
         SelectionType::create(['name' => [
             'en' => 'Water supply pumping station selection',
             'ru' => 'Подбор станции водоснбажения'
-        ], 'prefix' => 'station.water', 'default_img' => $imgPath . '05.png']);
+        ], 'prefix' => 'sw', 'default_img' => $imgPath . '05.png']);
         SelectionType::create(['name' => [
             'en' => 'Fire extinguishing pumping station selection',
             'ru' => 'Подбор станции пожаротушения'
-        ], 'prefix' => 'station.fire', 'default_img' => $imgPath . '06.png']);
+        ], 'prefix' => 'sf', 'default_img' => $imgPath . '06.png']);
 
         /* PUMP MANAGER TENANT */
         $pmt = $this->getTenantModel()::create([

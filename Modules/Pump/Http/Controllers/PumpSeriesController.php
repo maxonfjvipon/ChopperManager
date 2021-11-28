@@ -2,11 +2,10 @@
 
 namespace Modules\Pump\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ModuleResourceController;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
-use Modules\Pump\Actions\ImportPumpsAction;
 use Modules\Pump\Actions\ImportPumpSeriesAction;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
@@ -25,9 +24,19 @@ use Inertia\Response;
 use Modules\Pump\Transformers\PumpSeriesPropsResource;
 use Modules\Pump\Transformers\PumpSeriesResource;
 
-class PumpSeriesController extends Controller
+class PumpSeriesController extends ModuleResourceController
 {
     use HasFilterData;
+
+    public function __construct()
+    {
+        parent::__construct(
+            'Pump::PumpSeries/Index',
+            'Pump::PumpSeries/Create',
+            null,
+            'Pump::PumpSeries/Edit',
+        );
+    }
 
     protected function indexFilterData(): array
     {
@@ -50,7 +59,7 @@ class PumpSeriesController extends Controller
     {
         $this->authorize('series_access');
         $this->authorize('brand_access');
-        return Inertia::render('Pump::PumpSeries/Index', [
+        return Inertia::render($this->indexPath, [
             'filter_data' => $this->indexFilterData(),
             'brands' => PumpBrand::all(),
             'series' => PumpSeries::with(['brand', 'category', 'power_adjustment'])
@@ -77,7 +86,7 @@ class PumpSeriesController extends Controller
     public function create(): Response
     {
         $this->authorize('series_create');
-        return Inertia::render('Pump::PumpSeries/Create', [
+        return Inertia::render($this->createPath, [
             'pump_series_props' => new PumpSeriesPropsResource(null),
         ]);
     }
@@ -106,7 +115,7 @@ class PumpSeriesController extends Controller
     public function edit(PumpSeries $pumpSeries): Response
     {
         $this->authorize('series_edit');
-        return Inertia::render('Pump::PumpSeries/Edit', [
+        return Inertia::render($this->editPath, [
             'pump_series_props' => new PumpSeriesPropsResource(null),
             'series' => new PumpSeriesResource($pumpSeries)
         ]);

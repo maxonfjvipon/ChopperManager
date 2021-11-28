@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Auth\Actions\RegisterUserAction;
-use Modules\Auth\Traits\CanRegisterUser;
-use Modules\Core\Support\Executable;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Transformers\CountryResource;

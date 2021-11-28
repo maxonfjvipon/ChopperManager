@@ -6,16 +6,15 @@ import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permis
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
 import {ResourceContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
-import {BackToSeriesLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackToSeriesLink";
+import {BackToSeriesLink} from "../../Components/BackToSeriesLink";
 import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm";
 import {usePage} from "@inertiajs/inertia-react";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from '../../../../../../../resources/js/translation/lang'
 
-const Edit = () => {
+export default function Edit() {
     // HOOKS
     const {rules} = useInputRules()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {has} = usePermissions()
     const {brand} = usePage().props
 
@@ -51,7 +50,3 @@ const Edit = () => {
         </ResourceContainer>
     )
 }
-
-Edit.layout = page => <AuthLayout children={page}/>
-
-export default Edit

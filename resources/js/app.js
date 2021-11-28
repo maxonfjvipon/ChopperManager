@@ -4,18 +4,11 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
+import AuthLayout from "./src/Shared/Layout/AuthLayout"
+
 require('./bootstrap');
 require('antd/dist/antd.compact.css')
-// require('antd/dist/antd.css')
-// require('antd/dist/antd.less')
-// require('antd/dist/antd.dark.css')
 require('../css/app.css')
-
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 import React from 'react'
 import {render} from 'react-dom'
@@ -28,37 +21,58 @@ InertiaProgress.init({
 });
 
 const app = document.getElementById('app');
-// const init = JSON.parse(app.dataset.page)
 // const context = require.context("../../Modules", true, /Pages\/(.+)\.js$/, "lazy");
+const context = require.context("../../Modules", true, /js\/app\.js$/, "lazy");
+
+const resolver = name => {
+    let parts = name.split('::')
+    let page
+    if (parts.length > 1) {
+        page = context("./" + parts[0] + '/Resources/assets/js/app.js')
+    } else {
+        page = import('./src/Pages/' + name)
+    }
+    console.log(page)
+    return page.then(module => {
+        console.log(parts[1])
+        module = module.default[parts[1]]
+        module.layout = module.layout || (module => <AuthLayout children={module}/>)
+        return module
+    })
+}
+
+render(<InertiaApp initialPage={JSON.parse(app.dataset.page)} resolveComponent={resolver}/>, app);
 //
-// const resolver = name => {
-//     let parts = name.split('::')
-//     if (parts.length > 1) {
-//         return context("./" + parts[0] + '/Resources/assets/js/Pages/' + parts[1] + '.js').then(module => module.default)
-//     } else {
-//         return import('./src/Pages/' + name).then(module => module.default)
-//     }
-// }
-//
-// render(<InertiaApp initialPage={init} resolveComponent={resolver}/>, app);
-//
-createInertiaApp({
-    resolve: name => {
-        let parts = name.split('::')
-        if (parts.length > 1) {
-            switch (parts[0]) {
-                case "AdminPanel": return require(`~/AdminPanel/Resources/assets/js/Pages/${parts[1]}`)
-                case "Pump": return require(`~/Pump/Resources/assets/js/Pages/${parts[1]}`)
-                case "Core": return require(`~/Core/Resources/assets/js/Pages/${parts[1]}`)
-                case "Auth": return require(`~/Auth/Resources/assets/js/Pages/${parts[1]}`)
-                case "User": return require(`~/User/Resources/assets/js/Pages/${parts[1]}`)
-                case "PumpProducer": return require(`~/PumpProducer/Resources/assets/js/Pages/${parts[1]}`)
-            }
-        } else {
-            return require('./src/Pages/' + name)
-        }
-    },
-    setup({el, App, props}) {
-        render(<App {...props} />, el)
-    },
-})
+// createInertiaApp({
+//     resolve: name => {
+//         let page
+//         let parts = name.split('::')
+//         switch (parts[0]) {
+//             case "AdminPanel":
+//                 page = require(`~/AdminPanel/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             case "Pump":
+//                 page = require(`~/Pump/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             case "Core":
+//                 page = require(`~/Core/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             case "Auth":
+//                 page = require(`~/Auth/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             case "User":
+//                 page = require(`~/User/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             case "PumpProducer":
+//                 page = require(`~/PumpProducer/Resources/assets/js/Pages/${parts[1]}`)
+//                 break
+//             default:
+//                 page = require('./src/Pages/' + name).default
+//         }
+//         page.layout = page => <AuthLayout children={page}/>
+//         return page
+//     },
+//     setup({el, App, props}) {
+//         render(<App {...props} />, el)
+//     },
+// })

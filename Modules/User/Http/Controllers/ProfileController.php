@@ -61,7 +61,7 @@ class ProfileController extends Controller
                         'value' => $series->discounts[0]->value,
                     ])->values()
             ])->values();
-        return Inertia::render('Profile/Index', [
+        return Inertia::render('User::Profile', [
             'user' => new ProfileUserResource(auth()->user()),
             'businesses' => Business::all(),
             'countries' => Country::all(),
@@ -80,8 +80,7 @@ class ProfileController extends Controller
      * @param UserUpdateRequest $request
      * @return RedirectResponse
      */
-    public
-    function update(UserUpdateRequest $request): RedirectResponse
+    public function update(UserUpdateRequest $request): RedirectResponse
     {
         Auth::user()->update($request->validated());
         return Redirect::back()->with('success', __('flash.users.updated'));

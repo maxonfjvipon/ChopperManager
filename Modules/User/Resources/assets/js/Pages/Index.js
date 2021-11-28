@@ -10,18 +10,14 @@ import {Edit} from "../../../../../../resources/js/src/Shared/Resource/Table/Act
 import {Delete} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
-import {AuthLayout} from "../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from "../../../../../../resources/js/translation/lang";
 
-
-const Index = () => {
+export default function Index() {
     // HOOKS
     const {users} = usePage().props
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {has} = usePermissions()
     const {openRestoreNotification} = useNotifications()
-
-    // console.log(users)
 
     // CONSTS
     const columns = [
@@ -79,7 +75,3 @@ const Index = () => {
         </IndexContainer>
     )
 }
-
-Index.layout = page => <AuthLayout children={page}/>
-
-export default Index

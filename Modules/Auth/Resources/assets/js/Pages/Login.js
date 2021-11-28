@@ -16,7 +16,7 @@ const Login = () => {
     // HOOKS
     const {textAlignCenter, fullWidth, margin} = useStyles()
     const {rules} = useInputRules()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {has_registration} = usePage().props
 
     // CONST

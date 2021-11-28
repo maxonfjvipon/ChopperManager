@@ -1,4 +1,6 @@
 import React from 'react'
+import {Result} from "antd";
+import {PrimaryButton} from "../Shared/Buttons/PrimaryButton";
 
 export default function ErrorPage({ status }) {
     const title = {
@@ -16,9 +18,15 @@ export default function ErrorPage({ status }) {
     }[status]
 
     return (
-        <div>
-            <h1>{title}</h1>
-            <div>{description}</div>
-        </div>
+        <Result
+            status={status.toString()}
+            title={title}
+            subTitle={description}
+            extra={<PrimaryButton onClick={e => {
+                history.back()
+            }}>
+                Go back
+            </PrimaryButton>}
+        />
     )
 }

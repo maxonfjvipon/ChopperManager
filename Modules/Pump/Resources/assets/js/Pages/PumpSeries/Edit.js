@@ -6,23 +6,20 @@ import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permis
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
 import {ResourceContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
-import {BackToSeriesLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackToSeriesLink";
+import {BackToSeriesLink} from "../../Components/BackToSeriesLink";
 import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import {Selection} from "../../../../../../../resources/js/src/Shared/Inputs/Selection";
 import {usePage} from "@inertiajs/inertia-react";
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {MultipleSelection} from "../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
 
-const Create = () => {
+export default function Create() {
     // HOOKS
     const {rules} = useInputRules()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {pump_series_props, series} = usePage().props
     const {has} = usePermissions()
     const {brands, categories, power_adjustments, applications, types} = pump_series_props.data
-
-    // console.log(usePage().props)
 
     const formName = 'create-series-form'
     const items = [
@@ -69,15 +66,12 @@ const Create = () => {
         }, {
             values: {
                 name: 'image',
-                label: 'Image path',
+                label: Lang.get('pages.pump_series.edit.form.image_path'),
                 initialValue: series.data.image,
             }, input: <Input/>,
         }, {
             values: {
                 name: 'picture',
-                // label: Lang.get('pages.pump_series.edit.form.applications'),
-                label: 'Image',
-                // initialValue: series.data.image,
             }, input: <Image src={series.data.picture} width={300}/>,
         }
     ]
@@ -102,7 +96,3 @@ const Create = () => {
         </ResourceContainer>
     )
 }
-
-Create.layout = page => <AuthLayout children={page}/>
-
-export default Create

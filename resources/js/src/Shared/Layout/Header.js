@@ -11,7 +11,6 @@ import {
     SnippetsOutlined,
     UserOutlined,
 } from "@ant-design/icons";
-import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../translation/lang";
 import React from "react";
 import {useTransRoutes} from "../../Hooks/routes.hook";
@@ -19,21 +18,10 @@ import {useStyles} from "../../Hooks/styles.hook";
 import {usePermissions} from "../../Hooks/permissions.hook";
 
 export const Header = () => {
-    // const menuKey = 'menu'
-
-    // const getMenuKey = () => {
-    //     let _key = localStorage.getItem(menuKey)
-    //     if (_key == null) {
-    //         _key = 'projects'
-    //         localStorage.setItem(menuKey, _key)
-    //     }
-    //     return _key
-    // }
-
-    const {auth, title} = usePage().props
-    const {tRoute} = useTransRoutes()
+    const {auth} = usePage().props
     const {has, filterPermissionsArray} = usePermissions()
     const {padding} = useStyles()
+    const tRoute = useTransRoutes()
 
     const menuItems = filterPermissionsArray([
         has('project_access') && {
@@ -57,10 +45,6 @@ export const Header = () => {
             label: Lang.get('pages.users.title')
         },
     ])
-
-    // const menuClickHandler = event => {
-    //     localStorage.setItem(menuKey, event.key)
-    // }
 
     return (
         <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
@@ -89,7 +73,7 @@ export const Header = () => {
                         overlay={
                             <Menu>
                                 <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    <Link href={tRoute('profile.index')}>
+                                    <Link href={useTransRoutes('profile.index')}>
                                         {Lang.get('pages.profile.title')}
                                     </Link>
                                 </Menu.Item>
@@ -98,7 +82,7 @@ export const Header = () => {
                                     key="logout"
                                     icon={<LogoutOutlined/>}
                                 >
-                                    <Link method="post" href={tRoute('logout')}>
+                                    <Link method="post" href={useTransRoutes('logout')}>
                                         {Lang.get('pages.email_verification.logout')}
                                     </Link>
                                 </Menu.Item>

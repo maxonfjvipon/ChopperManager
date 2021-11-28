@@ -1,17 +1,14 @@
 import React from 'react';
-import {Row, Tooltip} from "antd";
+import {Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permissions.hook";
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import {TableActionsContainer} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {useNotifications} from "../../../../../../../resources/js/src/Hooks/notifications.hook";
-import {PrimaryAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 import Lang from '../../../../../../../resources/js/translation/lang'
-import {FlexCol} from "../../../../../../../resources/js/src/Shared/FlexCol";
 import {Delete} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete";
 import {Edit} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
 import {FileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/FileUploader";
@@ -20,10 +17,10 @@ import {ComplexPrimaryAction} from "../../../../../../../resources/js/src/Shared
 import {FileAddOutlined} from "@ant-design/icons";
 import {PumpSeriesTechInfoUploader} from "../../Components/PumpSeriesTechInfoUploader";
 
-const Index = () => {
+export default function Index() {
     // HOOKS
     const {filter_data, brands, series} = usePage().props
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const {openRestoreNotification} = useNotifications()
     const {has, filterPermissionsArray} = usePermissions()
 
@@ -172,7 +169,3 @@ const Index = () => {
         </>
     )
 }
-
-Index.layout = page => <AuthLayout children={page}/>
-
-export default Index

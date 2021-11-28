@@ -175,7 +175,8 @@ return [
                 'category' => 'Category',
                 'power_adjustment' => 'El.power adjustment',
                 'applications' => 'Applications',
-                'types' => 'Types'
+                'types' => 'Types',
+                'image_path' => 'Path to image',
             ],
         ],
         'edit' => [
@@ -187,7 +188,8 @@ return [
                 'category' => 'Category',
                 'power_adjustment' => 'El.power adjustment',
                 'applications' => 'Applications',
-                'types' => 'Types'
+                'types' => 'Types',
+                'image_path' => 'Path to image',
             ],
         ],
     ],

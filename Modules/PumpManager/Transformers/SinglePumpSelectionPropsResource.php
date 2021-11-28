@@ -11,7 +11,6 @@ use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
 use Modules\Pump\Entities\PumpApplication;
-use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpType;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\SelectionRange;

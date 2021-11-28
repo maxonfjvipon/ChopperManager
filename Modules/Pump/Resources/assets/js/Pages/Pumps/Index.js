@@ -8,18 +8,17 @@ import {ImportErrorBagDrawer} from "../../../../../../../resources/js/src/Shared
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {FileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/FileUploader";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {View} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
 import {PumpTechInfoUploader} from "../../Components/PumpTechInfoUploader";
 
-const Index = () => {
-    const {pumps, filter_data, flash} = usePage().props
-    const {tRoute} = useTransRoutes()
+export default function Index() {
+    const {pumps, filter_data} = usePage().props
+    const tRoute = useTransRoutes()
     const {has, filterPermissionsArray} = usePermissions()
     const [loading, setLoading] = useState(true)
 
-    if (pumps === undefined ) {
+    if (pumps === undefined) {
         Inertia.reload({
             replace: true,
             preserveScroll: true,
@@ -230,7 +229,3 @@ const Index = () => {
         </>
     )
 }
-
-Index.layout = page => <AuthLayout children={page} title={Lang.get('pages.pumps.title')}/>
-
-export default Index

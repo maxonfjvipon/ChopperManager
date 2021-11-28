@@ -8,11 +8,9 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\PumpManager\Entities\User;
-use Modules\PumpManager\Entities\UserAndPumpSeries;
 
 class PumpSeriesController extends \Modules\Pump\Http\Controllers\PumpSeriesController
 {
@@ -26,7 +24,7 @@ class PumpSeriesController extends \Modules\Pump\Http\Controllers\PumpSeriesCont
     {
         $this->authorize('series_access');
         $this->authorize('brand_access');
-        return Inertia::render('Pump::PumpSeries/Index', [
+        return Inertia::render($this->indexPath, [
             'filter_data' => $this->indexFilterData(),
             'brands' => Auth::user()->available_brands,
             'series' => Auth::user()->available_series()->with(['brand', 'category', 'power_adjustment'])

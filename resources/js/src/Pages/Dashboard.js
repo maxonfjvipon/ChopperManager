@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, message} from "antd";
-import {DashboardCard} from "../Shared/DashboardCard";
+import {DashboardCard} from "../../../../Modules/Selection/Resources/assets/js/Components/DashboardCard";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from '../../translation/lang'
 import {JustifiedRow} from "../Shared/JustifiedRow";

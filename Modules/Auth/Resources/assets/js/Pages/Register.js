@@ -19,7 +19,7 @@ const Register = () => {
     const {textAlignCenter, fullWidth, margin} = useStyles()
     const {rules} = useInputRules()
     const {businesses, countries} = usePage().props
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
 
     // CONSTS
     const formName = 'register-form'

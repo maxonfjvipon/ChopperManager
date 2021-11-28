@@ -11,7 +11,7 @@ export const PumpSeriesTechInfoUploader = () => {
     const [data, setData] = useState({files: null, folder: null})
     const imagesRef = useRef()
     const filesRef = useRef()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
 
     useEffect(() => {
         if (data.files && data.folder) {

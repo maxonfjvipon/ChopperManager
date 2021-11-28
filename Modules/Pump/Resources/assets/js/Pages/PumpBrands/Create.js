@@ -6,16 +6,15 @@ import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permis
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
 import {ResourceContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
-import {BackToSeriesLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackToSeriesLink";
+import {BackToSeriesLink} from "../../Components/BackToSeriesLink";
 import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm";
-import {AuthLayout} from "../../../../../../../resources/js/src/Shared/Layout/AuthLayout";
 import Lang from '../../../../../../../resources/js/translation/lang'
 
-const Create = () => {
+export default function Create() {
     // HOOKS
     const {rules} = useInputRules()
     const {has} = usePermissions()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
 
     const formName = 'create-brand-form'
     const items = [
@@ -48,7 +47,3 @@ const Create = () => {
         </ResourceContainer>
     )
 }
-
-Create.layout = page => <AuthLayout children={page}/>
-
-export default Create

@@ -3,6 +3,7 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ModuleResourceController;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -13,8 +14,18 @@ use Modules\Pump\Http\Requests\PumpBrandStoreRequest;
 use Modules\Pump\Http\Requests\PumpBrandUpdateRequest;
 use Modules\Pump\Transformers\PumpBrandResource;
 
-class PumpBrandsController extends Controller
+class PumpBrandsController extends ModuleResourceController
 {
+    public function __construct()
+    {
+        parent::__construct(
+            null,
+            'Pump::PumpBrands/Create',
+            null,
+            'Pump::PumpBrands/Edit'
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +35,7 @@ class PumpBrandsController extends Controller
     public function create(): Response
     {
         $this->authorize('brand_create');
-        return Inertia::render('Pump::PumpBrands/Create');
+        return Inertia::render($this->createPath);
     }
 
     /**
@@ -51,7 +62,7 @@ class PumpBrandsController extends Controller
     public function edit(PumpBrand $pumpBrand): Response
     {
         $this->authorize('brand_edit');
-        return Inertia::render('Pump::PumpBrands/Edit', [
+        return Inertia::render($this->editPath, [
             'brand' => new PumpBrandResource($pumpBrand)
         ]);
     }

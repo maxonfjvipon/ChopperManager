@@ -11,7 +11,7 @@ import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 
 function VerifyEmail() {
     const {textAlignCenter, fullWidth, margin} = useStyles()
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     return (
         <JustifiedRow>
             <Col xs={20} md={20} lg={20} xl={15} xxl={10}>

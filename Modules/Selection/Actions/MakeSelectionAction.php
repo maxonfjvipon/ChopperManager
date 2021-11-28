@@ -10,7 +10,7 @@ use Modules\Pump\Entities\Pump;
 use Modules\Pump\Support\PumpCoefficientsHelper;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\SelectionRange;
-use Modules\Selection\Http\Requests\MakeSelectionRequest;
+use Modules\Selection\Http\Requests\MakeSinglePumpSelectionRequest;
 use Modules\Selection\Support\IIntersectionPoint;
 use Modules\Selection\Support\IntersectionPoint;
 use Modules\Selection\Support\PPumpPerformance;
@@ -18,7 +18,7 @@ use Modules\Selection\Support\PumpPerformance;
 
 class MakeSelectionAction
 {
-    private function executeEloquent(MakeSelectionRequest $request): JsonResponse
+    private function executeEloquent(MakeSinglePumpSelectionRequest $request): JsonResponse
     {
         ini_set('memory_limit', '200M');
         $dbPumps = Pump
@@ -261,7 +261,7 @@ class MakeSelectionAction
         ]);
     }
 
-    private function executeQuery(MakeSelectionRequest $request)
+    private function executeQuery(MakeSinglePumpSelectionRequest $request)
     {
         //        $dbPumps = DB::table('pumps')
 //            ->whereIn('series_id', $request->series_ids)
@@ -323,7 +323,7 @@ class MakeSelectionAction
     }
 
 
-    public function execute(MakeSelectionRequest $request): JsonResponse
+    public function execute(MakeSinglePumpSelectionRequest $request): JsonResponse
     {
         return $this->executeEloquent($request);
     }
