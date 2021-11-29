@@ -16,7 +16,7 @@ class PumpSeriesStoreRequest extends FormRequest
         return true;
     }
 
-    public function getSeriesFields(): array
+    public function seriesFields(): array
     {
         return [
             'name' => $this->name,

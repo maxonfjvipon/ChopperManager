@@ -2,51 +2,33 @@
 
 namespace Modules\Pump\Http\Controllers;
 
-use App\Http\Controllers\ModuleResourceController;
+use App\Http\Controllers\Controller;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Actions\ImportPumpSeriesAction;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
-use Modules\Pump\Entities\ElPowerAdjustment;
-use Modules\Pump\Entities\PumpApplication;
-use Modules\Pump\Entities\PumpBrand;
-use Modules\Pump\Entities\PumpCategory;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\Pump\Entities\PumpType;
 use App\Traits\HasFilterData;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Pump\Services\PumpSeries\PumpSeriesServiceInterface;
 use Modules\Pump\Transformers\PumpSeriesPropsResource;
 use Modules\Pump\Transformers\PumpSeriesResource;
 
-class PumpSeriesController extends ModuleResourceController
+class PumpSeriesController extends Controller
 {
     use HasFilterData;
 
-    public function __construct()
-    {
-        parent::__construct(
-            'Pump::PumpSeries/Index',
-            'Pump::PumpSeries/Create',
-            null,
-            'Pump::PumpSeries/Edit',
-        );
-    }
+    protected PumpSeriesServiceInterface $service;
 
-    protected function indexFilterData(): array
+    public function __construct(PumpSeriesServiceInterface $service)
     {
-        return $this->asFilterData([
-            'brands' => PumpBrand::pluck('name')->all(),
-            'categories' => PumpCategory::pluck('name')->all(),
-            'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
-            'applications' => PumpApplication::pluck('name')->all(),
-            'types' => PumpType::pluck('name')->all(),
-        ]);
+        $this->service = $service;
     }
 
     /**
@@ -59,22 +41,7 @@ class PumpSeriesController extends ModuleResourceController
     {
         $this->authorize('series_access');
         $this->authorize('brand_access');
-        return Inertia::render($this->indexPath, [
-            'filter_data' => $this->indexFilterData(),
-            'brands' => PumpBrand::all(),
-            'series' => PumpSeries::with(['brand', 'category', 'power_adjustment'])
-                ->get()
-                ->map(fn($series) => [
-                    'id' => $series->id,
-                    'brand' => $series->brand->name,
-                    'name' => $series->name,
-                    'category' => $series->category->name,
-                    'power_adjustment' => $series->power_adjustment->name,
-                    'applications' => $series->imploded_applications,
-                    'types' => $series->imploded_types
-                ])
-                ->all(),
-        ]);
+        return $this->service->__index();
     }
 
     /**
@@ -86,7 +53,7 @@ class PumpSeriesController extends ModuleResourceController
     public function create(): Response
     {
         $this->authorize('series_create');
-        return Inertia::render($this->createPath, [
+        return Inertia::render($this->service->createPath(), [
             'pump_series_props' => new PumpSeriesPropsResource(null),
         ]);
     }
@@ -101,8 +68,7 @@ class PumpSeriesController extends ModuleResourceController
     public function store(PumpSeriesStoreRequest $request): RedirectResponse
     {
         $this->authorize('series_create');
-        PumpSeries::createFromRequest($request);
-        return Redirect::route('pump_series.index');
+        return $this->service->__store($request);
     }
 
     /**
@@ -115,7 +81,7 @@ class PumpSeriesController extends ModuleResourceController
     public function edit(PumpSeries $pumpSeries): Response
     {
         $this->authorize('series_edit');
-        return Inertia::render($this->editPath, [
+        return Inertia::render($this->service->editPath(), [
             'pump_series_props' => new PumpSeriesPropsResource(null),
             'series' => new PumpSeriesResource($pumpSeries)
         ]);

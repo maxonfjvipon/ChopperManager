@@ -73,7 +73,7 @@ export const Header = () => {
                         overlay={
                             <Menu>
                                 <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    <Link href={useTransRoutes('profile.index')}>
+                                    <Link href={tRoute('profile.index')}>
                                         {Lang.get('pages.profile.title')}
                                     </Link>
                                 </Menu.Item>
@@ -82,7 +82,7 @@ export const Header = () => {
                                     key="logout"
                                     icon={<LogoutOutlined/>}
                                 >
-                                    <Link method="post" href={useTransRoutes('logout')}>
+                                    <Link method="post" href={tRoute('logout')}>
                                         {Lang.get('pages.email_verification.logout')}
                                     </Link>
                                 </Menu.Item>

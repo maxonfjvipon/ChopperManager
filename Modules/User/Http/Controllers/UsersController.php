@@ -3,26 +3,20 @@
 namespace Modules\User\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ModuleResourceController;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Response;
-use Modules\PumpManager\Http\Requests\UpdateUserRequest;
-use Modules\User\Entities\User;
-use Modules\User\Transformers\UserResource;
+use Modules\User\Http\Requests\UserUpdatable;
+use Modules\User\Services\UsersServicesInterface;
 
-class UsersController extends ModuleResourceController
+class UsersController extends Controller
 {
-    public function __construct()
+    protected UsersServicesInterface $service;
+
+    public function __construct(UsersServicesInterface $service)
     {
-        parent::__construct(
-            'User::Index',
-            null,
-            null,
-            'User::Edit'
-        );
+        $this->service = $service;
     }
 
     /**
@@ -33,43 +27,44 @@ class UsersController extends ModuleResourceController
     public function index(): Response
     {
         $this->authorize('user_access');
-        return Inertia::render($this->indexPath, [
-            'users' => User::all(),
-        ]);
+        return $this->service->__index();
     }
 
     /**
      * Show the form for editing the specified resource.
      * @param int $id
      * @return Response
+     * @throws AuthorizationException
      */
     public function edit(int $id): Response
     {
-        return Inertia::render($this->editPath, [
-            'user' => new UserResource(User::find($id))
-        ]);
+        $this->authorize('user_edit');
+        return $this->service->__edit($id);
     }
-
-    // FIXME
 
     /**
      * Update the specified resource in storage.
-     * @param UpdateUserRequest $request
-     * @param $user_id
-     * @return Renderable
+     *
+     * @param UserUpdatable $request
+     * @param int $user_id
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
-    public function update(UpdateUserRequest $request, $user_id)
+    public function update(UserUpdatable $request, int $user_id): RedirectResponse
     {
-        //
+        $this->authorize('user_edit');
+        return $this->service->__update($request, $user_id);
     }
 
     /**
      * Remove the specified resource from storage.
      * @param int $id
-     * @return Renderable
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        $this->authorize('user_delete');
+        return Redirect::back();
     }
 }

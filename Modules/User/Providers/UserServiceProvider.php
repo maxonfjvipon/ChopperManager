@@ -2,11 +2,19 @@
 
 namespace Modules\User\Providers;
 
+use App\Traits\BindsModuleRequests;
+use App\Traits\BindsModuleServices;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Http\Requests\UpdateUserRequest;
+use Modules\User\Http\Requests\UserUpdatable;
+use Modules\User\Services\UsersServices;
+use Modules\User\Services\UsersServicesInterface;
 
 class UserServiceProvider extends ServiceProvider
 {
+    use BindsModuleRequests, BindsModuleServices;
+
     /**
      * @var string $moduleName
      */
@@ -28,6 +36,8 @@ class UserServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->bindModuleRequests();
+        $this->bindModuleServices();
     }
 
     /**
@@ -108,5 +118,23 @@ class UserServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+    public function requests(): array
+    {
+        return array([
+            'abstract' => UserUpdatable::class,
+            'name' => 'UpdateUserRequest',
+            'default' => UpdateUserRequest::class,
+        ]);
+    }
+
+    public function services(): array
+    {
+        return array([
+            'abstract' => UsersServicesInterface::class,
+            'name' => 'UsersService',
+            'default' => UsersServices::class,
+        ]);
     }
 }

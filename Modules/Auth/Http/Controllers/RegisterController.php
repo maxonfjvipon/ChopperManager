@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Auth\Actions\RegisterUserAction;
+use Modules\Auth\Http\Requests\UserRegisterable;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Transformers\CountryResource;
@@ -29,7 +30,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function __register($request, RegisterUserAction $action): RedirectResponse
+    public function register(UserRegisterable $request, RegisterUserAction $action): RedirectResponse
     {
         $action->execute($request);
         return Redirect::route('verification.notice');

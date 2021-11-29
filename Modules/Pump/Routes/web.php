@@ -12,26 +12,24 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\AdminPanel\Entities\Tenant;
+use Modules\Pump\Http\Controllers\PumpBrandsController;
 use Modules\Pump\Http\Controllers\PumpsController;
+use Modules\Pump\Http\Controllers\PumpSeriesController;
 
-$seriesController = Tenant::current()->getControllerClass('PumpSeriesController');
-$brandsController = Tenant::current()->getControllerClass('PumpBrandsController');
-$pumpsController = Tenant::current()->getControllerClass('PumpsController');
 
 // PUMP BRANDS
-Route::get('pump_brands/{brand}/restore')->name('pump_brands.restore')->uses([$brandsController, 'restore']);
-Route::resource('pump_brands', $brandsController)->except(['index', 'show']);
+Route::get('pump_brands/{brand}/restore')->name('pump_brands.restore')->uses([PumpBrandsController::class, 'restore']);
+Route::resource('pump_brands', PumpBrandsController::class)->except(['index', 'show']);
 
 // PUMP SERIES
-Route::prefix('pump_series')->group(function () use ($seriesController) {
-    Route::get('{series}/restore')->name('pump_series.restore')->uses([$seriesController, 'restore']);
-    Route::prefix('import')->group(function () use ($seriesController) {
-        Route::post('/')->name('pump_series.import')->uses([$seriesController, 'import']);
-        Route::post('media')->name('pump_series.import.media')->uses([$seriesController, 'importMedia']);
+Route::prefix('pump_series')->group(function () {
+    Route::get('{series}/restore')->name('pump_series.restore')->uses([PumpSeriesController::class, 'restore']);
+    Route::prefix('import')->group(function () {
+        Route::post('/')->name('pump_series.import')->uses([PumpSeriesController::class, 'import']);
+        Route::post('media')->name('pump_series.import.media')->uses([PumpSeriesController::class, 'importMedia']);
     });
 });
-Route::resource('pump_series', $seriesController)->except(['show']);
+Route::resource('pump_series', PumpSeriesController::class)->except(['show']);
 
 // PUMPS
 Route::prefix('pumps/import')->group(function () {
@@ -39,4 +37,4 @@ Route::prefix('pumps/import')->group(function () {
     Route::post('price_list')->name('pumps.import.price_lists')->uses([PumpsController::class, 'importPriceLists']);
     Route::post('media')->name('pumps.import.media')->uses([PumpsController::class, 'importMedia']);
 });
-Route::resource('pumps', $pumpsController)->except(['edit', 'create']);
+Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);

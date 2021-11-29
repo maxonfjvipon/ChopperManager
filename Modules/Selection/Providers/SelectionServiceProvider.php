@@ -2,11 +2,15 @@
 
 namespace Modules\Selection\Providers;
 
+use App\Traits\BindsModuleServices;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
+use Modules\Selection\Services\SinglePumpSelectionService;
+use Modules\Selection\Services\SinglePumpSelectionServiceInterface;
 
 class SelectionServiceProvider extends ServiceProvider
 {
+    use BindsModuleServices;
+
     /**
      * @var string $moduleName
      */
@@ -28,6 +32,7 @@ class SelectionServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->bindModuleServices();
     }
 
     /**
@@ -108,5 +113,16 @@ class SelectionServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+    public function services(): array
+    {
+        return [
+            [
+                'abstract' => SinglePumpSelectionServiceInterface::class,
+                'name' => 'SinglePumpSelectionService',
+                'default' => SinglePumpSelectionService::class
+            ]
+        ];
     }
 }

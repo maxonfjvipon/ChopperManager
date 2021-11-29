@@ -3,8 +3,9 @@
 namespace Modules\PumpManager\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\User\Http\Requests\UserUpdatable;
 
-class UpdateUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest implements UserUpdatable
 {
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +25,7 @@ class UpdateUserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

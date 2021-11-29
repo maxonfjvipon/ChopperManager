@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| User Module Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -12,10 +12,8 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\AdminPanel\Entities\Tenant;
 use Modules\User\Http\Controllers\ProfileController;
-
-$usersController = Tenant::current()->getControllerClass('UsersController');
+use Modules\User\Http\Controllers\UsersController;
 
 Route::prefix('profile')->group(function () {
     Route::get('index')->name('profile.index')->uses([ProfileController::class, 'index']);
@@ -24,6 +22,6 @@ Route::prefix('profile')->group(function () {
     Route::post('update-discount')->name('profile.discount.update')->uses([ProfileController::class, 'updateDiscount']);
 });
 
-Route::resource('users', $usersController)->only(['index', 'edit', 'destroy', 'update']);
+Route::resource('users', UsersController::class)->only(['index', 'edit', 'destroy', 'update']);
 
 

@@ -9,12 +9,12 @@ use Modules\AdminPanel\Events\TenantCreated;
 use Modules\AdminPanel\Http\Requests\StoreTenantRequest;
 use Modules\AdminPanel\Http\Requests\UpdateTenantRequest;
 use Modules\AdminPanel\Traits\HasTenantSpecificControllers;
-use Modules\User\Traits\UsesUserModel;
+use Modules\User\Traits\HasUser;
 use Nwidart\Modules\Facades\Module;
 
 class Tenant extends \Spatie\Multitenancy\Models\Tenant
 {
-    use HasFactory, HasTenantSpecificControllers, UsesUserModel;
+    use HasFactory, HasTenantSpecificControllers, HasUser;
 
     protected $guarded = [];
 

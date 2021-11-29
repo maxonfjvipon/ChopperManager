@@ -26,7 +26,7 @@ class PumpSeries extends Model
 
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
-        $series = self::create($request->getSeriesFields());
+        $series = self::create($request->seriesFields());
         if ($series) {
             PumpSeriesAndType::createForSeries($series, $request->types);
             PumpSeriesAndApplication::createForSeries($series, $request->applications);
@@ -36,7 +36,7 @@ class PumpSeries extends Model
 
     public function updateFromRequest(PumpSeriesUpdateRequest $request): bool
     {
-        $updated = $this->update($request->getSeriesFields());
+        $updated = $this->update($request->seriesFields());
         if ($updated) {
             PumpSeriesAndType::updateForSeries($this, $request->types);
             PumpSeriesAndApplication::updateForSeries($this, $request->applications);

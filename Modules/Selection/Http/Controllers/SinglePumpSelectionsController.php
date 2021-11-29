@@ -8,9 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
 use Inertia\Response;
-use Modules\AdminPanel\Entities\SelectionType;
 use Modules\Core\Entities\Project;
 use Modules\Selection\Actions\ExportAtOnceSinglePumpSelectionAction;
 use Modules\Selection\Actions\ExportSinglePumpSelectionAction;
@@ -23,19 +21,16 @@ use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 use Modules\Selection\Http\Requests\MakeSinglePumpSelectionRequest;
 use Modules\Selection\Http\Requests\StoreSinglePumpSelectionRequest;
 use Modules\Selection\Http\Requests\UpdateSinglePumpSelectionRequest;
-use Modules\Selection\Transformers\SinglePumpSelectionResource;
-use Modules\Selection\Transformers\SinglePumpSelectionPropsResource;
+use Modules\Selection\Services\SinglePumpSelectionService;
+use Modules\Selection\Services\SinglePumpSelectionServiceInterface;
 
-class SinglePumpSelectionsController extends ModuleResourceController
+class SinglePumpSelectionsController extends Controller
 {
-    public function __construct()
+    protected SinglePumpSelectionServiceInterface $service;
+
+    public function __construct(SinglePumpSelectionServiceInterface $service)
     {
-        parent::__construct(
-            'Selection::Dashboard',
-            'Selection::Index',
-            'Selection::Index',
-            null,
-        );
+        $this->service = $service;
     }
 
     /**
@@ -46,15 +41,7 @@ class SinglePumpSelectionsController extends ModuleResourceController
      */
     public function index($project_id): Response
     {
-        return Inertia::render($this->indexPath, [
-            'project_id' => $project_id,
-            'selection_types' => SelectionType::all()
-                ->map(fn(SelectionType $type) => [
-                    'name' => $type->name,
-                    'prefix' => $type->prefix,
-                    'img' => $type->imgForTenant(),
-                ]),
-        ]);
+        return $this->service->__index($project_id);
     }
 
     /**
@@ -67,26 +54,20 @@ class SinglePumpSelectionsController extends ModuleResourceController
     public function create($project_id): Response
     {
         $this->authorize('selection_create');
-        return Inertia::render($this->createPath, [
-            'selection_props' => new SinglePumpSelectionPropsResource(null),
-            'project_id' => $project_id
-        ]);
+        return $this->service->__create($project_id);
     }
 
     /**
      * Display selection
      *
      * @param SinglePumpSelection $selection
+     * @return RedirectResponse|Response
      * @throws AuthorizationException
      */
-    public function show(SinglePumpSelection $selection)
+    public function show(SinglePumpSelection $selection): RedirectResponse|Response
     {
         $this->authorize('selection_show');
-        return Inertia::render($this->showPath, [
-            'selection_props' => new SinglePumpSelectionPropsResource(null),
-            'project_id' => $selection->project_id,
-            'selection' => new SinglePumpSelectionResource($selection)
-        ]);
+        return $this->service->__show($selection);
     }
 
     /**

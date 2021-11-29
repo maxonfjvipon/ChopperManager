@@ -3,7 +3,6 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ModuleResourceController;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -12,18 +11,16 @@ use Inertia\Response;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Http\Requests\PumpBrandStoreRequest;
 use Modules\Pump\Http\Requests\PumpBrandUpdateRequest;
+use Modules\Pump\Services\PumpBrands\PumpBrandsSeriesInterface;
 use Modules\Pump\Transformers\PumpBrandResource;
 
-class PumpBrandsController extends ModuleResourceController
+class PumpBrandsController extends Controller
 {
-    public function __construct()
+    protected PumpBrandsSeriesInterface $service;
+
+    public function __construct(PumpBrandsSeriesInterface $service)
     {
-        parent::__construct(
-            null,
-            'Pump::PumpBrands/Create',
-            null,
-            'Pump::PumpBrands/Edit'
-        );
+        $this->service = $service;
     }
 
     /**
@@ -35,7 +32,7 @@ class PumpBrandsController extends ModuleResourceController
     public function create(): Response
     {
         $this->authorize('brand_create');
-        return Inertia::render($this->createPath);
+        return Inertia::render($this->service->createPath());
     }
 
     /**
@@ -48,8 +45,7 @@ class PumpBrandsController extends ModuleResourceController
     public function store(PumpBrandStoreRequest $request): RedirectResponse
     {
         $this->authorize('brand_create');
-        PumpBrand::create($request->validated());
-        return Redirect::route('pump_series.index');
+        return $this->service->__store($request);
     }
 
     /**
@@ -62,7 +58,7 @@ class PumpBrandsController extends ModuleResourceController
     public function edit(PumpBrand $pumpBrand): Response
     {
         $this->authorize('brand_edit');
-        return Inertia::render($this->editPath, [
+        return Inertia::render($this->service->editPath(), [
             'brand' => new PumpBrandResource($pumpBrand)
         ]);
     }

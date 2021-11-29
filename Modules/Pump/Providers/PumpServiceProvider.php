@@ -2,20 +2,32 @@
 
 namespace Modules\Pump\Providers;
 
+use App\Traits\BindsModuleRequests;
+use App\Traits\BindsModuleServices;
+use App\Traits\UsesClassesFromModule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Modules\Pump\Entities\Pump;
+use Modules\Pump\Services\PumpBrands\PumpBrandsSeriesInterface;
+use Modules\Pump\Services\PumpBrands\PumpBrandsService;
+use Modules\Pump\Services\Pumps\PumpsService;
+use Modules\Pump\Services\Pumps\PumpsServiceInterface;
+use Modules\Pump\Services\PumpSeries\PumpSeriesService;
+use Modules\Pump\Services\PumpSeries\PumpSeriesServiceInterface;
 
 class PumpServiceProvider extends ServiceProvider
 {
+    use UsesClassesFromModule, BindsModuleServices, BindsModuleRequests;
+
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Pump';
+    protected string $moduleName = 'Pump';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'pump';
+    protected string $moduleNameLower = 'pump';
 
     /**
      * Boot the application events.
@@ -28,6 +40,8 @@ class PumpServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->bindModuleServices();
+//        $this->bindModuleRequests();
     }
 
     /**
@@ -108,5 +122,30 @@ class PumpServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+    public function services(): array
+    {
+        return [
+            [
+                'abstract' => PumpsServiceInterface::class,
+                'name' => 'PumpsService',
+                'default' => PumpsService::class
+            ],
+            [
+                'abstract' => PumpSeriesServiceInterface::class,
+                'name' => 'PumpSeriesService',
+                'default' => PumpSeriesService::class
+            ],
+            [
+                'abstract' => PumpBrandsSeriesInterface::class,
+                'name' => 'PumpBrandsService',
+                'default' => PumpBrandsService::class
+            ],
+        ];
+    }
+
+    public function requests(): array
+    {
     }
 }

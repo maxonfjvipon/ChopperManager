@@ -2,11 +2,15 @@
 
 namespace Modules\Auth\Providers;
 
+use App\Traits\BindsModuleRequests;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
+use Modules\Auth\Http\Requests\RegisterRequest;
+use Modules\Auth\Http\Requests\UserRegisterable;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    use BindsModuleRequests;
+
     /**
      * @var string $moduleName
      */
@@ -28,6 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->bindModuleRequests();
     }
 
     /**
@@ -108,5 +113,15 @@ class AuthServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+    public function requests(): array
+    {
+        return array([
+            'abstract' => UserRegisterable::class,
+            'name' => 'RegisterRequest',
+            'default' => RegisterRequest::class,
+        ]);
+
     }
 }

@@ -2,16 +2,12 @@
 
 namespace Modules\PumpManager\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Modules\Auth\Traits\CanRegisterUser;
 use Modules\User\Entities\Country;
 
-class RegisterRequest extends FormRequest
+class RegisterRequest extends \Modules\Auth\Http\Requests\RegisterRequest
 {
-    use CanRegisterUser;
-
     /**
      * Get the validation rules that apply to the request.
      *

@@ -17,9 +17,8 @@ use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Entities\Discount;
 use Modules\User\Http\Requests\UserPasswordUpdateRequest;
-use Modules\User\Http\Requests\UserUpdateRequest;
+use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Transformers\ProfileUserResource;
-use Modules\User\Transformers\UserResource;
 
 class ProfileController extends Controller
 {
@@ -77,10 +76,10 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UserUpdateRequest $request
+     * @param UpdateUserRequest $request
      * @return RedirectResponse
      */
-    public function update(UserUpdateRequest $request): RedirectResponse
+    public function update(UpdateUserRequest $request): RedirectResponse
     {
         Auth::user()->update($request->validated());
         return Redirect::back()->with('success', __('flash.users.updated'));

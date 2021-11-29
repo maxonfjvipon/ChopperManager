@@ -1,7 +1,5 @@
 <?php
 
-use Pine\I18n\I18nServiceProvider;
-
 return [
 
     /*
@@ -244,11 +242,4 @@ return [
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
-
-    'modules' => [
-        'admin_panel' => 'AdminPanel',
-        'pump_manager' => 'PumpManager',
-        'pump_producer' => 'PumpProducer'
-    ]
-
 ];
