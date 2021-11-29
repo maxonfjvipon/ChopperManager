@@ -32,9 +32,9 @@ const resolver = name => {
     } else {
         page = import('./src/Pages/' + name)
     }
-    console.log(page)
+    // console.log(page)
     return page.then(module => {
-        console.log(parts[1])
+        // console.log(parts[1])
         module = module.default[parts[1]]
         module.layout = module.layout || (module => <AuthLayout children={module}/>)
         return module
