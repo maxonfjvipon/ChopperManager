@@ -161,7 +161,7 @@ export default function Index() {
     // TODO: fix alt path
     const seriesIcon = (src) => (src == null || src === "")
         ? <></>
-        : <img src={media_path + src} alt={media_path + 'no_image.jpg'} width={60}/>
+        : <img src={media_path + src} width={60}/>
 
     const checkHideIcons = () => prevHideIcons === hideIcons
 
@@ -348,6 +348,7 @@ export default function Index() {
 
 // MAKE SELECTION HANDLER
     const makeSelectionHandler = async () => {
+        yaCounter86716585.reachGoal('make-select')
         if (isArrayEmpty(brandsSeriesListValues)) {
             message.warning(Lang.get('messages.selections.no_series_selected'))
             return
@@ -444,7 +445,7 @@ export default function Index() {
                         ]
                 }
             >
-                <Row justify="space-around" gutter={[16, 16]}>
+                <Row justify="space-around" gutter={[8, 16]}>
                     <Col xxl={hideIcons ? 2 : 3} xl={hideIcons ? 3 : 4}>
                         <Row>
                             <Col xs={24}>
@@ -474,18 +475,22 @@ export default function Index() {
                             </Col>
                         </Row>
                         <Divider style={margin.all("5px 0 5px")}/>
-                        {showBrandsList && <Tree
-                            defaultExpandAll
-                            checkable
-                            treeData={brandsSeriesTree}
-                            checkedKeys={brandsSeriesListValues}
-                            onCheck={brandsSeriesListValuesCheckedHandler}
-                        />}
-                        {!showBrandsList && <Checkbox.Group
-                            options={brandsSeriesList}
-                            value={brandsSeriesListValues}
-                            onChange={brandsSeriesListValuesCheckedHandler}
-                        />}
+                        {showBrandsList && <div style={{overflow: "auto", maxHeight: "70vh"}}>
+                            <Tree
+                                defaultExpandAll
+                                checkable
+                                treeData={brandsSeriesTree}
+                                checkedKeys={brandsSeriesListValues}
+                                onCheck={brandsSeriesListValuesCheckedHandler}
+                            />
+                        </div>}
+                        {!showBrandsList && <div style={{overflow: "auto", maxHeight: "70vh"}}>
+                            <Checkbox.Group
+                                options={brandsSeriesList}
+                                value={brandsSeriesListValues}
+                                onChange={brandsSeriesListValuesCheckedHandler}
+                            />
+                        </div>}
                     </Col>
                     <Col xxl={hideIcons ? 22 : 21} xl={hideIcons ? 21 : 20}>
                         {/*<Row gutter={[10, 10]}>*/}
