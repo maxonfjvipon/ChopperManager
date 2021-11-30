@@ -11221,7 +11221,7 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
       },
       scroll: {
         x: 1550,
-        y: 300
+        y: "48vh"
       }
     });
   }, [selectedPumps, locales]);
@@ -11681,7 +11681,6 @@ function Index() {
   var seriesIcon = function seriesIcon(src) {
     return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("img", {
       src: media_path + src,
-      alt: media_path + 'no_image.jpg',
       width: 60
     });
   };
@@ -11926,15 +11925,17 @@ function Index() {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
+              yaCounter86716585.reachGoal('make-select');
+
               if (!isArrayEmpty(brandsSeriesListValues)) {
-                _context2.next = 3;
+                _context2.next = 4;
                 break;
               }
 
               antd__WEBPACK_IMPORTED_MODULE_25__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.no_series_selected'));
               return _context2.abrupt("return");
 
-            case 3:
+            case 4:
               setStationToShow(null);
               document.getElementById('for-graphic').innerHTML = "";
 
@@ -11946,16 +11947,16 @@ function Index() {
               _context2.t1 = _objectSpread;
               _context2.t2 = _objectSpread;
               _context2.t3 = {};
-              _context2.next = 12;
+              _context2.next = 13;
               return fullSelectionForm.validateFields();
 
-            case 12:
+            case 13:
               _context2.t4 = _context2.sent;
               _context2.t5 = (0, _context2.t2)(_context2.t3, _context2.t4);
-              _context2.next = 16;
+              _context2.next = 17;
               return additionalFiltersForm.validateFields();
 
-            case 16:
+            case 17:
               _context2.t6 = _context2.sent;
               _context2.t7 = (0, _context2.t1)(_context2.t5, _context2.t6);
               _context2.t8 = {};
@@ -11965,26 +11966,26 @@ function Index() {
               };
               body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
               prepareRequestBody(body);
-              _context2.prev = 22;
-              _context2.next = 25;
+              _context2.prev = 23;
+              _context2.next = 26;
               return postRequest(tRoute('sp_selections.select'), body, true);
 
-            case 25:
+            case 26:
               data = _context2.sent;
               setSelectedPumps(data.selected_pumps);
-              _context2.next = 31;
+              _context2.next = 32;
               break;
 
-            case 29:
-              _context2.prev = 29;
-              _context2.t10 = _context2["catch"](22);
+            case 30:
+              _context2.prev = 30;
+              _context2.t10 = _context2["catch"](23);
 
-            case 31:
+            case 32:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[22, 29]]);
+      }, _callee2, null, [[23, 30]]);
     }));
 
     return function makeSelectionHandler() {
@@ -12054,7 +12055,7 @@ function Index() {
       })],
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
         justify: "space-around",
-        gutter: [16, 16],
+        gutter: [8, 16],
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
           xxl: hideIcons ? 2 : 3,
           xl: hideIcons ? 3 : 4,
@@ -12090,16 +12091,28 @@ function Index() {
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
             style: margin.all("5px 0 5px")
-          }), showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-            defaultExpandAll: true,
-            checkable: true,
-            treeData: brandsSeriesTree,
-            checkedKeys: brandsSeriesListValues,
-            onCheck: brandsSeriesListValuesCheckedHandler
-          }), !showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].Group, {
-            options: brandsSeriesList,
-            value: brandsSeriesListValues,
-            onChange: brandsSeriesListValuesCheckedHandler
+          }), showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("div", {
+            style: {
+              overflow: "auto",
+              maxHeight: "70vh"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
+              defaultExpandAll: true,
+              checkable: true,
+              treeData: brandsSeriesTree,
+              checkedKeys: brandsSeriesListValues,
+              onCheck: brandsSeriesListValuesCheckedHandler
+            })
+          }), !showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("div", {
+            style: {
+              overflow: "auto",
+              maxHeight: "70vh"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].Group, {
+              options: brandsSeriesList,
+              value: brandsSeriesListValues,
+              onChange: brandsSeriesListValuesCheckedHandler
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
           xxl: hideIcons ? 22 : 21,

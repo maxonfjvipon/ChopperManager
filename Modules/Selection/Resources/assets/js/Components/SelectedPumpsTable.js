@@ -98,7 +98,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow}) => {
                 }
             }}
             pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
-            scroll={{x: 1550, y: 300}}
+            scroll={{x: 1550, y: "48vh"}}
         />
     ), [selectedPumps, locales])
 
