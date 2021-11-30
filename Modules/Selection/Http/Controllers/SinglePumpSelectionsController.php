@@ -96,7 +96,6 @@ class SinglePumpSelectionsController extends Controller
     {
         $this->authorize('selection_create');
         $project->selections()->create($request->validated());
-//        SinglePumpSelection::create($request->validated());
         return Redirect::back()->with('success', __('flash.selections.added'));
     }
 

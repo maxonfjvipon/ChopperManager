@@ -8449,8 +8449,8 @@ function Show() {
 
   var deleteSelectionHandler = function deleteSelectionHandler(id) {
     return function () {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](tRoute('selections.destroy', id));
-      if (has('selection_restore')) openRestoreNotification(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.title'), tRoute('selections.restore', id), _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.button'));
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](tRoute('sp_selections.destroy', id));
+      if (has('selection_restore')) openRestoreNotification(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.title'), tRoute('sp_selections.restore', id), _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.button'));
     };
   };
 

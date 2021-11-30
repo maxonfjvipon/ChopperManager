@@ -111,11 +111,11 @@ export default function Show() {
     }
 
     const deleteSelectionHandler = id => () => {
-        Inertia.delete(tRoute('selections.destroy', id))
+        Inertia.delete(tRoute('sp_selections.destroy', id))
         if (has('selection_restore'))
             openRestoreNotification(
                 Lang.get('pages.projects.show.restore.title'),
-                tRoute('selections.restore', id),
+                tRoute('sp_selections.restore', id),
                 Lang.get('pages.projects.show.restore.button'),
             )
     }

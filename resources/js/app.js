@@ -21,7 +21,6 @@ InertiaProgress.init({
 });
 
 const app = document.getElementById('app');
-// const context = require.context("../../Modules", true, /Pages\/(.+)\.js$/, "lazy");
 const context = require.context("../../Modules", true, /js\/app\.js$/, "lazy");
 
 const resolver = name => {
@@ -32,9 +31,7 @@ const resolver = name => {
     } else {
         page = import('./src/Pages/' + name)
     }
-    // console.log(page)
     return page.then(module => {
-        // console.log(parts[1])
         module = module.default[parts[1]]
         module.layout = module.layout || (module => <AuthLayout children={module}/>)
         return module
@@ -42,37 +39,3 @@ const resolver = name => {
 }
 
 render(<InertiaApp initialPage={JSON.parse(app.dataset.page)} resolveComponent={resolver}/>, app);
-//
-// createInertiaApp({
-//     resolve: name => {
-//         let page
-//         let parts = name.split('::')
-//         switch (parts[0]) {
-//             case "AdminPanel":
-//                 page = require(`~/AdminPanel/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             case "Pump":
-//                 page = require(`~/Pump/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             case "Core":
-//                 page = require(`~/Core/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             case "Auth":
-//                 page = require(`~/Auth/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             case "User":
-//                 page = require(`~/User/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             case "PumpProducer":
-//                 page = require(`~/PumpProducer/Resources/assets/js/Pages/${parts[1]}`)
-//                 break
-//             default:
-//                 page = require('./src/Pages/' + name).default
-//         }
-//         page.layout = page => <AuthLayout children={page}/>
-//         return page
-//     },
-//     setup({el, App, props}) {
-//         render(<App {...props} />, el)
-//     },
-// })

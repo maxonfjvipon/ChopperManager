@@ -162,20 +162,20 @@ class MakeSelectionAction
 //                    $intersectionPoint = IntersectionPoint::byCoefficients($coefficients, $flow, $head);
 
                     // range length
-                    $rDiff = $qEnd - $qStart;
+                    $qDist = $qEnd - $qStart;
 
                     // pump with current main pumps count is appropriate
                     // custom range
                     if ($request->range_id === SelectionRange::$CUSTOM) {
                         $rStart = $request->custom_range[0] / 100;
-                        $rEnd = $request->custom_range[1] / 100;
+                        $rEnd = (100 - $request->custom_range[1]) / 100;
                     } else {
-                        $rStart = (1 - $range->value) / 2;
-                        $rEnd = $rStart + $range->value;
+                        $rStart = $range->value;
+                        $rEnd = $range->value;
                     }
 
-                    if ($intersectionPoint->x() >= $qStart + $rDiff * $rStart
-                        && $intersectionPoint->x() <= $qStart + $rDiff * $rEnd
+                    if ($intersectionPoint->x() >= $qStart + $qDist * $rStart
+                        && $intersectionPoint->x() <= $qEnd - $qDist * $rEnd
                         && $intersectionPoint->y() >= $head - $head * $deviation / 100
                     ) {
                         $pumpsCount = $mainPumpsCount + $reservePumpsCount;

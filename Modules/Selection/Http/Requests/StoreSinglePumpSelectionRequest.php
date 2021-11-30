@@ -6,6 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSinglePumpSelectionRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'pump_series_ids' => implode(",", array_filter($this->pump_series_ids, fn($item) => gettype($item) === 'integer'))
+        ]);
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -54,6 +61,7 @@ class StoreSinglePumpSelectionRequest extends FormRequest
             'pumps_count' => ['required', 'integer', 'min:0', 'not_in:0'],
 
             'custom_range' => ['required', 'string', 'max:7'],
+            'pump_series_ids' => ['required', 'string'],
             'pump_brand_ids' => ['required', 'string'],
             'mains_connection_ids' => ['nullable', 'string', 'max:3'],
             'pump_type_ids' => ['nullable', 'string'],

@@ -11459,15 +11459,15 @@ function Index() {
       hideIcons = _useState6[0],
       setHideIcons = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(hideIcons),
       _useState8 = _slicedToArray(_useState7, 2),
-      brandsSeriesList = _useState8[0],
-      setBrandsSeriesList = _useState8[1];
+      prevHideIcons = _useState8[0],
+      setPrevHideIcons = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState10 = _slicedToArray(_useState9, 2),
-      brandsSeriesListValues = _useState10[0],
-      setBrandsSeriesListValues = _useState10[1];
+      brandsSeriesList = _useState10[0],
+      setBrandsSeriesList = _useState10[1];
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState12 = _slicedToArray(_useState11, 2),
@@ -11517,57 +11517,67 @@ function Index() {
       brandsValue = _useState20[0],
       setBrandsValue = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || defaults.powerAdjustments),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
       _useState22 = _slicedToArray(_useState21, 2),
-      powerAdjustmentValue = _useState22[0],
-      setPowerAdjustmentValue = _useState22[1];
+      brandsSeriesListValues = _useState22[0],
+      setBrandsSeriesListValues = _useState22[1];
 
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || defaults.powerAdjustments),
       _useState24 = _slicedToArray(_useState23, 2),
-      typesValue = _useState24[0],
-      setTypesValue = _useState24[1];
+      powerAdjustmentValue = _useState24[0],
+      setPowerAdjustmentValue = _useState24[1];
 
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_applications) || []),
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
       _useState26 = _slicedToArray(_useState25, 2),
-      applicationsValue = _useState26[0],
-      setApplicationsValue = _useState26[1];
+      typesValue = _useState26[0],
+      setTypesValue = _useState26[1];
 
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_applications) || []),
       _useState28 = _slicedToArray(_useState27, 2),
-      useAdditionalFilters = _useState28[0],
-      setUseAdditionalFilters = _useState28[1];
+      applicationsValue = _useState28[0],
+      setApplicationsValue = _useState28[1];
 
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
       _useState30 = _slicedToArray(_useState29, 2),
-      temperatureValue = _useState30[0],
-      setTemperatureValue = _useState30[1];
+      useAdditionalFilters = _useState30[0],
+      setUseAdditionalFilters = _useState30[1];
 
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
       _useState32 = _slicedToArray(_useState31, 2),
-      prevTemperatureValue = _useState32[0],
-      setPrevTemperatureValue = _useState32[1];
+      temperatureValue = _useState32[0],
+      setTemperatureValue = _useState32[1];
+
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
+      _useState34 = _slicedToArray(_useState33, 2),
+      prevTemperatureValue = _useState34[0],
+      setPrevTemperatureValue = _useState34[1];
 
   var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__.useDebounce)(temperatureValue, 500);
 
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selectionRanges[selectionRanges.length - 1].id : false),
-      _useState34 = _slicedToArray(_useState33, 2),
-      rangeDisabled = _useState34[0],
-      setRangeDisabled = _useState34[1];
-
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selectionRanges[selectionRanges.length - 1].id : false),
       _useState36 = _slicedToArray(_useState35, 2),
-      filtersDrawerVisible = _useState36[0],
-      setFiltersDrawerVisible = _useState36[1];
+      rangeDisabled = _useState36[0],
+      setRangeDisabled = _useState36[1];
 
   var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState38 = _slicedToArray(_useState37, 2),
-      pumpInfoDrawerVisible = _useState38[0],
-      setPumpInfoDrawerVisible = _useState38[1];
+      filtersDrawerVisible = _useState38[0],
+      setFiltersDrawerVisible = _useState38[1];
 
   var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState40 = _slicedToArray(_useState39, 2),
-      exportDrawerVisible = _useState40[0],
-      setExportDrawerVisible = _useState40[1]; // CONSTS
+      pumpInfoDrawerVisible = _useState40[0],
+      setPumpInfoDrawerVisible = _useState40[1];
+
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState42 = _slicedToArray(_useState41, 2),
+      exportDrawerVisible = _useState42[0],
+      setExportDrawerVisible = _useState42[1];
+
+  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState44 = _slicedToArray(_useState43, 2),
+      reload = _useState44[0],
+      setReload = _useState44[1]; // CONSTS
 
 
   var mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(function (value) {
@@ -11666,12 +11676,7 @@ function Index() {
     form: additionalFiltersForm,
     visible: filtersDrawerVisible,
     setVisible: setFiltersDrawerVisible
-  };
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (selection) {
-      setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
-    }
-  }, [selection]); // TODO: fix alt path
+  }; // TODO: fix alt path
 
   var seriesIcon = function seriesIcon(src) {
     return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("img", {
@@ -11679,6 +11684,10 @@ function Index() {
       alt: media_path + 'no_image.jpg',
       width: 60
     });
+  };
+
+  var checkHideIcons = function checkHideIcons() {
+    return prevHideIcons === hideIcons;
   }; // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
 
 
@@ -11686,8 +11695,11 @@ function Index() {
     var _brandsSeriesList = [];
     var _brandsSeriesTree = []; // const _allSeriesListOptions = []
 
+    var seriesToLoop;
+
     if (brandsValue.length > 0) {
       filteredBrandsWithSeries().forEach(function (brand) {
+        // seriesToLoop = checkHideIcons() ? brand.series : brand.series.filter(series => brandsSeriesListValues.includes(series.id))
         var children = [];
         brand.series.forEach(function (series) {
           var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
@@ -11734,105 +11746,113 @@ function Index() {
   }, [brandsValue, brandsWithSeries, hideIcons]); // FILTER BRANDS HANDLER
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (!isArrayEmpty(brandsSeriesList)) {
-      var _producersSeriesListValues = [];
-      var _producersSeriesList = [];
-      var _producersSeriesTree = [];
-      var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
-      var hasTypes = typesValue.length <= 0;
-      var hasApplications = applications.length <= 0;
-      var hasPowerAdjustments = powerAdjustmentValue <= 0;
-      filteredBrandsWithSeries().forEach(function (brand) {
-        var children = [];
-        brand.series.forEach(function (series) {
-          var brandsSeries = brand.name + " " + series.name;
-          var hasType = hasTypes;
-          var hasApplication = hasApplications;
-          var hasPowerAdjustment = hasPowerAdjustments;
-          var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
+    if (checkHideIcons()) {
+      if (!isArrayEmpty(brandsSeriesList)) {
+        if (reload) {
+          var _producersSeriesListValues = [];
+          var _producersSeriesList = [];
+          var _producersSeriesTree = [];
+          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
+          var hasTypes = typesValue.length <= 0;
+          var hasApplications = applications.length <= 0;
+          var hasPowerAdjustments = powerAdjustmentValue <= 0;
+          filteredBrandsWithSeries().forEach(function (brand) {
+            var children = [];
+            brand.series.forEach(function (series) {
+              var brandsSeries = brand.name + " " + series.name;
+              var hasType = hasTypes;
+              var hasApplication = hasApplications;
+              var hasPowerAdjustment = hasPowerAdjustments;
+              var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
 
-          if (!hasType) {
-            if (typesValue.every(function (typeValue) {
-              return series.types.map(function (type) {
-                return type.id;
-              }).includes(typeValue);
-            })) {
-              hasType = true;
+              if (!hasType) {
+                if (typesValue.every(function (typeValue) {
+                  return series.types.map(function (type) {
+                    return type.id;
+                  }).includes(typeValue);
+                })) {
+                  hasType = true;
+                }
+              }
+
+              if (!hasApplication) {
+                if (applicationsValue.every(function (applicationValue) {
+                  return series.applications.map(function (application) {
+                    return application.id;
+                  }).includes(applicationValue);
+                })) {
+                  hasApplication = true;
+                }
+              }
+
+              if (!hasPowerAdjustment) {
+                var _series$power_adjustm;
+
+                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
+                  hasPowerAdjustment = true;
+                }
+              } // checkedBrandsSeriesListValues - checked by user
+
+
+              if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
+                _producersSeriesListValues.push(series.id);
+              } // todo check if hide icons were clicked
+
+
+              if (temperatureWasChanged) {
+                var colorStyle = color(hasTemp ? 'black' : 'red');
+
+                _producersSeriesList.push({
+                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: brandsSeries
+                    })]
+                  }),
+                  value: series.id,
+                  disabled: !hasTemp
+                });
+
+                children.push({
+                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: series.name
+                    })]
+                  }),
+                  key: series.id,
+                  disabled: !hasTemp
+                });
+              }
+            });
+
+            if (temperatureWasChanged) {
+              _producersSeriesTree.push({
+                title: brand.name,
+                key: brand.name,
+                children: children
+              });
             }
-          }
-
-          if (!hasApplication) {
-            if (applicationsValue.every(function (applicationValue) {
-              return series.applications.map(function (application) {
-                return application.id;
-              }).includes(applicationValue);
-            })) {
-              hasApplication = true;
-            }
-          }
-
-          if (!hasPowerAdjustment) {
-            var _series$power_adjustm;
-
-            if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
-              hasPowerAdjustment = true;
-            }
-          } // checkedBrandsSeriesListValues - checked by user
-
-
-          if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
-            _producersSeriesListValues.push(series.id);
-          } // todo check if hide icons were clicked
-
+          });
 
           if (temperatureWasChanged) {
-            var colorStyle = color(hasTemp ? 'black' : 'red');
+            setBrandsSeriesList(_producersSeriesList);
+            setBrandsSeriesTree(_producersSeriesTree);
+            setPrevTemperatureValue(debouncedTemperature);
+          } // what checkboxes are checked
 
-            _producersSeriesList.push({
-              label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
-                children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("span", {
-                  style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                    marginLeft: hideIcons ? 0 : 5
-                  }),
-                  children: brandsSeries
-                })]
-              }),
-              value: series.id,
-              disabled: !hasTemp
-            });
 
-            children.push({
-              title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
-                children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("span", {
-                  style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                    marginLeft: hideIcons ? 0 : 5
-                  }),
-                  children: series.name
-                })]
-              }),
-              key: series.id,
-              disabled: !hasTemp
-            });
-          }
-        });
-
-        if (temperatureWasChanged) {
-          _producersSeriesTree.push({
-            title: brand.name,
-            key: brand.name,
-            children: children
-          });
+          setBrandsSeriesListValues(_producersSeriesListValues);
+        } else {
+          setReload(true);
         }
-      });
-
-      if (temperatureWasChanged) {
-        setBrandsSeriesList(_producersSeriesList);
-        setBrandsSeriesTree(_producersSeriesTree);
-        setPrevTemperatureValue(debouncedTemperature);
-      } // what checkboxes are checked
-
-
-      setBrandsSeriesListValues(_producersSeriesListValues);
+      }
+    } else {
+      setPrevHideIcons(hideIcons);
     }
   }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // SAVE HANDLER
 
@@ -11846,15 +11866,16 @@ function Index() {
           switch (_context.prev = _context.next) {
             case 0:
               setAddLoading(true);
-              _context.next = 3;
+              setReload(false);
+              _context.next = 4;
               return fullSelectionForm.validateFields();
 
-            case 3:
+            case 4:
               selectionFormData = _context.sent;
-              _context.next = 6;
+              _context.next = 7;
               return additionalFiltersForm.validateFields();
 
-            case 6:
+            case 7:
               additionalFiltersFormData = _context.sent;
               separator = ","; // FIXME: some how make it global
 
@@ -11871,17 +11892,20 @@ function Index() {
                 pump_id: stationToShow.pump_id,
                 selected_pump_name: stationToShow.name,
                 pumps_count: stationToShow.pumps_count,
+                pump_series_ids: brandsSeriesListValues,
                 project_id: project_id
               });
               prepareRequestBody(body);
               _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.post(selection ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
+                preserveState: true,
                 preserveScroll: true,
                 onFinish: function onFinish() {
                   setAddLoading(false);
+                  setReload(true);
                 }
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -12000,7 +12024,12 @@ function Index() {
         document.getElementById('for-graphic').innerHTML = stationToShow.svg;
       }
     }
-  }, [stationToShow]); // const onCheckAllChange = e => {
+  }, [stationToShow]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (selection) {
+      setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
+    }
+  }, [selection]); // const onCheckAllChange = e => {
   //     setCheckedAll(e.target.checked)
   //     setIndeteminate(false)
   //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
@@ -12358,8 +12387,7 @@ function Index() {
                 extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("a", {
                     onClick: function onClick(e) {
-                      e.preventDefault(); // console.log(stationToShow)
-
+                      e.preventDefault();
                       setExportDrawerVisible(true);
                     },
                     children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.graphic.export')

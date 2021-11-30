@@ -9422,7 +9422,7 @@ function Create() {
 
 /***/ "./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Index.js":
 /*!********************************************************************!*\
-  !*** ./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Profile.js ***!
+  !*** ./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Index.js ***!
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -9637,7 +9637,7 @@ function Index() {
 
 /***/ "./Modules/Pump/Resources/assets/js/Pages/Pumps/Index.js":
 /*!***************************************************************!*\
-  !*** ./Modules/Pump/Resources/assets/js/Pages/Pumps/Profile.js ***!
+  !*** ./Modules/Pump/Resources/assets/js/Pages/Pumps/Index.js ***!
   \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -10310,10 +10310,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Pages_PumpBrands_Edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/PumpBrands/Edit */ "./Modules/Pump/Resources/assets/js/Pages/PumpBrands/Edit.js");
 /* harmony import */ var _Pages_PumpBrands_Create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/PumpBrands/Create */ "./Modules/Pump/Resources/assets/js/Pages/PumpBrands/Create.js");
-/* harmony import */ var _Pages_PumpSeries_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/PumpSeries/Profile */ "./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Index.js");
+/* harmony import */ var _Pages_PumpSeries_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/PumpSeries/Index */ "./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Index.js");
 /* harmony import */ var _Pages_PumpSeries_Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/PumpSeries/Edit */ "./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Edit.js");
 /* harmony import */ var _Pages_PumpSeries_Create__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/PumpSeries/Create */ "./Modules/Pump/Resources/assets/js/Pages/PumpSeries/Create.js");
-/* harmony import */ var _Pages_Pumps_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/Pumps/Profile */ "./Modules/Pump/Resources/assets/js/Pages/Pumps/Index.js");
+/* harmony import */ var _Pages_Pumps_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/Pumps/Index */ "./Modules/Pump/Resources/assets/js/Pages/Pumps/Index.js");
 /* harmony import */ var _Pages_Pumps_Show__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pages/Pumps/Show */ "./Modules/Pump/Resources/assets/js/Pages/Pumps/Show.js");
 
 
@@ -12855,7 +12855,7 @@ function map(object, f) {
   // Copy constructor.
   if (object instanceof Map) object.each(function(value, key) { map.set(key, value); });
 
-  // Profile array by numeric index or specified key function.
+  // Index array by numeric index or specified key function.
   else if (Array.isArray(object)) {
     var i = -1,
         n = object.length,
@@ -37079,7 +37079,7 @@ function warningFixed(flattenColumns) {
     if (allFixLeft && col.fixed !== 'left') {
       allFixLeft = false;
     } else if (!allFixLeft && col.fixed === 'left') {
-      (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__["default"])(false, "Profile ".concat(i - 1, " of `columns` missing `fixed='left'` prop."));
+      (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__["default"])(false, "Index ".concat(i - 1, " of `columns` missing `fixed='left'` prop."));
       break;
     }
   }
@@ -37092,7 +37092,7 @@ function warningFixed(flattenColumns) {
     if (allFixRight && _col.fixed !== 'right') {
       allFixRight = false;
     } else if (!allFixRight && _col.fixed === 'right') {
-      (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__["default"])(false, "Profile ".concat(_i + 1, " of `columns` missing `fixed='right'` prop."));
+      (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__["default"])(false, "Index ".concat(_i + 1, " of `columns` missing `fixed='right'` prop."));
       break;
     }
   }

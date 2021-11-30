@@ -41,8 +41,8 @@ export default function Index() {
     // const [checkedAll, setCheckedAll] = useState(false)
     // const [indeterminate, setIndeteminate] = useState(true)
     const [hideIcons, setHideIcons] = useState(false)
+    const [prevHideIcons, setPrevHideIcons] = useState(hideIcons)
     const [brandsSeriesList, setBrandsSeriesList] = useState([])
-    const [brandsSeriesListValues, setBrandsSeriesListValues] = useState([])
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
     const [selectedPumps, setSelectedPumps] = useState([])
     const [stationToShow, setStationToShow] = useState(null)
@@ -65,6 +65,7 @@ export default function Index() {
 
     const [updated, setUpdated] = useState(!selection)
     const [brandsValue, setBrandsValue] = useState(selection?.data.pump_brands || defaults.brands)
+    const [brandsSeriesListValues, setBrandsSeriesListValues] = useState(selection?.data.pump_series || [])
     const [powerAdjustmentValue, setPowerAdjustmentValue] = useState(selection?.data.power_adjustments || defaults.powerAdjustments)
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
@@ -79,6 +80,8 @@ export default function Index() {
     const [filtersDrawerVisible, setFiltersDrawerVisible] = useState(false)
     const [pumpInfoDrawerVisible, setPumpInfoDrawerVisible] = useState(false)
     const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
+
+    const [reload, setReload] = useState(!selection)
 
     // CONSTS
     const mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(value => {
@@ -155,24 +158,22 @@ export default function Index() {
         setVisible: setFiltersDrawerVisible,
     }
 
-    useEffect(() => {
-        if (selection) {
-            setStationToShow(selection?.data.to_show)
-        }
-    }, [selection])
-
     // TODO: fix alt path
     const seriesIcon = (src) => (src == null || src === "")
         ? <></>
         : <img src={media_path + src} alt={media_path + 'no_image.jpg'} width={60}/>
+
+    const checkHideIcons = () => prevHideIcons === hideIcons
 
     // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
     useEffect(() => {
         const _brandsSeriesList = []
         const _brandsSeriesTree = []
         // const _allSeriesListOptions = []
+        let seriesToLoop
         if (brandsValue.length > 0) {
             filteredBrandsWithSeries().forEach(brand => {
+                // seriesToLoop = checkHideIcons() ? brand.series : brand.series.filter(series => brandsSeriesListValues.includes(series.id))
                 let children = []
                 brand.series.forEach(series => {
                     let hasTemp = debouncedTemperature == null
@@ -182,7 +183,10 @@ export default function Index() {
                     _brandsSeriesList.push({
                         label: <>
                             {!hideIcons && seriesIcon(series.image)}
-                            <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{brand.name + " " + series.name}</span>
+                            <span style={{
+                                ...colorStyle,
+                                marginLeft: hideIcons ? 0 : 5
+                            }}>{brand.name + " " + series.name}</span>
                         </>,
                         value: series.id,
                         disabled: !hasTemp,
@@ -207,99 +211,108 @@ export default function Index() {
         // setAllSeriesLitOptions(_allSeriesListOptions)
         setBrandsSeriesList(_brandsSeriesList)
         setBrandsSeriesTree(_brandsSeriesTree)
+
     }, [brandsValue, brandsWithSeries, hideIcons])
 
-    // FILTER BRANDS HANDLER
+// FILTER BRANDS HANDLER
     useEffect(() => {
-        if (!isArrayEmpty(brandsSeriesList)) {
-            const _producersSeriesListValues = []
-            const _producersSeriesList = []
-            const _producersSeriesTree = []
-            const temperatureWasChanged = debouncedTemperature !== prevTemperatureValue
-            const hasTypes = typesValue.length <= 0
-            const hasApplications = applications.length <= 0
-            const hasPowerAdjustments = powerAdjustmentValue <= 0
-            filteredBrandsWithSeries().forEach(brand => {
-                let children = []
-                brand.series.forEach(series => {
-                    const brandsSeries = brand.name + " " + series.name
-                    let hasType = hasTypes
-                    let hasApplication = hasApplications
-                    let hasPowerAdjustment = hasPowerAdjustments
-                    let hasTemp = debouncedTemperature == null || (series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature)
-                    if (!hasType) {
-                        if (typesValue.every(typeValue => series.types
-                            .map(type => type.id)
-                            .includes(typeValue))
-                        ) {
-                            hasType = true
-                        }
-                    }
-                    if (!hasApplication) {
-                        if (applicationsValue.every(applicationValue => series.applications
-                            .map(application => application.id)
-                            .includes(applicationValue))
-                        ) {
-                            hasApplication = true
-                        }
-                    }
-                    if (!hasPowerAdjustment) {
-                        if (powerAdjustmentValue.includes(series.power_adjustment?.id)) {
-                            hasPowerAdjustment = true
-                        }
-                    }
-                    // checkedBrandsSeriesListValues - checked by user
-                    if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
-                        _producersSeriesListValues.push(series.id)
-                    }
-                    // todo check if hide icons were clicked
-                    if (temperatureWasChanged) {
-                        const colorStyle = color(hasTemp ? 'black' : 'red')
-                        _producersSeriesList.push({
-                            label: <>
-                                {!hideIcons && seriesIcon(series.image)}
-                                <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{brandsSeries}</span>
-                            </>,
-                            value: series.id,
-                            disabled: !hasTemp,
+        if (checkHideIcons()) {
+            if (!isArrayEmpty(brandsSeriesList)) {
+                if (reload) {
+                    const _producersSeriesListValues = []
+                    const _producersSeriesList = []
+                    const _producersSeriesTree = []
+                    const temperatureWasChanged = debouncedTemperature !== prevTemperatureValue
+                    const hasTypes = typesValue.length <= 0
+                    const hasApplications = applications.length <= 0
+                    const hasPowerAdjustments = powerAdjustmentValue <= 0
+                    filteredBrandsWithSeries().forEach(brand => {
+                        let children = []
+                        brand.series.forEach(series => {
+                            const brandsSeries = brand.name + " " + series.name
+                            let hasType = hasTypes
+                            let hasApplication = hasApplications
+                            let hasPowerAdjustment = hasPowerAdjustments
+                            let hasTemp = debouncedTemperature == null || (series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature)
+                            if (!hasType) {
+                                if (typesValue.every(typeValue => series.types
+                                    .map(type => type.id)
+                                    .includes(typeValue))
+                                ) {
+                                    hasType = true
+                                }
+                            }
+                            if (!hasApplication) {
+                                if (applicationsValue.every(applicationValue => series.applications
+                                    .map(application => application.id)
+                                    .includes(applicationValue))
+                                ) {
+                                    hasApplication = true
+                                }
+                            }
+                            if (!hasPowerAdjustment) {
+                                if (powerAdjustmentValue.includes(series.power_adjustment?.id)) {
+                                    hasPowerAdjustment = true
+                                }
+                            }
+                            // checkedBrandsSeriesListValues - checked by user
+                            if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
+                                _producersSeriesListValues.push(series.id)
+                            }
+                            // todo check if hide icons were clicked
+                            if (temperatureWasChanged) {
+                                const colorStyle = color(hasTemp ? 'black' : 'red')
+                                _producersSeriesList.push({
+                                    label: <>
+                                        {!hideIcons && seriesIcon(series.image)}
+                                        <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{brandsSeries}</span>
+                                    </>,
+                                    value: series.id,
+                                    disabled: !hasTemp,
+                                })
+                                children.push({
+                                    title: <>
+                                        {!hideIcons && seriesIcon(series.image)}
+                                        <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
+                                    </>,
+                                    key: series.id,
+                                    disabled: !hasTemp
+                                })
+                            }
                         })
-                        children.push({
-                            title: <>
-                                {!hideIcons && seriesIcon(series.image)}
-                                <span style={{...colorStyle, marginLeft: hideIcons ? 0 : 5}}>{series.name}</span>
-                            </>,
-                            key: series.id,
-                            disabled: !hasTemp
-                        })
-                    }
-                })
-                if (temperatureWasChanged) {
-                    _producersSeriesTree.push({
-                        title: brand.name,
-                        key: brand.name,
-                        children
+                        if (temperatureWasChanged) {
+                            _producersSeriesTree.push({
+                                title: brand.name,
+                                key: brand.name,
+                                children
+                            })
+                        }
                     })
+
+                    if (temperatureWasChanged) {
+                        setBrandsSeriesList(_producersSeriesList)
+                        setBrandsSeriesTree(_producersSeriesTree)
+                        setPrevTemperatureValue(debouncedTemperature)
+                    }
+
+                    // what checkboxes are checked
+                    setBrandsSeriesListValues(_producersSeriesListValues)
+                } else {
+                    setReload(true)
                 }
-            })
-
-            if (temperatureWasChanged) {
-                setBrandsSeriesList(_producersSeriesList)
-                setBrandsSeriesTree(_producersSeriesTree)
-                setPrevTemperatureValue(debouncedTemperature)
             }
-
-            // what checkboxes are checked
-            setBrandsSeriesListValues(_producersSeriesListValues)
+        } else {
+            setPrevHideIcons(hideIcons)
         }
     }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList])
 
-    // SAVE HANDLER
+// SAVE HANDLER
     const addSelectionToProjectClickHandler = async () => {
         setAddLoading(true)
+        setReload(false)
         const selectionFormData = await fullSelectionForm.validateFields()
         const additionalFiltersFormData = await additionalFiltersForm.validateFields()
         const separator = "," // FIXME: some how make it global
-
         const body = {
             ...selectionFormData,
             ...additionalFiltersFormData,
@@ -315,6 +328,7 @@ export default function Index() {
             pump_id: stationToShow.pump_id,
             selected_pump_name: stationToShow.name,
             pumps_count: stationToShow.pumps_count,
+            pump_series_ids: brandsSeriesListValues,
             project_id,
         }
         prepareRequestBody(body)
@@ -322,15 +336,17 @@ export default function Index() {
             ? tRoute('sp_selections.update', selection.data.id)
             : tRoute('projects.sp_selections.store', project_id), body,
             {
+                preserveState: true,
                 preserveScroll: true,
                 onFinish: () => {
                     setAddLoading(false)
+                    setReload(true)
                 }
             }
         )
     }
 
-    // MAKE SELECTION HANDLER
+// MAKE SELECTION HANDLER
     const makeSelectionHandler = async () => {
         if (isArrayEmpty(brandsSeriesListValues)) {
             message.warning(Lang.get('messages.selections.no_series_selected'))
@@ -389,12 +405,18 @@ export default function Index() {
         }
     }, [stationToShow])
 
-    // const onCheckAllChange = e => {
-    //     setCheckedAll(e.target.checked)
-    //     setIndeteminate(false)
-    //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
-    //     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
-    // }
+    useEffect(() => {
+        if (selection) {
+            setStationToShow(selection?.data.to_show)
+        }
+    }, [selection])
+
+// const onCheckAllChange = e => {
+//     setCheckedAll(e.target.checked)
+//     setIndeteminate(false)
+//     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
+//     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
+// }
 
     return (
         <>
@@ -403,7 +425,8 @@ export default function Index() {
                     ? selection.data.selected_pump_name
                     : Lang.get('pages.selections.single.title_new')}
                 extra={selection
-                    ? <BackLink title={Lang.get('pages.selections.back.to_project')} href={tRoute('projects.show', project_id)}/>
+                    ? <BackLink title={Lang.get('pages.selections.back.to_project')}
+                                href={tRoute('projects.show', project_id)}/>
                     : project_id === "-1"
                         ? <BackLink
                             title={Lang.get('pages.selections.back.to_selections_dashboard')}
@@ -750,7 +773,6 @@ export default function Index() {
                                     extra={stationToShow && <Space>
                                         <a onClick={e => {
                                             e.preventDefault()
-                                            // console.log(stationToShow)
                                             setExportDrawerVisible(true)
                                         }}>{Lang.get('pages.selections.single.graphic.export')}</a>
                                         <a onClick={e => {
