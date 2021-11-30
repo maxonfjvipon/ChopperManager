@@ -11896,7 +11896,7 @@ function Index() {
                 project_id: project_id
               });
               prepareRequestBody(body);
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.post(selection ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[!selection ? 'post' : 'put'](selection ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
                 preserveState: true,
                 preserveScroll: true,
                 onFinish: function onFinish() {

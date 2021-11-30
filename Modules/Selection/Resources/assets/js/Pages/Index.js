@@ -333,7 +333,7 @@ export default function Index() {
             project_id,
         }
         prepareRequestBody(body)
-        Inertia.post(selection
+        Inertia[!selection ? 'post' : 'put'](selection
             ? tRoute('sp_selections.update', selection.data.id)
             : tRoute('projects.sp_selections.store', project_id), body,
             {
