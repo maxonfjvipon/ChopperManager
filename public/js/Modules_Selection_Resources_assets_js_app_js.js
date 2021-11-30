@@ -11864,17 +11864,18 @@ function Index() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              yaCounter86716585.reachGoal('add-selection-to-project');
               setAddLoading(true);
               setReload(false);
-              _context.next = 4;
+              _context.next = 5;
               return fullSelectionForm.validateFields();
 
-            case 4:
+            case 5:
               selectionFormData = _context.sent;
-              _context.next = 7;
+              _context.next = 8;
               return additionalFiltersForm.validateFields();
 
-            case 7:
+            case 8:
               additionalFiltersFormData = _context.sent;
               separator = ","; // FIXME: some how make it global
 
@@ -11904,7 +11905,7 @@ function Index() {
                 }
               });
 
-            case 12:
+            case 13:
             case "end":
               return _context.stop();
           }

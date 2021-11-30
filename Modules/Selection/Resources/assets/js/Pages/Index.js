@@ -308,6 +308,7 @@ export default function Index() {
 
 // SAVE HANDLER
     const addSelectionToProjectClickHandler = async () => {
+        yaCounter86716585.reachGoal('add-selection-to-project')
         setAddLoading(true)
         setReload(false)
         const selectionFormData = await fullSelectionForm.validateFields()
