@@ -10309,8 +10309,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       loading = _useState2[0],
       setLoading = _useState2[1];
 
-  var _useTransRoutes = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)(),
-      tRoute = _useTransRoutes.tRoute;
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)();
 
   var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_8__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
@@ -10324,7 +10323,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
             case 0:
               setLoading(true);
               _context.t0 = axios;
-              _context.t1 = tRoute('selections.pump.single.export_in_moment');
+              _context.t1 = tRoute('sp_selections.export.at_once');
               _context.t2 = _objectSpread;
               _context.t3 = _objectSpread;
               _context.t4 = {};
@@ -11111,7 +11110,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
   var selectedPumps = _ref.selectedPumps,
-      setStationToShow = _ref.setStationToShow;
+      setStationToShow = _ref.setStationToShow,
+      loading = _ref.loading;
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
       locales = _usePage$props.locales,
       auth = _usePage$props.auth;
@@ -11204,27 +11204,32 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     }
   }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      size: "small",
-      columns: columns,
-      dataSource: selectedPumps,
-      onRow: function onRow(record, _) {
-        return {
-          onClick: function onClick(_) {
-            setStationToShow(record);
-          }
-        };
-      },
-      pagination: {
-        defaultPageSize: 500,
-        pageSizeOptions: [10, 20, 50, 100, 500, 1000]
-      },
-      scroll: {
-        x: 1550,
-        y: "48vh"
-      }
-    });
-  }, [selectedPumps, locales]);
+    return (
+      /*#__PURE__*/
+      // return
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        size: "small",
+        columns: columns,
+        dataSource: selectedPumps,
+        onRow: function onRow(record, _) {
+          return {
+            onClick: function onClick(_) {
+              setStationToShow(record);
+            }
+          };
+        },
+        loading: loading,
+        pagination: {
+          defaultPageSize: 500,
+          pageSizeOptions: [10, 20, 50, 100, 500, 1000]
+        },
+        scroll: {
+          x: 1550,
+          y: "48vh"
+        }
+      })
+    );
+  }, [selectedPumps, locales, loading]);
 };
 
 /***/ }),
@@ -12219,7 +12224,7 @@ function Index() {
                   style: margin.all("10px 0 10px")
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                span: 2,
+                span: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.consumption'),
                   name: "flow",
@@ -12234,7 +12239,7 @@ function Index() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                span: 2,
+                span: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.pressure'),
                   name: "head",
@@ -12245,21 +12250,6 @@ function Index() {
                     style: fullWidth,
                     min: 0,
                     max: 10000,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
-                  name: "deviation",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
-                    style: fullWidth,
-                    min: -100,
-                    max: 100,
                     precision: 1
                   })
                 })
@@ -12386,16 +12376,15 @@ function Index() {
                 title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.table.title'),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
-                  setStationToShow: setStationToShow
+                  setStationToShow: setStationToShow,
+                  loading: loading
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
               xs: 9,
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
-                className: 'flex-rounded-card',
-                style: {
-                  height: "100%"
-                },
+                className: 'flex-rounded-card' // style={{height: "100%"}}
+                ,
                 type: "inner",
                 title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
                 extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {

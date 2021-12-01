@@ -123,12 +123,16 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 /*    flex-direction: column;*/
 /*}*/
 
-/*.flex-rounded-card {*/
-/*    !*flex: auto;*!*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    height: 100%;*/
-/*}*/
+.flex-rounded-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-rounded-card .ant-card-body {
+    flex: auto;
+    display: flex;
+}
 
 /*.flex-rounded-card .ant-card-body {*/
 /*    !*display: flex;*!*/

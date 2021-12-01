@@ -8,9 +8,10 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class MainsConnection extends Model
 {
+    use HasFactory, UsesTenantConnection;
+
     protected $fillable = ['phase', 'voltage'];
     public $timestamps = false;
-    use HasFactory, UsesTenantConnection;
 
     protected $appends = ['full_value'];
 

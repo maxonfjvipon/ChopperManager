@@ -12,7 +12,14 @@ class ExportSinglePumpSelectionAction
 {
     public function execute(ExportSinglePumpSelectionRequest $request, SinglePumpSelection $selection): Response
     {
-        $selection->load(['pump', 'pump.series', 'pump.brand']);
+        $selection->load([
+            'pump',
+            'pump.connection_type',
+            'pump.series',
+            'pump.series.category',
+            'pump.series.power_adjustment',
+            'pump.brand'
+        ]);
         $selection->{'curves_data'} = (new MakeSelectionCurvesAction())
             ->selectionPerfCurvesData(
                 $selection->pump,

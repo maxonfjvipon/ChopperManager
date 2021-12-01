@@ -7791,7 +7791,7 @@ var ExportProjectDrawer = function ExportProjectDrawer(_ref) {
               _context.t0.post.call(_context.t0, _context.t1, _context.t5, _context.t6).then(function (res) {
                 setLoading(false);
                 var content = res.headers['content-type'];
-                downloadjs__WEBPACK_IMPORTED_MODULE_7___default()(res.data, "download.pdf", content); // fixme: name
+                downloadjs__WEBPACK_IMPORTED_MODULE_7___default()(res.data, project.name + ".pdf", content); // fixme: name
               });
 
             case 11:
@@ -7833,7 +7833,7 @@ var ExportProjectDrawer = function ExportProjectDrawer(_ref) {
     })
   }, {
     values: {
-      name: 'personal price',
+      name: 'personal_price',
       rules: [rules.required],
       valuePropName: "checked",
       initialValue: true
@@ -7841,17 +7841,15 @@ var ExportProjectDrawer = function ExportProjectDrawer(_ref) {
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_8__["default"].get('pages.projects.export.print.personal_price')
     })
-  }, {
-    values: {
-      name: 'pump_info',
-      rules: [rules.required],
-      valuePropName: "checked",
-      initialValue: true
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_8__["default"].get('pages.projects.export.print.pump_info')
-    })
-  }, {
+  }, // {
+  //     values: {
+  //         name: 'pump_info',
+  //         rules: [rules.required],
+  //         valuePropName: "checked",
+  //         initialValue: true,
+  //     }, input: <Checkbox>{Lang.get('pages.projects.export.print.pump_info')}</Checkbox>
+  // },
+  {
     values: {
       name: 'print_pump_image',
       rules: [rules.required],
@@ -8596,8 +8594,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
       loading = _useState2[0],
       setLoading = _useState2[1];
 
-  var _useTransRoutes = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)(),
-      tRoute = _useTransRoutes.tRoute;
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)();
 
   var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_8__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
@@ -8611,7 +8608,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
             case 0:
               setLoading(true);
               _context.t0 = axios;
-              _context.t1 = tRoute('selections.pump.single.export', selection_id);
+              _context.t1 = tRoute('sp_selections.export', selection_id);
               _context.t2 = _objectSpread;
               _context.t3 = {};
               _context.next = 7;

@@ -9,12 +9,12 @@ import Lang from "../../../../../../resources/js/translation/lang";
 export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}) => {
     const [loading, setLoading] = useState(false)
 
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const [form] = Form.useForm()
 
     const exportHandler = async () => {
         setLoading(true)
-        axios.post(tRoute('selections.pump.single.export_in_moment'), {
+        axios.post(tRoute('sp_selections.export.at_once'), {
             ...await form.validateFields(),
             selected_pump_name: stationToShow?.name,
             pump_id: stationToShow?.pump_id,

@@ -30,7 +30,7 @@ class MakeSinglePumpSelectionRequest extends FormRequest
             'reserve_pumps_count' => ['required', 'integer'],
             'head' => ['required', 'numeric', 'min:0', 'not_in:0'],
             'flow' => ['required', 'numeric', 'min:0', 'not_in:0'],
-            'deviation' => ['nullable', 'numeric'],
+            'deviation' => ['sometimes', 'nullable', 'numeric'],
             'fluid_temperature' => ['required', 'numeric'],
             'range_id' => ['required', 'exists:tenant.selection_ranges,id'], // fixme
             'custom_range' => ['required', 'array'],

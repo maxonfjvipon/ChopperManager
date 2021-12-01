@@ -14,10 +14,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
-class Pump extends Model implements HasMedia
+class Pump extends Model
 {
-    use InteractsWithMedia;
-
     protected $guarded = [];
     public $timestamps = false;
     protected $softCascade = ['selections'];
@@ -114,13 +112,5 @@ class Pump extends Model implements HasMedia
     public function files(): HasMany
     {
         return $this->hasMany(PumpFile::class);
-    }
-
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('images')
-            ->acceptsMimeTypes(['image/jpeg', 'image/jpg', 'image/png']);
-        $this->addMediaCollection('file')
-            ->acceptsMimeTypes(['application/pdf']);
     }
 }

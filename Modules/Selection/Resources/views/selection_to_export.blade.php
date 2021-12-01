@@ -12,16 +12,28 @@
         .text-center {
             text-align: center;
         }
+
         .page {
-            margin: 60px 30px
+            margin: 30px 20px
+        }
+        .td-top {
+            vertical-align: top;
+        }
+        .with-padding {
+            padding: 10px 10px;
         }
         .page-break {
             page-break-after: always;
         }
-
-        .tt td {
-            margin-bottom: 30px;
+        .little-text {
+            font-size: 0.8em;
+        }
+        .with-border {
             border: 1px solid black
+        }
+        .tt {
+            /*margin-bottom: 30px;*/
+            /*border: 1px solid black*/
         }
 
         tr {

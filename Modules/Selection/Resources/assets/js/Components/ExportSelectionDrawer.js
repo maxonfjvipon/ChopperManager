@@ -9,12 +9,12 @@ import Lang from "../../../../../../resources/js/translation/lang";
 export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
     const [loading, setLoading] = useState(false)
 
-    const {tRoute} = useTransRoutes()
+    const tRoute = useTransRoutes()
     const [form] = Form.useForm()
 
     const exportHandler = async () => {
         setLoading(true)
-        axios.post(tRoute('selections.pump.single.export', selection_id), {
+        axios.post(tRoute('sp_selections.export', selection_id), {
             ...await form.validateFields(),
         }, {
             responseType: 'blob',

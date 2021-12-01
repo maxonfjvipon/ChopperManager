@@ -23,7 +23,7 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
         }).then(res => {
             setLoading(false)
             const content = res.headers['content-type'];
-            download(res.data, "download.pdf", content) // fixme: name
+            download(res.data, project.name + ".pdf", content) // fixme: name
         })
     }
 
@@ -54,20 +54,20 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
         },
         {
             values: {
-                name: 'personal price',
+                name: 'personal_price',
                 rules: [rules.required],
                 valuePropName: "checked",
                 initialValue: true,
             }, input: <Checkbox>{Lang.get('pages.projects.export.print.personal_price')}</Checkbox>
         },
-        {
-            values: {
-                name: 'pump_info',
-                rules: [rules.required],
-                valuePropName: "checked",
-                initialValue: true,
-            }, input: <Checkbox>{Lang.get('pages.projects.export.print.pump_info')}</Checkbox>
-        },
+        // {
+        //     values: {
+        //         name: 'pump_info',
+        //         rules: [rules.required],
+        //         valuePropName: "checked",
+        //         initialValue: true,
+        //     }, input: <Checkbox>{Lang.get('pages.projects.export.print.pump_info')}</Checkbox>
+        // },
         {
             values: {
                 name: 'print_pump_image',

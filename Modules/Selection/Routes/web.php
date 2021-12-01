@@ -18,11 +18,9 @@ use Modules\Selection\Http\Controllers\SinglePumpSelectionsController;
 Route::prefix('sp_selections')->group(function () {
     Route::prefix('{selection}')->group(function () {
         Route::get('restore')->name('sp_selections.restore')->uses([SinglePumpSelectionsController::class, 'restore']);
-        Route::prefix('export')->group(function () {
-            Route::post('/')->name('sp_selections.export')->uses([SinglePumpSelectionsController::class, 'export']);
-            Route::post('at-once')->name('sp_selections.export.at_once')->uses([SinglePumpSelectionsController::class, 'exportAtOnce']);
-        });
+        Route::post('export')->name('sp_selections.export')->uses([SinglePumpSelectionsController::class, 'export']);
     });
+    Route::post('export/at-once')->name('sp_selections.export.at_once')->uses([SinglePumpSelectionsController::class, 'exportAtOnce']);
     Route::post('select')->name('sp_selections.select')->uses([SinglePumpSelectionsController::class, 'select']);
     Route::post('curves')->name('sp_selections.curves')->uses([SinglePumpSelectionsController::class, 'curves']);
 });

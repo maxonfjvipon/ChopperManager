@@ -602,7 +602,7 @@ export default function Index() {
                                 <Col span={24}>
                                     <Divider style={margin.all("10px 0 10px")}/>
                                 </Col>
-                                <Col span={2}>
+                                <Col span={3}>
                                     {/* VOLUME FLOW */}
                                     <RequiredFormItem
                                         label={Lang.get('pages.selections.single.consumption')}
@@ -619,7 +619,7 @@ export default function Index() {
                                         />
                                     </RequiredFormItem>
                                 </Col>
-                                <Col span={2}>
+                                <Col span={3}>
                                     {/* DELIVERY HEAD */}
                                     <RequiredFormItem
                                         label={Lang.get('pages.selections.single.pressure')}
@@ -636,23 +636,23 @@ export default function Index() {
                                         />
                                     </RequiredFormItem>
                                 </Col>
-                                <Col span={2}>
-                                    {/* DEVIATION */}
-                                    <Form.Item
-                                        label={Lang.get('pages.selections.single.limit')}
-                                        name="deviation"
-                                        initialValue={selection?.data.deviation}
-                                        className={reducedAntFormItemClassName}
-                                    >
-                                        <InputNumber
-                                            placeholder={Lang.get('pages.selections.single.limit')}
-                                            style={fullWidth}
-                                            min={-100}
-                                            max={100}
-                                            precision={1}
-                                        />
-                                    </Form.Item>
-                                </Col>
+                                {/*<Col span={2}>*/}
+                                {/*    /!* DEVIATION *!/*/}
+                                {/*    <Form.Item*/}
+                                {/*        label={Lang.get('pages.selections.single.limit')}*/}
+                                {/*        name="deviation"*/}
+                                {/*        initialValue={selection?.data.deviation}*/}
+                                {/*        className={reducedAntFormItemClassName}*/}
+                                {/*    >*/}
+                                {/*        <InputNumber*/}
+                                {/*            placeholder={Lang.get('pages.selections.single.limit')}*/}
+                                {/*            style={fullWidth}*/}
+                                {/*            min={-100}*/}
+                                {/*            max={100}*/}
+                                {/*            precision={1}*/}
+                                {/*        />*/}
+                                {/*    </Form.Item>*/}
+                                {/*</Col>*/}
                                 <Col span={4}>
                                     {/* MAIN PUMPS COUNT */}
                                     <RequiredFormItem
@@ -766,6 +766,7 @@ export default function Index() {
                                     <SelectedPumpsTable
                                         selectedPumps={selectedPumps}
                                         setStationToShow={setStationToShow}
+                                        loading={loading}
                                     />
                                 </RoundedCard>
                             </Col>
@@ -773,7 +774,7 @@ export default function Index() {
                             <Col xs={9}>
                                 <RoundedCard
                                     className={'flex-rounded-card'}
-                                    style={{height: "100%"}}
+                                    // style={{height: "100%"}}
                                     type="inner"
                                     title={stationToShow?.name}
                                     extra={stationToShow && <Space>
