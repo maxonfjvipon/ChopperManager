@@ -12115,6 +12115,7 @@ function Index() {
               maxHeight: "70vh"
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].Group, {
+              "class": "series-checkboxes",
               options: brandsSeriesList,
               value: brandsSeriesListValues,
               onChange: brandsSeriesListValuesCheckedHandler

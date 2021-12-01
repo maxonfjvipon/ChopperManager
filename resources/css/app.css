@@ -123,6 +123,10 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 /*    flex-direction: column;*/
 /*}*/
 
+.series-checkboxes label {
+    width: 90%;
+}
+
 .flex-rounded-card {
     height: 100%;
     display: flex;

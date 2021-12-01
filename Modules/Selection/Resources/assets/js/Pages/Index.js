@@ -185,7 +185,7 @@ export default function Index() {
                             {!hideIcons && seriesIcon(series.image)}
                             <span style={{
                                 ...colorStyle,
-                                marginLeft: hideIcons ? 0 : 5
+                                marginLeft: hideIcons ? 0 : 5,
                             }}>{brand.name + " " + series.name}</span>
                         </>,
                         value: series.id,
@@ -487,6 +487,7 @@ export default function Index() {
                         </div>}
                         {!showBrandsList && <div style={{overflow: "auto", maxHeight: "70vh"}}>
                             <Checkbox.Group
+                                class='series-checkboxes'
                                 options={brandsSeriesList}
                                 value={brandsSeriesListValues}
                                 onChange={brandsSeriesListValuesCheckedHandler}
