@@ -30,9 +30,9 @@ class MakeSelectionCurvesAction
         );
         $lines = $pumpPerformance->asRegressedLines($pc);
 
-        $yMax = $pumpPerformance->hMax();
+        $yMax = $pumpPerformance->hMax($head);
         $lastLine = $lines[count($lines) - 1];
-        $xMax = $lastLine[count($lastLine) - 1]['x'];
+        $xMax = max($lastLine[count($lastLine) - 1]['x'], $flow + 2 * $this->axisStep($flow));
 
         return [
             'working_point' => [
@@ -46,7 +46,7 @@ class MakeSelectionCurvesAction
             'performance_lines' => $lines,
             'system_performance' => (new SSystemPerformance($flow, $head))
                 ->asXYArrayData(
-                    $intersectionPoint->y(),
+                    max($intersectionPoint->y(), $head),
                     $intersectionPoint->x() < 50 ? 0.5 : 1
                 ),
             'dx' => $dx = 500 / $xMax,

@@ -97,9 +97,9 @@ class PPumpPerformance
         return $coefficients ?? $this->createdCoefficients($position);
     }
 
-    public function hMax(): float
+    public function hMax($head = 0): float
     {
-        return max(array_map(fn(Point $point) => $point->y(), $this->asPointArray(1))) + 10;
+        return max($head, max(array_map(fn(Point $point) => $point->y(), $this->asPointArray(1)))) + 10;
     }
 
     public function asRegressedLines($pc): array

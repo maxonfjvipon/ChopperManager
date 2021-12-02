@@ -12225,7 +12225,7 @@ function Index() {
                   style: margin.all("10px 0 10px")
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                span: 3,
+                span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.consumption'),
                   name: "flow",
@@ -12240,7 +12240,7 @@ function Index() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                span: 3,
+                span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.pressure'),
                   name: "head",
@@ -12251,6 +12251,21 @@ function Index() {
                     style: fullWidth,
                     min: 0,
                     max: 10000,
+                    precision: 1
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+                span: 2,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"].Item, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
+                  name: "deviation",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
+                    style: fullWidth,
+                    min: -50,
+                    max: 50,
                     precision: 1
                   })
                 })

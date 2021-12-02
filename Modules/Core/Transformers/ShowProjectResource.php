@@ -65,10 +65,7 @@ class ShowProjectResource extends JsonResource
                         'created_at' => $selection->created_at->format('d.m.Y'),
                         'flow' => $selection->flow,
                         'head' => $selection->head,
-                        'selected_pump_name' => $selection->pumps_count . ' '
-                            . $selection->pump->brand->name . ' '
-                            . $selection->pump->series->name . ' '
-                            . $selection->pump->name,
+                        'selected_pump_name' => $selection->selected_pump_name,
                         'discounted_price' => round($discounted_pump_price, 1) ?? null,
                         'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1) ?? null,
                         'rated_power' => $selection->pump->rated_power,

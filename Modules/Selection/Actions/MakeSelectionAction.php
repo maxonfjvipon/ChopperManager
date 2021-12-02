@@ -153,9 +153,9 @@ class MakeSelectionAction
                     $coefficients = $pumpPerformance->coefficientsForPosition($mainPumpsCount);
 //                    $coefficients = $pump->coefficients->firstWhere('position', $mainPumpsCount);
 //                    $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $mainPumpsCount);
-                    if ($head > ($coefficients->k * $flow * $flow + $coefficients->b * $flow + $coefficients->c)) {
-                        continue;
-                    }
+//                    if ($head > ($coefficients->k * $flow * $flow + $coefficients->b * $flow + $coefficients->c)) {
+//                        continue;
+//                    }
                     $qStart = $pumpPerformance->qStart($mainPumpsCount);
 //                    $qStart = $performanceAsArray[0] * $mainPumpsCount;
                     $intersectionPoint = new IIntersectionPoint($coefficients, $flow, $head);
@@ -174,9 +174,11 @@ class MakeSelectionAction
                         $rEnd = $range->value;
                     }
 
-                    if ($intersectionPoint->x() >= $qStart + $qDist * $rStart
+                    if ($flow >= $qStart
+                        && $flow <= $qEnd
+                        && $intersectionPoint->x() >= $qStart + $qDist * $rStart
                         && $intersectionPoint->x() <= $qEnd - $qDist * $rEnd
-                        && $intersectionPoint->y() >= $head - $head * $deviation / 100
+                        && $intersectionPoint->y() >= $head + $head * ($deviation / 100)
                     ) {
                         $pumpsCount = $mainPumpsCount + $reservePumpsCount;
                         $pump_price_list = $pump->price_lists[0];
@@ -188,7 +190,7 @@ class MakeSelectionAction
                         $selectedPumps[] = [
                             'key' => $num++,
                             'pumps_count' => $pumpsCount,
-                            'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->series->name . ' ' . $pump->name,
+                            'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->name,
                             'pump_id' => $pump->id,
                             'articleNum' => $pump->article_num_main,
                             'retailPrice' => $pump_price,

@@ -13,40 +13,50 @@
         .page {
             margin: 30px 20px
         }
+
         .td-top {
             vertical-align: top;
         }
+
         .with-padding {
             padding: 10px 10px;
         }
+
         .page-break {
             page-break-after: always;
         }
+
         .little-text {
             font-size: 0.8em;
         }
+
         .with-border {
             border: 1px solid black
         }
+
         .tt {
             /*margin-bottom: 30px;*/
             /*border: 1px solid black*/
         }
-        th{
+
+        th {
             text-align: center;
             padding: 5px 0px;
             font-weight: bold;
             border: 1px solid black;
         }
-        .bordered td{
+
+        .bordered td {
             border: 1px solid black;
             text-align: center;
             padding: 2px 5px;
         }
+
         tr {
             margin-bottom: 30px;
         }
-        body{
+
+        body {
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
         }
     </style>
@@ -91,6 +101,21 @@
                 <td>{{round($selection->pump->rated_power * $selection->pumps_count, 2)}}</td>
             </tr>
         @endforeach
+        @if($request->personal_price || $request->retail_price)
+            <td colspan="6" style="text-align: left">
+                <strong>Итого:</strong>
+            </td>
+            @if($request->personal_price)
+                <td>{{array_sum($project->selections->map(fn($selection) => $selection->total_discounted_price)->toArray())}}</td>
+            @endif
+            @if($request->retail_price)
+                @if($request->personal_price)
+                    <td></td>
+                @endif
+                <td>{{array_sum($project->selections->map(fn($selection) => $selection->total_retail_price)->toArray())}}</td>
+            @endif
+            <td colspan="2"></td>
+        @endif
     </table>
 </div>
 <div class="page-break"></div>
