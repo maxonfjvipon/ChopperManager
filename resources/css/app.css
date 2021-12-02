@@ -138,6 +138,11 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
     display: flex;
 }
 
+.flex-rounded-card .ant-card-body #for-graphic {
+    flex: auto;
+    display: flex;
+}
+
 /*.flex-rounded-card .ant-card-body {*/
 /*    !*display: flex;*!*/
 /*    !*flex: auto;*!*/
