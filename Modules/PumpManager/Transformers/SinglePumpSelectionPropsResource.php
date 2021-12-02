@@ -26,17 +26,18 @@ class SinglePumpSelectionPropsResource extends JsonResource
     public function toArray($request): array
     {
         $availableBrands = Auth::user()->available_brands();
+        $availableSeriesIds = Auth::user()->available_series()->pluck('id')->all();
         return [
             'brands' => $availableBrands->get()->all(),
             'brandsWithSeries' => $availableBrands->with([
-                'series' => function ($query) {
-                    $query->whereIn('id', Auth::user()->available_series()->pluck('id')->all());
+                'series' => function ($query) use ($availableSeriesIds) {
+                    $query->whereIn('id', $availableSeriesIds);
                 }, 'series.types', 'series.applications', 'series.power_adjustment'
             ])->get(),
-            'types' => PumpType::all(),
             'media_path' => (new TenantStorage())->urlToTenantFolder(), // TODO: fix this
             'connectionTypes' => ConnectionType::all(),
-            'applications' => PumpApplication::all(),
+            'types' => PumpType::availableForUserSeries($availableSeriesIds)->get(),
+            'applications' => PumpApplication::availableForUserSeries($availableSeriesIds)->get(),
             'mainsConnections' => MainsConnection::all(),
             'dns' => DN::all(),
             'powerAdjustments' => ElPowerAdjustment::all(),
