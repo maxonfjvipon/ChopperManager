@@ -105,21 +105,24 @@ class  User extends \Modules\User\Entities\User
             && UserAndSelectionType::updateAvailableSelectionTypesForUser($request->available_selection_type_ids, $this);
     }
 
-    private function availableSeriesRelationQuery(): Closure
+    private function availableSeriesRelationQuery($seriesIds = []): Closure
     {
-        return function ($query) {
-            $query->whereIn('id', $this->available_series()->pluck('id')->all());
+        return function ($query) use ($seriesIds) {
+            $query->whereIn('id', empty($seriesIds)
+                ? $this->available_series()->pluck('id')->all()
+                : $seriesIds
+            );
         };
     }
 
-    public function available_pumps()
+    public function available_pumps($seriesIds = [])
     {
-        return Pump::whereHas('series', $this->availableSeriesRelationQuery());
+        return Pump::whereHas('series', $this->availableSeriesRelationQuery($seriesIds));
     }
 
-    public function available_brands()
+    public function available_brands($seriesIds = [])
     {
-        return PumpBrand::whereHas('series', $this->availableSeriesRelationQuery());
+        return PumpBrand::whereHas('series', $this->availableSeriesRelationQuery($seriesIds));
     }
 
     public function available_series(): BelongsToMany

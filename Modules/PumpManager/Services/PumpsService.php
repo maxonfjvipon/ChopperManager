@@ -23,16 +23,17 @@ class PumpsService extends \Modules\Pump\Services\Pumps\PumpsService
      */
     protected function pumpFilterData(): array
     {
+        $availableSeries = Auth::user()->available_series()->get();
         return $this->asFilterData([
-            'brands' => Auth::user()->available_brands()->pluck('name')->all(),
-            'series' => Auth::user()->available_series()->pluck('name')->all(),
+            'brands' => Auth::user()->available_brands($availableSeries->pluck('id')->all())->pluck('name')->all(),
+            'series' => $availableSeries->pluck('name')->all(),
             'categories' => PumpCategory::pluck('name')->all(),
             'connections' => ConnectionType::pluck('name')->all(),
             'dns' => DN::pluck('value')->all(),
             'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
             'mains_connections' => MainsConnection::all()->map(fn($mc) => $mc->full_value)->toArray(),
-            'types' => PumpType::pluck('name')->all(),
-            'applications' => PumpApplication::pluck('name')->all(),
+            'types' => PumpType::availableForUserSeries($availableSeries->pluck('id')->all())->pluck('name')->all(),
+            'applications' => PumpApplication::availableForUserSeries($availableSeries->pluck('id')->all())->pluck('name')->all(),
         ]);
     }
 
