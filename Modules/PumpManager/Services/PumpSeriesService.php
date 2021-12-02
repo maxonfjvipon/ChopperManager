@@ -20,7 +20,9 @@ class PumpSeriesService extends \Modules\Pump\Services\PumpSeries\PumpSeriesServ
         return Inertia::render($this->indexPath(), [
             'filter_data' => $this->indexFilterData(),
             'brands' => Auth::user()->available_brands,
-            'series' => Auth::user()->available_series()->with(['brand', 'category', 'power_adjustment'])
+            'series' => Auth::user()
+                ->available_series()
+                ->with(['brand', 'category', 'power_adjustment', 'types', 'applications'])
                 ->get()
                 ->map(fn($series) => [
                     'id' => $series->id,
@@ -30,8 +32,7 @@ class PumpSeriesService extends \Modules\Pump\Services\PumpSeries\PumpSeriesServ
                     'power_adjustment' => $series->power_adjustment->name,
                     'applications' => $series->imploded_applications,
                     'types' => $series->imploded_types
-                ])
-                ->all()
+                ])->all()
         ]);
     }
 
