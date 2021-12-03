@@ -11860,8 +11860,8 @@ function Index() {
     }
   }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // SAVE HANDLER
 
-  var addSelectionToProjectClickHandler = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+  var addSelectionToProjectClickHandler = function addSelectionToProjectClickHandler(method) {
+    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var _selectionFormData$po, _selectionFormData$pu, _selectionFormData$pu2, _additionalFiltersFor, _additionalFiltersFor2;
 
       var selectionFormData, additionalFiltersFormData, separator, body;
@@ -11901,7 +11901,7 @@ function Index() {
                 project_id: project_id
               });
               prepareRequestBody(body);
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[!selection ? 'post' : 'put'](selection ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
                 preserveState: true,
                 preserveScroll: true,
                 onFinish: function onFinish() {
@@ -11917,11 +11917,7 @@ function Index() {
         }
       }, _callee);
     }));
-
-    return function addSelectionToProjectClickHandler() {
-      return _ref.apply(this, arguments);
-    };
-  }(); // MAKE SELECTION HANDLER
+  }; // MAKE SELECTION HANDLER
 
 
   var makeSelectionHandler = /*#__PURE__*/function () {
@@ -12426,27 +12422,29 @@ function Index() {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__.BoxFlexEnd, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__.BoxFlexEnd, {
       style: margin.top(16),
-      children: [project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
-        size: 10,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+        size: 8,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
           onClick: function onClick() {
-            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute('projects.show', project_id));
+            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
           },
           children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.exit')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
-          disabled: !stationToShow || !updated,
-          onClick: addSelectionToProjectClickHandler,
-          loading: addLoading,
-          children: !selection ? _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.add') : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.update')
+        }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+            disabled: !stationToShow || !updated,
+            onClick: addSelectionToProjectClickHandler('post'),
+            loading: addLoading,
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.add')
+          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+            disabled: !stationToShow || !updated,
+            onClick: addSelectionToProjectClickHandler('put'),
+            loading: addLoading,
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.update')
+          })]
         })]
-      }), project_id === "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
-        onClick: function onClick() {
-          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute('projects.index'));
-        },
-        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.exit')
-      })]
+      })
     }), stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__.PumpPropsDrawer, {
       visible: pumpInfoDrawerVisible,
       setVisible: setPumpInfoDrawerVisible,

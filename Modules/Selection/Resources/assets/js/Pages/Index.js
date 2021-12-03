@@ -307,7 +307,7 @@ export default function Index() {
     }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList])
 
 // SAVE HANDLER
-    const addSelectionToProjectClickHandler = async () => {
+    const addSelectionToProjectClickHandler = (method) => async () => {
         yaCounter86716585.reachGoal('add-selection-to-project')
         setAddLoading(true)
         setReload(false)
@@ -333,9 +333,11 @@ export default function Index() {
             project_id,
         }
         prepareRequestBody(body)
-        Inertia[!selection ? 'post' : 'put'](selection
-            ? tRoute('sp_selections.update', selection.data.id)
-            : tRoute('projects.sp_selections.store', project_id), body,
+        Inertia[method](
+            method === 'put'
+                ? tRoute('sp_selections.update', selection.data.id)
+                : tRoute('projects.sp_selections.store', project_id),
+            body,
             {
                 preserveState: true,
                 preserveScroll: true,
@@ -799,28 +801,32 @@ export default function Index() {
                 </Row>
             </IndexContainer>
             <BoxFlexEnd style={margin.top(16)}>
-                {project_id !== "-1" && <Space size={10}>
+                <Space size={8}>
                     <SecondaryButton onClick={() => {
-                        Inertia.get(tRoute('projects.show', project_id))
+                        Inertia.get(tRoute(project_id !== '-1'
+                            ? 'projects.show'
+                            : 'projects.index',
+                            project_id))
                     }}>
                         {Lang.get('pages.selections.single.exit')}
                     </SecondaryButton>
-                    <PrimaryButton
-                        disabled={!stationToShow || !updated}
-                        onClick={addSelectionToProjectClickHandler}
-                        loading={addLoading}
-                    >
-                        {!selection
-                            ? Lang.get('pages.selections.single.add')
-                            : Lang.get('pages.selections.single.update')
-                        }
-                    </PrimaryButton>
-                </Space>}
-                {project_id === "-1" && <SecondaryButton onClick={() => {
-                    Inertia.get(tRoute('projects.index'))
-                }}>
-                    {Lang.get('pages.selections.single.exit')}
-                </SecondaryButton>}
+                    {project_id !== "-1" && <>
+                        <PrimaryButton
+                            disabled={!stationToShow || !updated}
+                            onClick={addSelectionToProjectClickHandler('post')}
+                            loading={addLoading}
+                        >
+                            {Lang.get('pages.selections.single.add')}
+                        </PrimaryButton>
+                        {selection && <PrimaryButton
+                            disabled={!stationToShow || !updated}
+                            onClick={addSelectionToProjectClickHandler('put')}
+                            loading={addLoading}
+                        >
+                            {Lang.get('pages.selections.single.update')}
+                        </PrimaryButton>}
+                    </>}
+                </Space>
             </BoxFlexEnd>
             {stationToShow && <PumpPropsDrawer
                 visible={pumpInfoDrawerVisible}
