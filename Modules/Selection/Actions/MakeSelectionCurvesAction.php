@@ -8,19 +8,11 @@ use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 use Modules\Selection\Support\IIntersectionPoint;
 use Modules\Selection\Support\PPumpPerformance;
 use Modules\Selection\Support\SSystemPerformance;
+use Modules\Selection\Traits\HasAxisStep;
 
 class MakeSelectionCurvesAction
 {
-    private function axisStep($maxValue): int
-    {
-        $steps = [1, 2, 5, 10, 15, 20, 35, 50, 75, 100, 150, 200, 350, 500, 750, 1000];
-        foreach ($steps as $step) {
-            if ($maxValue <= $step * 7) {
-                return $step;
-            }
-        }
-        return 2000;
-    }
+    use HasAxisStep;
 
     public function selectionPerfCurvesData($pump, $mpc, $pc, $flow, $head): array
     {
@@ -49,8 +41,8 @@ class MakeSelectionCurvesAction
                     max($intersectionPoint->y(), $head),
                     $intersectionPoint->x() < 50 ? 0.5 : 1
                 ),
-            'dx' => $dx = 500 / $xMax,
-            'dy' => $dy = 330 / $yMax,
+            'dx' => 500 / $xMax,
+            'dy' => 330 / $yMax,
             'x_axis_step' => $this->axisStep($xMax),
             'y_axis_step' => $this->axisStep($yMax),
         ];

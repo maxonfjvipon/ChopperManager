@@ -8,9 +8,12 @@ use Modules\Pump\Support\PumpCoefficientsHelper;
 use Modules\Selection\Support\PPumpPerformance;
 use Modules\Selection\Support\PumpPerformance;
 use Modules\Selection\Support\Regression;
+use Modules\Selection\Traits\HasAxisStep;
 
 class PumpResource extends JsonResource
 {
+    use HasAxisStep;
+
     /**
      * Transform the resource into an array.
      *
@@ -20,6 +23,10 @@ class PumpResource extends JsonResource
     public function toArray($request): array
     {
         $pumpPerformance = new PPumpPerformance($this->resource);
+        $performanceLine = $pumpPerformance->asRegressedPointArray();
+        $xMax = $performanceLine[count($performanceLine) - 1]['x'];
+        $yMax = $pumpPerformance->hMax();
+
         return [
             'id' => $this->id,
             'article_num_main' => $this->article_num_main,
@@ -42,10 +49,14 @@ class PumpResource extends JsonResource
             'connection' => $this->connection->full_value,
             'applications' => $this->applications,
             'types' => $this->types,
-            'performance' => [
-                'line_data' => $pumpPerformance->asRegressedPointArray(1),
-                'y_max' => $pumpPerformance->hMax()
-            ]
+            'description' => $this->description,
+            'svg' => view('pump::pump_performance', [
+                'performance_line' => $performanceLine,
+                'dx' => 900 / $xMax,
+                'dy' => 400 / $yMax,
+                'x_axis_step' => $this->axisStep($xMax),
+                'y_axis_step' => $this->axisStep($yMax),
+            ])->render(),
         ];
     }
 }

@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {usePage} from "@inertiajs/inertia-react";
-import {Input, Row} from "antd";
+import {Input, Row, Space} from "antd";
 import {
     VictoryChart,
     VictoryLine,
@@ -16,11 +16,17 @@ import {FlexCol} from "../../../../../../../resources/js/src/Shared/FlexCol";
 import {BackLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
+import {RoundedCard} from "../../../../../../../resources/js/src/Shared/Cards/RoundedCard";
 
 export default function Show() {
     const {pump} = usePage().props
     const {reducedAntFormItemClassName} = useStyles()
     const tRoute = useTransRoutes()
+
+    useEffect(() => {
+        let div = document.getElementById('for-graphic')
+        div.innerHTML = pump?.data.svg
+    }, [pump])
 
     const items = [
         {
@@ -205,6 +211,17 @@ export default function Show() {
                 //bordered={false}
                 readOnly/>
         },
+        {
+            values: {
+                name: 'description',
+                label: Lang.get('pages.pumps.data.description'),
+                initialValue: pump.data.description,
+                className: reducedAntFormItemClassName,
+            }, input: <Input.TextArea
+                autoSize
+                //bordered={false}
+                readOnly/>
+        },
     ]
 
     return (
@@ -213,65 +230,34 @@ export default function Show() {
             extra={<BackLink title={Lang.get('pages.pumps.back')} href={tRoute('pumps.index')}/>}
         >
             <Row gutter={[16, 16]} style={{flex: "auto"}}>
-                <FlexCol xs={24} sm={20} md={16} lg={13} xl={10} xxl={7}>
+                <FlexCol xs={24} sm={20} md={16} lg={13} xl={8} xxl={8}>
                     <IndexContainer
                         title={Lang.get('pages.pumps.props')}
                         type="inner"
                     >
                         <ItemsForm
                             layout="horizontal"
-                            labelSpan={{xs: 9}}
+                            labelSpan={{xs: 8}}
                             items={items}
                         />
                     </IndexContainer>
                 </FlexCol>
-                <FlexCol xs={24} sm={20} md={16} lg={11} xl={14} xxl={17}>
-                    <IndexContainer
+                <FlexCol xs={24} sm={20} md={16} lg={11} xl={16} xxl={16}>
+                    <RoundedCard
+                        className={'flex-rounded-card'}
                         type="inner"
                         title={Lang.get('pages.pumps.hydraulic_perf')}
-                        className="rounded-card-full-body"
+                        style={{width: "100%"}}
                     >
-                        <VictoryChart
-                            width={1000}
-                            height={500}
-                            theme={VictoryTheme.material}
-                            domain={{y: [0, pump.data.performance.y_max]}}
-                            containerComponent={<VictoryVoronoiContainer style={{display: "flex"}}/>}
-                        >
-                            <VictoryAxis
-                                style={{
-                                    tickLabels: {padding: 1},
-                                    axisLabel: {padding: 20}
-                                }}
-                                orientation="bottom"
-                                label={Lang.get('graphic.axis.flow')}
-                            />
-                            <VictoryAxis
-                                style={{
-                                    tickLabels: {padding: 1},
-                                    axisLabel: {padding: 20}
-                                }}
-                                dependentAxis
-                                label={Lang.get('graphic.axis.head')}
-                            />
-                            <VictoryLine
-                                interpolation="linear" data={pump.data.performance.line_data}
-                                style={{data: {stroke: "blue"}}}
-                            />
-                            <VictoryScatter
-                                data={pump.data.performance.line_data}
-                                size={5}
-                                style={{
-                                    data: {fill: "blue"},
-                                    labels: {fill: "blue"}
-                                }}
-                                labels={({datum}) => {
-                                    return "Q: " + datum.x + ", H: " + datum.y
-                                }}
-                                labelComponent={<VictoryTooltip/>}
-                            />
-                        </VictoryChart>
-                    </IndexContainer>
+                        <div id="for-graphic"/>
+                    </RoundedCard>
+                    {/*<IndexContainer*/}
+                    {/*    type="inner"*/}
+                    {/*    title={Lang.get('pages.pumps.hydraulic_perf')}*/}
+                    {/*    className="rounded-card-full-body"*/}
+                    {/*>*/}
+                    {/*    <div id="for-graphic"></div>*/}
+                    {/*</IndexContainer>*/}
                 </FlexCol>
             </Row>
         </IndexContainer>

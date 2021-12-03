@@ -111,7 +111,7 @@ class PPumpPerformance
         return $lines;
     }
 
-    public function asRegressedPointArray($position): array
+    public function asRegressedPointArray($position = 1): array
     {
         $xx = array_map(fn(Point $point) => $point->x(), $this->asPointArray($position));
         $qDist = $this->pointDist($xx);

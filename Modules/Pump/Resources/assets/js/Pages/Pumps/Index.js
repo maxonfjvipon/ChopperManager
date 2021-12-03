@@ -222,7 +222,7 @@ export default function Index() {
                     columns={columns}
                     dataSource={pumps}
                     doubleClickHandler={has('pump_show') && showPumpClickHandler}
-                    scroll={{x: 4000, y: 630}}
+                    scroll={{x: 4000, y: "70vh"}}
                     loading={loading}
                 />
             </IndexContainer>
