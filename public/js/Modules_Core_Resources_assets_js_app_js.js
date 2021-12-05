@@ -8467,10 +8467,7 @@ function Show() {
         label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.selection'),
         route: tRoute('selections.dashboard', project.data.id)
       }),
-      extra: filterPermissionsArray([
-      /*#__PURE__*/
-      // has('project_export') &&
-      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)("a", {
+      extra: filterPermissionsArray([has('project_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)("a", {
         onClick: function onClick(event) {
           event.preventDefault();
           setExportProjectVisible(true);
