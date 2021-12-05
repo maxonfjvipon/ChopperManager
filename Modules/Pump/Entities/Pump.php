@@ -24,7 +24,7 @@ class Pump extends Model
 
     public function getFullNameAttribute(): string
     {
-        return "{$this->brand->name} {$this->series->name} {$this->name}";
+        return "{$this->brand->name} {$this->name}";
     }
 
     public function getTypesAttribute(): string
