@@ -46,9 +46,6 @@ class CoreDatabaseSeeder extends Seeder
             $permissions[] = 'price_list_import';
             $permissions[] = 'pump_import';
             $permissions[] = 'pump_import_media';
-//            $permissions[] = 'pump_export';
-//            $permissions[] = 'selection_export_xlsx';
-//            $permissions[] = 'selection_export_pdf';
             $permissions[] = 'selection_create_without_saving';
             $permissions[] = 'series_import';
             $permissions[] = 'series_import_media';
@@ -85,6 +82,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_edit',
                 'project_delete',
                 'project_restore',
+                'project_export',
 
                 'pump_access',
                 'pump_create',
@@ -100,6 +98,7 @@ class CoreDatabaseSeeder extends Seeder
                 'selection_edit',
                 'selection_delete',
                 'selection_restore',
+                'selection_export',
 
                 'brand_access',
                 'brand_create',
@@ -129,9 +128,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_edit',
                 'project_delete',
                 'project_restore',
-
-//            'brand_access',
-//            'series_access',
+                'project_export',
 
                 'pump_access',
                 'pump_show',
@@ -143,6 +140,7 @@ class CoreDatabaseSeeder extends Seeder
                 'selection_edit',
                 'selection_delete',
                 'selection_restore',
+                'selection_export',
             ];
             foreach ($clientPermissions as $permission) {
                 $clientRole->givePermissionTo($permission);

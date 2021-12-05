@@ -32,6 +32,7 @@ import {FiltersDrawer} from "../Components/FiltersDrawer";
 import {ExportAtOnceSelectionDrawer} from "../Components/ExportAtOnceSelectionDrawer";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {BackLink} from "../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
+import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
 
 
 export default function Index() {
@@ -51,6 +52,7 @@ export default function Index() {
     const {isArrayEmpty, prepareRequestBody} = useCheck()
     const {postRequest, loading} = useHttp()
     const {selection, project_id, selection_props} = usePage().props
+    const {has} = usePermissions()
 
     const {
         brands,
@@ -782,10 +784,10 @@ export default function Index() {
                                     type="inner"
                                     title={stationToShow?.name}
                                     extra={stationToShow && <Space>
-                                        <a onClick={e => {
+                                        {has('selection_export') && <a onClick={e => {
                                             e.preventDefault()
                                             setExportDrawerVisible(true)
-                                        }}>{Lang.get('pages.selections.single.graphic.export')}</a>
+                                        }}>{Lang.get('pages.selections.single.graphic.export')}</a>}
                                         <a onClick={e => {
                                             e.preventDefault()
                                             setPumpInfoDrawerVisible(true)
@@ -835,7 +837,7 @@ export default function Index() {
                 pumpInfo={stationToShow?.pump_info}
             />}
             <FiltersDrawer {...filtersDrawerProps}/>
-            {stationToShow && <ExportAtOnceSelectionDrawer
+            {(stationToShow && has('selection_export')) && <ExportAtOnceSelectionDrawer
                 visible={exportDrawerVisible}
                 setVisible={setExportDrawerVisible}
                 stationToShow={stationToShow}

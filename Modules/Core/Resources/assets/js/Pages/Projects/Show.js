@@ -135,7 +135,7 @@ export default function Show() {
                     route={tRoute('selections.dashboard', project.data.id)}
                 />}
                 extra={filterPermissionsArray([
-                    // has('project_export') &&
+                    has('project_export') &&
                     <a onClick={event => {
                         event.preventDefault()
                         setExportProjectVisible(true)
