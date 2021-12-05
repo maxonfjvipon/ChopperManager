@@ -55,7 +55,7 @@ export const PumpTechInfoUploader = () => {
                 ...data,
                 files: e.target.files
             })
-        }} accept=".pdf"/>
+        }} accept=".pdf .xlsx"/>
         <Dropdown key="upload-actions" trigger={['click']} arrow overlay={
             <Menu key="menu">
                 <Menu.ItemGroup key="menu-item-group-1" title={Lang.get('pages.pumps.upload_tech_info.images.title')}>

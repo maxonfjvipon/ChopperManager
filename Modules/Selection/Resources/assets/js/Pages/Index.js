@@ -642,13 +642,14 @@ export default function Index() {
                                 <Col span={2}>
                                     {/* DEVIATION */}
                                     <Form.Item
-                                        label={Lang.get('pages.selections.single.limit')}
+                                        label={Lang.get('pages.selections.single.deviation')}
                                         name="deviation"
                                         initialValue={selection?.data.deviation}
                                         className={reducedAntFormItemClassName}
+                                        tooltip={Lang.get('pages.selections.single.deviation_tooltip')}
                                     >
                                         <InputNumber
-                                            placeholder={Lang.get('pages.selections.single.limit')}
+                                            placeholder={Lang.get('pages.selections.single.deviation')}
                                             style={fullWidth}
                                             min={-50}
                                             max={50}

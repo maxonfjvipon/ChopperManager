@@ -11,7 +11,7 @@ import {useNotifications} from "../../../../../../../resources/js/src/Hooks/noti
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {Delete} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete";
 import {Edit} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
-import {FileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/FileUploader";
+import {ExcelFileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader";
 import {ImportErrorBagDrawer} from "../../../../../../../resources/js/src/Shared/ImportErrorBagDrawer";
 import {ComplexPrimaryAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/ComplexPrimaryAction";
 import {FileAddOutlined} from "@ant-design/icons";
@@ -146,7 +146,7 @@ export default function Index() {
                             icon: <FileAddOutlined/>
                         }]}
                     />),
-                    has('series_import') && <FileUploader
+                    has('series_import') && <ExcelFileUploader
                         route={tRoute('pump_series.import')}
                         title={Lang.get('pages.pump_series.index.upload')}
                     />,

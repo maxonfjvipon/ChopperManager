@@ -8929,7 +8929,7 @@ var PumpTechInfoUploader = function PumpTechInfoUploader() {
           files: e.target.files
         }));
       },
-      accept: ".pdf"
+      accept: ".pdf .xlsx"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
       trigger: ['click'],
       arrow: true,
@@ -9444,7 +9444,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Delete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete */ "./resources/js/src/Shared/Resource/Table/Actions/Delete.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit */ "./resources/js/src/Shared/Resource/Table/Actions/Edit.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_FileUploader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/FileUploader */ "./resources/js/src/Shared/Buttons/FileUploader.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_ExcelFileUploader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader */ "./resources/js/src/Shared/Buttons/ExcelFileUploader.js");
 /* harmony import */ var _resources_js_src_Shared_ImportErrorBagDrawer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/ImportErrorBagDrawer */ "./resources/js/src/Shared/ImportErrorBagDrawer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Actions_ComplexPrimaryAction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Actions/ComplexPrimaryAction */ "./resources/js/src/Shared/Resource/Actions/ComplexPrimaryAction.js");
 /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FileAddOutlined.js");
@@ -9609,7 +9609,7 @@ function Index() {
           route: tRoute('pump_series.create'),
           icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_18__["default"], {})
         }]
-      }), has('series_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Buttons_FileUploader__WEBPACK_IMPORTED_MODULE_12__.FileUploader, {
+      }), has('series_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Buttons_ExcelFileUploader__WEBPACK_IMPORTED_MODULE_12__.ExcelFileUploader, {
         route: tRoute('pump_series.import'),
         title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.pump_series.index.upload')
       }), has('series_import_media') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_Components_PumpSeriesTechInfoUploader__WEBPACK_IMPORTED_MODULE_15__.PumpSeriesTechInfoUploader, {})]),
@@ -9654,7 +9654,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
 /* harmony import */ var _resources_js_src_Shared_ImportErrorBagDrawer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/ImportErrorBagDrawer */ "./resources/js/src/Shared/ImportErrorBagDrawer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_FileUploader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/FileUploader */ "./resources/js/src/Shared/Buttons/FileUploader.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_ExcelFileUploader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader */ "./resources/js/src/Shared/Buttons/ExcelFileUploader.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View */ "./resources/js/src/Shared/Resource/Table/Actions/View.js");
@@ -9915,10 +9915,10 @@ function Index() {
       title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.errors_title')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__.IndexContainer, {
       title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.title'),
-      actions: filterPermissionsArray([has('pump_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_FileUploader__WEBPACK_IMPORTED_MODULE_8__.FileUploader, {
+      actions: filterPermissionsArray([has('pump_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_ExcelFileUploader__WEBPACK_IMPORTED_MODULE_8__.ExcelFileUploader, {
         route: tRoute('pumps.import'),
         title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.upload')
-      }), has('price_list_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_FileUploader__WEBPACK_IMPORTED_MODULE_8__.FileUploader, {
+      }), has('price_list_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_ExcelFileUploader__WEBPACK_IMPORTED_MODULE_8__.ExcelFileUploader, {
         route: tRoute('pumps.import.price_lists'),
         title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.upload_price_lists')
       }), has('pump_import') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_Components_PumpTechInfoUploader__WEBPACK_IMPORTED_MODULE_12__.PumpTechInfoUploader, {})]),
@@ -10466,16 +10466,16 @@ var BoxFlex = function BoxFlex(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/src/Shared/Buttons/FileUploader.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/src/Shared/Buttons/FileUploader.js ***!
-  \*********************************************************/
+/***/ "./resources/js/src/Shared/Buttons/ExcelFileUploader.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/src/Shared/Buttons/ExcelFileUploader.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FileUploader": () => (/* binding */ FileUploader)
+/* harmony export */   "ExcelFileUploader": () => (/* binding */ ExcelFileUploader)
 /* harmony export */ });
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -10491,7 +10491,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FileUploader = function FileUploader(_ref) {
+var ExcelFileUploader = function ExcelFileUploader(_ref) {
   var title = _ref.title,
       route = _ref.route;
 
@@ -10524,7 +10524,8 @@ var FileUploader = function FileUploader(_ref) {
       onChange: function onChange(e) {
         // console.log(e)
         setData('files', e.target.files);
-      }
+      },
+      accept: ".xls .xlsx .cvs"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, {
       style: {
         width: "100%"

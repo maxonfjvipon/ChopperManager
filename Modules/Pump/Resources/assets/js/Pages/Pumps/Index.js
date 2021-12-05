@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import {TableActionsContainer} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {ImportErrorBagDrawer} from "../../../../../../../resources/js/src/Shared/ImportErrorBagDrawer";
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
-import {FileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/FileUploader";
+import {ExcelFileUploader} from "../../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import Lang from '../../../../../../../resources/js/translation/lang'
 import {View} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
@@ -207,11 +207,11 @@ export default function Index() {
             <IndexContainer
                 title={Lang.get('pages.pumps.title')}
                 actions={filterPermissionsArray([
-                    has('pump_import') && <FileUploader
+                    has('pump_import') && <ExcelFileUploader
                         route={tRoute('pumps.import')}
                         title={Lang.get('pages.pumps.upload')}
                     />,
-                    has('price_list_import') && <FileUploader
+                    has('price_list_import') && <ExcelFileUploader
                         route={tRoute('pumps.import.price_lists')}
                         title={Lang.get('pages.pumps.upload_price_lists')}
                     />,

@@ -200,7 +200,7 @@ class MakeSelectionAction
                             'dnSuction' => $pump->dn_suction->value,
                             'dnPressure' => $pump->dn_pressure->value,
                             'rated_power' => $pump->rated_power,
-                            'powerSum' => round($pump->rated_power * $pumpsCount, 1),
+                            'powerSum' => round($pump->rated_power * $pumpsCount, 3),
                             'ptpLength' => $pump->ptp_length,
                             'head' => $head,
                             'flow' => $flow,

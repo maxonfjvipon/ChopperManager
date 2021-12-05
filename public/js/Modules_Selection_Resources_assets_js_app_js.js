@@ -12253,12 +12253,13 @@ function Index() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
                 span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation'),
                   name: "deviation",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
                   className: reducedAntFormItemClassName,
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation_tooltip'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.limit'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation'),
                     style: fullWidth,
                     min: -50,
                     max: 50,
