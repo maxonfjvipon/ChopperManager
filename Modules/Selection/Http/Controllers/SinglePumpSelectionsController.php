@@ -54,6 +54,7 @@ class SinglePumpSelectionsController extends Controller
     public function create($project_id): Response
     {
         $this->authorize('selection_create');
+        $this->authorize('project_access_' . $project_id);
         return $this->service->__create($project_id);
     }
 
@@ -67,6 +68,7 @@ class SinglePumpSelectionsController extends Controller
     public function show(SinglePumpSelection $selection): RedirectResponse|Response
     {
         $this->authorize('selection_show');
+        $this->authorize('project_access_' . $selection->project_id);
         return $this->service->__show($selection);
     }
 
@@ -80,6 +82,7 @@ class SinglePumpSelectionsController extends Controller
     public function destroy(SinglePumpSelection $selection): RedirectResponse
     {
         $this->authorize('selection_delete');
+        $this->authorize('project_access_' . $selection->project_id);
         $selection->delete();
         return Redirect::back();
     }
@@ -95,6 +98,7 @@ class SinglePumpSelectionsController extends Controller
     public function store(StoreSinglePumpSelectionRequest $request, Project $project): RedirectResponse
     {
         $this->authorize('selection_create');
+        $this->authorize('project_access_' . $project->id);
         $project->selections()->create($request->validated());
         return Redirect::back()->with('success', __('flash.selections.added'));
     }
@@ -110,6 +114,7 @@ class SinglePumpSelectionsController extends Controller
     public function update(UpdateSinglePumpSelectionRequest $request, SinglePumpSelection $selection): RedirectResponse
     {
         $this->authorize('selection_edit');
+        $this->authorize('project_access_' . $selection->project_id);
         $selection->update($request->validated());
         return Redirect::route('projects.show', $request->project_id);
     }
@@ -139,7 +144,9 @@ class SinglePumpSelectionsController extends Controller
     public function restore($id): RedirectResponse
     {
         $this->authorize('selection_restore');
-        SinglePumpSelection::withTrashed()->find($id)->restore();
+        $selection = SinglePumpSelection::withTrashed()->find($id);
+        $this->authorize('project_access_' . $selection->project_id);
+        $selection->restore();
         return Redirect::back();
     }
 
@@ -170,6 +177,7 @@ class SinglePumpSelectionsController extends Controller
     public function export(ExportSinglePumpSelectionRequest $request, SinglePumpSelection $selection, ExportSinglePumpSelectionAction $action): \Illuminate\Http\Response
     {
         $this->authorize('selection_export');
+        $this->authorize('project_access_' . $selection->id);
         return $action->execute($request, $selection);
     }
 

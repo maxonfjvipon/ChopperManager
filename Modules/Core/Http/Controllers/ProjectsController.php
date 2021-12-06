@@ -86,6 +86,7 @@ class ProjectsController extends ModuleResourceController
     {
         $this->authorize('project_show');
         $this->authorize('selection_access');
+        $this->authorize('project_access_' . $project->id);
         return Inertia::render($this->showPath, [
             'project' => new ShowProjectResource($project),
         ]);
@@ -101,6 +102,7 @@ class ProjectsController extends ModuleResourceController
     public function edit(Project $project): Response
     {
         $this->authorize('project_edit');
+        $this->authorize('project_access_' . $project->id);
         return Inertia::render($this->editPath, [
             'project' => new EditProjectResource($project)
         ]);
@@ -117,6 +119,7 @@ class ProjectsController extends ModuleResourceController
     public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
     {
         $this->authorize('project_edit');
+        $this->authorize('project_access_' . $project->id);
         $project->update($request->validated());
         return Redirect::route('projects.index');
     }
@@ -131,6 +134,7 @@ class ProjectsController extends ModuleResourceController
     public function destroy(Project $project): RedirectResponse
     {
         $this->authorize('project_delete');
+        $this->authorize('project_access_' . $project->id);
         $project->delete();
         return Redirect::back();
     }
@@ -143,6 +147,7 @@ class ProjectsController extends ModuleResourceController
     public function restore($id): RedirectResponse
     {
         $this->authorize('project_restore');
+        $this->authorize('project_access_' . $id);
         Project::withTrashed()->find($id)->restore();
         return Redirect::route('projects.index');
     }
@@ -159,6 +164,7 @@ class ProjectsController extends ModuleResourceController
     public function export(ExportProjectRequest $request, Project $project, ExportProjectAction $action): \Illuminate\Http\Response
     {
         $this->authorize('project_export');
+        $this->authorize('project_access_' . $project->id);
         return $action->execute($project, $request);
     }
 }

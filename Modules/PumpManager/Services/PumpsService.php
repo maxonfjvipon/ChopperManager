@@ -54,7 +54,8 @@ class PumpsService extends \Modules\Pump\Services\Pumps\PumpsService
      */
     public function __show(Pump $pump): Response
     {
-        abort_if(!in_array($pump->id, Auth::user()->available_pumps()->pluck('id')->all()), 401);
+//        dd(Auth::user()->available_pumps()->pluck('id')->all());
+        abort_if(!in_array($pump->id, Auth::user()->available_pumps()->pluck('id')->all()), 404);
         return Inertia::render($this->showPath(), [
             'pump' => new PumpResource($pump),
         ]);
