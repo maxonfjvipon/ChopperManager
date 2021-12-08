@@ -7,11 +7,15 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response;
-use Modules\User\Http\Requests\UserUpdatable;
+use Modules\User\Http\Requests\Interfaces\UserCreatable;
+use Modules\User\Http\Requests\Interfaces\UserUpdatable;
 use Modules\User\Services\UsersServicesInterface;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class UsersController extends Controller
 {
+    use UsesTenantModel;
+
     protected UsersServicesInterface $service;
 
     public function __construct(UsersServicesInterface $service)
@@ -28,6 +32,17 @@ class UsersController extends Controller
     {
         $this->authorize('user_access');
         return $this->service->__index();
+    }
+
+    /**
+     * Show the form for creating the user
+     *
+     * @throws AuthorizationException
+     */
+    public function create()
+    {
+        $this->authorize('user_create');
+        return $this->service->__create();
     }
 
     /**
@@ -54,6 +69,19 @@ class UsersController extends Controller
     {
         $this->authorize('user_edit');
         return $this->service->__update($request, $user_id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param $request
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function store(UserCreatable $request): RedirectResponse
+    {
+        $this->authorize('user_create');
+        return $this->service->__store($request);
     }
 
     /**

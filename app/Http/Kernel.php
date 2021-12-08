@@ -25,6 +25,7 @@ use Modules\AdminPanel\Http\Middleware\HasRegistration;
 use Modules\AdminPanel\Http\Middleware\RedirectIfAuthenticatedAdmin;
 use Modules\Auth\Http\Middleware\AuthenticateInModule;
 use Modules\Auth\Http\Middleware\RedirectIfAuthenticatedInModule;
+use Modules\Core\Http\Middleware\CheckUserIsActive;
 use Spatie\Multitenancy\Http\Middleware\EnsureValidTenantSession;
 use Spatie\Multitenancy\Http\Middleware\NeedsTenant;
 
@@ -89,6 +90,7 @@ class Kernel extends HttpKernel
         'auth.basic' => AuthenticateWithBasicAuth::class,
 
         'auth.module' => AuthenticateInModule::class,
+        'auth.active' => CheckUserIsActive::class,
 
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

@@ -6,8 +6,10 @@ use App\Traits\BindsModuleRequests;
 use App\Traits\BindsModuleServices;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Http\Requests\CreateUserRequest;
+use Modules\User\Http\Requests\Interfaces\UserCreatable;
+use Modules\User\Http\Requests\Interfaces\UserUpdatable;
 use Modules\User\Http\Requests\UpdateUserRequest;
-use Modules\User\Http\Requests\UserUpdatable;
 use Modules\User\Services\UsersServices;
 use Modules\User\Services\UsersServicesInterface;
 
@@ -126,6 +128,10 @@ class UserServiceProvider extends ServiceProvider
             'abstract' => UserUpdatable::class,
             'name' => 'UpdateUserRequest',
             'default' => UpdateUserRequest::class,
+        ], [
+            'abstract' => UserCreatable::class,
+            'name' => 'CreateUserRequest',
+            'default' => CreateUserRequest::class,
         ]);
     }
 

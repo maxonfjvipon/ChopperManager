@@ -20,14 +20,15 @@ class UserResource extends JsonResource
             'organization_name' => $this->organization_name,
             'itn' => $this->itn,
             'phone' => $this->phone,
-            'country' => $this->country->name,
+            'country_id' => $this->country_id,
             'city' => $this->city,
             'postcode' => $this->postcode,
             'first_name' => $this->first_name,
             'middle_name' => $this->middle_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
-            'business' => $this->business->name,
+            'business_id' => $this->business_id,
+            'is_active' => $this->is_active,
             'available_series_ids' => $this->available_series()->pluck('id')->all(),
             'available_selection_type_ids' => $this->available_selection_types()->pluck('id')->all()
         ];

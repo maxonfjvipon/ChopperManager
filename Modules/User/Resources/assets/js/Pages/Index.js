@@ -4,20 +4,18 @@ import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import {useNotifications} from "../../../../../../resources/js/src/Hooks/notifications.hook";
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {Edit} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
-import {Delete} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Delete";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import Lang from "../../../../../../resources/js/translation/lang";
+import {PrimaryAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 
 export default function Index() {
     // HOOKS
     const {users} = usePage().props
     const tRoute = useTransRoutes()
     const {has} = usePermissions()
-    const {openRestoreNotification} = useNotifications()
 
     // CONSTS
     const columns = [
@@ -39,10 +37,10 @@ export default function Index() {
                 return (
                     <TableActionsContainer>
                         {has('user_edit') && <Edit clickHandler={editUserHandler(record.id)}/>}
-                        {has('user_delete') && <Delete
-                            confirmHandler={deleteUserHandler(record.id)}
-                            sureDeleteTitle={Lang.get('pages.users.index.table.delete')}
-                        />}
+                        {/*{has('user_delete') && <Delete*/}
+                        {/*    confirmHandler={deleteUserHandler(record.id)}*/}
+                        {/*    sureDeleteTitle={Lang.get('pages.users.index.table.delete')}*/}
+                        {/*/>}*/}
                     </TableActionsContainer>
                 )
             }
@@ -50,15 +48,15 @@ export default function Index() {
     ]
 
     // HANDLERS
-    const deleteUserHandler = id => () => {
-        Inertia.delete(tRoute('user.destroy', id))
-        if (has('user_restore'))
-            openRestoreNotification(
-                Lang.get('pages.users.index.restore.title'),
-                tRoute('users.restore', id),
-                Lang.get('pages.users.index.restore.button')
-            )
-    }
+    // const deleteUserHandler = id => () => {
+    //     Inertia.delete(tRoute('user.destroy', id))
+    //     if (has('user_restore'))
+    //         openRestoreNotification(
+    //             Lang.get('pages.users.index.restore.title'),
+    //             tRoute('users.restore', id),
+    //             Lang.get('pages.users.index.restore.button')
+    //         )
+    // }
 
     const editUserHandler = id => () => {
         Inertia.get(tRoute('users.edit', id))
@@ -66,7 +64,10 @@ export default function Index() {
 
     // RENDER
     return (
-        <IndexContainer title={Lang.get('pages.users.title')}>
+        <IndexContainer
+            actions={<PrimaryAction label={Lang.get('pages.users.create.title')} route={tRoute('users.create')}/>}
+            title={Lang.get('pages.users.title')}
+        >
             <TTable
                 columns={columns}
                 dataSource={users}

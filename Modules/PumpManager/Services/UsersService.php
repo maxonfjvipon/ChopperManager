@@ -3,6 +3,7 @@
 
 namespace Modules\PumpManager\Services;
 
+use App\Traits\HasFilterData;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -11,11 +12,33 @@ use Modules\AdminPanel\Entities\SelectionType;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\PumpManager\Entities\User;
 use Modules\PumpManager\Transformers\UserResource;
-use Modules\User\Http\Requests\UserUpdatable;
+use Modules\User\Entities\Business;
+use Modules\User\Entities\Country;
+use Modules\User\Http\Requests\Interfaces\UserCreatable;
+use Modules\User\Http\Requests\Interfaces\UserUpdatable;
 use Modules\User\Services\UsersServices;
+use Modules\User\Transformers\CountryResource;
 
 class UsersService extends UsersServices
 {
+    /**
+     * @return array
+     */
+    private function filterData(): array
+    {
+        return [
+            'selection_types' => SelectionType::all(['id', 'name']),
+            'series' => PumpSeries::with('brand')->get()->map(fn($series) => [
+                'id' => $series->id,
+                'name' => $series->brand->name . " " . $series->name,
+            ])->all(),
+            'businesses' => Business::all(),
+            'countries' => Country::all()->map(function ($country) {
+                return new CountryResource($country);
+            })
+        ];
+    }
+
     /**
      * @return Response
      */
@@ -37,13 +60,7 @@ class UsersService extends UsersServices
     {
         return Inertia::render($this->editPath(), [
             'user' => new UserResource(User::find($id)),
-            'filter_data' => [
-                'selection_types' => SelectionType::all(['id', 'name']),
-                'series' => PumpSeries::with('brand')->get()->map(fn($series) => [
-                    'id' => $series->id,
-                    'name' => $series->brand->name . " " . $series->name,
-                ])->all()
-            ]
+            'filter_data' => $this->filterData()
         ]);
     }
 
@@ -54,8 +71,32 @@ class UsersService extends UsersServices
      */
     public function __update(UserUpdatable $request, int $user_id): RedirectResponse
     {
-        User::find($user_id)->updateAvailablePropsFromRequest($request);
+        $user = User::find($user_id);
+        $user->update($request->userProps());
+        $user->updateAvailablePropsFromRequest($request);
         return Redirect::route('users.index');
     }
 
+    /**
+     * @param UserCreatable $request
+     * @return RedirectResponse
+     */
+    public function __store(UserCreatable $request): RedirectResponse
+    {
+        $user = User::create($request->userProps());
+        $user->updateAvailablePropsFromRequest($request);
+        if ($request->email_verified) {
+            $user->markEmailAsVerified();
+        }
+        $user->assignRole('Client');
+        return Redirect::route('users.index');
+    }
+
+    /**
+     * @return Response
+     */
+    public function __create(): Response
+    {
+        return Inertia::render($this->createPath(), $this->filterData());
+    }
 }

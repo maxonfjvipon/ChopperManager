@@ -3,7 +3,8 @@
 
 namespace Modules\Auth\Http\Requests;
 
-interface UserRegisterable
+use Modules\User\Http\Requests\Interfaces\WithUserProps;
+
+interface UserRegisterable extends WithUserProps
 {
-    public function userProps(): array;
 }

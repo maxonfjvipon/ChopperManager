@@ -4,6 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Inertia\Middleware;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Spatie\Multitenancy\Models\Tenant;
 
@@ -37,7 +38,7 @@ abstract class CoreRouteServiceProvider extends ServiceProvider
                 if (Tenant::checkCurrent()) {
                     Route::domain(Tenant::current()->domain)
                         ->prefix(LaravelLocalization::setLocale())
-                        ->middleware(['localizationRedirect', 'auth.module', 'verified'])
+                        ->middleware(['auth.module', 'auth.active', 'verified', 'localizationRedirect'])
                         ->group(module_path($this->moduleName(), '/Routes/web.php'));
                 }
             });

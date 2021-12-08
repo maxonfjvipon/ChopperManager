@@ -13,28 +13,16 @@ use Modules\Core\Entities\Project;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\PumpManager\Http\Requests\UpdateUserRequest;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
-use Modules\User\Entities\Discount;
+use Modules\User\Http\Requests\Interfaces\WithAvailableProps;
 
-class  User extends \Modules\User\Entities\User
+class User extends \Modules\User\Entities\User
 {
     protected $fillable = [
         'id', 'organization_name', 'itn', 'phone', 'city', 'first_name', 'middle_name',
-        'last_name', 'email', 'password', 'business_id', 'country_id', 'currency_id', 'city', 'postcode'
-    ];
-
-    public $timestamps = false;
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+        'last_name', 'email', 'password', 'business_id', 'country_id', 'currency_id', 'city', 'postcode',
+        'is_active',
     ];
 
     /**
@@ -44,6 +32,7 @@ class  User extends \Modules\User\Entities\User
      */
     protected $casts = [
         'email_verified_at' => 'datetime:d.m.Y H:i',
+        'is_active' => 'boolean',
     ];
 
     public function business(): BelongsTo
@@ -61,15 +50,9 @@ class  User extends \Modules\User\Entities\User
         return $this->belongsTo(Currency::class);
     }
 
-
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
-    }
-
-    public function discounts(): HasMany
-    {
-        return $this->hasMany(Discount::class, 'user_id');
     }
 
     public function getFullNameAttribute(): string
@@ -99,10 +82,11 @@ class  User extends \Modules\User\Entities\User
         }
     }
 
-    public function updateAvailablePropsFromRequest(UpdateUserRequest $request): bool
+    public function updateAvailablePropsFromRequest(WithAvailableProps $request): bool
     {
-        return UserAndPumpSeries::updateAvailableSeriesForUser($request->available_series_ids, $this)
-            && UserAndSelectionType::updateAvailableSelectionTypesForUser($request->available_selection_type_ids, $this);
+        $data = $request->availableProps();
+        return UserAndPumpSeries::updateAvailableSeriesForUser($data['available_series_ids'], $this)
+            && UserAndSelectionType::updateAvailableSelectionTypesForUser($data['available_selection_type_ids'], $this);
     }
 
     private function availableSeriesRelationQuery($seriesIds = []): Closure

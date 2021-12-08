@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\User\Entities\User;
-use Modules\User\Http\Requests\UserUpdatable;
+use Modules\User\Http\Requests\Interfaces\UserCreatable;
+use Modules\User\Http\Requests\Interfaces\UserUpdatable;
 use Modules\User\Transformers\UserResource;
 
 class UsersServices implements UsersServicesInterface
@@ -30,6 +31,7 @@ class UsersServices implements UsersServicesInterface
 
     public function createPath(): string
     {
+        return 'User::Create';
     }
 
     /**
@@ -40,6 +42,14 @@ class UsersServices implements UsersServicesInterface
         return Inertia::render($this->indexPath(), [
             'users' => User::all(),
         ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function __create(): Response
+    {
+        return Inertia::render($this->createPath());
     }
 
     /**
@@ -60,7 +70,17 @@ class UsersServices implements UsersServicesInterface
      */
     public function __update(UserUpdatable $request, int $user_id): RedirectResponse
     {
-        User::find($user_id)->update($request->validated());
+        User::find($user_id)->update($request->userProps());
+        return Redirect::route('users.index');
+    }
+
+    /**
+     * @param UserCreatable $request
+     * @return RedirectResponse
+     */
+    public function __store(UserCreatable $request): RedirectResponse
+    {
+        User::create($request->userProps());
         return Redirect::route('users.index');
     }
 }

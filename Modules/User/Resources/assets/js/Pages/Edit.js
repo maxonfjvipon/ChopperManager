@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from "antd";
+import {Input, Switch} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
@@ -11,6 +11,7 @@ import {usePage} from "@inertiajs/inertia-react";
 import {useInputRules} from "../../../../../../resources/js/src/Hooks/input-rules.hook";
 import {MultipleSelection} from "../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
 import {BackToUsersLink} from "../Components/BackToUsersLink";
+import {Selection} from "../../../../../../resources/js/src/Shared/Inputs/Selection";
 
 export default function Edit () {
     // HOOKS
@@ -27,16 +28,16 @@ export default function Edit () {
                 label: Lang.get('pages.users.edit.form.organization_name'),
                 rules: [rules.required],
                 initialValue: user.data.organization_name,
-            }, input: <Input readOnly/>
+            }, input: <Input/>
         },
         {
             values: {
-                name: 'business',
+                name: 'business_id',
                 label: Lang.get('pages.users.edit.form.main_business'),
                 rules: [rules.required],
-                initialValue: user.data.business
+                initialValue: user.data.business_id,
             },
-            input: <Input readOnly/>
+            input: <Selection options={filter_data.businesses}/>
         },
         {
             values: {
@@ -44,7 +45,7 @@ export default function Edit () {
                 label: Lang.get('pages.users.edit.form.itn'),
                 rules: rules.itn,
                 initialValue: user.data.itn,
-            }, input: <Input readOnly/>
+            }, input: <Input/>
         },
         {
             values: {
@@ -53,21 +54,21 @@ export default function Edit () {
                 rules: rules.phone,
                 initialValue: user.data.phone,
             },
-            input: <Input readOnly/>,
+            input: <Input/>,
         },
         {
             values: {
-                name: 'country',
+                name: 'country_id',
                 label: Lang.get('pages.users.edit.form.country'),
                 rules: [rules.required],
-                initialValue: user.data.country
+                initialValue: user.data.country_id
             },
-            input: <Input readOnly/>
+            input: <Selection options={filter_data.countries}/>
         },
         {
             values: {name: 'city', label: Lang.get('pages.users.edit.form.city'),
                 initialValue: user.data.city, rules: [rules.required]},
-            input: <Input readOnly/>
+            input: <Input/>
         },
         {
             values: {
@@ -76,7 +77,7 @@ export default function Edit () {
                 initialValue: user.data.postcode,
                 // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
             },
-            input: <Input readOnly/>
+            input: <Input/>
         },
         {
             values: {
@@ -84,7 +85,7 @@ export default function Edit () {
                 label: Lang.get('pages.users.edit.form.first_name'),
                 rules: [rules.required, rules.max(255)],
                 initialValue: user.data.first_name
-            }, input: <Input readOnly/>
+            }, input: <Input/>
         },
         {
             values: {
@@ -92,7 +93,7 @@ export default function Edit () {
                 label: Lang.get('pages.users.edit.form.middle_name'),
                 rules: [rules.required, rules.max(255)],
                 initialValue: user.data.middle_name
-            }, input: <Input readOnly/>
+            }, input: <Input/>
         },
         {
             values: {
@@ -100,7 +101,7 @@ export default function Edit () {
                 label: Lang.get('pages.users.edit.form.last_name'),
                 rules: [rules.max(255)],
                 initialValue: user.data.last_name
-            }, input: <Input readOnly/>
+            }, input: <Input/>
         },
         {
             values: {
@@ -109,7 +110,7 @@ export default function Edit () {
                 rules: rules.email,
                 initialValue: user.data.email,
             },
-            input: <Input readOnly/>
+            input: <Input/>
         },
         {
             values: {
@@ -127,6 +128,15 @@ export default function Edit () {
             },
             input: <MultipleSelection options={filter_data.selection_types}/>
         },
+        {
+            values: {
+                name: 'is_active',
+                label: Lang.get('pages.users.edit.form.is_active'),
+                rules: [rules.required],
+                valuePropName: "checked",
+                initialValue: user.data.is_active,
+            }, input: <Switch/>,
+        }
     ]
 
     // HANDLERS
