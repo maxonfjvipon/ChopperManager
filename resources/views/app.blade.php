@@ -15,9 +15,14 @@
         ym(86716585, "init", {
             clickmap: true,
             trackLinks: true,
-            accurateTrackBounce: true
+            accurateTrackBounce: true,
+            webvisor: true
         });
     </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/86716585" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/86716585" style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
