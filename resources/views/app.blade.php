@@ -23,10 +23,6 @@
         <div><img src="https://mc.yandex.ru/watch/86716585" style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/86716585" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
