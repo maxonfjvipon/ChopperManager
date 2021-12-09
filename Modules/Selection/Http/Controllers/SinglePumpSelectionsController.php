@@ -54,7 +54,8 @@ class SinglePumpSelectionsController extends Controller
     public function create($project_id): Response
     {
         $this->authorize('selection_create');
-        $this->authorize('project_access_' . $project_id);
+        if ($project_id !== "-1")
+            $this->authorize('project_access_' . $project_id);
         return $this->service->__create($project_id);
     }
 
