@@ -139,114 +139,116 @@ class MakeSelectionAction
         $tenantStorage = new TenantStorage();
 
         foreach ($dbPumps as $pump) {
-            if (count($pump->price_lists) === 1) { // FIXME ???
+//            if (count($pump->price_lists) === 1) { // FIXME ???
 //                $pumpPerformance = new PumpPerformance($pump->performance);
-                $pumpPerformance = new PPumpPerformance($pump);
+            $pumpPerformance = new PPumpPerformance($pump);
 //                $performanceAsArray = $pumpPerformance->asArray();
 //                $performanceAsArrayLength = count($performanceAsArray);
-                foreach ($request->main_pumps_counts as $mainPumpsCount) {
-                    $qEnd = $pumpPerformance->qEnd($mainPumpsCount);
+            foreach ($request->main_pumps_counts as $mainPumpsCount) {
+                $qEnd = $pumpPerformance->qEnd($mainPumpsCount);
 //                    $qEnd = $performanceAsArray[$performanceAsArrayLength - 2] * $mainPumpsCount;
-                    if ($flow >= $qEnd) {
-                        continue;
-                    }
-                    $coefficients = $pumpPerformance->coefficientsForPosition($mainPumpsCount);
+                if ($flow >= $qEnd) {
+                    continue;
+                }
+                $coefficients = $pumpPerformance->coefficientsForPosition($mainPumpsCount);
 //                    $coefficients = $pump->coefficients->firstWhere('position', $mainPumpsCount);
 //                    $coefficients = PumpCoefficientsHelper::coefficientsForPump($pump, $mainPumpsCount);
 //                    if ($head > ($coefficients->k * $flow * $flow + $coefficients->b * $flow + $coefficients->c)) {
 //                        continue;
 //                    }
-                    $qStart = $pumpPerformance->qStart($mainPumpsCount);
+                $qStart = $pumpPerformance->qStart($mainPumpsCount);
 //                    $qStart = $performanceAsArray[0] * $mainPumpsCount;
-                    $intersectionPoint = new IIntersectionPoint($coefficients, $flow, $head);
+                $intersectionPoint = new IIntersectionPoint($coefficients, $flow, $head);
 //                    $intersectionPoint = IntersectionPoint::byCoefficients($coefficients, $flow, $head);
 
-                    // range length
-                    $qDist = $qEnd - $qStart;
+                // range length
+                $qDist = $qEnd - $qStart;
 
-                    // pump with current main pumps count is appropriate
-                    // custom range
-                    if ($request->range_id === SelectionRange::$CUSTOM) {
-                        $rStart = $request->custom_range[0] / 100;
-                        $rEnd = (100 - $request->custom_range[1]) / 100;
-                    } else {
-                        $rStart = $range->value;
-                        $rEnd = $range->value;
-                    }
-
-                    if ($flow >= $qStart
-                        && $flow <= $qEnd
-                        && $intersectionPoint->x() >= $qStart + $qDist * $rStart
-                        && $intersectionPoint->x() <= $qEnd - $qDist * $rEnd
-                        && $intersectionPoint->y() >= $head + $head * ($deviation / 100)
-                    ) {
-                        $pumpsCount = $mainPumpsCount + $reservePumpsCount;
-                        $pump_price_list = $pump->price_lists[0];
-                        $pump_price = $pump_price_list->currency->code === $rates->base()
-                            ? $pump_price_list->price
-                            : round($pump_price_list->price / $rates->rate($pump_price_list->currency->code), 2);
-                        $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discounts[0]->value / 100;
-
-                        $selectedPumps[] = [
-                            'key' => $num++,
-                            'pumps_count' => $pumpsCount,
-                            'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->name,
-                            'pump_id' => $pump->id,
-                            'articleNum' => $pump->article_num_main,
-                            'retailPrice' => $pump_price,
-                            'discountedPrice' => round($pump_price_with_discount, 2),
-                            'retailPriceSum' => round($pump_price * $pumpsCount, 2),
-                            'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
-                            'dnSuction' => $pump->dn_suction->value,
-                            'dnPressure' => $pump->dn_pressure->value,
-                            'rated_power' => $pump->rated_power,
-                            'powerSum' => round($pump->rated_power * $pumpsCount, 3),
-                            'ptpLength' => $pump->ptp_length,
-                            'head' => $head,
-                            'flow' => $flow,
-                            'main_pumps_count' => $mainPumpsCount,
-                            'fluid_temperature' => $request->fluid_temperature,
-                            'intersection_point' => [
-                                'flow' => $intersectionPoint->x(),
-                                'head' => $intersectionPoint->y()
-                            ],
-                            'pump_info' => [
-                                'article_num_main' => $pump->article_num_main, //
-                                'article_num_reserve' => $pump->article_num_reserve, //
-                                'article_num_archive' => $pump->article_num_archive, //
-                                'full_name' => $pump->full_name, //
-                                'weight' => $pump->weight, //
-                                'rated_power' => $pump->rated_power, //
-                                'rated_current' => $pump->rated_current, //
-                                'connection_type' => $pump->connection_type->name, //
-                                'fluid_temp_min' => $pump->fluid_temp_min, //
-                                'fluid_temp_max' => $pump->fluid_temp_max, //
-                                'ptp_length' => $pump->ptp_length, //
-                                'dn_suction' => $pump->dn_suction->value, //
-                                'dn_pressure' => $pump->dn_pressure->value, //
-                                'category' => $pump->series->category->name, //
-                                'power_adjustment' => $pump->series->power_adjustment->name, //
-                                'connection' => $pump->connection->full_value, //
-                                'applications' => $pump->applications, //
-                                'types' => $pump->types, //
-                                'description' => $pump->description,
-                                'images' => [
-                                    'pump' => $tenantStorage->urlToImage($pump->image),
-                                    'sizes' => $tenantStorage->urlToImage($pump->sizes_image),
-                                    'electric_diagram' => $tenantStorage->urlToImage($pump->electric_diagram_image),
-                                    'cross_sectional_drawing' => $tenantStorage->urlToImage($pump->cross_sectional_drawing_image),
-                                ],
-                                'files' => $pump->files
-                                    ->map(fn($file) => $tenantStorage->urlToFile($file->file_name))
-                                    ->filter(fn($file) => $file != null)
-                                    ->map(fn($file) => [
-                                        'name' => basename($file),
-                                        'link' => $file
-                                    ])
-                            ],
-                        ];
-                    }
+                // pump with current main pumps count is appropriate
+                // custom range
+                if ($request->range_id === SelectionRange::$CUSTOM) {
+                    $rStart = $request->custom_range[0] / 100;
+                    $rEnd = (100 - $request->custom_range[1]) / 100;
+                } else {
+                    $rStart = $range->value;
+                    $rEnd = $range->value;
                 }
+
+                if ($flow >= $qStart
+                    && $flow <= $qEnd
+                    && $intersectionPoint->x() >= $qStart + $qDist * $rStart
+                    && $intersectionPoint->x() <= $qEnd - $qDist * $rEnd
+                    && $intersectionPoint->y() >= $head + $head * ($deviation / 100)
+                ) {
+                    $pumpsCount = $mainPumpsCount + $reservePumpsCount;
+                    $pump_price_list = count($pump->price_lists) === 0 ? 0 : $pump->price_lists[0];
+                    $pump_price = count($pump->price_lists) === 0
+                        ? 0
+                        : ($pump_price_list->currency->code === $rates->base()
+                            ? $pump_price_list->price
+                            : round($pump_price_list->price / $rates->rate($pump_price_list->currency->code), 2));
+                    $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discounts[0]->value / 100;
+
+                    $selectedPumps[] = [
+                        'key' => $num++,
+                        'pumps_count' => $pumpsCount,
+                        'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->name,
+                        'pump_id' => $pump->id,
+                        'articleNum' => $pump->article_num_main,
+                        'retailPrice' => $pump_price,
+                        'discountedPrice' => round($pump_price_with_discount, 2),
+                        'retailPriceSum' => round($pump_price * $pumpsCount, 2),
+                        'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
+                        'dnSuction' => $pump->dn_suction->value,
+                        'dnPressure' => $pump->dn_pressure->value,
+                        'rated_power' => $pump->rated_power,
+                        'powerSum' => round($pump->rated_power * $pumpsCount, 3),
+                        'ptpLength' => $pump->ptp_length,
+                        'head' => $head,
+                        'flow' => $flow,
+                        'main_pumps_count' => $mainPumpsCount,
+                        'fluid_temperature' => $request->fluid_temperature,
+                        'intersection_point' => [
+                            'flow' => $intersectionPoint->x(),
+                            'head' => $intersectionPoint->y()
+                        ],
+                        'pump_info' => [
+                            'article_num_main' => $pump->article_num_main, //
+                            'article_num_reserve' => $pump->article_num_reserve, //
+                            'article_num_archive' => $pump->article_num_archive, //
+                            'full_name' => $pump->full_name, //
+                            'weight' => $pump->weight, //
+                            'rated_power' => $pump->rated_power, //
+                            'rated_current' => $pump->rated_current, //
+                            'connection_type' => $pump->connection_type->name, //
+                            'fluid_temp_min' => $pump->fluid_temp_min, //
+                            'fluid_temp_max' => $pump->fluid_temp_max, //
+                            'ptp_length' => $pump->ptp_length, //
+                            'dn_suction' => $pump->dn_suction->value, //
+                            'dn_pressure' => $pump->dn_pressure->value, //
+                            'category' => $pump->series->category->name, //
+                            'power_adjustment' => $pump->series->power_adjustment->name, //
+                            'connection' => $pump->connection->full_value, //
+                            'applications' => $pump->applications, //
+                            'types' => $pump->types, //
+                            'description' => $pump->description,
+                            'images' => [
+                                'pump' => $tenantStorage->urlToImage($pump->image),
+                                'sizes' => $tenantStorage->urlToImage($pump->sizes_image),
+                                'electric_diagram' => $tenantStorage->urlToImage($pump->electric_diagram_image),
+                                'cross_sectional_drawing' => $tenantStorage->urlToImage($pump->cross_sectional_drawing_image),
+                            ],
+                            'files' => $pump->files
+                                ->map(fn($file) => $tenantStorage->urlToFile($file->file_name))
+                                ->filter(fn($file) => $file != null)
+                                ->map(fn($file) => [
+                                    'name' => basename($file),
+                                    'link' => $file
+                                ])
+                        ],
+                    ];
+                }
+//                }
             }
         }
 

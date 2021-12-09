@@ -24,7 +24,7 @@ export const ExcelFileUploader = ({title, route}) => {
             }} ref={ref} onChange={e => {
                 // console.log(e)
                 setData('files', e.target.files)
-            }} accept=".xls .xlsx .cvs"/>
+            }} accept=".xlsx, .xls, .cvs"/>
             <PrimaryButton
                 style={{width: "100%"}}
                 loading={processing}

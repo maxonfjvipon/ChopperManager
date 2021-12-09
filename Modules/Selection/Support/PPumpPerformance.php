@@ -121,15 +121,19 @@ class PPumpPerformance
 
         for ($x =  $xx[0]; $x <= $xx[$xxLength - 1]; $x += $qDist * $position) {
             $line[] = (new Point(
-                round($x, 1),
-                round($regression->calculatedY($x), 1)
+                $x,
+                $regression->calculatedY($x)
+//                round($x, 1),
+//                round($regression->calculatedY($x), 1)
             ))->asArray();
 //            dd($line);
         }
         if ($line[count($line) - 1]['x'] != $xx[$xxLength - 1]) {
             $line[] = (new Point(
-                round($xx[$xxLength - 1], 1),
-                round($regression->calculatedY($xx[$xxLength - 1]), 1)
+                $xx[$xxLength - 1],
+                $regression->calculatedY($xx[$xxLength - 1])
+//                round($xx[$xxLength - 1], 1),
+//                round($regression->calculatedY($xx[$xxLength - 1]), 1)
             ))->asArray();
         }
         return $line;

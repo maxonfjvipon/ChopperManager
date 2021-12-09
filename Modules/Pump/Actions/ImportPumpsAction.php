@@ -50,7 +50,7 @@ class ImportPumpsAction extends ImportAction
             '13' => ['required'], // max temp
             '14' => ['required'], // ptp length
             '15' => ['required', new ExistsInArray($db['mainsConnections'])], // mains connection
-            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,29}\s*$/'], // performance
+            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // performance
             '17' => ['sometimes', 'nullable',], // description
             '18' => ['sometimes', 'nullable', 'string'], // pump image
             '19' => ['sometimes', 'nullable', 'string'], // pump sizes image

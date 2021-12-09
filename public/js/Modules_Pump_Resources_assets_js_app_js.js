@@ -10525,7 +10525,7 @@ var ExcelFileUploader = function ExcelFileUploader(_ref) {
         // console.log(e)
         setData('files', e.target.files);
       },
-      accept: ".xls .xlsx .cvs"
+      accept: ".xlsx, .xls, .cvs"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, {
       style: {
         width: "100%"

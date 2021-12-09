@@ -8,7 +8,7 @@ class PolynomialRegression extends RRegression
 {
     use HasRegressionData;
 
-    public static function fromData($data, $order = 2, $precision = 7)
+    public static function fromData($data, $order = 2, $precision = 8)
     {
         return new static(self::calc($data, $order, $precision));
     }
