@@ -11,7 +11,7 @@ trait UsesClassesFromModule
 {
     use UsesTenantModel;
 
-    public function classFromModule(string $folder, string $className, ?string $default = null)
+    public function classFromModule(string $folder, string $className, ?string $default = null): ?string
     {
         return $this->tryNewClassFromModule(
             "Modules\\"
@@ -22,12 +22,8 @@ trait UsesClassesFromModule
         );
     }
 
-    public function tryNewClassFromModule(string $className, ?string $default = null)
+    public function tryNewClassFromModule(string $className, ?string $default = null): ?string
     {
-        try {
-            return new $className;
-        } catch (Error $error) {
-            return $default ? new $default : null;
-        }
+        return class_exists($className) ? $className : $default;
     }
 }

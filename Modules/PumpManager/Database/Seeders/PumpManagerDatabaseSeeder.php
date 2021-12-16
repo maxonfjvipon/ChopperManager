@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\PumpManager\Entities\User;
+use Modules\PumpManager\Entities\PMUser;
 
 class PumpManagerDatabaseSeeder extends Seeder
 {
@@ -26,7 +26,7 @@ class PumpManagerDatabaseSeeder extends Seeder
             '--database' => 'tenant',
         ]);
         (new AdminSeeder())->run();
-        $users = User::all();
+        $users = PMUser::all();
         foreach ($users as $user) {
             $seriesIds = PumpSeries::pluck('id')->all();
             DB::table(Tenant::current()->database . '.users_and_pump_series')->insert(array_map(fn($seriesId) => [

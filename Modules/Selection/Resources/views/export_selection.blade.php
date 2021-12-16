@@ -179,38 +179,38 @@
         </table>
     </div>
 @endif
-{{--@if($request->print_pump_sizes_image && $selection->pump->sizes_image)--}}
+{{--@if($request->print_pump_sizes_image && $selection->pumpable->sizes_image)--}}
 {{--    <h5>Размеры насоса</h5>--}}
-{{--    @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->sizes_image))--}}
+{{--    @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->sizes_image))--}}
 {{--        <div style="text-align: center">--}}
 {{--            <img style="max-height: 300px;"--}}
-{{--                 src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->sizes_image)}}"/>--}}
+{{--                 src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->sizes_image)}}"/>--}}
 {{--        </div>--}}
 {{--        @endif--}}
 {{--        </div>--}}
 {{--    @endif--}}
-{{--    @if($request->print_pump_electric_diagram_image && $selection->pump->electric_diagram_image)--}}
+{{--    @if($request->print_pump_electric_diagram_image && $selection->pumpable->electric_diagram_image)--}}
 {{--        <div class="page-break"></div>--}}
 {{--        <div class="page">--}}
 {{--            <h5>Электрическая схема</h5>--}}
 {{--            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .--}}
-{{--                           $selection->pump->electric_diagram_image))--}}
+{{--                           $selection->pumpable->electric_diagram_image))--}}
 {{--                <div style="text-align: center">--}}
 {{--                    <img style="max-height: 300px;" src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()--}}
-{{--            ->id . '/' . $selection->pump->electric_diagram_image)}}"/>--}}
+{{--            ->id . '/' . $selection->pumpable->electric_diagram_image)}}"/>--}}
 {{--                </div>--}}
 {{--            @endif--}}
 {{--        </div>--}}
 {{--    @endif--}}
-{{--    @if($request->print_pump_cross_sectional_drawing_image && $selection->pump->cross_sectional_drawing_image)--}}
+{{--    @if($request->print_pump_cross_sectional_drawing_image && $selection->pumpable->cross_sectional_drawing_image)--}}
 {{--        <div class="page-break"></div>--}}
 {{--        <div class="page">--}}
 {{--            <h5>Взрыв модель</h5>--}}
 {{--            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .--}}
-{{--                $selection->pump->cross_sectional_drawing_image))--}}
+{{--                $selection->pumpable->cross_sectional_drawing_image))--}}
 {{--                <div style="text-align: center">--}}
 {{--                    <img style="max-height: 300px;"--}}
-{{--                         src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->cross_sectional_drawing_image)}}"/>--}}
+{{--                         src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->cross_sectional_drawing_image)}}"/>--}}
 {{--                </div>--}}
 {{--            @endif--}}
 {{--        </div>--}}

@@ -1,7 +1,9 @@
 import Dashboard from "./Pages/Dashboard";
-import Index from "./Pages/Index";
+import SinglePump from "./Pages/SinglePump";
+import DoublePump from "./Pages/DoublePump";
 
 export default {
     Dashboard,
-    Index,
+    SinglePump,
+    DoublePump,
 }

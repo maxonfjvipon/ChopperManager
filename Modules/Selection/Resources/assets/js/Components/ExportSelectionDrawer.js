@@ -14,7 +14,7 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
 
     const exportHandler = async () => {
         setLoading(true)
-        axios.post(tRoute('sp_selections.export', selection_id), {
+        axios.post(tRoute('selections.export', selection_id), {
             ...await form.validateFields(),
         }, {
             responseType: 'blob',
@@ -33,7 +33,7 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.pump_image')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.pump_image')}</Checkbox>
         },
         {
             values: {
@@ -42,7 +42,7 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.sizes_image')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.sizes_image')}</Checkbox>
         },
         {
             values: {
@@ -51,7 +51,7 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.electric_diagram')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.electric_diagram')}</Checkbox>
         },
         {
             values: {
@@ -60,11 +60,11 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.exploded_view')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.exploded_view')}</Checkbox>
         },
         {
             values: {}, input:
-                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single.export.button')}</PrimaryButton>
+                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single_pump.export.button')}</PrimaryButton>
         }
     ]
 
@@ -72,7 +72,7 @@ export const ExportSelectionDrawer = ({selection_id, visible, setVisible}) => {
         <Drawer
             width={300}
             placement="right"
-            title={Lang.get('pages.selections.single.export.title')}
+            title={Lang.get('pages.selections.single_pump.export.title')}
             visible={visible}
             closable={false}
             onClose={() => {

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\AdminPanel\Entities\Tenant;
 use Modules\Auth\Http\Requests\LoginRequest;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
@@ -41,7 +42,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate($this->getTenantModel()::current()->getGuard());
+        $request->authenticate(Tenant::current()->guard);
 
         $request->session()->regenerate();
 

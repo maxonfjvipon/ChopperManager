@@ -16,11 +16,11 @@ class AuthenticateInModule extends Middleware
     {
         $tenantModel = $this->getTenantModel();
         if ($tenantModel::checkCurrent()) {
-            if (!$this->auth->guard($tenantModel::current()->getGuard())->check()) {
+            if (!$this->auth->guard($tenantModel::current()->guard)->check()) {
                 $this->unauthenticated($request, $guards);
             }
         }
-        $this->auth->shouldUse($tenantModel::current()->getGuard());
+        $this->auth->shouldUse($tenantModel::current()->guard);
         return $next($request);
     }
 

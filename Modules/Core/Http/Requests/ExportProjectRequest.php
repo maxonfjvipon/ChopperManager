@@ -5,7 +5,7 @@ namespace Modules\Core\Http\Requests;
 use App\Rules\ExistsInArray;
 use App\Rules\ExistsInIdsArray;
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\Selection\Entities\SinglePumpSelection;
+use Modules\Selection\Entities\Selection;
 
 class ExportProjectRequest extends FormRequest
 {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Input, Row, Tabs} from "antd";
+import {Col, Form, Input, Row, Tabs} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../../../../resources/js/translation/lang";
@@ -24,6 +24,7 @@ export default function Profile() {
     const userdata = user.data
     const profileFormName = 'profile-form'
     const changePasswordForm = 'change-password-form'
+    const [changePwdForm] = Form.useForm()
 
     const items = [
         {
@@ -154,6 +155,7 @@ export default function Profile() {
         Inertia.post(tRoute('profile.password.change'), body, {
             preserveScroll: true
         })
+        changePwdForm.resetFields()
     }
 
     return (
@@ -189,10 +191,12 @@ export default function Profile() {
                                         style={margin.top(16)}
                                     >
                                         <ItemsForm
+                                            form={changePwdForm}
                                             layout="horizontal"
                                             labelSpan={{xxl: 6, xl: 10, lg: 10, md: 12, sm: 12}}
                                             items={updatePasswordItems}
-                                            onFinish={changePasswordHandler} name={changePasswordForm}
+                                            onFinish={changePasswordHandler}
+                                            name={changePasswordForm}
                                         />
                                     </RoundedCard>
                                     <BoxFlex style={margin.top(16)}>

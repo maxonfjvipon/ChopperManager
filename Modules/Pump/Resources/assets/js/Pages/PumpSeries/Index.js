@@ -24,7 +24,6 @@ export default function Index() {
     const {openRestoreNotification} = useNotifications()
     const {has, filterPermissionsArray} = usePermissions()
 
-
     // CONSTS
     const brandsColumns = [
         {

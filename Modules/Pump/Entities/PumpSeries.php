@@ -10,19 +10,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\PumpManager\Entities\UserAndPumpSeries;
-use Modules\User\Entities\Discount;
-use Modules\User\Entities\User;
+use Modules\Pump\Traits\Discountable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpSeries extends Model
 {
+    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, Discountable;
+
     protected $guarded = [];
     public $timestamps = false;
-    protected $softCascade = ['pump'];
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection;
+    protected $softCascade = ['single_pumps', 'double_pumps'];
 
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
@@ -44,14 +42,19 @@ class PumpSeries extends Model
         return $updated;
     }
 
+    private function implodedAttributes($attributes): string
+    {
+        return implode(", ", $attributes->map(fn($attribute) => $attribute->name)->toArray());
+    }
+
     public function getImplodedTypesAttribute(): string
     {
-        return implode(", ", $this->types->map(fn($type) => $type->name)->toArray());
+        return $this->implodedAttributes($this->types);
     }
 
     public function getImplodedApplicationsAttribute(): string
     {
-        return implode(", ", $this->applications->map(fn($application) => $application->name)->toArray());
+        return $this->implodedAttributes($this->applications);
     }
 
     public function brand(): BelongsTo
@@ -59,7 +62,7 @@ class PumpSeries extends Model
         return $this->belongsTo(PumpBrand::class, 'brand_id', 'id');
     }
 
-    public function pump(): HasMany
+    public function pumps(): HasMany
     {
         return $this->hasMany(Pump::class, 'series_id');
     }
@@ -82,10 +85,5 @@ class PumpSeries extends Model
     public function applications(): BelongsToMany
     {
         return $this->belongsToMany(PumpApplication::class, 'pump_series_and_applications', 'series_id', 'application_id');
-    }
-
-    public function discounts(): MorphMany
-    {
-        return $this->morphMany(Discount::class, 'discountable');
     }
 }

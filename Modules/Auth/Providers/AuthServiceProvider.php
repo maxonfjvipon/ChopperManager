@@ -4,13 +4,15 @@ namespace Modules\Auth\Providers;
 
 use App\Traits\BindsModuleRequests;
 use Illuminate\Support\ServiceProvider;
+use Modules\AdminPanel\Entities\Tenant;
+use Modules\AdminPanel\Entities\TenantType;
 use Modules\Auth\Http\Requests\RegisterRequest;
 use Modules\Auth\Http\Requests\UserRegisterable;
+use Modules\PumpManager\Http\Requests\PMRegisterRequest;
+use Modules\PumpProducer\Http\Requests\PPRegisterRequest;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    use BindsModuleRequests;
-
     /**
      * @var string $moduleName
      */
@@ -32,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
-        $this->bindModuleRequests();
+        $this->bindRequests();
     }
 
     /**
@@ -115,13 +117,16 @@ class AuthServiceProvider extends ServiceProvider
         return $paths;
     }
 
-    public function requests(): array
+    public function bindRequests()
     {
-        return array([
-            'abstract' => UserRegisterable::class,
-            'name' => 'RegisterRequest',
-            'default' => RegisterRequest::class,
-        ]);
-
+        if (Tenant::checkCurrent())
+            switch (Tenant::current()->type->id) {
+                case TenantType::$PUMPPRODUCER:
+                    $this->app->bind(RegisterRequest::class, PPRegisterRequest::class);
+                    break;
+                default:
+                    $this->app->bind(RegisterRequest::class, PMRegisterRequest::class);
+                    break;
+            }
     }
 }

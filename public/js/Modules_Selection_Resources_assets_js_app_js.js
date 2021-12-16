@@ -10302,7 +10302,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
   var stationToShow = _ref.stationToShow,
       visible = _ref.visible,
-      setVisible = _ref.setVisible;
+      setVisible = _ref.setVisible,
+      pumpableType = _ref.pumpableType;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -10323,7 +10324,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
             case 0:
               setLoading(true);
               _context.t0 = axios;
-              _context.t1 = tRoute('sp_selections.export.at_once');
+              _context.t1 = tRoute('selections.export.at_once');
               _context.t2 = _objectSpread;
               _context.t3 = _objectSpread;
               _context.t4 = {};
@@ -10341,7 +10342,8 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
                 pumps_count: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count,
                 flow: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.flow,
                 head: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.head,
-                fluid_temperature: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.fluid_temperature
+                fluid_temperature: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.fluid_temperature,
+                pumpable_type: pumpableType()
               };
               _context.t9 = (0, _context.t2)(_context.t6, _context.t7, _context.t8);
               _context.t10 = {
@@ -10376,7 +10378,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.pump_image')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.pump_image')
     })
   }, {
     values: {
@@ -10387,7 +10389,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.sizes_image')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.sizes_image')
     })
   }, {
     values: {
@@ -10398,7 +10400,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.electric_diagram')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.electric_diagram')
     })
   }, {
     values: {
@@ -10409,20 +10411,20 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.exploded_view')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.exploded_view')
     })
   }, {
     values: {},
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__.PrimaryButton, {
       loading: loading,
       onClick: exportHandler,
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.button')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.button')
     })
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
     width: 300,
     placement: "right",
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.title'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.title'),
     visible: visible,
     closable: false,
     onClose: function onClose() {
@@ -10507,7 +10509,7 @@ var ConditionSelectionFormItem = function ConditionSelectionFormItem(_ref) {
     initialValue: initialValue,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
       style: fullWidth,
-      placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.condition'),
+      placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.condition'),
       options: options,
       disabled: disabled || false
     })
@@ -10550,11 +10552,10 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
       selection_props = _ref5.selection_props,
       visible = _ref5.visible,
       setVisible = _ref5.setVisible;
-  var _selection_props$data = selection_props.data,
-      dns = _selection_props$data.dns,
-      limitConditions = _selection_props$data.limitConditions,
-      mainsConnections = _selection_props$data.mainsConnections,
-      connectionTypes = _selection_props$data.connectionTypes;
+  var dns = selection_props.dns,
+      limitConditions = selection_props.limitConditions,
+      mainsConnections = selection_props.mainsConnections,
+      connectionTypes = selection_props.connectionTypes; // .data
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
     power: (selection === null || selection === void 0 ? void 0 : selection.data.power_limit_checked) || false,
@@ -10591,12 +10592,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
           span: 12,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
-            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.connection_type'),
+            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
             name: "connection_type_ids",
             className: reducedAntFormItemClassName,
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.connection_types,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
-              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.connection_type'),
+              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
               style: nextBelowStyle,
               options: connectionTypes
             })
@@ -10604,12 +10605,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
           span: 12,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
-            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.phase'),
+            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
             name: "mains_connection_ids",
             className: reducedAntFormItemClassName,
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.mains_connections,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
-              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.phase'),
+              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
               style: nextBelowStyle,
               options: mainsConnections.map(function (connection) {
                 return _objectSpread({
@@ -10630,7 +10631,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                   power: e.target.checked
                 }));
               },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.power_limit')
+              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power_limit')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
@@ -10647,7 +10648,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
                   disabled: !limitChecks.power,
                   style: fullWidth,
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.power')
+                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power')
                 })
               })
             })]
@@ -10664,7 +10665,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                   ptpLength: e.target.checked
                 }));
               },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.ptp_length_limit')
+              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length_limit')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
@@ -10681,7 +10682,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
                   disabled: !limitChecks.ptpLength,
                   style: fullWidth,
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.ptp_length')
+                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length')
                 })
               })
             })]
@@ -10698,7 +10699,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                   dnSuction: e.target.checked
                 }));
               },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.dn_input_limit')
+              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input_limit')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
@@ -10713,7 +10714,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                 name: "dn_suction_limit_id",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_id,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.dn_input'),
+                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input'),
                   options: dns,
                   disabled: !limitChecks.dnSuction,
                   style: fullWidth
@@ -10733,7 +10734,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                   dnPressure: e.target.checked
                 }));
               },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.dn_output_limit')
+              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output_limit')
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
@@ -10748,7 +10749,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
                 name: "dn_pressure_limit_id",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_id,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.dn_output'),
+                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output'),
                   options: dns,
                   disabled: !limitChecks.dnPressure,
                   style: fullWidth
@@ -10763,7 +10764,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             setUseAdditionalFilters(true);
             setVisible(false);
           },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.additional_filters.apply')
+          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.additional_filters.apply')
         })
       })]
     })
@@ -11023,7 +11024,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
     width: 650,
     placement: "right",
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.graphic.info'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.graphic.info'),
     visible: visible,
     closable: false,
     onClose: function onClose() {
@@ -11033,7 +11034,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
       type: "card",
       defaultActiveKey: "curve",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.props'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.props'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
           layout: "horizontal",
           labelSpan: {
@@ -11042,27 +11043,27 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
           items: items
         })
       }, "props"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.model_picture'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.model_picture'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_img, {
           src: pumpInfo.images.pump
         })
       }, "model_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.sizes_picture'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.sizes_picture'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_img, {
           src: pumpInfo.images.sizes
         })
       }, "size_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.electric_diagram'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.electric_diagram'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_img, {
           src: pumpInfo.images.electric_diagram
         })
       }, "electric_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.exploded_view'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.exploded_view'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_img, {
           src: pumpInfo.images.cross_sectional_drawing
         })
       }, "expl_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single.pump_info.files'),
+        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.files'),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
           size: "large",
           itemLayout: "horizontal",
@@ -11116,17 +11117,17 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
       locales = _usePage$props.locales,
       auth = _usePage$props.auth;
   var columns = [{
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.name'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.name'),
     dataIndex: 'name',
     key: 'name',
     width: '15%'
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.part_num'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.part_num'),
     dataIndex: 'articleNum',
     key: 'articleNum',
     width: 110
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.retail_price') + ", " + auth.currency,
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.retail_price') + ", " + auth.currency,
     dataIndex: 'retailPrice',
     key: 'retailPrice',
     render: function render(_, record) {
@@ -11137,7 +11138,7 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     },
     width: 135
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.discounted_price') + ", " + auth.currency,
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.discounted_price') + ", " + auth.currency,
     dataIndex: 'discountedPrice',
     key: 'discountedPrice',
     render: function render(_, record) {
@@ -11148,7 +11149,7 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     },
     width: 140
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.total_retail_price') + ", " + auth.currency,
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_retail_price') + ", " + auth.currency,
     dataIndex: 'retailPriceSum',
     key: 'retailPriceSum',
     render: function render(_, record) {
@@ -11159,7 +11160,7 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     },
     width: 140
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.total_discounted_price') + ", " + auth.currency,
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_discounted_price') + ", " + auth.currency,
     dataIndex: 'discountedPriceSum',
     key: 'discountedPriceSum',
     render: function render(_, record) {
@@ -11171,17 +11172,17 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     defaultSortOrder: 'ascend',
     width: 170
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.dn_input'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_input'),
     dataIndex: 'dnSuction',
     key: 'dnSuction',
     width: 120
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.dn_output'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_output'),
     dataIndex: 'dnPressure',
     key: 'dnPressure',
     width: 120
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.power'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.power'),
     dataIndex: 'rated_power',
     key: 'rated_power',
     sorter: function sorter(a, b) {
@@ -11189,14 +11190,14 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     },
     width: 80
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.total_power'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_power'),
     dataIndex: 'powerSum',
     key: 'powerSum',
     sorter: function sorter(a, b) {
       return a.powerSum - b.powerSum;
     }
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single.table.ptp_length'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.ptp_length'),
     dataIndex: 'ptpLength',
     key: 'ptpLength',
     sorter: function sorter(a, b) {
@@ -11306,8 +11307,8 @@ function Dashboard() {
       title: type.name,
       src: type.img,
       onClick: function onClick() {
-        var route = 'projects.' + type.prefix + '_selections.create';
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(tRoute(route, project_id));
+        var route = 'projects.selections.create';
+        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(tRoute(route, project_id) + '?pumpable_type=' + type.pumpable_type);
       }
     };
   }));
@@ -11347,16 +11348,16 @@ function Dashboard() {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Pages/Index.js":
-/*!**************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/Index.js ***!
-  \**************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Pages/DoublePump.js":
+/*!*******************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/DoublePump.js ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Index)
+/* harmony export */   "default": () => (/* binding */ DoublePump)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -11447,7 +11448,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Index() {
+function DoublePump() {
   // STATE
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -11508,15 +11509,14 @@ function Index() {
   var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__.usePermissions)(),
       has = _usePermissions.has;
 
-  var _selection_props$data = selection_props.data,
-      brands = _selection_props$data.brands,
-      brandsWithSeries = _selection_props$data.brandsWithSeries,
-      powerAdjustments = _selection_props$data.powerAdjustments,
-      applications = _selection_props$data.applications,
-      types = _selection_props$data.types,
-      defaults = _selection_props$data.defaults,
-      selectionRanges = _selection_props$data.selectionRanges,
-      media_path = _selection_props$data.media_path;
+  var brands = selection_props.brands,
+      brandsWithSeries = selection_props.brandsWithSeries,
+      powerAdjustments = selection_props.powerAdjustments,
+      types = selection_props.types,
+      defaults = selection_props.defaults,
+      selectionRanges = selection_props.selectionRanges,
+      workSchemes = selection_props.workSchemes,
+      media_path = selection_props.media_path; // .data
 
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
       _useState18 = _slicedToArray(_useState17, 2),
@@ -11524,6 +11524,1081 @@ function Index() {
       setUpdated = _useState18[1];
 
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands) || defaults.brands),
+      _useState20 = _slicedToArray(_useState19, 2),
+      brandsValue = _useState20[0],
+      setBrandsValue = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
+      _useState22 = _slicedToArray(_useState21, 2),
+      brandsSeriesListValues = _useState22[0],
+      setBrandsSeriesListValues = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || defaults.powerAdjustments),
+      _useState24 = _slicedToArray(_useState23, 2),
+      powerAdjustmentValue = _useState24[0],
+      setPowerAdjustmentValue = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
+      _useState26 = _slicedToArray(_useState25, 2),
+      typesValue = _useState26[0],
+      setTypesValue = _useState26[1];
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
+      _useState28 = _slicedToArray(_useState27, 2),
+      useAdditionalFilters = _useState28[0],
+      setUseAdditionalFilters = _useState28[1];
+
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
+      _useState30 = _slicedToArray(_useState29, 2),
+      temperatureValue = _useState30[0],
+      setTemperatureValue = _useState30[1];
+
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
+      _useState32 = _slicedToArray(_useState31, 2),
+      prevTemperatureValue = _useState32[0],
+      setPrevTemperatureValue = _useState32[1];
+
+  var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__.useDebounce)(temperatureValue, 500);
+
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selectionRanges[selectionRanges.length - 1].id : false),
+      _useState34 = _slicedToArray(_useState33, 2),
+      rangeDisabled = _useState34[0],
+      setRangeDisabled = _useState34[1];
+
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState36 = _slicedToArray(_useState35, 2),
+      filtersDrawerVisible = _useState36[0],
+      setFiltersDrawerVisible = _useState36[1];
+
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState38 = _slicedToArray(_useState37, 2),
+      pumpInfoDrawerVisible = _useState38[0],
+      setPumpInfoDrawerVisible = _useState38[1];
+
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState40 = _slicedToArray(_useState39, 2),
+      exportDrawerVisible = _useState40[0],
+      setExportDrawerVisible = _useState40[1];
+
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState42 = _slicedToArray(_useState41, 2),
+      reload = _useState42[0],
+      setReload = _useState42[1]; // CONSTS
+
+
+  var mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(function (value) {
+    return {
+      value: value,
+      label: value
+    };
+  });
+  var fieldsDisabled = isArrayEmpty(brandsValue);
+
+  var _useForm = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__["default"])(),
+      _useForm2 = _slicedToArray(_useForm, 1),
+      fullSelectionForm = _useForm2[0];
+
+  var _useForm3 = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__["default"])(),
+      _useForm4 = _slicedToArray(_useForm3, 1),
+      additionalFiltersForm = _useForm4[0];
+
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__.useTransRoutes)();
+  var fullSelectionFormName = "full-selection-form"; // FILTERED PRODUCERS WITH SERIES BY brandsValue // DONE
+
+  var filteredBrandsWithSeries = function filteredBrandsWithSeries() {
+    return brandsWithSeries.filter(function (brand) {
+      return brandsValue.indexOf(brand.id) !== -1;
+    });
+  }; // STYLES
+
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
+      fullWidth = _useStyles.fullWidth,
+      marginBottomTen = _useStyles.marginBottomTen,
+      margin = _useStyles.margin,
+      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
+      color = _useStyles.color; // TEMPERATURE CHANGE HANDLER
+
+
+  var temperatureChangeHandler = function temperatureChangeHandler() {
+    return function (value) {
+      setTemperatureValue(value);
+    };
+  };
+
+  var checkValueIncludesSeriesParams = function checkValueIncludesSeriesParams(value, params) {
+    return value.some(function (_value) {
+      return !params.map(function (param) {
+        return param.id;
+      }).includes(_value);
+    });
+  }; // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
+
+
+  var brandsSeriesListValuesCheckedHandler = function brandsSeriesListValuesCheckedHandler(values) {
+    values.sort();
+    var checked = values.filter(function (value) {
+      return !brandsSeriesListValues.includes(value) && typeof value === "number";
+    });
+    filteredBrandsWithSeries().forEach(function (brand) {
+      brand.series.forEach(function (series) {
+        var index = checked.findIndex(function (ch) {
+          return series.id === ch;
+        });
+
+        if (index !== -1) {
+          var array = [];
+
+          if (checkValueIncludesSeriesParams(typesValue, series.types)) {
+            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.types'));
+          }
+
+          if (!powerAdjustmentValue.includes(series.power_adjustment.id)) {
+            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.power_adjustment'));
+          }
+
+          if (array.length > 0) {
+            antd__WEBPACK_IMPORTED_MODULE_25__["default"].info({
+              message: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.attention'),
+              description: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.1') + " " + series.name + " " + _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.2') + " " + array.join(', '),
+              placement: 'topLeft',
+              duration: 5
+            });
+          }
+        }
+      });
+    });
+    setBrandsSeriesListValues(values);
+  };
+
+  var filtersDrawerProps = {
+    selection: selection,
+    selection_props: selection_props,
+    setUseAdditionalFilters: setUseAdditionalFilters,
+    form: additionalFiltersForm,
+    visible: filtersDrawerVisible,
+    setVisible: setFiltersDrawerVisible
+  }; // TODO: fix alt path
+
+  var seriesIcon = function seriesIcon(src) {
+    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("img", {
+      src: media_path + src,
+      width: 60
+    });
+  };
+
+  var checkHideIcons = function checkHideIcons() {
+    return prevHideIcons === hideIcons;
+  };
+
+  var pumpableType = function pumpableType() {
+    return new URLSearchParams(window.location.search).get('pumpable_type');
+  }; // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var _brandsSeriesList = [];
+    var _brandsSeriesTree = []; // const _allSeriesListOptions = []
+
+    var seriesToLoop;
+
+    if (brandsValue.length > 0) {
+      filteredBrandsWithSeries().forEach(function (brand) {
+        // seriesToLoop = checkHideIcons() ? brand.series : brand.series.filter(series => brandsSeriesListValues.includes(series.id))
+        var children = [];
+        brand.series.forEach(function (series) {
+          var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
+          var colorStyle = color(hasTemp ? 'black' : 'red');
+
+          _brandsSeriesList.push({
+            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                  marginLeft: hideIcons ? 0 : 5
+                }),
+                children: brand.name + " " + series.name
+              })]
+            }),
+            value: series.id,
+            disabled: !hasTemp
+          });
+
+          children.push({
+            title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                  marginLeft: hideIcons ? 0 : 5
+                }),
+                children: series.name
+              })]
+            }),
+            key: series.id,
+            disabled: !hasTemp
+          }); // _allSeriesListOptions.push(series.id)
+        });
+
+        _brandsSeriesTree.push({
+          title: brand.name,
+          key: brand.name,
+          children: children
+        });
+      });
+    } // setAllSeriesLitOptions(_allSeriesListOptions)
+
+
+    setBrandsSeriesList(_brandsSeriesList);
+    setBrandsSeriesTree(_brandsSeriesTree);
+  }, [brandsValue, brandsWithSeries, hideIcons]); // FILTER BRANDS HANDLER
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (checkHideIcons()) {
+      if (!isArrayEmpty(brandsSeriesList)) {
+        if (reload) {
+          var _producersSeriesListValues = [];
+          var _producersSeriesList = [];
+          var _producersSeriesTree = [];
+          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
+          var hasTypes = typesValue.length <= 0;
+          var hasPowerAdjustments = powerAdjustmentValue <= 0;
+          filteredBrandsWithSeries().forEach(function (brand) {
+            var children = [];
+            brand.series.forEach(function (series) {
+              var brandsSeries = brand.name + " " + series.name;
+              var hasType = hasTypes;
+              var hasPowerAdjustment = hasPowerAdjustments;
+              var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
+
+              if (!hasType) {
+                if (typesValue.every(function (typeValue) {
+                  return series.types.map(function (type) {
+                    return type.id;
+                  }).includes(typeValue);
+                })) {
+                  hasType = true;
+                }
+              }
+
+              if (!hasPowerAdjustment) {
+                var _series$power_adjustm;
+
+                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
+                  hasPowerAdjustment = true;
+                }
+              } // checkedBrandsSeriesListValues - checked by user
+
+
+              if (hasType && hasPowerAdjustment && hasTemp) {
+                _producersSeriesListValues.push(series.id);
+              } // todo check if hide icons were clicked
+
+
+              if (temperatureWasChanged) {
+                var colorStyle = color(hasTemp ? 'black' : 'red');
+
+                _producersSeriesList.push({
+                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: brandsSeries
+                    })]
+                  }),
+                  value: series.id,
+                  disabled: !hasTemp
+                });
+
+                children.push({
+                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: series.name
+                    })]
+                  }),
+                  key: series.id,
+                  disabled: !hasTemp
+                });
+              }
+            });
+
+            if (temperatureWasChanged) {
+              _producersSeriesTree.push({
+                title: brand.name,
+                key: brand.name,
+                children: children
+              });
+            }
+          });
+
+          if (temperatureWasChanged) {
+            setBrandsSeriesList(_producersSeriesList);
+            setBrandsSeriesTree(_producersSeriesTree);
+            setPrevTemperatureValue(debouncedTemperature);
+          } // what checkboxes are checked
+
+
+          setBrandsSeriesListValues(_producersSeriesListValues);
+        } else {
+          setReload(true);
+        }
+      }
+    } else {
+      setPrevHideIcons(hideIcons);
+    }
+  }, [typesValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // SAVE HANDLER
+
+  var addSelectionToProjectClickHandler = function addSelectionToProjectClickHandler(method) {
+    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _selectionFormData$po, _selectionFormData$pu, _additionalFiltersFor, _additionalFiltersFor2;
+
+      var selectionFormData, additionalFiltersFormData, separator, body;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              yaCounter86716585.reachGoal('add-selection-to-project');
+              setAddLoading(true);
+              setReload(false);
+              _context.next = 5;
+              return fullSelectionForm.validateFields();
+
+            case 5:
+              selectionFormData = _context.sent;
+              _context.next = 8;
+              return additionalFiltersForm.validateFields();
+
+            case 8:
+              additionalFiltersFormData = _context.sent;
+              separator = ","; // FIXME: some how make it global
+
+              body = _objectSpread(_objectSpread(_objectSpread({}, selectionFormData), additionalFiltersFormData), {}, {
+                use_additional_filters: useAdditionalFilters,
+                pump_brand_ids: selectionFormData.pump_brand_ids.join(separator),
+                power_adjustment_ids: (_selectionFormData$po = selectionFormData.power_adjustment_ids) === null || _selectionFormData$po === void 0 ? void 0 : _selectionFormData$po.join(separator),
+                pump_type_ids: (_selectionFormData$pu = selectionFormData.pump_type_ids) === null || _selectionFormData$pu === void 0 ? void 0 : _selectionFormData$pu.join(separator),
+                main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
+                connection_type_ids: (_additionalFiltersFor = additionalFiltersFormData.connection_type_ids) === null || _additionalFiltersFor === void 0 ? void 0 : _additionalFiltersFor.join(separator),
+                mains_connection_ids: (_additionalFiltersFor2 = additionalFiltersFormData.mains_connection_ids) === null || _additionalFiltersFor2 === void 0 ? void 0 : _additionalFiltersFor2.join(separator),
+                custom_range: selectionFormData.custom_range.join(separator),
+                pumpable_id: stationToShow.pumpable_id,
+                selected_pump_name: stationToShow.name,
+                pumps_count: stationToShow.pumps_count,
+                pump_series_ids: brandsSeriesListValues,
+                pumpable_type: pumpableType(),
+                project_id: project_id
+              });
+              prepareRequestBody(body);
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
+                preserveState: true,
+                preserveScroll: true,
+                onFinish: function onFinish() {
+                  setAddLoading(false);
+                  setReload(true);
+                }
+              });
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+  }; // MAKE SELECTION HANDLER
+
+
+  var makeSelectionHandler = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var body, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              yaCounter86716585.reachGoal('make-select');
+
+              if (!isArrayEmpty(brandsSeriesListValues)) {
+                _context2.next = 4;
+                break;
+              }
+
+              antd__WEBPACK_IMPORTED_MODULE_26__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.no_series_selected'));
+              return _context2.abrupt("return");
+
+            case 4:
+              setStationToShow(null);
+              document.getElementById('for-graphic').innerHTML = "";
+
+              if (!updated) {
+                setUpdated(true);
+              }
+
+              _context2.t0 = _objectSpread;
+              _context2.t1 = _objectSpread;
+              _context2.t2 = _objectSpread;
+              _context2.t3 = {};
+              _context2.next = 13;
+              return fullSelectionForm.validateFields();
+
+            case 13:
+              _context2.t4 = _context2.sent;
+              _context2.t5 = (0, _context2.t2)(_context2.t3, _context2.t4);
+              _context2.next = 17;
+              return additionalFiltersForm.validateFields();
+
+            case 17:
+              _context2.t6 = _context2.sent;
+              _context2.t7 = (0, _context2.t1)(_context2.t5, _context2.t6);
+              _context2.t8 = {};
+              _context2.t9 = {
+                use_additional_filters: useAdditionalFilters,
+                series_ids: brandsSeriesListValues,
+                pumpable_type: pumpableType()
+              };
+              body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
+              prepareRequestBody(body);
+              _context2.prev = 23;
+              _context2.next = 26;
+              return postRequest(tRoute('selections.select'), body, true);
+
+            case 26:
+              data = _context2.sent;
+              setSelectedPumps(data.selected_pumps);
+              _context2.next = 32;
+              break;
+
+            case 30:
+              _context2.prev = 30;
+              _context2.t10 = _context2["catch"](23);
+
+            case 32:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[23, 30]]);
+    }));
+
+    return function makeSelectionHandler() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (stationToShow) {
+      if (stationToShow.svg === undefined) {
+        var body = {
+          pumpable_id: stationToShow.pumpable_id,
+          pumps_count: stationToShow.pumps_count,
+          main_pumps_count: stationToShow.main_pumps_count,
+          head: stationToShow.head,
+          flow: stationToShow.flow,
+          intersection_point: {
+            flow: stationToShow.intersection_point.flow,
+            head: stationToShow.intersection_point.head
+          },
+          pumpable_type: pumpableType()
+        };
+
+        try {
+          axios.request({
+            url: tRoute('selections.curves'),
+            method: 'POST',
+            data: body
+          }).then(function (res) {
+            document.getElementById('for-graphic').innerHTML = res.data;
+            stationToShow.svg = res.data;
+          });
+        } catch (e) {}
+      } else {
+        document.getElementById('for-graphic').innerHTML = stationToShow.svg;
+      }
+    }
+  }, [stationToShow]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (selection) {
+      setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
+    }
+  }, [selection]); // const onCheckAllChange = e => {
+  //     setCheckedAll(e.target.checked)
+  //     setIndeteminate(false)
+  //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
+  //     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
+  // }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__.IndexContainer, {
+      title: selection ? selection.data.selected_pump_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.title_new'),
+      extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
+        href: tRoute('projects.show', project_id)
+      }) : project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
+        href: tRoute('selections.dashboard', project_id)
+      }) : [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
+        href: tRoute('selections.dashboard', project_id)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
+        href: tRoute('projects.show', project_id)
+      })],
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+        justify: "space-around",
+        gutter: [8, 16],
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+          xxl: hideIcons ? 2 : 3,
+          xl: hideIcons ? 3 : 4,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+              xs: 24,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
+                checked: showBrandsList,
+                onChange: function onChange(e) {
+                  setShowBrandsList(e.target.checked);
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                  style: {
+                    marginLeft: hideIcons ? 0 : 5
+                  },
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.grouping')
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+              xs: 24,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
+                checked: hideIcons,
+                onChange: function onChange(e) {
+                  setHideIcons(e.target.checked);
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                  style: {
+                    marginLeft: hideIcons ? 0 : 5
+                  },
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.hide_icons')
+                })
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
+            style: margin.all("5px 0 5px")
+          }), showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+            style: {
+              overflow: "auto",
+              maxHeight: "70vh"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"], {
+              defaultExpandAll: true,
+              checkable: true,
+              treeData: brandsSeriesTree,
+              checkedKeys: brandsSeriesListValues,
+              onCheck: brandsSeriesListValuesCheckedHandler
+            })
+          }), !showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+            style: {
+              overflow: "auto",
+              maxHeight: "70vh"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].Group, {
+              "class": "series-checkboxes",
+              options: brandsSeriesList,
+              value: brandsSeriesListValues,
+              onChange: brandsSeriesListValuesCheckedHandler
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+          xxl: hideIcons ? 22 : 21,
+          xl: hideIcons ? 21 : 20,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
+            name: fullSelectionFormName,
+            form: fullSelectionForm,
+            layout: "vertical",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+              gutter: 10,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                xs: 5,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "pump_brand_ids",
+                  initialValue: brandsValue,
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.brands'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.brands'),
+                    style: fullWidth,
+                    options: brands,
+                    onChange: function onChange(values) {
+                      setBrandsValue(values);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.fluid_temp'),
+                  name: "fluid_temperature",
+                  initialValue: temperatureValue,
+                  style: margin.bottom(10),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
+                    disabled: fieldsDisabled,
+                    style: fullWidth,
+                    min: 0,
+                    max: 200,
+                    onChange: temperatureChangeHandler(),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.fluid_temp')
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                xs: 13,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "pump_type_ids",
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.label'),
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_types,
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.tooltip'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.label'),
+                    disabled: fieldsDisabled,
+                    style: fullWidth,
+                    options: types,
+                    onChange: function onChange(values) {
+                      setTypesValue(values);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                xs: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.power_adjustments'),
+                  name: "power_adjustment_ids",
+                  initialValue: powerAdjustmentValue,
+                  style: marginBottomTen,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.power_adjustments'),
+                    disabled: fieldsDisabled,
+                    style: _objectSpread(_objectSpread({}, fullWidth), {}, {
+                      marginTop: 0
+                    }),
+                    options: powerAdjustments,
+                    onChange: function onChange(values) {
+                      setPowerAdjustmentValue(values);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 24,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
+                  style: margin.all("10px 0 10px")
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 2,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.consumption'),
+                  name: "flow",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.consumption'),
+                    style: fullWidth,
+                    min: 0,
+                    max: 10000,
+                    precision: 1
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 2,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.pressure'),
+                  name: "head",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.pressure'),
+                    style: fullWidth,
+                    min: 0,
+                    max: 10000,
+                    precision: 1
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 2,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation'),
+                  name: "deviation",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
+                  className: reducedAntFormItemClassName,
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation_tooltip'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation'),
+                    style: fullWidth,
+                    min: -50,
+                    max: 50,
+                    precision: 1
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 5,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  required: true,
+                  name: "double_pump_work_scheme_id",
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.work_scheme'),
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.double_pump_work_scheme_id) || workSchemes[0].id,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
+                    children: workSchemes.map(function (scheme) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
+                        value: scheme.id,
+                        children: scheme.name
+                      }, 'ws' + scheme.id);
+                    })
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 3,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  required: true,
+                  name: "range_id",
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.range.label'),
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selectionRanges[selectionRanges.length - 1].id,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
+                    onChange: function onChange(e) {
+                      setRangeDisabled(e.target.value !== selectionRanges[selectionRanges.length - 1].id);
+                    },
+                    children: selectionRanges.map(function (range) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
+                        value: range.id,
+                        children: range.name
+                      }, 'bp' + range.name);
+                    })
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 4,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  required: true,
+                  name: "custom_range",
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.range.custom.label'),
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range) || [0, 100],
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+                    range: true,
+                    disabled: rangeDisabled,
+                    tipFormatter: function tipFormatter(value) {
+                      return "".concat(value, "%");
+                    } // defaultValue={selection?.data.custom_range || [0, 100]}
+
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: 6,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+                  gutter: [10, 0],
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                    span: 24,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
+                      checked: useAdditionalFilters,
+                      onClick: function onClick(e) {
+                        setUseAdditionalFilters(e.target.checked);
+                      },
+                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.additional_filters.checkbox')
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                    span: 12,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                      className: reducedAntFormItemClassName,
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
+                        style: fullWidth,
+                        onClick: function onClick() {
+                          setFiltersDrawerVisible(true);
+                        },
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.additional_filters.button')
+                      })
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                    span: 12,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                      className: reducedAntFormItemClassName,
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+                        style: fullWidth,
+                        onClick: makeSelectionHandler // htmlType="submit"
+                        ,
+                        disabled: brandsValue.length === 0,
+                        loading: loading,
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.select')
+                      })
+                    })
+                  })]
+                })
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+            gutter: [10, 10],
+            style: {
+              display: "flex",
+              alignItems: 'stretch',
+              marginTop: 16
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+              xs: 15,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
+                className: "table-rounded-card",
+                type: "inner",
+                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.table.title'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__.SelectedPumpsTable, {
+                  selectedPumps: selectedPumps,
+                  setStationToShow: setStationToShow,
+                  loading: loading
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+              xs: 9,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
+                className: 'flex-rounded-card' // style={{height: "100%"}}
+                ,
+                type: "inner",
+                title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
+                extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
+                  children: [has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("a", {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      setExportDrawerVisible(true);
+                    },
+                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.graphic.export')
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("a", {
+                    onClick: function onClick(e) {
+                      e.preventDefault();
+                      setPumpInfoDrawerVisible(true);
+                    },
+                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.graphic.info'), ">>"]
+                  })]
+                }),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+                  id: "for-graphic"
+                })
+              })
+            })]
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__.BoxFlexEnd, {
+      style: margin.top(16),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
+        size: 8,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
+          onClick: function onClick() {
+            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
+          },
+          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.exit')
+        }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+            disabled: !stationToShow || !updated,
+            onClick: addSelectionToProjectClickHandler('post'),
+            loading: addLoading,
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.add')
+          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+            disabled: !stationToShow || !updated,
+            onClick: addSelectionToProjectClickHandler('put'),
+            loading: addLoading,
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.update')
+          })]
+        })]
+      })
+    }), stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__.PumpPropsDrawer, {
+      visible: pumpInfoDrawerVisible,
+      setVisible: setPumpInfoDrawerVisible,
+      pumpInfo: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pump_info
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__.ExportAtOnceSelectionDrawer, {
+      visible: exportDrawerVisible,
+      setVisible: setExportDrawerVisible,
+      stationToShow: stationToShow
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./Modules/Selection/Resources/assets/js/Pages/SinglePump.js":
+/*!*******************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/SinglePump.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SinglePump)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/notification/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tree/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd/es/form/Form */ "./node_modules/antd/es/form/hooks/useForm.js");
+/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
+/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Components/PumpPropsDrawer */ "./Modules/Selection/Resources/assets/js/Components/PumpPropsDrawer.js");
+/* harmony import */ var _Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Components/FiltersDrawer */ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js");
+/* harmony import */ var _Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Components/ExportAtOnceSelectionDrawer */ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
+/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function SinglePump() {
+  // STATE
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showBrandsList = _useState2[0],
+      setShowBrandsList = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      addLoading = _useState4[0],
+      setAddLoading = _useState4[1]; // const [checkedAll, setCheckedAll] = useState(false)
+  // const [indeterminate, setIndeteminate] = useState(true)
+
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      hideIcons = _useState6[0],
+      setHideIcons = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(hideIcons),
+      _useState8 = _slicedToArray(_useState7, 2),
+      prevHideIcons = _useState8[0],
+      setPrevHideIcons = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      brandsSeriesList = _useState10[0],
+      setBrandsSeriesList = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      brandsSeriesTree = _useState12[0],
+      setBrandsSeriesTree = _useState12[1];
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState14 = _slicedToArray(_useState13, 2),
+      selectedPumps = _useState14[0],
+      setSelectedPumps = _useState14[1];
+
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState16 = _slicedToArray(_useState15, 2),
+      stationToShow = _useState16[0],
+      setStationToShow = _useState16[1]; // HOOKS
+
+
+  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__.useCheck)(),
+      isArrayEmpty = _useCheck.isArrayEmpty,
+      prepareRequestBody = _useCheck.prepareRequestBody;
+
+  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__.useHttp)(),
+      postRequest = _useHttp.postRequest,
+      loading = _useHttp.loading;
+
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props,
+      selection = _usePage$props.selection,
+      project_id = _usePage$props.project_id,
+      selection_props = _usePage$props.selection_props;
+
+  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__.usePermissions)(),
+      has = _usePermissions.has;
+
+  var brandsWithSeries = selection_props.brandsWithSeries,
+      powerAdjustments = selection_props.powerAdjustments,
+      applications = selection_props.applications,
+      types = selection_props.types,
+      defaults = selection_props.defaults,
+      selectionRanges = selection_props.selectionRanges,
+      media_path = selection_props.media_path; // .data
+
+  console.log(selection, selection_props);
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState18 = _slicedToArray(_useState17, 2),
+      updated = _useState18[0],
+      setUpdated = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands.filter(function (brandId) {
+    return brandsWithSeries.findIndex(function (bws) {
+      return bws.id === brandId;
+    }) !== -1;
+  })) || defaults.brands),
       _useState20 = _slicedToArray(_useState19, 2),
       brandsValue = _useState20[0],
       setBrandsValue = _useState20[1];
@@ -11698,6 +12773,10 @@ function Index() {
 
   var checkHideIcons = function checkHideIcons() {
     return prevHideIcons === hideIcons;
+  };
+
+  var pumpableType = function pumpableType() {
+    return new URLSearchParams(window.location.search).get('pumpable_type');
   }; // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
 
 
@@ -11904,10 +12983,11 @@ function Index() {
                 selected_pump_name: stationToShow.name,
                 pumps_count: stationToShow.pumps_count,
                 pump_series_ids: brandsSeriesListValues,
+                pumpable_type: pumpableType(),
                 project_id: project_id
               });
               prepareRequestBody(body);
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('sp_selections.update', selection.data.id) : tRoute('projects.sp_selections.store', project_id), body, {
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
                 preserveState: true,
                 preserveScroll: true,
                 onFinish: function onFinish() {
@@ -11970,13 +13050,18 @@ function Index() {
               _context2.t8 = {};
               _context2.t9 = {
                 use_additional_filters: useAdditionalFilters,
-                series_ids: brandsSeriesListValues
+                series_ids: brandsSeriesListValues.filter(function (si) {
+                  return brandsSeriesList.findIndex(function (el) {
+                    return el.value === si;
+                  }) !== -1;
+                }),
+                pumpable_type: pumpableType()
               };
               body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
               prepareRequestBody(body);
               _context2.prev = 23;
               _context2.next = 26;
-              return postRequest(tRoute('sp_selections.select'), body, true);
+              return postRequest(tRoute('selections.select'), body, true);
 
             case 26:
               data = _context2.sent;
@@ -12013,22 +13098,20 @@ function Index() {
           intersection_point: {
             flow: stationToShow.intersection_point.flow,
             head: stationToShow.intersection_point.head
-          }
+          },
+          pumpable_type: pumpableType()
         };
 
         try {
           axios.request({
-            url: tRoute('sp_selections.curves'),
+            url: tRoute('selections.curves'),
             method: 'POST',
             data: body
           }).then(function (res) {
-            // console.log(baseImage)
-            // setBaseImage(res.data)
             document.getElementById('for-graphic').innerHTML = res.data;
             stationToShow.svg = res.data;
           });
-        } catch (e) {// console.log(e)
-        }
+        } catch (e) {}
       } else {
         document.getElementById('for-graphic').innerHTML = stationToShow.svg;
       }
@@ -12047,7 +13130,7 @@ function Index() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__.IndexContainer, {
-      title: selection ? selection.data.selected_pump_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.title_new'),
+      title: selection ? selection.data.selected_pump_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.title_new'),
       extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
         title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
         href: tRoute('projects.show', project_id)
@@ -12079,7 +13162,7 @@ function Index() {
                   style: {
                     marginLeft: hideIcons ? 0 : 5
                   },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.grouping')
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.grouping')
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
@@ -12093,7 +13176,7 @@ function Index() {
                   style: {
                     marginLeft: hideIcons ? 0 : 5
                   },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.hide_icons')
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.hide_icons')
                 })
               })
             })]
@@ -12117,7 +13200,7 @@ function Index() {
               maxHeight: "70vh"
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].Group, {
-              "class": "series-checkboxes",
+              className: "series-checkboxes",
               options: brandsSeriesList,
               value: brandsSeriesListValues,
               onChange: brandsSeriesListValuesCheckedHandler
@@ -12138,11 +13221,11 @@ function Index() {
                   className: reducedAntFormItemClassName,
                   name: "pump_brand_ids",
                   initialValue: brandsValue,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.brands'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.brands'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.brands'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.brands'),
                     style: fullWidth,
-                    options: brands,
+                    options: brandsWithSeries,
                     onChange: function onChange(values) {
                       setBrandsValue(values);
                     }
@@ -12152,7 +13235,7 @@ function Index() {
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.fluid_temp'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.fluid_temp'),
                   name: "fluid_temperature",
                   initialValue: temperatureValue,
                   style: margin.bottom(10),
@@ -12162,7 +13245,7 @@ function Index() {
                     min: 0,
                     max: 200,
                     onChange: temperatureChangeHandler(),
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.fluid_temp')
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.fluid_temp')
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
@@ -12170,11 +13253,11 @@ function Index() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "pump_type_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.types.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.label'),
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_types,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.types.tooltip'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.tooltip'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.types.label'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.label'),
                     disabled: fieldsDisabled,
                     style: fullWidth,
                     options: types,
@@ -12188,11 +13271,11 @@ function Index() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "pump_application_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.applications.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.label'),
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_applications,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.applications.tooltip'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.tooltip'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.applications.label'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.label'),
                     disabled: fieldsDisabled,
                     style: fullWidth,
                     options: applications,
@@ -12205,12 +13288,12 @@ function Index() {
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.power_adjustments'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.power_adjustments'),
                   name: "power_adjustment_ids",
                   initialValue: powerAdjustmentValue,
                   style: marginBottomTen,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.power_adjustments'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.power_adjustments'),
                     disabled: fieldsDisabled,
                     style: _objectSpread(_objectSpread({}, fullWidth), {}, {
                       marginTop: 0
@@ -12229,12 +13312,12 @@ function Index() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.consumption'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.consumption'),
                   name: "flow",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.consumption'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.consumption'),
                     style: fullWidth,
                     min: 0,
                     max: 10000,
@@ -12244,12 +13327,12 @@ function Index() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.pressure'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.pressure'),
                   name: "head",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.pressure'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.pressure'),
                     style: fullWidth,
                     min: 0,
                     max: 10000,
@@ -12259,13 +13342,13 @@ function Index() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation'),
                   name: "deviation",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
                   className: reducedAntFormItemClassName,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation_tooltip'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation_tooltip'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.deviation'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation'),
                     style: fullWidth,
                     min: -50,
                     max: 50,
@@ -12276,7 +13359,7 @@ function Index() {
                 span: 4,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.main_pumps_count'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.main_pumps_count'),
                   name: "main_pumps_counts",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.main_pumps_counts,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].Group, {
@@ -12288,7 +13371,7 @@ function Index() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "reserve_pumps_count",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.backup_pumps_count'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.backup_pumps_count'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.reserve_pumps_count) || 0,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
@@ -12306,7 +13389,7 @@ function Index() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "range_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.range.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.range.label'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selectionRanges[selectionRanges.length - 1].id,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
@@ -12326,7 +13409,7 @@ function Index() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "custom_range",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.range.custom.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.range.custom.label'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range) || [0, 100],
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
@@ -12349,7 +13432,7 @@ function Index() {
                       onClick: function onClick(e) {
                         setUseAdditionalFilters(e.target.checked);
                       },
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.additional_filters.checkbox')
+                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.additional_filters.checkbox')
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                     span: 12,
@@ -12360,7 +13443,7 @@ function Index() {
                         onClick: function onClick() {
                           setFiltersDrawerVisible(true);
                         },
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.additional_filters.button')
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.additional_filters.button')
                       })
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
@@ -12373,7 +13456,7 @@ function Index() {
                         ,
                         disabled: brandsValue.length === 0,
                         loading: loading,
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.select')
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.select')
                       })
                     })
                   })]
@@ -12392,7 +13475,7 @@ function Index() {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
                 className: "table-rounded-card",
                 type: "inner",
-                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.table.title'),
+                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.table.title'),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
                   setStationToShow: setStationToShow,
@@ -12412,13 +13495,13 @@ function Index() {
                       e.preventDefault();
                       setExportDrawerVisible(true);
                     },
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.graphic.export')
+                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.graphic.export')
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("a", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       setPumpInfoDrawerVisible(true);
                     },
-                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.graphic.info'), ">>"]
+                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.graphic.info'), ">>"]
                   })]
                 }),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
@@ -12437,18 +13520,18 @@ function Index() {
           onClick: function onClick() {
             _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
           },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.exit')
+          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.exit')
         }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
             disabled: !stationToShow || !updated,
             onClick: addSelectionToProjectClickHandler('post'),
             loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.add')
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.add')
           }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
             disabled: !stationToShow || !updated,
             onClick: addSelectionToProjectClickHandler('put'),
             loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single.update')
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.update')
           })]
         })]
       })
@@ -12459,7 +13542,8 @@ function Index() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__.ExportAtOnceSelectionDrawer, {
       visible: exportDrawerVisible,
       setVisible: setExportDrawerVisible,
-      stationToShow: stationToShow
+      stationToShow: stationToShow,
+      pumpableType: pumpableType
     })]
   });
 }
@@ -12478,12 +13562,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dashboard */ "./Modules/Selection/Resources/assets/js/Pages/Dashboard.js");
-/* harmony import */ var _Pages_Index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Index */ "./Modules/Selection/Resources/assets/js/Pages/Index.js");
+/* harmony import */ var _Pages_SinglePump__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/SinglePump */ "./Modules/Selection/Resources/assets/js/Pages/SinglePump.js");
+/* harmony import */ var _Pages_DoublePump__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/DoublePump */ "./Modules/Selection/Resources/assets/js/Pages/DoublePump.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
-  Index: _Pages_Index__WEBPACK_IMPORTED_MODULE_1__["default"]
+  SinglePump: _Pages_SinglePump__WEBPACK_IMPORTED_MODULE_1__["default"],
+  DoublePump: _Pages_DoublePump__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),

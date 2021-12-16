@@ -8,19 +8,19 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
 
     const columns = [
         {
-            title: Lang.get('pages.selections.single.table.name'),
+            title: Lang.get('pages.selections.single_pump.table.name'),
             dataIndex: 'name',
             key: 'name',
             width: '15%'
         },
         {
-            title: Lang.get('pages.selections.single.table.part_num'),
+            title: Lang.get('pages.selections.single_pump.table.part_num'),
             dataIndex: 'articleNum',
             key: 'articleNum',
             width: 110,
         },
         {
-            title: Lang.get('pages.selections.single.table.retail_price') + ", " + auth.currency,
+            title: Lang.get('pages.selections.single_pump.table.retail_price') + ", " + auth.currency,
             dataIndex: 'retailPrice',
             key: 'retailPrice',
             render: (_, record) => record.retailPrice.toLocaleString(),
@@ -28,7 +28,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
             width: 135,
         },
         {
-            title: Lang.get('pages.selections.single.table.discounted_price') + ", " + auth.currency,
+            title: Lang.get('pages.selections.single_pump.table.discounted_price') + ", " + auth.currency,
             dataIndex: 'discountedPrice',
             key: 'discountedPrice',
             render: (_, record) => record.discountedPrice.toLocaleString(),
@@ -36,7 +36,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
             width: 140,
         },
         {
-            title: Lang.get('pages.selections.single.table.total_retail_price') + ", " + auth.currency,
+            title: Lang.get('pages.selections.single_pump.table.total_retail_price') + ", " + auth.currency,
             dataIndex: 'retailPriceSum',
             key: 'retailPriceSum',
             render: (_, record) => record.retailPriceSum.toLocaleString(),
@@ -44,7 +44,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
             width: 140,
         },
         {
-            title: Lang.get('pages.selections.single.table.total_discounted_price') + ", " + auth.currency,
+            title: Lang.get('pages.selections.single_pump.table.total_discounted_price') + ", " + auth.currency,
             dataIndex: 'discountedPriceSum',
             key: 'discountedPriceSum',
             render: (_, record) => record.discountedPriceSum.toLocaleString(),
@@ -53,32 +53,32 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
             width: 170,
         },
         {
-            title: Lang.get('pages.selections.single.table.dn_input'),
+            title: Lang.get('pages.selections.single_pump.table.dn_input'),
             dataIndex: 'dnSuction',
             key: 'dnSuction',
             width: 120,
         },
         {
-            title: Lang.get('pages.selections.single.table.dn_output'),
+            title: Lang.get('pages.selections.single_pump.table.dn_output'),
             dataIndex: 'dnPressure',
             key: 'dnPressure',
             width: 120,
         },
         {
-            title: Lang.get('pages.selections.single.table.power'),
+            title: Lang.get('pages.selections.single_pump.table.power'),
             dataIndex: 'rated_power',
             key: 'rated_power',
             sorter: (a, b) => a.rated_power - b.rated_power,
             width: 80,
         },
         {
-            title: Lang.get('pages.selections.single.table.total_power'),
+            title: Lang.get('pages.selections.single_pump.table.total_power'),
             dataIndex: 'powerSum',
             key: 'powerSum',
             sorter: (a, b) => a.powerSum - b.powerSum
         },
         {
-            title: Lang.get('pages.selections.single.table.ptp_length'),
+            title: Lang.get('pages.selections.single_pump.table.ptp_length'),
             dataIndex: 'ptpLength',
             key: 'ptpLength',
             sorter: (a, b) => a.ptpLength - b.ptpLength

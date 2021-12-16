@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
-use Modules\PumpManager\Http\Requests\UpdateUserRequest;
+use Modules\PumpManager\Http\Requests\PMUpdateUserRequest;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class UserAndSelectionType extends Model
@@ -20,7 +20,7 @@ class UserAndSelectionType extends Model
     protected $primaryKey = ['user_id', 'type_id'];
     public $incrementing = false;
 
-    public static function updateAvailableSelectionTypesForUser(array $available_selection_type_ids, User $user): int
+    public static function updateAvailableSelectionTypesForUser(array $available_selection_type_ids, PMUser $user): int
     {
         self::where('user_id', $user->id)
             ->whereNotIn('type_id', $available_selection_type_ids)

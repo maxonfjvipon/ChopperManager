@@ -3,11 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Modules\AdminPanel\Entities\SelectionType;
 use Modules\AdminPanel\Entities\Tenant;
-use Modules\Pump\Database\Seeders\TenantSpecificSeeder;
-use Modules\PumpManager\Entities\User;
-use Modules\User\Entities\Role;
+use Modules\Pump\Entities\DoublePumpWorkScheme;
+use Modules\Pump\Entities\Pump;
+use Modules\PumpManager\Entities\PMUser;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class DatabaseSeeder extends Seeder
@@ -21,40 +22,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Tenant::firstWhere('name', 'Pump Manager')->execute(function (Tenant $tenant) {
-            $tula = User::create([
-                'organization_name' => "ОВК Тула",
-                'itn' => "0000000007",
-                'email' => 'tula@test.com',
-                'password' => Hash::make('qwertyuiop'),
-                'phone' => "89991231212",
-                'first_name' => 'Test',
-                'middle_name' => 'Test',
-                'city' => "Тула",
-                'business_id' => 1,
-                'created_at' => now(),
-                'email_verified_at' => now(),
-                'country_id' => 1,
-                'currency_id' => 121
+        Tenant::all()->eachCurrent(function (Tenant $tenant) {
+            $database = $tenant->database;
+            DoublePumpWorkScheme::create(['name' => ['ru' => 'Рабочий-пиковый', 'en' => 'Main peak']]);
+            DoublePumpWorkScheme::create(['name' => ['ru' => 'Рабочий-резервный', 'en' => 'Main standby']]);
+            DB::table($database . '.model_has_roles')->update([
+                'model_type' => PMUser::class
             ]);
-            $helios = User::create([
-                'organization_name' => "Гелиос Воронеж",
-                'itn' => "0000000008",
-                'email' => 'helios@test.com',
-                'password' => Hash::make('qwertyuiop'),
-                'phone' => "89991231212",
-                'first_name' => 'Test',
-                'middle_name' => 'Test',
-                'city' => "Воронеж",
-                'business_id' => 1,
-                'created_at' => now(),
-                'email_verified_at' => now(),
-                'country_id' => 1,
-                'currency_id' => 121
+            DB::table($database . '.model_has_permissions')->update([
+                'model_type' => PMUser::class
             ]);
-            $tula->assignRole('Client');
-            $helios->assignRole('Client');
+            DB::table('pumps')->update(['pumpable_type' => Pump::$SINGLE_PUMP]);
         });
-
+        SelectionType::whereId(1)->update(['pumpable_type' => Pump::$SINGLE_PUMP]);
+        SelectionType::whereId(2)->update(['pumpable_type' => Pump::$DOUBLE_PUMP]);
+        SelectionType::whereId(3)->update(['pumpable_type' => Pump::$STATION_WATER]);
+        SelectionType::whereId(4)->update(['pumpable_type' => Pump::$STATION_FIRE]);
     }
 }

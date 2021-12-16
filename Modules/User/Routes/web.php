@@ -22,6 +22,6 @@ Route::prefix('profile')->group(function () {
     Route::post('update-discount')->name('profile.discount.update')->uses([ProfileController::class, 'updateDiscount']);
 });
 
-Route::resource('users', UsersController::class);
+Route::resource('users', UsersController::class)->except(['show']);
 
 

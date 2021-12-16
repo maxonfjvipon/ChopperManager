@@ -4,6 +4,12 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use Modules\Pump\Entities\DoublePump;
+use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpBrand;
+use Modules\Pump\Entities\PumpSeries;
+use Modules\Pump\Entities\SinglePump;
+use Modules\Pump\Traits\MorphPumpable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Relation::morphMap([
-            'pump_brand' => 'Modules\Pump\Entities\PumpBrand',
-            'pump_series' => 'Modules\Pump\Entities\PumpSeries'
+            'pump_brand' => PumpBrand::class,
+            'pump_series' => PumpSeries::class,
+            Pump::$SINGLE_PUMP => SinglePump::class,
+            Pump::$DOUBLE_PUMP => DoublePump::class,
         ]);
     }
 }

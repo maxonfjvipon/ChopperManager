@@ -8,13 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Modules\AdminPanel\Events\TenantCreated;
 use Modules\AdminPanel\Http\Requests\StoreTenantRequest;
 use Modules\AdminPanel\Http\Requests\UpdateTenantRequest;
-use Modules\AdminPanel\Traits\HasTenantSpecificControllers;
-use Modules\User\Traits\HasUser;
-use Nwidart\Modules\Facades\Module;
 
 class Tenant extends \Spatie\Multitenancy\Models\Tenant
 {
-    use HasFactory, HasTenantSpecificControllers, HasUser;
+    use HasFactory;
 
     protected $guarded = [];
 
@@ -25,10 +22,9 @@ class Tenant extends \Spatie\Multitenancy\Models\Tenant
         'updated_at' => 'datetime:d.m.Y H:i',
     ];
 
-
-    public function getModuleAttribute()
+    public function getGuardAttribute()
     {
-        return $this->type->module_name;
+        return $this->type->guard;
     }
 
     // RELATIONSHIPS
@@ -60,26 +56,4 @@ class Tenant extends \Spatie\Multitenancy\Models\Tenant
         }
         return $updated;
     }
-
-    // FUNCTIONS
-    public function getControllerClass($controllerName): string
-    {
-        return "Modules\\" . $this->getModuleName() . "\\Http\\Controllers\\" . $controllerName;
-    }
-
-    public function getUserClass(): string
-    {
-        return "Modules\\" . $this->getModuleName() . "\\Entities\\User";
-    }
-
-    public function getModuleName()
-    {
-        return Module::find($this->module)->getName();
-    }
-
-    public function getGuard()
-    {
-        return $this->module;
-    }
-
 }

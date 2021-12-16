@@ -8,8 +8,9 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class DN extends Model
 {
+    use HasFactory, UsesTenantConnection;
+
     protected $fillable = ['value'];
     protected $table = 'dns';
     public $timestamps = false;
-    use HasFactory, UsesTenantConnection;
 }

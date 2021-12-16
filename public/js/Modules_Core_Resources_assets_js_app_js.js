@@ -8382,7 +8382,7 @@ function Show() {
     dataIndex: 'article_num',
     render: function render(_, record) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-        href: tRoute('pumps.show', record.pump_id),
+        href: tRoute('pumps.show', record.pump_id) + '?pumpable_type=' + record.pumpable_type,
         children: record.article_num
       });
     }
@@ -8428,7 +8428,7 @@ function Show() {
     render: function render(_, record) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_6__.TableActionsContainer, {
         children: [has('selection_show') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_8__.View, {
-          clickHandler: showSelectionHandler(record.id)
+          clickHandler: showSelectionHandler(record)
         }), has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Export__WEBPACK_IMPORTED_MODULE_7__.Export, {
           clickHandler: exportSelectionHandler(record.id)
         }), has('selection_delete') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Delete__WEBPACK_IMPORTED_MODULE_9__.Delete, {
@@ -8437,18 +8437,19 @@ function Show() {
         })]
       });
     }
-  }]; // HANDLERS
+  }]; // HANDLERS //todo record
 
-  var showSelectionHandler = function showSelectionHandler(id) {
+  var showSelectionHandler = function showSelectionHandler(record) {
     return function () {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(tRoute('sp_selections.show', id));
+      console.log(record);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(tRoute('selections.show', record.id) + '?pumpable_type=' + record.pumpable_type);
     };
   };
 
   var deleteSelectionHandler = function deleteSelectionHandler(id) {
     return function () {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](tRoute('sp_selections.destroy', id));
-      if (has('selection_restore')) openRestoreNotification(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.title'), tRoute('sp_selections.restore', id), _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.button'));
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](tRoute('selections.destroy', id));
+      if (has('selection_restore')) openRestoreNotification(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.title'), tRoute('selections.restore', id), _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.restore.button'));
     };
   };
 
@@ -8481,7 +8482,8 @@ function Show() {
       }), has('selection_access') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_16__.TTable, {
         columns: columns,
         dataSource: (_project$data = project.data) === null || _project$data === void 0 ? void 0 : _project$data.selections,
-        doubleClickHandler: has('selection_show') && showSelectionHandler
+        doubleClickHandler: has('selection_show') && showSelectionHandler,
+        doubleClickRecord: true
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_Selection_Resources_assets_js_Components_ExportSelectionDrawer__WEBPACK_IMPORTED_MODULE_15__.ExportSelectionDrawer, {
       selection_id: exportableId,
@@ -8605,7 +8607,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
             case 0:
               setLoading(true);
               _context.t0 = axios;
-              _context.t1 = tRoute('sp_selections.export', selection_id);
+              _context.t1 = tRoute('selections.export', selection_id);
               _context.t2 = _objectSpread;
               _context.t3 = {};
               _context.next = 7;
@@ -8646,7 +8648,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.pump_image')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.pump_image')
     })
   }, {
     values: {
@@ -8657,7 +8659,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.sizes_image')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.sizes_image')
     })
   }, {
     values: {
@@ -8668,7 +8670,7 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.electric_diagram')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.electric_diagram')
     })
   }, {
     values: {
@@ -8679,20 +8681,20 @@ var ExportSelectionDrawer = function ExportSelectionDrawer(_ref) {
 
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.print.exploded_view')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.exploded_view')
     })
   }, {
     values: {},
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__.PrimaryButton, {
       loading: loading,
       onClick: exportHandler,
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.button')
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.button')
     })
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
     width: 300,
     placement: "right",
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single.export.title'),
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.title'),
     visible: visible,
     closable: false,
     onClose: function onClose() {
@@ -8800,7 +8802,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useNotifications": () => (/* binding */ useNotifications)
 /* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/notification/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var _Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
@@ -8810,25 +8813,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var useNotifications = function useNotifications() {
-  var openRestoreNotification = function openRestoreNotification(message, restoreRoute, buttonLabel) {
+  var openRestoreNotification = function openRestoreNotification(_message, restoreRoute, buttonLabel) {
     var width = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 220;
-    antd__WEBPACK_IMPORTED_MODULE_4__["default"].open({
-      message: message,
-      // message: <div style={{textAlign: 'center'}}>{message}</div>,
-      key: 'restore',
-      btn: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_0__.PrimaryButton, {
-        onClick: function onClick() {
-          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(restoreRoute);
-          antd__WEBPACK_IMPORTED_MODULE_4__["default"].close('restore');
-        },
-        children: buttonLabel
+    antd__WEBPACK_IMPORTED_MODULE_4__["default"].info({
+      content: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        children: [_message, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_0__.PrimaryButton, {
+          onClick: function onClick() {
+            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(restoreRoute);
+            antd__WEBPACK_IMPORTED_MODULE_4__["default"].destroy('restore');
+          },
+          children: buttonLabel
+        })]
       }),
+      key: 'restore',
       style: {
-        borderRadius: 7,
-        width: width
-      }
-    });
+        textAlign: 'right',
+        borderRadius: 5
+      },
+      duration: 5
+    }); // notification.open({
+    //     _message,
+    //     // message: <div style={{textAlign: 'center'}}>{message}</div>,
+    //     key: 'restore',
+    //     btn: <PrimaryButton onClick={() => {
+    //         Inertia.get(restoreRoute)
+    //         notification.close('restore')
+    //     }}>
+    //         {buttonLabel}
+    //     </PrimaryButton>,
+    //     style: {
+    //         borderRadius: 7,
+    //         width: width,
+    //     }
+    // })
   };
 
   return {
@@ -9725,7 +9744,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["columns", "dataSource", "doubleClickHandler"];
+var _excluded = ["columns", "dataSource", "doubleClickHandler", "doubleClickRecord"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -9744,6 +9763,7 @@ var TTable = function TTable(_ref) {
   var columns = _ref.columns,
       dataSource = _ref.dataSource,
       doubleClickHandler = _ref.doubleClickHandler,
+      doubleClickRecord = _ref.doubleClickRecord,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   var _columns = columns.map(function (column) {
@@ -9764,7 +9784,7 @@ var TTable = function TTable(_ref) {
     }),
     onRow: function onRow(record, _) {
       return doubleClickHandler ? {
-        onDoubleClick: doubleClickHandler(record.id)
+        onDoubleClick: doubleClickHandler(doubleClickRecord ? record : record.id)
       } : null;
     }
   }, rest));

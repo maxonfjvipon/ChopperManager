@@ -23,8 +23,6 @@ class CreatePumpsTable extends Migration
             $table->bigInteger('series_id')->unsigned();
             $table->string('name');
             $table->float('weight');
-//            $table->float('price')->unsigned();
-//            $table->bigInteger('currency_id')->unsigned();
             $table->float('rated_power');
             $table->float('rated_current');
             $table->bigInteger('connection_type_id')->unsigned();

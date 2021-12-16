@@ -12,21 +12,17 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Selection\Http\Controllers\SinglePumpSelectionsController;
+use Modules\Selection\Http\Controllers\SelectionsController;
 
-// SELECTIONS
-Route::prefix('sp_selections')->group(function () {
+Route::get('projects/{project}/selections/dashboard')->name('selections.dashboard')->uses([SelectionsController::class, 'index']);
+Route::resource('projects.selections', SelectionsController::class)->except(['index', 'edit'])->shallow();
+
+Route::prefix('selections')->group(function () {
     Route::prefix('{selection}')->group(function () {
-        Route::get('restore')->name('sp_selections.restore')->uses([SinglePumpSelectionsController::class, 'restore']);
-        Route::post('export')->name('sp_selections.export')->uses([SinglePumpSelectionsController::class, 'export']);
+        Route::get('restore')->name('selections.restore')->uses([SelectionsController::class, 'restore']);
+        Route::post('export')->name('selections.export')->uses([SelectionsController::class, 'export']);
     });
-    Route::post('export/at-once')->name('sp_selections.export.at_once')->uses([SinglePumpSelectionsController::class, 'exportAtOnce']);
-    Route::post('select')->name('sp_selections.select')->uses([SinglePumpSelectionsController::class, 'select']);
-    Route::post('curves')->name('sp_selections.curves')->uses([SinglePumpSelectionsController::class, 'curves']);
+    Route::post('export/at-once')->name('selections.export.at_once')->uses([SelectionsController::class, 'exportAtOnce']);
+    Route::post('select')->name('selections.select')->uses([SelectionsController::class, 'select']);
+    Route::post('curves')->name('selections.curves')->uses([SelectionsController::class, 'curves']);
 });
-Route::get('projects/{project}/selections/dashboard')->name('selections.dashboard')->uses([SinglePumpSelectionsController::class, 'index']);
-Route::resource('projects.sp_selections', SinglePumpSelectionsController::class)->except(['index', 'edit'])
-    ->shallow()
-    ->parameters([
-        'sp_selections' => 'selection'
-    ]);

@@ -57,7 +57,7 @@ export default function Show() {
             title: Lang.get('pages.projects.show.table.part_num'),
             dataIndex: 'article_num',
             render: (_, record) => <Link
-                href={tRoute('pumps.show', record.pump_id)}>{record.article_num}</Link>
+                href={tRoute('pumps.show', record.pump_id) + '?pumpable_type=' + record.pumpable_type}>{record.article_num}</Link>
         },
         {
             title: Lang.get('pages.projects.show.table.consumption'),
@@ -93,7 +93,7 @@ export default function Show() {
             key: 'actions', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        {has('selection_show') && <View clickHandler={showSelectionHandler(record.id)}/>}
+                        {has('selection_show') && <View clickHandler={showSelectionHandler(record)}/>}
                         {has('selection_export') && <Export clickHandler={exportSelectionHandler(record.id)}/>}
                         {has('selection_delete') && <Delete
                             sureDeleteTitle={Lang.get('pages.projects.show.table.delete')}
@@ -105,17 +105,18 @@ export default function Show() {
         },
     ]
 
-    // HANDLERS
-    const showSelectionHandler = id => () => {
-        Inertia.get(tRoute('sp_selections.show', id))
+    // HANDLERS //todo record
+    const showSelectionHandler = record => () => {
+        console.log(record)
+        Inertia.get(tRoute('selections.show', record.id) + '?pumpable_type=' + record.pumpable_type)
     }
 
     const deleteSelectionHandler = id => () => {
-        Inertia.delete(tRoute('sp_selections.destroy', id))
+        Inertia.delete(tRoute('selections.destroy', id))
         if (has('selection_restore'))
             openRestoreNotification(
                 Lang.get('pages.projects.show.restore.title'),
-                tRoute('sp_selections.restore', id),
+                tRoute('selections.restore', id),
                 Lang.get('pages.projects.show.restore.button'),
             )
     }
@@ -152,6 +153,7 @@ export default function Show() {
                     columns={columns}
                     dataSource={project.data?.selections}
                     doubleClickHandler={has('selection_show') && showSelectionHandler}
+                    doubleClickRecord
                 />}
             </ResourceContainer>
             <ExportSelectionDrawer selection_id={exportableId} visible={exportDrawerVisible} setVisible={setExportDrawerVisible}/>

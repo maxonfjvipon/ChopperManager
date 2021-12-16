@@ -4,24 +4,22 @@
 namespace Modules\Selection\Support;
 
 
-use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpsAndCoefficients;
-use Modules\Pump\Support\PumpCoefficientsHelper;
 
 class PPumpPerformance
 {
-    private Pump $pump;
+    private $pump;
     private array $performanceAsArray;
 
-    public function __construct(Pump $pump)
+    public function __construct($pump, string $pumpPerformance = null)
     {
         $this->pump = $pump;
         $this->performanceAsArray = array_map(function ($value) {
             return (float)$value;
-        }, explode(" ", $this->pump->performance));
+        }, explode(" ", $pumpPerformance ?: $pump->sp_performance));
     }
 
-    private function pointDist(array $xx)
+    private function pointDist(array $xx): float|int
     {
         $graphicsDist = $xx[count($xx) - 1] - $xx[0];
         $dist = 0;

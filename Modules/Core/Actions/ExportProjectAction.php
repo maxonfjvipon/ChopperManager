@@ -3,17 +3,19 @@
 
 namespace Modules\Core\Actions;
 
-
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\Entities\Project;
 use Modules\Core\Http\Requests\ExportProjectRequest;
 use Modules\Core\Support\Rates;
-use Modules\Selection\Actions\MakeSelectionCurvesAction;
+use Modules\Selection\Entities\Selection;
+use Modules\Selection\Traits\ConstructsSelectionCurves;
 use VerumConsilium\Browsershot\Facades\PDF;
 
 class ExportProjectAction
 {
+    use ConstructsSelectionCurves;
+
     public function execute(Project $project, ExportProjectRequest $request): Response
     {
         $rates = new Rates(Auth::user()->currency->code);
@@ -25,39 +27,26 @@ class ExportProjectAction
             'selections.pump.series',
             'selections.pump.series.category',
             'selections.pump.series.power_adjustment',
-            'selections.pump.series.discounts' => function ($query) {
-                $query->where('user_id', Auth::id());
-            },
+            'selections.pump.series.discount',
             'selections.pump.brand',
-            'selections.pump.brand.discounts' => function ($query) {
-                $query->where('user_id', Auth::id());
-            },
             'selections.pump.connection_type',
-            'selections.pump.price_lists' => function($query) {
-                $query->where('country_id', Auth::user()->country_id);
-            },
-            'selections.pump.price_lists.currency',
+            'selections.pump.price_list',
+            'selections.pump.price_list.currency',
         ]);
-        $project->selections->transform(function ($selection) use ($rates) {
-            $selection->{'curves_data'} = (new MakeSelectionCurvesAction())
-                ->selectionPerfCurvesData(
-                    $selection->pump,
-                    $selection->pumps_count - $selection->reserve_pumps_count,
-                    $selection->pumps_count,
-                    $selection->flow,
-                    $selection->head
-                );
+        // TODO: add get and write concrete fields
+        $project->selections->transform(function (Selection $selection) use ($rates) {
+            $selection->{'curves_data'} = $this->selectionCurvesData($selection);
 
             $pump_price_list = null;
             $pump_price = null;
             $discounted_pump_price = null;
-            if (count($selection->pump->price_lists) === 1) {
-                $pump_price_list = $selection->pump->price_lists[0];
+            if ($selection->pump->price_list) {
+                $pump_price_list = $selection->pump->price_list;
                 $pump_price = $pump_price_list->currency->code === $rates->base()
                     ? $pump_price_list->price
                     : round($pump_price_list->price / $rates->rate($pump_price_list->currency->code), 2);
-                $discount = count($selection->pump->series->discounts) == 1
-                    ? $selection->pump->series->discounts[0]->value
+                $discount = $selection->pump->series->discount
+                    ? $selection->pump->series->discount->value
                     : 0;
                 $discounted_pump_price = $pump_price - $pump_price * $discount / 100;
             }
@@ -72,6 +61,6 @@ class ExportProjectAction
         return PDF::loadHtml(view('core::project_export', [
             'project' => $project,
             'request' => $request,
-        ])->render())->inline();
+        ])->render())->download();
     }
 }

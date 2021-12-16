@@ -3,7 +3,7 @@
 namespace Modules\Core\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ModuleResourceController;
+use App\Services\ModuleResourceServiceInterface;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -18,16 +18,26 @@ use Modules\Core\Http\Requests\ProjectUpdateRequest;
 use Modules\Core\Transformers\EditProjectResource;
 use Modules\Core\Transformers\ShowProjectResource;
 
-class ProjectsController extends ModuleResourceController
+class ProjectsController extends Controller implements ModuleResourceServiceInterface
 {
-    public function __construct()
+    public function indexPath(): string
     {
-        parent::__construct(
-            'Core::Projects/Index',
-            'Core::Projects/Create',
-            'Core::Projects/Show',
-            'Core::Projects/Edit'
-        );
+        return 'Core::Projects/Index';
+    }
+
+    public function createPath(): string
+    {
+        return 'Core::Projects/Create';
+    }
+
+    public function editPath(): string
+    {
+        return 'Core::Projects/Edit';
+    }
+
+    public function showPath(): string
+    {
+        return 'Core::Projects/Show';
     }
 
     /**
@@ -39,7 +49,7 @@ class ProjectsController extends ModuleResourceController
     public function index(): Response
     {
         $this->authorize('project_access');
-        return Inertia::render($this->indexPath, [
+        return Inertia::render($this->indexPath(), [
             'projects' => auth()->user()->projects()
                 ->withCount('selections')
                 ->with(['selections' => function ($query) {
@@ -58,7 +68,7 @@ class ProjectsController extends ModuleResourceController
     public function create(): Response
     {
         $this->authorize('project_create');
-        return Inertia::render($this->createPath);
+        return Inertia::render($this->createPath());
     }
 
     /**
@@ -87,7 +97,7 @@ class ProjectsController extends ModuleResourceController
         $this->authorize('project_show');
         $this->authorize('selection_access');
         $this->authorize('project_access_' . $project->id);
-        return Inertia::render($this->showPath, [
+        return Inertia::render($this->showPath(), [
             'project' => new ShowProjectResource($project),
         ]);
     }
@@ -103,7 +113,7 @@ class ProjectsController extends ModuleResourceController
     {
         $this->authorize('project_edit');
         $this->authorize('project_access_' . $project->id);
-        return Inertia::render($this->editPath, [
+        return Inertia::render($this->editPath(), [
             'project' => new EditProjectResource($project)
         ]);
     }

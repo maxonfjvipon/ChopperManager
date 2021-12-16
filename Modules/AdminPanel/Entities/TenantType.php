@@ -12,6 +12,7 @@ class TenantType extends Model
     protected $fillable = ['id', 'name', 'module_name'];
 
     public static int $PUMPMANAGER = 1;
+    public static int $PUMPPRODUCER = 2;
 
     public static function all($columns = ['*'])
     {

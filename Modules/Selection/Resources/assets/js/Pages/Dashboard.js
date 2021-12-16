@@ -31,8 +31,8 @@ export default function Dashboard() {
             title: type.name,
             src: type.img,
             onClick: () => {
-                const route = 'projects.' + type.prefix + '_selections.create'
-                Inertia.get(tRoute(route, project_id))
+                const route = 'projects.selections.create'
+                Inertia.get(tRoute(route, project_id) + '?pumpable_type=' + type.pumpable_type)
             }
         }
     }))

@@ -13,7 +13,7 @@ const ConditionSelectionFormItem = ({options, initialValue = null, name, disable
         <Form.Item name={name} initialValue={initialValue}>
             <Selection
                 style={fullWidth}
-                placeholder={Lang.get('pages.selections.single.condition')}
+                placeholder={Lang.get('pages.selections.single_pump.condition')}
                 options={options}
                 disabled={disabled || false}
             />
@@ -46,7 +46,8 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
         limitConditions,
         mainsConnections,
         connectionTypes
-    } = selection_props.data
+    } = selection_props
+        // .data
 
     const [limitChecks, setLimitChecks] = useState({
         power: selection?.data.power_limit_checked || false,
@@ -73,13 +74,13 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                     <Col span={12}>
                         {/* CONNECTION TYPES */}
                         <Form.Item
-                            label={Lang.get('pages.selections.single.connection_type')}
+                            label={Lang.get('pages.selections.single_pump.connection_type')}
                             name="connection_type_ids"
                             className={reducedAntFormItemClassName}
                             initialValue={selection?.data.connection_types}
                         >
                             <MultipleSelection
-                                placeholder={Lang.get('pages.selections.single.connection_type')}
+                                placeholder={Lang.get('pages.selections.single_pump.connection_type')}
                                 style={nextBelowStyle}
                                 options={connectionTypes}
                             />
@@ -88,13 +89,13 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                     <Col span={12}>
                         {/* MAINS CONNECTION */}
                         <Form.Item
-                            label={Lang.get('pages.selections.single.phase')}
+                            label={Lang.get('pages.selections.single_pump.phase')}
                             name="mains_connection_ids"
                             className={reducedAntFormItemClassName}
                             initialValue={selection?.data.mains_connections}
                         >
                             <MultipleSelection
-                                placeholder={Lang.get('pages.selections.single.phase')}
+                                placeholder={Lang.get('pages.selections.single_pump.phase')}
                                 style={nextBelowStyle}
                                 options={mainsConnections.map(connection => {
                                     return {
@@ -121,7 +122,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     })
                                 }}
                             >
-                                {Lang.get('pages.selections.single.power_limit')}
+                                {Lang.get('pages.selections.single_pump.power_limit')}
                             </Checkbox>
                         </ConditionLimitCheckboxFormItem>
                         <LimitRow>
@@ -141,7 +142,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     <InputNumber
                                         disabled={!limitChecks.power}
                                         style={fullWidth}
-                                        placeholder={Lang.get('pages.selections.single.power')}
+                                        placeholder={Lang.get('pages.selections.single_pump.power')}
                                     />
                                 </Form.Item>
                             </LimitCol>
@@ -162,7 +163,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     })
                                 }}
                             >
-                                {Lang.get('pages.selections.single.ptp_length_limit')}
+                                {Lang.get('pages.selections.single_pump.ptp_length_limit')}
                             </Checkbox>
                         </ConditionLimitCheckboxFormItem>
                         <LimitRow>
@@ -182,7 +183,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     <InputNumber
                                         disabled={!limitChecks.ptpLength}
                                         style={fullWidth}
-                                        placeholder={Lang.get('pages.selections.single.ptp_length')}
+                                        placeholder={Lang.get('pages.selections.single_pump.ptp_length')}
                                     />
                                 </Form.Item>
                             </LimitCol>
@@ -203,7 +204,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     })
                                 }}
                             >
-                                {Lang.get('pages.selections.single.dn_input_limit')}
+                                {Lang.get('pages.selections.single_pump.dn_input_limit')}
                             </Checkbox>
                         </ConditionLimitCheckboxFormItem>
                         <LimitRow>
@@ -221,7 +222,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     initialValue={selection?.data.dn_suction_limit_id}
                                 >
                                     <Selection
-                                        placeholder={Lang.get('pages.selections.single.dn_input')}
+                                        placeholder={Lang.get('pages.selections.single_pump.dn_input')}
                                         options={dns}
                                         disabled={!limitChecks.dnSuction}
                                         style={fullWidth}
@@ -245,7 +246,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     })
                                 }}
                             >
-                                {Lang.get('pages.selections.single.dn_output_limit')}
+                                {Lang.get('pages.selections.single_pump.dn_output_limit')}
                             </Checkbox>
                         </ConditionLimitCheckboxFormItem>
                         <LimitRow>
@@ -263,7 +264,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     initialValue={selection?.data.dn_pressure_limit_id}
                                 >
                                     <Selection
-                                        placeholder={Lang.get('pages.selections.single.dn_output')}
+                                        placeholder={Lang.get('pages.selections.single_pump.dn_output')}
                                         options={dns}
                                         disabled={!limitChecks.dnPressure}
                                         style={fullWidth}
@@ -278,7 +279,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                         setUseAdditionalFilters(true)
                         setVisible(false)
                     }}>
-                        {Lang.get('pages.selections.single.additional_filters.apply')}
+                        {Lang.get('pages.selections.single_pump.additional_filters.apply')}
                     </PrimaryButton>
                 </BoxFlexEnd>
             </Form>

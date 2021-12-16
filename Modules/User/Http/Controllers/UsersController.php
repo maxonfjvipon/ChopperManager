@@ -5,20 +5,23 @@ namespace Modules\User\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response;
-use Modules\User\Http\Requests\Interfaces\UserCreatable;
-use Modules\User\Http\Requests\Interfaces\UserUpdatable;
-use Modules\User\Services\UsersServicesInterface;
+use Modules\User\Contracts\UsersServiceContract;
+use Modules\User\Entities\Userable;
+use Modules\User\Http\Requests\CreateUserRequest;
+use Modules\User\Http\Requests\UpdateUserRequest;
+use Modules\User\Traits\HasUserable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class UsersController extends Controller
 {
-    use UsesTenantModel;
+    use UsesTenantModel, HasUserable;
 
-    protected UsersServicesInterface $service;
+    protected UsersServiceContract $service;
 
-    public function __construct(UsersServicesInterface $service)
+    public function __construct(UsersServiceContract $service)
     {
         $this->service = $service;
     }
@@ -31,7 +34,7 @@ class UsersController extends Controller
     public function index(): Response
     {
         $this->authorize('user_access');
-        return $this->service->__index();
+        return $this->service->index();
     }
 
     /**
@@ -39,36 +42,36 @@ class UsersController extends Controller
      *
      * @throws AuthorizationException
      */
-    public function create()
+    public function create(): Response
     {
         $this->authorize('user_create');
-        return $this->service->__create();
+        return $this->service->create();
     }
 
     /**
      * Show the form for editing the specified resource.
-     * @param int $id
+     * @param int $user_id
      * @return Response
      * @throws AuthorizationException
      */
-    public function edit(int $id): Response
+    public function edit(int $user_id): Response
     {
         $this->authorize('user_edit');
-        return $this->service->__edit($id);
+        return $this->service->edit($user_id);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UserUpdatable $request
+     * @param UpdateUserRequest $request
      * @param int $user_id
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function update(UserUpdatable $request, int $user_id): RedirectResponse
+    public function update(UpdateUserRequest $request, int $user_id): RedirectResponse
     {
         $this->authorize('user_edit');
-        return $this->service->__update($request, $user_id);
+        return $this->service->update($request, $user_id);
     }
 
     /**
@@ -78,14 +81,15 @@ class UsersController extends Controller
      * @return RedirectResponse
      * @throws AuthorizationException
      */
-    public function store(UserCreatable $request): RedirectResponse
+    public function store(CreateUserRequest $request): RedirectResponse
     {
         $this->authorize('user_create');
-        return $this->service->__store($request);
+        return $this->service->store($request);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * TODO: Remove the specified resource from storage.
+     *
      * @param int $id
      * @return RedirectResponse
      * @throws AuthorizationException
@@ -93,6 +97,6 @@ class UsersController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->authorize('user_delete');
-        return Redirect::back();
+        return Redirect::back()->with('warning', "Can't delete user. Try disable");
     }
 }

@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
-use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
-use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 

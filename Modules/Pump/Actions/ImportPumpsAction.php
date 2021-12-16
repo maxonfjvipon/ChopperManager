@@ -10,7 +10,7 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
-use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\SinglePump;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
@@ -135,7 +135,7 @@ class ImportPumpsAction extends ImportAction
                 $chunkedSheet), ['article_num_main']);
         }
         $seriesId = $sheet[0]['pump']['series_id'];
-        $pumpsBySeries = Pump::whereSeriesId($seriesId);
+        $pumpsBySeries = SinglePump::whereSeriesId($seriesId);
         PumpSeries::whereId($seriesId)->update([
             'temp_min' => $pumpsBySeries->min('fluid_temp_min'),
             'temp_max' => $pumpsBySeries->max('fluid_temp_max'),

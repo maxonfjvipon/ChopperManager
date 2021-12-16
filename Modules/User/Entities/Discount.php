@@ -49,7 +49,7 @@ class Discount extends Model
         })->get('id')->pluck('id')->all());
     }
 
-    public static function updateForUser(array $available_series_ids, User $user): bool
+    public static function updateForUser(array $available_series_ids, Userable $user): bool
     {
         self::updateFromRequestForUserForSeries($available_series_ids, $user);
         self::updateFromRequestForUserForBrand($available_series_ids, $user);

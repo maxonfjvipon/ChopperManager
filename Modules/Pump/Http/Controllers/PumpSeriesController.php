@@ -7,6 +7,7 @@ use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Actions\ImportPumpSeriesAction;
+use Modules\Pump\Contracts\PumpSeries\PumpSeriesContract;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Modules\Pump\Entities\PumpSeries;
@@ -16,7 +17,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Pump\Services\PumpSeries\PumpSeriesServiceInterface;
 use Modules\Pump\Transformers\PumpSeriesPropsResource;
 use Modules\Pump\Transformers\PumpSeriesResource;
 
@@ -24,9 +24,9 @@ class PumpSeriesController extends Controller
 {
     use HasFilterData;
 
-    protected PumpSeriesServiceInterface $service;
+    protected PumpSeriesContract $service;
 
-    public function __construct(PumpSeriesServiceInterface $service)
+    public function __construct(PumpSeriesContract $service)
     {
         $this->service = $service;
     }
@@ -41,7 +41,7 @@ class PumpSeriesController extends Controller
     {
         $this->authorize('series_access');
         $this->authorize('brand_access');
-        return $this->service->__index();
+        return $this->service->index();
     }
 
     /**
@@ -68,7 +68,7 @@ class PumpSeriesController extends Controller
     public function store(PumpSeriesStoreRequest $request): RedirectResponse
     {
         $this->authorize('series_create');
-        return $this->service->__store($request);
+        return $this->service->store($request);
     }
 
     /**

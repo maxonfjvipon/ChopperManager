@@ -37,4 +37,6 @@ Route::prefix('pumps/import')->group(function () {
     Route::post('price_list')->name('pumps.import.price_lists')->uses([PumpsController::class, 'importPriceLists']);
     Route::post('media')->name('pumps.import.media')->uses([PumpsController::class, 'importMedia']);
 });
-Route::resource('pumps', PumpsController::class)->except(['edit', 'create']);
+Route::post('load-pumps')->name('pumps.load')->uses([PumpsController::class, 'load']);
+Route::get('pumps/{pump}')->name('pumps.show')->uses([PumpsController::class, 'show']);
+Route::resource('pumps', PumpsController::class)->except(['edit', 'create', 'show']);

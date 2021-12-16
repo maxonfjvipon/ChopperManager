@@ -197,6 +197,10 @@ return [
         'title' => 'Pumps',
         'props' => 'Properties',
         'back' => 'Back to pumps',
+        'tabs' => [
+            'single' => 'Single pumps',
+            'double' => 'Double pumps',
+        ],
         'data' => [
             'article_num_main' => 'Main article number',
             'article_num_reserve' => 'Reserve article number',
@@ -316,7 +320,7 @@ return [
             'water_station_analogy' => 'Watter supply pumping station selection by analogy',
             'fire_station_analogy' => 'Fire extinguishing pumping station selection by analogy',
         ],
-        'single' => [
+        'single_pump' => [
             'title_show' => 'Viewing the selection',
             'title_new' => 'Single pump selection by preferences',
             'grouping' => 'Grouping by brands',
@@ -338,6 +342,89 @@ return [
             'deviation_tooltip' => 'Positive value - reserve, negative - deviation',
             'main_pumps_count' => 'Main pumps count',
             'backup_pumps_count' => 'Reserve pumps count',
+            'connection_type' => 'Connection type',
+            'range' => [
+                'label' => 'Range',
+                'custom' => [
+                    'label' => 'Custom range',
+                    'value' => 'Custom'
+                ]
+            ],
+            'additional_filters' => [
+                'checkbox' => 'Use additional filters',
+                'title' => 'Additional filters',
+                'apply' => 'Apply',
+                'button' => 'More filters'
+            ],
+            'phase' => 'Mains connection',
+            'condition' => 'Condition',
+            'power_limit' => 'Limiting the pump power',
+            'ptp_length_limit' => 'Limiting the port-to-port length',
+            'dn_input_limit' => 'Limiting the suction side DN',
+            'dn_output_limit' => 'Limiting the pressure side DN',
+            'power' => 'Power, kW',
+            'ptp_length' => 'Port-to-port length',
+            'dn_input' => 'Suction side DN',
+            'dn_output' => 'Pressure side DN',
+            'select' => 'Select',
+            'exit' => 'Exit',
+            'add' => 'Add to project',
+            'update' => 'Update selection',
+            'selected_pump' => 'Selected pump: ',
+            'graphic' => [
+                'export' => 'Export',
+                'info' => 'Pump info',
+            ],
+            'pump_info' => [
+                'props' => 'Product properties',
+                'model_picture' => 'Model picture',
+                'sizes_picture' => 'Sizes',
+                'electric_diagram' => 'Electric diagram',
+                'exploded_view' => 'Exploded view',
+                'files' => 'Files',
+            ],
+            'table' => [
+                'title' => 'Selected pumps',
+                'name' => 'Name',
+                'part_num' => 'Article number',
+                'retail_price' => 'Retail price',
+                'discounted_price' => 'Discounted price',
+                'total_retail_price' => 'Total retail price',
+                'total_discounted_price' => 'Total discounted price',
+                'dn_input' => 'Suction side DN',
+                'dn_output' => 'Pressure side DN',
+                'power' => 'P, kW',
+                'total_power' => 'P total, kW',
+                'ptp_length' => 'Port-to-port length, mm'
+            ],
+            'export' => [
+                'title' => 'Export selection',
+                'print' => [
+                    'pump_image' => 'Print pump image',
+                    'sizes_image' => 'Print pump sizes',
+                    'electric_diagram' => 'Print pump electric diagram',
+                    'exploded_view' => 'Print pump exploded view',
+                ],
+                'button' => 'Export',
+            ],
+        ],
+        'double_pump' => [
+            'title_show' => 'Viewing the single pump selection',
+            'title_new' => 'Single pump selection by preferences',
+            'grouping' => 'Grouping by brands',
+            'hide_icons' => 'Hide icons',
+            'brands' => 'Brands',
+            'types' => [
+                'label' => 'Types',
+                'tooltip' => 'The presence of all the selected types for the series is checked!'
+            ],
+            'power_adjustments' => 'Power adjustments',
+            'fluid_temp' => 'Fluid temperature, °C',
+            'pressure' => 'Delivery head, m',
+            'consumption' => 'Volume flow, m³/h',
+            'deviation' => 'Head reserve, %',
+            'deviation_tooltip' => 'Positive value - reserve, negative - deviation',
+            'work_scheme' => 'Work scheme',
             'connection_type' => 'Connection type',
             'range' => [
                 'label' => 'Range',

@@ -1,33 +1,45 @@
 <?php
 
-
 namespace Modules\Pump\Services\PumpSeries;
 
 use App\Traits\HasFilterData;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Pump\Contracts\PumpSeries\PumpSeriesContract;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\PumpApplication;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpCategory;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpType;
-use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 
-class PumpSeriesService implements PumpSeriesServiceInterface
+abstract class PumpSeriesService implements PumpSeriesContract
 {
     use HasFilterData;
 
-    protected function indexFilterData(): array
+    public function index(): Response
     {
-        return $this->asFilterData([
-            'brands' => PumpBrand::pluck('name')->all(),
-            'categories' => PumpCategory::pluck('name')->all(),
-            'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
-            'applications' => PumpApplication::pluck('name')->all(),
-            'types' => PumpType::pluck('name')->all(),
+        $brands = PumpBrand::all();
+        return Inertia::render($this->indexPath(), [
+            'filter_data' => $this->asFilterData([
+                'brands' => $brands->pluck('name')->all(),
+                'categories' => PumpCategory::pluck('name')->all(),
+                'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
+                'applications' => PumpApplication::pluck('name')->all(),
+                'types' => PumpType::pluck('name')->all(),
+            ]),
+            'brands' => $brands,
+            'series' => PumpSeries::with(['brand', 'category', 'power_adjustment', 'types', 'applications'])
+                ->get()
+                ->map(fn($series) => [
+                    'id' => $series->id,
+                    'brand' => $series->brand->name,
+                    'name' => $series->name,
+                    'category' => $series->category->name,
+                    'power_adjustment' => $series->power_adjustment->name,
+                    'applications' => $series->imploded_applications,
+                    'types' => $series->imploded_types
+                ])->all()
         ]);
     }
 
@@ -49,31 +61,5 @@ class PumpSeriesService implements PumpSeriesServiceInterface
     public function createPath(): string
     {
         return 'Pump::PumpSeries/Create';
-    }
-
-    public function __index(): Response
-    {
-        return Inertia::render($this->indexPath(), [
-            'filter_data' => $this->indexFilterData(),
-            'brands' => PumpBrand::all(),
-            'series' => PumpSeries::with(['brand', 'category', 'power_adjustment'])
-                ->get()
-                ->map(fn($series) => [
-                    'id' => $series->id,
-                    'brand' => $series->brand->name,
-                    'name' => $series->name,
-                    'category' => $series->category->name,
-                    'power_adjustment' => $series->power_adjustment->name,
-                    'applications' => $series->imploded_applications,
-                    'types' => $series->imploded_types
-                ])
-                ->all(),
-        ]);
-    }
-
-    public function __store(PumpSeriesStoreRequest $request): RedirectResponse
-    {
-        PumpSeries::createFromRequest($request);
-        return Redirect::route('pump_series.index');
     }
 }

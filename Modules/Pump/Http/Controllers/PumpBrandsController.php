@@ -8,17 +8,17 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Pump\Contracts\PumpBrands\PumpBrandsContract;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Http\Requests\PumpBrandStoreRequest;
 use Modules\Pump\Http\Requests\PumpBrandUpdateRequest;
-use Modules\Pump\Services\PumpBrands\PumpBrandsSeriesInterface;
 use Modules\Pump\Transformers\PumpBrandResource;
 
 class PumpBrandsController extends Controller
 {
-    protected PumpBrandsSeriesInterface $service;
+    protected PumpBrandsContract $service;
 
-    public function __construct(PumpBrandsSeriesInterface $service)
+    public function __construct(PumpBrandsContract $service)
     {
         $this->service = $service;
     }
@@ -45,7 +45,7 @@ class PumpBrandsController extends Controller
     public function store(PumpBrandStoreRequest $request): RedirectResponse
     {
         $this->authorize('brand_create');
-        return $this->service->__store($request);
+        return $this->service->store($request);
     }
 
     /**

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\User\Entities\Discount;
+use Modules\User\Entities\Userable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class UserAndPumpSeries extends Model
@@ -20,7 +21,7 @@ class UserAndPumpSeries extends Model
     protected $primaryKey = ['user_id', 'series_id'];
     public $incrementing = false;
 
-    public static function updateAvailableSeriesForUser(array $available_series_ids, \Modules\User\Entities\User $user): bool
+    public static function updateAvailableSeriesForUser(array $available_series_ids, Userable $user): bool
     {
         self::where('user_id', $user->id)
             ->whereNotIn('series_id', $available_series_ids)

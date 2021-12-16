@@ -23,7 +23,7 @@ class RedirectIfAuthenticatedInModule
     {
         $tenantModel = $this->getTenantModel();
         if ($tenantModel::checkCurrent()) {
-            if (Auth::guard($tenantModel::current()->getGuard())->check()) {
+            if (Auth::guard($tenantModel::current()->guard)->check()) {
                 return Redirect::route('projects.index');
             }
         }

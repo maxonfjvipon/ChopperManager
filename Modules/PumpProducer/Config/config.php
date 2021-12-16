@@ -1,6 +1,6 @@
 <?php
 
-use Modules\PumpProducer\Entities\User;
+use Modules\PumpProducer\Entities\PPUser;
 use Modules\PumpProducer\Http\Controllers\RegisterController;
 
 return [

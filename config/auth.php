@@ -1,7 +1,8 @@
 <?php
 
 use Modules\AdminPanel\Entities\Admin;
-use Modules\PumpManager\Entities\User;
+use Modules\PumpManager\Entities\PMUser;
+use Modules\PumpProducer\Entities\PPUser;
 
 return [
 
@@ -17,8 +18,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'pumpmanager',
+        'passwords' => 'pm_users',
     ],
 
     /*
@@ -39,10 +40,6 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
         'pumpmanager' => [
             'driver' => 'session',
             'provider' => 'pm_users'
@@ -81,27 +78,18 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => \Modules\User\Entities\User::class,
-        ],
         'pm_users' => [
             'driver' => 'eloquent',
-            'model' => User::class,
+            'model' => PMUser::class,
         ],
         'pp_users' => [
             'driver' => 'eloquent',
-            'model' => \Modules\PumpProducer\Entities\User::class
+            'model' => PPUser::class
         ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => Admin::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -120,8 +108,14 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'pm_users' => [
+            'provider' => 'pm_users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'pp_users' => [
+            'provider' => 'pp_users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

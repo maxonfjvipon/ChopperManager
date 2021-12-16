@@ -43,7 +43,7 @@ class LoginRequest extends FormRequest
      *
      * @throws ValidationException
      */
-    public function authenticate($guard = 'web', $loginBy = 'email')
+    public function authenticate($guard = 'pumpmanager', $loginBy = 'email')
     {
         $this->ensureIsNotRateLimited($loginBy);
 

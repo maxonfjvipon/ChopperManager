@@ -1,7 +1,7 @@
 import {Table} from "antd";
 import React from "react";
 
-export const TTable = ({columns, dataSource, doubleClickHandler, ...rest}) => {
+export const TTable = ({columns, dataSource, doubleClickHandler, doubleClickRecord, ...rest}) => {
     const _columns = columns.map(column => {
         return {
             title: column.title || "",
@@ -20,7 +20,7 @@ export const TTable = ({columns, dataSource, doubleClickHandler, ...rest}) => {
             })}
             onRow={(record, _) => {
                 return doubleClickHandler
-                    ? {onDoubleClick: doubleClickHandler(record.id)}
+                    ? {onDoubleClick: doubleClickHandler(doubleClickRecord ? record : record.id)}
                     : null
             }}
             {...rest}

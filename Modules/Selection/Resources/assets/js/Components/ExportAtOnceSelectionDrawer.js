@@ -6,7 +6,7 @@ import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.ho
 import download from 'downloadjs'
 import Lang from "../../../../../../resources/js/translation/lang";
 
-export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}) => {
+export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible, pumpableType}) => {
     const [loading, setLoading] = useState(false)
 
     const tRoute = useTransRoutes()
@@ -14,7 +14,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
 
     const exportHandler = async () => {
         setLoading(true)
-        axios.post(tRoute('sp_selections.export.at_once'), {
+        axios.post(tRoute('selections.export.at_once'), {
             ...await form.validateFields(),
             selected_pump_name: stationToShow?.name,
             pump_id: stationToShow?.pump_id,
@@ -23,6 +23,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
             flow: stationToShow?.flow,
             head: stationToShow?.head,
             fluid_temperature: stationToShow?.fluid_temperature,
+            pumpable_type: pumpableType(),
         }, {
             responseType: 'blob',
         }).then(res => {
@@ -40,7 +41,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.pump_image')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.pump_image')}</Checkbox>
         },
         {
             values: {
@@ -49,7 +50,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.sizes_image')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.sizes_image')}</Checkbox>
         },
         {
             values: {
@@ -58,7 +59,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.electric_diagram')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.electric_diagram')}</Checkbox>
         },
         {
             values: {
@@ -67,11 +68,11 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
                 valuePropName: "checked",
                 initialValue: true,
                 // className: reducedAntFormItemClassName,
-            }, input: <Checkbox>{Lang.get('pages.selections.single.export.print.exploded_view')}</Checkbox>
+            }, input: <Checkbox>{Lang.get('pages.selections.single_pump.export.print.exploded_view')}</Checkbox>
         },
         {
             values: {}, input:
-                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single.export.button')}</PrimaryButton>
+                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single_pump.export.button')}</PrimaryButton>
         }
     ]
 
@@ -79,7 +80,7 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible}
         <Drawer
             width={300}
             placement="right"
-            title={Lang.get('pages.selections.single.export.title')}
+            title={Lang.get('pages.selections.single_pump.export.title')}
             visible={visible}
             closable={false}
             onClose={() => {

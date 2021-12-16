@@ -23,8 +23,8 @@ class AdminPanelDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $pm = TenantType::create(['name' => 'PumpManager', 'module_name' => 'pumpmanager']);
-        $pd = TenantType::create(['name' => 'PumpProducer', 'module_name' => 'pumpproducer']);
+        $pm = TenantType::create(['name' => 'PumpManager', 'guard' => 'pumpmanager']);
+        $pd = TenantType::create(['name' => 'PumpProducer', 'guard' => 'pumpproducer']);
 
         $imgPath = "/img/selections-dashboard/";
 

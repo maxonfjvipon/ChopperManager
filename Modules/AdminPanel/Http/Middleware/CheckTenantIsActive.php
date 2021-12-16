@@ -21,12 +21,12 @@ class CheckTenantIsActive
     public function handle(Request $request, Closure $next)
     {
         if ($this->getTenantModel()::current()->is_active == false) {
-            $this->handleTenantDisabled($request);
+            $this->handleTenantDisabled();
         }
         return $next($request);
     }
 
-    protected function handleTenantDisabled($request)
+    protected function handleTenantDisabled()
     {
         abort(Response::HTTP_UNAUTHORIZED);
     }

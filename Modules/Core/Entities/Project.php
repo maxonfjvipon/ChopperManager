@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminPanel\Entities\Tenant;
-use Modules\Selection\Entities\SinglePumpSelection;
+use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Permission;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
@@ -27,7 +27,7 @@ class Project extends Model
     {
         self::created(function (self $project) {
             $permission = Permission::create([
-                'guard_name' => Tenant::current()->getGuard(),
+                'guard_name' => Tenant::current()->guard,
                 'name' => 'project_access_' . $project->id
             ]);
             Auth::user()->givePermissionTo($permission->name);
@@ -36,6 +36,6 @@ class Project extends Model
 
     public function selections(): HasMany
     {
-        return $this->hasMany(SinglePumpSelection::class);
+        return $this->hasMany(Selection::class);
     }
 }

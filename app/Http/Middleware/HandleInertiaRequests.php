@@ -34,6 +34,11 @@ class HandleInertiaRequests extends Middleware
         return parent::version($request);
     }
 
+    public function doesRequestContain($request, $what): bool
+    {
+        return str_contains($request->getRequestUri(), $what);
+    }
+
     /**
      * Defines the props that are shared by default.
      *
@@ -65,11 +70,10 @@ class HandleInertiaRequests extends Middleware
             $user = Auth()->user();
             return array_merge(parent::share($request), [
                 'title' => $currentTenant->name,
-                'has_registration' => $currentTenant->has_registration,
                 'auth' => function () use ($user) {
                     return [
                         'full_name' => Auth::check() ? $user->full_name : null,
-                        'currency' => Auth::check() ? strtolower($user->currency->symbol) : null,
+                        'currency' => Auth::check() ? strtolower($user->currency->symbol) : null, // todo: only for specific route
                         'permissions' => Auth::check()
                             ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)
                             : null,
@@ -83,7 +87,9 @@ class HandleInertiaRequests extends Middleware
                         'current_localized' => $current_localized,
                     ];
                 },
-            ], $flash);
+            ], $flash, $this->doesRequestContain($request, 'register') ? [
+                'has_registration' => $currentTenant->has_registration, // todo: only for specific route
+            ] : []);
         }
         return array_merge(parent::share($request), $flash);
     }

@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+use Modules\AdminPanel\Entities\Tenant;
+use Modules\User\Entities\PMUser;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
@@ -13,6 +15,8 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $this->assertTrue(true);
+        Tenant::find(1)->execute(function () {
+            dd((new PMUser())->available_series);
+        });
     }
 }

@@ -3,29 +3,28 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\ModuleResourceController;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Actions\ImportPumpsAction;
 use Modules\Pump\Actions\ImportPumpsPriceListsAction;
-use Modules\Pump\Entities\Pump;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Response;
+use Modules\Pump\Entities\Pump;
+use Modules\Pump\Http\Requests\PumpableRequest;
 use Modules\Pump\Services\Pumps\PumpsService;
-use Modules\Pump\Services\Pumps\PumpsServiceInterface;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class PumpsController extends Controller
 {
     use UsesTenantModel;
 
-    protected PumpsServiceInterface $service;
+    protected PumpsService $service;
 
-    public function __construct(PumpsServiceInterface $service)
+    public function __construct(PumpsService $service)
     {
         $this->service = $service;
     }
@@ -39,75 +38,31 @@ class PumpsController extends Controller
     public function index(): Response
     {
         $this->authorize('pump_access');
-        return $this->service->__index();
+        return $this->service->index();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @param PumpableRequest $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function load(PumpableRequest $request): JsonResponse
     {
-        //
+        return $this->service->load();
     }
 
     /**
      * Display the specified resource.
      *
+     * @param PumpableRequest $request
      * @param Pump $pump
      * @return Response
      * @throws AuthorizationException
      */
-    public function show(Pump $pump): Response
+    public function show(PumpableRequest $request, Pump $pump): Response
     {
         $this->authorize('pump_show');
-        return $this->service->__show($pump);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->service->show($pump);
     }
 
     /**

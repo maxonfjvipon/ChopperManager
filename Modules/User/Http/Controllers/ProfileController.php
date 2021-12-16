@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Core\Entities\Currency;
-use Modules\Core\Http\Requests\DiscountUpdateRequest;
+use Modules\User\Http\Requests\DiscountUpdateRequest;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Entities\Discount;
+use Modules\User\Http\Requests\UpdateProfileRequest;
 use Modules\User\Http\Requests\UserPasswordUpdateRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Transformers\ProfileUserResource;
@@ -30,12 +31,13 @@ class ProfileController extends Controller
     public function index(): Response
     {
         $discounts = auth()->user()->discounts()
-            ->where('discountable_type', '=', 'pump_brand')
+            ->where('discountable_type', 'pump_brand')
             ->with(['discountable' => function (MorphTo $morphTo) {
                 $morphTo->morphWith([
-                    PumpBrand::class => ['series', 'series.discounts' => function ($query) {
-                        $query->where('user_id', Auth::id());
-                    }]
+                    PumpBrand::class => [
+                        'series',
+                        'series.discount'
+                    ]
                 ]);
             }])
             ->get()
@@ -48,26 +50,26 @@ class ProfileController extends Controller
                 'name' => $discount->discountable->name,
                 'value' => $discount->value,
                 'children' => $discount->discountable->series
-                    ->filter(fn($series) => count($series->discounts) > 0)
+                    ->filter(fn($series) => $series->discount)
                     ->map(fn($series) => [
-                        'key' => $series->discounts[0]->discountable_id
-                            . '-' . $series->discounts[0]->discountable_type
-                            . '-' . $series->discounts[0]->user_id,
-                        'discountable_id' => $series->discounts[0]->discountable_id,
-                        'discountable_type' => $series->discounts[0]->discountable_type,
-                        'user_id' => $series->discounts[0]->user_id,
+                        'key' => $series->discount->discountable_id
+                            . '-' . $series->discount->discountable_type
+                            . '-' . $series->discount->user_id,
+                        'discountable_id' => $series->discount->discountable_id,
+                        'discountable_type' => $series->discount->discountable_type,
+                        'user_id' => $series->discount->user_id,
                         'name' => $series->name,
-                        'value' => $series->discounts[0]->value,
+                        'value' => $series->discount->value,
                     ])->values()
             ])->values();
         return Inertia::render('User::Profile', [
-            'user' => new ProfileUserResource(auth()->user()),
+            'user' => new ProfileUserResource(Auth::user()),
             'businesses' => Business::all(),
             'countries' => Country::all(),
-            'currencies' => Currency::all()->transform(function ($currency) {
+            'currencies' => Currency::all()->map(function ($currency) {
                 return [
                     'id' => $currency->id,
-                    'name' => $currency->code . ' - ' . $currency->name
+                    'name' => $currency->name_code
                 ];
             }),
             'discounts' => $discounts]);
@@ -76,10 +78,10 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateUserRequest $request
+     * @param UpdateProfileRequest $request
      * @return RedirectResponse
      */
-    public function update(UpdateUserRequest $request): RedirectResponse
+    public function update(UpdateProfileRequest $request): RedirectResponse
     {
         Auth::user()->update($request->validated());
         return Redirect::back()->with('success', __('flash.users.updated'));

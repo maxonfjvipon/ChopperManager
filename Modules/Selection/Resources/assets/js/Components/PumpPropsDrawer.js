@@ -199,7 +199,7 @@ export const PumpPropsDrawer = ({visible, setVisible, pumpInfo}) => {
         <Drawer
             width={650}
             placement="right"
-            title={Lang.get('pages.selections.single.graphic.info')}
+            title={Lang.get('pages.selections.single_pump.graphic.info')}
             visible={visible}
             closable={false}
             onClose={() => {
@@ -207,26 +207,26 @@ export const PumpPropsDrawer = ({visible, setVisible, pumpInfo}) => {
             }}
         >
             {pumpInfo && <Tabs type="card" defaultActiveKey="curve">
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.props')} key="props">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.props')} key="props">
                     <ItemsForm
                         layout="horizontal"
                         labelSpan={{xs: 6}}
                         items={items}
                     />
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.model_picture')} key="model_pic">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.model_picture')} key="model_pic">
                     <_img src={pumpInfo.images.pump}/>
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.sizes_picture')} key="size_pic">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.sizes_picture')} key="size_pic">
                     <_img src={pumpInfo.images.sizes}/>
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.electric_diagram')} key="electric_pic">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.electric_diagram')} key="electric_pic">
                     <_img src={pumpInfo.images.electric_diagram}/>
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.exploded_view')} key="expl_pic">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.exploded_view')} key="expl_pic">
                     <_img src={pumpInfo.images.cross_sectional_drawing}/>
                 </Tabs.TabPane>
-                <Tabs.TabPane tab={Lang.get('pages.selections.single.pump_info.files')} key="files">
+                <Tabs.TabPane tab={Lang.get('pages.selections.single_pump.pump_info.files')} key="files">
                     <List
                         size="large"
                         itemLayout="horizontal"
