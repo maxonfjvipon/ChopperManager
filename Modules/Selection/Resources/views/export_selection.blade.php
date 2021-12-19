@@ -4,7 +4,7 @@
     <table style="border-collapse: collapse; line-height: 1.1;height: 100%;width: 100%;">
         <tr>
             <td class="with-border little-text td-top">
-                <table style="width: 250px">
+                <table style="width: 300px">
                     <tr>
                         <td class="td-top" colspan="2">
                             <strong>Запрашиваемые параметры:</strong>
@@ -93,8 +93,12 @@
                         <td class="td-top">{{$selection->pump->series->category->name}}</td>
                     </tr>
                     <tr>
-                        <td class="td-top">Эл.соединение</td>
+                        <td class="td-top">Встроенное регулирование</td>
                         <td class="td-top">{{$selection->pump->series->power_adjustment->name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-top">Эл. соединение</td>
+                        <td class="td-top">{{$selection->pump->mains_connection->full_value}}</td>
                     </tr>
                     <tr>
                         <td class="td-top">Тип</td>

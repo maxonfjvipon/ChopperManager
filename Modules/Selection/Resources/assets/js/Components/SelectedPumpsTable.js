@@ -93,6 +93,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
             dataSource={selectedPumps}
             loading={loading}
             clickHandler={setStationToShow}
+            clickRecord
             pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
             scroll={{x: 1550, y: "48vh"}}
         />
