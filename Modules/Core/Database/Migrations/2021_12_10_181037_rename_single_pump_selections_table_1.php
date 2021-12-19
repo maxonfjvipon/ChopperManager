@@ -16,7 +16,7 @@ class RenameSinglePumpSelectionsTable1 extends Migration
         Schema::rename('single_pump_selections', 'selections');
         Schema::table('selections', function (Blueprint $table) {
             $table->string('selected_pump_name')->nullable()->change();
-            $table->string('mains_pumps_counts', 20)->nullable()->change();
+            $table->string('main_pumps_counts', 20)->nullable()->change();
             $table->integer('pumps_count')->unsigned()->nullable()->change();
             $table->float('flow')->nullable()->change();
             $table->float('head')->nullable()->change();
