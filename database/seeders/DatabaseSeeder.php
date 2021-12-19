@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             DB::table($database . '.model_has_permissions')->update([
                 'model_type' => PMUser::class
             ]);
-            DB::table('pumps')->update(['pumpable_type' => Pump::$SINGLE_PUMP]);
+            DB::table($database . '.pumps')->update(['pumpable_type' => Pump::$SINGLE_PUMP]);
             $seriesIds = PumpSeries::pluck('id')->all();
             foreach ($seriesIds as $seriesId) {
                 $pumps = Pump::whereSeriesId($seriesId);
