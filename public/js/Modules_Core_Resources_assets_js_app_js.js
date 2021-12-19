@@ -8483,7 +8483,7 @@ function Show() {
         columns: columns,
         dataSource: (_project$data = project.data) === null || _project$data === void 0 ? void 0 : _project$data.selections,
         doubleClickHandler: has('selection_show') && showSelectionHandler,
-        doubleClickRecord: true
+        clickRecord: true
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_18__.jsx)(_Selection_Resources_assets_js_Components_ExportSelectionDrawer__WEBPACK_IMPORTED_MODULE_15__.ExportSelectionDrawer, {
       selection_id: exportableId,
@@ -9744,7 +9744,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["columns", "dataSource", "doubleClickHandler", "doubleClickRecord"];
+var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler"];
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -9762,8 +9774,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 var TTable = function TTable(_ref) {
   var columns = _ref.columns,
       dataSource = _ref.dataSource,
+      clickRecord = _ref.clickRecord,
+      clickHandler = _ref.clickHandler,
       doubleClickHandler = _ref.doubleClickHandler,
-      doubleClickRecord = _ref.doubleClickRecord,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   var _columns = columns.map(function (column) {
@@ -9774,6 +9787,15 @@ var TTable = function TTable(_ref) {
     }, column);
   });
 
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      selectedRowKey = _useState2[0],
+      setSelectedRowKey = _useState2[1];
+
+  var rowClassName = function rowClassName(record) {
+    return record.key === selectedRowKey ? 'clickRowStyle' : '';
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
     size: "small",
     columns: _columns,
@@ -9782,10 +9804,15 @@ var TTable = function TTable(_ref) {
         key: item.id
       }, item);
     }),
+    rowClassName: rowClassName,
     onRow: function onRow(record, _) {
-      return doubleClickHandler ? {
-        onDoubleClick: doubleClickHandler(doubleClickRecord ? record : record.id)
-      } : null;
+      return {
+        onDoubleClick: doubleClickHandler ? doubleClickHandler(clickRecord ? record : record.id) : null,
+        onClick: function onClick() {
+          if (clickHandler) clickHandler(clickRecord ? record : record.id);
+          setSelectedRowKey(record.key || record.id);
+        }
+      };
     }
   }, rest));
 };

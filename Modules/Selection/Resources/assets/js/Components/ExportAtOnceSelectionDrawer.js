@@ -12,19 +12,38 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible,
     const tRoute = useTransRoutes()
     const [form] = Form.useForm()
 
+    const setBody = (body) => {
+        switch (body.pumpable_type) {
+            case "single_pump":
+                body = {
+                    ...body,
+                    reserve_pumps_count: stationToShow?.pumps_count - stationToShow?.main_pumps_count,
+                    pumps_count: stationToShow?.pumps_count,
+                }
+                break
+            case "double_pump":
+                body = {
+                    ...body,
+                    dp_work_scheme_id: stationToShow?.dp_work_scheme_id,
+                }
+                break
+        }
+        return body
+    }
+
     const exportHandler = async () => {
         setLoading(true)
-        axios.post(tRoute('selections.export.at_once'), {
+        let body = {
             ...await form.validateFields(),
             selected_pump_name: stationToShow?.name,
             pump_id: stationToShow?.pump_id,
-            reserve_pumps_count: stationToShow?.pumps_count - stationToShow?.main_pumps_count,
-            pumps_count: stationToShow?.pumps_count,
             flow: stationToShow?.flow,
             head: stationToShow?.head,
             fluid_temperature: stationToShow?.fluid_temperature,
             pumpable_type: pumpableType(),
-        }, {
+        }
+        body = setBody(body)
+        axios.post(tRoute('selections.export.at_once'), body, {
             responseType: 'blob',
         }).then(res => {
             setLoading(false)
@@ -72,7 +91,8 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible,
         },
         {
             values: {}, input:
-                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.selections.single_pump.export.button')}</PrimaryButton>
+                <PrimaryButton loading={loading}
+                               onClick={exportHandler}>{Lang.get('pages.selections.single_pump.export.button')}</PrimaryButton>
         }
     ]
 

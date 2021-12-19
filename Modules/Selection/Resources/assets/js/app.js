@@ -1,6 +1,6 @@
 import Dashboard from "./Pages/Dashboard";
-import SinglePump from "./Pages/SinglePump";
-import DoublePump from "./Pages/DoublePump";
+import SinglePump from "./Pages/Selections/SinglePump";
+import DoublePump from "./Pages/Selections/DoublePump";
 
 export default {
     Dashboard,

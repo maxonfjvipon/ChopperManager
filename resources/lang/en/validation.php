@@ -139,6 +139,10 @@ return [
         'in_array' => 'The :attribute is invalid. Not found in database',
         'in_array_complex' => 'The :attribute is invalid. Follow ids dont exist in database',
         'exception' => ":attribute weren't fully uploaded. Reload the page and try again",
+        'sheet_name' => [
+            'brand' => "Brand in list name doesn't exist",
+            'series' => "Series in list name doesn't exist",
+        ]
     ],
     'custom' => [
         'city' => [
@@ -210,7 +214,9 @@ return [
                 'fluid_temp_min' => 'Max. fluid temp',
                 'fluid_temp_max' => 'Min. fluid temp',
                 'ptp_length' => 'Port-to-port length',
-                'performance' => 'Performance',
+                'sp_performance' => 'Hydraulic performance',
+                'dp_peak_performance' => 'Peak hydraulic performance',
+                'dp_standby_performance' => 'Standby hydraulic performance',
                 'category' => 'Category',
                 'power_adjustment' => 'El. power adjustment',
                 'mains_connection' => 'Mains connection',

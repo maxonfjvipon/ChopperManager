@@ -10,6 +10,8 @@ use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
+use Modules\Pump\Entities\PumpBrand;
+use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpType;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\SelectionRange;
@@ -18,16 +20,20 @@ class PMDoublePumpSelectionService extends PMPumpableSelectionService
 {
     public function selectionPropsResource(): array
     {
-        $availableSeriesIds = Auth::user()->available_series()->pluck('id')->all();
-        $availableBrands = Auth::user()->available_brands()->get();
+        $availableSeriesIds = Auth::user()->available_series()
+            ->double()
+            ->pluck('id')
+            ->all();
 
         return [
-            'brands' => $availableBrands->all(),
-            'brandsWithSeries' => $availableBrands->load([
+//            'brands' => $availableBrands->all(),
+            'brandsWithSeries' => PumpBrand::with([
                 'series' => function ($query) use ($availableSeriesIds) {
                     $query->whereIn('id', $availableSeriesIds);
-                }, 'series.types', 'series.applications', 'series.power_adjustment'
-            ])->all(),
+                }, 'series.types', 'series.applications', 'series.power_adjustment'])
+                ->whereHas('series', function ($query) use ($availableSeriesIds) {
+                    $query->whereIn('id', $availableSeriesIds);
+                })->get(),
             'media_path' => (new TenantStorage())->urlToTenantFolder(), // TODO: fix this
             'connectionTypes' => ConnectionType::all(),
             'types' => PumpType::availableForUserSeries($availableSeriesIds)->get(),

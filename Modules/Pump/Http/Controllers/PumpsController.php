@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
-use Modules\Pump\Actions\ImportPumpsAction;
+use Modules\Pump\Actions\ImportPumps\ImportPumpsAction;
 use Modules\Pump\Actions\ImportPumpsPriceListsAction;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
@@ -75,7 +75,7 @@ class PumpsController extends Controller
     public function import(FilesUploadRequest $request): RedirectResponse
     {
         $this->authorize('pump_import');
-        return (new ImportPumpsAction($request->file('files')))->execute();
+        return (new ImportPumpsAction())->execute($request->file('files'));
     }
 
     /**

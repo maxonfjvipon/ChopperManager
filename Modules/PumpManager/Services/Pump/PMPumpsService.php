@@ -28,7 +28,7 @@ class PMPumpsService extends PumpsService
         return [
             'brands' => Auth::user()->available_brands()->pluck('pump_brands.name')->all(),
             'series' => $availableSeries->pluck('name')->all(),
-            'categories' => PumpCategory::pluck('name')->all(),
+//            'categories' => PumpCategory::pluck('name')->all(),
             'connections' => ConnectionType::pluck('name')->all(),
             'dns' => DN::pluck('value')->all(),
             'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),
@@ -44,7 +44,16 @@ class PMPumpsService extends PumpsService
      */
     public function show(Pump $pump): Response
     {
-        abort_if(!in_array($pump->id, Auth::user()->available_pumps()->pluck($pump->getTable() . '.id')->all()), 404);
+        abort_if(
+            !in_array(
+                $pump->id,
+                Auth::user()->available_pumps()
+                    ->onPumpableType($pump->pumpable_type)
+                    ->pluck($pump->getTable() . '.id')
+                    ->all()
+            ),
+            404
+        );
         return Inertia::render($this->showPath(), [
             'pump' => $this->service->pumpResource($pump)
         ]);

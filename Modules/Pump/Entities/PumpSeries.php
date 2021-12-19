@@ -2,6 +2,7 @@
 
 namespace Modules\Pump\Entities;
 
+use JetBrains\PhpStorm\Pure;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
@@ -20,7 +21,24 @@ class PumpSeries extends Model
 
     protected $guarded = [];
     public $timestamps = false;
-    protected $softCascade = ['single_pumps', 'double_pumps'];
+    protected $softCascade = ['pumps'];
+
+    public function getTempsMinAttribute(): array|bool
+    {
+        return $this->explodedAttribute('temps_min');
+    }
+
+    public function getTempsMaxAttribute(): array|bool
+    {
+        return $this->explodedAttribute('temps_max');
+    }
+
+    protected function explodedAttribute($originalKey, $separator = ","): array
+    {
+        return $this->original[$originalKey] !== null
+            ? array_map('intval', explode($separator, $this->original[$originalKey]))
+            : [];
+    }
 
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
@@ -42,19 +60,34 @@ class PumpSeries extends Model
         return $updated;
     }
 
-    private function implodedAttributes($attributes): string
+    public function scopeOnCategory($query, $categoryId)
     {
-        return implode(", ", $attributes->map(fn($attribute) => $attribute->name)->toArray());
+        return $query->whereCategoryId($categoryId);
+    }
+
+    public function scopeDouble($query)
+    {
+        return $query->onCategory(PumpCategory::$DOUBLE_PUMP);
+    }
+
+    public function scopeSingle($query)
+    {
+        return $query->onCategory(PumpCategory::$SINGLE_PUMP);
+    }
+
+    private function implodedAttributes($attributes, $separator = ","): string
+    {
+        return implode($separator, $attributes->map(fn($attribute) => $attribute->name)->toArray());
     }
 
     public function getImplodedTypesAttribute(): string
     {
-        return $this->implodedAttributes($this->types);
+        return $this->implodedAttributes($this->types, ", ");
     }
 
     public function getImplodedApplicationsAttribute(): string
     {
-        return $this->implodedAttributes($this->applications);
+        return $this->implodedAttributes($this->applications, ", ");
     }
 
     public function brand(): BelongsTo

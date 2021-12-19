@@ -38,15 +38,14 @@ class StoreDoublePumpSelectionRequest extends SelectionRequest
             'dn_pressure_limit_id' => ['sometimes', 'nullable', 'exists:tenant.dns,id'],
 
             'pump_id' => ['required', 'exists:tenant.pumps,id'],
-//            'pumpable_type' => ['required', 'string'],
             'selected_pump_name' => ['required', 'string'],
+            'dp_work_scheme_id' => ['required', 'exists:tenant.double_pump_work_schemes,id'],
 
             'custom_range' => ['required', 'string', 'max:7'],
             'pump_series_ids' => ['required', 'string'],
             'pump_brand_ids' => ['required', 'string'],
             'mains_connection_ids' => ['nullable', 'string', 'max:3'],
             'pump_type_ids' => ['nullable', 'string'],
-            'main_pumps_counts' => ['required', 'string', 'max:20'],
             'connection_type_ids' => ['nullable', 'string'],
             'power_adjustment_ids' => ['nullable', 'string', 'max:3'],
         ];

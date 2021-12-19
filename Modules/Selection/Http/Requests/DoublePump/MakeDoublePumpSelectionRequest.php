@@ -20,7 +20,7 @@ class MakeDoublePumpSelectionRequest extends MakeSelectionRequest
             'flow' => ['required', 'numeric', 'min:0', 'not_in:0'],
             'deviation' => ['sometimes', 'nullable', 'numeric', 'min:-50', 'max:50'],
             'fluid_temperature' => ['required', 'numeric'],
-            'double_pump_work_scheme_id' => ['required', 'exists:tenant.double_pump_work_schemes,id'],
+            'dp_work_scheme_id' => ['required', 'exists:tenant.double_pump_work_schemes,id'],
             'range_id' => ['required', 'exists:tenant.selection_ranges,id'],
             'custom_range' => ['required', 'array'],
             'use_additional_filters' => ['required', 'boolean'],

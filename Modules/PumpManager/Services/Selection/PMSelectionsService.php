@@ -33,7 +33,13 @@ class PMSelectionsService extends SelectionsService
     {
         $pump = $selection->pump;
         abort_if(
-            !in_array($pump->id, Auth::user()->available_pumps()->pluck($pump->getTable() . '.id')->all()),
+            !in_array(
+                $pump->id,
+                Auth::user()->available_pumps()
+                    ->onPumpableType($pump->pumpable_type)
+                    ->pluck($pump->getTable() . '.id')
+                    ->all()
+            ),
             401,
             "The series isn't available any more"
         );

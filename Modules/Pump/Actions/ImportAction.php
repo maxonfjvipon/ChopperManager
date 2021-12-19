@@ -6,6 +6,7 @@ use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Common\Exception\UnsupportedTypeException;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
@@ -36,7 +37,7 @@ class ImportAction
         return array_map(fn($id) => trim($id), explode($separator, $string));
     }
 
-    public function execute()
+    public function execute(): RedirectResponse
     {
         ini_set('max_execution_time', $this->MAX_EXECUTION_TIME);
         $errorBar = [];
@@ -48,7 +49,9 @@ class ImportAction
                     ->startRow(2)
                     ->importSheets($file, function ($entity) use (&$errorBar) {
                         try {
-                            validator()->make($entity, $this->rules, $this->messages, $this->attributes)->validate();
+                            validator()
+                                ->make($entity, $this->rules, $this->messages, $this->attributes)
+                                ->validate();
                         } catch (ValidationException $exception) {
                             array_map(function ($message) use ($entity, &$errorBar) {
                                 $errorBar[] = $this->errorBagEntity($entity, $message);

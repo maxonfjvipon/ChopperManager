@@ -9,6 +9,7 @@ use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
 use Modules\Pump\Entities\PumpApplication;
+use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpType;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\SelectionRange;
@@ -17,16 +18,27 @@ class PMSinglePumpSelectionService extends PMPumpableSelectionService
 {
     public function selectionPropsResource(): array
     {
-        $availableSeriesIds = Auth::user()->available_series()->pluck('id')->all();
-        $availableBrands = Auth::user()->available_brands()->distinct()->get();
-
+        $availableSeriesIds = Auth::user()->available_series()
+            ->single()
+            ->pluck('id')
+            ->all();
         return [
-//            'brands' => $availableBrands->all(),
-            'brandsWithSeries' => $availableBrands->load([
+            'brandsWithSeries' => PumpBrand::with([
                 'series' => function ($query) use ($availableSeriesIds) {
                     $query->whereIn('id', $availableSeriesIds);
-                }, 'series.types', 'series.applications', 'series.power_adjustment'
-            ])->all(),
+                }, 'series.types', 'series.applications', 'series.power_adjustment'])
+                ->whereHas('series', function ($query) use ($availableSeriesIds) {
+                    $query->whereIn('id', $availableSeriesIds);
+                })->get()
+//                >transform(function ($brand) {
+//                    $brand->series->transform(function ($series) {
+//                        $series->temps_min = $series->imploded_temps_min;
+//                        $series->temps_max = $series->imploded_temps_max;
+//                        return $series;
+//                    });
+//                    return $brand;
+//                }),
+        ,
             'media_path' => (new TenantStorage())->urlToTenantFolder(), // TODO: fix this
             'connectionTypes' => ConnectionType::all(),
             'types' => PumpType::availableForUserSeries($availableSeriesIds)->get(),

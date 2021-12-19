@@ -336,6 +336,10 @@ return [
             ],
             'power_adjustments' => 'Power adjustments',
             'fluid_temp' => 'Fluid temperature, °C',
+            'temp_tooltip' => [
+                'red' => "Red - the series isn't suitable for the selected temperature",
+                'orange' => "Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected"
+            ],
             'pressure' => 'Delivery head, m',
             'consumption' => 'Volume flow, m³/h',
             'deviation' => 'Head reserve, %',
@@ -409,8 +413,8 @@ return [
             ],
         ],
         'double_pump' => [
-            'title_show' => 'Viewing the single pump selection',
-            'title_new' => 'Single pump selection by preferences',
+            'title_show' => 'Viewing the double pump selection',
+            'title_new' => 'Double pump selection by preferences',
             'grouping' => 'Grouping by brands',
             'hide_icons' => 'Hide icons',
             'brands' => 'Brands',

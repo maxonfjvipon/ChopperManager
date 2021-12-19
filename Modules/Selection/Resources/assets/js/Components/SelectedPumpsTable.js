@@ -2,6 +2,7 @@ import React, {useEffect, useMemo} from 'react'
 import {Spin, Table} from "antd";
 import Lang from '../../../../../../resources/js/translation/lang'
 import {usePage} from "@inertiajs/inertia-react";
+import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 
 export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) => {
     const {locales, auth} = usePage().props
@@ -87,18 +88,11 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
 
     return useMemo(() => (
         // return
-        <Table
-            size="small"
+        <TTable
             columns={columns}
             dataSource={selectedPumps}
-            onRow={(record, _) => {
-                return {
-                    onClick: _ => {
-                        setStationToShow(record);
-                    }
-                }
-            }}
             loading={loading}
+            clickHandler={setStationToShow}
             pagination={{defaultPageSize: 500, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
             scroll={{x: 1550, y: "48vh"}}
         />

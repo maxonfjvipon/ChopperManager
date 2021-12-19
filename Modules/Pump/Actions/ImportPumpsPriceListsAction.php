@@ -7,7 +7,7 @@ namespace Modules\Pump\Actions;
 use App\Rules\ExistsAsKeyInArray;
 use Illuminate\Support\Facades\DB;
 use Modules\Core\Entities\Currency;
-use Modules\Pump\Entities\SinglePump;
+use Modules\Pump\Entities\Pump;
 use Modules\User\Entities\Country;
 
 class ImportPumpsPriceListsAction extends ImportAction
@@ -15,7 +15,7 @@ class ImportPumpsPriceListsAction extends ImportAction
     public function __construct($files)
     {
         $db = [
-            'pumps' => SinglePump::pluck('id', 'article_num_main')->all(),
+            'pumps' => Pump::pluck('id', 'article_num_main')->all(),
             'countries' => Country::pluck('id', 'code')->all(),
             'currencies' => Currency::pluck('id', 'code')->all(),
         ];

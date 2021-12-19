@@ -9,6 +9,9 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpCategory extends Model
 {
+    public static int $SINGLE_PUMP = 1;
+    public static int $DOUBLE_PUMP = 2;
+
     use HasTranslations, UsesTenantConnection;
 
     public $translatable = ['name'];

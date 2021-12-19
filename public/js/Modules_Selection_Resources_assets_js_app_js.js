@@ -10269,15 +10269,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -10316,47 +10316,62 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
 
+  var setBody = function setBody(body) {
+    switch (body.pumpable_type) {
+      case "single_pump":
+        body = _objectSpread(_objectSpread({}, body), {}, {
+          reserve_pumps_count: (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count) - (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.main_pumps_count),
+          pumps_count: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count
+        });
+        break;
+
+      case "double_pump":
+        body = _objectSpread(_objectSpread({}, body), {}, {
+          dp_work_scheme_id: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.dp_work_scheme_id
+        });
+        break;
+    }
+
+    return body;
+  };
+
   var exportHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var body;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               setLoading(true);
-              _context.t0 = axios;
-              _context.t1 = tRoute('selections.export.at_once');
-              _context.t2 = _objectSpread;
-              _context.t3 = _objectSpread;
-              _context.t4 = {};
-              _context.next = 8;
+              _context.t0 = _objectSpread;
+              _context.t1 = _objectSpread;
+              _context.t2 = {};
+              _context.next = 6;
               return form.validateFields();
 
-            case 8:
-              _context.t5 = _context.sent;
-              _context.t6 = (0, _context.t3)(_context.t4, _context.t5);
-              _context.t7 = {};
-              _context.t8 = {
+            case 6:
+              _context.t3 = _context.sent;
+              _context.t4 = (0, _context.t1)(_context.t2, _context.t3);
+              _context.t5 = {};
+              _context.t6 = {
                 selected_pump_name: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
                 pump_id: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pump_id,
-                reserve_pumps_count: (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count) - (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.main_pumps_count),
-                pumps_count: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count,
                 flow: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.flow,
                 head: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.head,
                 fluid_temperature: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.fluid_temperature,
                 pumpable_type: pumpableType()
               };
-              _context.t9 = (0, _context.t2)(_context.t6, _context.t7, _context.t8);
-              _context.t10 = {
+              body = (0, _context.t0)(_context.t4, _context.t5, _context.t6);
+              body = setBody(body);
+              axios.post(tRoute('selections.export.at_once'), body, {
                 responseType: 'blob'
-              };
-
-              _context.t0.post.call(_context.t0, _context.t1, _context.t9, _context.t10).then(function (res) {
+              }).then(function (res) {
                 setLoading(false);
                 var content = res.headers['content-type'];
                 downloadjs__WEBPACK_IMPORTED_MODULE_5___default()(res.data, stationToShow.name + ".pdf", content);
               });
 
-            case 15:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -11100,10 +11115,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SelectedPumpsTable": () => (/* binding */ SelectedPumpsTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -11208,18 +11224,11 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     return (
       /*#__PURE__*/
       // return
-      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        size: "small",
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_3__.TTable, {
         columns: columns,
         dataSource: selectedPumps,
-        onRow: function onRow(record, _) {
-          return {
-            onClick: function onClick(_) {
-              setStationToShow(record);
-            }
-          };
-        },
         loading: loading,
+        clickHandler: setStationToShow,
         pagination: {
           defaultPageSize: 500,
           pageSizeOptions: [10, 20, 50, 100, 500, 1000]
@@ -11348,20 +11357,24 @@ function Dashboard() {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Pages/DoublePump.js":
-/*!*******************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/DoublePump.js ***!
-  \*******************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Pages/Selection.js":
+/*!******************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/Selection.js ***!
+  \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DoublePump)
+/* harmony export */   "Selection": () => (/* binding */ Selection)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/notification/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
@@ -11374,40 +11387,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
+/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
+/* harmony import */ var _Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Components/PumpPropsDrawer */ "./Modules/Selection/Resources/assets/js/Components/PumpPropsDrawer.js");
+/* harmony import */ var _Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/FiltersDrawer */ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js");
+/* harmony import */ var _Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../Components/ExportAtOnceSelectionDrawer */ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
 /* harmony import */ var antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd/es/form/Form */ "./node_modules/antd/es/form/hooks/useForm.js");
-/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Components/PumpPropsDrawer */ "./Modules/Selection/Resources/assets/js/Components/PumpPropsDrawer.js");
-/* harmony import */ var _Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Components/FiltersDrawer */ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js");
-/* harmony import */ var _Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Components/ExportAtOnceSelectionDrawer */ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -11448,151 +11457,26 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function DoublePump() {
-  // STATE
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      showBrandsList = _useState2[0],
-      setShowBrandsList = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState4 = _slicedToArray(_useState3, 2),
-      addLoading = _useState4[0],
-      setAddLoading = _useState4[1]; // const [checkedAll, setCheckedAll] = useState(false)
-  // const [indeterminate, setIndeteminate] = useState(true)
-
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState6 = _slicedToArray(_useState5, 2),
-      hideIcons = _useState6[0],
-      setHideIcons = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(hideIcons),
-      _useState8 = _slicedToArray(_useState7, 2),
-      prevHideIcons = _useState8[0],
-      setPrevHideIcons = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      brandsSeriesList = _useState10[0],
-      setBrandsSeriesList = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState12 = _slicedToArray(_useState11, 2),
-      brandsSeriesTree = _useState12[0],
-      setBrandsSeriesTree = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState14 = _slicedToArray(_useState13, 2),
-      selectedPumps = _useState14[0],
-      setSelectedPumps = _useState14[1];
-
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState16 = _slicedToArray(_useState15, 2),
-      stationToShow = _useState16[0],
-      setStationToShow = _useState16[1]; // HOOKS
-
-
-  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__.useCheck)(),
-      isArrayEmpty = _useCheck.isArrayEmpty,
-      prepareRequestBody = _useCheck.prepareRequestBody;
-
-  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__.useHttp)(),
-      postRequest = _useHttp.postRequest,
-      loading = _useHttp.loading;
-
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props,
+var Selection = function Selection(_ref) {
+  var pageTitle = _ref.pageTitle,
+      widths = _ref.widths;
+  // HOOKS
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_16__.usePage)().props,
       selection = _usePage$props.selection,
       project_id = _usePage$props.project_id,
       selection_props = _usePage$props.selection_props;
 
-  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__.usePermissions)(),
+  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_17__.useCheck)(),
+      isArrayEmpty = _useCheck.isArrayEmpty;
+
+  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_18__.useHttp)(),
+      postRequest = _useHttp.postRequest,
+      loading = _useHttp.loading;
+
+  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_19__.usePermissions)(),
       has = _usePermissions.has;
 
-  var brands = selection_props.brands,
-      brandsWithSeries = selection_props.brandsWithSeries,
-      powerAdjustments = selection_props.powerAdjustments,
-      types = selection_props.types,
-      defaults = selection_props.defaults,
-      selectionRanges = selection_props.selectionRanges,
-      workSchemes = selection_props.workSchemes,
-      media_path = selection_props.media_path; // .data
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
-      _useState18 = _slicedToArray(_useState17, 2),
-      updated = _useState18[0],
-      setUpdated = _useState18[1];
-
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands) || defaults.brands),
-      _useState20 = _slicedToArray(_useState19, 2),
-      brandsValue = _useState20[0],
-      setBrandsValue = _useState20[1];
-
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
-      _useState22 = _slicedToArray(_useState21, 2),
-      brandsSeriesListValues = _useState22[0],
-      setBrandsSeriesListValues = _useState22[1];
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || defaults.powerAdjustments),
-      _useState24 = _slicedToArray(_useState23, 2),
-      powerAdjustmentValue = _useState24[0],
-      setPowerAdjustmentValue = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
-      _useState26 = _slicedToArray(_useState25, 2),
-      typesValue = _useState26[0],
-      setTypesValue = _useState26[1];
-
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
-      _useState28 = _slicedToArray(_useState27, 2),
-      useAdditionalFilters = _useState28[0],
-      setUseAdditionalFilters = _useState28[1];
-
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
-      _useState30 = _slicedToArray(_useState29, 2),
-      temperatureValue = _useState30[0],
-      setTemperatureValue = _useState30[1];
-
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
-      _useState32 = _slicedToArray(_useState31, 2),
-      prevTemperatureValue = _useState32[0],
-      setPrevTemperatureValue = _useState32[1];
-
-  var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__.useDebounce)(temperatureValue, 500);
-
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selectionRanges[selectionRanges.length - 1].id : false),
-      _useState34 = _slicedToArray(_useState33, 2),
-      rangeDisabled = _useState34[0],
-      setRangeDisabled = _useState34[1];
-
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState36 = _slicedToArray(_useState35, 2),
-      filtersDrawerVisible = _useState36[0],
-      setFiltersDrawerVisible = _useState36[1];
-
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState38 = _slicedToArray(_useState37, 2),
-      pumpInfoDrawerVisible = _useState38[0],
-      setPumpInfoDrawerVisible = _useState38[1];
-
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState40 = _slicedToArray(_useState39, 2),
-      exportDrawerVisible = _useState40[0],
-      setExportDrawerVisible = _useState40[1];
-
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
-      _useState42 = _slicedToArray(_useState41, 2),
-      reload = _useState42[0],
-      setReload = _useState42[1]; // CONSTS
-
-
-  var mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(function (value) {
-    return {
-      value: value,
-      label: value
-    };
-  });
-  var fieldsDisabled = isArrayEmpty(brandsValue);
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_21__.useTransRoutes)();
 
   var _useForm = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__["default"])(),
       _useForm2 = _slicedToArray(_useForm, 1),
@@ -11602,924 +11486,15 @@ function DoublePump() {
       _useForm4 = _slicedToArray(_useForm3, 1),
       additionalFiltersForm = _useForm4[0];
 
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__.useTransRoutes)();
-  var fullSelectionFormName = "full-selection-form"; // FILTERED PRODUCERS WITH SERIES BY brandsValue // DONE
-
-  var filteredBrandsWithSeries = function filteredBrandsWithSeries() {
-    return brandsWithSeries.filter(function (brand) {
-      return brandsValue.indexOf(brand.id) !== -1;
-    });
-  }; // STYLES
-
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_22__.useStyles)(),
       fullWidth = _useStyles.fullWidth,
       marginBottomTen = _useStyles.marginBottomTen,
       margin = _useStyles.margin,
       reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
-      color = _useStyles.color; // TEMPERATURE CHANGE HANDLER
+      color = _useStyles.color;
 
+  console.log(selection_props); // STATE
 
-  var temperatureChangeHandler = function temperatureChangeHandler() {
-    return function (value) {
-      setTemperatureValue(value);
-    };
-  };
-
-  var checkValueIncludesSeriesParams = function checkValueIncludesSeriesParams(value, params) {
-    return value.some(function (_value) {
-      return !params.map(function (param) {
-        return param.id;
-      }).includes(_value);
-    });
-  }; // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
-
-
-  var brandsSeriesListValuesCheckedHandler = function brandsSeriesListValuesCheckedHandler(values) {
-    values.sort();
-    var checked = values.filter(function (value) {
-      return !brandsSeriesListValues.includes(value) && typeof value === "number";
-    });
-    filteredBrandsWithSeries().forEach(function (brand) {
-      brand.series.forEach(function (series) {
-        var index = checked.findIndex(function (ch) {
-          return series.id === ch;
-        });
-
-        if (index !== -1) {
-          var array = [];
-
-          if (checkValueIncludesSeriesParams(typesValue, series.types)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.types'));
-          }
-
-          if (!powerAdjustmentValue.includes(series.power_adjustment.id)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.power_adjustment'));
-          }
-
-          if (array.length > 0) {
-            antd__WEBPACK_IMPORTED_MODULE_25__["default"].info({
-              message: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.attention'),
-              description: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.1') + " " + series.name + " " + _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.2') + " " + array.join(', '),
-              placement: 'topLeft',
-              duration: 5
-            });
-          }
-        }
-      });
-    });
-    setBrandsSeriesListValues(values);
-  };
-
-  var filtersDrawerProps = {
-    selection: selection,
-    selection_props: selection_props,
-    setUseAdditionalFilters: setUseAdditionalFilters,
-    form: additionalFiltersForm,
-    visible: filtersDrawerVisible,
-    setVisible: setFiltersDrawerVisible
-  }; // TODO: fix alt path
-
-  var seriesIcon = function seriesIcon(src) {
-    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("img", {
-      src: media_path + src,
-      width: 60
-    });
-  };
-
-  var checkHideIcons = function checkHideIcons() {
-    return prevHideIcons === hideIcons;
-  };
-
-  var pumpableType = function pumpableType() {
-    return new URLSearchParams(window.location.search).get('pumpable_type');
-  }; // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
-
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var _brandsSeriesList = [];
-    var _brandsSeriesTree = []; // const _allSeriesListOptions = []
-
-    var seriesToLoop;
-
-    if (brandsValue.length > 0) {
-      filteredBrandsWithSeries().forEach(function (brand) {
-        // seriesToLoop = checkHideIcons() ? brand.series : brand.series.filter(series => brandsSeriesListValues.includes(series.id))
-        var children = [];
-        brand.series.forEach(function (series) {
-          var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
-          var colorStyle = color(hasTemp ? 'black' : 'red');
-
-          _brandsSeriesList.push({
-            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: brand.name + " " + series.name
-              })]
-            }),
-            value: series.id,
-            disabled: !hasTemp
-          });
-
-          children.push({
-            title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: series.name
-              })]
-            }),
-            key: series.id,
-            disabled: !hasTemp
-          }); // _allSeriesListOptions.push(series.id)
-        });
-
-        _brandsSeriesTree.push({
-          title: brand.name,
-          key: brand.name,
-          children: children
-        });
-      });
-    } // setAllSeriesLitOptions(_allSeriesListOptions)
-
-
-    setBrandsSeriesList(_brandsSeriesList);
-    setBrandsSeriesTree(_brandsSeriesTree);
-  }, [brandsValue, brandsWithSeries, hideIcons]); // FILTER BRANDS HANDLER
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (checkHideIcons()) {
-      if (!isArrayEmpty(brandsSeriesList)) {
-        if (reload) {
-          var _producersSeriesListValues = [];
-          var _producersSeriesList = [];
-          var _producersSeriesTree = [];
-          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
-          var hasTypes = typesValue.length <= 0;
-          var hasPowerAdjustments = powerAdjustmentValue <= 0;
-          filteredBrandsWithSeries().forEach(function (brand) {
-            var children = [];
-            brand.series.forEach(function (series) {
-              var brandsSeries = brand.name + " " + series.name;
-              var hasType = hasTypes;
-              var hasPowerAdjustment = hasPowerAdjustments;
-              var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
-
-              if (!hasType) {
-                if (typesValue.every(function (typeValue) {
-                  return series.types.map(function (type) {
-                    return type.id;
-                  }).includes(typeValue);
-                })) {
-                  hasType = true;
-                }
-              }
-
-              if (!hasPowerAdjustment) {
-                var _series$power_adjustm;
-
-                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
-                  hasPowerAdjustment = true;
-                }
-              } // checkedBrandsSeriesListValues - checked by user
-
-
-              if (hasType && hasPowerAdjustment && hasTemp) {
-                _producersSeriesListValues.push(series.id);
-              } // todo check if hide icons were clicked
-
-
-              if (temperatureWasChanged) {
-                var colorStyle = color(hasTemp ? 'black' : 'red');
-
-                _producersSeriesList.push({
-                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: brandsSeries
-                    })]
-                  }),
-                  value: series.id,
-                  disabled: !hasTemp
-                });
-
-                children.push({
-                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: series.name
-                    })]
-                  }),
-                  key: series.id,
-                  disabled: !hasTemp
-                });
-              }
-            });
-
-            if (temperatureWasChanged) {
-              _producersSeriesTree.push({
-                title: brand.name,
-                key: brand.name,
-                children: children
-              });
-            }
-          });
-
-          if (temperatureWasChanged) {
-            setBrandsSeriesList(_producersSeriesList);
-            setBrandsSeriesTree(_producersSeriesTree);
-            setPrevTemperatureValue(debouncedTemperature);
-          } // what checkboxes are checked
-
-
-          setBrandsSeriesListValues(_producersSeriesListValues);
-        } else {
-          setReload(true);
-        }
-      }
-    } else {
-      setPrevHideIcons(hideIcons);
-    }
-  }, [typesValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // SAVE HANDLER
-
-  var addSelectionToProjectClickHandler = function addSelectionToProjectClickHandler(method) {
-    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _selectionFormData$po, _selectionFormData$pu, _additionalFiltersFor, _additionalFiltersFor2;
-
-      var selectionFormData, additionalFiltersFormData, separator, body;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              yaCounter86716585.reachGoal('add-selection-to-project');
-              setAddLoading(true);
-              setReload(false);
-              _context.next = 5;
-              return fullSelectionForm.validateFields();
-
-            case 5:
-              selectionFormData = _context.sent;
-              _context.next = 8;
-              return additionalFiltersForm.validateFields();
-
-            case 8:
-              additionalFiltersFormData = _context.sent;
-              separator = ","; // FIXME: some how make it global
-
-              body = _objectSpread(_objectSpread(_objectSpread({}, selectionFormData), additionalFiltersFormData), {}, {
-                use_additional_filters: useAdditionalFilters,
-                pump_brand_ids: selectionFormData.pump_brand_ids.join(separator),
-                power_adjustment_ids: (_selectionFormData$po = selectionFormData.power_adjustment_ids) === null || _selectionFormData$po === void 0 ? void 0 : _selectionFormData$po.join(separator),
-                pump_type_ids: (_selectionFormData$pu = selectionFormData.pump_type_ids) === null || _selectionFormData$pu === void 0 ? void 0 : _selectionFormData$pu.join(separator),
-                main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
-                connection_type_ids: (_additionalFiltersFor = additionalFiltersFormData.connection_type_ids) === null || _additionalFiltersFor === void 0 ? void 0 : _additionalFiltersFor.join(separator),
-                mains_connection_ids: (_additionalFiltersFor2 = additionalFiltersFormData.mains_connection_ids) === null || _additionalFiltersFor2 === void 0 ? void 0 : _additionalFiltersFor2.join(separator),
-                custom_range: selectionFormData.custom_range.join(separator),
-                pumpable_id: stationToShow.pumpable_id,
-                selected_pump_name: stationToShow.name,
-                pumps_count: stationToShow.pumps_count,
-                pump_series_ids: brandsSeriesListValues,
-                pumpable_type: pumpableType(),
-                project_id: project_id
-              });
-              prepareRequestBody(body);
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
-                preserveState: true,
-                preserveScroll: true,
-                onFinish: function onFinish() {
-                  setAddLoading(false);
-                  setReload(true);
-                }
-              });
-
-            case 13:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-  }; // MAKE SELECTION HANDLER
-
-
-  var makeSelectionHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var body, data;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              yaCounter86716585.reachGoal('make-select');
-
-              if (!isArrayEmpty(brandsSeriesListValues)) {
-                _context2.next = 4;
-                break;
-              }
-
-              antd__WEBPACK_IMPORTED_MODULE_26__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.no_series_selected'));
-              return _context2.abrupt("return");
-
-            case 4:
-              setStationToShow(null);
-              document.getElementById('for-graphic').innerHTML = "";
-
-              if (!updated) {
-                setUpdated(true);
-              }
-
-              _context2.t0 = _objectSpread;
-              _context2.t1 = _objectSpread;
-              _context2.t2 = _objectSpread;
-              _context2.t3 = {};
-              _context2.next = 13;
-              return fullSelectionForm.validateFields();
-
-            case 13:
-              _context2.t4 = _context2.sent;
-              _context2.t5 = (0, _context2.t2)(_context2.t3, _context2.t4);
-              _context2.next = 17;
-              return additionalFiltersForm.validateFields();
-
-            case 17:
-              _context2.t6 = _context2.sent;
-              _context2.t7 = (0, _context2.t1)(_context2.t5, _context2.t6);
-              _context2.t8 = {};
-              _context2.t9 = {
-                use_additional_filters: useAdditionalFilters,
-                series_ids: brandsSeriesListValues,
-                pumpable_type: pumpableType()
-              };
-              body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
-              prepareRequestBody(body);
-              _context2.prev = 23;
-              _context2.next = 26;
-              return postRequest(tRoute('selections.select'), body, true);
-
-            case 26:
-              data = _context2.sent;
-              setSelectedPumps(data.selected_pumps);
-              _context2.next = 32;
-              break;
-
-            case 30:
-              _context2.prev = 30;
-              _context2.t10 = _context2["catch"](23);
-
-            case 32:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[23, 30]]);
-    }));
-
-    return function makeSelectionHandler() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (stationToShow) {
-      if (stationToShow.svg === undefined) {
-        var body = {
-          pumpable_id: stationToShow.pumpable_id,
-          pumps_count: stationToShow.pumps_count,
-          main_pumps_count: stationToShow.main_pumps_count,
-          head: stationToShow.head,
-          flow: stationToShow.flow,
-          intersection_point: {
-            flow: stationToShow.intersection_point.flow,
-            head: stationToShow.intersection_point.head
-          },
-          pumpable_type: pumpableType()
-        };
-
-        try {
-          axios.request({
-            url: tRoute('selections.curves'),
-            method: 'POST',
-            data: body
-          }).then(function (res) {
-            document.getElementById('for-graphic').innerHTML = res.data;
-            stationToShow.svg = res.data;
-          });
-        } catch (e) {}
-      } else {
-        document.getElementById('for-graphic').innerHTML = stationToShow.svg;
-      }
-    }
-  }, [stationToShow]);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (selection) {
-      setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
-    }
-  }, [selection]); // const onCheckAllChange = e => {
-  //     setCheckedAll(e.target.checked)
-  //     setIndeteminate(false)
-  //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
-  //     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
-  // }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__.IndexContainer, {
-      title: selection ? selection.data.selected_pump_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.title_new'),
-      extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
-        href: tRoute('projects.show', project_id)
-      }) : project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
-        href: tRoute('selections.dashboard', project_id)
-      }) : [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
-        href: tRoute('selections.dashboard', project_id)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
-        href: tRoute('projects.show', project_id)
-      })],
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-        justify: "space-around",
-        gutter: [8, 16],
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-          xxl: hideIcons ? 2 : 3,
-          xl: hideIcons ? 3 : 4,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-              xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-                checked: showBrandsList,
-                onChange: function onChange(e) {
-                  setShowBrandsList(e.target.checked);
-                },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                  style: {
-                    marginLeft: hideIcons ? 0 : 5
-                  },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.grouping')
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-              xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-                checked: hideIcons,
-                onChange: function onChange(e) {
-                  setHideIcons(e.target.checked);
-                },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                  style: {
-                    marginLeft: hideIcons ? 0 : 5
-                  },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.hide_icons')
-                })
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-            style: margin.all("5px 0 5px")
-          }), showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
-            style: {
-              overflow: "auto",
-              maxHeight: "70vh"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"], {
-              defaultExpandAll: true,
-              checkable: true,
-              treeData: brandsSeriesTree,
-              checkedKeys: brandsSeriesListValues,
-              onCheck: brandsSeriesListValuesCheckedHandler
-            })
-          }), !showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
-            style: {
-              overflow: "auto",
-              maxHeight: "70vh"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].Group, {
-              "class": "series-checkboxes",
-              options: brandsSeriesList,
-              value: brandsSeriesListValues,
-              onChange: brandsSeriesListValuesCheckedHandler
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-          xxl: hideIcons ? 22 : 21,
-          xl: hideIcons ? 21 : 20,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
-            name: fullSelectionFormName,
-            form: fullSelectionForm,
-            layout: "vertical",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-              gutter: 10,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 5,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "pump_brand_ids",
-                  initialValue: brandsValue,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.brands'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.brands'),
-                    style: fullWidth,
-                    options: brands,
-                    onChange: function onChange(values) {
-                      setBrandsValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.fluid_temp'),
-                  name: "fluid_temperature",
-                  initialValue: temperatureValue,
-                  style: margin.bottom(10),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    disabled: fieldsDisabled,
-                    style: fullWidth,
-                    min: 0,
-                    max: 200,
-                    onChange: temperatureChangeHandler(),
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.fluid_temp')
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 13,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  className: reducedAntFormItemClassName,
-                  name: "pump_type_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.label'),
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_types,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.types.label'),
-                    disabled: fieldsDisabled,
-                    style: fullWidth,
-                    options: types,
-                    onChange: function onChange(values) {
-                      setTypesValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.power_adjustments'),
-                  name: "power_adjustment_ids",
-                  initialValue: powerAdjustmentValue,
-                  style: marginBottomTen,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.power_adjustments'),
-                    disabled: fieldsDisabled,
-                    style: _objectSpread(_objectSpread({}, fullWidth), {}, {
-                      marginTop: 0
-                    }),
-                    options: powerAdjustments,
-                    onChange: function onChange(values) {
-                      setPowerAdjustmentValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 24,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                  style: margin.all("10px 0 10px")
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.consumption'),
-                  name: "flow",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.consumption'),
-                    style: fullWidth,
-                    min: 0,
-                    max: 10000,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.pressure'),
-                  name: "head",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.pressure'),
-                    style: fullWidth,
-                    min: 0,
-                    max: 10000,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation'),
-                  name: "deviation",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
-                  className: reducedAntFormItemClassName,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation_tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.deviation'),
-                    style: fullWidth,
-                    min: -50,
-                    max: 50,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 5,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  required: true,
-                  name: "double_pump_work_scheme_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.work_scheme'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.double_pump_work_scheme_id) || workSchemes[0].id,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
-                    children: workSchemes.map(function (scheme) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
-                        value: scheme.id,
-                        children: scheme.name
-                      }, 'ws' + scheme.id);
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  required: true,
-                  name: "range_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.range.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selectionRanges[selectionRanges.length - 1].id,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
-                    onChange: function onChange(e) {
-                      setRangeDisabled(e.target.value !== selectionRanges[selectionRanges.length - 1].id);
-                    },
-                    children: selectionRanges.map(function (range) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
-                        value: range.id,
-                        children: range.name
-                      }, 'bp' + range.name);
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 4,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  required: true,
-                  name: "custom_range",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.range.custom.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range) || [0, 100],
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
-                    range: true,
-                    disabled: rangeDisabled,
-                    tipFormatter: function tipFormatter(value) {
-                      return "".concat(value, "%");
-                    } // defaultValue={selection?.data.custom_range || [0, 100]}
-
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 6,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-                  gutter: [10, 0],
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                    span: 24,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-                      checked: useAdditionalFilters,
-                      onClick: function onClick(e) {
-                        setUseAdditionalFilters(e.target.checked);
-                      },
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.additional_filters.checkbox')
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                    span: 12,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                      className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
-                        style: fullWidth,
-                        onClick: function onClick() {
-                          setFiltersDrawerVisible(true);
-                        },
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.additional_filters.button')
-                      })
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                    span: 12,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                      className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
-                        style: fullWidth,
-                        onClick: makeSelectionHandler // htmlType="submit"
-                        ,
-                        disabled: brandsValue.length === 0,
-                        loading: loading,
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.select')
-                      })
-                    })
-                  })]
-                })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-            gutter: [10, 10],
-            style: {
-              display: "flex",
-              alignItems: 'stretch',
-              marginTop: 16
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-              xs: 15,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
-                className: "table-rounded-card",
-                type: "inner",
-                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.table.title'),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__.SelectedPumpsTable, {
-                  selectedPumps: selectedPumps,
-                  setStationToShow: setStationToShow,
-                  loading: loading
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-              xs: 9,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
-                className: 'flex-rounded-card' // style={{height: "100%"}}
-                ,
-                type: "inner",
-                title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-                extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
-                  children: [has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("a", {
-                    onClick: function onClick(e) {
-                      e.preventDefault();
-                      setExportDrawerVisible(true);
-                    },
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.graphic.export')
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("a", {
-                    onClick: function onClick(e) {
-                      e.preventDefault();
-                      setPumpInfoDrawerVisible(true);
-                    },
-                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.graphic.info'), ">>"]
-                  })]
-                }),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
-                  id: "for-graphic"
-                })
-              })
-            })]
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__.BoxFlexEnd, {
-      style: margin.top(16),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
-        size: 8,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
-          onClick: function onClick() {
-            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
-          },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.exit')
-        }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
-            disabled: !stationToShow || !updated,
-            onClick: addSelectionToProjectClickHandler('post'),
-            loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.add')
-          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
-            disabled: !stationToShow || !updated,
-            onClick: addSelectionToProjectClickHandler('put'),
-            loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.double_pump.update')
-          })]
-        })]
-      })
-    }), stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__.PumpPropsDrawer, {
-      visible: pumpInfoDrawerVisible,
-      setVisible: setPumpInfoDrawerVisible,
-      pumpInfo: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pump_info
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__.ExportAtOnceSelectionDrawer, {
-      visible: exportDrawerVisible,
-      setVisible: setExportDrawerVisible,
-      stationToShow: stationToShow
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./Modules/Selection/Resources/assets/js/Pages/SinglePump.js":
-/*!*******************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/SinglePump.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SinglePump)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/notification/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tree/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd/es/form/Form */ "./node_modules/antd/es/form/hooks/useForm.js");
-/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Components/PumpPropsDrawer */ "./Modules/Selection/Resources/assets/js/Components/PumpPropsDrawer.js");
-/* harmony import */ var _Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../Components/FiltersDrawer */ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js");
-/* harmony import */ var _Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../Components/ExportAtOnceSelectionDrawer */ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function SinglePump() {
-  // STATE
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       showBrandsList = _useState2[0],
@@ -12542,129 +11517,110 @@ function SinglePump() {
       prevHideIcons = _useState8[0],
       setPrevHideIcons = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
       _useState10 = _slicedToArray(_useState9, 2),
-      brandsSeriesList = _useState10[0],
-      setBrandsSeriesList = _useState10[1];
+      updated = _useState10[0],
+      setUpdated = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
       _useState12 = _slicedToArray(_useState11, 2),
-      brandsSeriesTree = _useState12[0],
-      setBrandsSeriesTree = _useState12[1];
+      useAdditionalFilters = _useState12[0],
+      setUseAdditionalFilters = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id : false),
       _useState14 = _slicedToArray(_useState13, 2),
-      selectedPumps = _useState14[0],
-      setSelectedPumps = _useState14[1];
+      rangeDisabled = _useState14[0],
+      setRangeDisabled = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState16 = _slicedToArray(_useState15, 2),
-      stationToShow = _useState16[0],
-      setStationToShow = _useState16[1]; // HOOKS
+      filtersDrawerVisible = _useState16[0],
+      setFiltersDrawerVisible = _useState16[1];
 
-
-  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_5__.useCheck)(),
-      isArrayEmpty = _useCheck.isArrayEmpty,
-      prepareRequestBody = _useCheck.prepareRequestBody;
-
-  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_6__.useHttp)(),
-      postRequest = _useHttp.postRequest,
-      loading = _useHttp.loading;
-
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props,
-      selection = _usePage$props.selection,
-      project_id = _usePage$props.project_id,
-      selection_props = _usePage$props.selection_props;
-
-  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_22__.usePermissions)(),
-      has = _usePermissions.has;
-
-  var brandsWithSeries = selection_props.brandsWithSeries,
-      powerAdjustments = selection_props.powerAdjustments,
-      applications = selection_props.applications,
-      types = selection_props.types,
-      defaults = selection_props.defaults,
-      selectionRanges = selection_props.selectionRanges,
-      media_path = selection_props.media_path; // .data
-
-  console.log(selection, selection_props);
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState18 = _slicedToArray(_useState17, 2),
-      updated = _useState18[0],
-      setUpdated = _useState18[1];
+      pumpInfoDrawerVisible = _useState18[0],
+      setPumpInfoDrawerVisible = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands.filter(function (brandId) {
-    return brandsWithSeries.findIndex(function (bws) {
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState20 = _slicedToArray(_useState19, 2),
+      exportDrawerVisible = _useState20[0],
+      setExportDrawerVisible = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState22 = _slicedToArray(_useState21, 2),
+      reload = _useState22[0],
+      setReload = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState24 = _slicedToArray(_useState23, 2),
+      brandsSeriesList = _useState24[0],
+      setBrandsSeriesList = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState26 = _slicedToArray(_useState25, 2),
+      brandsSeriesTree = _useState26[0],
+      setBrandsSeriesTree = _useState26[1];
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState28 = _slicedToArray(_useState27, 2),
+      selectedPumps = _useState28[0],
+      setSelectedPumps = _useState28[1];
+
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands.filter(function (brandId) {
+    return selection_props.brandsWithSeries.findIndex(function (bws) {
       return bws.id === brandId;
     }) !== -1;
-  })) || defaults.brands),
-      _useState20 = _slicedToArray(_useState19, 2),
-      brandsValue = _useState20[0],
-      setBrandsValue = _useState20[1];
-
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
-      _useState22 = _slicedToArray(_useState21, 2),
-      brandsSeriesListValues = _useState22[0],
-      setBrandsSeriesListValues = _useState22[1];
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || defaults.powerAdjustments),
-      _useState24 = _slicedToArray(_useState23, 2),
-      powerAdjustmentValue = _useState24[0],
-      setPowerAdjustmentValue = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
-      _useState26 = _slicedToArray(_useState25, 2),
-      typesValue = _useState26[0],
-      setTypesValue = _useState26[1];
-
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_applications) || []),
-      _useState28 = _slicedToArray(_useState27, 2),
-      applicationsValue = _useState28[0],
-      setApplicationsValue = _useState28[1];
-
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
+  })) || selection_props.defaults.brands),
       _useState30 = _slicedToArray(_useState29, 2),
-      useAdditionalFilters = _useState30[0],
-      setUseAdditionalFilters = _useState30[1];
+      brandsValue = _useState30[0],
+      setBrandsValue = _useState30[1];
 
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
       _useState32 = _slicedToArray(_useState31, 2),
-      temperatureValue = _useState32[0],
-      setTemperatureValue = _useState32[1];
+      brandsSeriesListValues = _useState32[0],
+      setBrandsSeriesListValues = _useState32[1];
 
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || selection_props.defaults.powerAdjustments),
       _useState34 = _slicedToArray(_useState33, 2),
-      prevTemperatureValue = _useState34[0],
-      setPrevTemperatureValue = _useState34[1];
+      powerAdjustmentValue = _useState34[0],
+      setPowerAdjustmentValue = _useState34[1];
 
-  var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_8__.useDebounce)(temperatureValue, 500);
-
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selectionRanges[selectionRanges.length - 1].id : false),
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
       _useState36 = _slicedToArray(_useState35, 2),
-      rangeDisabled = _useState36[0],
-      setRangeDisabled = _useState36[1];
+      typesValue = _useState36[0],
+      setTypesValue = _useState36[1];
 
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_applications) || []),
       _useState38 = _slicedToArray(_useState37, 2),
-      filtersDrawerVisible = _useState38[0],
-      setFiltersDrawerVisible = _useState38[1];
+      applicationsValue = _useState38[0],
+      setApplicationsValue = _useState38[1];
 
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var filtersDrawerProps = {
+    selection: selection,
+    selection_props: selection_props,
+    setUseAdditionalFilters: setUseAdditionalFilters,
+    form: additionalFiltersForm,
+    visible: filtersDrawerVisible,
+    setVisible: setFiltersDrawerVisible
+  };
+
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState40 = _slicedToArray(_useState39, 2),
-      pumpInfoDrawerVisible = _useState40[0],
-      setPumpInfoDrawerVisible = _useState40[1];
+      stationToShow = _useState40[0],
+      setStationToShow = _useState40[1];
 
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
       _useState42 = _slicedToArray(_useState41, 2),
-      exportDrawerVisible = _useState42[0],
-      setExportDrawerVisible = _useState42[1];
+      temperatureValue = _useState42[0],
+      setTemperatureValue = _useState42[1];
 
-  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
       _useState44 = _slicedToArray(_useState43, 2),
-      reload = _useState44[0],
-      setReload = _useState44[1]; // CONSTS
+      prevTemperatureValue = _useState44[0],
+      setPrevTemperatureValue = _useState44[1];
 
+  var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_20__.useDebounce)(temperatureValue, 500); // CONSTS
 
   var mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(function (value) {
     return {
@@ -12673,37 +11629,12 @@ function SinglePump() {
     };
   });
   var fieldsDisabled = isArrayEmpty(brandsValue);
-
-  var _useForm = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__["default"])(),
-      _useForm2 = _slicedToArray(_useForm, 1),
-      fullSelectionForm = _useForm2[0];
-
-  var _useForm3 = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_24__["default"])(),
-      _useForm4 = _slicedToArray(_useForm3, 1),
-      additionalFiltersForm = _useForm4[0];
-
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_15__.useTransRoutes)();
-  var fullSelectionFormName = "full-selection-form"; // FILTERED PRODUCERS WITH SERIES BY brandsValue // DONE
+  var fullSelectionFormName = "full-selection-form"; // CALLBACKS
 
   var filteredBrandsWithSeries = function filteredBrandsWithSeries() {
-    return brandsWithSeries.filter(function (brand) {
+    return selection_props.brandsWithSeries.filter(function (brand) {
       return brandsValue.indexOf(brand.id) !== -1;
     });
-  }; // STYLES
-
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
-      fullWidth = _useStyles.fullWidth,
-      marginBottomTen = _useStyles.marginBottomTen,
-      margin = _useStyles.margin,
-      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
-      color = _useStyles.color; // TEMPERATURE CHANGE HANDLER
-
-
-  var temperatureChangeHandler = function temperatureChangeHandler() {
-    return function (value) {
-      setTemperatureValue(value);
-    };
   };
 
   var checkValueIncludesSeriesParams = function checkValueIncludesSeriesParams(value, params) {
@@ -12712,6 +11643,37 @@ function SinglePump() {
         return param.id;
       }).includes(_value);
     });
+  };
+
+  var seriesIcon = function seriesIcon(src) {
+    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("img", {
+      src: selection_props.media_path + src,
+      width: 60
+    });
+  };
+
+  var checkHideIcons = function checkHideIcons() {
+    return prevHideIcons === hideIcons;
+  };
+
+  var pumpableType = function pumpableType() {
+    return new URLSearchParams(window.location.search).get('pumpable_type');
+  };
+
+  var hasTemperature = function hasTemperature(series) {
+    return debouncedTemperature == null || series.temps_min.length > 0 && series.temps_min[0] <= debouncedTemperature && series.temps_max.length > 0 && series.temps_max[1] >= debouncedTemperature;
+  };
+
+  var seriesColorStyle = function seriesColorStyle(hasTemp, series) {
+    return color(hasTemp ? debouncedTemperature >= series.temps_min[1] && debouncedTemperature <= series.temps_max[0] ? 'black' : 'orange' : 'red');
+  }; // HANDLERS
+  // TEMPERATURE CHANGE HANDLER
+
+
+  var temperatureChangeHandler = function temperatureChangeHandler() {
+    return function (value) {
+      setTemperatureValue(value);
+    };
   }; // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
 
 
@@ -12730,21 +11692,21 @@ function SinglePump() {
           var array = [];
 
           if (checkValueIncludesSeriesParams(typesValue, series.types)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.types'));
+            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.types'));
           }
 
-          if (checkValueIncludesSeriesParams(applicationsValue, series.applications)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.applications'));
+          if (selection_props.applications && checkValueIncludesSeriesParams(applicationsValue, series.applications)) {
+            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.applications'));
           }
 
           if (!powerAdjustmentValue.includes(series.power_adjustment.id)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.power_adjustment'));
+            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.power_adjustment'));
           }
 
           if (array.length > 0) {
             antd__WEBPACK_IMPORTED_MODULE_25__["default"].info({
-              message: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.attention'),
-              description: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.1') + " " + series.name + " " + _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.notification.description.2') + " " + array.join(', '),
+              message: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.attention'),
+              description: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.1') + " " + series.name + " " + _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.2') + " " + array.join(', '),
               placement: 'topLeft',
               duration: 5
             });
@@ -12753,203 +11715,12 @@ function SinglePump() {
       });
     });
     setBrandsSeriesListValues(values);
-  };
+  }; // SAVE HANDLER
 
-  var filtersDrawerProps = {
-    selection: selection,
-    selection_props: selection_props,
-    setUseAdditionalFilters: setUseAdditionalFilters,
-    form: additionalFiltersForm,
-    visible: filtersDrawerVisible,
-    setVisible: setFiltersDrawerVisible
-  }; // TODO: fix alt path
-
-  var seriesIcon = function seriesIcon(src) {
-    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("img", {
-      src: media_path + src,
-      width: 60
-    });
-  };
-
-  var checkHideIcons = function checkHideIcons() {
-    return prevHideIcons === hideIcons;
-  };
-
-  var pumpableType = function pumpableType() {
-    return new URLSearchParams(window.location.search).get('pumpable_type');
-  }; // CHECK PRODUCERS SERIES LIST AND TREE CHANGE // DONE
-
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var _brandsSeriesList = [];
-    var _brandsSeriesTree = []; // const _allSeriesListOptions = []
-
-    var seriesToLoop;
-
-    if (brandsValue.length > 0) {
-      filteredBrandsWithSeries().forEach(function (brand) {
-        // seriesToLoop = checkHideIcons() ? brand.series : brand.series.filter(series => brandsSeriesListValues.includes(series.id))
-        var children = [];
-        brand.series.forEach(function (series) {
-          var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
-          var colorStyle = color(hasTemp ? 'black' : 'red');
-
-          _brandsSeriesList.push({
-            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: brand.name + " " + series.name
-              })]
-            }),
-            value: series.id,
-            disabled: !hasTemp
-          });
-
-          children.push({
-            title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: series.name
-              })]
-            }),
-            key: series.id,
-            disabled: !hasTemp
-          }); // _allSeriesListOptions.push(series.id)
-        });
-
-        _brandsSeriesTree.push({
-          title: brand.name,
-          key: brand.name,
-          children: children
-        });
-      });
-    } // setAllSeriesLitOptions(_allSeriesListOptions)
-
-
-    setBrandsSeriesList(_brandsSeriesList);
-    setBrandsSeriesTree(_brandsSeriesTree);
-  }, [brandsValue, brandsWithSeries, hideIcons]); // FILTER BRANDS HANDLER
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (checkHideIcons()) {
-      if (!isArrayEmpty(brandsSeriesList)) {
-        if (reload) {
-          var _producersSeriesListValues = [];
-          var _producersSeriesList = [];
-          var _producersSeriesTree = [];
-          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
-          var hasTypes = typesValue.length <= 0;
-          var hasApplications = applications.length <= 0;
-          var hasPowerAdjustments = powerAdjustmentValue <= 0;
-          filteredBrandsWithSeries().forEach(function (brand) {
-            var children = [];
-            brand.series.forEach(function (series) {
-              var brandsSeries = brand.name + " " + series.name;
-              var hasType = hasTypes;
-              var hasApplication = hasApplications;
-              var hasPowerAdjustment = hasPowerAdjustments;
-              var hasTemp = debouncedTemperature == null || series.temp_max >= debouncedTemperature && series.temp_min <= debouncedTemperature;
-
-              if (!hasType) {
-                if (typesValue.every(function (typeValue) {
-                  return series.types.map(function (type) {
-                    return type.id;
-                  }).includes(typeValue);
-                })) {
-                  hasType = true;
-                }
-              }
-
-              if (!hasApplication) {
-                if (applicationsValue.every(function (applicationValue) {
-                  return series.applications.map(function (application) {
-                    return application.id;
-                  }).includes(applicationValue);
-                })) {
-                  hasApplication = true;
-                }
-              }
-
-              if (!hasPowerAdjustment) {
-                var _series$power_adjustm;
-
-                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
-                  hasPowerAdjustment = true;
-                }
-              } // checkedBrandsSeriesListValues - checked by user
-
-
-              if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
-                _producersSeriesListValues.push(series.id);
-              } // todo check if hide icons were clicked
-
-
-              if (temperatureWasChanged) {
-                var colorStyle = color(hasTemp ? 'black' : 'red');
-
-                _producersSeriesList.push({
-                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: brandsSeries
-                    })]
-                  }),
-                  value: series.id,
-                  disabled: !hasTemp
-                });
-
-                children.push({
-                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: series.name
-                    })]
-                  }),
-                  key: series.id,
-                  disabled: !hasTemp
-                });
-              }
-            });
-
-            if (temperatureWasChanged) {
-              _producersSeriesTree.push({
-                title: brand.name,
-                key: brand.name,
-                children: children
-              });
-            }
-          });
-
-          if (temperatureWasChanged) {
-            setBrandsSeriesList(_producersSeriesList);
-            setBrandsSeriesTree(_producersSeriesTree);
-            setPrevTemperatureValue(debouncedTemperature);
-          } // what checkboxes are checked
-
-
-          setBrandsSeriesListValues(_producersSeriesListValues);
-        } else {
-          setReload(true);
-        }
-      }
-    } else {
-      setPrevHideIcons(hideIcons);
-    }
-  }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // SAVE HANDLER
 
   var addSelectionToProjectClickHandler = function addSelectionToProjectClickHandler(method) {
     return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var _selectionFormData$po, _selectionFormData$pu, _selectionFormData$pu2, _additionalFiltersFor, _additionalFiltersFor2;
-
-      var selectionFormData, additionalFiltersFormData, separator, body;
+      var body;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -12957,37 +11728,35 @@ function SinglePump() {
               yaCounter86716585.reachGoal('add-selection-to-project');
               setAddLoading(true);
               setReload(false);
-              _context.next = 5;
+              _context.t0 = _objectSpread;
+              _context.t1 = _objectSpread;
+              _context.t2 = _objectSpread;
+              _context.t3 = {};
+              _context.next = 9;
               return fullSelectionForm.validateFields();
 
-            case 5:
-              selectionFormData = _context.sent;
-              _context.next = 8;
+            case 9:
+              _context.t4 = _context.sent;
+              _context.t5 = (0, _context.t2)(_context.t3, _context.t4);
+              _context.next = 13;
               return additionalFiltersForm.validateFields();
 
-            case 8:
-              additionalFiltersFormData = _context.sent;
-              separator = ","; // FIXME: some how make it global
-
-              body = _objectSpread(_objectSpread(_objectSpread({}, selectionFormData), additionalFiltersFormData), {}, {
+            case 13:
+              _context.t6 = _context.sent;
+              _context.t7 = (0, _context.t1)(_context.t5, _context.t6);
+              _context.t8 = {};
+              _context.t9 = {
                 use_additional_filters: useAdditionalFilters,
-                pump_brand_ids: selectionFormData.pump_brand_ids.join(separator),
-                power_adjustment_ids: (_selectionFormData$po = selectionFormData.power_adjustment_ids) === null || _selectionFormData$po === void 0 ? void 0 : _selectionFormData$po.join(separator),
-                pump_type_ids: (_selectionFormData$pu = selectionFormData.pump_type_ids) === null || _selectionFormData$pu === void 0 ? void 0 : _selectionFormData$pu.join(separator),
-                pump_application_ids: (_selectionFormData$pu2 = selectionFormData.pump_application_ids) === null || _selectionFormData$pu2 === void 0 ? void 0 : _selectionFormData$pu2.join(separator),
-                main_pumps_counts: selectionFormData.main_pumps_counts.join(separator),
-                connection_type_ids: (_additionalFiltersFor = additionalFiltersFormData.connection_type_ids) === null || _additionalFiltersFor === void 0 ? void 0 : _additionalFiltersFor.join(separator),
-                mains_connection_ids: (_additionalFiltersFor2 = additionalFiltersFormData.mains_connection_ids) === null || _additionalFiltersFor2 === void 0 ? void 0 : _additionalFiltersFor2.join(separator),
-                custom_range: selectionFormData.custom_range.join(separator),
                 pump_id: stationToShow.pump_id,
+                pumps_count: stationToShow.pumps_count || undefined,
                 selected_pump_name: stationToShow.name,
-                pumps_count: stationToShow.pumps_count,
                 pump_series_ids: brandsSeriesListValues,
                 pumpable_type: pumpableType(),
                 project_id: project_id
-              });
-              prepareRequestBody(body);
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
+              };
+              body = (0, _context.t0)(_context.t7, _context.t8, _context.t9);
+              // prepareRequestBody(body)
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
                 preserveState: true,
                 preserveScroll: true,
                 onFinish: function onFinish() {
@@ -12996,7 +11765,7 @@ function SinglePump() {
                 }
               });
 
-            case 13:
+            case 19:
             case "end":
               return _context.stop();
           }
@@ -13007,7 +11776,7 @@ function SinglePump() {
 
 
   var makeSelectionHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var body, data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
@@ -13020,7 +11789,7 @@ function SinglePump() {
                 break;
               }
 
-              antd__WEBPACK_IMPORTED_MODULE_26__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('messages.selections.no_series_selected'));
+              antd__WEBPACK_IMPORTED_MODULE_26__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.no_series_selected'));
               return _context2.abrupt("return");
 
             case 4:
@@ -13058,47 +11827,205 @@ function SinglePump() {
                 pumpable_type: pumpableType()
               };
               body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
-              prepareRequestBody(body);
-              _context2.prev = 23;
-              _context2.next = 26;
+              _context2.prev = 22;
+              _context2.next = 25;
               return postRequest(tRoute('selections.select'), body, true);
 
-            case 26:
+            case 25:
               data = _context2.sent;
               setSelectedPumps(data.selected_pumps);
-              _context2.next = 32;
+              _context2.next = 31;
               break;
 
-            case 30:
-              _context2.prev = 30;
-              _context2.t10 = _context2["catch"](23);
+            case 29:
+              _context2.prev = 29;
+              _context2.t10 = _context2["catch"](22);
 
-            case 32:
+            case 31:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[23, 30]]);
+      }, _callee2, null, [[22, 29]]);
     }));
 
     return function makeSelectionHandler() {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
-  }();
+  }(); // USE EFFECTS
+  // CHECK PRODUCERS SERIES LIST AND TREE CHANGE
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var _brandsSeriesList = [];
+    var _brandsSeriesTree = [];
+
+    if (brandsValue.length > 0) {
+      filteredBrandsWithSeries().forEach(function (brand) {
+        var children = [];
+        brand.series.forEach(function (series) {
+          var hasTemp = hasTemperature(series);
+          var colorStyle = seriesColorStyle(hasTemp, series);
+
+          _brandsSeriesList.push({
+            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                  marginLeft: hideIcons ? 0 : 5
+                }),
+                children: brand.name + " " + series.name
+              })]
+            }),
+            value: series.id,
+            disabled: !hasTemp
+          });
+
+          children.push({
+            title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                  marginLeft: hideIcons ? 0 : 5
+                }),
+                children: series.name
+              })]
+            }),
+            key: series.id,
+            disabled: !hasTemp
+          });
+        });
+
+        _brandsSeriesTree.push({
+          title: brand.name,
+          key: brand.name,
+          children: children
+        });
+      });
+    }
+
+    setBrandsSeriesList(_brandsSeriesList);
+    setBrandsSeriesTree(_brandsSeriesTree);
+  }, [brandsValue, hideIcons]); // FILTER BRANDS WITH SERIES
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (checkHideIcons()) {
+      if (!isArrayEmpty(brandsSeriesList)) {
+        if (reload) {
+          var _producersSeriesListValues = [];
+          var _producersSeriesList = [];
+          var _producersSeriesTree = [];
+          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
+          var hasTypes = typesValue.length <= 0;
+          var hasApplications = (applicationsValue === null || applicationsValue === void 0 ? void 0 : applicationsValue.length) <= 0 || false;
+          var hasPowerAdjustments = powerAdjustmentValue <= 0;
+          filteredBrandsWithSeries().forEach(function (brand) {
+            var children = [];
+            brand.series.forEach(function (series) {
+              var brandsSeries = brand.name + " " + series.name;
+              var hasType = hasTypes;
+              var hasApplication = hasApplications;
+              var hasPowerAdjustment = hasPowerAdjustments;
+              var hasTemp = hasTemperature(series);
+
+              if (!hasType) {
+                if (typesValue.every(function (typeValue) {
+                  return series.types.map(function (type) {
+                    return type.id;
+                  }).includes(typeValue);
+                })) {
+                  hasType = true;
+                }
+              }
+
+              if (!hasApplication) {
+                if (applicationsValue.every(function (applicationValue) {
+                  return series.applications.map(function (application) {
+                    return application.id;
+                  }).includes(applicationValue);
+                })) {
+                  hasApplication = true;
+                }
+              }
+
+              if (!hasPowerAdjustment) {
+                var _series$power_adjustm;
+
+                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
+                  hasPowerAdjustment = true;
+                }
+              } // checkedBrandsSeriesListValues - checked by user
+
+
+              if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
+                _producersSeriesListValues.push(series.id);
+              }
+
+              if (temperatureWasChanged) {
+                var colorStyle = seriesColorStyle(hasTemp, series);
+
+                _producersSeriesList.push({
+                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: brandsSeries
+                    })]
+                  }),
+                  value: series.id,
+                  disabled: !hasTemp
+                });
+
+                children.push({
+                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
+                        marginLeft: hideIcons ? 0 : 5
+                      }),
+                      children: series.name
+                    })]
+                  }),
+                  key: series.id,
+                  disabled: !hasTemp
+                });
+              }
+            });
+
+            if (temperatureWasChanged) {
+              _producersSeriesTree.push({
+                title: brand.name,
+                key: brand.name,
+                children: children
+              });
+            }
+          });
+
+          if (temperatureWasChanged) {
+            setBrandsSeriesList(_producersSeriesList);
+            setBrandsSeriesTree(_producersSeriesTree);
+            setPrevTemperatureValue(debouncedTemperature);
+          } // what checkboxes are checked
+
+
+          setBrandsSeriesListValues(_producersSeriesListValues);
+        } else {
+          setReload(true);
+        }
+      }
+    } else {
+      setPrevHideIcons(hideIcons);
+    }
+  }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // CHECK CHANGE SELECTION
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (stationToShow) {
       if (stationToShow.svg === undefined) {
         var body = {
           pump_id: stationToShow.pump_id,
-          pumps_count: stationToShow.pumps_count,
-          main_pumps_count: stationToShow.main_pumps_count,
           head: stationToShow.head,
           flow: stationToShow.flow,
-          intersection_point: {
-            flow: stationToShow.intersection_point.flow,
-            head: stationToShow.intersection_point.head
-          },
+          dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
+          pumps_count: stationToShow.pumps_count || undefined,
+          main_pumps_count: stationToShow.main_pumps_count || stationToShow.main_pumps_count,
           pumpable_type: pumpableType()
         };
 
@@ -13116,32 +12043,27 @@ function SinglePump() {
         document.getElementById('for-graphic').innerHTML = stationToShow.svg;
       }
     }
-  }, [stationToShow]);
+  }, [stationToShow]); // IF ROUTE IS 'selections.show'
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (selection) {
       setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
     }
-  }, [selection]); // const onCheckAllChange = e => {
-  //     setCheckedAll(e.target.checked)
-  //     setIndeteminate(false)
-  //     // setBrandsSeriesListValues(e.target.checked ? allSeriesListOptions : [])
-  //     brandsSeriesListValuesCheckedHandler(e.target.checked ? allSeriesListOptions : [])
-  // }
-
+  }, [selection]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_20__.IndexContainer, {
-      title: selection ? selection.data.selected_pump_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.title_new'),
-      extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
+      title: selection ? selection.data.selected_pump_name : pageTitle,
+      extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_project'),
         href: tRoute('projects.show', project_id)
-      }) : project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
+      }) : project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_selections_dashboard'),
         href: tRoute('selections.dashboard', project_id)
-      }) : [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_selections_dashboard'),
+      }) : [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_selections_dashboard'),
         href: tRoute('selections.dashboard', project_id)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_21__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.back.to_project'),
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
+        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_project'),
         href: tRoute('projects.show', project_id)
       })],
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
@@ -13162,7 +12084,7 @@ function SinglePump() {
                   style: {
                     marginLeft: hideIcons ? 0 : 5
                   },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.grouping')
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.grouping')
                 })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
@@ -13176,7 +12098,7 @@ function SinglePump() {
                   style: {
                     marginLeft: hideIcons ? 0 : 5
                   },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.hide_icons')
+                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.hide_icons')
                 })
               })
             })]
@@ -13216,16 +12138,16 @@ function SinglePump() {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
               gutter: 10,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 4,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                xs: widths.brands,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   name: "pump_brand_ids",
                   initialValue: brandsValue,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.brands'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.brands'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.brands'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.brands'),
                     style: fullWidth,
-                    options: brandsWithSeries,
+                    options: selection_props.brandsWithSeries,
                     onChange: function onChange(values) {
                       setBrandsValue(values);
                     }
@@ -13233,52 +12155,59 @@ function SinglePump() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.fluid_temp'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.fluid_temp'),
                   name: "fluid_temperature",
                   initialValue: temperatureValue,
                   style: margin.bottom(10),
+                  tooltip: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.temp_tooltip.red')
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("span", {
+                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.temp_tooltip.orange')
+                    })]
+                  }),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
                     disabled: fieldsDisabled,
                     style: fullWidth,
-                    min: 0,
+                    min: -50,
                     max: 200,
                     onChange: temperatureChangeHandler(),
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.fluid_temp')
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.fluid_temp')
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 7,
+                xs: widths.types,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "pump_type_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.label'),
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_types,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.types.label'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.tooltip'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.label'),
                     disabled: fieldsDisabled,
                     style: fullWidth,
-                    options: types,
+                    options: selection_props.types,
                     onChange: function onChange(values) {
                       setTypesValue(values);
                     }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                xs: 7,
+              }), selection_props.applications && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                xs: widths.applications,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "pump_application_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.label'),
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_applications,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.applications.label'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.tooltip'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.label'),
                     disabled: fieldsDisabled,
                     style: fullWidth,
-                    options: applications,
+                    options: selection_props.applications,
                     onChange: function onChange(values) {
                       setApplicationsValue(values);
                     }
@@ -13288,17 +12217,17 @@ function SinglePump() {
                 xs: 3,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.power_adjustments'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.power_adjustments'),
                   name: "power_adjustment_ids",
                   initialValue: powerAdjustmentValue,
                   style: marginBottomTen,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_3__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.power_adjustments'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.power_adjustments'),
                     disabled: fieldsDisabled,
                     style: _objectSpread(_objectSpread({}, fullWidth), {}, {
                       marginTop: 0
                     }),
-                    options: powerAdjustments,
+                    options: selection_props.powerAdjustments,
                     onChange: function onChange(values) {
                       setPowerAdjustmentValue(values);
                     }
@@ -13311,13 +12240,13 @@ function SinglePump() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.consumption'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.consumption'),
                   name: "flow",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.consumption'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.consumption'),
                     style: fullWidth,
                     min: 0,
                     max: 10000,
@@ -13326,13 +12255,13 @@ function SinglePump() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.pressure'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.pressure'),
                   name: "head",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.pressure'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.pressure'),
                     style: fullWidth,
                     min: 0,
                     max: 10000,
@@ -13342,36 +12271,36 @@ function SinglePump() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                 span: 2,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation'),
                   name: "deviation",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
                   className: reducedAntFormItemClassName,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation_tooltip'),
+                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation_tooltip'),
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.deviation'),
+                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation'),
                     style: fullWidth,
                     min: -50,
                     max: 50,
                     precision: 1
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 4,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_2__.RequiredFormItem, {
+              }), widths.main_pumps_count && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: widths.main_pumps_count,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.main_pumps_count'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.main_pumps_count'),
                   name: "main_pumps_counts",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.main_pumps_counts,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].Group, {
                     options: mainPumpsCountCheckboxesOptions
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 4,
+              }), widths.reserve_pumps_count && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: widths.reserve_pumps_count,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "reserve_pumps_count",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.backup_pumps_count'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.backup_pumps_count'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.reserve_pumps_count) || 0,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
@@ -13384,19 +12313,36 @@ function SinglePump() {
                     })
                   })
                 })
+              }), widths.work_scheme && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+                span: widths.work_scheme,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
+                  required: true,
+                  name: "dp_work_scheme_id",
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.double_pump.work_scheme'),
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.dp_work_scheme_id) || selection_props.workSchemes[0].id,
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
+                    children: selection_props.workSchemes.map(function (scheme) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
+                        value: scheme.id,
+                        children: scheme.name
+                      }, 'ws' + scheme.id);
+                    })
+                  })
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 3,
+                span: widths.range,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "range_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.range.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selectionRanges[selectionRanges.length - 1].id,
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.label'),
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Group, {
                     onChange: function onChange(e) {
-                      setRangeDisabled(e.target.value !== selectionRanges[selectionRanges.length - 1].id);
+                      setRangeDisabled(e.target.value !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id);
                     },
-                    children: selectionRanges.map(function (range) {
+                    children: selection_props.selectionRanges.map(function (range) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
                         value: range.id,
                         children: range.name
@@ -13405,11 +12351,11 @@ function SinglePump() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 3,
+                span: widths.range_slider,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                   required: true,
                   name: "custom_range",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.range.custom.label'),
+                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.custom.label'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range) || [0, 100],
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
@@ -13422,7 +12368,7 @@ function SinglePump() {
                   })
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
-                span: 4,
+                span: widths.buttons,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
                   gutter: [10, 0],
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
@@ -13432,31 +12378,31 @@ function SinglePump() {
                       onClick: function onClick(e) {
                         setUseAdditionalFilters(e.target.checked);
                       },
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.additional_filters.checkbox')
+                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.additional_filters.checkbox')
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                     span: 12,
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                       className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
                         style: fullWidth,
                         onClick: function onClick() {
                           setFiltersDrawerVisible(true);
                         },
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.additional_filters.button')
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.additional_filters.button')
                       })
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
                     span: 12,
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"].Item, {
                       className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
                         style: fullWidth,
                         onClick: makeSelectionHandler // htmlType="submit"
                         ,
                         disabled: brandsValue.length === 0,
                         loading: loading,
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.select')
+                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.select')
                       })
                     })
                   })]
@@ -13472,11 +12418,11 @@ function SinglePump() {
             },
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
               xs: 15,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
                 className: "table-rounded-card",
                 type: "inner",
-                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.table.title'),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_14__.SelectedPumpsTable, {
+                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.table.title'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
                   setStationToShow: setStationToShow,
                   loading: loading
@@ -13484,7 +12430,7 @@ function SinglePump() {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
               xs: 9,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_16__.RoundedCard, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
                 className: 'flex-rounded-card' // style={{height: "100%"}}
                 ,
                 type: "inner",
@@ -13495,13 +12441,13 @@ function SinglePump() {
                       e.preventDefault();
                       setExportDrawerVisible(true);
                     },
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.graphic.export')
+                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.graphic.export')
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("a", {
                     onClick: function onClick(e) {
                       e.preventDefault();
                       setPumpInfoDrawerVisible(true);
                     },
-                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.graphic.info'), ">>"]
+                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.graphic.info'), ">>"]
                   })]
                 }),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
@@ -13512,39 +12458,111 @@ function SinglePump() {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_10__.BoxFlexEnd, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
       style: margin.top(16),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
         size: 8,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_11__.SecondaryButton, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
           onClick: function onClick() {
-            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
+            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
           },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.exit')
+          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.exit')
         }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
             disabled: !stationToShow || !updated,
             onClick: addSelectionToProjectClickHandler('post'),
             loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.add')
-          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.add')
+          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
             disabled: !stationToShow || !updated,
             onClick: addSelectionToProjectClickHandler('put'),
             loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_13__["default"].get('pages.selections.single_pump.update')
+            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.update')
           })]
         })]
       })
-    }), stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_17__.PumpPropsDrawer, {
+    }), stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_13__.PumpPropsDrawer, {
       visible: pumpInfoDrawerVisible,
       setVisible: setPumpInfoDrawerVisible,
       pumpInfo: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pump_info
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_18__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_19__.ExportAtOnceSelectionDrawer, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_14__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_15__.ExportAtOnceSelectionDrawer, {
       visible: exportDrawerVisible,
       setVisible: setExportDrawerVisible,
       stationToShow: stationToShow,
       pumpableType: pumpableType
     })]
+  });
+};
+
+/***/ }),
+
+/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js":
+/*!******************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DoublePump)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Selection */ "./Modules/Selection/Resources/assets/js/Pages/Selection.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function DoublePump() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Selection__WEBPACK_IMPORTED_MODULE_1__.Selection, {
+    pageTitle: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.selections.double_pump.title_new'),
+    widths: {
+      brands: 5,
+      types: 13,
+      work_scheme: 5,
+      range: 3,
+      range_slider: 4,
+      buttons: 6
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js":
+/*!******************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SinglePump)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Selection */ "./Modules/Selection/Resources/assets/js/Pages/Selection.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function SinglePump() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Selection__WEBPACK_IMPORTED_MODULE_1__.Selection, {
+    pageTitle: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.selections.single_pump.title_new'),
+    widths: {
+      brands: 4,
+      types: 7,
+      applications: 7,
+      main_pumps_count: 4,
+      reserve_pumps_count: 4,
+      range: 3,
+      range_slider: 3,
+      buttons: 4
+    }
   });
 }
 
@@ -13562,15 +12580,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dashboard */ "./Modules/Selection/Resources/assets/js/Pages/Dashboard.js");
-/* harmony import */ var _Pages_SinglePump__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/SinglePump */ "./Modules/Selection/Resources/assets/js/Pages/SinglePump.js");
-/* harmony import */ var _Pages_DoublePump__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/DoublePump */ "./Modules/Selection/Resources/assets/js/Pages/DoublePump.js");
+/* harmony import */ var _Pages_Selections_SinglePump__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Selections/SinglePump */ "./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js");
+/* harmony import */ var _Pages_Selections_DoublePump__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Selections/DoublePump */ "./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js");
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
-  SinglePump: _Pages_SinglePump__WEBPACK_IMPORTED_MODULE_1__["default"],
-  DoublePump: _Pages_DoublePump__WEBPACK_IMPORTED_MODULE_2__["default"]
+  SinglePump: _Pages_Selections_SinglePump__WEBPACK_IMPORTED_MODULE_1__["default"],
+  DoublePump: _Pages_Selections_DoublePump__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),
@@ -14725,6 +13743,95 @@ var IndexContainer = function IndexContainer(_ref) {
       children: children
     }))]
   });
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Resource/Table/TTable.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/TTable.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TTable": () => (/* binding */ TTable)
+/* harmony export */ });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler"];
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var TTable = function TTable(_ref) {
+  var columns = _ref.columns,
+      dataSource = _ref.dataSource,
+      clickRecord = _ref.clickRecord,
+      clickHandler = _ref.clickHandler,
+      doubleClickHandler = _ref.doubleClickHandler,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  var _columns = columns.map(function (column) {
+    return _objectSpread({
+      title: column.title || "",
+      dataIndex: column.dataIndex,
+      key: column.key || column.dataIndex
+    }, column);
+  });
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      selectedRowKey = _useState2[0],
+      setSelectedRowKey = _useState2[1];
+
+  var rowClassName = function rowClassName(record) {
+    return record.key === selectedRowKey ? 'clickRowStyle' : '';
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
+    size: "small",
+    columns: _columns,
+    dataSource: dataSource === null || dataSource === void 0 ? void 0 : dataSource.map(function (item) {
+      return _objectSpread({
+        key: item.id
+      }, item);
+    }),
+    rowClassName: rowClassName,
+    onRow: function onRow(record, _) {
+      return {
+        onDoubleClick: doubleClickHandler ? doubleClickHandler(clickRecord ? record : record.id) : null,
+        onClick: function onClick() {
+          if (clickHandler) clickHandler(clickRecord ? record : record.id);
+          setSelectedRowKey(record.key || record.id);
+        }
+      };
+    }
+  }, rest));
 };
 
 /***/ }),

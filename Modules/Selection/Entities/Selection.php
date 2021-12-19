@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Core\Entities\Project;
 use Modules\Pump\Entities\DN;
+use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\Pump;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
@@ -43,33 +44,8 @@ class Selection extends Model
         return $this->belongsTo(Project::class, 'project_id');
     }
 
-    public function powerLimitCondition(): BelongsTo
+    public function dp_work_scheme(): BelongsTo
     {
-        return $this->belongsTo(LimitCondition::class, 'power_limit_condition_id');
-    }
-
-    public function dnSuctionLimitCondition(): BelongsTo
-    {
-        return $this->belongsTo(LimitCondition::class, 'dn_suction_limit_condition_id');
-    }
-
-    public function dnPressureLimitCondition(): BelongsTo
-    {
-        return $this->belongsTo(LimitCondition::class, 'dn_pressure_limit_condition_id');
-    }
-
-    public function ptpLengthLimitCondition(): BelongsTo
-    {
-        return $this->belongsTo(LimitCondition::class, 'ptp_length_limit_condition_id');
-    }
-
-    public function dnSuctionLimit(): BelongsTo
-    {
-        return $this->belongsTo(DN::class, 'dn_suction_limit_id');
-    }
-
-    public function dnPressureLimit(): BelongsTo
-    {
-        return $this->belongsTo(DN::class, 'dn_pressure_limit_id');
+        return $this->belongsTo(DoublePumpWorkScheme::class, 'dp_work_scheme_id');
     }
 }

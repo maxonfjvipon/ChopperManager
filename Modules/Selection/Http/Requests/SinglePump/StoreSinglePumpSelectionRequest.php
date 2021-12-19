@@ -6,6 +6,15 @@ use Modules\Selection\Http\Requests\SelectionRequest;
 
 class StoreSinglePumpSelectionRequest extends SelectionRequest
 {
+    protected function prepareForValidation()
+    {
+        parent::prepareForValidation();
+        $this->merge([
+            'pump_application_ids' => $this->imploded($this->pump_application_ids),
+            'main_pumps_counts' => $this->imploded($this->main_pumps_counts),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -39,7 +48,6 @@ class StoreSinglePumpSelectionRequest extends SelectionRequest
             'dn_pressure_limit_id' => ['sometimes', 'nullable', 'exists:tenant.dns,id'],
 
             'pump_id' => ['required', 'exists:tenant.pumps,id'],
-//            'pumpable_type' => ['required', 'string'],
             'selected_pump_name' => ['required', 'string'],
             'pumps_count' => ['required', 'integer', 'min:0', 'not_in:0'],
 

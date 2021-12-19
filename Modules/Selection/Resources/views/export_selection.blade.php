@@ -22,6 +22,12 @@
                         <td class="td-top">Температура воды</td>
                         <td class="td-top">{{$selection->fluid_temperature}} °C</td>
                     </tr>
+                    @if($selection->pump_type === \Modules\Pump\Entities\Pump::$DOUBLE_PUMP)
+                        <tr>
+                            <td class="td-top">Схема работы:</td>
+                            <td class="td-top">{{$selection->dp_work_scheme->name}}</td>
+                        </tr>
+                    @endif
                     <tr>
                         <td class="td-top" colspan="2">
                             <strong>Фактические параметры:</strong>
@@ -35,14 +41,16 @@
                         <td class="td-top">Напор</td>
                         <td class="td-top">{{round($selection->curves_data['intersection_point']['head'],1)}} м</td>
                     </tr>
-                    <tr>
-                        <td class="td-top">Количество основных насосов:</td>
-                        <td class="td-top">{{$selection->pumps_count - $selection->reserve_pumps_count}}</td>
-                    </tr>
-                    <tr>
-                        <td class="td-top">Количество резервных насосов:</td>
-                        <td class="td-top">{{$selection->reserve_pumps_count}}</td>
-                    </tr>
+                    @if($selection->pump_type !== \Modules\Pump\Entities\Pump::$DOUBLE_PUMP)
+                        <tr>
+                            <td class="td-top">Количество основных насосов:</td>
+                            <td class="td-top">{{$selection->pumps_count - $selection->reserve_pumps_count}}</td>
+                        </tr>
+                        <tr>
+                            <td class="td-top">Количество резервных насосов:</td>
+                            <td class="td-top">{{$selection->reserve_pumps_count}}</td>
+                        </tr>
+                    @endif
                 </table>
             </td>
             <td class="with-border little-text td-top">

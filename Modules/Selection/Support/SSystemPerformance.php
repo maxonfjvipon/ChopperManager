@@ -19,9 +19,9 @@ class SSystemPerformance
         $systemPerformance = [];
         $y = 0;
         for ($q = 0.1; $y < $to; $q += $dist) {
-            $y = round($this->head / ($this->flow * $this->flow) * $q * $q, 1); // to fixed 1
+            $y = $this->head / ($this->flow * $this->flow) * $q * $q;
             $systemPerformance[] = [
-                'x' => round($q, 1), // to fixed 1
+                'x' => $q,
                 'y' => $y
             ];
         }

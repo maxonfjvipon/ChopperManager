@@ -153,7 +153,7 @@ export default function Show() {
                     columns={columns}
                     dataSource={project.data?.selections}
                     doubleClickHandler={has('selection_show') && showSelectionHandler}
-                    doubleClickRecord
+                    clickRecord
                 />}
             </ResourceContainer>
             <ExportSelectionDrawer selection_id={exportableId} visible={exportDrawerVisible} setVisible={setExportDrawerVisible}/>

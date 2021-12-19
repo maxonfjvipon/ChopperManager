@@ -1,7 +1,7 @@
 import {Table} from "antd";
-import React from "react";
+import React, {useState} from "react";
 
-export const TTable = ({columns, dataSource, doubleClickHandler, doubleClickRecord, ...rest}) => {
+export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleClickHandler, ...rest}) => {
     const _columns = columns.map(column => {
         return {
             title: column.title || "",
@@ -11,6 +11,12 @@ export const TTable = ({columns, dataSource, doubleClickHandler, doubleClickReco
         }
     })
 
+    const [selectedRowKey, setSelectedRowKey] = useState(null)
+
+    const rowClassName = record => {
+        return record.key === selectedRowKey ? 'clickRowStyle' : '';
+    }
+
     return (
         <Table
             size="small"
@@ -18,11 +24,20 @@ export const TTable = ({columns, dataSource, doubleClickHandler, doubleClickReco
             dataSource={dataSource?.map(item => {
                 return {key: item.id, ...item}
             })}
+            rowClassName={rowClassName}
             onRow={(record, _) => {
-                return doubleClickHandler
-                    ? {onDoubleClick: doubleClickHandler(doubleClickRecord ? record : record.id)}
-                    : null
+                return {
+                    onDoubleClick: doubleClickHandler
+                        ? doubleClickHandler(clickRecord ? record : record.id)
+                        : null,
+                    onClick: () => {
+                        if (clickHandler)
+                            clickHandler(clickRecord ? record : record.id)
+                        setSelectedRowKey(record.key || record.id)
+                    }
+                }
             }}
+
             {...rest}
         />
     )

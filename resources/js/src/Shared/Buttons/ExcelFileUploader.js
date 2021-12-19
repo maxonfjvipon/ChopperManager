@@ -14,6 +14,8 @@ export const ExcelFileUploader = ({title, route}) => {
         if (data.files) {
             post(route, data)
             setData({files: null})
+            // if (setReload)
+            //     setReload(true)
         }
     }, [data])
 

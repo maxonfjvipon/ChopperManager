@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JetBrains\PhpStorm\Pure;
 use Modules\Pump\Entities\Pump;
-use Modules\Pump\Transformers\SinglePumpResource;
+use Modules\Pump\Transformers\Pumps\SinglePumpResource;
 
 class SinglePumpService extends PumpableTypePumpService
 {

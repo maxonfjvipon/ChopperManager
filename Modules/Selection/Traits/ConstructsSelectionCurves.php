@@ -6,7 +6,7 @@ namespace Modules\Selection\Traits;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Support\IIntersectionPoint;
-use Modules\Selection\Support\PPumpPerformance;
+use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Modules\Selection\Support\SSystemPerformance;
 
 trait ConstructsSelectionCurves
@@ -23,22 +23,37 @@ trait ConstructsSelectionCurves
 
     private function singlePumpSelectionCurvesData(Selection $selection): array
     {
-        $pump = $selection->pump;
-        $mpc = $selection->pumps_count - $selection->reserve_pumps_count;
-        $pc = $selection->pumps_count;
-        $flow = $selection->flow;
-        $head = $selection->head;
-
-        $pumpPerformance = new PPumpPerformance($pump);
-        $intersectionPoint = new IIntersectionPoint(
-            $pumpPerformance->coefficientsForPosition($mpc), $flow, $head
+        return $this->selectionByPreferencesCurvesData(
+            $selection->pump,
+            $selection->flow,
+            $selection->head,
+            $selection->pumps_count - $selection->reserve_pumps_count,
+            $selection->pumps_count
         );
-        $lines = $pumpPerformance->asRegressedLines($pc);
+    }
+
+    private function doublePumpSelectionCurvesData(Selection $selection): array
+    {
+        return $this->selectionByPreferencesCurvesData(
+            $selection->pump,
+            $selection->flow,
+            $selection->head,
+            $selection->dp_work_scheme_id,
+            2
+        );
+    }
+
+    private function selectionByPreferencesCurvesData($pump, $flow, $head, $lastPumpNum, $pumpsCount): array
+    {
+        $pumpPerformance = PPumpPerformance::construct($pump);
+        $intersectionPoint = new IIntersectionPoint(
+            $pumpPerformance->coefficientsForPosition($lastPumpNum), $flow, $head
+        );
+        $lines = $pumpPerformance->asRegressedLines($pumpsCount);
 
         $yMax = $pumpPerformance->hMax($head);
         $lastLine = $lines[count($lines) - 1];
         $xMax = max($lastLine[count($lastLine) - 1]['x'], $flow + 2 * $this->axisStep($flow));
-
         return [
             'working_point' => [
                 'flow' => $flow,
@@ -59,10 +74,5 @@ trait ConstructsSelectionCurves
             'x_axis_step' => $this->axisStep($xMax),
             'y_axis_step' => $this->axisStep($yMax),
         ];
-    }
-
-    private function doublePumpSelectionCurvesData(Selection $selection): array
-    {
-
     }
 }

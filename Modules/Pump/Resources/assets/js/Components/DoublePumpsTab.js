@@ -66,13 +66,13 @@ export const DoublePumpsTab = ({filter_data}) => {
             dataIndex: 'name',
             width: 150
         },
-        {
-            title: Lang.get('pages.pumps.data.category'),
-            dataIndex: 'category',
-            width: 100,
-            filters: filter_data.categories,
-            onFilter: (category, record) => record.category === category
-        },
+        // {
+        //     title: Lang.get('pages.pumps.data.category'),
+        //     dataIndex: 'category',
+        //     width: 100,
+        //     filters: filter_data.categories,
+        //     onFilter: (category, record) => record.category === category
+        // },
         {
             title: Lang.get('pages.pumps.data.price'),
             dataIndex: 'price',

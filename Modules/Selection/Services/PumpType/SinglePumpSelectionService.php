@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\Pure;
 use Modules\Core\Support\Rates;
 use Modules\Core\Support\TenantStorage;
-use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionRange;
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 use Modules\Selection\Http\Requests\ExportAtOnceSelectionRequest;
 use Modules\Selection\Http\Requests\MakeSelectionRequest;
 use Modules\Selection\Support\IIntersectionPoint;
-use Modules\Selection\Support\PPumpPerformance;
+use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Modules\Selection\Transformers\SelectionResources\SinglePumpSelectionResource;
 
 class SinglePumpSelectionService extends PumpableTypeSelectionService
@@ -84,7 +83,7 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
         $tenantStorage = new TenantStorage();
 
         foreach ($dbPumps as $pump) {
-            $pumpPerformance = new PPumpPerformance($pump);
+            $pumpPerformance = PPumpPerformance::construct($pump);
             foreach ($request->main_pumps_counts as $mainPumpsCount) {
                 $qEnd = $pumpPerformance->qEnd($mainPumpsCount);
                 if ($flow >= $qEnd) {
@@ -141,10 +140,10 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
                             'flow' => $flow,
                             'main_pumps_count' => $mainPumpsCount,
                             'fluid_temperature' => $request->fluid_temperature,
-                            'intersection_point' => [
-                                'flow' => $intersectionPoint->x(),
-                                'head' => $intersectionPoint->y()
-                            ],
+//                            'intersection_point' => [
+//                                'flow' => $intersectionPoint->x(),
+//                                'head' => $intersectionPoint->y()
+//                            ],
                         ], $this->pumpInfo($pump, $tenantStorage)
                     );
                 }
@@ -162,7 +161,7 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
             'id', 'article_num_main', 'article_num_reserve', 'article_num_archive', 'series_id', 'dn_suction_id',
             'dn_pressure_id', 'name', 'rated_power', 'rated_current', 'ptp_length', 'sp_performance', 'weight',
             'image', 'sizes_image', 'cross_sectional_drawing_image', 'electric_diagram_image', 'connection_type_id',
-            'fluid_temp_min', 'fluid_temp_max', 'connection_id', 'description'
+            'fluid_temp_min', 'fluid_temp_max', 'connection_id', 'description', 'pumpable_type'
         ];
     }
 

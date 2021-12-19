@@ -231,7 +231,8 @@ abstract class PumpableTypeSelectionService implements PumpableTypeSelectionCont
             'pump.series',
             'pump.series.category',
             'pump.series.power_adjustment',
-            'pump.brand'
+            'pump.brand',
+            'dp_work_scheme',
         ]);
         $selection->{'curves_data'} = $this->selectionCurvesData($selection);
         return PDF::loadHtml(view($this->exportSelectionViewName, [

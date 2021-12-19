@@ -41,9 +41,31 @@ class Pump extends Model
         return $this->series->imploded_applications;
     }
 
+    public function coefficientsCount(): int
+    {
+        return match ($this->pumpable_type) {
+            self::$SINGLE_PUMP => 9,
+            self::$DOUBLE_PUMP => 2,
+        };
+    }
+
+    public function scopePerformanceData($query, $seriesId)
+    {
+        return match (PumpSeries::find($seriesId)->category_id)
+        {
+            PumpCategory::$SINGLE_PUMP => $query->addSelect('sp_performance'),
+            PumpCategory::$DOUBLE_PUMP => $query->addSelect('dp_peak_performance', 'dp_standby_performance'),
+        };
+    }
+
     public function scopeOnPumpableType($query, $pumpable_type)
     {
         return $query->where('pumpable_type', $pumpable_type);
+    }
+
+    public function scopeDoublePumps($query)
+    {
+        return $this->scopeOnPumpableType($query, self::$DOUBLE_PUMP);
     }
 
     public function scopeSinglePumps($query)
@@ -53,7 +75,7 @@ class Pump extends Model
 
     public function scopeAvailableForCurrentUser($query)
     {
-        return $query->whereIn('id', Auth::user()->available_pumps()->pluck($this->getTable() . '.id')->all());
+        return $query->whereIn('id', Auth::user()->available_pumps()->pluck('pumps.id')->all());
     }
 
     public function series(): BelongsTo

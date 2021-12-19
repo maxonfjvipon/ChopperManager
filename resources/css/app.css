@@ -170,3 +170,7 @@ button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-n
 .ant-tree .ant-tree-node-content-wrapper {
     padding: 0 0px !important;
 }
+
+.clickRowStyle {
+    background-color : #cbf2ff
+}
