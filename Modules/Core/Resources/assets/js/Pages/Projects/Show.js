@@ -107,7 +107,7 @@ export default function Show() {
 
     // HANDLERS //todo record
     const showSelectionHandler = record => () => {
-        console.log(record)
+        // console.log(record)
         Inertia.get(tRoute('selections.show', record.id) + '?pumpable_type=' + record.pumpable_type)
     }
 

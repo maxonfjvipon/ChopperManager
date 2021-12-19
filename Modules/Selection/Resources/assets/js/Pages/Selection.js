@@ -35,7 +35,7 @@ export const Selection = ({pageTitle, widths}) => {
     const [additionalFiltersForm] = useForm()
     const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName, color} = useStyles()
 
-    console.log(selection_props)
+    // console.log(selection_props)
 
     // STATE
     const [showBrandsList, setShowBrandsList] = useState(false)

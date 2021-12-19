@@ -11491,9 +11491,9 @@ var Selection = function Selection(_ref) {
       marginBottomTen = _useStyles.marginBottomTen,
       margin = _useStyles.margin,
       reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
-      color = _useStyles.color;
+      color = _useStyles.color; // console.log(selection_props)
+  // STATE
 
-  console.log(selection_props); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),

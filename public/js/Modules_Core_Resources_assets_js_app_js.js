@@ -8441,7 +8441,7 @@ function Show() {
 
   var showSelectionHandler = function showSelectionHandler(record) {
     return function () {
-      console.log(record);
+      // console.log(record)
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(tRoute('selections.show', record.id) + '?pumpable_type=' + record.pumpable_type);
     };
   };

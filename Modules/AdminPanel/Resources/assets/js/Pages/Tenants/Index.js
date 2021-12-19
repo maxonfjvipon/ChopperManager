@@ -13,7 +13,7 @@ import {AuthLayout} from "../../Shared/Layout/AuthLayout";
 const Index = () => {
     const {tenants} = usePage().props
 
-    console.log(tenants)
+    // console.log(tenants)
 
     const columns = [
         {title: 'ID', dataIndex: 'id'},

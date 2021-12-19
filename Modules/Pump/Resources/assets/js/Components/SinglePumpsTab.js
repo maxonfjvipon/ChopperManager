@@ -24,7 +24,7 @@ export const SinglePumpsTab = ({filter_data}) => {
         postRequest(tRoute('pumps.load'), {
             pumpable_type: 'single_pump'
         }).then(pumps => {
-            console.log('pumps')
+            // console.log('pumps')
             setPumps(pumps)
             setLoading(false)
         })

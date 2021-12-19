@@ -8735,7 +8735,7 @@ var DoublePumpsTab = function DoublePumpsTab(_ref) {
     postRequest(tRoute('pumps.load'), {
       pumpable_type: 'double_pump'
     }).then(function (pumps) {
-      console.log('double pumps');
+      // console.log('double pumps')
       setPumps(pumps);
       setLoading(false);
     });
@@ -9360,7 +9360,7 @@ var SinglePumpsTab = function SinglePumpsTab(_ref) {
     postRequest(tRoute('pumps.load'), {
       pumpable_type: 'single_pump'
     }).then(function (pumps) {
-      console.log('pumps');
+      // console.log('pumps')
       setPumps(pumps);
       setLoading(false);
     });
