@@ -31,7 +31,7 @@ class PPumpPerformance
     protected function performanceAsArray($performance): array
     {
         return array_map(function ($value) {
-            return (float)$value;
+            return floatval($value);
         }, explode(" ", $performance));
     }
 

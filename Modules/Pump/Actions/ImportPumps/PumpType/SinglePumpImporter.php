@@ -109,7 +109,7 @@ class SinglePumpImporter extends PumpImporter
                 'fluid_temp_max' => $entity[13],
                 'ptp_length' => $entity[14],
                 'connection_id' => trim($entity[15]),
-                'sp_performance' => trim($entity[16]),
+                'sp_performance' => str_replace(",", ".", trim($entity[16])),
                 'description' => $entity[17] ?? null,
                 'image' => array_key_exists(18, $entity) ? trim($entity[18]) : null,
                 'sizes_image' => array_key_exists(19, $entity) ? trim($entity[19]) : null,

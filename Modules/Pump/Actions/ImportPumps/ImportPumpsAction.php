@@ -5,6 +5,7 @@ namespace Modules\Pump\Actions\ImportPumps;
 use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Common\Exception\UnsupportedTypeException;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
@@ -26,19 +27,24 @@ class ImportPumpsAction
     public function execute($files): RedirectResponse
     {
         ini_set('max_execution_time', $this->MAX_EXECUTION_TIME);
-        $errorBar = [];
+        $errorBag = [];
         try {
             $sheets = [];
             foreach ($files as $file) {
                 $sheets = (new PumpsExcelImporter())
                     ->withoutHeaders()
                     ->startRow(2)
-                    ->importPumpSheets($file, $errorBar);
+                    ->importPumpSheets($file, $errorBag);
             }
-            if (!empty($errorBar)) {
-                return Redirect::back()->with('errorBag', array_splice($errorBar, 0, 50));
-            }
+        } catch (ReaderNotOpenedException $exception) {
+            Log::error($exception->getTraceAsString());
+            return $this->redirectWithErrors("Ошибка загрузки. Не удалось открыть файл");
+        }
+        if (!empty($errorBag)) {
+            return Redirect::back()->with('errorBag', array_splice($errorBag, 0, 50));
+        }
 
+        try {
             foreach ($sheets as $sheet) {
                 $database = $this->getTenantModel()::current()->database;
                 foreach (array_chunk($sheet, 100) as $chunkedSheet) {
@@ -94,15 +100,16 @@ class ImportPumpsAction
                         });
                 }
             }
-            return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
-        } catch (IOException | UnsupportedTypeException | ReaderNotOpenedException | \Exception $exception) {
+        } catch (UnsupportedTypeException | Exception $exception) {
             Log::error($exception->getTraceAsString());
-            Log::error($exception->getMessage());
-            return Redirect::route('pumps.index')
-                ->withErrors(__(
-                    'validation.import.exception',
-                    ['attribute' => __('validation.attributes.pumps')]
-                ));
+            return $this->redirectWithErrors("Ошибка загрузки. Не удалось заполнить базу данных.");
         }
+        return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
+    }
+
+    private function redirectWithErrors($errors): RedirectResponse
+    {
+        return Redirect::route("pumps.index")
+            ->withErrors($errors);
     }
 }
