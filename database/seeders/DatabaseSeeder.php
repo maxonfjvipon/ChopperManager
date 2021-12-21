@@ -31,6 +31,16 @@ class DatabaseSeeder extends Seeder
             $pumps = Pump::all();
             $pumpsAndCoefficients = [];
             foreach ($pumps as $pump) {
+                if ($pump->pumpable_type === Pump::$SINGLE_PUMP) {
+                    $pump->update([
+                        'sp_performance' => str_replace(',', '.', $pump->sp_performance)
+                    ]);
+                } else {
+                    $pump->update([
+                        'dp_peak_performance' => str_replace(',', '.', $pump->dp_peak_performance),
+                        'dp_standby_performance' => str_replace(',', '.', $pump->dp_standby_performance)
+                    ]);
+                }
                 $count = $pump->coefficientsCount();
                 $pumpPerformance = PPumpPerformance::construct($pump);
                 for ($pos = 1; $pos <= $count; ++$pos) {
