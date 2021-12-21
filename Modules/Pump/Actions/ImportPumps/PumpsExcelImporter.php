@@ -6,6 +6,7 @@ use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Reader\Common\Creator\ReaderEntityFactory;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
 use Box\Spout\Reader\ReaderInterface;
+use Box\Spout\Reader\SheetInterface;
 use Box\Spout\Reader\XLSX\Reader;
 use Modules\Pump\Actions\ImportPumps\PumpType\DoublePumpImporter;
 use Modules\Pump\Actions\ImportPumps\PumpType\SinglePumpImporter;
@@ -103,5 +104,31 @@ class PumpsExcelImporter extends FastExcel
             'file' => '',
             'message' => $message
         ];
+    }
+
+    /**
+     * @param SheetInterface $sheet
+     * @param callable|null  $callback
+     *
+     * @return array
+     */
+    protected function importSheet(SheetInterface $sheet, callable $callback = null): array
+    {
+        $headers = [];
+        $collection = [];
+
+        foreach ($sheet->getRowIterator() as $k => $rowAsObject) {
+            $row = $rowAsObject->toArray();
+            if ($k >= 2) {
+                if ($callback) {
+                    if ($result = $callback(empty($headers) ? $row : array_combine($headers, $row))) {
+                        $collection[] = $result;
+                    }
+                } else {
+                    $collection[] = empty($headers) ? $row : array_combine($headers, $row);
+                }
+            }
+        }
+        return $collection;
     }
 }
