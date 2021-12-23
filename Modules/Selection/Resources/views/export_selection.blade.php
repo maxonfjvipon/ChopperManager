@@ -101,6 +101,14 @@
                         <td class="td-top">{{$selection->pump->mains_connection->full_value}}</td>
                     </tr>
                     <tr>
+                        <td class="td-top">ДУ входа</td>
+                        <td class="td-top">{{$selection->pump->dn_suction->value}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-top">ДУ выхода</td>
+                        <td class="td-top">{{$selection->pump->dn_pressure->value}}</td>
+                    </tr>
+                    <tr>
                         <td class="td-top">Тип</td>
                         <td class="td-top">{{$selection->pump->types}}</td>
                     </tr>
