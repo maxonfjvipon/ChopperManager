@@ -18,8 +18,8 @@ class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
             'pumpable_type' => ['required', 'string'],
             'pumps_count' => ['required', 'numeric'],
             'main_pumps_count' => ['required', 'numeric'],
-            'head' => ['required', 'numeric'],
-            'flow' => ['required', 'numeric'],
+            'head' => ['sometimes', 'nullable', 'numeric'],
+            'flow' => ['sometimes', 'nullable', 'numeric'],
         ];
     }
 }
