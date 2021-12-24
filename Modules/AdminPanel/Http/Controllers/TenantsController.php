@@ -25,7 +25,7 @@ class TenantsController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('AdminPanel::Tenants/Profile', [
+        return Inertia::render('AdminPanel::Tenants/Index', [
             'tenants' => $this->getTenantModel()::with(['type' => function ($query) {
                 $query->select('id', 'name');
             }])->get()->all()

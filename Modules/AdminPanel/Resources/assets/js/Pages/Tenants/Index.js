@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link, usePage} from "@inertiajs/inertia-react";
-import {Tag} from "antd";
+import {Switch, Tag} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {TableActionsContainer} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
-import {Toggle} from "../../../../../../../resources/js/src/Shared/ResourcePanel/Index/Table/ColumnsActions/Toggle";
+// import {Toggle} from "../../../../../../../resources/js/src/Shared/ResourcePanel/Index/Table/ColumnsActions/Toggle";
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {PrimaryAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
@@ -43,7 +43,10 @@ const Index = () => {
         {
             key: 'actions', render: (_, record) => <TableActionsContainer>
                 <View clickHandler={showHandler(record.id)}/>
-                <Toggle clickHandler={toggleHandler(record)} enabled={record.is_active}/>
+                {/*<Toggle*/}
+                {/*    clickHandler={toggleHandler(record)}*/}
+                {/*    enabled={record.is_active}*/}
+                {/*/>*/}
             </TableActionsContainer>,
             width: '1%'
         }
