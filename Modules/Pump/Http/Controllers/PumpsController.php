@@ -4,7 +4,9 @@ namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Modules\AdminPanel\Entities\Tenant;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
 use Modules\Core\Support\TenantStorage;
@@ -14,8 +16,11 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Modules\Pump\Entities\Pump;
+use Modules\Pump\Http\Requests\AddPumpToProjectsRequest;
 use Modules\Pump\Http\Requests\PumpableRequest;
+use Modules\Pump\Http\Requests\PumpShowRequest;
 use Modules\Pump\Services\Pumps\PumpsService;
+use Modules\Selection\Entities\Selection;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class PumpsController extends Controller
@@ -54,15 +59,15 @@ class PumpsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param PumpableRequest $request
+     * @param PumpShowRequest $request
      * @param Pump $pump
-     * @return Response
+     * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function show(PumpableRequest $request, Pump $pump): Response
+    public function show(PumpShowRequest $request, Pump $pump): JsonResponse
     {
         $this->authorize('pump_show');
-        return $this->service->show($pump);
+        return $this->service->show($request, $pump);
     }
 
     /**
@@ -108,4 +113,30 @@ class PumpsController extends Controller
         return Redirect::back()->with('success', 'Media were imported successfully to directory: ' . $request->folder);
     }
 
+    /**
+     * Add pump to projects
+     * @param AddPumpToProjectsRequest $request
+     * @param Pump $pump
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function addToProjects(AddPumpToProjectsRequest $request, Pump $pump): JsonResponse
+    {
+        $this->authorize('pump_show');
+        foreach ($request->project_ids as $project_id) {
+            $this->authorize('project_access_' . $project_id);
+        }
+        $selections = [];
+        foreach ($request->project_ids as $project_id) {
+            $selections[] = [
+                'project_id' => $project_id,
+                'selected_pump_name' => $request->pumps_count . ' ' . $pump->full_name,
+                'pumps_count' => $request->pumps_count,
+                'main_pumps_counts' => $request->pumps_count,
+                'pump_id' => $pump->id,
+            ];
+        }
+        DB::table(Tenant::current()->database . '.selections')->insert($selections);
+        return response()->json(['success', 'Pump was added successfully']);
+    }
 }

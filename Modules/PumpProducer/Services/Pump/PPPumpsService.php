@@ -14,6 +14,7 @@ use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpCategory;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpType;
+use Modules\Pump\Http\Requests\PumpShowRequest;
 use Modules\Pump\Services\Pumps\PumpsService;
 
 class PPPumpsService extends PumpsService
@@ -41,7 +42,7 @@ class PPPumpsService extends PumpsService
         // TODO: Implement loadedPumps() method.
     }
 
-    public function show(Pump $pump): Response
+    public function show(PumpShowRequest $request, Pump $pump)
     {
         // TODO: Implement show() method.
     }

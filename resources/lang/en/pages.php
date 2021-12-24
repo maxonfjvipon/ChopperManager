@@ -201,6 +201,13 @@ return [
             'single' => 'Single pumps',
             'double' => 'Double pumps',
         ],
+        'add_to_projects' => [
+            'button' => 'Add to projects',
+            'title' => 'Add pump to projects',
+            'choose' => 'Choose projects where to add the pump',
+            'pumps_count' => 'Pumps count',
+            'ok' => 'Add',
+        ],
         'data' => [
             'article_num_main' => 'Main article number',
             'article_num_reserve' => 'Reserve article number',
@@ -380,6 +387,7 @@ return [
                 'info' => 'Pump info',
             ],
             'pump_info' => [
+                'curves' => 'Curve(s)',
                 'props' => 'Product properties',
                 'model_picture' => 'Model picture',
                 'sizes_picture' => 'Sizes',

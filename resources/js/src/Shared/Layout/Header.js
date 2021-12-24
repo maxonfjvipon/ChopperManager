@@ -47,7 +47,7 @@ export const Header = () => {
     ])
 
     return (
-        <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%' }}>
+        <Layout.Header style={{...padding.all("0 16px 0"), position: 'fixed', zIndex: 1, width: '100%'}}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Space>
                     <AppTitle/>
@@ -58,12 +58,13 @@ export const Header = () => {
                     mode="horizontal"
                 >
                     {menuItems.map(item => (
-                        <Menu.Item {...item.itemProps}>
-                            <Link href={tRoute(item.route)}>
-                                {item.label}
-                            </Link>
-                        </Menu.Item>
-                    ))}
+                            <Menu.Item {...item.itemProps}>
+                                <Link href={tRoute(item.route)}>
+                                    {item.label}
+                                </Link>
+                            </Menu.Item>
+                        )
+                    )}
                 </Menu>
                 <Space>
                     <LocaleDropdown/>

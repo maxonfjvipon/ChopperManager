@@ -87,7 +87,6 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
     ]
 
     return useMemo(() => (
-        // return
         <TTable
             columns={columns}
             dataSource={selectedPumps}

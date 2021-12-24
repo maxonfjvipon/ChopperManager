@@ -4,6 +4,7 @@ namespace Modules\Pump\Services\Pumps;
 
 use App\Traits\HasFilterData;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Pump\Contracts\Pumps\PumpsServiceContract;
@@ -30,7 +31,8 @@ abstract class PumpsService implements PumpsServiceContract
     public function index(): Response
     {
         return Inertia::render($this->indexPath(), [
-            'filter_data' => $this->asFilterData($this->pumpsFilterDataResource())
+            'filter_data' => $this->asFilterData($this->pumpsFilterDataResource()),
+            'projects' => Auth::user()->projects()->get(['id', 'name'])
         ]);
     }
 

@@ -37,6 +37,11 @@ Route::prefix('pumps/import')->group(function () {
     Route::post('price_list')->name('pumps.import.price_lists')->uses([PumpsController::class, 'importPriceLists']);
     Route::post('media')->name('pumps.import.media')->uses([PumpsController::class, 'importMedia']);
 });
-Route::post('load-pumps')->name('pumps.load')->uses([PumpsController::class, 'load']);
-Route::get('pumps/{pump}')->name('pumps.show')->uses([PumpsController::class, 'show']);
+Route::prefix('pumps')->group(function () {
+    Route::post('load')->name('pumps.load')->uses([PumpsController::class, 'load']);
+    Route::prefix('{pump}')->group(function () {
+        Route::post('/')->name('pumps.show')->uses([PumpsController::class, 'show']);
+        Route::post('add-to-projects')->name('pumps.add_to_projects')->uses([PumpsController::class, 'addToProjects']);
+    });
+});
 Route::resource('pumps', PumpsController::class)->except(['edit', 'create', 'show']);

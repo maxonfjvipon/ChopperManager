@@ -3,6 +3,7 @@
 
 namespace Modules\PumpManager\Services\Pump;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -14,6 +15,7 @@ use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpApplication;
 use Modules\Pump\Entities\PumpCategory;
 use Modules\Pump\Entities\PumpType;
+use Modules\Pump\Http\Requests\PumpShowRequest;
 use Modules\Pump\Services\Pumps\PumpsService;
 
 class PMPumpsService extends PumpsService
@@ -26,7 +28,11 @@ class PMPumpsService extends PumpsService
         $availableSeries = Auth::user()->available_series;
         $availableSeriesIds = $availableSeries->pluck('id')->all();
         return [
-            'brands' => Auth::user()->available_brands()->pluck('pump_brands.name')->all(),
+            'brands' => Auth::user()
+                ->available_brands()
+                ->distinct()
+                ->pluck('pump_brands.name')
+                ->all(),
             'series' => $availableSeries->pluck('name')->all(),
 //            'categories' => PumpCategory::pluck('name')->all(),
             'connections' => ConnectionType::pluck('name')->all(),
@@ -39,10 +45,11 @@ class PMPumpsService extends PumpsService
     }
 
     /**
+     * @param PumpShowRequest $request
      * @param Pump $pump
-     * @return Response
+     * @return JsonResponse
      */
-    public function show(Pump $pump): Response
+    public function show(PumpShowRequest $request, Pump $pump): JsonResponse
     {
         abort_if(
             !in_array(
@@ -54,9 +61,7 @@ class PMPumpsService extends PumpsService
             ),
             404
         );
-        return Inertia::render($this->showPath(), [
-            'pump' => $this->service->pumpResource($pump)
-        ]);
+        return response()->json($this->service->pumpResource($pump));
     }
 
     protected function loadedPumps(): array

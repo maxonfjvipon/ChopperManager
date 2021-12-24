@@ -29,7 +29,7 @@
         "@inertiajs/inertia": "^0.10.1",
         "@inertiajs/inertia-react": "^0.7.1",
         "@inertiajs/progress": "^0.2.6",
-        "antd": "^4.16.11",
+        "antd": "^4.17.4",
         "classnames": "^2.3.1",
         "downloadjs": "^1.4.7",
         "ignore-loader": "^0.1.2",

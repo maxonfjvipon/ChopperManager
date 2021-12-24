@@ -1,15 +1,13 @@
 <?php
 
-
 namespace Modules\Pump\Transformers\Pumps;
 
-
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Modules\Selection\Traits\HasAxisStep;
 
-class DoublePumpResource extends JsonResource
+class DoublePumpResource extends PumpResource
 {
     use HasAxisStep;
 
@@ -21,13 +19,7 @@ class DoublePumpResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $pumpPerformance = PPumpPerformance::construct($this->resource);
-        $standbyPerfLine = $pumpPerformance->asRegressedPointArray();
-        $peakPerfLine = $pumpPerformance->asRegressedPointArray(2);
-        $xMax = $peakPerfLine[count($peakPerfLine) - 1]['x'];
-        $yMax = $pumpPerformance->hMax();
-
-        return [
+        $data = array_merge(parent::toArray($request), [
             'id' => $this->id,
             'article_num_main' => $this->article_num_main,
             'article_num_reserve' => $this->article_num_reserve,
@@ -50,13 +42,24 @@ class DoublePumpResource extends JsonResource
             'applications' => $this->applications,
             'types' => $this->types,
             'description' => $this->description,
-            'svg' => view('pump::pump_performance', [
-                'performance_lines' => [$standbyPerfLine, $peakPerfLine],
-                'dx' => 900 / $xMax,
-                'dy' => 400 / $yMax,
-                'x_axis_step' => $this->axisStep($xMax),
-                'y_axis_step' => $this->axisStep($yMax),
-            ])->render(),
-        ];
+            'pumpable_type' => Pump::$DOUBLE_PUMP,
+        ]);
+        if ($request->need_curves) {
+            $pumpPerformance = PPumpPerformance::construct($this->resource);
+            $standbyPerfLine = $pumpPerformance->asRegressedPointArray();
+            $peakPerfLine = $pumpPerformance->asRegressedPointArray(2);
+            $xMax = $peakPerfLine[count($peakPerfLine) - 1]['x'];
+            $yMax = $pumpPerformance->hMax();
+            $data = array_merge($data, [
+                'svg' => view('pump::pump_performance', [
+                    'performance_lines' => [$standbyPerfLine, $peakPerfLine],
+                    'dx' => 900 / $xMax,
+                    'dy' => 400 / $yMax,
+                    'x_axis_step' => $this->axisStep($xMax),
+                    'y_axis_step' => $this->axisStep($yMax),
+                ])->render(),
+            ]);
+        }
+        return $data;
     }
 }

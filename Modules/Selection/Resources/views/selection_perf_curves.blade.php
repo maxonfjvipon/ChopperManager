@@ -92,79 +92,86 @@
             shape-rendering="auto"></path>
         </g>
     @endfor
-    {{--    SYSTEM PERFORMACE CURVE --}}
-    <g style="height: 100%; width: 100%;" clip-path="url(#victory-clip-44)">
-        <defs>
-            <clipPath id="victory-clip-44">
-                <rect vector-effect="non-scaling-stroke" x="50" y="50" width="500" height="330"></rect>
-            </clipPath>
-        </defs>
-        <path
-            d={{"M" . join("L", array_map(fn($point) => (50 + $dx * $point['x']) . ',' . ((380 - $dy * $point['y'])),
+    @isset($system_performance)
+        {{--    SYSTEM PERFORMACE CURVE --}}
+        <g style="height: 100%; width: 100%;" clip-path="url(#victory-clip-44)">
+            <defs>
+                <clipPath id="victory-clip-44">
+                    <rect vector-effect="non-scaling-stroke" x="50" y="50" width="500" height="330"></rect>
+                </clipPath>
+            </defs>
+            <path
+                d={{"M" . join("L", array_map(fn($point) => (50 + $dx * $point['x']) . ',' . ((380 - $dy * $point['y'])),
             $system_performance))}}
-            {{--            d="M50,380L58.96057347670251,379.41909464927545L67.92114695340501,377.67637859710186L76.88172043010752,375.35275719420366L85.84229390681004,372.44823044058097L94.80286738351255,368.38189298550924L103.76344086021506,363.1537448289884L112.72401433691758,357.3446913217429L121.68458781362007,350.95473246377304L130.64516129032256,343.402962904354L139.6057347670251,334.68938264348594L148.5663082437276,325.3948970318933L157.5268817204301,314.9386007188516L166.48745519713262,303.9013990550854L175.44802867383515,292.2832920405946L184.40860215053766,279.5033743246547L193.36917562724017,265.5616459072657L202.32974910394265,251.03901213915228L211.29032258064515,235.93547302031425L220.25089605734766,219.67012320002715L229.2114695340502,202.24296267829092L238.1720430107527,184.2348968058302"--}}
-                style="fill: transparent; stroke: red; opacity: 1; stroke-width: 2px;
-        " role="presentation"
-        shape-rendering="auto"></path>
-    </g>
-    {{--    INERSECTION POINT AND WORKING POINT DOTS --}}
-    <g>
-        <path d="{{"M " . (50 + $dx * $intersection_point['flow']) . ', ' . (380 - $dy * $intersection_point['head']) .
+                {{--            d="M50,380L58.96057347670251,379.41909464927545L67.92114695340501,377.67637859710186L76.88172043010752,375.35275719420366L85.84229390681004,372.44823044058097L94.80286738351255,368.38189298550924L103.76344086021506,363.1537448289884L112.72401433691758,357.3446913217429L121.68458781362007,350.95473246377304L130.64516129032256,343.402962904354L139.6057347670251,334.68938264348594L148.5663082437276,325.3948970318933L157.5268817204301,314.9386007188516L166.48745519713262,303.9013990550854L175.44802867383515,292.2832920405946L184.40860215053766,279.5033743246547L193.36917562724017,265.5616459072657L202.32974910394265,251.03901213915228L211.29032258064515,235.93547302031425L220.25089605734766,219.67012320002715L229.2114695340502,202.24296267829092L238.1720430107527,184.2348968058302"--}}
+                    style="fill: transparent; stroke: red; opacity: 1; stroke-width: 2px;
+            " role="presentation"
+            shape-rendering="auto"></path>
+        </g>
+    @endisset
+    @isset($intersection_point)
+        @isset($working_point)
+            {{--    INERSECTION POINT AND WORKING POINT DOTS --}}
+            <g>
+                <path d="{{"M " . (50 + $dx * $intersection_point['flow']) . ', ' . (380 - $dy * $intersection_point['head']) .
       "\n m -6, 0
       a 6, 6 0 1,0 12,0
       a 6, 6 0 1,0 -12,0"}}"
-              style="fill: green; opacity: 1; stroke: transparent; stroke-width: 0px;" role="presentation"
-              shape-rendering="auto"></path>
-    </g>
-    <g>
-        <path d="{{"M " . 50 + $dx * $working_point['flow'] . ', ' . 380 - $dy * $working_point['head'] .
+                      style="fill: green; opacity: 1; stroke: transparent; stroke-width: 0px;" role="presentation"
+                      shape-rendering="auto"></path>
+            </g>
+            <g>
+                <path d="{{"M " . 50 + $dx * $working_point['flow'] . ', ' . 380 - $dy * $working_point['head'] .
       "\nm -6, 0
       a 6, 6 0 1,0 12,0
       a 6, 6 0 1,0 -12,0"}}"
-              style="fill: red; opacity: 1; stroke: transparent; stroke-width: 0px;" role="presentation"
-              shape-rendering="auto"></path>
-    </g>
-    {{-- LEGEND --}}
-    <g>
-        <rect vector-effect="non-scaling-stroke" style="fill: none;" role="presentation" shape-rendering="auto" x="450" y="20"
-              width="130.28750000000002" height="110.94"></rect>
-        <path d="M 462, 32
+                      style="fill: red; opacity: 1; stroke: transparent; stroke-width: 0px;" role="presentation"
+                      shape-rendering="auto"></path>
+            </g>
+            {{-- LEGEND --}}
+            <g>
+                <rect vector-effect="non-scaling-stroke" style="fill: none;" role="presentation" shape-rendering="auto" x="450"
+                      y="20"
+                      width="130.28750000000002" height="110.94"></rect>
+                <path d="M 462, 32
       m -4.8, 0
       a 4.8, 4.8 0 1,0 9.6,0
       a 4.8, 4.8 0 1,0 -9.6,0" style="fill: red;" role="presentation" shape-rendering="auto"></path>
-        <path d="M 462, 87.47
+                <path d="M 462, 87.47
       m -4.8, 0
       a 4.8, 4.8 0 1,0 9.6,0
       a 4.8, 4.8 0 1,0 -9.6,0" style="fill: green;" role="presentation" shape-rendering="auto"></path>
-        <text direction="inherit" dx="0" x="476.4" y="23.39" id="chart-legend-7-labels-0">
-            <tspan x="476.4" dx="0" dy="0" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.working_point')}}
-            </tspan>
-            <tspan x="476.4" dx="0" dy="12" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.flow') . ": " . $working_point['flow']}}
-            </tspan>
-            <tspan x="476.4" dx="0" dy="12" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.head') . ": " . $working_point['head']}}
-            </tspan>
-        </text>
-        <text direction="inherit" dx="0" x="476.4" y="78.86" id="chart-legend-7-labels-1">
-            <tspan x="476.4" dx="0" dy="0" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.intersection_point')}}
-            </tspan>
-            <tspan x="476.4" dx="0" dy="12" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.flow') . ": " . round( $intersection_point['flow'], 1)}}
-            </tspan>
-            <tspan x="476.4" dx="0" dy="12" text-anchor="start"
-                   style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
-                {{__('graphic.legend.head') . ": " . round( $intersection_point['head'], 1)}}
-            </tspan>
-        </text>
-    </g>
+                <text direction="inherit" dx="0" x="476.4" y="23.39" id="chart-legend-7-labels-0">
+                    <tspan x="476.4" dx="0" dy="0" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.working_point')}}
+                    </tspan>
+                    <tspan x="476.4" dx="0" dy="12" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.flow') . ": " . $working_point['flow']}}
+                    </tspan>
+                    <tspan x="476.4" dx="0" dy="12" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.head') . ": " . $working_point['head']}}
+                    </tspan>
+                </text>
+                <text direction="inherit" dx="0" x="476.4" y="78.86" id="chart-legend-7-labels-1">
+                    <tspan x="476.4" dx="0" dy="0" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.intersection_point')}}
+                    </tspan>
+                    <tspan x="476.4" dx="0" dy="12" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.flow') . ": " . round( $intersection_point['flow'], 1)}}
+                    </tspan>
+                    <tspan x="476.4" dx="0" dy="12" text-anchor="start"
+                           style="font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 12px; letter-spacing: normal; padding: 8px; fill: rgb(69, 90, 100); stroke: transparent; stroke-width: 0px;">
+                        {{__('graphic.legend.head') . ": " . round( $intersection_point['head'], 1)}}
+                    </tspan>
+                </text>
+            </g>
+        @endisset
+    @endisset
 </svg>
 {{--</body>--}}
 {{--</html>--}}

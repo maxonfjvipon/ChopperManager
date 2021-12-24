@@ -60,8 +60,8 @@ class ShowProjectResource extends JsonResource
                         'selected_pump_name' => $selection->selected_pump_name,
                         'discounted_price' => round($discounted_pump_price, 1) ?? null,
                         'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1) ?? null,
-                        'rated_power' => $selection->pump->rated_power,
-                        'total_rated_power' => round($selection->pump->rated_power * $selection->pumps_count, 4),
+                        'rated_power' => $selection->pump_rated_power,
+                        'total_rated_power' => $selection->total_rated_power,
                         'pumpable_type' => $selection->pump_type
                     ];
                 })->all(),

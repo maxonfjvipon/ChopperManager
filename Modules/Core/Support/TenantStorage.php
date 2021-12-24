@@ -4,33 +4,28 @@ namespace Modules\Core\Support;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
+use Modules\AdminPanel\Entities\Tenant;
 
 class TenantStorage
 {
-    use UsesTenantModel;
-
     private Filesystem $storage;
     private string $noImageName = "no_image.jpg";
+    private string $currentTenantFolder;
 
     public function __construct($disk = 'media')
     {
         $this->storage = Storage::disk($disk);
-    }
-
-    public function currentTenantFolder(): string
-    {
-        return $this->getTenantModel()::current()->id . '/';
+        $this->currentTenantFolder = Tenant::current()->id . '/';
     }
 
     public function urlToTenantFolder(): string
     {
-        return $this->storage->url($this->currentTenantFolder());
+        return $this->storage->url($this->currentTenantFolder);
     }
 
     public function urlToImage($name): string
     {
-        $fullPath = $this->currentTenantFolder() . $name;
+        $fullPath = $this->currentTenantFolder . $name;
         return ($name && $this->storage->exists($fullPath))
             ? $this->storage->url($fullPath)
             : $this->storage->url($this->noImageName);
@@ -38,7 +33,7 @@ class TenantStorage
 
     public function urlToFile($name): ?string
     {
-        $fullPath = $this->currentTenantFolder() . $name;
+        $fullPath = $this->currentTenantFolder . $name;
         return ($name && $this->storage->exists($fullPath))
             ? $this->storage->url($name)
             : null;
@@ -46,6 +41,6 @@ class TenantStorage
 
     public function putFileTo($folder, $file): bool|string
     {
-        return $this->storage->putFileAs($this->currentTenantFolder() . $folder, $file, $file->getClientOriginalName());
+        return $this->storage->putFileAs($this->currentTenantFolder . $folder, $file, $file->getClientOriginalName());
     }
 }

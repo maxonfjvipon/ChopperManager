@@ -64,6 +64,7 @@ class DoublePumpImporter extends PumpImporter
 
     protected function attributes(): array
     {
+        // todo: change performances
         return [
             '0' => __('validation.attributes.import.pumps.article_num_main'),
             '1' => __('validation.attributes.import.pumps.article_num_reserve'),
@@ -81,8 +82,8 @@ class DoublePumpImporter extends PumpImporter
             '13' => __('validation.attributes.import.pumps.fluid_temp_max'),
             '14' => __('validation.attributes.import.pumps.ptp_length'),
             '15' => __('validation.attributes.import.pumps.mains_connection'),
-            '16' => __('validation.attributes.import.pumps.dp_peak_performance'),
-            '17' => __('validation.attributes.import.pumps.dp_standby_performance'),
+            '16' => __('validation.attributes.import.pumps.dp_standby_performance'),
+            '17' => __('validation.attributes.import.pumps.dp_peak_performance'),
             '18' => __('validation.attributes.import.pumps.description'),
             '19' => __('validation.attributes.import.pumps.pump_image'),
             '20' => __('validation.attributes.import.pumps.pump_sizes_image'),

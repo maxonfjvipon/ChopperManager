@@ -104,31 +104,25 @@ class DoublePumpSelectionService extends PumpableTypeSelectionService
                     : 0;
                 $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discount->value / 100;
 
-                $selectedPumps[] = array_merge(
-                    [
-                        'key' => $num++,
-                        'name' => $pump->brand->name . ' ' . $pump->name,
-                        'pump_id' => $pump->id,
-                        'articleNum' => $pump->article_num_main,
-                        'retailPrice' => $pump_price,
-                        'discountedPrice' => round($pump_price_with_discount, 2),
-                        'retailPriceSum' => $pump_price,
-                        'discountedPriceSum' => round($pump_price_with_discount, 2),
-                        'dnSuction' => $pump->dn_suction->value,
-                        'dnPressure' => $pump->dn_pressure->value,
-                        'rated_power' => $pump->rated_power * 2,
-                        'powerSum' => $pump->rated_power * 2,
-                        'ptpLength' => $pump->ptp_length,
-                        'head' => $head,
-                        'flow' => $flow,
-                        'fluid_temperature' => $request->fluid_temperature,
-//                        'intersection_point' => [
-//                            'flow' => $intersectionPoint->x(),
-//                            'head' => $intersectionPoint->y()
-//                        ],
-                        'dp_work_scheme_id' => $request->dp_work_scheme_id,
-                    ], $this->pumpInfo($pump, $tenantStorage)
-                );
+                $selectedPumps[] = [
+                    'key' => $num++,
+                    'name' => $pump->brand->name . ' ' . $pump->name,
+                    'pump_id' => $pump->id,
+                    'articleNum' => $pump->article_num_main,
+                    'retailPrice' => $pump_price,
+                    'discountedPrice' => round($pump_price_with_discount, 2),
+                    'retailPriceSum' => $pump_price,
+                    'discountedPriceSum' => round($pump_price_with_discount, 2),
+                    'dnSuction' => $pump->dn_suction->value,
+                    'dnPressure' => $pump->dn_pressure->value,
+                    'rated_power' => $pump->rated_power * 2,
+                    'powerSum' => $pump->rated_power * 2,
+                    'ptpLength' => $pump->ptp_length,
+                    'head' => $head,
+                    'flow' => $flow,
+                    'fluid_temperature' => $request->fluid_temperature,
+                    'dp_work_scheme_id' => $request->dp_work_scheme_id,
+                ];
             }
         }
         return $this->selectResponse($selectedPumps, $flow, $head);

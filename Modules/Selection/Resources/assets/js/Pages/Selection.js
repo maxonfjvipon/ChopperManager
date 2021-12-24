@@ -11,7 +11,6 @@ import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/P
 import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/RoundedCard";
 import {SelectedPumpsTable} from "../Components/SelectedPumpsTable";
 import {BoxFlexEnd} from "../../../../../../resources/js/src/Shared/Box/BoxFlexEnd";
-import {PumpPropsDrawer} from "../Components/PumpPropsDrawer";
 import {FiltersDrawer} from "../Components/FiltersDrawer";
 import {ExportAtOnceSelectionDrawer} from "../Components/ExportAtOnceSelectionDrawer";
 import {usePage} from "@inertiajs/inertia-react";
@@ -22,6 +21,9 @@ import {useDebounce} from "../../../../../../resources/js/src/Hooks/debounce.hoo
 import {useForm} from "antd/es/form/Form";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
+import {usePumpableType} from "../../../../../../resources/js/src/Hooks/pumpable_type.hook";
+import {usePumpInfo} from "../../../../../../resources/js/src/Hooks/pump_info.hook";
+import {PumpPropsDrawer} from "../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer";
 
 export const Selection = ({pageTitle, widths}) => {
     // HOOKS
@@ -34,6 +36,7 @@ export const Selection = ({pageTitle, widths}) => {
     const [fullSelectionForm] = useForm()
     const [additionalFiltersForm] = useForm()
     const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName, color} = useStyles()
+    const pumpableType = usePumpableType()
 
     // console.log(selection_props)
 
@@ -43,6 +46,7 @@ export const Selection = ({pageTitle, widths}) => {
     // const [checkedAll, setCheckedAll] = useState(false)
     // const [indeterminate, setIndeteminate] = useState(true)
     const [hideIcons, setHideIcons] = useState(false)
+    const [pumpInfoVisible, setPumpInfoVisible] = useState(false)
     const [prevHideIcons, setPrevHideIcons] = useState(hideIcons)
     const [updated, setUpdated] = useState(!selection)
     const [useAdditionalFilters, setUseAdditionalFilters] = useState(selection?.data.use_additional_filters || false)
@@ -51,7 +55,6 @@ export const Selection = ({pageTitle, widths}) => {
         : false
     )
     const [filtersDrawerVisible, setFiltersDrawerVisible] = useState(false)
-    const [pumpInfoDrawerVisible, setPumpInfoDrawerVisible] = useState(false)
     const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
     const [reload, setReload] = useState(!selection)
 
@@ -67,6 +70,8 @@ export const Selection = ({pageTitle, widths}) => {
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
+    const [chosenSelectedPumps, setChosenSelectedPumps] = useState({})
+    const [pumpInfo, setPumpInfo] = useState(null)
     const filtersDrawerProps = {
         selection,
         selection_props,
@@ -102,8 +107,6 @@ export const Selection = ({pageTitle, widths}) => {
         : <img src={selection_props.media_path + src} width={60}/>
 
     const checkHideIcons = () => prevHideIcons === hideIcons
-
-    const pumpableType = () => new URLSearchParams(window.location.search).get('pumpable_type')
 
     const hasTemperature = series => debouncedTemperature == null
         || (series.temps_min.length > 0 && series.temps_min[0] <= debouncedTemperature
@@ -356,14 +359,14 @@ export const Selection = ({pageTitle, widths}) => {
     // CHECK CHANGE SELECTION
     useEffect(() => {
         if (stationToShow) {
-            if (stationToShow.svg === undefined) {
+            if (chosenSelectedPumps[stationToShow.key]?.svg === undefined) {
                 const body = {
                     pump_id: stationToShow.pump_id,
                     head: stationToShow.head,
                     flow: stationToShow.flow,
                     dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
                     pumps_count: stationToShow.pumps_count || undefined,
-                    main_pumps_count: stationToShow.main_pumps_count || stationToShow.main_pumps_count,
+                    main_pumps_count: stationToShow.main_pumps_count || undefined,
                     pumpable_type: pumpableType(),
                 }
                 try {
@@ -373,15 +376,45 @@ export const Selection = ({pageTitle, widths}) => {
                         data: body,
                     }).then(res => {
                         document.getElementById('for-graphic').innerHTML = res.data
-                        stationToShow.svg = res.data
+                        chosenSelectedPumps[stationToShow.key] = {
+                            ...chosenSelectedPumps[stationToShow.key],
+                            svg: res.data,
+                        }
+                        setChosenSelectedPumps(chosenSelectedPumps)
                     })
                 } catch (e) {
                 }
             } else {
-                document.getElementById('for-graphic').innerHTML = stationToShow.svg
+                document.getElementById('for-graphic').innerHTML = chosenSelectedPumps[stationToShow.key].svg
             }
+        } else {
+            setChosenSelectedPumps({})
         }
     }, [stationToShow])
+
+    const showPumpInfo = async event => {
+        event.preventDefault()
+        if (chosenSelectedPumps[stationToShow.key]?.pump_info === undefined) {
+            const data = await postRequest(tRoute('pumps.show', stationToShow.pump_id), {
+                pumpable_type: pumpableType(),
+                need_curves: false,
+            })
+            setPumpInfo(data)
+            chosenSelectedPumps[stationToShow.key] = {
+                ...chosenSelectedPumps[stationToShow.key],
+                pump_info: data
+            }
+        } else {
+            // console.log(pumpInfo, stationToShow, chosenSelectedPumps)
+            if (pumpInfo.id === stationToShow.pump_id) {
+                // console.log('equal')
+                setPumpInfoVisible(true)
+            } else {
+                // console.log('new')
+                setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info)
+            }
+        }
+    }
 
     // IF ROUTE IS 'selections.show'
     useEffect(() => {
@@ -776,10 +809,7 @@ export const Selection = ({pageTitle, widths}) => {
                                             e.preventDefault()
                                             setExportDrawerVisible(true)
                                         }}>{Lang.get('pages.selections.single_pump.graphic.export')}</a>}
-                                        <a onClick={e => {
-                                            e.preventDefault()
-                                            setPumpInfoDrawerVisible(true)
-                                        }}>
+                                        <a onClick={showPumpInfo}>
                                             {Lang.get('pages.selections.single_pump.graphic.info')}>>
                                         </a>
                                     </Space>}
@@ -819,11 +849,11 @@ export const Selection = ({pageTitle, widths}) => {
                     </>}
                 </Space>
             </BoxFlexEnd>
-            {stationToShow && <PumpPropsDrawer
-                visible={pumpInfoDrawerVisible}
-                setVisible={setPumpInfoDrawerVisible}
-                pumpInfo={stationToShow?.pump_info}
-            />}
+            <PumpPropsDrawer
+                visible={pumpInfoVisible}
+                setVisible={setPumpInfoVisible}
+                pumpInfo={pumpInfo}
+            />
             <FiltersDrawer {...filtersDrawerProps}/>
             {(stationToShow && has('selection_export')) && <ExportAtOnceSelectionDrawer
                 visible={exportDrawerVisible}

@@ -56,8 +56,7 @@ export default function Show() {
         {
             title: Lang.get('pages.projects.show.table.part_num'),
             dataIndex: 'article_num',
-            render: (_, record) => <Link
-                href={tRoute('pumps.show', record.pump_id) + '?pumpable_type=' + record.pumpable_type}>{record.article_num}</Link>
+            render: (_, record) => <a>{record.article_num}</a>
         },
         {
             title: Lang.get('pages.projects.show.table.consumption'),

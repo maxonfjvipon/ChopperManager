@@ -120,32 +120,26 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
                         : 0;
                     $pump_price_with_discount = $pump_price - $pump_price * $pump->series->discount->value / 100;
 
-                    $selectedPumps[] = array_merge(
-                        [
-                            'key' => $num++,
-                            'pumps_count' => $pumpsCount,
-                            'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->name,
-                            'pump_id' => $pump->id,
-                            'articleNum' => $pump->article_num_main,
-                            'retailPrice' => $pump_price,
-                            'discountedPrice' => round($pump_price_with_discount, 2),
-                            'retailPriceSum' => round($pump_price * $pumpsCount, 2),
-                            'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
-                            'dnSuction' => $pump->dn_suction->value,
-                            'dnPressure' => $pump->dn_pressure->value,
-                            'rated_power' => $pump->rated_power,
-                            'powerSum' => round($pump->rated_power * $pumpsCount, 4),
-                            'ptpLength' => $pump->ptp_length,
-                            'head' => $head,
-                            'flow' => $flow,
-                            'main_pumps_count' => $mainPumpsCount,
-                            'fluid_temperature' => $request->fluid_temperature,
-//                            'intersection_point' => [
-//                                'flow' => $intersectionPoint->x(),
-//                                'head' => $intersectionPoint->y()
-//                            ],
-                        ], $this->pumpInfo($pump, $tenantStorage)
-                    );
+                    $selectedPumps[] = [
+                        'key' => $num++,
+                        'pumps_count' => $pumpsCount,
+                        'name' => $pumpsCount . ' ' . $pump->brand->name . ' ' . $pump->name,
+                        'pump_id' => $pump->id,
+                        'articleNum' => $pump->article_num_main,
+                        'retailPrice' => $pump_price,
+                        'discountedPrice' => round($pump_price_with_discount, 2),
+                        'retailPriceSum' => round($pump_price * $pumpsCount, 2),
+                        'discountedPriceSum' => round($pump_price_with_discount * $pumpsCount, 2),
+                        'dnSuction' => $pump->dn_suction->value,
+                        'dnPressure' => $pump->dn_pressure->value,
+                        'rated_power' => $pump->rated_power,
+                        'powerSum' => round($pump->rated_power * $pumpsCount, 4),
+                        'ptpLength' => $pump->ptp_length,
+                        'head' => $head,
+                        'flow' => $flow,
+                        'main_pumps_count' => $mainPumpsCount,
+                        'fluid_temperature' => $request->fluid_temperature,
+                    ];
                 }
             }
         }

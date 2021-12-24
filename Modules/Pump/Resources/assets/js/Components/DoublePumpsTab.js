@@ -1,35 +1,12 @@
-import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import Lang from "../../../../../../resources/js/translation/lang";
-import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
-import {View} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
-import {useEffect, useState} from "react";
-import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
-import {Inertia} from "@inertiajs/inertia";
-import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
-import {PumpsTable} from "./PumpsTable";
+import {useState} from "react";
+import {usePage} from "@inertiajs/inertia-react";
+import {PumpsTab} from "./PumpsTab";
 
-export const DoublePumpsTab = ({filter_data}) => {
-    const [loading, setLoading] = useState(true)
-    const {postRequest} = useHttp()
-    const {has} = usePermissions()
-    const tRoute = useTransRoutes()
-
-    const [pumps, setPumps] = useState([])
-
-    const showPumpClickHandler = id => () => {
-        Inertia.get(tRoute('pumps.show', id) + '?pumpable_type=double_pump')
-    }
-
-    useEffect(() => {
-        postRequest(tRoute('pumps.load'), {
-            pumpable_type: 'double_pump'
-        }).then(pumps => {
-            // console.log('double pumps')
-            setPumps(pumps)
-            setLoading(false)
-        })
-    }, [])
+export const DoublePumpsTab = ({setPumpInfo}) => {
+    const {filter_data} = usePage().props
+    const [brandsToShow, setBrandsToShow] = useState([])
+    const [seriesToShow, setSeriesToShow] = useState([])
 
     const columns = [
         {
@@ -51,14 +28,14 @@ export const DoublePumpsTab = ({filter_data}) => {
             title: Lang.get('pages.pumps.data.brand'),
             dataIndex: 'brand',
             width: 100,
-            filters: filter_data.brands,
+            filters: brandsToShow,
             onFilter: (brand, record) => record.brand === brand
         },
         {
             title: Lang.get('pages.pumps.data.series'),
             dataIndex: 'series',
             width: 100,
-            filters: filter_data.series,
+            filters: seriesToShow,
             onFilter: (series, record) => record.series === series
         },
         {
@@ -66,13 +43,6 @@ export const DoublePumpsTab = ({filter_data}) => {
             dataIndex: 'name',
             width: 150
         },
-        // {
-        //     title: Lang.get('pages.pumps.data.category'),
-        //     dataIndex: 'category',
-        //     width: 100,
-        //     filters: filter_data.categories,
-        //     onFilter: (category, record) => record.category === category
-        // },
         {
             title: Lang.get('pages.pumps.data.price'),
             dataIndex: 'price',
@@ -184,18 +154,16 @@ export const DoublePumpsTab = ({filter_data}) => {
             filters: filter_data.applications,
             onFilter: (application, record) => record.applications.split(', ').includes(application)
         },
-        {
-            key: 'actions', width: "1%", render: (_, record) => {
-                return (
-                    <TableActionsContainer>
-                        {has('pump_show') && <View clickHandler={showPumpClickHandler(record.id)}/>}
-                    </TableActionsContainer>
-                )
-            }
-        }
     ]
 
     return (
-        <PumpsTable pumps={pumps} loading={loading} columns={columns} showPumpClickHandler={showPumpClickHandler}/>
+        <PumpsTab
+            setPumpInfo={setPumpInfo}
+            columns={columns}
+            pumpable_type='double_pump'
+            setSeriesToShow={setSeriesToShow}
+            setBrandsToShow={setBrandsToShow}
+            filter_data={filter_data}
+        />
     )
 }

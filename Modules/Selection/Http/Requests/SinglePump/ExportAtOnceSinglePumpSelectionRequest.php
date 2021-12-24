@@ -18,8 +18,8 @@ class ExportAtOnceSinglePumpSelectionRequest extends ExportAtOnceSelectionReques
             'pump_id' => ['required', 'exists:tenant.pumps,id'],
             'pumps_count' => ['required', 'numeric', 'max:9', 'min:1'],
             'reserve_pumps_count' => ['required', 'numeric', 'max:4', 'min:0'],
-            'flow' => ['required', 'numeric'],
-            'head' => ['required', 'numeric'],
+            'flow' => ['sometimes', 'nullable', 'numeric'],
+            'head' => ['sometimes', 'nullable', 'numeric'],
             'fluid_temperature' => ['required', 'numeric']
         ]);
     }

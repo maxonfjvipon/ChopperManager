@@ -97,8 +97,8 @@
                     <td>{{$selection->retail_price}}</td>
                     <td>{{$selection->total_retail_price}}</td>
                 @endif
-                <td>{{$selection->pump->rated_power}}</td>
-                <td>{{round($selection->pump->rated_power * $selection->pumps_count, 2)}}</td>
+                <td>{{$selection->pump_rated_power}}</td>
+                <td>{{$selection->total_rated_power}}</td>
             </tr>
         @endforeach
         @if($request->personal_price || $request->retail_price)

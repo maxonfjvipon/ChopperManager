@@ -35,11 +35,13 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
                 name: 'selection_ids',
             }, input: <MultipleSelection options={project?.selections.map(selection => {
                 return {
-                    customValue: selection.selected_pump_name + " ["
-                        + selection.flow
-                        + Lang.get('pages.projects.export.m3h') + ", "
-                        + selection.head
-                        + Lang.get('pages.projects.export.m') + ']',
+                    customValue: selection.selected_pump_name + ((selection.flow && selection.head)
+                        ? (" ["
+                            + selection.flow
+                            + Lang.get('pages.projects.export.m3h') + ", "
+                            + selection.head
+                            + Lang.get('pages.projects.export.m') + ']')
+                        : ''),
                     ...selection,
                 }
             })} placeholder={Lang.get('pages.projects.export.choose_selections')}/>
@@ -104,7 +106,8 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
         },
         {
             values: {}, input:
-                <PrimaryButton loading={loading} onClick={exportHandler}>{Lang.get('pages.projects.export.button')}</PrimaryButton>
+                <PrimaryButton loading={loading}
+                               onClick={exportHandler}>{Lang.get('pages.projects.export.button')}</PrimaryButton>
         }
     ]
 
