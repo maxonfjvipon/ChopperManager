@@ -15,6 +15,7 @@ class ChangePumpBrandIdsFieldInSelectionsTable extends Migration
     {
         Schema::table('selections', function (Blueprint $table) {
             $table->string('pump_brand_ids')->nullable()->change();
+
         });
     }
 
