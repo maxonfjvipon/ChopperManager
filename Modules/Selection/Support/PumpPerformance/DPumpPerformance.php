@@ -11,8 +11,8 @@ class DPumpPerformance extends PPumpPerformance
 
     public function __construct($pump)
     {
-        parent::__construct($pump, 'dp_peak_performance');
-        $this->dbPerformanceAsArray = $this->performanceAsArray($pump->dp_standby_performance);
+        parent::__construct($pump, 'dp_standby_performance');
+        $this->dbPerformanceAsArray = $this->performanceAsArray($pump->dp_peak_performance);
     }
 
     protected function getPerformanceAsArray($position = 1): array

@@ -26,28 +26,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Tenant::all()->eachCurrent(function (Tenant $tenant) {
-            $database = $tenant->database;
-            DB::table($database . '.pumps_and_coefficients')->delete();
-            $pumps = Pump::all();
-            $pumpsAndCoefficients = [];
+            $peak_performances = DB::table($tenant->database . '.pumps')
+                ->where('pumpable_type', Pump::$DOUBLE_PUMP)
+                ->pluck('dp_peak_performance', 'id')
+                ->all();
+            $standby_performances = DB::table($tenant->database . '.pumps')
+                ->where('pumpable_type', Pump::$DOUBLE_PUMP)
+                ->pluck('dp_standby_performance', 'id')
+                ->all();
+//            dd($peak_performances, $standby_performances);
+            $pumps = Pump::where('pumpable_type', Pump::$DOUBLE_PUMP)->get();
             foreach ($pumps as $pump) {
-                if ($pump->pumpable_type === Pump::$SINGLE_PUMP) {
-                    $pump->update([
-                        'sp_performance' => str_replace(',', '.', $pump->sp_performance)
-                    ]);
-                } else {
-                    $pump->update([
-                        'dp_peak_performance' => str_replace(',', '.', $pump->dp_peak_performance),
-                        'dp_standby_performance' => str_replace(',', '.', $pump->dp_standby_performance)
-                    ]);
-                }
-                $count = $pump->coefficientsCount();
-                $pumpPerformance = PPumpPerformance::construct($pump);
-                for ($pos = 1; $pos <= $count; ++$pos) {
-                    $pumpsAndCoefficients[] = $pumpPerformance->coefficientsToCreate($pos);
-                }
+                $pump->update([
+                    'dp_standby_performance' => $peak_performances[$pump->id],
+                    'dp_peak_performance' => $standby_performances[$pump->id]
+                ]);
             }
-            DB::table($database . '.pumps_and_coefficients')->insert($pumpsAndCoefficients);
         });
     }
 }
