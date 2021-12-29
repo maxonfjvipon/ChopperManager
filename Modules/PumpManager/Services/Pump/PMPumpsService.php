@@ -64,9 +64,9 @@ class PMPumpsService extends PumpsService
         return response()->json($this->service->pumpResource($pump));
     }
 
-    protected function loadedPumps(): array
+    protected function loadedPumps($filter): array
     {
-        return $this->service->queryPumps()
+        return $this->service->pumpsBuilder($filter)
             ->availableForCurrentUser()
             ->get()
             ->map(fn(Pump $pump) => $this->service->loadPumpResource($pump))

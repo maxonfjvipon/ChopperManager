@@ -5,6 +5,9 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
+import {Divider, Input, Space} from "antd";
+import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
+import {useDebounce} from "../../../../../../resources/js/src/Hooks/debounce.hook";
 
 export const PumpsTab = ({
                              columns,
@@ -17,6 +20,7 @@ export const PumpsTab = ({
     const {postRequest, loading} = useHttp()
     const {has} = usePermissions()
     const tRoute = useTransRoutes()
+    const searchFieldId = 'search-pumps-input' + pumpable_type
 
     const [pumps, setPumps] = useState([])
 
@@ -48,22 +52,47 @@ export const PumpsTab = ({
         }
     }, [pumps])
 
+    const searchClickHandler = async () => {
+        const value = document.getElementById(searchFieldId).value.toLowerCase()
+        try {
+            const pumps = await postRequest(tRoute('pumps.load'), {
+                pumpable_type,
+                filter: value,
+            })
+            setPumps(pumps)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
-        <TTable
-            columns={[...columns, {
-                key: 'actions', width: "1%", render: (_, record) => {
-                    return (
-                        <TableActionsContainer>
-                            {has('pump_show') && <View clickHandler={showPumpClickHandler(record.id)}/>}
-                        </TableActionsContainer>
-                    )
-                }
-            }]}
-            dataSource={pumps}
-            clickRecord
-            doubleClickHandler={has('pump_show') && showPumpClickHandler}
-            scroll={{x: 4000, y: "70vh"}}
-            loading={loading}
-        />
+        <>
+            <Space style={{marginBottom: "8px"}}>
+                <Input
+                    id={searchFieldId}
+                    allowClear
+                    style={{width: 300}}
+                />
+                <PrimaryButton loading={loading} onClick={searchClickHandler}>
+                    Search
+                </PrimaryButton>
+            </Space>
+            <TTable
+                columns={[...columns, {
+                    key: 'actions', width: "1%", render: (_, record) => {
+                        return (
+                            <TableActionsContainer>
+                                {has('pump_show') && <View clickHandler={showPumpClickHandler(record.id)}/>}
+                            </TableActionsContainer>
+                        )
+                    }
+                }]}
+                dataSource={pumps}
+                clickRecord
+                doubleClickHandler={has('pump_show') && showPumpClickHandler}
+                scroll={{x: 4000, y: "70vh"}}
+                loading={loading}
+            />
+        </>
     )
 }

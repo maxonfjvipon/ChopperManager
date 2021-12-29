@@ -47,7 +47,7 @@ class DoublePumpService extends PumpableTypePumpService
         ];
     }
 
-    public function queryPumps(): Builder
+    protected function pumpsQuery(): Builder
     {
         return Pump::with([
             'series',

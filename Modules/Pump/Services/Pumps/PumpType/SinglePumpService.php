@@ -22,27 +22,6 @@ class SinglePumpService extends PumpableTypePumpService
         return new SinglePumpResource($pump);
     }
 
-    /**
-     * @return Builder
-     */
-    public function queryPumps(): Builder
-    {
-        return Pump::with([
-            'series',
-            'series.brand',
-            'series.power_adjustment',
-            'series.category',
-            'series.applications',
-            'series.types'
-        ])
-            ->with('mains_connection')
-            ->with('dn_suction')
-            ->with('dn_pressure')
-            ->with('connection_type')
-            ->with(['price_list', 'price_list.currency'])
-            ->singlePumps();
-    }
-
     public function loadPumpResource(Pump $pump): array
     {
         return [
@@ -71,5 +50,24 @@ class SinglePumpService extends PumpableTypePumpService
             'types' => $pump->types,
             'pumpable_type' => $pump->pumpable_type
         ];
+    }
+
+    protected function pumpsQuery(): Builder
+    {
+        return Pump::with([
+            'series',
+            'series.brand',
+            'series.power_adjustment',
+            'series.category',
+            'series.applications',
+            'series.types'
+        ])
+
+            ->with('mains_connection')
+            ->with('dn_suction')
+            ->with('dn_pressure')
+            ->with('connection_type')
+            ->with(['price_list', 'price_list.currency'])
+            ->singlePumps();
     }
 }

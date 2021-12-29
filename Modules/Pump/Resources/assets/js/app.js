@@ -4,7 +4,6 @@ import {default as SeriesIndex} from './Pages/PumpSeries/Index'
 import {default as SeriesEdit} from './Pages/PumpSeries/Edit'
 import {default as SeriesCreate} from './Pages/PumpSeries/Create'
 import {default as PumpsIndex} from './Pages/Pumps/Index'
-import {default as PumpsShow} from './Pages/Pumps/Show'
 
 export default {
     'PumpBrands/Edit': BrandsEdit,
@@ -13,5 +12,4 @@ export default {
     'PumpSeries/Create': SeriesCreate,
     'PumpSeries/Edit': SeriesEdit,
     'Pumps/Index': PumpsIndex,
-    'Pumps/Show': PumpsShow,
 }

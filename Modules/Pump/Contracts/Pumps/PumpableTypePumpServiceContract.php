@@ -12,5 +12,5 @@ interface PumpableTypePumpServiceContract
 
     public function loadPumpResource(Pump $pump): array;
 
-    public function queryPumps(): Builder;
+    public function pumpsBuilder($searchFilter): Builder;
 }

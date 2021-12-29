@@ -37,7 +37,7 @@ class PPPumpsService extends PumpsService
         ];
     }
 
-    protected function loadedPumps(): array
+    protected function loadedPumps($filter): array
     {
         // TODO: Implement loadedPumps() method.
     }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Pump\Contracts\Pumps\PumpsServiceContract;
+use Modules\Pump\Http\Requests\LoadPumpsRequest;
 use Modules\Pump\Services\Pumps\PumpType\PumpableTypePumpService;
 
 abstract class PumpsService implements PumpsServiceContract
@@ -26,7 +27,7 @@ abstract class PumpsService implements PumpsServiceContract
      */
     abstract protected function pumpsFilterDataResource(): array;
 
-    abstract protected function loadedPumps(): array;
+    abstract protected function loadedPumps(string $filter): array;
 
     public function index(): Response
     {
@@ -41,18 +42,14 @@ abstract class PumpsService implements PumpsServiceContract
         return 'Pump::Pumps/Index';
     }
 
-    public function showPath(): string
-    {
-        return 'Pump::Pumps/Show';
-    }
-
     /**
      * Load pumps
      *
+     * @param LoadPumpsRequest $request
      * @return JsonResponse
      */
-    public function load(): JsonResponse
+    public function load(LoadPumpsRequest $request): JsonResponse
     {
-        return response()->json($this->loadedPumps());
+        return response()->json($this->loadedPumps($request->filter));
     }
 }

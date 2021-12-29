@@ -17,6 +17,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Http\Requests\AddPumpToProjectsRequest;
+use Modules\Pump\Http\Requests\LoadPumpsRequest;
 use Modules\Pump\Http\Requests\PumpableRequest;
 use Modules\Pump\Http\Requests\PumpShowRequest;
 use Modules\Pump\Services\Pumps\PumpsService;
@@ -48,12 +49,12 @@ class PumpsController extends Controller
 
 
     /**
-     * @param PumpableRequest $request
+     * @param LoadPumpsRequest $request
      * @return JsonResponse
      */
-    public function load(PumpableRequest $request): JsonResponse
+    public function load(LoadPumpsRequest $request): JsonResponse
     {
-        return $this->service->load();
+        return $this->service->load($request);
     }
 
     /**
