@@ -165,7 +165,7 @@ export const Selection = ({pageTitle, widths}) => {
 
     // SAVE HANDLER
     const addSelectionToProjectClickHandler = (method) => async () => {
-        // yaCounter86716585.reachGoal('add-selection-to-project')
+        yaCounter86716585.reachGoal('add-selection-to-project')
         setAddLoading(true)
         setReload(false)
         const body = {
@@ -198,7 +198,7 @@ export const Selection = ({pageTitle, widths}) => {
 
     // MAKE SELECTION HANDLER
     const makeSelectionHandler = async () => {
-        // yaCounter86716585.reachGoal('make-select')
+        yaCounter86716585.reachGoal('make-select')
         if (isArrayEmpty(brandsSeriesListValues)) {
             message.warning(Lang.get('messages.selections.no_series_selected'))
             return
