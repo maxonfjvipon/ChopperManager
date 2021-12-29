@@ -113,7 +113,7 @@ export const Selection = ({pageTitle, widths}) => {
             && series.temps_max.length > 0 && series.temps_max[1] >= debouncedTemperature)
 
     const seriesColorStyle = (hasTemp, series) => color(hasTemp
-        ? ((debouncedTemperature >= series.temps_min[1] && debouncedTemperature <= series.temps_max[0])
+        ? (debouncedTemperature == null || (debouncedTemperature >= series.temps_min[1] && debouncedTemperature <= series.temps_max[0])
             ? 'black'
             : 'orange')
         : 'red')
@@ -232,7 +232,9 @@ export const Selection = ({pageTitle, widths}) => {
                 let children = []
                 brand.series.forEach(series => {
                     let hasTemp = hasTemperature(series)
+                    console.log(hasTemp)
                     const colorStyle = seriesColorStyle(hasTemp, series)
+                    console.log(colorStyle)
                     _brandsSeriesList.push({
                         label: <>
                             {!hideIcons && seriesIcon(series.image)}
