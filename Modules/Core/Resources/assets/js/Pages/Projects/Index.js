@@ -16,28 +16,41 @@ import {PrimaryAction} from "../../../../../../../resources/js/src/Shared/Resour
 import {SecondaryAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/SecondaryAction";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {ExportProjectDrawer} from "../../Components/ExportProjectDrawer";
+import {useDate} from "../../../../../../../resources/js/src/Hooks/date.hook";
+import {SearchInput} from "../../../../../../../resources/js/src/Shared/SearchInput";
 
 export default function Index() {
-    // STATE
-    const [exportProjectDrawerVisible, setExportProjectDrawerVisible] = useState(false)
-    const [project, setProject] = useState(null)
-
     // HOOKS
     const tRoute = useTransRoutes()
     const {projects} = usePage().props
     const {has, filterPermissionsArray} = usePermissions()
     const {openRestoreNotification} = useNotifications()
+    const {compareDate} = useDate()
+
+    // STATE
+    const [exportProjectDrawerVisible, setExportProjectDrawerVisible] = useState(false)
+    const [project, setProject] = useState(null)
+    const [projectsToShow, setProjectsToShow] = useState(projects)
 
     // CONSTS
+    const searchId = 'project-search-input'
     const columns = [
-        {title: Lang.get('pages.projects.index.table.created_at'), dataIndex: 'created_at'},
+        {
+            title: Lang.get('pages.projects.index.table.created_at'),
+            dataIndex: 'created_at',
+            sorter: (a, b) => compareDate(a.created_at, b.created_at)
+        },
         {
             title: Lang.get('pages.projects.index.table.name'),
             dataIndex: 'name',
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
             width: '80%'
         },
-        {title: Lang.get('pages.projects.index.table.count'), dataIndex: 'selections_count'},
+        {
+            title: Lang.get('pages.projects.index.table.count'),
+            dataIndex: 'selections_count',
+            sorter: (a, b) => a.selections_count - b.selections_count
+        },
         {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
@@ -79,6 +92,15 @@ export default function Index() {
         Inertia.get(tRoute('projects.show', id))
     }
 
+    const searchProjectClickHandler = () => {
+        const value = document.getElementById(searchId).value.toLowerCase()
+        if (value === "") {
+            setProjectsToShow(projects)
+        } else {
+            setProjectsToShow(projects.filter(project => project.name.toLowerCase().includes(value)))
+        }
+    }
+
     // RENDER
     return (
         <>
@@ -95,9 +117,14 @@ export default function Index() {
                     />
                 ])}
             >
+                <SearchInput
+                    id={searchId}
+                    placeholder={Lang.get('pages.projects.index.search.placeholder')}
+                    searchClickHandler={searchProjectClickHandler}
+                />
                 <TTable
                     columns={columns}
-                    dataSource={projects}
+                    dataSource={projectsToShow}
                     doubleClickHandler={has('project_show') && showProjectHandler}
                 />
             </IndexContainer>

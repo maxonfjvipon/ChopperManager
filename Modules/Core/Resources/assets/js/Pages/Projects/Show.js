@@ -17,6 +17,8 @@ import {ExportProjectDrawer} from "../../Components/ExportProjectDrawer";
 import {ExportSelectionDrawer} from "../../../../../../Selection/Resources/assets/js/Components/ExportSelectionDrawer";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
+import moment from "moment";
+import {useDate} from "../../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function Show() {
     // STATE
@@ -29,6 +31,7 @@ export default function Show() {
     const {project, auth} = usePage().props
     const {has, filterPermissionsArray} = usePermissions()
     const {openRestoreNotification} = useNotifications()
+    const {compareDate} = useDate()
 
     // CONSTS
     const formName = 'project-form'
@@ -46,8 +49,8 @@ export default function Show() {
         {
             title: Lang.get('pages.projects.show.table.created_at'),
             dataIndex: 'created_at',
-            sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
-            defaultSortOrder: 'ascend'
+            sorter: (a, b) => compareDate(a.created_at, b.created_at),
+            // defaultSortOrder: 'ascend'
         },
         {
             title: Lang.get('pages.projects.show.table.selected_pump'),

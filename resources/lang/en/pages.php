@@ -44,6 +44,9 @@ return [
         'back' => 'Back to projects',
         'title' => 'Projects',
         'index' => [
+            'search' => [
+                'placeholder' => 'Search projects by name'
+            ],
             'restore' => [
                 'title' => 'Restore project?',
                 'button' => 'Restore'
