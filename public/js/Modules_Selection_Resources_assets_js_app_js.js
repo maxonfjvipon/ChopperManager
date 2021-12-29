@@ -12229,23 +12229,23 @@ var Selection = function Selection(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              yaCounter86716585.reachGoal('add-selection-to-project');
+              // yaCounter86716585.reachGoal('add-selection-to-project')
               setAddLoading(true);
               setReload(false);
               _context.t0 = _objectSpread;
               _context.t1 = _objectSpread;
               _context.t2 = _objectSpread;
               _context.t3 = {};
-              _context.next = 9;
+              _context.next = 8;
               return fullSelectionForm.validateFields();
 
-            case 9:
+            case 8:
               _context.t4 = _context.sent;
               _context.t5 = (0, _context.t2)(_context.t3, _context.t4);
-              _context.next = 13;
+              _context.next = 12;
               return additionalFiltersForm.validateFields();
 
-            case 13:
+            case 12:
               _context.t6 = _context.sent;
               _context.t7 = (0, _context.t1)(_context.t5, _context.t6);
               _context.t8 = {};
@@ -12269,7 +12269,7 @@ var Selection = function Selection(_ref) {
                 }
               });
 
-            case 19:
+            case 18:
             case "end":
               return _context.stop();
           }
@@ -12286,17 +12286,15 @@ var Selection = function Selection(_ref) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              yaCounter86716585.reachGoal('make-select');
-
               if (!isArrayEmpty(brandsSeriesListValues)) {
-                _context2.next = 4;
+                _context2.next = 3;
                 break;
               }
 
               antd__WEBPACK_IMPORTED_MODULE_28__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.no_series_selected'));
               return _context2.abrupt("return");
 
-            case 4:
+            case 3:
               setStationToShow(null);
               document.getElementById('for-graphic').innerHTML = "";
 
@@ -12308,16 +12306,16 @@ var Selection = function Selection(_ref) {
               _context2.t1 = _objectSpread;
               _context2.t2 = _objectSpread;
               _context2.t3 = {};
-              _context2.next = 13;
+              _context2.next = 12;
               return fullSelectionForm.validateFields();
 
-            case 13:
+            case 12:
               _context2.t4 = _context2.sent;
               _context2.t5 = (0, _context2.t2)(_context2.t3, _context2.t4);
-              _context2.next = 17;
+              _context2.next = 16;
               return additionalFiltersForm.validateFields();
 
-            case 17:
+            case 16:
               _context2.t6 = _context2.sent;
               _context2.t7 = (0, _context2.t1)(_context2.t5, _context2.t6);
               _context2.t8 = {};
@@ -12331,26 +12329,26 @@ var Selection = function Selection(_ref) {
                 pumpable_type: pumpableType()
               };
               body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
-              _context2.prev = 22;
-              _context2.next = 25;
+              _context2.prev = 21;
+              _context2.next = 24;
               return postRequest(tRoute('selections.select'), body, true);
 
-            case 25:
+            case 24:
               data = _context2.sent;
               setSelectedPumps(data.selected_pumps);
-              _context2.next = 31;
+              _context2.next = 30;
               break;
 
-            case 29:
-              _context2.prev = 29;
-              _context2.t10 = _context2["catch"](22);
+            case 28:
+              _context2.prev = 28;
+              _context2.t10 = _context2["catch"](21);
 
-            case 31:
+            case 30:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[22, 29]]);
+      }, _callee2, null, [[21, 28]]);
     }));
 
     return function makeSelectionHandler() {
