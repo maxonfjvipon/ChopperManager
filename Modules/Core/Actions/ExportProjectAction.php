@@ -52,9 +52,9 @@ class ExportProjectAction
             }
 
             $selection->{'discounted_price'} = round($discounted_pump_price, 1) ?? null;
-            $selection->{'total_discounted_price'} = round($discounted_pump_price * $selection->pumps_count, 1) ?? null;
+            $selection->{'total_discounted_price'} = round($discounted_pump_price * $selection->total_pumps_count, 1) ?? null;
             $selection->{'retail_price'} = round($pump_price, 1) ?? null;
-            $selection->{'total_retail_price'} = round($pump_price * $selection->pumps_count, 1) ?? null;
+            $selection->{'total_retail_price'} = round($pump_price * $selection->total_pumps_count, 1) ?? null;
 
             return $selection;
         });

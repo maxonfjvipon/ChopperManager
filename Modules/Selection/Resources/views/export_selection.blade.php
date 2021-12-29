@@ -27,7 +27,7 @@
                         <td class="td-top">{{$selection->fluid_temperature}} °C</td>
                     </tr>
                     @if($selection->pump_type === \Modules\Pump\Entities\Pump::$DOUBLE_PUMP)
-                        @if($selection->db_work_scheme_id !== null)
+                        @if($selection->dp_work_scheme_id !== null)
                             <tr>
                                 <td class="td-top">Схема работы:</td>
                                 <td class="td-top">{{$selection->dp_work_scheme->name}}</td>

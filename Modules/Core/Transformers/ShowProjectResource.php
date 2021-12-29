@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\Support\Rates;
+use Modules\Pump\Entities\Pump;
 
 class ShowProjectResource extends JsonResource
 {
@@ -59,7 +60,7 @@ class ShowProjectResource extends JsonResource
                         'head' => $selection->head,
                         'selected_pump_name' => $selection->selected_pump_name,
                         'discounted_price' => round($discounted_pump_price, 1) ?? null,
-                        'total_discounted_price' => round($discounted_pump_price * $selection->pumps_count, 1) ?? null,
+                        'total_discounted_price' => round($discounted_pump_price * $selection->total_pumps_count, 1) ?? null,
                         'rated_power' => $selection->pump_rated_power,
                         'total_rated_power' => $selection->total_rated_power,
                         'pumpable_type' => $selection->pump_type

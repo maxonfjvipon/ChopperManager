@@ -38,6 +38,14 @@ class Selection extends Model
         };
     }
 
+    public function getTotalPumpsCountAttribute()
+    {
+        return match ($this->pump_type) {
+            Pump::$SINGLE_PUMP => $this->pumps_count,
+            Pump::$DOUBLE_PUMP => 1,
+        };
+    }
+
     #[Pure] public function getTotalRatedPowerAttribute(): float|int
     {
         return match ($this->pump_type) {
