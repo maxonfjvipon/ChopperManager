@@ -197,6 +197,10 @@ return [
         'title' => 'Pumps',
         'props' => 'Properties',
         'back' => 'Back to pumps',
+        'search' => [
+            'placeholder' => 'Search pumps by article nums and name',
+            'button' => 'Search'
+        ],
         'tabs' => [
             'single' => 'Single pumps',
             'double' => 'Double pumps',

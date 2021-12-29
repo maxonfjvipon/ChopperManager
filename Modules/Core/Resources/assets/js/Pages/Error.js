@@ -1,6 +1,6 @@
 import React from 'react'
 import {Result} from "antd";
-import {PrimaryButton} from "../Shared/Buttons/PrimaryButton";
+import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 
 export default function ErrorPage({ status }) {
     const title = {

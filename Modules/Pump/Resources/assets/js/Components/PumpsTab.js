@@ -8,6 +8,7 @@ import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissio
 import {Divider, Input, Space} from "antd";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {useDebounce} from "../../../../../../resources/js/src/Hooks/debounce.hook";
+import Lang from "../../../../../../resources/js/translation/lang";
 
 export const PumpsTab = ({
                              columns,
@@ -69,12 +70,13 @@ export const PumpsTab = ({
         <>
             <Space style={{marginBottom: "8px"}}>
                 <Input
+                    placeholder={Lang.get('pages.pumps.search.placeholder')}
                     id={searchFieldId}
                     allowClear
                     style={{width: 300}}
                 />
                 <PrimaryButton loading={loading} onClick={searchClickHandler}>
-                    Search
+                    {Lang.get('pages.pumps.search.button')}
                 </PrimaryButton>
             </Space>
             <TTable
