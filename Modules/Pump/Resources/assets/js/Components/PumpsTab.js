@@ -5,9 +5,8 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import {Divider, Input, Space} from "antd";
+import {Input, Space} from "antd";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
-import {useDebounce} from "../../../../../../resources/js/src/Hooks/debounce.hook";
 import Lang from "../../../../../../resources/js/translation/lang";
 
 export const PumpsTab = ({

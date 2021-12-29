@@ -11233,12 +11233,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/View */ "./resources/js/src/Shared/Resource/Table/Actions/View.js");
 /* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11264,7 +11263,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -11375,30 +11373,30 @@ var PumpsTab = function PumpsTab(_ref) {
     };
   }();
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
       style: {
         marginBottom: "8px"
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.search.placeholder'),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.pumps.search.placeholder'),
         id: searchFieldId,
         allowClear: true,
         style: {
           width: 300
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_8__.PrimaryButton, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_8__.PrimaryButton, {
         loading: loading,
         onClick: searchClickHandler,
-        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_10__["default"].get('pages.pumps.search.button')
+        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.pumps.search.button')
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_4__.TTable, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_4__.TTable, {
       columns: [].concat(_toConsumableArray(columns), [{
         key: 'actions',
         width: "1%",
         render: function render(_, record) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_5__.TableActionsContainer, {
-            children: has('pump_show') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_6__.View, {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_5__.TableActionsContainer, {
+            children: has('pump_show') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_6__.View, {
               clickHandler: showPumpClickHandler(record.id)
             })
           });
@@ -12452,64 +12450,6 @@ __webpack_require__.r(__webpack_exports__);
   'PumpSeries/Edit': _Pages_PumpSeries_Edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   'Pumps/Index': _Pages_Pumps_Index__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
-
-/***/ }),
-
-/***/ "./resources/js/src/Hooks/debounce.hook.js":
-/*!*************************************************!*\
-  !*** ./resources/js/src/Hooks/debounce.hook.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useDebounce": () => (/* binding */ useDebounce)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-var useDebounce = function useDebounce(value, delay) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
-      _useState2 = _slicedToArray(_useState, 2),
-      debouncedValue = _useState2[0],
-      setDebouncedValue = _useState2[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // Выставить debouncedValue равным value (переданное значение)
-    // после заданной задержки
-    var handler = setTimeout(function () {
-      setDebouncedValue(value);
-    }, delay); // Вернуть функцию очистки, которая будет вызываться каждый раз, когда ...
-    // ... useEffect вызван снова. useEffect будет вызван снова, только если ...
-    // ... value будет изменено (смотри ниже массив зависимостей).
-    // Так мы избегаем изменений debouncedValue, если значение value ...
-    // ... поменялось в рамках интервала задержки.
-    // Таймаут очищается и стартует снова.
-    // Что бы сложить это воедино: если пользователь печатает что-то внутри ...
-    // ... нашего приложения в поле поиска, мы не хотим, чтобы debouncedValue...
-    // ... не менялось до тех пор, пока он не прекратит печатать дольше, чем 500ms.
-
-    return function () {
-      clearTimeout(handler);
-    };
-  }, // Вызывается снова, только если значение изменится
-  // мы так же можем добавить переменную "delay" в массива зависимостей ...
-  // ... если вы собираетесь менять ее динамически.
-  [value]);
-  return debouncedValue;
-};
 
 /***/ }),
 
