@@ -10536,7 +10536,8 @@ function Index() {
     dataIndex: 'created_at',
     sorter: function sorter(a, b) {
       return compareDate(a.created_at, b.created_at);
-    }
+    },
+    defaultSortOrder: ['ascend']
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.index.table.name'),
     dataIndex: 'name',
@@ -10547,7 +10548,10 @@ function Index() {
         children: text
       });
     },
-    width: '80%'
+    width: '80%',
+    sorter: function sorter(a, b) {
+      return a.name.localeCompare(b.name);
+    }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.index.table.count'),
     dataIndex: 'selections_count',

@@ -38,13 +38,15 @@ export default function Index() {
         {
             title: Lang.get('pages.projects.index.table.created_at'),
             dataIndex: 'created_at',
-            sorter: (a, b) => compareDate(a.created_at, b.created_at)
+            sorter: (a, b) => compareDate(a.created_at, b.created_at),
+            defaultSortOrder: ['ascend']
         },
         {
             title: Lang.get('pages.projects.index.table.name'),
             dataIndex: 'name',
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
-            width: '80%'
+            width: '80%',
+            sorter: (a, b) => a.name.localeCompare(b.name)
         },
         {
             title: Lang.get('pages.projects.index.table.count'),
