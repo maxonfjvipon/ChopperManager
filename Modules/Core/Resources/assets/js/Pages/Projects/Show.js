@@ -17,7 +17,6 @@ import {ExportProjectDrawer} from "../../Components/ExportProjectDrawer";
 import {ExportSelectionDrawer} from "../../../../../../Selection/Resources/assets/js/Components/ExportSelectionDrawer";
 import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
-import moment from "moment";
 import {useDate} from "../../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function Show() {
@@ -107,9 +106,8 @@ export default function Show() {
         },
     ]
 
-    // HANDLERS //todo record
+    // HANDLERS
     const showSelectionHandler = record => () => {
-        // console.log(record)
         Inertia.get(tRoute('selections.show', record.id) + '?pumpable_type=' + record.pumpable_type)
     }
 

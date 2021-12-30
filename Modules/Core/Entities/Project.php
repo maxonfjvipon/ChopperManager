@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Entities;
 
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,7 +18,9 @@ class Project extends Model
 {
     protected $guarded = ['id'];
     public $timestamps = false;
-    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel;
+    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait;
+
+    protected $softCascade = ['selections'];
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y'

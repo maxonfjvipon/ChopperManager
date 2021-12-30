@@ -7,6 +7,7 @@ export const SearchInput = ({id, loading = false, searchClickHandler, placeholde
     return (
         <Space style={{marginBottom: "8px"}}>
             <Input
+                onPressEnter={searchClickHandler}
                 placeholder={placeholder}
                 id={id}
                 allowClear

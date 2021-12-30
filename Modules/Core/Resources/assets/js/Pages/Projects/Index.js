@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
@@ -100,6 +100,11 @@ export default function Index() {
             setProjectsToShow(projects.filter(project => project.name.toLowerCase().includes(value)))
         }
     }
+
+    // EFFECTS
+    useEffect(() => {
+        setProjectsToShow(projects)
+    }, [projects])
 
     // RENDER
     return (

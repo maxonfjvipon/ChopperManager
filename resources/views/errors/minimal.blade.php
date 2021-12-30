@@ -522,7 +522,7 @@
             </div>
 
             <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
-                @if($exception->getMessage())
+                @if($exception->getStatusCode() === 401 && $exception->getMessage())
                     {{$exception->getMessage()}}
                 @else
                     @yield('message')

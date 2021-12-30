@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\ModuleResourceServiceInterface;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -135,7 +136,7 @@ class ProjectsController extends Controller implements ModuleResourceServiceInte
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete project
      *
      * @param Project $project
      * @return RedirectResponse

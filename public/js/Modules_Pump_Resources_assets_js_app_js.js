@@ -13964,6 +13964,7 @@ var SearchInput = function SearchInput(_ref) {
       marginBottom: "8px"
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      onPressEnter: searchClickHandler,
       placeholder: placeholder,
       id: id,
       allowClear: true,
