@@ -3,6 +3,7 @@
 namespace Modules\Core\Entities;
 
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Bkwld\Cloner\Cloneable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,11 +17,13 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class Project extends Model
 {
+    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable;
+
     protected $guarded = ['id'];
     public $timestamps = false;
-    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait;
 
     protected $softCascade = ['selections'];
+    protected $cloneable_relations = ['selections'];
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y'

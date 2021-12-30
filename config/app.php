@@ -175,6 +175,7 @@ return [
          */
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Mariuzzo\LaravelJsLocalization\LaravelJsLocalizationServiceProvider::class,
+        Bkwld\Cloner\ServiceProvider::class,
 //        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*

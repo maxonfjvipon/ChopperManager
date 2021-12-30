@@ -9,5 +9,6 @@ return [
     'view' => 'View',
     'export' => 'Export',
     'print' => 'Print',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'clone' => 'Clone',
 ];

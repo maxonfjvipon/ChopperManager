@@ -13,6 +13,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Core\Actions\ExportProjectAction;
 use Modules\Core\Entities\Project;
+use Modules\Core\Http\Requests\CloneProjectRequest;
 use Modules\Core\Http\Requests\ExportProjectRequest;
 use Modules\Core\Http\Requests\ProjectStoreRequest;
 use Modules\Core\Http\Requests\ProjectUpdateRequest;
@@ -177,5 +178,22 @@ class ProjectsController extends Controller implements ModuleResourceServiceInte
         $this->authorize('project_export');
         $this->authorize('project_access_' . $project->id);
         return $action->execute($project, $request);
+    }
+
+    /**
+     * Clone project
+     *
+     * @param CloneProjectRequest $request
+     * @param Project $project
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function clone(CloneProjectRequest $request, Project $project): RedirectResponse
+    {
+        $this->authorize('project_clone');
+        $this->authorize('project_access_' . $project->id);
+        $clone = $project->duplicate();
+        $clone->update($request->validated());
+        return Redirect::route('projects.index');
     }
 }

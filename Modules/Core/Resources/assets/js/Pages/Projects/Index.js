@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Tooltip} from "antd";
+import {Modal, Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import Lang from "../../../../../../../resources/js/translation/lang";
 import {useTransRoutes} from '../../../../../../../resources/js/src/Hooks/routes.hook'
 import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permissions.hook";
 import {useNotifications} from "../../../../../../../resources/js/src/Hooks/notifications.hook";
-import {TableActionsContainer} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {View} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View";
 import {Edit} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
 import {Export} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Export";
@@ -18,6 +17,10 @@ import {TTable} from "../../../../../../../resources/js/src/Shared/Resource/Tabl
 import {ExportProjectDrawer} from "../../Components/ExportProjectDrawer";
 import {useDate} from "../../../../../../../resources/js/src/Hooks/date.hook";
 import {SearchInput} from "../../../../../../../resources/js/src/Shared/SearchInput";
+import {TableActionsContainer} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
+import {Clone} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Clone";
+import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm";
+import {CloneProjectDrawer} from "../../Components/CloneProjectDrawer";
 
 export default function Index() {
     // HOOKS
@@ -31,6 +34,7 @@ export default function Index() {
     const [exportProjectDrawerVisible, setExportProjectDrawerVisible] = useState(false)
     const [project, setProject] = useState(null)
     const [projectsToShow, setProjectsToShow] = useState(projects)
+    const [cloneProjectDrawerVisible, setCloneProjectDrawerVisible] = useState(false)
 
     // CONSTS
     const searchId = 'project-search-input'
@@ -59,7 +63,8 @@ export default function Index() {
                     <TableActionsContainer>
                         {has('project_show') && <View clickHandler={showProjectHandler(record.id)}/>}
                         {has('project_edit') && <Edit clickHandler={editProjectHandler(record.id)}/>}
-                        {has('project_export') && <Export clickHandler={exportProjectHandler(record.id)}/>}
+                        {has('project_clone') && <Clone clickHandler={cloneProjectHandler(record)}/>}
+                        {has('project_export') && <Export clickHandler={exportProjectHandler(record)}/>}
                         {has('project_delete') && <Delete
                             confirmHandler={deleteProjectHandler(record.id)}
                             sureDeleteTitle={Lang.get('pages.projects.index.table.delete')}
@@ -81,8 +86,13 @@ export default function Index() {
             )
     }
 
-    const exportProjectHandler = id => () => {
-        setProject(projects.find(project => project.id === id))
+    const cloneProjectHandler = project => () => {
+        setProject(project)
+        setCloneProjectDrawerVisible(true)
+    }
+
+    const exportProjectHandler = project => () => {
+        setProject(project)
         setExportProjectDrawerVisible(true)
     }
 
@@ -134,7 +144,21 @@ export default function Index() {
                     dataSource={projectsToShow}
                     doubleClickHandler={has('project_show') && showProjectHandler}
                 />
+                <Modal
+                    title={'Clone project'}
+                    onOk={cloneProjectHandler}
+                >
+                    <ItemsForm
+                        layout='vertical'
+                        items={[]}
+                    />
+                </Modal>
             </IndexContainer>
+            <CloneProjectDrawer
+                visible={cloneProjectDrawerVisible}
+                setVisible={setCloneProjectDrawerVisible}
+                project={project}
+            />
             <ExportProjectDrawer
                 visible={exportProjectDrawerVisible}
                 setVisible={setExportProjectDrawerVisible}

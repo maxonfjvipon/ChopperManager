@@ -49,6 +49,7 @@ class CoreDatabaseSeeder extends Seeder
             $permissions[] = 'selection_create_without_saving';
             $permissions[] = 'series_import';
             $permissions[] = 'series_import_media';
+            $permissions[] = 'project_clone';
 
             $tenantGuard = $this->getTenantModel()::current()->getGuard();
 
@@ -83,6 +84,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_delete',
                 'project_restore',
                 'project_export',
+                'project_clone',
 
                 'pump_access',
                 'pump_create',
@@ -129,6 +131,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_delete',
                 'project_restore',
                 'project_export',
+                'project_clone',
 
                 'pump_access',
                 'pump_show',

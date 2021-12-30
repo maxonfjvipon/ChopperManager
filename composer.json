@@ -12,6 +12,7 @@
         "amrshawky/laravel-currency": "^4.0",
         "askedio/laravel-soft-cascade": "^8.1",
         "barryvdh/laravel-dompdf": "^0.9.0",
+        "bkwld/cloner": "^3.9",
         "codezero/laravel-unique-translation": "^3.4",
         "conedevelopment/i18n": "^1.1",
         "dyrynda/laravel-cascade-soft-deletes": "^4.1",

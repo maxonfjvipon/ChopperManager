@@ -44,6 +44,11 @@ return [
         'back' => 'Back to projects',
         'title' => 'Projects',
         'index' => [
+            'clone' => [
+                'title' => 'Clone project',
+                'button' => 'Clone',
+                'save_as' => 'Save as'
+            ],
             'search' => [
                 'placeholder' => 'Search projects by name'
             ],
