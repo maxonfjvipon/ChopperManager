@@ -351,7 +351,7 @@ return [
             ],
             'applications' => [
                 'label' => 'Applications',
-                'tooltip' => 'The presence of all the selected applications for the series is checked!'
+                'tooltip' => 'The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)'
             ],
             'power_adjustments' => 'Power adjustments',
             'fluid_temp' => 'Fluid temperature, °C',
