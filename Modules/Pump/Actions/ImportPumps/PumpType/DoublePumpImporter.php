@@ -46,7 +46,7 @@ class DoublePumpImporter extends PumpImporter
             '13' => ['required'], // max temp
             '14' => ['required'], // ptp length
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
-            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // peak performance
+            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // standby performance
             '17' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // peak performance
             '18' => ['sometimes', 'nullable',], // description
             '19' => ['sometimes', 'nullable', 'string'], // pump image
@@ -112,8 +112,8 @@ class DoublePumpImporter extends PumpImporter
                 'fluid_temp_max' => $entity[13],
                 'ptp_length' => $entity[14],
                 'connection_id' => trim($entity[15]),
-                'dp_peak_performance' => str_replace(",", ".", trim($entity[16])),
-                'dp_standby_performance' => str_replace(",", ".", trim($entity[17])),
+                'dp_standby_performance' => str_replace(",", ".", trim($entity[16])),
+                'dp_peak_performance' => str_replace(",", ".", trim($entity[17])),
                 'description' => $entity[18] ?? null,
                 'image' => array_key_exists(19, $entity) ? trim($entity[19]) : null,
                 'sizes_image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
