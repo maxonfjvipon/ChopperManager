@@ -46,8 +46,8 @@ class DoublePumpImporter extends PumpImporter
             '13' => ['required'], // max temp
             '14' => ['required'], // ptp length
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
-            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // standby performance
-            '17' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){9,59}\s*$/'], // peak performance
+            '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // standby performance
+            '17' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // peak performance
             '18' => ['sometimes', 'nullable',], // description
             '19' => ['sometimes', 'nullable', 'string'], // pump image
             '20' => ['sometimes', 'nullable', 'string'], // pump sizes image
