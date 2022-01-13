@@ -64,17 +64,25 @@
             <path
                 d={{"M" . join("L", array_map(fn($point) => (50 + $dx * $point['x']) . ',' . ((450 - $dy * $point['y'])),
             $performance_line))}}
-{{--                    d="M50,313.15789473684214L133.33333333333334,318.42105263157896L216.66666666666669,323.6842105263158L300,331.57894736842104L383.3333333333333,342.10526315789474L466.66666666666663,352.63157894736844L549.9999999999999,365.7894736842105L633.3333333333334,378.9473684210526L716.6666666666666,392.10526315789474L800,407.89473684210526L883.3333333333333,426.3157894736842L950,442.10526315789474"--}}
-                role="presentation" shape-rendering="auto"
+                {{--                    d="M50,313.15789473684214L133.33333333333334,318.42105263157896L216.66666666666669,323.6842105263158L300,331.57894736842104L383.3333333333333,342.10526315789474L466.66666666666663,352.63157894736844L549.9999999999999,365.7894736842105L633.3333333333334,378.9473684210526L716.6666666666666,392.10526315789474L800,407.89473684210526L883.3333333333333,426.3157894736842L950,442.10526315789474"--}}
+                    role="presentation" shape-rendering="auto"
                 style="fill: transparent; stroke: blue; opacity: 1; stroke-width: 2;"></path>
         </g>
-{{--        <g>--}}
-{{--            @foreach($performance_line as $point)--}}
-{{--                <circle cx="{{50 + $dx * $point['x']}}" cy="{{450 - $dy * $point['y']}}" r="5"--}}
-{{--                        role="presentation" shape-rendering="auto"--}}
-{{--                        style="fill: blue; opacity: 1; stroke: transparent; stroke-width: 0;"--}}
-{{--                />--}}
-{{--            @endforeach--}}
-{{--        </g>--}}
+        <g>
+            @foreach($dots_data as $dots)
+                @foreach($dots as $dot)
+                    <circle cx="{{50 + $dx * $dot[0]}}" cy="{{450 - $dy * $dot[1]}}" r="5"
+                            role="presentation" shape-rendering="auto"
+                            style="fill: red; opacity: 1; stroke: transparent; stroke-width: 0;"
+                    />
+                @endforeach
+            @endforeach
+            {{--            @foreach($performance_line as $point)--}}
+            {{--                <circle cx="{{50 + $dx * $point['x']}}" cy="{{450 - $dy * $point['y']}}" r="5"--}}
+            {{--                        role="presentation" shape-rendering="auto"--}}
+            {{--                        style="fill: blue; opacity: 1; stroke: transparent; stroke-width: 0;"--}}
+            {{--                />--}}
+            {{--            @endforeach--}}
+        </g>
     @endforeach
 </svg>

@@ -23,7 +23,7 @@ class DPumpPerformance extends PPumpPerformance
         return $this->performanceAsArray;
     }
 
-    #[Pure] public function qStart($position): float|int
+    #[Pure] public function qStart($position = 1): float|int
     {
         return $this->getPerformanceAsArray($position)[0];
     }
@@ -33,7 +33,7 @@ class DPumpPerformance extends PPumpPerformance
         return $this->getPerformanceAsArray($position)[count($this->getPerformanceAsArray($position)) - 2];
     }
 
-    public function asArrayData($position): array
+    public function asArrayData($position = 1): array
     {
         $paa = $this->getPerformanceAsArray($position);
         $data = [];
@@ -47,7 +47,7 @@ class DPumpPerformance extends PPumpPerformance
         return $data;
     }
 
-    public function asPointArray($position): array
+    public function asPointArray($position = 1): array
     {
         $data = [];
         $paa = $this->getPerformanceAsArray($position);

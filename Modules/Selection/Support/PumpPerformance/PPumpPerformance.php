@@ -60,7 +60,7 @@ class PPumpPerformance
         return $dist;
     }
 
-    public function qStart($position): float|int
+    public function qStart($position = 1): float|int
     {
         return $this->performanceAsArray[0] * $position;
     }
@@ -70,7 +70,7 @@ class PPumpPerformance
         return $this->performanceAsArray[count($this->performanceAsArray) - 2] * $position;
     }
 
-    public function asArrayData($position): array
+    public function asArrayData($position = 1): array
     {
         $data = [];
         $length = count($this->performanceAsArray);
@@ -83,7 +83,7 @@ class PPumpPerformance
         return $data;
     }
 
-    public function asPointArray($position): array
+    public function asPointArray($position = 1): array
     {
         $data = [];
         $length = count($this->performanceAsArray);
@@ -93,7 +93,7 @@ class PPumpPerformance
         return $data;
     }
 
-    public function coefficientsToCreate($position): array
+    public function coefficientsToCreate($position = 1): array
     {
         $coefficients = PolynomialRegression::fromData($this->asArrayData($position))->coefficients();
         return [
@@ -105,7 +105,7 @@ class PPumpPerformance
         ];
     }
 
-    public function coefficientsForPosition($position)
+    public function coefficientsForPosition($position = 1)
     {
         $coefficients = $this->pump->coefficients->firstWhere('position', $position);
         return $coefficients ?? PumpsAndCoefficients::create($this->coefficientsToCreate($position));

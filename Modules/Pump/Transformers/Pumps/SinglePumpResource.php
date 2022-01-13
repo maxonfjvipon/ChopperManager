@@ -3,6 +3,7 @@
 namespace Modules\Pump\Transformers\Pumps;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Modules\Selection\Traits\HasAxisStep;
@@ -56,6 +57,9 @@ class SinglePumpResource extends PumpResource
                     'dy' => 400 / $yMax,
                     'x_axis_step' => $this->axisStep($xMax),
                     'y_axis_step' => $this->axisStep($yMax),
+                    'dots_data' => Auth::user()->hasAnyRole('SuperAdmin', 'Admin')
+                        ? [$pumpPerformance->asArrayData()]
+                        : []
                 ])->render(),
             ]);
         }
