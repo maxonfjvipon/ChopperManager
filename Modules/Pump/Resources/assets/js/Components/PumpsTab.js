@@ -62,7 +62,7 @@ export const PumpsTab = ({
             })
             setPumps(pumps)
         } catch (e) {
-            console.log(e)
+            // console.log(e)
         }
     }
 

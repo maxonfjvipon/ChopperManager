@@ -51,7 +51,9 @@ export const Selection = ({pageTitle, widths}) => {
     const [updated, setUpdated] = useState(!selection)
     const [useAdditionalFilters, setUseAdditionalFilters] = useState(selection?.data.use_additional_filters || false)
     const [rangeDisabled, setRangeDisabled] = useState(selection
-        ? selection?.data.range_id !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id
+        ? selection?.data.range_id
+            ? selection?.data.range_id !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id
+            : false
         : false
     )
     const [filtersDrawerVisible, setFiltersDrawerVisible] = useState(false)
@@ -232,9 +234,7 @@ export const Selection = ({pageTitle, widths}) => {
                 let children = []
                 brand.series.forEach(series => {
                     let hasTemp = hasTemperature(series)
-                    console.log(hasTemp)
                     const colorStyle = seriesColorStyle(hasTemp, series)
-                    console.log(colorStyle)
                     _brandsSeriesList.push({
                         label: <>
                             {!hideIcons && seriesIcon(series.image)}
@@ -736,7 +736,9 @@ export const Selection = ({pageTitle, widths}) => {
                                         required
                                         name="custom_range"
                                         label={Lang.get('pages.selections.single_pump.range.custom.label')}
-                                        initialValue={selection?.data.custom_range || [0, 100]}
+                                        initialValue={selection?.data.custom_range.length !== 0
+                                            ? selection.data.custom_range
+                                            : [0, 100]}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <Slider

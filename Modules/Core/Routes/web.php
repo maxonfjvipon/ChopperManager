@@ -19,7 +19,7 @@ Route::redirect('/', app()->getLocale() . '/projects')->name('index');
 Route::prefix('projects')->group(function () {
     Route::prefix('{project}')->group(function () {
         Route::post('export')->name('projects.export')->uses([ProjectsController::class, 'export']);
-        Route::post('restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
+        Route::get('restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
         Route::post('clone')->name('projects.clone')->uses([ProjectsController::class, 'clone']);
     });
 });

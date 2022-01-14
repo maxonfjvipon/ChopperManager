@@ -11404,15 +11404,14 @@ var PumpsTab = function PumpsTab(_ref) {
             case 4:
               _pumps = _context.sent;
               setPumps(_pumps);
-              _context.next = 11;
+              _context.next = 10;
               break;
 
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](1);
-              console.log(_context.t0);
 
-            case 11:
+            case 10:
             case "end":
               return _context.stop();
           }

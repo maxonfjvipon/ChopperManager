@@ -12030,7 +12030,7 @@ var Selection = function Selection(_ref) {
       useAdditionalFilters = _useState14[0],
       setUseAdditionalFilters = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id : false),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? selection !== null && selection !== void 0 && selection.data.range_id ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id : false : false),
       _useState16 = _slicedToArray(_useState15, 2),
       rangeDisabled = _useState16[0],
       setRangeDisabled = _useState16[1];
@@ -12367,9 +12367,7 @@ var Selection = function Selection(_ref) {
         var children = [];
         brand.series.forEach(function (series) {
           var hasTemp = hasTemperature(series);
-          console.log(hasTemp);
           var colorStyle = seriesColorStyle(hasTemp, series);
-          console.log(colorStyle);
 
           _brandsSeriesList.push({
             label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
@@ -12922,7 +12920,7 @@ var Selection = function Selection(_ref) {
                   required: true,
                   name: "custom_range",
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.custom.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range) || [0, 100],
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range.length) !== 0 ? selection.data.custom_range : [0, 100],
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
                     range: true,
