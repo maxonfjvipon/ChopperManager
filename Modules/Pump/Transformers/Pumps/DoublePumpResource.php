@@ -58,7 +58,7 @@ class DoublePumpResource extends PumpResource
                     'dy' => 400 / $yMax,
                     'x_axis_step' => $this->axisStep($xMax),
                     'y_axis_step' => $this->axisStep($yMax),
-                    'dots_data' => Auth::user()->hasAnyRole('SuperAdmin', 'Admin')
+                    'dots_data' => Auth::user()->isAdmin()
                         ? [$pumpPerformance->asArrayData(), $pumpPerformance->asArrayData(2)]
                         : []
                 ])->render(),

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
+use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
 use Modules\Pump\Entities\PumpApplication;
@@ -51,7 +52,7 @@ class CoreDatabaseSeeder extends Seeder
             $permissions[] = 'series_import_media';
             $permissions[] = 'project_clone';
 
-            $tenantGuard = $this->getTenantModel()::current()->getGuard();
+            $tenantGuard = $this->getTenantModel()::current()->guard;
 
             foreach ($permissions as $permission) {
                 Permission::create(['guard_name' => $tenantGuard, 'name' => $permission]);
@@ -221,82 +222,9 @@ class CoreDatabaseSeeder extends Seeder
             SelectionRange::create(['id' => 2, 'name' => ['en' => '3/5', 'ru' => '3/5'], 'value' => 0.2]);
             SelectionRange::create(['id' => 3, 'name' => ['en' => 'Custom', 'ru' => 'Произв.'], 'value' => null]);
 
-            /** * Pump Brands */
-            PumpBrand::create(['name' => 'Wilo']);
-
-            /** * Pump Series */
-            PumpSeries::create(['name' => 'MHI', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 1, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 1, 'type_id' => 6]);
-            PumpSeriesAndType::create(['series_id' => 1, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 1, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 1, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 1, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'BL', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 2, 'type_id' => 2]);
-            PumpSeriesAndType::create(['series_id' => 2, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 2, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 2, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 2, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 2, 'application_id' => 5]);
-            PumpSeriesAndApplication::create(['series_id' => 2, 'application_id' => 6]);
-            PumpSeriesAndApplication::create(['series_id' => 2, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'TOP-S', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 3, 'type_id' => 4]);
-            PumpSeriesAndApplication::create(['series_id' => 3, 'application_id' => 5]);
-            PumpSeriesAndApplication::create(['series_id' => 3, 'application_id' => 6]);
-            PumpSeries::create(['name' => 'TOP-Z', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 4, 'type_id' => 4]);
-            PumpSeriesAndApplication::create(['series_id' => 4, 'application_id' => 3]);
-            PumpSeries::create(['name' => 'IL-E', 'brand_id' => 1, 'power_adjustment_id' => 1, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 5, 'type_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 5, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 5, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 5, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 5, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 5, 'application_id' => 5]);
-            PumpSeriesAndApplication::create(['series_id' => 5, 'application_id' => 6]);
-            PumpSeriesAndApplication::create(['series_id' => 5, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'IPL', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 6, 'type_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 6, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 6, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 6, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 6, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 6, 'application_id' => 5]);
-            PumpSeriesAndApplication::create(['series_id' => 6, 'application_id' => 6]);
-            PumpSeriesAndApplication::create(['series_id' => 6, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'IL', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 7, 'type_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 7, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 7, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 7, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 7, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 7, 'application_id' => 5]);
-            PumpSeriesAndApplication::create(['series_id' => 7, 'application_id' => 6]);
-            PumpSeriesAndApplication::create(['series_id' => 7, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'MVI', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 8, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 8, 'type_id' => 6]);
-            PumpSeriesAndType::create(['series_id' => 8, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 8, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 8, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 8, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'Helix First', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 9, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 9, 'type_id' => 6]);
-            PumpSeriesAndType::create(['series_id' => 9, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 9, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 9, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 9, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'Helix V', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
-            PumpSeriesAndType::create(['series_id' => 10, 'type_id' => 5]);
-            PumpSeriesAndType::create(['series_id' => 10, 'type_id' => 6]);
-            PumpSeriesAndType::create(['series_id' => 10, 'type_id' => 7]);
-            PumpSeriesAndApplication::create(['series_id' => 10, 'application_id' => 2]);
-            PumpSeriesAndApplication::create(['series_id' => 10, 'application_id' => 3]);
-            PumpSeriesAndApplication::create(['series_id' => 10, 'application_id' => 7]);
-            PumpSeries::create(['name' => 'Stres', 'brand_id' => 1, 'power_adjustment_id' => 2, 'category_id' => 1]);
+            /** * Double pump work schemes */
+            DoublePumpWorkScheme::create(['id' => 1, 'name' => ['en' => 'Main standby', 'ru' => 'Рабочий-резервный']]);
+            DoublePumpWorkScheme::create(['id' => 2, 'name' => ['en' => 'Main peak', 'ru' => 'Рабочий-пиковый']]);
 
             /** * Currencies */
             DB::insert("INSERT INTO currencies (id, code, name, symbol) VALUES
@@ -313,150 +241,150 @@ class CoreDatabaseSeeder extends Seeder
             (11, 'AWG', 'Guilder', 'ƒ'),
             (12, 'AZN', 'Manat', 'ман'),
             (13, 'BAM', 'Marka', 'KM'),
-(14, 'BBD', 'Dollar', '$'),
-(15, 'BDT', 'Taka', 'Tk'),
-(16, 'XOF', 'Franc', 'CFA'),
-(17, 'BGN', 'Lev', 'лв'),
-(18, 'BHD', 'Dinar', 'BD'),
-(19, 'BIF', 'Franc', 'BIF'),
-(20, 'BMD', 'Dollar', '$'),
-(21, 'BND', 'Dollar', '$'),
-(22, 'BOB', 'Boliviano', '\$b'),
-(23, 'BRL', 'Real', 'R$'),
-(24, 'BSD', 'Dollar', 'B$'),
-(25, 'BTN', 'Ngultrum', 'Nu.'),
-(26, 'NOK', 'Krone', 'kr'),
-(27, 'BWP', 'Pula', 'P'),
-(28, 'BYR', 'Ruble', 'р'),
-(29, 'BZD', 'Dollar', 'BZ$'),
-(30, 'CAD', 'Dollar', '$'),
-(31, 'CDF', 'Franc', 'CDF'),
-(32, 'XAF', 'Franc', 'XAF'),
-(33, 'CHF', 'Franc', 'CHF'),
-(34, 'NZD', 'Dollar', '$'),
-(35, 'CLP', 'Peso', '$'),
-(36, 'CNY', 'Yuan Renminbi', '¥'),
-(37, 'COP', 'Peso', '$'),
-(38, 'CRC', 'Colon', '₡'),
-(39, 'CUP', 'Peso', '₱'),
-(40, 'CVE', 'Escudo', '$'),
-(41, 'ANG', 'Guilder', 'ƒ'),
-(42, 'CZK', 'Koruna', 'Kč'),
-(43, 'DJF', 'Franc', 'fdj'),
-(44, 'DKK', 'Krone', 'kr'),
-(45, 'DOP', 'Peso', '$'),
-(46, 'DZD', 'Dinar', 'جد'),
-(47, 'EGP', 'Pound', '£ '),
-(48, 'MAD', 'Dirham', 'م.د.'),
-(49, 'ERN', 'Nakfa', 'ናቕፋ'),
-(50, 'ETB', 'Birr', 'Br'),
-(51, 'FJD', 'Dollar', '$'),
-(52, 'FKP', 'Pound', '£'),
-(53, 'GBP', 'Pound', '£'),
-(54, 'GEL', 'Lari', 'ლ'),
-(55, 'GHS', 'Cedi', 'GH¢'),
-(56, 'GIP', 'Pound', '£'),
-(57, 'GMD', 'Dalasi', 'D'),
-(58, 'GNF', 'Franc', 'GNF'),
-(59, 'GTQ', 'Quetzal', 'Q'),
-(60, 'GYD', 'Dollar', '$'),
-(61, 'HKD', 'Dollar', 'HK$'),
-(62, 'HNL', 'Lempira', 'L'),
-(63, 'HRK', 'Kuna', 'kn'),
-(64, 'HTG', 'Gourde', 'G'),
-(65, 'HUF', 'Forint', 'Ft'),
-(66, 'IDR', 'Rupiah', 'Rp'),
-(67, 'ILS', 'Shekel', '₪'),
-(68, 'INR', 'Rupee', '₹'),
-(69, 'IQD', 'Dinar', 'ع.د'),
-(70, 'IRR', 'Rial', '﷼'),
-(71, 'ISK', 'Krona', 'kr'),
-(72, 'JMD', 'Dollar', 'J$'),
-(73, 'JOD', 'Dinar', 'JD'),
-(74, 'JPY', 'Yen', '¥'),
-(75, 'KES', 'Shilling', 'KSh'),
-(76, 'KGS', 'Som', 'лв'),
-(77, 'KHR', 'Riels', '៛'),
-(78, 'KMF', 'Franc', 'KMF'),
-(79, 'KPW', 'Won', '₩'),
-(80, 'KRW', 'Won', '₩'),
-(81, 'KWD', 'Dinar', 'ك'),
-(82, 'KYD', 'Dollar', '$'),
-(83, 'KZT', 'Tenge', '₸'),
-(84, 'LAK', 'Kip', '₭'),
-(85, 'LBP', 'Pound', 'ل.ل'),
-(86, 'LKR', 'Rupee', 'Rs'),
-(87, 'LRD', 'Dollar', '$'),
-(88, 'LSL', 'Loti', 'L or M'),
-(89, 'LTL', 'Litas', 'Lt'),
-(90, 'LVL', 'Lat', 'Ls'),
-(91, 'LYD', 'Dinar', ' د.ل'),
-(92, 'MDL', 'Leu', 'L'),
-(93, 'MGA', 'Ariary', 'Ar'),
-(94, 'MKD', 'Denar', 'ден'),
-(95, 'MMK', 'Kyat', 'K'),
-(96, 'MNT', 'Tugrik', '₮'),
-(97, 'MOP', 'Pataca', 'MOP$'),
-(98, 'MRO', 'Ouguiya', 'UM'),
-(99, 'MUR', 'Rupee', 'Rs'),
-(100, 'MVR', 'Rufiyaa', 'rf'),
-(101, 'MWK', 'Kwacha', 'MK'),
-(102, 'MXN', 'Peso', '$'),
-(103, 'MYR', 'Ringgit', 'RM'),
-(104, 'MZN', 'Metical', 'MT'),
-(105, 'NAD', 'Dollar', '$'),
-(106, 'XPF', 'Franc', 'XPF'),
-(107, 'NGN', 'Naira', '₦'),
-(108, 'NIO', 'Cordoba', 'C$'),
-(109, 'NPR', 'Rupee', 'Rs'),
-(110, 'OMR', 'Rial', 'ع.ر.'),
-(111, 'PAB', 'Balboa', 'B/'),
-(112, 'PEN', 'Sol', 'S/'),
-(113, 'PGK', 'Kina', 'K'),
-(114, 'PHP', 'Peso', '₱'),
-(115, 'PKR', 'Rupee', 'Rs'),
-(116, 'PLN', 'Zloty', 'zł'),
-(117, 'PYG', 'Guarani', '₲'),
-(118, 'QAR', 'Rial', 'ق.ر '),
-(119, 'RON', 'Leu', 'lei'),
-(120, 'RSD', 'Dinar', 'РСД'),
-(121, 'RUB', 'Ruble', '₽'),
-(122, 'RWF', 'Franc', 'R₣'),
-(123, 'SAR', 'Rial', 'ر.س'),
-(124, 'SBD', 'Dollar', 'SI$'),
-(125, 'SCR', 'Rupee', 'Rs'),
-(126, 'SDG', 'Pound', '£'),
-(127, 'SSP', 'Pound', '£'),
-(128, 'SEK', 'Krona', 'kr'),
-(129, 'SGD', 'Dollar', '$'),
-(130, 'SHP', 'Pound', '£'),
-(131, 'SLL', 'Leone', 'Le'),
-(132, 'SOS', 'Shilling', 'S'),
-(133, 'SRD', 'Dollar', '$'),
-(134, 'STD', 'Dobra', 'Db'),
-(135, 'SYP', 'Pound', '£'),
-(136, 'SZL', 'Lilangeni', 'L'),
-(137, 'THB', 'Baht', '฿'),
-(138, 'TJS', 'Somoni', 'смн.'),
-(139, 'TMT', 'Manat', 'T'),
-(140, 'TND', 'Dinar', 'din'),
-(141, 'TOP', 'Pa''anga', 'T$'),
-(142, 'TRY', 'Lira', '₺'),
-(143, 'TTD', 'Dollar', 'TT$'),
-(144, 'TWD', 'Dollar', 'NT$'),
-(145, 'TZS', 'Shilling', 'Sh'),
-(146, 'UAH', 'Hryvnia', '₴'),
-(147, 'UGX', 'Shilling', 'USh'),
-(148, 'UYU', 'Peso', '\$U'),
-(149, 'UZS', 'Som', 'лв'),
-(150, 'VEF', 'Bolivar', 'Bs'),
-(151, 'VND', 'Dong', '₫'),
-(152, 'VUV', 'Vatu', 'VT'),
-(153, 'WST', 'Tala', '$'),
-(154, 'YER', 'Rial', '﷼'),
-(155, 'ZAR', 'Rand', 'R'),
-(156, 'ZMK', 'Kwacha', 'K'),
-(157, 'ZWL', 'Dollar', '$');");
+            (14, 'BBD', 'Dollar', '$'),
+            (15, 'BDT', 'Taka', 'Tk'),
+            (16, 'XOF', 'Franc', 'CFA'),
+            (17, 'BGN', 'Lev', 'лв'),
+            (18, 'BHD', 'Dinar', 'BD'),
+            (19, 'BIF', 'Franc', 'BIF'),
+            (20, 'BMD', 'Dollar', '$'),
+            (21, 'BND', 'Dollar', '$'),
+            (22, 'BOB', 'Boliviano', '\$b'),
+            (23, 'BRL', 'Real', 'R$'),
+            (24, 'BSD', 'Dollar', 'B$'),
+            (25, 'BTN', 'Ngultrum', 'Nu.'),
+            (26, 'NOK', 'Krone', 'kr'),
+            (27, 'BWP', 'Pula', 'P'),
+            (28, 'BYR', 'Ruble', 'р'),
+            (29, 'BZD', 'Dollar', 'BZ$'),
+            (30, 'CAD', 'Dollar', '$'),
+            (31, 'CDF', 'Franc', 'CDF'),
+            (32, 'XAF', 'Franc', 'XAF'),
+            (33, 'CHF', 'Franc', 'CHF'),
+            (34, 'NZD', 'Dollar', '$'),
+            (35, 'CLP', 'Peso', '$'),
+            (36, 'CNY', 'Yuan Renminbi', '¥'),
+            (37, 'COP', 'Peso', '$'),
+            (38, 'CRC', 'Colon', '₡'),
+            (39, 'CUP', 'Peso', '₱'),
+            (40, 'CVE', 'Escudo', '$'),
+            (41, 'ANG', 'Guilder', 'ƒ'),
+            (42, 'CZK', 'Koruna', 'Kč'),
+            (43, 'DJF', 'Franc', 'fdj'),
+            (44, 'DKK', 'Krone', 'kr'),
+            (45, 'DOP', 'Peso', '$'),
+            (46, 'DZD', 'Dinar', 'جد'),
+            (47, 'EGP', 'Pound', '£ '),
+            (48, 'MAD', 'Dirham', 'م.د.'),
+            (49, 'ERN', 'Nakfa', 'ናቕፋ'),
+            (50, 'ETB', 'Birr', 'Br'),
+            (51, 'FJD', 'Dollar', '$'),
+            (52, 'FKP', 'Pound', '£'),
+            (53, 'GBP', 'Pound', '£'),
+            (54, 'GEL', 'Lari', 'ლ'),
+            (55, 'GHS', 'Cedi', 'GH¢'),
+            (56, 'GIP', 'Pound', '£'),
+            (57, 'GMD', 'Dalasi', 'D'),
+            (58, 'GNF', 'Franc', 'GNF'),
+            (59, 'GTQ', 'Quetzal', 'Q'),
+            (60, 'GYD', 'Dollar', '$'),
+            (61, 'HKD', 'Dollar', 'HK$'),
+            (62, 'HNL', 'Lempira', 'L'),
+            (63, 'HRK', 'Kuna', 'kn'),
+            (64, 'HTG', 'Gourde', 'G'),
+            (65, 'HUF', 'Forint', 'Ft'),
+            (66, 'IDR', 'Rupiah', 'Rp'),
+            (67, 'ILS', 'Shekel', '₪'),
+            (68, 'INR', 'Rupee', '₹'),
+            (69, 'IQD', 'Dinar', 'ع.د'),
+            (70, 'IRR', 'Rial', '﷼'),
+            (71, 'ISK', 'Krona', 'kr'),
+            (72, 'JMD', 'Dollar', 'J$'),
+            (73, 'JOD', 'Dinar', 'JD'),
+            (74, 'JPY', 'Yen', '¥'),
+            (75, 'KES', 'Shilling', 'KSh'),
+            (76, 'KGS', 'Som', 'лв'),
+            (77, 'KHR', 'Riels', '៛'),
+            (78, 'KMF', 'Franc', 'KMF'),
+            (79, 'KPW', 'Won', '₩'),
+            (80, 'KRW', 'Won', '₩'),
+            (81, 'KWD', 'Dinar', 'ك'),
+            (82, 'KYD', 'Dollar', '$'),
+            (83, 'KZT', 'Tenge', '₸'),
+            (84, 'LAK', 'Kip', '₭'),
+            (85, 'LBP', 'Pound', 'ل.ل'),
+            (86, 'LKR', 'Rupee', 'Rs'),
+            (87, 'LRD', 'Dollar', '$'),
+            (88, 'LSL', 'Loti', 'L or M'),
+            (89, 'LTL', 'Litas', 'Lt'),
+            (90, 'LVL', 'Lat', 'Ls'),
+            (91, 'LYD', 'Dinar', ' د.ل'),
+            (92, 'MDL', 'Leu', 'L'),
+            (93, 'MGA', 'Ariary', 'Ar'),
+            (94, 'MKD', 'Denar', 'ден'),
+            (95, 'MMK', 'Kyat', 'K'),
+            (96, 'MNT', 'Tugrik', '₮'),
+            (97, 'MOP', 'Pataca', 'MOP$'),
+            (98, 'MRO', 'Ouguiya', 'UM'),
+            (99, 'MUR', 'Rupee', 'Rs'),
+            (100, 'MVR', 'Rufiyaa', 'rf'),
+            (101, 'MWK', 'Kwacha', 'MK'),
+            (102, 'MXN', 'Peso', '$'),
+            (103, 'MYR', 'Ringgit', 'RM'),
+            (104, 'MZN', 'Metical', 'MT'),
+            (105, 'NAD', 'Dollar', '$'),
+            (106, 'XPF', 'Franc', 'XPF'),
+            (107, 'NGN', 'Naira', '₦'),
+            (108, 'NIO', 'Cordoba', 'C$'),
+            (109, 'NPR', 'Rupee', 'Rs'),
+            (110, 'OMR', 'Rial', 'ع.ر.'),
+            (111, 'PAB', 'Balboa', 'B/'),
+            (112, 'PEN', 'Sol', 'S/'),
+            (113, 'PGK', 'Kina', 'K'),
+            (114, 'PHP', 'Peso', '₱'),
+            (115, 'PKR', 'Rupee', 'Rs'),
+            (116, 'PLN', 'Zloty', 'zł'),
+            (117, 'PYG', 'Guarani', '₲'),
+            (118, 'QAR', 'Rial', 'ق.ر '),
+            (119, 'RON', 'Leu', 'lei'),
+            (120, 'RSD', 'Dinar', 'РСД'),
+            (121, 'RUB', 'Ruble', '₽'),
+            (122, 'RWF', 'Franc', 'R₣'),
+            (123, 'SAR', 'Rial', 'ر.س'),
+            (124, 'SBD', 'Dollar', 'SI$'),
+            (125, 'SCR', 'Rupee', 'Rs'),
+            (126, 'SDG', 'Pound', '£'),
+            (127, 'SSP', 'Pound', '£'),
+            (128, 'SEK', 'Krona', 'kr'),
+            (129, 'SGD', 'Dollar', '$'),
+            (130, 'SHP', 'Pound', '£'),
+            (131, 'SLL', 'Leone', 'Le'),
+            (132, 'SOS', 'Shilling', 'S'),
+            (133, 'SRD', 'Dollar', '$'),
+            (134, 'STD', 'Dobra', 'Db'),
+            (135, 'SYP', 'Pound', '£'),
+            (136, 'SZL', 'Lilangeni', 'L'),
+            (137, 'THB', 'Baht', '฿'),
+            (138, 'TJS', 'Somoni', 'смн.'),
+            (139, 'TMT', 'Manat', 'T'),
+            (140, 'TND', 'Dinar', 'din'),
+            (141, 'TOP', 'Pa''anga', 'T$'),
+            (142, 'TRY', 'Lira', '₺'),
+            (143, 'TTD', 'Dollar', 'TT$'),
+            (144, 'TWD', 'Dollar', 'NT$'),
+            (145, 'TZS', 'Shilling', 'Sh'),
+            (146, 'UAH', 'Hryvnia', '₴'),
+            (147, 'UGX', 'Shilling', 'USh'),
+            (148, 'UYU', 'Peso', '\$U'),
+            (149, 'UZS', 'Som', 'лв'),
+            (150, 'VEF', 'Bolivar', 'Bs'),
+            (151, 'VND', 'Dong', '₫'),
+            (152, 'VUV', 'Vatu', 'VT'),
+            (153, 'WST', 'Tala', '$'),
+            (154, 'YER', 'Rial', '﷼'),
+            (155, 'ZAR', 'Rand', 'R'),
+            (156, 'ZMK', 'Kwacha', 'K'),
+            (157, 'ZWL', 'Dollar', '$');");
 
             DB::insert("INSERT INTO `countries` (`id`, `name`, `currency_id`, `code`) VALUES
         (1, '{\"be\": \"Расея\", \"de\": \"Russland\", \"en\": \"Russia\", \"es\": \"Rusia\", \"fr\": \"Russie\", \"it\": \"Russia\", \"ja\": \"ロシア\", \"lt\": \"Rusija\", \"lv\": \"Krievija\", \"pl\": \"Rosja\", \"pt\": \"Rússia\", \"ru\": \"Россия\", \"uk\": \"Росiя\"}', 121, 'RUS'),

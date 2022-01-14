@@ -32,8 +32,6 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'pump_brand' => PumpBrand::class,
             'pump_series' => PumpSeries::class,
-            Pump::$SINGLE_PUMP => SinglePump::class,
-            Pump::$DOUBLE_PUMP => DoublePump::class,
         ]);
     }
 }

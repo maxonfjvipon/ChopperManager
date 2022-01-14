@@ -9,6 +9,7 @@ use Modules\AdminPanel\Entities\Admin;
 use Modules\AdminPanel\Entities\SelectionType;
 use Modules\AdminPanel\Entities\TenantType;
 use Modules\AdminPanel\Events\TenantCreated;
+use Modules\Pump\Entities\Pump;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class AdminPanelDatabaseSeeder extends Seeder
@@ -31,19 +32,19 @@ class AdminPanelDatabaseSeeder extends Seeder
         SelectionType::create(['name' => [
             'en' => 'Single pump selection',
             'ru' => 'Подбор одинарного насоса'
-        ], 'prefix' => 'sp', 'default_img' => $imgPath . '01.png']);
+        ], 'pumpable_type' => Pump::$SINGLE_PUMP, 'default_img' => $imgPath . '01.png']);
         SelectionType::create(['name' => [
             'en' => 'Double pump selection',
             'ru' => 'Подбор сдвоенного насоса'
-        ], 'prefix' => 'dp', 'default_img' => $imgPath . '02.png']);
+        ], 'pumpable_type' => Pump::$DOUBLE_PUMP, 'default_img' => $imgPath . '02.png']);
         SelectionType::create(['name' => [
             'en' => 'Water supply pumping station selection',
             'ru' => 'Подбор станции водоснбажения'
-        ], 'prefix' => 'sw', 'default_img' => $imgPath . '05.png']);
+        ], 'pumpable_type' => Pump::$STATION_WATER, 'default_img' => $imgPath . '05.png']);
         SelectionType::create(['name' => [
             'en' => 'Fire extinguishing pumping station selection',
             'ru' => 'Подбор станции пожаротушения'
-        ], 'prefix' => 'sf', 'default_img' => $imgPath . '06.png']);
+        ], 'pumpable_type' => Pump::$STATION_FIRE, 'default_img' => $imgPath . '06.png']);
 
         /* PUMP MANAGER TENANT */
         $pmt = $this->getTenantModel()::create([
@@ -60,12 +61,6 @@ class AdminPanelDatabaseSeeder extends Seeder
         ])->toArray());
 
         $pmt->execute(fn($tenant) => event(new TenantCreated($pmt)));
-
-//        DB::table('tenants_and_selection_types')->insert(DB::table('selection_types')->get()->map(fn($st) => [
-//            'tenant_id' => $pmt->id,
-//            'type_id' => $st->id,
-//            'img' => $st->default_img,
-//        ])->toArray());
 
         // ADMIN
         Admin::create([

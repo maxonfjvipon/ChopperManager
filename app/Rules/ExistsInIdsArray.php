@@ -31,7 +31,7 @@ class ExistsInIdsArray extends InArrayFromDB
     public function passes($attribute, $value): bool
     {
         $passes = true;
-        foreach (explode($this->separator, $value) as $_value) {
+        foreach (explode($this->separator, (string)$value) as $_value) {
             if (array_search((int)trim($_value), $this->array) === false) {
                 $this->invalidValues[] = $_value;
                 $passes = false;

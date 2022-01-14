@@ -49,6 +49,14 @@ abstract class Userable extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime:d.m.Y H:i',
     ];
 
+    /**
+     * @return bool does user have super admin or admin role
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasAnyRole('SuperAdmin', 'Admin');
+    }
+
     public function getFullNameAttribute(): string
     {
         return "{$this->first_name} {$this->middle_name}";
