@@ -49,7 +49,7 @@ class SinglePumpSelectionResource extends PumpSelectionResource
             'mains_connections' => $this->arrayOfIntsFromString($this->mains_connection_ids),
             'pump_types' => $this->arrayOfIntsFromString($this->pump_type_ids),
             'pump_applications' => $this->arrayOfIntsFromString($this->pump_application_ids),
-            'custom_range' => $this->arrayOfIntsFromString($this->custom_range),
+            'custom_range' => $this->arrayOfIntsFromString($this->custom_range ?? "0,100"),
 
             'to_show' => [
                 'name' => $this->selected_pump_name,

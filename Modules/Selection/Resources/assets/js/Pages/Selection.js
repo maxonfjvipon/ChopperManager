@@ -736,9 +736,7 @@ export const Selection = ({pageTitle, widths}) => {
                                         required
                                         name="custom_range"
                                         label={Lang.get('pages.selections.single_pump.range.custom.label')}
-                                        initialValue={selection?.data.custom_range.length !== 0
-                                            ? selection.data.custom_range
-                                            : [0, 100]}
+                                        initialValue={selection?.data?.custom_range ?? [0, 100]}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <Slider

@@ -11955,6 +11955,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Selection = function Selection(_ref) {
+  var _selection$data$custo, _selection$data;
+
   var pageTitle = _ref.pageTitle,
       widths = _ref.widths;
   // HOOKS
@@ -12920,7 +12922,7 @@ var Selection = function Selection(_ref) {
                   required: true,
                   name: "custom_range",
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.custom.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.custom_range.length) !== 0 ? selection.data.custom_range : [0, 100],
+                  initialValue: (_selection$data$custo = selection === null || selection === void 0 ? void 0 : (_selection$data = selection.data) === null || _selection$data === void 0 ? void 0 : _selection$data.custom_range) !== null && _selection$data$custo !== void 0 ? _selection$data$custo : [0, 100],
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
                     range: true,
