@@ -15,6 +15,7 @@
         "bkwld/cloner": "^3.9",
         "codezero/laravel-unique-translation": "^3.4",
         "conedevelopment/i18n": "^1.1",
+        "doctrine/dbal": "^3.2",
         "dyrynda/laravel-cascade-soft-deletes": "^4.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
