@@ -1,8 +1,9 @@
 import React from 'react'
 import {Result} from "antd";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
+import ErrorLayout from "../Components/ErrorLayout";
 
-export default function ErrorPage({ status }) {
+const  ErrorPage = ({ status }) => {
     const title = {
         503: '503: Service Unavailable',
         500: '500: Server Error',
@@ -30,3 +31,7 @@ export default function ErrorPage({ status }) {
         />
     )
 }
+
+ErrorPage.layout = page => <ErrorLayout children={page}/>
+
+export default ErrorPage

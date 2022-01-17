@@ -11013,6 +11013,57 @@ var CloneProjectDrawer = function CloneProjectDrawer(_ref) {
 
 /***/ }),
 
+/***/ "./Modules/Core/Resources/assets/js/Components/ErrorLayout.js":
+/*!********************************************************************!*\
+  !*** ./Modules/Core/Resources/assets/js/Components/ErrorLayout.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ErrorLayout)
+/* harmony export */ });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd/es/layout/layout */ "./node_modules/antd/es/layout/layout.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Layout_Components_AppTitle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Layout/Components/AppTitle */ "./resources/js/src/Shared/Layout/Components/AppTitle.js");
+/* harmony import */ var _resources_js_src_Shared_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Footer */ "./resources/js/src/Shared/Footer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+function ErrorLayout(_ref) {
+  var children = _ref.children;
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__.useStyles)(),
+      minHeight = _useStyles.minHeight,
+      padding = _useStyles.padding,
+      backgroundColorWhite = _useStyles.backgroundColorWhite;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    style: minHeight('100vh'),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_6__.Header, {
+      style: padding.all("0 16px 0"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Layout_Components_AppTitle__WEBPACK_IMPORTED_MODULE_2__.AppTitle, {})
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"].Content, {
+      style: backgroundColorWhite,
+      children: children
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {})]
+  });
+}
+
+/***/ }),
+
 /***/ "./Modules/Core/Resources/assets/js/Components/ExportProjectDrawer.js":
 /*!****************************************************************************!*\
   !*** ./Modules/Core/Resources/assets/js/Components/ExportProjectDrawer.js ***!
@@ -11253,17 +11304,20 @@ var ExportProjectDrawer = function ExportProjectDrawer(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ErrorPage)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/result/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/result/index.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Components_ErrorLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/ErrorLayout */ "./Modules/Core/Resources/assets/js/Components/ErrorLayout.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
-function ErrorPage(_ref) {
+
+
+var ErrorPage = function ErrorPage(_ref) {
   var status = _ref.status;
   var title = {
     503: '503: Service Unavailable',
@@ -11277,18 +11331,26 @@ function ErrorPage(_ref) {
     404: 'Sorry, the page you are looking for could not be found.',
     403: 'Sorry, you are forbidden from accessing this page.'
   }[status];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
     status: status.toString(),
     title: title,
     subTitle: description,
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__.PrimaryButton, {
+    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__.PrimaryButton, {
       onClick: function onClick(e) {
         history.back();
       },
       children: "Go back"
     })
   });
-}
+};
+
+ErrorPage.layout = function (page) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Components_ErrorLayout__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    children: page
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorPage);
 
 /***/ }),
 

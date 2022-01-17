@@ -4,10 +4,13 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Inertia\Inertia;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use UsesTenantModel;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -43,9 +46,14 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
         $response = parent::render($request, $e);
+        $currentTenant = $this->getTenantModel()::current();
 
-        if (!app()->environment(['local', 'testing']) && in_array($response->status(), [500, 503, 404, 403])) {
-            return Inertia::render('Core::Error', ['status' => $response->status()])
+        // TODO: fix for production
+        if (!app()->environment(['production', 'testing']) && in_array($response->status(), [500, 503, 404, 403])) {
+            return Inertia::render('Core::Error', [
+                'status' => $response->status(),
+                'title' => $currentTenant->name
+            ])
                 ->toResponse($request)
                 ->setStatusCode($response->status());
         } else if ($response->status() === 419) {
