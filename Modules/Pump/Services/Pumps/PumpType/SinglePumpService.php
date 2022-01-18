@@ -33,7 +33,7 @@ class SinglePumpService extends PumpableTypePumpService
             'series' => $pump->series->name,
             'name' => $pump->name,
             'weight' => $pump->weight,
-            'price' => $pump->price_list->price ?? null,
+            'price' => round($pump->price_list->price, 2) ?? null,
             'currency' => $pump->price_list->currency->code ?? null,
             'rated_power' => $pump->rated_power,
             'rated_current' => $pump->rated_current,
