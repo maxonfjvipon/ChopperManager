@@ -145,11 +145,17 @@
             @endif
         @endif
     </table>
+    <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
+        Created by <a href="http://pump-manager.com">pump-manager.com</a>
+    </div>
 </div>
 <div class="page-break"></div>
 <div class="page">
     <h4>Гидравлическая характеристика</h4>
     @include('selection::selection_perf_curves', $selection->curves_data)
+    <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
+        Created by <a href="http://pump-manager.com">pump-manager.com</a>
+    </div>
 </div>
 @if(($request->print_pump_sizes_image && $selection->pump->sizes_image) ||
 ($request->print_pump_electric_diagram_image && $selection->pump->electric_diagram_image) ||
@@ -205,6 +211,9 @@
                 </tr>
             @endif
         </table>
+        <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
+            Created by <a href="http://pump-manager.com">pump-manager.com</a>
+        </div>
     </div>
 @endif
 {{--@if($request->print_pump_sizes_image && $selection->pumpable->sizes_image)--}}
