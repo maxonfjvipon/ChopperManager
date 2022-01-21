@@ -117,9 +117,7 @@
             <td colspan="2"></td>
         @endif
     </table>
-    <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
-        Created by <a href="http://pump-manager.com">pump-manager.com</a>
-    </div>
+    @include("selection::created_by")
 </div>
 <div class="page-break"></div>
 @foreach($project->selections as $selection)

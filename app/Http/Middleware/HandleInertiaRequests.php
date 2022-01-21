@@ -87,7 +87,7 @@ class HandleInertiaRequests extends Middleware
                         'current_localized' => $current_localized,
                     ];
                 },
-            ], $flash, $this->doesRequestContain($request, 'register') ? [
+            ], $flash, $this->doesRequestContain($request, 'login') ? [
                 'has_registration' => $currentTenant->has_registration, // todo: only for specific route
             ] : []);
         }

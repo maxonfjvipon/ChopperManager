@@ -56,7 +56,7 @@
                         </tr>
                         <tr>
                             <td class="td-top">Количество резервных насосов:</td>
-                            <td class="td-top">{{$selection->reserve_pumps_count}}</td>
+                            <td class="td-top">{{$selection->reserve_pumps_count ?? 0}}</td>
                         </tr>
                     @endif
                 </table>
@@ -85,11 +85,11 @@
                         <td>{{$selection->pump->connection_type->name}}</td>
                     </tr>
                     <tr>
-                        <td class="td-top">Мин.тем.жидк.</td>
+                        <td class="td-top">Мин.темп.жидк.</td>
                         <td class="td-top">{{$selection->pump->fluid_temp_min}} °C</td>
                     </tr>
                     <tr>
-                        <td class="td-top">Макс.тем.жидк.</td>
+                        <td class="td-top">Макс.темп.жидк.</td>
                         <td class="td-top">{{$selection->pump->fluid_temp_max}} °C</td>
                     </tr>
                     <tr>
@@ -145,17 +145,13 @@
             @endif
         @endif
     </table>
-    <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
-        Created by <a href="http://pump-manager.com">pump-manager.com</a>
-    </div>
+    @include("selection::created_by")
 </div>
 <div class="page-break"></div>
 <div class="page">
     <h4>Гидравлическая характеристика</h4>
     @include('selection::selection_perf_curves', $selection->curves_data)
-    <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
-        Created by <a href="http://pump-manager.com">pump-manager.com</a>
-    </div>
+    @include("selection::created_by")
 </div>
 @if(($request->print_pump_sizes_image && $selection->pump->sizes_image) ||
 ($request->print_pump_electric_diagram_image && $selection->pump->electric_diagram_image) ||
@@ -211,44 +207,6 @@
                 </tr>
             @endif
         </table>
-        <div style="position: fixed; bottom: 16px; width: 100%; text-align: center" >
-            Created by <a href="http://pump-manager.com">pump-manager.com</a>
-        </div>
+        @include("selection::created_by")
     </div>
 @endif
-{{--@if($request->print_pump_sizes_image && $selection->pumpable->sizes_image)--}}
-{{--    <h5>Размеры насоса</h5>--}}
-{{--    @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->sizes_image))--}}
-{{--        <div style="text-align: center">--}}
-{{--            <img style="max-height: 300px;"--}}
-{{--                 src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->sizes_image)}}"/>--}}
-{{--        </div>--}}
-{{--        @endif--}}
-{{--        </div>--}}
-{{--    @endif--}}
-{{--    @if($request->print_pump_electric_diagram_image && $selection->pumpable->electric_diagram_image)--}}
-{{--        <div class="page-break"></div>--}}
-{{--        <div class="page">--}}
-{{--            <h5>Электрическая схема</h5>--}}
-{{--            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .--}}
-{{--                           $selection->pumpable->electric_diagram_image))--}}
-{{--                <div style="text-align: center">--}}
-{{--                    <img style="max-height: 300px;" src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()--}}
-{{--            ->id . '/' . $selection->pumpable->electric_diagram_image)}}"/>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-{{--    @endif--}}
-{{--    @if($request->print_pump_cross_sectional_drawing_image && $selection->pumpable->cross_sectional_drawing_image)--}}
-{{--        <div class="page-break"></div>--}}
-{{--        <div class="page">--}}
-{{--            <h5>Взрыв модель</h5>--}}
-{{--            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .--}}
-{{--                $selection->pumpable->cross_sectional_drawing_image))--}}
-{{--                <div style="text-align: center">--}}
-{{--                    <img style="max-height: 300px;"--}}
-{{--                         src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pumpable->cross_sectional_drawing_image)}}"/>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-{{--        </div>--}}
-{{--    @endif--}}
