@@ -29,16 +29,7 @@ class PMSinglePumpSelectionService extends PMPumpableSelectionService
                 }, 'series.types', 'series.applications', 'series.power_adjustment'])
                 ->whereHas('series', function ($query) use ($availableSeriesIds) {
                     $query->whereIn('id', $availableSeriesIds);
-                })->get()
-//                >transform(function ($brand) {
-//                    $brand->series->transform(function ($series) {
-//                        $series->temps_min = $series->imploded_temps_min;
-//                        $series->temps_max = $series->imploded_temps_max;
-//                        return $series;
-//                    });
-//                    return $brand;
-//                }),
-        ,
+                })->get(),
             'media_path' => (new TenantStorage())->urlToTenantFolder(), // TODO: fix this
             'connectionTypes' => ConnectionType::all(),
             'types' => PumpType::availableForUserSeries($availableSeriesIds)->get(),

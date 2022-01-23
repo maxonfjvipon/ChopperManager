@@ -7,7 +7,6 @@ use Box\Spout\Common\Exception\UnsupportedTypeException;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -24,6 +23,11 @@ class ImportPumpsAction
     private int $MAX_EXECUTION_TIME = 180;
     private bool $createCoefs = true;
 
+    /**
+     * @param $files
+     * @return RedirectResponse
+     * @throws IOException
+     */
     public function execute($files): RedirectResponse
     {
         ini_set('max_execution_time', $this->MAX_EXECUTION_TIME);

@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Providers;
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -56,8 +57,7 @@ class SelectionServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
-        $this->bindSelectionServices();
-        $this->bindSelectionRequests();
+        $this->bindSelectionDependencies();
     }
 
     /**
@@ -140,51 +140,39 @@ class SelectionServiceProvider extends ServiceProvider
         return $paths;
     }
 
-    public function bindSelectionServices()
+    public function bindSelectionDependencies()
     {
-        $this->app->singleton(PumpableTypeSelectionService::class, function () {
-            return match (request()->pumpable_type) {
-                Pump::$DOUBLE_PUMP => App::make(DoublePumpSelectionService::class),
-                default => App::make(SinglePumpSelectionService::class),
-            };
-        });
+        switch (request()->pumpable_type) {
+            case Pump::$DOUBLE_PUMP:
+                // SERVICES
+                $this->app->singleton(PumpableTypeSelectionService::class, DoublePumpSelectionService::class);
+                $this->app->bind(PMPumpableSelectionService::class, PMDoublePumpSelectionService::class);
+                $this->app->bind(PPPumpableSelectionService::class, PPDoublePumpSelectionService::class);
 
-        $this->app->bind(PMPumpableSelectionService::class, function () {
-            return match (request()->pumpable_type) {
-                Pump::$DOUBLE_PUMP => App::make(PMDoublePumpSelectionService::class),
-                default => App::make(PMSinglePumpSelectionService::class),
-            };
-        });
+                // REQUESTS
+                $this->app->bind(MakeSelectionRequest::class, MakeDoublePumpSelectionRequest::class);
+                $this->app->bind(CurvesForSelectionRequest::class, CurvesForDoublePumpSelectionRequest::class);
+                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceDoublePumpSelectionRequest::class);
+                $this->app->bind(SelectionRequest::class, StoreDoublePumpSelectionRequest::class);
+                break;
+            default:
+                // SERVICES
+                $this->app->singleton(PumpableTypeSelectionService::class, SinglePumpSelectionService::class);
+                $this->app->bind(PMPumpableSelectionService::class, PMSinglePumpSelectionService::class);
+                $this->app->bind(PPPumpableSelectionService::class, PPSinglePumpSelectionService::class);
 
-        $this->app->bind(PPPumpableSelectionService::class, function () {
-            return match (request()->pumpable_type) {
-                Pump::$DOUBLE_PUMP => App::make(PPDoublePumpSelectionService::class),
-                default => App::make(PPSinglePumpSelectionService::class),
-            };
-        });
+                // REQUESTS
+                $this->app->bind(MakeSelectionRequest::class, MakeSinglePumpSelectionRequest::class);
+                $this->app->bind(CurvesForSelectionRequest::class, CurvesForSinglePumpSelectionRequest::class);
+                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceSinglePumpSelectionRequest::class);
+                $this->app->bind(SelectionRequest::class, StoreSinglePumpSelectionRequest::class);
+                break;
+        }
         $this->app->bind(SelectionsService::class, function () {
             return App::make(match (Tenant::current()->type->id) {
                 TenantType::$PUMPPRODUCER => PPSelectionsService::class,
                 default => PMSelectionsService::class
             });
         });
-    }
-
-    public function bindSelectionRequests()
-    {
-        switch (request()->pumpable_type) {
-            case Pump::$SINGLE_PUMP:
-                $this->app->bind(MakeSelectionRequest::class, MakeSinglePumpSelectionRequest::class);
-                $this->app->bind(CurvesForSelectionRequest::class, CurvesForSinglePumpSelectionRequest::class);
-                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceSinglePumpSelectionRequest::class);
-                $this->app->bind(SelectionRequest::class, StoreSinglePumpSelectionRequest::class);
-                break;
-            case Pump::$DOUBLE_PUMP:
-                $this->app->bind(MakeSelectionRequest::class, MakeDoublePumpSelectionRequest::class);
-                $this->app->bind(CurvesForSelectionRequest::class, CurvesForDoublePumpSelectionRequest::class);
-                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceDoublePumpSelectionRequest::class);
-                $this->app->bind(SelectionRequest::class, StoreDoublePumpSelectionRequest::class);
-                break;
-        }
     }
 }

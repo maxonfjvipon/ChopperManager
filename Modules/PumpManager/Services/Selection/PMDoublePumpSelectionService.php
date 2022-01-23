@@ -11,7 +11,6 @@ use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
 use Modules\Pump\Entities\PumpBrand;
-use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpType;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\SelectionRange;
@@ -26,7 +25,6 @@ class PMDoublePumpSelectionService extends PMPumpableSelectionService
             ->all();
 
         return [
-//            'brands' => $availableBrands->all(),
             'brandsWithSeries' => PumpBrand::with([
                 'series' => function ($query) use ($availableSeriesIds) {
                     $query->whereIn('id', $availableSeriesIds);

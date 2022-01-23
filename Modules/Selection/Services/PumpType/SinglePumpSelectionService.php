@@ -9,7 +9,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\Pure;
 use Modules\Core\Support\Rates;
-use Modules\Core\Support\TenantStorage;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionRange;
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
@@ -79,8 +78,6 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
         $defaultSystemPerformance = null;
         $num = 1;
         $range = SelectionRange::find($request->range_id);
-
-        $tenantStorage = new TenantStorage();
 
         foreach ($dbPumps as $pump) {
             $pumpPerformance = PPumpPerformance::construct($pump);
