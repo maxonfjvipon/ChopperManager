@@ -2,6 +2,7 @@
 
 namespace Modules\Pump\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\AdminPanel\Entities\Tenant;
@@ -131,26 +132,38 @@ class PumpServiceProvider extends ServiceProvider
 
     public function bindPumpServices()
     {
-        switch (request()->pumpable_type) {
-            case Pump::$DOUBLE_PUMP:
-                $this->app->bind(PumpableTypePumpService::class, DoublePumpService::class);
-                break;
-            default:
-                $this->app->bind(PumpableTypePumpService::class, SinglePumpService::class);
-                break;
-        }
+        $this->app->bind(PumpableTypePumpService::class, function () {
+            return match (request()->pumpable_type) {
+                Pump::$DOUBLE_PUMP => App::make(DoublePumpService::class),
+                default => App::make(SinglePumpService::class),
+            };
+        });
 
-        switch (Tenant::current()->type->id) {
-            case TenantType::$PUMPPRODUCER:
-                $this->app->when(PumpsController::class)->needs(PumpsService::class)->give(PPPumpsService::class);
-                $this->app->when(PumpSeriesController::class)->needs(PumpSeriesContract::class)->give(PPPumpSeriesService::class);
-                $this->app->when(PumpBrandsController::class)->needs(PumpBrandsContract::class)->give(PPPumpBrandsService::class);
-                break;
-            default:
-                $this->app->when(PumpsController::class)->needs(PumpsService::class)->give(PMPumpsService::class);
-                $this->app->when(PumpSeriesController::class)->needs(PumpSeriesContract::class)->give(PMPumpSeriesService::class);
-                $this->app->when(PumpBrandsController::class)->needs(PumpBrandsContract::class)->give(PMPumpBrandsService::class);
-                break;
-        }
+        $this->app->when(PumpsController::class)
+            ->needs(PumpsService::class)
+            ->give(function () {
+                return App::make(match (Tenant::current()->type->id) {
+                    TenantType::$PUMPPRODUCER => PPPumpsService::class,
+                    default => PMPumpsService::class,
+                });
+            });
+
+        $this->app->when(PumpSeriesController::class)
+            ->needs(PumpSeriesContract::class)
+            ->give(function () {
+                return App::make(match (Tenant::current()->type->id) {
+                    TenantType::$PUMPPRODUCER => PPPumpSeriesService::class,
+                    default => PMPumpSeriesService::class,
+                });
+            });
+
+        $this->app->when(PumpBrandsController::class)
+            ->needs(PumpBrandsContract::class)
+            ->give(function () {
+                return App::make(match (Tenant::current()->type->id) {
+                    TenantType::$PUMPPRODUCER => PPPumpBrandsService::class,
+                    default => PMPumpBrandsService::class,
+                });
+            });
     }
 }
