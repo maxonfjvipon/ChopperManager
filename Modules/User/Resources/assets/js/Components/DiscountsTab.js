@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import {Col, Form, InputNumber, Row, Table} from "antd";
+import {Form, InputNumber, Table} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import Lang from "../../../../../../resources/js/translation/lang";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/RoundedCard";
+import {usePage} from "@inertiajs/inertia-react";
 
 const EditableContext = React.createContext(null)
 
@@ -77,9 +78,10 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
     )
 }
 
-export const DiscountsTab = ({discounts}) => {
-    const discountsForm = 'discounts-form'
+export const DiscountsTab = () => {
+    const {discounts} = usePage().props
 
+    const discountsForm = 'discounts-form'
     const tRoute = useTransRoutes()
 
     const discountsColumns = [
@@ -116,29 +118,24 @@ export const DiscountsTab = ({discounts}) => {
     }
 
     return (
-        <Row justify="space-around" align="middle" gutter={[0, 0]}>
-            <Col xs={22} sm={20} md={18} lg={16} xl={11} xxl={9}>
-                <RoundedCard
-                    type="inner"
-                    title={Lang.get('pages.profile.discounts.tab')}
-                >
-                    <Form name={discountsForm} onFinish={discountsSaveHandler}>
-                        <Table
-                            rowClassName="editable-row"
-                            components={{
-                                body: {
-                                    cell: EditableCell,
-                                    row: EditableRow
-                                },
-                            }}
-                            dataSource={discounts}
-                            columns={discountsColumns}
-                            size="small"
-                            // scroll={{y: 570}}
-                        />
-                    </Form>
-                </RoundedCard>
-            </Col>
-        </Row>
+        <RoundedCard
+            type="inner"
+            title={Lang.get('pages.profile.discounts.tab')}
+        >
+            <Form name={discountsForm} onFinish={discountsSaveHandler}>
+                <Table
+                    rowClassName="editable-row"
+                    components={{
+                        body: {
+                            cell: EditableCell,
+                            row: EditableRow
+                        },
+                    }}
+                    dataSource={discounts}
+                    columns={discountsColumns}
+                    size="small"
+                />
+            </Form>
+        </RoundedCard>
     )
 }

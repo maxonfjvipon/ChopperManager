@@ -8554,6 +8554,125 @@ var BackToUsersLink = function BackToUsersLink() {
 
 /***/ }),
 
+/***/ "./Modules/User/Resources/assets/js/Components/ChangePasswordTab.js":
+/*!**************************************************************************!*\
+  !*** ./Modules/User/Resources/assets/js/Components/ChangePasswordTab.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ChangePasswordTab": () => (/* binding */ ChangePasswordTab)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ChangePasswordTab = function ChangePasswordTab() {
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__.useStyles)(),
+      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
+      margin = _useStyles.margin;
+
+  var changePasswordForm = 'change-password-form';
+
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_9__["default"].useForm(),
+      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+      changePwdForm = _Form$useForm2[0];
+
+  var changePasswordHandler = function changePasswordHandler(body) {
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia.post(tRoute('profile.password.change'), body, {
+      preserveScroll: true
+    });
+    changePwdForm.resetFields();
+  };
+
+  var updatePasswordItems = [{
+    values: {
+      name: 'current_password',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.current_password'),
+      rules: []
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+  }, {
+    values: {
+      name: 'password',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.new_password'),
+      rules: []
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+  }, {
+    values: {
+      name: 'password_confirmation',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.new_password_confirmation'),
+      rules: [],
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_1__.RoundedCard, {
+      type: "inner",
+      title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.cards.password'),
+      style: margin.top(16),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
+        form: changePwdForm,
+        layout: "horizontal",
+        labelSpan: {
+          xxl: 6,
+          xl: 10,
+          lg: 10,
+          md: 12,
+          sm: 12
+        },
+        items: updatePasswordItems,
+        onFinish: changePasswordHandler,
+        name: changePasswordForm
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_4__.BoxFlex, {
+      style: margin.top(16),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__.PrimaryButton, {
+        htmlType: "submit",
+        form: changePasswordForm,
+        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.change_password')
+      })
+    })]
+  });
+};
+
+/***/ }),
+
 /***/ "./Modules/User/Resources/assets/js/Components/DiscountsTab.js":
 /*!*********************************************************************!*\
   !*** ./Modules/User/Resources/assets/js/Components/DiscountsTab.js ***!
@@ -8568,17 +8687,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
 /* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _excluded = ["index"],
     _excluded2 = ["editable", "title", "dataIndex", "record", "children", "handleSave"];
 
@@ -8617,23 +8735,24 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 var EditableContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createContext(null);
 
 var EditableRow = function EditableRow(_ref) {
   var index = _ref.index,
       props = _objectWithoutProperties(_ref, _excluded);
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_8__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_9__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
     size: "small",
     form: form,
     component: false,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(EditableContext.Provider, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(EditableContext.Provider, {
       value: form,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tr", _objectSpread({}, props))
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("tr", _objectSpread({}, props))
     })
   });
 };
@@ -8705,11 +8824,11 @@ var EditableCell = function EditableCell(_ref2) {
     };
   }();
 
-  return editable ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", _objectSpread(_objectSpread({}, rest), {}, {
-    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+  return editable ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", _objectSpread(_objectSpread({}, rest), {}, {
+    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
       className: "ant-form-item-reduced",
       name: dataIndex,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
         size: "small",
         max: 100,
         min: 0,
@@ -8718,18 +8837,18 @@ var EditableCell = function EditableCell(_ref2) {
         onPressEnter: save,
         onBlur: save
       })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "editable-cell-value-wrap",
       onClick: toggleEdit,
       children: children
     })
-  })) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", _objectSpread(_objectSpread({}, rest), {}, {
+  })) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("td", _objectSpread(_objectSpread({}, rest), {}, {
     children: children
   }));
 };
 
-var DiscountsTab = function DiscountsTab(_ref4) {
-  var discounts = _ref4.discounts;
+var DiscountsTab = function DiscountsTab() {
+  var discounts = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props.discounts;
   var discountsForm = 'discounts-form';
   var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__.useTransRoutes)();
   var discountsColumns = [{
@@ -8763,39 +8882,249 @@ var DiscountsTab = function DiscountsTab(_ref4) {
     });
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    justify: "space-around",
-    align: "middle",
-    gutter: [0, 0],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      xs: 22,
-      sm: 20,
-      md: 18,
-      lg: 16,
-      xl: 11,
-      xxl: 9,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_6__.RoundedCard, {
-        type: "inner",
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.discounts.tab'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          name: discountsForm,
-          onFinish: discountsSaveHandler,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            rowClassName: "editable-row",
-            components: {
-              body: {
-                cell: EditableCell,
-                row: EditableRow
-              }
-            },
-            dataSource: discounts,
-            columns: discountsColumns,
-            size: "small" // scroll={{y: 570}}
-
-          })
-        })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_6__.RoundedCard, {
+    type: "inner",
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.discounts.tab'),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      name: discountsForm,
+      onFinish: discountsSaveHandler,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        rowClassName: "editable-row",
+        components: {
+          body: {
+            cell: EditableCell,
+            row: EditableRow
+          }
+        },
+        dataSource: discounts,
+        columns: discountsColumns,
+        size: "small"
       })
     })
+  });
+};
+
+/***/ }),
+
+/***/ "./Modules/User/Resources/assets/js/Components/UserInfoTab.js":
+/*!********************************************************************!*\
+  !*** ./Modules/User/Resources/assets/js/Components/UserInfoTab.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserInfoTab": () => (/* binding */ UserInfoTab)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var UserInfoTab = function UserInfoTab() {
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__.useStyles)(),
+      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
+      margin = _useStyles.margin;
+
+  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_8__.useInputRules)(),
+      rules = _useInputRules.rules;
+
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_9__.usePage)().props,
+      user = _usePage$props.user,
+      businesses = _usePage$props.businesses,
+      countries = _usePage$props.countries,
+      currencies = _usePage$props.currencies;
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_10__.useTransRoutes)();
+  var userdata = user.data;
+  var profileFormName = 'profile-form';
+  var items = [{
+    values: {
+      name: 'organization_name',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.organization_name'),
+      rules: [rules.required],
+      initialValue: userdata.organization_name
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+  }, {
+    values: {
+      name: 'business_id',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.main_business'),
+      rules: [rules.required],
+      initialValue: userdata.business_id
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__.Selection, {
+      options: businesses
+    })
+  }, {
+    values: {
+      name: 'itn',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.itn'),
+      rules: rules.itn,
+      initialValue: userdata.itn
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+  }, {
+    values: {
+      name: 'phone',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.phone'),
+      rules: rules.phone,
+      initialValue: userdata.phone
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'country_id',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.country'),
+      rules: [rules.required],
+      initialValue: userdata.country_id
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__.Selection, {
+      options: countries
+    })
+  }, {
+    values: {
+      name: 'city',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.city'),
+      initialValue: userdata.city,
+      rules: [rules.required]
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+  }, {
+    values: {
+      name: 'currency_id',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.currency.label'),
+      initialValue: userdata.currency_id,
+      // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
+      rules: [rules.required]
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__.Selection, {
+      options: currencies
+    })
+  }, {
+    values: {
+      name: 'first_name',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.first_name'),
+      rules: [rules.required, rules.max(255)],
+      initialValue: userdata.first_name
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'middle_name',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.middle_name'),
+      rules: [rules.required, rules.max(255)],
+      initialValue: userdata.middle_name
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'last_name',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.last_name'),
+      rules: [rules.max(255)],
+      initialValue: userdata.last_name
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+  }, {
+    values: {
+      name: 'email',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.email'),
+      rules: rules.email,
+      initialValue: userdata.email,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }];
+
+  var updateProfileHandler = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(body) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_12__.Inertia.post(tRoute('profile.update'), body, {
+                preserveScroll: true
+              });
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function updateProfileHandler(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_2__.RoundedCard, {
+      type: "inner",
+      title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.cards.user_info'),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__.ItemsForm, {
+        layout: "horizontal",
+        labelSpan: {
+          xxl: 7,
+          xl: 10,
+          lg: 10,
+          md: 12,
+          sm: 12
+        },
+        items: items,
+        onFinish: updateProfileHandler,
+        name: profileFormName
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_5__.BoxFlex, {
+      style: margin.top(16),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
+        htmlType: "submit",
+        form: profileFormName,
+        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.profile.index.save_changes')
+      })
+    })]
   });
 };
 
@@ -9352,57 +9681,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Profile)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _Components_DiscountsTab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/DiscountsTab */ "./Modules/User/Resources/assets/js/Components/DiscountsTab.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _Components_DiscountsTab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/DiscountsTab */ "./Modules/User/Resources/assets/js/Components/DiscountsTab.js");
+/* harmony import */ var _Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/UserInfoTab */ "./Modules/User/Resources/assets/js/Components/UserInfoTab.js");
+/* harmony import */ var _Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/ChangePasswordTab */ "./Modules/User/Resources/assets/js/Components/ChangePasswordTab.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -9412,267 +9700,41 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Profile() {
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_6__.useStyles)(),
-      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
-      margin = _useStyles.margin;
-
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_15__.useInputRules)(),
-      rules = _useInputRules.rules;
-
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
-      user = _usePage$props.user,
-      businesses = _usePage$props.businesses,
-      countries = _usePage$props.countries,
-      currencies = _usePage$props.currencies,
-      discounts = _usePage$props.discounts;
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__.useTransRoutes)();
-  var userdata = user.data;
-  var profileFormName = 'profile-form';
-  var changePasswordForm = 'change-password-form';
-
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_17__["default"].useForm(),
-      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
-      changePwdForm = _Form$useForm2[0];
-
-  var items = [{
-    values: {
-      name: 'organization_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.organization_name'),
-      rules: [rules.required],
-      initialValue: userdata.organization_name
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {})
+  var tabs = [{
+    name: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.profile.index.tab'),
+    key: "user-info",
+    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_4__.UserInfoTab, {})
   }, {
-    values: {
-      name: 'business_id',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.main_business'),
-      rules: [rules.required],
-      initialValue: userdata.business_id
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: businesses
-    })
+    name: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get("pages.profile.index.change_password"),
+    key: "change-password",
+    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_5__.ChangePasswordTab, {})
   }, {
-    values: {
-      name: 'itn',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.itn'),
-      rules: rules.itn,
-      initialValue: userdata.itn
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {})
-  }, {
-    values: {
-      name: 'phone',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.phone'),
-      rules: rules.phone,
-      initialValue: userdata.phone
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'country_id',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.country'),
-      rules: [rules.required],
-      initialValue: userdata.country_id
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: countries
-    })
-  }, {
-    values: {
-      name: 'city',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.city'),
-      initialValue: userdata.city,
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {})
-  }, {
-    values: {
-      name: 'currency_id',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.currency.label'),
-      initialValue: userdata.currency_id,
-      // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: currencies
-    })
-  }, {
-    values: {
-      name: 'first_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.first_name'),
-      rules: [rules.required, rules.max(255)],
-      initialValue: userdata.first_name
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'middle_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.middle_name'),
-      rules: [rules.required, rules.max(255)],
-      initialValue: userdata.middle_name
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'last_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.last_name'),
-      rules: [rules.max(255)],
-      initialValue: userdata.last_name
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {})
-  }, {
-    values: {
-      name: 'email',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.email'),
-      rules: rules.email,
-      initialValue: userdata.email,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      readOnly: true
-    })
+    name: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.profile.discounts.tab'),
+    key: "producers-discounts",
+    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_DiscountsTab__WEBPACK_IMPORTED_MODULE_3__.DiscountsTab, {})
   }];
-  var updatePasswordItems = [{
-    values: {
-      name: 'current_password',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.current_password'),
-      rules: []
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].Password, {})
-  }, {
-    values: {
-      name: 'password',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.new_password'),
-      rules: []
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].Password, {})
-  }, {
-    values: {
-      name: 'password_confirmation',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.new_password_confirmation'),
-      rules: [],
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].Password, {})
-  }];
-
-  var updateProfileHandler = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(body) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post(tRoute('profile.update'), body, {
-                preserveScroll: true
-              });
-
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function updateProfileHandler(_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-
-  var changePasswordHandler = function changePasswordHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post(tRoute('profile.password.change'), body, {
-      preserveScroll: true
-    });
-    changePwdForm.resetFields();
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_8__.IndexContainer, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_19__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_2__.IndexContainer, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], {
       centered: true,
       type: "card",
-      defaultActiveKey: "user-info",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.tab'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_9__.JustifiedRow, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
-            xs: 22,
-            sm: 20,
-            md: 18,
-            lg: 16,
-            xl: 11,
-            xxl: 9,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
-                xs: 24,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-                  type: "inner",
-                  title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.cards.user_info'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_11__.ItemsForm, {
-                    layout: "horizontal",
-                    labelSpan: {
-                      xxl: 7,
-                      xl: 10,
-                      lg: 10,
-                      md: 12,
-                      sm: 12
-                    },
-                    items: items,
-                    onFinish: updateProfileHandler,
-                    name: profileFormName
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_12__.BoxFlex, {
-                  style: margin.top(16),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_13__.PrimaryButton, {
-                    htmlType: "submit",
-                    form: profileFormName,
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.save_changes')
-                  })
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
-                xs: 24,
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-                  type: "inner",
-                  title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.cards.password'),
-                  style: margin.top(16),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_11__.ItemsForm, {
-                    form: changePwdForm,
-                    layout: "horizontal",
-                    labelSpan: {
-                      xxl: 6,
-                      xl: 10,
-                      lg: 10,
-                      md: 12,
-                      sm: 12
-                    },
-                    items: updatePasswordItems,
-                    onFinish: changePasswordHandler,
-                    name: changePasswordForm
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_12__.BoxFlex, {
-                  style: margin.top(16),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_13__.PrimaryButton, {
-                    htmlType: "submit",
-                    form: changePasswordForm,
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.index.change_password')
-                  })
-                })]
-              })]
+      defaultActiveKey: tabs[0].key,
+      children: tabs.map(function (tab) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"].TabPane, {
+          tab: tab.name,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            justify: "space-around",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              xs: 22,
+              sm: 20,
+              md: 18,
+              lg: 16,
+              xl: 11,
+              xxl: 9,
+              children: tab.comp
             })
           })
-        })
-      }, "user-info"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.profile.discounts.tab'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_Components_DiscountsTab__WEBPACK_IMPORTED_MODULE_14__.DiscountsTab, {
-          discounts: discounts
-        })
-      }, "producers-discounts")]
+        }, tab.key);
+      })
     })
   });
 }
@@ -10130,55 +10192,6 @@ var ItemsForm = function ItemsForm(_ref) {
         key: (_item$values = item.values) === null || _item$values === void 0 ? void 0 : _item$values.name
       }), item.input);
     })
-  }));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/JustifiedRow.js":
-/*!*************************************************!*\
-  !*** ./resources/js/src/Shared/JustifiedRow.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "JustifiedRow": () => (/* binding */ JustifiedRow)
-/* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["children", "gutter"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var JustifiedRow = function JustifiedRow(_ref) {
-  var children = _ref.children,
-      _ref$gutter = _ref.gutter,
-      gutter = _ref$gutter === void 0 ? [0, 0] : _ref$gutter,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
-    style: {
-      minHeight: "85vh"
-    },
-    justify: "space-around",
-    align: "middle",
-    gutter: gutter
-  }, rest), {}, {
-    children: children
   }));
 };
 
