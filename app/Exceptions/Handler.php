@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
         if (!app()->environment(['production', 'testing']) && in_array($response->status(), [500, 503, 404, 403])) {
             return Inertia::render('Core::Error', [
                 'status' => $response->status(),
-                'title' => $currentTenant->name
+                'title' => $currentTenant->name || "Pump Manager"
             ])
                 ->toResponse($request)
                 ->setStatusCode($response->status());

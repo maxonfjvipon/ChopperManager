@@ -5,6 +5,7 @@ namespace Modules\PumpManager\Entities;
 use Closure;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\SelectionType;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Pump\Entities\PumpSeries;
@@ -36,6 +37,14 @@ class PMUser extends Userable
     public function business(): BelongsTo
     {
         return $this->belongsTo(Business::class);
+    }
+
+    protected static function booted()
+    {
+        static::created(function (self $user) {
+            UserAndPumpSeries::updateAvailableSeriesForUser(PumpSeries::pluck('id')->all(), $user);
+            UserAndSelectionType::updateAvailableSelectionTypesForUser([1, 2], $user);
+        });
     }
 
     public function updateAvailablePropsFromRequest(WithAvailableProps $request): bool
