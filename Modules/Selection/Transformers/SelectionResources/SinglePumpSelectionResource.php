@@ -64,7 +64,7 @@ class SinglePumpSelectionResource extends PumpSelectionResource
                     'selection::selection_perf_curves',
                     $this->selectionCurvesData($this->resource)
                 )->render(),
-                'pump_info' => $this->pumpInfo(),
+//                'pump_info' => $this->pumpInfo(),
             ],
         ];
     }

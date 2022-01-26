@@ -57,6 +57,7 @@ abstract class PumpableTypeSelectionService implements PumpableTypeSelectionCont
     protected function loadedPumpsFromDB(MakeSelectionRequest $request)
     {
         $dbPumps = Pump::whereIn('series_id', $request->series_ids)
+            ->whereIsDiscontinued(false)
             ->with([
                 'series',
                 'series.discount',

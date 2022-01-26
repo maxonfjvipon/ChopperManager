@@ -44,7 +44,7 @@ class DoublePumpService extends PumpableTypePumpService
             'applications' => $pump->applications,
             'types' => $pump->types,
             'pumpable_type' => $pump->pumpable_type,
-            'is_discontinued' => $pump->is_discountinued,
+            'is_discontinued' => $pump->is_discontinued_with_series,
         ];
     }
 

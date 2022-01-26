@@ -47,12 +47,13 @@ class SinglePumpImporter extends PumpImporter
             '14' => ['required'], // ptp length
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
             '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // performance
-            '17' => ['sometimes', 'nullable',], // description
-            '18' => ['sometimes', 'nullable', 'string'], // pump image
-            '19' => ['sometimes', 'nullable', 'string'], // pump sizes image
-            '20' => ['sometimes', 'nullable', 'string'], // pump electric diagram image
-            '21' => ['sometimes', 'nullable', 'string'], // pump cross sectional drawing image
-            '22' => ['sometimes', 'nullable', 'string'], // pump files
+            '17' => ['required', 'boolean'],
+            '18' => ['sometimes', 'nullable',], // description
+            '19' => ['sometimes', 'nullable', 'string'], // pump image
+            '20' => ['sometimes', 'nullable', 'string'], // pump sizes image
+            '21' => ['sometimes', 'nullable', 'string'], // pump electric diagram image
+            '22' => ['sometimes', 'nullable', 'string'], // pump cross sectional drawing image
+            '23' => ['sometimes', 'nullable', 'string'], // pump files
         ];
     }
 
@@ -81,12 +82,13 @@ class SinglePumpImporter extends PumpImporter
             '14' => __('validation.attributes.import.pumps.ptp_length'),
             '15' => __('validation.attributes.import.pumps.mains_connection'),
             '16' => __('validation.attributes.import.pumps.sp_performance'),
-            '17' => __('validation.attributes.import.pumps.description'),
-            '18' => __('validation.attributes.import.pumps.pump_image'),
-            '19' => __('validation.attributes.import.pumps.pump_sizes_image'),
-            '20' => __('validation.attributes.import.pumps.pump_electric_diagram_image'),
-            '21' => __('validation.attributes.import.pumps.pump_cross_sectional_drawing_image'),
-            '22' => __('validation.attributes.import.pumps.pump_files'),
+            '17' => __('validation.attributes.import.pumps.is_discontinued'),
+            '18' => __('validation.attributes.import.pumps.description'),
+            '19' => __('validation.attributes.import.pumps.pump_image'),
+            '20' => __('validation.attributes.import.pumps.pump_sizes_image'),
+            '21' => __('validation.attributes.import.pumps.pump_electric_diagram_image'),
+            '22' => __('validation.attributes.import.pumps.pump_cross_sectional_drawing_image'),
+            '23' => __('validation.attributes.import.pumps.pump_files'),
         ];
     }
 
@@ -110,14 +112,15 @@ class SinglePumpImporter extends PumpImporter
                 'ptp_length' => $entity[14],
                 'connection_id' => trim($entity[15]),
                 'sp_performance' => str_replace(",", ".", trim($entity[16])),
-                'description' => $entity[17] ?? null,
-                'image' => array_key_exists(18, $entity) ? trim($entity[18]) : null,
-                'sizes_image' => array_key_exists(19, $entity) ? trim($entity[19]) : null,
-                'electric_diagram_image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
-                'cross_sectional_drawing_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
+                'is_discontinued' => $entity[17],
+                'description' => $entity[18] ?? null,
+                'image' => array_key_exists(19, $entity) ? trim($entity[19]) : null,
+                'sizes_image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
+                'electric_diagram_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
+                'cross_sectional_drawing_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
                 'pumpable_type' => Pump::$SINGLE_PUMP,
             ],
-            'files' => array_key_exists(22, $entity) ? $this->idsArrayFromString($entity[22]) : []
+            'files' => array_key_exists(23, $entity) ? $this->idsArrayFromString($entity[23]) : []
         ];
     }
 }

@@ -64,6 +64,11 @@ class PumpSeries extends Model
         return $updated;
     }
 
+    public function scopeNotDiscontinued($query)
+    {
+        return $query->whereIsDiscontinued(false);
+    }
+
     public function scopeOnCategory($query, $categoryId)
     {
         return $query->whereCategoryId($categoryId);

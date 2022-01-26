@@ -25,7 +25,7 @@ class SinglePumpResource extends PumpResource
             'article_num_main' => $this->article_num_main,
 //            'article_num_reserve' => $this->article_num_reserve,
             'article_num_archive' => $this->article_num_archive,
-            'is_discontinued' => __($this->is_discontinued
+            'is_discontinued' => __(($this->is_discontinued_with_series)
                 ? 'tooltips.popconfirm.no'
                 : 'tooltips.popconfirm.yes'
             ),

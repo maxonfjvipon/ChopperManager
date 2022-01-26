@@ -27,7 +27,7 @@ class SinglePumpService extends PumpableTypePumpService
         return [
             'id' => $pump->id,
             'article_num_main' => $pump->article_num_main,
-            'article_num_reserve' => $pump->article_num_reserve,
+//            'article_num_reserve' => $pump->article_num_reserve,
             'article_num_archive' => $pump->article_num_archive,
             'brand' => $pump->series->brand->name,
             'series' => $pump->series->name,
@@ -49,7 +49,7 @@ class SinglePumpService extends PumpableTypePumpService
             'applications' => $pump->applications,
             'types' => $pump->types,
             'pumpable_type' => $pump->pumpable_type,
-            'is_discontinued' => $pump->is_discountinued,
+            'is_discontinued' => $pump->is_discontinued_with_series,
         ];
     }
 
@@ -63,7 +63,6 @@ class SinglePumpService extends PumpableTypePumpService
             'series.applications',
             'series.types'
         ])
-
             ->with('mains_connection')
             ->with('dn_suction')
             ->with('dn_pressure')

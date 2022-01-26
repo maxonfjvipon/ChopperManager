@@ -225,6 +225,7 @@ return [
                 'sp_performance' => 'Гидравлическая характеристика',
                 'dp_peak_performance' => 'Пиковая гидравлическая характеристика',
                 'dp_standby_performance' => 'Резервная гидравлическая характеристика',
+                'is_discontinued' => '"Не производится"',
                 'category' => 'Категория',
                 'power_adjustment' => 'Эл.регулирование мощности',
                 'mains_connection' => 'Подключение к сети',

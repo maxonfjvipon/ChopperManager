@@ -57,7 +57,7 @@ class DoublePumpSelectionResource extends PumpSelectionResource
                     $this->selectionCurvesData($this->resource)
                 )->render(),
                 'dp_work_scheme_id' => $this->dp_work_scheme_id,
-                'pump_info' => $this->pumpInfo(),
+//                'pump_info' => $this->pumpInfo(),
             ]
         ];
     }

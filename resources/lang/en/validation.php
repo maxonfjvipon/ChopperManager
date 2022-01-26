@@ -217,6 +217,7 @@ return [
                 'sp_performance' => 'Hydraulic performance',
                 'dp_peak_performance' => 'Peak hydraulic performance',
                 'dp_standby_performance' => 'Standby hydraulic performance',
+                'is_discontinued' => 'Is discontinued',
                 'category' => 'Category',
                 'power_adjustment' => 'El. power adjustment',
                 'mains_connection' => 'Mains connection',

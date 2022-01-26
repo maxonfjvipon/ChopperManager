@@ -48,12 +48,13 @@ class DoublePumpImporter extends PumpImporter
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
             '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // standby performance
             '17' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // peak performance
-            '18' => ['sometimes', 'nullable',], // description
-            '19' => ['sometimes', 'nullable', 'string'], // pump image
-            '20' => ['sometimes', 'nullable', 'string'], // pump sizes image
-            '21' => ['sometimes', 'nullable', 'string'], // pump electric diagram image
-            '22' => ['sometimes', 'nullable', 'string'], // pump cross sectional drawing image
-            '23' => ['sometimes', 'nullable', 'string'], // pump files
+            '18' => ['required', 'boolean'],
+            '19' => ['sometimes', 'nullable',], // description
+            '20' => ['sometimes', 'nullable', 'string'], // pump image
+            '21' => ['sometimes', 'nullable', 'string'], // pump sizes image
+            '22' => ['sometimes', 'nullable', 'string'], // pump electric diagram image
+            '23' => ['sometimes', 'nullable', 'string'], // pump cross sectional drawing image
+            '24' => ['sometimes', 'nullable', 'string'], // pump files
         ];
     }
 
@@ -84,12 +85,13 @@ class DoublePumpImporter extends PumpImporter
             '15' => __('validation.attributes.import.pumps.mains_connection'),
             '16' => __('validation.attributes.import.pumps.dp_standby_performance'),
             '17' => __('validation.attributes.import.pumps.dp_peak_performance'),
-            '18' => __('validation.attributes.import.pumps.description'),
-            '19' => __('validation.attributes.import.pumps.pump_image'),
-            '20' => __('validation.attributes.import.pumps.pump_sizes_image'),
-            '21' => __('validation.attributes.import.pumps.pump_electric_diagram_image'),
-            '22' => __('validation.attributes.import.pumps.pump_cross_sectional_drawing_image'),
-            '23' => __('validation.attributes.import.pumps.pump_files'),
+            '18' => __('validation.attributes.import.pumps.is_discontinued'),
+            '19' => __('validation.attributes.import.pumps.description'),
+            '20' => __('validation.attributes.import.pumps.pump_image'),
+            '21' => __('validation.attributes.import.pumps.pump_sizes_image'),
+            '22' => __('validation.attributes.import.pumps.pump_electric_diagram_image'),
+            '23' => __('validation.attributes.import.pumps.pump_cross_sectional_drawing_image'),
+            '24' => __('validation.attributes.import.pumps.pump_files'),
         ];
     }
 
@@ -114,14 +116,15 @@ class DoublePumpImporter extends PumpImporter
                 'connection_id' => trim($entity[15]),
                 'dp_standby_performance' => str_replace(",", ".", trim($entity[16])),
                 'dp_peak_performance' => str_replace(",", ".", trim($entity[17])),
-                'description' => $entity[18] ?? null,
-                'image' => array_key_exists(19, $entity) ? trim($entity[19]) : null,
-                'sizes_image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
-                'electric_diagram_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
-                'cross_sectional_drawing_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
+                'is_discontinued' => $entity[18],
+                'description' => $entity[19] ?? null,
+                'image' => array_key_exists(20, $entity) ? trim($entity[20]) : null,
+                'sizes_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
+                'electric_diagram_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
+                'cross_sectional_drawing_image' => array_key_exists(23, $entity) ? trim($entity[23]) : null,
                 'pumpable_type' => Pump::$DOUBLE_PUMP,
             ],
-            'files' => array_key_exists(23, $entity) ? $this->idsArrayFromString($entity[23]) : []
+            'files' => array_key_exists(24, $entity) ? $this->idsArrayFromString($entity[24]) : []
         ];
     }
 }

@@ -27,7 +27,8 @@ class PMDoublePumpSelectionService extends PMPumpableSelectionService
         return [
             'brandsWithSeries' => PumpBrand::with([
                 'series' => function ($query) use ($availableSeriesIds) {
-                    $query->whereIn('id', $availableSeriesIds);
+                    $query->whereIn('id', $availableSeriesIds)
+                        ->notDiscontinued();
                 }, 'series.types', 'series.applications', 'series.power_adjustment'])
                 ->whereHas('series', function ($query) use ($availableSeriesIds) {
                     $query->whereIn('id', $availableSeriesIds);
