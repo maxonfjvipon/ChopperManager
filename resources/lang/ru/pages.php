@@ -170,6 +170,7 @@ return [
                 'power_adjustment' => 'Встроенное регулирование',
                 'applications' => 'Применения',
                 'types' => 'Типы',
+                'is_discontinued' => 'Действует',
                 'delete' => 'Вы точно хотите удалить серию?'
             ],
         ],
@@ -195,6 +196,7 @@ return [
                 'category' => 'Категория',
                 'power_adjustment' => 'Встроенное регулирование',
                 'applications' => 'Применения',
+                'is_discontinued' => 'Снята с производства',
                 'types' => 'Типы',
                 'image_path' => 'Путь к иконке',
             ],
@@ -223,6 +225,7 @@ return [
             'article_num_main' => 'Артикул основной',
             'article_num_reserve' => 'Артикул резервный',
             'article_num_archive' => 'Артикул архивный',
+            'is_discontinued' => 'Действует',
             'brand' => 'Производитель',
             'series' => 'Серия',
             'name' => 'Наименование',

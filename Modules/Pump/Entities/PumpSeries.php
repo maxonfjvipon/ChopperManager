@@ -23,6 +23,10 @@ class PumpSeries extends Model
     public $timestamps = false;
     protected $softCascade = ['pumps'];
 
+    protected $casts = [
+        'is_discontinued' => 'boolean'
+    ];
+
     public function getTempsMinAttribute(): array|bool
     {
         return $this->explodedAttribute('temps_min');

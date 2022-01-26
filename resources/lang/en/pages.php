@@ -171,6 +171,7 @@ return [
                 'power_adjustment' => 'El.power adjustment',
                 'applications' => 'Applications',
                 'types' => 'Types',
+                'is_discontinued' => 'Is active',
                 'delete' => 'Are you sure you want to delete the series?'
             ],
         ],
@@ -196,6 +197,7 @@ return [
                 'category' => 'Category',
                 'power_adjustment' => 'El.power adjustment',
                 'applications' => 'Applications',
+                'is_discontinued' => 'Is discontinued',
                 'types' => 'Types',
                 'image_path' => 'Path to image',
             ],
@@ -224,6 +226,7 @@ return [
             'article_num_main' => 'Main article number',
             'article_num_reserve' => 'Reserve article number',
             'article_num_archive' => 'Archive article number',
+            'is_discontinued' => 'Active',
             'brand' => 'Brand',
             'series' => 'Series',
             'name' => 'Name',

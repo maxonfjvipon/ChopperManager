@@ -38,7 +38,8 @@ abstract class PumpSeriesService implements PumpSeriesContract
                     'category' => $series->category->name,
                     'power_adjustment' => $series->power_adjustment->name,
                     'applications' => $series->imploded_applications,
-                    'types' => $series->imploded_types
+                    'types' => $series->imploded_types,
+                    'is_discontinued' => $series->is_discontinued,
                 ])->all()
         ]);
     }

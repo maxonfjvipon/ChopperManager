@@ -16,7 +16,7 @@ abstract class PumpableTypePumpService implements PumpableTypePumpServiceContrac
             ->when($searchFilter, function ($query, $searchField) {
                 return $query->where(function ($query) use ($searchField) {
                     $query->where('article_num_main', 'like', '%' . $searchField . '%')
-                        ->orWhere('article_num_reserve', 'like', '%' . $searchField . '%')
+//                        ->orWhere('article_num_reserve', 'like', '%' . $searchField . '%')
                         ->orWhere('article_num_archive', 'like', '%' . $searchField . '%')
                         ->orWhere('name', 'like', '%' . $searchField . '%');
                 });

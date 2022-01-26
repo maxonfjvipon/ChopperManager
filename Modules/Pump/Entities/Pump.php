@@ -26,6 +26,10 @@ class Pump extends Model
     public $timestamps = false;
     protected $table = 'pumps';
 
+    protected $casts = [
+        'is_discontinued' => 'boolean'
+    ];
+
     public function getFullNameAttribute(): string
     {
         return "{$this->brand->name} {$this->name}";

@@ -1,7 +1,8 @@
 import Lang from "../../../../../../resources/js/translation/lang";
-import {useState} from "react";
+import React, {useState} from "react";
 import {PumpsTab} from "./PumpsTab";
 import {usePage} from "@inertiajs/inertia-react";
+import {Tag} from "antd";
 
 export const SinglePumpsTab = ({setPumpInfo}) => {
     const {filter_data} = usePage().props
@@ -15,14 +16,19 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
             width: 120
         },
         {
-            title: Lang.get('pages.pumps.data.article_num_reserve'),
-            dataIndex: 'article_num_reserve',
-            width: 120
-        },
-        {
             title: Lang.get('pages.pumps.data.article_num_archive'),
             dataIndex: 'part_num_archive',
             width: 120
+        },
+        {
+            title: Lang.get('pages.pumps.data.is_discontinued'),
+            dataIndex: 'is_discontinued',
+            width: 70,
+            render: (_, record) => {
+                return record.is_discontinued
+                    ? <Tag color="orange">{Lang.get('tooltips.popconfirm.no')}</Tag>
+                    : <Tag color="green">{Lang.get('tooltips.popconfirm.yes')}</Tag>
+            }
         },
         {
             title: Lang.get('pages.pumps.data.brand'),

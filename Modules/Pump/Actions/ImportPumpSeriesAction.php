@@ -35,16 +35,17 @@ class ImportPumpSeriesAction extends ImportAction
             '3' => ['required', new ExistsInArray($db['power_adjustments'])], // power adjustment
             '4' => ['required', new ExistsInIdsArray($db['applications'], ",")], // applications
             '5' => ['required', new ExistsInIdsArray($db['types'], ",")], // types
-            '6' => ['sometimes', 'nullable', 'string'], // icon
+            '6' => ['required', 'boolean'],
+            '7' => ['sometimes', 'nullable', 'string'], // icon
         ], [
-            // TODO: атрибуты для серий
             '0' => __('validation.attributes.import.pump_series.brand'),
             '1' => __('validation.attributes.import.pump_series.name'),
             '2' => __('validation.attributes.import.pump_series.category'),
             '3' => __('validation.attributes.import.pump_series.power_adjustment'),
             '4' => __('validation.attributes.import.pump_series.applications'),
             '5' => __('validation.attributes.import.pump_series.types'),
-            '6' => __('validation.attributes.import.pump_series.icon'),
+            '6' => __('validation.attributes.import.pump_series.is_discontinued'),
+            '7' => __('validation.attributes.import.pump_series.icon'),
         ], [], $files, 'pump_series.index', __('flash.pump_series.imported'));
     }
 
@@ -70,7 +71,8 @@ class ImportPumpSeriesAction extends ImportAction
                 'name' => trim($entity[1]),
                 'category_id' => $entity[2],
                 'power_adjustment_id' => $entity[3],
-                'image' => array_key_exists(6, $entity) ? trim($entity[6]) : null,
+                'is_discontinued' => $entity[6],
+                'image' => array_key_exists(7, $entity) ? trim($entity[7]) : null,
             ],
             'application_ids' => $this->idsArrayFromString($entity[4]),
             'type_ids' => $this->idsArrayFromString($entity[5]),

@@ -23,8 +23,12 @@ class DoublePumpResource extends PumpResource
         $data = array_merge(parent::toArray($request), [
             'id' => $this->id,
             'article_num_main' => $this->article_num_main,
-            'article_num_reserve' => $this->article_num_reserve,
+//            'article_num_reserve' => $this->article_num_reserve,
             'article_num_archive' => $this->article_num_archive,
+            'is_discontinued' => __($this->is_discontinued
+                ? 'tooltips.popconfirm.no'
+                : 'tooltips.popconfirm.yes'
+            ),
             'full_name' => $this->full_name,
             'weight' => $this->weight,
             'price' => $this->price_list->price ?? null,

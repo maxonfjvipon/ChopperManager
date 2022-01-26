@@ -3,6 +3,7 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Box\Spout\Common\Exception\IOException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -77,6 +78,7 @@ class PumpsController extends Controller
      * @param FilesUploadRequest $request
      * @return RedirectResponse
      * @throws AuthorizationException
+     * @throws IOException
      */
     public function import(FilesUploadRequest $request): RedirectResponse
     {

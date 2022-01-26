@@ -26,6 +26,7 @@ class PumpSeriesResource extends JsonResource
             'category_id' => $this->category_id,
             'types' => $this->types()->pluck('pump_types.id')->all(),
             'applications' => $this->applications()->pluck('pump_applications.id')->all(),
+            'is_discontinued' => $this->is_discontinued,
             'image' => $this->image,
             'picture' => (new TenantStorage())->urlToImage($this->image),
         ];

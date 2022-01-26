@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Image} from "antd";
+import {Input, Image, Switch} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {useInputRules} from "../../../../../../../resources/js/src/Hooks/input-rules.hook";
 import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permissions.hook";
@@ -63,6 +63,13 @@ export default function Create() {
                 label: Lang.get('pages.pump_series.edit.form.applications'),
                 initialValue: series.data.applications,
             }, input: <MultipleSelection options={applications}/>,
+        }, {
+            values: {
+                name: 'is_discontinued',
+                label: Lang.get('pages.pump_series.edit.form.is_discontinued'),
+                initialValue: series.data.is_discontinued,
+                valuePropName: "checked",
+            }, input: <Switch/>
         }, {
             values: {
                 name: 'image',

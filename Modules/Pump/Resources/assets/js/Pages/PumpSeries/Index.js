@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tooltip} from "antd";
+import {Tag, Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {usePermissions} from "../../../../../../../resources/js/src/Hooks/permissions.hook";
@@ -47,12 +47,6 @@ export default function Index() {
     ]
 
     const seriesColumns = [
-        // {
-        //     title: Lang.get('pages.pump_series.index.table.brand'),
-        //     dataIndex: 'brand',
-        //     filters: filter_data.brands,
-        //     onFilter: (brand, record) => record.brand === brand
-        // },
         {
             title: Lang.get('pages.pump_series.index.table.name'),
             dataIndex: 'name',
@@ -82,6 +76,15 @@ export default function Index() {
             dataIndex: 'types',
             filters: filter_data.types,
             onFilter: (type, record) => record.types.split(', ').includes(type)
+        },
+        {
+            title: Lang.get('pages.pump_series.index.table.is_discontinued'),
+            dataIndex: 'is_discontinued',
+            render: (_, record) => {
+                return record.is_discontinued
+                    ? <Tag color="orange">{Lang.get('tooltips.popconfirm.no')}</Tag>
+                    : <Tag color="green">{Lang.get('tooltips.popconfirm.yes')}</Tag>
+            }
         },
         {
             key: 'key', width: '1%', render: (_, record) => {

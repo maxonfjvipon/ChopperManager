@@ -48,7 +48,8 @@ class SinglePumpService extends PumpableTypePumpService
             'mains_connection' => $pump->mains_connection->full_value,
             'applications' => $pump->applications,
             'types' => $pump->types,
-            'pumpable_type' => $pump->pumpable_type
+            'pumpable_type' => $pump->pumpable_type,
+            'is_discontinued' => $pump->is_discountinued,
         ];
     }
 

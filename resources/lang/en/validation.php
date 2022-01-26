@@ -241,6 +241,7 @@ return [
                 'category' => 'Category',
                 'power_adjustment' => 'El power adjustment',
                 'applications' => 'Applications',
+                'is_discontinued' => 'Is discontinued',
                 'types' => 'Types',
                 'icon' => 'Icon image'
             ]

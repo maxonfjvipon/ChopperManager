@@ -50,11 +50,22 @@ export const PumpPropsDrawer = ({
                 readOnly
             />
         },
+        // {
+        //     values: {
+        //         name: 'article_num_reserve',
+        //         label: Lang.get('pages.pumps.data.article_num_reserve'),
+        //         initialValue: pumpInfo?.article_num_reserve,
+        //         className: reducedAntFormItemClassName,
+        //     }, input: <Input
+        //         bordered={false}
+        //         readOnly
+        //     />
+        // },
         {
             values: {
-                name: 'article_num_reserve',
-                label: Lang.get('pages.pumps.data.article_num_reserve'),
-                initialValue: pumpInfo?.article_num_reserve,
+                name: 'article_num_archive',
+                label: Lang.get('pages.pumps.data.article_num_archive'),
+                initialValue: pumpInfo?.article_num_archive,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -63,9 +74,9 @@ export const PumpPropsDrawer = ({
         },
         {
             values: {
-                name: 'article_num_archive',
-                label: Lang.get('pages.pumps.data.article_num_archive'),
-                initialValue: pumpInfo?.article_num_archive,
+                name: 'is_discontinued',
+                label: Lang.get('pages.pumps.data.is_discontinued'),
+                initialValue: pumpInfo?.is_discontinued,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}

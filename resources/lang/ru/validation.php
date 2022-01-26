@@ -249,6 +249,7 @@ return [
                 'category' => 'Категория',
                 'power_adjustment' => 'Встроенное регулирование',
                 'applications' => 'Применения',
+                'is_discontinued' => '"Не производится"',
                 'types' => 'Типы',
                 'icon' => 'Иконка'
             ]

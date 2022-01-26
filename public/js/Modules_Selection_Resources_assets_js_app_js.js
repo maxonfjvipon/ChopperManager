@@ -10731,11 +10731,22 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
       bordered: false,
       readOnly: true
     })
-  }, {
+  }, // {
+  //     values: {
+  //         name: 'article_num_reserve',
+  //         label: Lang.get('pages.pumps.data.article_num_reserve'),
+  //         initialValue: pumpInfo?.article_num_reserve,
+  //         className: reducedAntFormItemClassName,
+  //     }, input: <Input
+  //         bordered={false}
+  //         readOnly
+  //     />
+  // },
+  {
     values: {
-      name: 'article_num_reserve',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_reserve'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_reserve,
+      name: 'article_num_archive',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_archive'),
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_archive,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -10744,9 +10755,9 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     })
   }, {
     values: {
-      name: 'article_num_archive',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_archive'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_archive,
+      name: 'is_discontinued',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.is_discontinued'),
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.is_discontinued,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
