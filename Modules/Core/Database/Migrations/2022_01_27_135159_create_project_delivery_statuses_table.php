@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessesTable extends Migration
+class CreateProjectDeliveryStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateBusinessesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('businesses');
-        Schema::create('businesses', function (Blueprint $table) {
+        Schema::create('project_delivery_statuses', function (Blueprint $table) {
             $table->id();
             $table->json('name');
         });
@@ -27,6 +26,6 @@ class CreateBusinessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('businesses');
+        Schema::dropIfExists('project_delivery_statuses');
     }
 }

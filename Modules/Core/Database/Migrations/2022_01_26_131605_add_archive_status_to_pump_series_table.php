@@ -26,7 +26,7 @@ class AddArchiveStatusToPumpSeriesTable extends Migration
     public function down()
     {
         Schema::table('pump_series', function (Blueprint $table) {
-            $table->removeColumn('is_discontinued');
+            $table->dropColumn('is_discontinued');
         });
     }
 }

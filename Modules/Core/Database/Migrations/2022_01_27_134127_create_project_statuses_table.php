@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateDNSTable extends Migration
+class CreateProjectStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDNSTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('dns');
-        Schema::create('dns', function (Blueprint $table) {
+        Schema::create('project_statuses', function (Blueprint $table) {
             $table->id();
-            $table->integer('value');
+            $table->json('name');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateDNSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dns');
+        Schema::dropIfExists('project_statuses');
     }
 }

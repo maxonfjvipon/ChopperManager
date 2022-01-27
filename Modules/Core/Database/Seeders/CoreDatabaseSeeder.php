@@ -4,6 +4,8 @@ namespace Modules\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Modules\Core\Entities\ProjectDeliveryStatus;
+use Modules\Core\Entities\ProjectStatus;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\DoublePumpWorkScheme;
@@ -64,6 +66,7 @@ class CoreDatabaseSeeder extends Seeder
                 $landlordRole->givePermissionTo($permission);
             }
 
+            // TODO: add some import permissions to admin role
             /** ADMIN ROLE */
             $adminRole = Role::create(['guard_name' => $tenantGuard, 'name' => 'Admin']);
             $adminPermissions = [
@@ -77,6 +80,7 @@ class CoreDatabaseSeeder extends Seeder
                 'user_access',
                 'user_create',
                 'user_show',
+                'user_statistic',
 
                 'project_access',
                 'project_create',
@@ -86,6 +90,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_restore',
                 'project_export',
                 'project_clone',
+                'project_statistic',
 
                 'pump_access',
                 'pump_create',
@@ -225,6 +230,15 @@ class CoreDatabaseSeeder extends Seeder
             /** * Double pump work schemes */
             DoublePumpWorkScheme::create(['id' => 1, 'name' => ['en' => 'Main standby', 'ru' => 'Рабочий-резервный']]);
             DoublePumpWorkScheme::create(['id' => 2, 'name' => ['en' => 'Main peak', 'ru' => 'Рабочий-пиковый']]);
+
+            /** * Project statuses */
+            ProjectStatus::create(['name' => ['ru' => "Новый", 'en' => 'New']]);
+            ProjectStatus::create(['name' => ['ru' => "В работе", 'en' => 'In progress']]);
+            ProjectStatus::create(['name' => ['ru' => "Архивный", 'en' => 'Archived']]);
+            ProjectStatus::create(['name' => ['ru' => "Удаленный", 'en' => 'Deleted']]);
+
+            ProjectDeliveryStatus::create(['name' => ['ru' => 'Не поставлен', 'en' => 'Not delivered']]);
+            ProjectDeliveryStatus::create(['name' => ['ru' => 'Поставлен', 'en' => 'Delivered']]);
 
             /** * Currencies */
             DB::insert("INSERT INTO currencies (id, code, name, symbol) VALUES
