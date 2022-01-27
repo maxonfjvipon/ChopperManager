@@ -4,9 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Inertia\Middleware;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use Spatie\Multitenancy\Models\Tenant;
 
 abstract class CoreRouteServiceProvider extends ServiceProvider
 {
@@ -32,15 +30,11 @@ abstract class CoreRouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        Route::middleware(['web', 'tenant'])
-            ->namespace($this->namespace)
-            ->group(function () {
-                if (Tenant::checkCurrent()) {
-                    Route::domain(Tenant::current()->domain)
-                        ->prefix(LaravelLocalization::setLocale())
-                        ->middleware(['auth.module', 'auth.active', 'verified', 'localizationRedirect'])
-                        ->group(module_path($this->moduleName(), '/Routes/web.php'));
-                }
-            });
+        Route::middleware(['web', 'tenant'])->group(function () {
+            Route::namespace($this->namespace)
+                ->prefix(LaravelLocalization::setLocale())
+                ->middleware(['auth.module', 'auth.active', 'verified', 'localizationRedirect'])
+                ->group(module_path($this->moduleName(), '/Routes/web.php'));
+        });
     }
 }

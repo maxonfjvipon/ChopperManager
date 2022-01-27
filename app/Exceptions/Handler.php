@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
         $currentTenant = $this->getTenantModel()::current();
 
         // TODO: fix for production
-        if (!app()->environment(['production', 'testing']) && in_array($response->status(), [500, 503, 404, 403])) {
+        if (!app()->environment(['production']) && in_array($response->status(), [500, 503, 404, 403])) {
             return Inertia::render('Core::Error', [
                 'status' => $response->status(),
                 'title' => $currentTenant->name ?? "Pump Manager"

@@ -22,5 +22,6 @@ Route::prefix('projects')->group(function () {
         Route::get('restore')->name('projects.restore')->uses([ProjectsController::class, 'restore']);
         Route::post('clone')->name('projects.clone')->uses([ProjectsController::class, 'clone']);
     });
+    Route::get('statistic')->name('projects.statistic')->uses([ProjectsController::class, 'statistic']);
 });
 Route::resource('projects', ProjectsController::class);

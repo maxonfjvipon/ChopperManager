@@ -51,15 +51,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web', 'tenant'])
             ->namespace($this->namespace)
-            ->group(function () {
-                if (Tenant::checkCurrent()) {
-                    Route::domain(Tenant::current()->domain)
                         ->prefix(LaravelLocalization::setLocale())
                         ->middleware(['localizationRedirect'])
                         ->group(module_path('Auth', '/Routes/web.php'));
-                }
-
-            });
     }
 
     /**
