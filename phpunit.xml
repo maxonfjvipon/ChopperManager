@@ -5,6 +5,9 @@
          colors="true"
 >
     <testsuites>
+        <testsuite name="Modules Tests">
+            <directory suffix="Test.php">./Modules/**/Tests</directory>
+        </testsuite>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
@@ -12,17 +15,25 @@
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
-    <coverage processUncoveredFiles="true">
-        <include>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
-        </include>
-    </coverage>
+            <directory suffix=".php">./Modules</directory>
+            <exclude>
+                <directory suffix="blade.php">./Modules</directory>
+                <directory suffix=".php">./Modules/**/Routes</directory>
+                <directory suffix=".php">./Modules/**/Resources</directory>
+                <directory suffix=".php">./Modules/**/Tests</directory>
+                <directory suffix=".php">./Modules/**/Config</directory>
+            </exclude>
+        </whitelist>
+    </filter>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-        <!-- <server name="DB_CONNECTION" value="sqlite"/> -->
-        <!-- <server name="DB_DATABASE" value=":memory:"/> -->
+<!--        <server name="DB_CONNECTION" value="mysql"/>-->
+<!--        <server name="DB_DATABASE" value=":memory:"/>-->
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
