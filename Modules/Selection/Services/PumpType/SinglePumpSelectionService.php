@@ -73,7 +73,7 @@ class SinglePumpSelectionService extends PumpableTypeSelectionService
         $reservePumpsCount = $request->reserve_pumps_count;
         $deviation = $request->deviation ?? 0;
 
-        $rates = new Rates(Auth::user()->currency->code);
+        $rates = new Rates();
         $selectedPumps = [];
         $defaultSystemPerformance = null;
         $num = 1;

@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Entities\Discount;
 
-trait Discountable
+/**
+ * Has discount.
+ * @package Modules\Pump\Traits
+ */
+trait HasDiscount
 {
+    /**
+     * @return MorphOne
+     */
     public function discount(): MorphOne
     {
         return $this->morphOne(Discount::class, 'discountable')

@@ -18,7 +18,7 @@ class ShowProjectResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $rates = new Rates(Auth::user()->currency->code); // fixme
+        $rates = new Rates(); // fixme
 
         // TODO: make selections
 

@@ -17,7 +17,7 @@
         "dyrynda/laravel-cascade-soft-deletes": "^4.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "inertiajs/inertia-laravel": "^0.4.4",
+        "inertiajs/inertia-laravel": "^0.5.4",
         "laravel-lang/lang": "~7.0",
         "laravel/framework": "^8.57",
         "laravel/tinker": "^2.5",

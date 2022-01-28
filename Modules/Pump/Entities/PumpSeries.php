@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Pump\Traits\Discountable;
+use Modules\Pump\Traits\HasDiscount;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpSeries extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, Discountable;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount;
 
     protected $guarded = [];
     public $timestamps = false;

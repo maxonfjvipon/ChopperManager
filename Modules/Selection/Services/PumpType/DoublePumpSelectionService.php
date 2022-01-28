@@ -62,7 +62,7 @@ class DoublePumpSelectionService extends PumpableTypeSelectionService
         $deviation = $request->deviation ?? 0;
         $range = SelectionRange::find($request->range_id);
 
-        $rates = new Rates(Auth::user()->currency->code);
+        $rates = new Rates();
         $selectedPumps = [];
         $num = 1;
         $tenantStorage = new TenantStorage();

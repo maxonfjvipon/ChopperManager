@@ -4,21 +4,20 @@ namespace Modules\Selection\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use JetBrains\PhpStorm\Pure;
-use Modules\Core\Entities\Project;
-use Modules\Pump\Entities\DN;
-use Modules\Pump\Entities\DoublePumpWorkScheme;
-use Modules\Pump\Entities\Pump;
+use Modules\Core\Support\Rates;
+use Modules\Selection\Traits\WithSelectionAttributes;
+use Modules\Selection\Traits\WithSelectionCurves;
+use Modules\Selection\Traits\WithSelectionRelationships;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Selection extends Model
 {
+    use HasFactory, SoftDeletes, UsesTenantConnection, WithSelectionRelationships, WithSelectionAttributes, WithSelectionCurves;
+
     public $timestamps = false;
     protected $guarded = [];
     protected $table = "selections";
-    use HasFactory, SoftDeletes, UsesTenantConnection;
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y',
@@ -30,49 +29,18 @@ class Selection extends Model
         'use_additional_filters' => 'boolean',
     ];
 
-    public function getPumpRatedPowerAttribute()
+    /**
+     * Calc pump prices (simple and discounted) and set them as attributes
+     * @param Rates $rates
+     * @return $this
+     */
+    public function withPrices(Rates $rates): self
     {
-        return match ($this->pump_type) {
-            Pump::$SINGLE_PUMP => $this->pump->rated_power,
-            Pump::$DOUBLE_PUMP => $this->total_rated_power,
-        };
-    }
-
-    public function getTotalPumpsCountAttribute()
-    {
-        return match ($this->pump_type) {
-            Pump::$SINGLE_PUMP => $this->pumps_count,
-            Pump::$DOUBLE_PUMP => 1,
-        };
-    }
-
-    #[Pure] public function getTotalRatedPowerAttribute(): float|int
-    {
-        return match ($this->pump_type) {
-            Pump::$SINGLE_PUMP =>  round(
-                $this->pump->rated_power * $this->pumps_count, 4
-            ),
-            Pump::$DOUBLE_PUMP => $this->pump->rated_power * 2,
-        };
-    }
-
-    public function getPumpTypeAttribute()
-    {
-        return $this->pump->pumpable_type;
-    }
-
-    public function pump(): BelongsTo
-    {
-        return $this->belongsTo(Pump::class, 'pump_id');
-    }
-
-    public function project(): BelongsTo
-    {
-        return $this->belongsTo(Project::class, 'project_id');
-    }
-
-    public function dp_work_scheme(): BelongsTo
-    {
-        return $this->belongsTo(DoublePumpWorkScheme::class, 'dp_work_scheme_id');
+        $pump_prices = $this->pump->currentPrices($rates);
+        $this->{'discounted_price'} = round($pump_prices['discounted'], 1) ?? null;
+        $this->{'total_discounted_price'} = round($pump_prices['discounted'] * $this->total_pumps_count, 1) ?? null;
+        $this->{'retail_price'} = round($pump_prices['simple'], 1) ?? null;
+        $this->{'total_retail_price'} = round($pump_prices['simple'] * $this->total_pumps_count, 1) ?? null;
+        return $this;
     }
 }

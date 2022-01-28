@@ -4,12 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
-use Modules\Pump\Entities\DoublePump;
-use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpBrand;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\Pump\Entities\SinglePump;
-use Modules\Pump\Traits\MorphPumpable;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Modules\Core\Support\Rates;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
@@ -30,6 +31,7 @@ class Pump extends Model
         'is_discontinued' => 'boolean'
     ];
 
+    // ATTRIBUTES
     public function getIsDiscontinuedWithSeriesAttribute(): bool
     {
         return $this->series->is_discontinued
@@ -52,18 +54,10 @@ class Pump extends Model
         return $this->series->imploded_applications;
     }
 
-    public function coefficientsCount(): int
-    {
-        return match ($this->pumpable_type) {
-            self::$SINGLE_PUMP => 9,
-            self::$DOUBLE_PUMP => 2,
-        };
-    }
-
+    // SCOPES
     public function scopePerformanceData($query, $seriesId)
     {
-        return match (PumpSeries::find($seriesId)->category_id)
-        {
+        return match (PumpSeries::find($seriesId)->category_id) {
             PumpCategory::$SINGLE_PUMP => $query->addSelect('sp_performance'),
             PumpCategory::$DOUBLE_PUMP => $query->addSelect('dp_peak_performance', 'dp_standby_performance'),
         };
@@ -89,6 +83,37 @@ class Pump extends Model
         return $query->whereIn('id', Auth::user()->available_pumps()->pluck('pumps.id')->all());
     }
 
+    // FUNCTIONS
+    public function coefficientsCount(): int
+    {
+        return match ($this->pumpable_type) {
+            self::$SINGLE_PUMP => 9,
+            self::$DOUBLE_PUMP => 2,
+        };
+    }
+
+    /**
+     * @param Rates $rates
+     * @return array
+     */
+    public function currentPrices(Rates $rates): array
+    {
+        if ($this->price_list) {
+            $price = $this->price_list->currency->code === $rates->base()
+                ? $this->price_list->price
+                : round($this->price_list->price / $rates->rate($this->price_list->currency->code));
+            return [
+                'simple' => $price,
+                'discounted' => $price - $price * ($this->series->discount->value ?? 0) / 100
+            ];
+        }
+        return [
+            'simple' => 0,
+            'discounted' => 0
+        ];
+    }
+
+    // RELATIONSHIPS
     public function series(): BelongsTo
     {
         return $this->belongsTo(PumpSeries::class, 'series_id');

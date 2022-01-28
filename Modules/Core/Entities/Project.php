@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminPanel\Entities\Tenant;
+use Modules\Core\Support\Rates;
 use Modules\Selection\Entities\Selection;
+use Modules\Selection\Traits\ConstructsSelectionCurves;
 use Modules\User\Entities\Permission;
 use Modules\User\Traits\HasUserable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
@@ -19,7 +22,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class Project extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable;
+    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable, ConstructsSelectionCurves;
 
     protected $guarded = ['id'];
     public $timestamps = false;
@@ -31,6 +34,7 @@ class Project extends Model
         'created_at' => 'datetime:d.m.Y'
     ];
 
+    // BOOTED
     protected static function booted()
     {
         self::created(function (self $project) {
@@ -41,6 +45,34 @@ class Project extends Model
             Auth::user()->givePermissionTo($permission->name);
         });
     }
+
+    // FUNCTIONS
+
+    /**
+     * @param Request $request
+     * @return $this
+     */
+    public function readyForExport(Request $request): self
+    {
+        $this->load(['selections' => function ($query) use ($request) {
+            $query->whereIn('id', $request->selection_ids);
+        },
+            'selections.pump',
+            'selections.pump.series',
+            'selections.pump.series.category',
+            'selections.pump.series.power_adjustment',
+            'selections.pump.series.discount',
+            'selections.pump.brand',
+            'selections.pump.connection_type',
+            'selections.pump.price_list',
+            'selections.pump.price_list.currency',
+        ]);
+        $rates = new Rates();
+        $this->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());
+        return $this;
+    }
+
+    // RELATIONSHIPS
 
     /**
      * @return HasMany
