@@ -7,7 +7,7 @@ use Inertia\Testing\Assert;
 use Modules\Core\Entities\Project;
 use Tests\TenantTestCase;
 
-class ProjectsControllerTest extends TenantTestCase
+class ProjectsEndpointsTest extends TenantTestCase
 {
     protected function tenantId(): int
     {
@@ -23,17 +23,17 @@ class ProjectsControllerTest extends TenantTestCase
     {
         $this->actAs()
             ->get(route('projects.index'))
-            ->assertInertia(fn(Assert $page) => $page
+            ->assertInertia(fn($page) => $page
                 ->component('Core::Projects/Index', false)
                 ->has('projects', Auth::user()->projects()->count())
-                ->has('projects.0', fn(Assert $page) => $page
+                ->has('projects.0', fn($page) => $page
                     ->has('id')
                     ->has('name')
                     ->has('selections_count')
                     ->has('selections')
                     ->has('created_at')
                     ->etc()
-                    ->has('selections.0', fn(Assert $page) => $page
+                    ->has('selections.0', fn($page) => $page
                         ->has('id')
                         ->has('project_id')
                         ->has('selected_pump_name')
@@ -48,7 +48,7 @@ class ProjectsControllerTest extends TenantTestCase
     {
         $this->actAs()
             ->get(route('projects.create'))
-            ->assertInertia(fn(Assert $page) => $page
+            ->assertInertia(fn($page) => $page
                 ->component('Core::Projects/Create', false)
             )->assertStatus(200);
     }
@@ -57,14 +57,14 @@ class ProjectsControllerTest extends TenantTestCase
     {
         $this->actAs()
             ->get(route('projects.show', 1))
-            ->assertInertia(fn(Assert $page) => $page
+            ->assertInertia(fn($page) => $page
                 ->component('Core::Projects/Show', false)
-                ->has('project', fn(Assert $page) => $page
-                    ->has('data', fn(Assert $page) => $page
+                ->has('project', fn($page) => $page
+                    ->has('data', fn($page) => $page
                         ->has('id')
                         ->has('name')
                         ->has('selections')
-                        ->has('selections.0', fn(Assert $page) => $page
+                        ->has('selections.0', fn($page) => $page
                             ->hasAll([
                                 'id', 'pump_id', 'article_num', 'created_at',
                                 'flow', 'head', 'selected_pump_name', 'discounted_price',
@@ -81,9 +81,9 @@ class ProjectsControllerTest extends TenantTestCase
     {
         $this->actAs()
             ->get(route('projects.edit', 1))
-            ->assertInertia(fn(Assert $page) => $page
-                ->has('project', fn(Assert $page) => $page
-                    ->has('data', fn(Assert $page) => $page
+            ->assertInertia(fn($page) => $page
+                ->has('project', fn($page) => $page
+                    ->has('data', fn($page) => $page
                         ->hasAll(['id', 'name'])
                     )
                 )
