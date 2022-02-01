@@ -11390,9 +11390,9 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
       visible = _ref5.visible,
       setVisible = _ref5.setVisible;
   var dns = selection_props.dns,
-      limitConditions = selection_props.limitConditions,
-      mainsConnections = selection_props.mainsConnections,
-      connectionTypes = selection_props.connectionTypes; // .data
+      limit_conditions = selection_props.limit_conditions,
+      mains_connections = selection_props.mains_connections,
+      connection_types = selection_props.connection_types; // .data
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
     power: (selection === null || selection === void 0 ? void 0 : selection.data.power_limit_checked) || false,
@@ -11436,7 +11436,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
               placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
               style: nextBelowStyle,
-              options: connectionTypes
+              options: connection_types
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -11449,7 +11449,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
               placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
               style: nextBelowStyle,
-              options: mainsConnections.map(function (connection) {
+              options: mains_connections.map(function (connection) {
                 return _objectSpread({
                   customValue: connection.full_value
                 }, connection);
@@ -11473,7 +11473,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
-                options: limitConditions,
+                options: limit_conditions,
                 name: "power_limit_condition_id",
                 disabled: !limitChecks.power,
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_condition_id
@@ -11507,7 +11507,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
-                options: limitConditions,
+                options: limit_conditions,
                 name: "ptp_length_limit_condition_id",
                 disabled: !limitChecks.ptpLength,
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_condition_id
@@ -11542,7 +11542,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_condition_id,
-                options: limitConditions,
+                options: limit_conditions,
                 name: "dn_suction_limit_condition_id",
                 disabled: !limitChecks.dnSuction
               })
@@ -11577,7 +11577,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_condition_id,
-                options: limitConditions,
+                options: limit_conditions,
                 name: "dn_pressure_limit_condition_id",
                 disabled: !limitChecks.dnPressure
               })
@@ -11646,63 +11646,63 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     width: '15%'
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.part_num'),
-    dataIndex: 'articleNum',
-    key: 'articleNum',
+    dataIndex: 'article_num',
+    key: 'article_num',
     width: 110
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.retail_price') + ", " + auth.currency,
-    dataIndex: 'retailPrice',
-    key: 'retailPrice',
+    dataIndex: 'retail_price',
+    key: 'retail_price',
     render: function render(_, record) {
-      return record.retailPrice.toLocaleString();
+      return record.retail_price.toLocaleString();
     },
     sorter: function sorter(a, b) {
-      return a.retailPrice - b.retailPrice;
+      return a.retail_price - b.retail_price;
     },
     width: 135
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.discounted_price') + ", " + auth.currency,
-    dataIndex: 'discountedPrice',
-    key: 'discountedPrice',
+    dataIndex: 'discounted_price',
+    key: 'discounted_price',
     render: function render(_, record) {
-      return record.discountedPrice.toLocaleString();
+      return record.discounted_price.toLocaleString();
     },
     sorter: function sorter(a, b) {
-      return a.discountedPrice - b.discountedPrice;
+      return a.discounted_price - b.discounted_price;
     },
     width: 140
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_retail_price') + ", " + auth.currency,
-    dataIndex: 'retailPriceSum',
-    key: 'retailPriceSum',
+    dataIndex: 'retail_price_total',
+    key: 'retail_price_total',
     render: function render(_, record) {
-      return record.retailPriceSum.toLocaleString();
+      return record.retail_price_total.toLocaleString();
     },
     sorter: function sorter(a, b) {
-      return a.retailPriceSum - b.retailPriceSum;
+      return a.retail_price_total - b.retail_price_total;
     },
     width: 140
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_discounted_price') + ", " + auth.currency,
-    dataIndex: 'discountedPriceSum',
-    key: 'discountedPriceSum',
+    dataIndex: 'discounted_price_total',
+    key: 'discounted_price_total',
     render: function render(_, record) {
-      return record.discountedPriceSum.toLocaleString();
+      return record.discounted_price_total.toLocaleString();
     },
     sorter: function sorter(a, b) {
-      return a.discountedPriceSum - b.discountedPriceSum;
+      return a.discounted_price_total - b.discounted_price_total;
     },
     defaultSortOrder: 'ascend',
     width: 170
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_input'),
-    dataIndex: 'dnSuction',
-    key: 'dnSuction',
+    dataIndex: 'dn_suction',
+    key: 'dn_suction',
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_output'),
-    dataIndex: 'dnPressure',
-    key: 'dnPressure',
+    dataIndex: 'dn_pressure',
+    key: 'dn_pressure',
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.power'),
@@ -11714,17 +11714,17 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     width: 80
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_power'),
-    dataIndex: 'powerSum',
-    key: 'powerSum',
+    dataIndex: 'power_total',
+    key: 'power_total',
     sorter: function sorter(a, b) {
-      return a.powerSum - b.powerSum;
+      return a.power_total - b.power_total;
     }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.ptp_length'),
-    dataIndex: 'ptpLength',
-    key: 'ptpLength',
+    dataIndex: 'ptp_length',
+    key: 'ptp_length',
     sorter: function sorter(a, b) {
-      return a.ptpLength - b.ptpLength;
+      return a.ptp_length - b.ptp_length;
     }
   }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
@@ -12043,7 +12043,7 @@ var Selection = function Selection(_ref) {
       useAdditionalFilters = _useState14[0],
       setUseAdditionalFilters = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? selection !== null && selection !== void 0 && selection.data.range_id ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id : false : false),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? selection !== null && selection !== void 0 && selection.data.range_id ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id : false : false),
       _useState16 = _slicedToArray(_useState15, 2),
       rangeDisabled = _useState16[0],
       setRangeDisabled = _useState16[1];
@@ -12079,7 +12079,7 @@ var Selection = function Selection(_ref) {
       setSelectedPumps = _useState28[1];
 
   var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands.filter(function (brandId) {
-    return selection_props.brandsWithSeries.findIndex(function (bws) {
+    return selection_props.brands_with_series.findIndex(function (bws) {
       return bws.id === brandId;
     }) !== -1;
   })) || selection_props.defaults.brands),
@@ -12092,7 +12092,7 @@ var Selection = function Selection(_ref) {
       brandsSeriesListValues = _useState32[0],
       setBrandsSeriesListValues = _useState32[1];
 
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || selection_props.defaults.powerAdjustments),
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || selection_props.defaults.power_adjustments),
       _useState34 = _slicedToArray(_useState33, 2),
       powerAdjustmentValue = _useState34[0],
       setPowerAdjustmentValue = _useState34[1];
@@ -12152,8 +12152,8 @@ var Selection = function Selection(_ref) {
   var fieldsDisabled = isArrayEmpty(brandsValue);
   var fullSelectionFormName = "full-selection-form"; // CALLBACKS
 
-  var filteredBrandsWithSeries = function filteredBrandsWithSeries() {
-    return selection_props.brandsWithSeries.filter(function (brand) {
+  var filteredbrands_with_series = function filteredbrands_with_series() {
+    return selection_props.brands_with_series.filter(function (brand) {
       return brandsValue.indexOf(brand.id) !== -1;
     });
   };
@@ -12167,8 +12167,9 @@ var Selection = function Selection(_ref) {
   };
 
   var seriesIcon = function seriesIcon(src) {
-    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("img", {
-      src: selection_props.media_path + src,
+    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {}) // : <img src={selection_props.media_path + src} width={60}/>
+    : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("img", {
+      src: src,
       width: 60
     });
   };
@@ -12199,7 +12200,7 @@ var Selection = function Selection(_ref) {
     var checked = values.filter(function (value) {
       return !brandsSeriesListValues.includes(value) && typeof value === "number";
     });
-    filteredBrandsWithSeries().forEach(function (brand) {
+    filteredbrands_with_series().forEach(function (brand) {
       brand.series.forEach(function (series) {
         var index = checked.findIndex(function (ch) {
           return series.id === ch;
@@ -12376,7 +12377,7 @@ var Selection = function Selection(_ref) {
     var _brandsSeriesTree = [];
 
     if (brandsValue.length > 0) {
-      filteredBrandsWithSeries().forEach(function (brand) {
+      filteredbrands_with_series().forEach(function (brand) {
         var children = [];
         brand.series.forEach(function (series) {
           var hasTemp = hasTemperature(series);
@@ -12431,14 +12432,14 @@ var Selection = function Selection(_ref) {
           var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
           var hasTypes = typesValue.length <= 0;
           var hasApplications = (applicationsValue === null || applicationsValue === void 0 ? void 0 : applicationsValue.length) <= 0 || false;
-          var hasPowerAdjustments = powerAdjustmentValue <= 0;
-          filteredBrandsWithSeries().forEach(function (brand) {
+          var haspower_adjustments = powerAdjustmentValue <= 0;
+          filteredbrands_with_series().forEach(function (brand) {
             var children = [];
             brand.series.forEach(function (series) {
               var brandsSeries = brand.name + " " + series.name;
               var hasType = hasTypes;
               var hasApplication = hasApplications;
-              var hasPowerAdjustment = hasPowerAdjustments;
+              var hasPowerAdjustment = haspower_adjustments;
               var hasTemp = hasTemperature(series);
 
               if (!hasType) {
@@ -12645,9 +12646,9 @@ var Selection = function Selection(_ref) {
       })],
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
         justify: "space-around",
-        gutter: [8, 16],
+        gutter: [4, 16],
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-          xxl: hideIcons ? 2 : 3,
+          xxl: 3,
           xl: hideIcons ? 3 : 4,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
@@ -12706,7 +12707,7 @@ var Selection = function Selection(_ref) {
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-          xxl: hideIcons ? 22 : 21,
+          xxl: 21,
           xl: hideIcons ? 21 : 20,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
             name: fullSelectionFormName,
@@ -12724,7 +12725,7 @@ var Selection = function Selection(_ref) {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
                     placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.brands'),
                     style: fullWidth,
-                    options: selection_props.brandsWithSeries,
+                    options: selection_props.brands_with_series,
                     onChange: function onChange(values) {
                       setBrandsValue(values);
                     }
@@ -12772,7 +12773,7 @@ var Selection = function Selection(_ref) {
                     }
                   })
                 })
-              }), selection_props.applications && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
+              }), widths.applications && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
                 xs: widths.applications,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
                   className: reducedAntFormItemClassName,
@@ -12804,7 +12805,7 @@ var Selection = function Selection(_ref) {
                     style: _objectSpread(_objectSpread({}, fullWidth), {}, {
                       marginTop: 0
                     }),
-                    options: selection_props.powerAdjustments,
+                    options: selection_props.power_adjustments,
                     onChange: function onChange(values) {
                       setPowerAdjustmentValue(values);
                     }
@@ -12896,10 +12897,10 @@ var Selection = function Selection(_ref) {
                   required: true,
                   name: "dp_work_scheme_id",
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.double_pump.work_scheme'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.dp_work_scheme_id) || selection_props.workSchemes[0].id,
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.dp_work_scheme_id) || selection_props.work_schemes[0].id,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"].Group, {
-                    children: selection_props.workSchemes.map(function (scheme) {
+                    children: selection_props.work_schemes.map(function (scheme) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
                         value: scheme.id,
                         children: scheme.name
@@ -12913,13 +12914,13 @@ var Selection = function Selection(_ref) {
                   required: true,
                   name: "range_id",
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id,
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id,
                   className: reducedAntFormItemClassName,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"].Group, {
                     onChange: function onChange(e) {
-                      setRangeDisabled(e.target.value !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id);
+                      setRangeDisabled(e.target.value !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id);
                     },
-                    children: selection_props.selectionRanges.map(function (range) {
+                    children: selection_props.selection_ranges.map(function (range) {
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
                         value: range.id,
                         children: range.name

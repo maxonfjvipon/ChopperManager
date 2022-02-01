@@ -5,6 +5,7 @@ namespace Modules\Selection\Entities;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 use Modules\Core\Support\Rates;
 use Modules\Selection\Traits\WithSelectionAttributes;
 use Modules\Selection\Traits\WithSelectionCurves;
@@ -42,5 +43,22 @@ class Selection extends Model
         $this->{'retail_price'} = round($pump_prices['simple'], 1) ?? null;
         $this->{'total_retail_price'} = round($pump_prices['simple'] * $this->total_pumps_count, 1) ?? null;
         return $this;
+    }
+
+    /**
+     * @return Selection
+     */
+    public function readyForExport(): Selection
+    {
+        return $this->load([
+            'pump',
+            'pump.connection_type',
+            'pump.series',
+            'pump.series.category',
+            'pump.series.power_adjustment',
+            'pump.brand',
+            'dp_work_scheme',
+        ])->withCurves();
+
     }
 }

@@ -2,13 +2,19 @@
 
 namespace Modules\Selection\Entities;
 
+use App\Traits\Cached;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class LimitCondition extends Model
 {
-    use HasFactory, UsesTenantConnection;
+    use HasFactory, UsesTenantConnection, Cached;
+
+    protected static function getCacheKey(): string
+    {
+        return "limit_conditions";
+    }
 
     public $timestamps = false;
     protected $guarded = [];

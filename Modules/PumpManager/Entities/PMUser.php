@@ -3,6 +3,7 @@
 namespace Modules\PumpManager\Entities;
 
 use Closure;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
@@ -95,11 +96,10 @@ class PMUser extends Userable
     }
 
     /**
-     * Available series for user
-     *
-     * @return BelongsToMany
+     * Available series for pump-manager users
+     * @return Collection|array|BelongsToMany
      */
-    public function available_series(): BelongsToMany
+    public function available_series(): Collection|array|BelongsToMany
     {
         $curTenantDB = Tenant::current()->database;
         return $this->belongsToMany(PumpSeries::class, $curTenantDB . '.users_and_pump_series', 'user_id', 'series_id');

@@ -2,7 +2,8 @@
 
 namespace Modules\Pump\Entities;
 
-use JetBrains\PhpStorm\Pure;
+use Illuminate\Http\Request;
+use Modules\AdminPanel\Entities\TenantType;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
@@ -12,12 +13,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Pump\Traits\HasDiscount;
+use App\Traits\HasDiscount;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
+use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class PumpSeries extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount, UsesTenantModel;
 
     protected $guarded = [];
     public $timestamps = false;
@@ -27,6 +29,7 @@ class PumpSeries extends Model
         'is_discontinued' => 'boolean'
     ];
 
+    // ATTRIBUTES
     public function getTempsMinAttribute(): array|bool
     {
         return $this->explodedAttribute('temps_min');
@@ -44,6 +47,22 @@ class PumpSeries extends Model
             : [];
     }
 
+    private function implodedAttributes($attributes, $separator = ","): string
+    {
+        return implode($separator, $attributes->map(fn($attribute) => $attribute->name)->toArray());
+    }
+
+    public function getImplodedTypesAttribute(): string
+    {
+        return $this->implodedAttributes($this->types, ", ");
+    }
+
+    public function getImplodedApplicationsAttribute(): string
+    {
+        return $this->implodedAttributes($this->applications, ", ");
+    }
+
+    // STATIC
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
         $series = self::create($request->seriesFields());
@@ -64,41 +83,46 @@ class PumpSeries extends Model
         return $updated;
     }
 
+    // SCOPES
     public function scopeNotDiscontinued($query)
     {
         return $query->whereIsDiscontinued(false);
     }
 
-    public function scopeOnCategory($query, $categoryId)
+    public function scopeAvailable($query)
+    {
+        if ($this->getTenantModel()::checkCurrent()) {
+            return match ($this->getTenantModel()::current()->type->id) {
+                TenantType::$PUMPMANAGER => $query
+            };
+        }
+        return $query;
+    }
+
+    public function scopeCategorized($query, Request $request)
+    {
+        return match ($request->pumpable_type) {
+            Pump::$DOUBLE_PUMP => $query->double(),
+            default => $query->single()
+        };
+    }
+
+    protected function scopeOnCategory($query, $categoryId)
     {
         return $query->whereCategoryId($categoryId);
     }
 
-    public function scopeDouble($query)
+    protected function scopeDouble($query)
     {
         return $query->onCategory(PumpCategory::$DOUBLE_PUMP);
     }
 
-    public function scopeSingle($query)
+    protected function scopeSingle($query)
     {
         return $query->onCategory(PumpCategory::$SINGLE_PUMP);
     }
 
-    private function implodedAttributes($attributes, $separator = ","): string
-    {
-        return implode($separator, $attributes->map(fn($attribute) => $attribute->name)->toArray());
-    }
-
-    public function getImplodedTypesAttribute(): string
-    {
-        return $this->implodedAttributes($this->types, ", ");
-    }
-
-    public function getImplodedApplicationsAttribute(): string
-    {
-        return $this->implodedAttributes($this->applications, ", ");
-    }
-
+    // RELATIONSHIPS
     public function brand(): BelongsTo
     {
         return $this->belongsTo(PumpBrand::class, 'brand_id', 'id');

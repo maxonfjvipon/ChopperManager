@@ -46,21 +46,21 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
         $response = parent::render($request, $e);
-        $currentTenant = $this->getTenantModel()::current();
-
-        // TODO: fix for production
-        if (!app()->environment(['production']) && in_array($response->status(), [500, 503, 404, 403])) {
-            return Inertia::render('Core::Error', [
-                'status' => $response->status(),
-                'title' => $currentTenant->name ?? "Pump Manager"
-            ])
-                ->toResponse($request)
-                ->setStatusCode($response->status());
-        } else if ($response->status() === 419) {
-            return back()->with([
-                'message' => 'The page expired, please try again.',
-            ]);
-        }
+//        $currentTenant = $this->getTenantModel()::current();
+//
+//        // TODO: fix for production
+//        if (!app()->environment(['production']) && in_array($response->status(), [500, 503, 404, 403])) {
+//            return Inertia::render('Core::Error', [
+//                'status' => $response->status(),
+//                'title' => $currentTenant->name ?? "Pump Manager"
+//            ])
+//                ->toResponse($request)
+//                ->setStatusCode($response->status());
+//        } else if ($response->status() === 419) {
+//            return back()->with([
+//                'message' => 'The page expired, please try again.',
+//            ]);
+//        }
 
         return $response;
     }

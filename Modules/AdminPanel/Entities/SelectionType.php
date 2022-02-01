@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Multitenancy\Models\Concerns\UsesLandlordConnection;
 
-// TODO: move to Selection module
 class SelectionType extends Model
 {
     use HasFactory, UsesLandlordConnection, HasTranslations, SoftDeletes;

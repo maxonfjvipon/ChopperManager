@@ -43,9 +43,9 @@ const LimitCol = ({children}) =>
 export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selection_props, visible, setVisible}) => {
     const {
         dns,
-        limitConditions,
-        mainsConnections,
-        connectionTypes
+        limit_conditions,
+        mains_connections,
+        connection_types
     } = selection_props
         // .data
 
@@ -82,7 +82,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                             <MultipleSelection
                                 placeholder={Lang.get('pages.selections.single_pump.connection_type')}
                                 style={nextBelowStyle}
-                                options={connectionTypes}
+                                options={connection_types}
                             />
                         </Form.Item>
                     </Col>
@@ -97,7 +97,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                             <MultipleSelection
                                 placeholder={Lang.get('pages.selections.single_pump.phase')}
                                 style={nextBelowStyle}
-                                options={mainsConnections.map(connection => {
+                                options={mains_connections.map(connection => {
                                     return {
                                         customValue: connection.full_value,
                                         ...connection,
@@ -128,7 +128,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                         <LimitRow>
                             <LimitCol>
                                 <ConditionSelectionFormItem
-                                    options={limitConditions}
+                                    options={limit_conditions}
                                     name="power_limit_condition_id"
                                     disabled={!limitChecks.power}
                                     initialValue={selection?.data.power_limit_condition_id}
@@ -169,7 +169,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                         <LimitRow>
                             <LimitCol>
                                 <ConditionSelectionFormItem
-                                    options={limitConditions}
+                                    options={limit_conditions}
                                     name="ptp_length_limit_condition_id"
                                     disabled={!limitChecks.ptpLength}
                                     initialValue={selection?.data.ptp_length_limit_condition_id}
@@ -211,7 +211,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                             <LimitCol>
                                 <ConditionSelectionFormItem
                                     initialValue={selection?.data.dn_suction_limit_condition_id}
-                                    options={limitConditions}
+                                    options={limit_conditions}
                                     name="dn_suction_limit_condition_id"
                                     disabled={!limitChecks.dnSuction}
                                 />
@@ -253,7 +253,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                             <LimitCol>
                                 <ConditionSelectionFormItem
                                     initialValue={selection?.data.dn_pressure_limit_condition_id}
-                                    options={limitConditions}
+                                    options={limit_conditions}
                                     name="dn_pressure_limit_condition_id"
                                     disabled={!limitChecks.dnPressure}
                                 />

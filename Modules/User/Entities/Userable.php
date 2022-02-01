@@ -2,7 +2,6 @@
 
 namespace Modules\User\Entities;
 
-use Dotenv\Loader\Resolver;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Core\Entities\Currency;
 use Modules\Core\Entities\Project;
+use Modules\Pump\Entities\PumpSeries;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -49,6 +49,12 @@ abstract class Userable extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime:d.m.Y H:i',
     ];
 
+    // ATTRIBUTES
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->middle_name}";
+    }
+
     /**
      * @return bool does user have super admin or admin role
      */
@@ -57,11 +63,12 @@ abstract class Userable extends Authenticatable implements MustVerifyEmail
         return $this->hasAnyRole('SuperAdmin', 'Admin');
     }
 
-    public function getFullNameAttribute(): string
+    public function available_series()
     {
-        return "{$this->first_name} {$this->middle_name}";
+        return PumpSeries::all();
     }
 
+    // RELATIONS
     public function discounts(): HasMany
     {
         return $this->hasMany(Discount::class, 'user_id');

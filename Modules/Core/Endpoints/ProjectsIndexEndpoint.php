@@ -2,10 +2,10 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
-use App\Endpoints\InertiaEndpoint;
+use App\Takes\TkAuthorized;
+use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
@@ -13,37 +13,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects index endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsIndexEndpoint extends Controller implements Renderable
+final class ProjectsIndexEndpoint extends Controller
 {
     /**
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(): Responsable|Response
     {
-        return $this->render();
-    }
-
-    /**
-     * @param Request|null $request
-     * @return Responsable|Response
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
+        return TkAuthorized::new(
             'project_access',
-            new InertiaEndpoint("Core::Projects/Index", [
-                    'projects' => auth()->user()->projects()
-                        ->withCount('selections')
-                        ->with(['selections' => function ($query) {
-                            $query->select('id', 'project_id', 'selected_pump_name', 'flow', 'head');
-                        }])
-                        ->get()
-                ]
-            )
-        ))->render($request);
+            TkInertia::withStrComponent("Core::Projects/Index")
+                ->withCallableProps(fn() => ['projects' => auth()->user()
+                    ->projects()
+                    ->withCount('selections')
+                    ->with(['selections' => function ($query) {
+                        $query->select('id', 'project_id', 'selected_pump_name', 'flow', 'head');
+                    }])->get()
+                ])
+        )->act();
     }
 }

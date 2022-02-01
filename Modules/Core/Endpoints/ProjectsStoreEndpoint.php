@@ -2,45 +2,37 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
+use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
+use App\Takes\TkWithCallback;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\CreatedProjectEndpoint;
-use Modules\Core\Endpoints\Deep\RedirectToProjectsIndexRouteEndpoint;
+use Illuminate\Support\Facades\Auth;
+use Modules\Core\Takes\TkCreatedProject;
+use Modules\Core\Takes\TkRedirectedToProjectsIndex;
 use Modules\Core\Http\Requests\ProjectStoreRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects store endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsStoreEndpoint extends Controller implements Renderable
+final class ProjectsStoreEndpoint extends Controller
 {
     /**
      * @param ProjectStoreRequest $request
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(ProjectStoreRequest $request): Responsable|Response
     {
-        return $this->render($request);
-    }
-
-    /**
-     * @param Request|null $request
-     * @return Responsable|Response
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
+        return TkAuthorized::new(
             'project_create',
-            new CreatedProjectEndpoint(
-                new RedirectToProjectsIndexRouteEndpoint()
+            TkWithCallback::new(
+                fn() => Auth::user()->projects()->create($request->validated()),
+                TkRedirectedToProjectsIndex::new()
             )
-        ))->render($request);
+        )->act($request);
     }
 }

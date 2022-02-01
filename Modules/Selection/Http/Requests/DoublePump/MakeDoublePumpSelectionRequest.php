@@ -6,6 +6,13 @@ use Modules\Selection\Http\Requests\MakeSelectionRequest;
 
 class MakeDoublePumpSelectionRequest extends MakeSelectionRequest
 {
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'pumps_count' => 2
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

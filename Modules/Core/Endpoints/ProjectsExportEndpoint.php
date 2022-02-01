@@ -2,59 +2,41 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
-use App\Endpoints\PDFDownloadedFromHtmlEndpoint;
-use App\Html\ViewAsHtml;
+use App\Takes\TkAuthorized;
+use App\Takes\TkDownloadedPDF;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\AuthorizedProjectEndpoint;
+use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Core\Entities\Project;
 use Modules\Core\Http\Requests\ExportProjectRequest;
+use Modules\Core\Support\TxtExportProjectView;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects export endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsExportEndpoint extends Controller implements Renderable
+final class ProjectsExportEndpoint extends Controller
 {
-    /**
-     * @var Project $project
-     */
-    private Project $project;
-
     /**
      * @param ExportProjectRequest $request
      * @param Project $project
      * @return Responsable|Response
      * @throws AuthorizationException
+     * @throws Exception
      */
     public function __invoke(ExportProjectRequest $request, Project $project): Responsable|Response
     {
-        $this->project = $project;
-        return $this->render($request);
-    }
-
-    /**
-     * @inheritDoc
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedProjectEndpoint(
-            $this->project,
-            new AuthorizedEndpoint(
+        return TkAuthorizedProject::byProject(
+            $project,
+            TkAuthorized::new(
                 'project_export',
-                new PDFDownloadedFromHtmlEndpoint(
-                    new ViewAsHtml('core::project_export', [
-                        'project' => $this->project->readyForExport($request),
-                        'request' => $request
-                    ])
+                TkDownloadedPDF::fromText(
+                    TxtExportProjectView::new($project, $request)
                 )
             )
-        ))->render($request);
+        )->act($request);
     }
 }

@@ -4,25 +4,40 @@
 |--------------------------------------------------------------------------
 | Selection Module Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Selection\Http\Controllers\SelectionsController;
+use Modules\Selection\Endpoints\SelectionsCreateEndpoint;
+use Modules\Selection\Endpoints\SelectionsCurvesEndpoint;
+use Modules\Selection\Endpoints\SelectionsDashboardEndpoint;
+use Modules\Selection\Endpoints\SelectionsDestroyEndpoint;
+use Modules\Selection\Endpoints\SelectionsExportAtOnceEndpoint;
+use Modules\Selection\Endpoints\SelectionsExportEndpoint;
+use Modules\Selection\Endpoints\SelectionsRestoreEndpoint;
+use Modules\Selection\Endpoints\SelectionsSelectEndpoint;
+use Modules\Selection\Endpoints\SelectionsShowEndpoint;
+use Modules\Selection\Endpoints\SelectionsStoreEndpoint;
+use Modules\Selection\Endpoints\SelectionsUpdateEndpoint;
 
-Route::get('projects/{project}/selections/dashboard')->name('selections.dashboard')->uses([SelectionsController::class, 'index']);
-Route::resource('projects.selections', SelectionsController::class)->except(['index', 'edit'])->shallow();
+Route::prefix('projects/{project}')->group(function () {
+    Route::prefix('selections')->group(function () {
+        Route::get('dashboard')->name('selections.dashboard')->uses(SelectionsDashboardEndpoint::class);
+        Route::get('create')->name('projects.selections.create')->uses(SelectionsCreateEndpoint::class);
 
-Route::prefix('selections')->group(function () {
-    Route::prefix('{selection}')->group(function () {
-        Route::get('restore')->name('selections.restore')->uses([SelectionsController::class, 'restore']);
-        Route::post('export')->name('selections.export')->uses([SelectionsController::class, 'export']);
+        Route::post('/')->name('projects.selections.store')->uses(SelectionsStoreEndpoint::class);
     });
-    Route::post('export/at-once')->name('selections.export.at_once')->uses([SelectionsController::class, 'exportAtOnce']);
-    Route::post('select')->name('selections.select')->uses([SelectionsController::class, 'select']);
-    Route::post('curves')->name('selections.curves')->uses([SelectionsController::class, 'curves']);
+});
+
+Route::prefix('selections')->group(function() {
+    Route::prefix('{selection}')->group(function () {
+        Route::get('/')->name('selections.show')->uses(SelectionsShowEndpoint::class);
+        Route::get('restore')->name('selections.restore')->uses(SelectionsRestoreEndpoint::class);
+
+        Route::post('export')->name('selections.export')->uses(SelectionsExportEndpoint::class);
+        Route::put('/')->name('selections.update')->uses(SelectionsUpdateEndpoint::class);
+        Route::delete('/')->name('selections.destroy')->uses(SelectionsDestroyEndpoint::class);
+    });
+    Route::post('curves')->name('selections.curves')->uses(SelectionsCurvesEndpoint::class);
+    Route::post('export/at-once')->name('selections.export.at_once')->uses(SelectionsExportAtOnceEndpoint::class);
+    Route::post('select')->name('selections.select')->uses(SelectionsSelectEndpoint::class);
 });

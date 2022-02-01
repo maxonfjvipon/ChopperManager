@@ -2,58 +2,41 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
+use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\AuthorizedProjectEndpoint;
-use Modules\Core\Endpoints\Deep\RedirectToProjectsIndexRouteEndpoint;
-use Modules\Core\Endpoints\Deep\UpdatedProjectEndpoint;
+use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Core\Takes\TkRedirectedToProjectsIndex;
+use Modules\Core\Takes\TkUpdatedProject;
 use Modules\Core\Entities\Project;
 use Modules\Core\Http\Requests\ProjectUpdateRequest;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects update endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsUpdateEndpoint extends Controller implements Renderable
+final class ProjectsUpdateEndpoint extends Controller
 {
-    /**
-     * @var Project $project
-     */
-    private Project $project;
-
     /**
      * @param ProjectUpdateRequest $request
      * @param Project $project
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(ProjectUpdateRequest $request, Project $project): Responsable|Response
     {
-        $this->project = $project;
-        return $this->render($request);
-    }
-
-
-    /**
-     * @inheritDoc
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
+        return TkAuthorized::new(
             'project_edit',
-            new AuthorizedProjectEndpoint(
-                $this->project,
-                new UpdatedProjectEndpoint(
-                    $this->project,
-                    new RedirectToProjectsIndexRouteEndpoint()
+            TkAuthorizedProject::byProject(
+                $project,
+                TkUpdatedProject::new(
+                    $project,
+                    TkRedirectedToProjectsIndex::new()
                 )
             )
-        ))->render($request);
+        )->act($request);
     }
 }

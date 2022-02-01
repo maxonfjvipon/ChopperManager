@@ -15,7 +15,7 @@ use Modules\Core\Endpoints\ProjectsExportEndpoint;
 use Modules\Core\Endpoints\ProjectsIndexEndpoint;
 use Modules\Core\Endpoints\ProjectsRestoreEndpoint;
 use Modules\Core\Endpoints\ProjectsShowEndpoint;
-use Modules\Core\Endpoints\ProjectsStatisticsEndpoint;
+use Modules\Core\Endpoints\ProjectsStatisticEndpoint;
 use Modules\Core\Endpoints\ProjectsStoreEndpoint;
 use Modules\Core\Endpoints\ProjectsUpdateEndpoint;
 
@@ -24,7 +24,7 @@ Route::redirect('/', app()->getLocale() . '/projects')->name('index');
 Route::prefix('projects')->group(function () {
     Route::get('/')->name('projects.index')->uses(ProjectsIndexEndpoint::class);
     Route::get('create')->name('projects.create')->uses(ProjectsCreateEndpoint::class);
-    Route::get('statistics')->name('projects.statistics')->uses(ProjectsStatisticsEndpoint::class);
+    Route::get('statistics')->name('projects.statistics')->uses(ProjectsStatisticEndpoint::class);
 
     Route::prefix('{project}')->group(function () {
         Route::get('/')->name('projects.show')->uses(ProjectsShowEndpoint::class);

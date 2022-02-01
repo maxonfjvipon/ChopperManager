@@ -54,6 +54,7 @@ class Project extends Model
      */
     public function readyForExport(Request $request): self
     {
+        $rates = Rates::new();
         $this->load(['selections' => function ($query) use ($request) {
             $query->whereIn('id', $request->selection_ids);
         },
@@ -66,9 +67,7 @@ class Project extends Model
             'selections.pump.connection_type',
             'selections.pump.price_list',
             'selections.pump.price_list.currency',
-        ]);
-        $rates = new Rates();
-        $this->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());
+        ])->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());;
         return $this;
     }
 

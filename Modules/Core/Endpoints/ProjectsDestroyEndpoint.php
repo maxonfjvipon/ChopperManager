@@ -2,55 +2,36 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
-use App\Endpoints\RedirectBackEndpoint;
+use App\Takes\TkAuthorized;
+use App\Takes\TkRedirectedBack;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
-use Illuminate\Auth\Access\AuthorizationException;
+use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\AuthorizedProjectEndpoint;
-use Modules\Core\Endpoints\Deep\DeletedProjectEndpoint;
+use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Core\Entities\Project;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects destroy endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsDestroyEndpoint extends Controller implements Renderable
+final class ProjectsDestroyEndpoint extends Controller
 {
-    /**
-     * @var Project $project
-     */
-    private Project $project;
-
     /**
      * @param Project $project
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(Project $project): Responsable|Response
     {
-        $this->project = $project;
-        return $this->render();
-    }
-
-    /**
-     * @inheritDoc
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
+        return TkAuthorized::new(
             'project_delete',
-            new AuthorizedProjectEndpoint(
-                $this->project,
-                new DeletedProjectEndpoint(
-                    $this->project,
-                    new RedirectBackEndpoint()
+            TkAuthorizedProject::byProject(
+                $project,
+                TkWithCallback::new(
+                    fn() => $project->delete(),
+                    TkRedirectedBack::new()
                 )
             )
-        ))->render($request);
+        )->act();
     }
 }

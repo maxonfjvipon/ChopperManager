@@ -2,18 +2,30 @@
 
 namespace Modules\Pump\Entities;
 
+use App\Traits\Cached;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class PumpApplication extends Model
 {
-    use HasTranslations, UsesTenantConnection;
+    use HasTranslations, UsesTenantConnection, Cached;
+
+    protected static function getCacheKey(): string
+    {
+        return "pump_applications";
+    }
 
     public $translatable = ['name'];
     protected $fillable = ['name'];
     public $timestamps = false;
+
+    public function series(): BelongsToMany
+    {
+        return $this->belongsToMany(PumpSeries::class, 'pump_series_and_applications', 'application_id', 'series_id');
+    }
 
     public function scopeAvailableForUserSeries($query, $seriesIds = [])
     {

@@ -12,25 +12,28 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\Auth\Endpoints\LoginAttemptEndpoint;
+use Modules\Auth\Endpoints\LoginEndpoint;
+use Modules\Auth\Endpoints\LogoutEndpoint;
+use Modules\Auth\Endpoints\RegisterAttemptEndpoint;
+use Modules\Auth\Endpoints\RegisterEndpoint;
 use Modules\Auth\Http\Controllers\EmailVerificationController;
-use Modules\Auth\Http\Controllers\LoginController;
-use Modules\Auth\Http\Controllers\RegisterController;
 
 Route::middleware('guest.module')->group(function () {
     // LOGIN
-    Route::get('login')->name('login')->uses([LoginController::class, 'showLoginForm']);
-    Route::post('login')->name('login.attempt')->uses([LoginController::class, 'login']);
+    Route::get('login')->name('login')->uses(LoginEndpoint::class);
+    Route::post('login')->name('login.attempt')->uses(LoginAttemptEndpoint::class);
 
     // REGISTER
     Route::middleware('has_registration')->group(function () {
-        Route::get('register')->name('register')->uses([RegisterController::class, 'showRegisterForm']);
-        Route::post('register')->name('register.attempt')->uses([RegisterController::class, 'register']);
+        Route::get('register')->name('register')->uses(RegisterEndpoint::class);
+        Route::post('register')->name('register.attempt')->uses(RegisterAttemptEndpoint::class);
     });
 });
 
 
 // LOGOUT
-Route::post('logout')->name('logout')->uses([LoginController::class, 'logout']);
+Route::post('logout')->name('logout')->uses(LogoutEndpoint::class);
 
 // AUTHORIZED
 Route::middleware('auth.module')->group(function () {

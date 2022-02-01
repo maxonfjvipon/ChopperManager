@@ -2,30 +2,27 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
+use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
+use App\Takes\TkWithCallback;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\AuthorizedProjectEndpoint;
-use Modules\Core\Endpoints\Deep\ClonedProjectEndpoint;
-use Modules\Core\Endpoints\Deep\RedirectToProjectsIndexRouteEndpoint;
+use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Core\Takes\TkClonedProject;
+use Modules\Core\Takes\TkRedirectedToProjectsIndex;
 use Modules\Core\Entities\Project;
 use Modules\Core\Http\Requests\CloneProjectRequest;
+use Modules\Core\Takes\TkUpdatedProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects clone endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsCloneEndpoint extends Controller implements Renderable
+final class ProjectsCloneEndpoint extends Controller
 {
-    /**
-     * @var Project $project
-     */
-    private Project $project;
-
     /**
      * @param CloneProjectRequest $request
      * @param Project $project
@@ -34,26 +31,15 @@ class ProjectsCloneEndpoint extends Controller implements Renderable
      */
     public function __invoke(CloneProjectRequest $request, Project $project): Responsable|Response
     {
-        $this->project = $project;
-        return $this->render($request);
-    }
-
-    /**
-     * @param Request|null $request
-     * @return Responsable|Response
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedProjectEndpoint(
-            $this->project,
-            new AuthorizedEndpoint(
+        return TkAuthorizedProject::byProject(
+            $project,
+            TkAuthorized::new(
                 'project_clone',
-                new ClonedProjectEndpoint(
-                    $this->project,
-                    new RedirectToProjectsIndexRouteEndpoint()
+                TkUpdatedProject::new(
+                    $project->duplicate(),
+                    TkRedirectedToProjectsIndex::new()
                 )
             )
-        ))->render($request);
+        )->act($request);
     }
 }

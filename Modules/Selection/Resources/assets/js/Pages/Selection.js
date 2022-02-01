@@ -52,7 +52,7 @@ export const Selection = ({pageTitle, widths}) => {
     const [useAdditionalFilters, setUseAdditionalFilters] = useState(selection?.data.use_additional_filters || false)
     const [rangeDisabled, setRangeDisabled] = useState(selection
         ? selection?.data.range_id
-            ? selection?.data.range_id !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id
+            ? selection?.data.range_id !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id
             : false
         : false
     )
@@ -64,11 +64,11 @@ export const Selection = ({pageTitle, widths}) => {
     const [brandsSeriesTree, setBrandsSeriesTree] = useState([])
     const [selectedPumps, setSelectedPumps] = useState([])
     const [brandsValue, setBrandsValue] = useState(
-        selection?.data.pump_brands.filter(brandId => selection_props.brandsWithSeries.findIndex(bws => bws.id === brandId) !== -1)
+        selection?.data.pump_brands.filter(brandId => selection_props.brands_with_series.findIndex(bws => bws.id === brandId) !== -1)
         || selection_props.defaults.brands
     )
     const [brandsSeriesListValues, setBrandsSeriesListValues] = useState(selection?.data.pump_series || [])
-    const [powerAdjustmentValue, setPowerAdjustmentValue] = useState(selection?.data.power_adjustments || selection_props.defaults.powerAdjustments)
+    const [powerAdjustmentValue, setPowerAdjustmentValue] = useState(selection?.data.power_adjustments || selection_props.defaults.power_adjustments)
     const [typesValue, setTypesValue] = useState(selection?.data.pump_types || [])
     const [applicationsValue, setApplicationsValue] = useState(selection?.data.pump_applications || [])
 
@@ -96,8 +96,8 @@ export const Selection = ({pageTitle, widths}) => {
     const fullSelectionFormName = "full-selection-form"
 
     // CALLBACKS
-    const filteredBrandsWithSeries = () => {
-        return selection_props.brandsWithSeries.filter(brand => {
+    const filteredbrands_with_series = () => {
+        return selection_props.brands_with_series.filter(brand => {
             return brandsValue.indexOf(brand.id) !== -1
         })
     }
@@ -106,7 +106,8 @@ export const Selection = ({pageTitle, widths}) => {
 
     const seriesIcon = (src) => (src == null || src === "")
         ? <></>
-        : <img src={selection_props.media_path + src} width={60}/>
+        // : <img src={selection_props.media_path + src} width={60}/>
+        : <img src={src} width={60}/>
 
     const checkHideIcons = () => prevHideIcons === hideIcons
 
@@ -132,7 +133,7 @@ export const Selection = ({pageTitle, widths}) => {
         values.sort()
         let checked = values.filter(value => !brandsSeriesListValues.includes(value) && typeof value === "number")
 
-        filteredBrandsWithSeries().forEach(brand => {
+        filteredbrands_with_series().forEach(brand => {
             brand.series.forEach(series => {
                 let index = checked.findIndex(ch => series.id === ch)
                 if (index !== -1) {
@@ -230,7 +231,7 @@ export const Selection = ({pageTitle, widths}) => {
         const _brandsSeriesList = []
         const _brandsSeriesTree = []
         if (brandsValue.length > 0) {
-            filteredBrandsWithSeries().forEach(brand => {
+            filteredbrands_with_series().forEach(brand => {
                 let children = []
                 brand.series.forEach(series => {
                     let hasTemp = hasTemperature(series)
@@ -278,14 +279,14 @@ export const Selection = ({pageTitle, widths}) => {
                     const temperatureWasChanged = debouncedTemperature !== prevTemperatureValue
                     const hasTypes = typesValue.length <= 0
                     const hasApplications = applicationsValue?.length <= 0 || false
-                    const hasPowerAdjustments = powerAdjustmentValue <= 0
-                    filteredBrandsWithSeries().forEach(brand => {
+                    const haspower_adjustments = powerAdjustmentValue <= 0
+                    filteredbrands_with_series().forEach(brand => {
                         let children = []
                         brand.series.forEach(series => {
                             const brandsSeries = brand.name + " " + series.name
                             let hasType = hasTypes
                             let hasApplication = hasApplications
-                            let hasPowerAdjustment = hasPowerAdjustments
+                            let hasPowerAdjustment = haspower_adjustments
                             let hasTemp = hasTemperature(series)
                             if (!hasType) {
                                 if (typesValue.every(typeValue => series.types
@@ -451,8 +452,8 @@ export const Selection = ({pageTitle, widths}) => {
                         ]
                 }
             >
-                <Row justify="space-around" gutter={[8, 16]}>
-                    <Col xxl={hideIcons ? 2 : 3} xl={hideIcons ? 3 : 4}>
+                <Row justify="space-around" gutter={[4, 16]}>
+                    <Col xxl={3} xl={hideIcons ? 3 : 4}>
                         <Row>
                             <Col xs={24}>
                                 <Checkbox
@@ -500,7 +501,7 @@ export const Selection = ({pageTitle, widths}) => {
                             />
                         </div>}
                     </Col>
-                    <Col xxl={hideIcons ? 22 : 21} xl={hideIcons ? 21 : 20}>
+                    <Col xxl={21} xl={hideIcons ? 21 : 20}>
                         {/*<Row gutter={[10, 10]}>*/}
                         <Form
                             name={fullSelectionFormName}
@@ -520,7 +521,7 @@ export const Selection = ({pageTitle, widths}) => {
                                         <MultipleSelection
                                             placeholder={Lang.get('pages.selections.single_pump.brands')}
                                             style={fullWidth}
-                                            options={selection_props.brandsWithSeries}
+                                            options={selection_props.brands_with_series}
                                             onChange={values => {
                                                 setBrandsValue(values)
                                             }}
@@ -571,7 +572,7 @@ export const Selection = ({pageTitle, widths}) => {
                                     </Form.Item>
                                 </Col>
                                 {/* APPLICATIONS */}
-                                {selection_props.applications && <Col xs={widths.applications}>
+                                {widths.applications && <Col xs={widths.applications}>
                                     <Form.Item
                                         className={reducedAntFormItemClassName}
                                         name="pump_application_ids"
@@ -603,7 +604,7 @@ export const Selection = ({pageTitle, widths}) => {
                                             placeholder={Lang.get('pages.selections.single_pump.power_adjustments')}
                                             disabled={fieldsDisabled}
                                             style={{...fullWidth, marginTop: 0}}
-                                            options={selection_props.powerAdjustments}
+                                            options={selection_props.power_adjustments}
                                             onChange={values => {
                                                 setPowerAdjustmentValue(values)
                                             }}
@@ -699,11 +700,11 @@ export const Selection = ({pageTitle, widths}) => {
                                         required
                                         name="dp_work_scheme_id"
                                         label={Lang.get('pages.selections.double_pump.work_scheme')}
-                                        initialValue={selection?.data.dp_work_scheme_id || selection_props.workSchemes[0].id}
+                                        initialValue={selection?.data.dp_work_scheme_id || selection_props.work_schemes[0].id}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <Radio.Group>
-                                            {selection_props.workSchemes.map(scheme => (
+                                            {selection_props.work_schemes.map(scheme => (
                                                 <Radio key={'ws' + scheme.id}
                                                        value={scheme.id}>{scheme.name}</Radio>
                                             ))}
@@ -716,14 +717,14 @@ export const Selection = ({pageTitle, widths}) => {
                                         required
                                         name="range_id"
                                         label={Lang.get('pages.selections.single_pump.range.label')}
-                                        initialValue={selection?.data.range_id || selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id}
+                                        initialValue={selection?.data.range_id || selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id}
                                         className={reducedAntFormItemClassName}
                                     >
                                         <Radio.Group
                                             onChange={e => {
-                                                setRangeDisabled(e.target.value !== selection_props.selectionRanges[selection_props.selectionRanges.length - 1].id)
+                                                setRangeDisabled(e.target.value !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id)
                                             }}>
-                                            {selection_props.selectionRanges.map(range => (
+                                            {selection_props.selection_ranges.map(range => (
                                                 <Radio key={'bp' + range.name}
                                                        value={range.id}>{range.name}</Radio>
                                             ))}

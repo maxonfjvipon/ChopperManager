@@ -18,7 +18,7 @@ class ShowProjectResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $rates = new Rates(); // fixme
+        $rates = Rates::new(); // fixme
 
         // TODO: make selections
 

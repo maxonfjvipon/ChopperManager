@@ -23,6 +23,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "mariuzzo/laravel-js-localization": "^1.8",
+        "maxonfjvipon/elegant-elephant": "dev-main",
         "mcamara/laravel-localization": "^1.6",
         "nwidart/laravel-modules": "^8.2",
         "rap2hpoutre/fast-excel": "^3.0",

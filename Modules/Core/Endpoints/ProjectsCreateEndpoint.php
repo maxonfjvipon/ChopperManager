@@ -2,10 +2,10 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
-use App\Endpoints\InertiaEndpoint;
+use App\Takes\TkAuthorized;
+use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
@@ -13,9 +13,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects create endpoint
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsCreateEndpoint extends Controller implements Renderable
+final class ProjectsCreateEndpoint extends Controller
 {
     /**
      * @return Responsable|Response
@@ -23,18 +23,9 @@ class ProjectsCreateEndpoint extends Controller implements Renderable
      */
     public function __invoke(): Responsable|Response
     {
-        return $this->render();
-    }
-
-    /**
-     * @inheritDoc
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
+        return TkAuthorized::new(
             'project_create',
-            new InertiaEndpoint('Core::Projects/Create')
-        ))->render();
+            TkInertia::withStrComponent('Core::Projects/Create')
+        )->act();
     }
 }

@@ -3,13 +3,14 @@
 namespace Modules\Core\Support;
 
 use AmrShawky\LaravelCurrency\Facade\Currency;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 
 /**
  * Rates.
  * @package Modules\Core\Support
  */
-class Rates
+final class Rates
 {
     /**
      * @var $rates
@@ -21,12 +22,27 @@ class Rates
      */
     private string $base;
 
-    public function __construct($round = 5)
+    /**
+     * Ctor wrap.
+     * @param int $round
+     * @return Rates
+     */
+    public static function new($round = 5): Rates
     {
-        $this->base = Auth::user()->currency->code;
+        return new self($round);
+    }
+
+    /**
+     * Ctor.
+     * @param $round
+     * @throws Exception
+     */
+    private function __construct($round)
+    {
+        $this->base = \Modules\Core\Entities\Currency::allOrCached()->find(Auth::user()->currency_id)->code;
         $this->rates = Currency::rates()
             ->latest()
-            ->symbols(\Modules\Core\Entities\Currency::all()->pluck('code')->all())
+            ->symbols(\Modules\Core\Entities\Currency::allOrCached()->pluck('code')->all())
             ->base($this->base)
             ->amount(1)
             ->round($round)

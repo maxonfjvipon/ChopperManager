@@ -2,53 +2,41 @@
 
 namespace Modules\Core\Endpoints;
 
-use App\Endpoints\AuthorizedEndpoint;
+use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Renderable;
+use App\Support\Take;
+use App\Takes\TkWithCallback;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Core\Endpoints\Deep\RedirectToProjectsIndexRouteEndpoint;
-use Modules\Core\Endpoints\Deep\RestoredProjectEndpoint;
+use Modules\Core\Entities\Project;
+use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Core\Takes\TkRedirectedToProjectsIndex;
+use Modules\Core\Takes\TkRestoredProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Projects restore endpoint.
- * @package Modules\Core\Endpoints
+ * @package Modules\Core\Takes
  */
-class ProjectsRestoreEndpoint extends Controller implements Renderable
+final class ProjectsRestoreEndpoint extends Controller
 {
     /**
-     * @var int $id
-     */
-    private int $projectId;
-
-    /**
-     * @param int $id
+     * @param int $project_id
      * @return Responsable|Response
      * @throws AuthorizationException
      */
-    public function __invoke(int $id): Responsable|Response
+    public function __invoke(int $project_id): Responsable|Response
     {
-        $this->projectId = $id;
-        return $this->render();
-    }
-
-    /**
-     * @inheritDoc
-     * @throws AuthorizationException
-     */
-    public function render(Request $request = null): Responsable|Response
-    {
-        return (new AuthorizedEndpoint(
-            'project_access_' . $this->projectId,
-            new AuthorizedEndpoint(
+        return TkAuthorizedProject::byId(
+            $project_id,
+            TkAuthorized::new(
                 'project_restore',
-                new RestoredProjectEndpoint(
-                    $this->projectId,
-                    new RedirectToProjectsIndexRouteEndpoint()
+                TkWithCallback::new(
+                    fn() => Project::withTrashed()->find($project_id)->restore(),
+                    TkRedirectedToProjectsIndex::new()
                 )
             )
-        ))->render($request);
+        )->act();
     }
 }

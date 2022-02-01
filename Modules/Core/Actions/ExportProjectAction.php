@@ -18,7 +18,7 @@ class ExportProjectAction
 
     public function execute(Project $project, ExportProjectRequest $request): Response
     {
-        $rates = new Rates();
+        $rates = Rates::new();
 
         $project->load(['selections' => function ($query) use ($request) {
             $query->whereIn('id', $request->selection_ids);
