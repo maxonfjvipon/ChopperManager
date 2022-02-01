@@ -115,6 +115,19 @@ return [
             'button' => 'Export',
             'm3h' => 'm³/h',
             'm' => 'm'
+        ],
+        'statistics' => [
+            'title' => 'Projects statistics',
+            'table' => [
+                'created_at' => 'Created at',
+                'client' => 'Client',
+                'name' => 'Name',
+                'selections_count' => 'Selections count',
+                'retail_price' => 'Retail price',
+                'status' => 'Status',
+                'delivery_status' => 'Delivery status',
+                'comment' => 'Comment'
+            ],
         ]
     ],
     'pump_brands' => [

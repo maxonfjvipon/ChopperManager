@@ -9,7 +9,7 @@ import {
     ProfileOutlined,
     UnorderedListOutlined,
     SnippetsOutlined,
-    UserOutlined,
+    UserOutlined, SplitCellsOutlined,
 } from "@ant-design/icons";
 import Lang from "../../../translation/lang";
 import React from "react";
@@ -44,6 +44,11 @@ export const Header = () => {
             route: 'users.index',
             label: Lang.get('pages.users.title')
         },
+        has('project_statistics') && {
+            itemProps: {key: 'projects_statistics', icon: <SplitCellsOutlined/>},
+            route: 'projects.statistics',
+            label: Lang.get('pages.projects.statistics.title')
+        }
     ])
 
     return (

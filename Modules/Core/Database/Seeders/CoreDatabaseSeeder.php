@@ -53,6 +53,8 @@ class CoreDatabaseSeeder extends Seeder
             $permissions[] = 'series_import';
             $permissions[] = 'series_import_media';
             $permissions[] = 'project_clone';
+            $permissions[] = 'project_statistics';
+            $permissions[] = 'user_statistics';
 
             $tenantGuard = $this->getTenantModel()::current()->guard;
 
@@ -80,7 +82,7 @@ class CoreDatabaseSeeder extends Seeder
                 'user_access',
                 'user_create',
                 'user_show',
-                'user_statistic',
+                'user_statistics',
 
                 'project_access',
                 'project_create',
@@ -90,7 +92,7 @@ class CoreDatabaseSeeder extends Seeder
                 'project_restore',
                 'project_export',
                 'project_clone',
-                'project_statistic',
+                'project_statistics',
 
                 'pump_access',
                 'pump_create',

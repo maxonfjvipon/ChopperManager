@@ -32,8 +32,8 @@ class TenantsSeeder extends Seeder
                 'status_id' => 1,
                 'delivery_status_id' => 1
             ]);
-            $pr1 = Permission::create(['name' => 'project_statistic', 'guard_name' => $tenant->guard]);
-            $pr2 = Permission::create(['name' => 'user_statistic', 'guard_name' => $tenant->guard]);
+            $pr1 = Permission::create(['name' => 'project_statistics', 'guard_name' => $tenant->guard]);
+            $pr2 = Permission::create(['name' => 'user_statistics', 'guard_name' => $tenant->guard]);
 
             DB::table($tenant->database . '.role_has_permissions')
                 ->insert([

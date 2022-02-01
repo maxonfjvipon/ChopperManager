@@ -115,6 +115,19 @@ return [
             'button' => 'Экспорт',
             'm3h' => 'м³/ч',
             'm' => 'м',
+        ],
+        'statistics' => [
+            'title' => 'Статистика по проектам',
+            'table' => [
+                'created_at' => 'Дата создания',
+                'client' => 'Клиент',
+                'name' => 'Наименование',
+                'selections_count' => 'Количество подборов',
+                'retail_price' => 'Розничная стоимость',
+                'status' => 'Статус',
+                'delivery_status' => 'Статус поставки',
+                'comment' => 'Комментарий'
+            ],
         ]
     ],
     'pump_brands' => [

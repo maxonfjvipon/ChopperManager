@@ -2,21 +2,9 @@
 
 namespace Modules\Selection\Providers;
 
-use Faker\Guesser\Name;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Modules\AdminPanel\Entities\Tenant;
-use Modules\AdminPanel\Entities\TenantType;
 use Modules\Pump\Entities\Pump;
-use Modules\PumpManager\Services\Selection\PMDoublePumpSelectionService;
-use Modules\PumpManager\Services\Selection\PMPumpableSelectionService;
-use Modules\PumpManager\Services\Selection\PMSelectionsService;
-use Modules\PumpManager\Services\Selection\PMSinglePumpSelectionService;
-use Modules\PumpProducer\Services\Selection\PPDoublePumpSelectionService;
-use Modules\PumpProducer\Services\Selection\PPPumpableSelectionService;
-use Modules\PumpProducer\Services\Selection\PPSelectionsService;
-use Modules\PumpProducer\Services\Selection\PPSinglePumpSelectionService;
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 use Modules\Selection\Http\Requests\DoublePump\CurvesForDoublePumpSelectionRequest;
 use Modules\Selection\Http\Requests\DoublePump\ExportAtOnceDoublePumpSelectionRequest;
@@ -29,10 +17,6 @@ use Modules\Selection\Http\Requests\SinglePump\ExportAtOnceSinglePumpSelectionRe
 use Modules\Selection\Http\Requests\SinglePump\MakeSinglePumpSelectionRequest;
 use Modules\Selection\Http\Requests\SinglePump\StoreSinglePumpSelectionRequest;
 use Modules\Selection\Http\Requests\SelectionRequest;
-use Modules\Selection\Services\PumpType\DoublePumpSelectionService;
-use Modules\Selection\Services\PumpType\PumpableTypeSelectionService;
-use Modules\Selection\Services\PumpType\SinglePumpSelectionService;
-use Modules\Selection\Services\SelectionsService;
 
 class SelectionServiceProvider extends ServiceProvider
 {
@@ -144,11 +128,6 @@ class SelectionServiceProvider extends ServiceProvider
     {
         switch (request()->pumpable_type) {
             case Pump::$DOUBLE_PUMP:
-                // SERVICES
-                $this->app->singleton(PumpableTypeSelectionService::class, DoublePumpSelectionService::class);
-                $this->app->bind(PMPumpableSelectionService::class, PMDoublePumpSelectionService::class);
-                $this->app->bind(PPPumpableSelectionService::class, PPDoublePumpSelectionService::class);
-
                 // REQUESTS
                 $this->app->bind(MakeSelectionRequest::class, MakeDoublePumpSelectionRequest::class);
                 $this->app->bind(CurvesForSelectionRequest::class, CurvesForDoublePumpSelectionRequest::class);
@@ -156,11 +135,6 @@ class SelectionServiceProvider extends ServiceProvider
                 $this->app->bind(SelectionRequest::class, StoreDoublePumpSelectionRequest::class);
                 break;
             default:
-                // SERVICES
-                $this->app->singleton(PumpableTypeSelectionService::class, SinglePumpSelectionService::class);
-                $this->app->bind(PMPumpableSelectionService::class, PMSinglePumpSelectionService::class);
-                $this->app->bind(PPPumpableSelectionService::class, PPSinglePumpSelectionService::class);
-
                 // REQUESTS
                 $this->app->bind(MakeSelectionRequest::class, MakeSinglePumpSelectionRequest::class);
                 $this->app->bind(CurvesForSelectionRequest::class, CurvesForSinglePumpSelectionRequest::class);
@@ -168,11 +142,5 @@ class SelectionServiceProvider extends ServiceProvider
                 $this->app->bind(SelectionRequest::class, StoreSinglePumpSelectionRequest::class);
                 break;
         }
-        $this->app->bind(SelectionsService::class, function () {
-            return App::make(match (Tenant::current()->type->id) {
-                TenantType::$PUMPPRODUCER => PPSelectionsService::class,
-                default => PMSelectionsService::class
-            });
-        });
     }
 }
