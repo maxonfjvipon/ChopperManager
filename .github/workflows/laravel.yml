@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html/
-            git pull origin git@github.com:maxonfjvipon/pump-manager.git
+            git pull origin pump-manager.ru git@github.com:maxonfjvipon/pump-manager.git
 
       - name: Migrations
         uses: appleboy/ssh-action@master
