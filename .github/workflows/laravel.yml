@@ -32,7 +32,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations"
+          script: |
+            cd /var/www/html
+            php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations"
 
 #   laravel-tests:
 

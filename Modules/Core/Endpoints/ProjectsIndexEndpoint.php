@@ -5,10 +5,7 @@ namespace Modules\Core\Endpoints;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
-use App\Support\Take;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
