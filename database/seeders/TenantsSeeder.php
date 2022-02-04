@@ -17,23 +17,31 @@ class TenantsSeeder extends Seeder
     public function run()
     {
         Tenant::all()->eachCurrent(function (Tenant $tenant) {
-            ProjectStatus::create(['name' => ['ru' => "Новый", 'en' => 'New']]);
-            ProjectStatus::create(['name' => ['ru' => "В работе", 'en' => 'In progress']]);
-            ProjectStatus::create(['name' => ['ru' => "Архивный", 'en' => 'Archived']]);
-            ProjectStatus::create(['name' => ['ru' => "Удаленный", 'en' => 'Deleted']]);
+            ProjectStatus::updateOrCreate(['id' => 1], ['name' => ['ru' => "Новый", 'en' => 'New']]);
+            ProjectStatus::updateOrCreate(['id' => 2], ['name' => ['ru' => "В работе", 'en' => 'In progress']]);
+            ProjectStatus::updateOrCreate(['id' => 3], ['name' => ['ru' => "Архивный", 'en' => 'Archived']]);
+            ProjectStatus::updateOrCreate(['id' => 4], ['name' => ['ru' => "Удаленный", 'en' => 'Deleted']]);
 
-            ProjectDeliveryStatus::create(['name' => ['ru' => 'Не поставлен', 'en' => 'Not delivered']]);
-            ProjectDeliveryStatus::create(['name' => ['ru' => 'Поставлен', 'en' => 'Delivered']]);
+            ProjectDeliveryStatus::updateOrCreate(['id' => 1], [
+                'name' => ['ru' => 'Не поставлен', 'en' => 'Not delivered']]);
+            ProjectDeliveryStatus::updateOrCreate(['id' => 2], [
+                'name' => ['ru' => 'Поставлен', 'en' => 'Delivered']]);
 
-            DB::table($tenant->database . '.projects')->update([
-                'status_id' => 1,
-                'delivery_status_id' => 1
-            ]);
-            $pr1 = Permission::create(['name' => 'project_statistics', 'guard_name' => $tenant->guard]);
-            $pr2 = Permission::create(['name' => 'user_statistics', 'guard_name' => $tenant->guard]);
+            DB::table($tenant->database . '.projects')
+                ->whereNull('status_id')
+                ->whereNull('delivery_status_id')
+                ->update([
+                    'status_id' => 1,
+                    'delivery_status_id' => 1
+                ]);
+            $pr1 = Permission::updateOrCreate(['name' => 'project_statistics', 'guard_name' => $tenant->guard],
+                ['name' => 'project_statistics', 'guard_name' => $tenant->guard]);
+            $pr2 = Permission::updateOrCreate(['name' => 'user_statistics', 'guard_name' => $tenant->guard],
+                ['name' => 'user_statistics', 'guard_name' => $tenant->guard]);
+
 
             DB::table($tenant->database . '.role_has_permissions')
-                ->insert([
+                ->insertOrIgnore([
                     ['permission_id' => $pr1->id, 'role_id' => 1],
                     ['permission_id' => $pr1->id, 'role_id' => 2],
                     ['permission_id' => $pr2->id, 'role_id' => 1],
