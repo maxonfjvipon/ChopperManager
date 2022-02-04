@@ -3,11 +3,14 @@
 
 namespace Modules\PumpManager\Services;
 
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Text\TxtImploded;
 use Modules\AdminPanel\Entities\SelectionType;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\PumpManager\Entities\PMUser;
@@ -18,24 +21,33 @@ use Modules\User\Http\Requests\CreateUserRequest;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Modules\User\Services\UsersServices;
 use Modules\User\Transformers\CountryResource;
+use PHPUnit\Framework\Constraint\Count;
 
 class PMUsersService extends UsersServices
 {
     /**
      * @return array
+     * @throws Exception
      */
     private function filterData(): array
     {
         return [
             'selection_types' => SelectionType::all(['id', 'name']),
-            'series' => PumpSeries::with('brand')->get()->map(fn($series) => [
-                'id' => $series->id,
-                'name' => $series->brand->name . " " . $series->name,
-            ])->all(),
-            'businesses' => Business::all(),
-            'countries' => Country::all()->map(function ($country) {
-                return new CountryResource($country);
-            })
+            'series' => ArrMapped::new(
+                [...PumpSeries::with('brand')->get()],
+                fn(PumpSeries $series) => [
+                    'id' => $series->id,
+                    'name' => $series->brand->name . " " . $series->name
+                ]
+            )->asArray(),
+            'businesses' => Business::allOrCached(),
+            'countries' => ArrMapped::new(
+                [...Country::allOrCached()],
+                fn(Country $country) => [
+                    'id' => $country->id,
+                    'name' => $country->country_code
+                ]
+            )->asArray()
         ];
     }
 

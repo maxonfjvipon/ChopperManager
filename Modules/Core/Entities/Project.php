@@ -4,10 +4,12 @@ namespace Modules\Core\Entities;
 
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Bkwld\Cloner\Cloneable;
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +24,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class Project extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable, ConstructsSelectionCurves;
+    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable;
 
     protected $guarded = ['id'];
     public $timestamps = false;
@@ -51,6 +53,7 @@ class Project extends Model
     /**
      * @param Request $request
      * @return $this
+     * @throws Exception
      */
     public function readyForExport(Request $request): self
     {
@@ -87,5 +90,21 @@ class Project extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo($this->getUserClass());
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function status(): HasOne
+    {
+        return $this->hasOne(ProjectStatus::class, 'id', 'status_id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function delivery_status(): HasOne
+    {
+        return $this->hasOne(ProjectDeliveryStatus::class, 'id','delivery_status_id');
     }
 }

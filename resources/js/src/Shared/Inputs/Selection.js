@@ -10,8 +10,6 @@ export const Selection = ({placeholder, defaultValue, options, ...rest}) => {
                     value: option.id
                 }
             })]}
-            showSearch
-            allowClear
             filterOption={(input, option) => {
                 return option.label.toString().toLowerCase().includes(input.toLowerCase())
             }}

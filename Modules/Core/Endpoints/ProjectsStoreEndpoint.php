@@ -4,13 +4,10 @@ namespace Modules\Core\Endpoints;
 
 use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Take;
 use App\Takes\TkWithCallback;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\Core\Takes\TkCreatedProject;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Modules\Core\Takes\TkRedirectedToProjectsIndex;
 use Modules\Core\Http\Requests\ProjectStoreRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +27,11 @@ final class ProjectsStoreEndpoint extends Controller
         return TkAuthorized::new(
             'project_create',
             TkWithCallback::new(
-                fn() => Auth::user()->projects()->create($request->validated()),
+                fn() => Auth::user()->projects()
+                    ->create(ArrMerged::new(
+                        $request->validated(),
+                        ['status_id' => 1, 'delivery_status_id' => 1]
+                    )->asArray()),
                 TkRedirectedToProjectsIndex::new()
             )
         )->act($request);

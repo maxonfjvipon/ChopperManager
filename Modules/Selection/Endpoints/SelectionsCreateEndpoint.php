@@ -34,11 +34,10 @@ final class SelectionsCreateEndpoint extends Controller
             'selection_create',
             TkOptAuthorizedProject::new(
                 $project_id,
-                TkInertia::withTxtComponent(
-                    TxtSelectionsCreateComponent::new($request)
-                )->withArrayableProps(
-                    ArrMerged::ofArrayables(
-                        ArrayableOf::array(['project_id' => $project_id]),
+                TkInertia::new(
+                    TxtSelectionsCreateComponent::new($request),
+                    ArrMerged::new(
+                        ['project_id' => $project_id],
                         ArrSelectionProps::new($request),
                     )
                 ),

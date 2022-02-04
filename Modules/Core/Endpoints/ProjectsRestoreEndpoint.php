@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Modules\Core\Entities\Project;
 use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Core\Takes\TkRedirectedToProjectsIndex;
-use Modules\Core\Takes\TkRestoredProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

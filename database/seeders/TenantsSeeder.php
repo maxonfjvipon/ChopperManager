@@ -2,15 +2,12 @@
 
 namespace Database\Seeders;
 
-use http\Client\Curl\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Core\Entities\ProjectDeliveryStatus;
 use Modules\Core\Entities\ProjectStatus;
-use Modules\PumpManager\Entities\PMUser;
 use Modules\User\Entities\Permission;
-use Modules\User\Entities\Userable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class TenantsSeeder extends Seeder

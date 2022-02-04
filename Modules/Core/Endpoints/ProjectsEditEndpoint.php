@@ -27,8 +27,10 @@ final class ProjectsEditEndpoint extends Controller
             'project_edit',
             TkAuthorizedProject::byProject(
                 $project,
-                TkInertia::withStrComponent("Core::Projects/Edit")
-                    ->withCallableProps(fn() => ['project' => new EditProjectResource($project)])
+                TkInertia::new(
+                    "Core::Projects/Edit",
+                    fn() => ['project' => new EditProjectResource($project)]
+                )
             )
         )->act();
     }

@@ -39,7 +39,7 @@ final class TkWithCallback implements Take
      * @param callable $callback
      * @param Take $take
      */
-    private function __construct(callable $callback, Take $take)
+    public function __construct(callable $callback, Take $take)
     {
         $this->callback = $callback;
         $this->origin = $take;

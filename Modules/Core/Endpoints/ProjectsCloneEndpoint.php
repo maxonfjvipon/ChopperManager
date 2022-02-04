@@ -27,7 +27,6 @@ final class ProjectsCloneEndpoint extends Controller
      * @param CloneProjectRequest $request
      * @param Project $project
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(CloneProjectRequest $request, Project $project): Responsable|Response
     {

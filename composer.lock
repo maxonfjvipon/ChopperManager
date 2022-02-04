@@ -1914,16 +1914,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.81.0",
+            "version": "v8.82.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9cc0efd724ce67a190b1695ba31a27bbb1ae9177"
+                "reference": "411d5243c58cbf12b0fc89cab1ceb50088968c27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9cc0efd724ce67a190b1695ba31a27bbb1ae9177",
-                "reference": "9cc0efd724ce67a190b1695ba31a27bbb1ae9177",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/411d5243c58cbf12b0fc89cab1ceb50088968c27",
+                "reference": "411d5243c58cbf12b0fc89cab1ceb50088968c27",
                 "shasum": ""
             },
             "require": {
@@ -2083,20 +2083,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-01-25T16:41:46+00:00"
+            "time": "2022-02-01T16:13:57+00:00"
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v1.0.5",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "25de3be1bca1b17d52ff0dc02b646c667ac7266c"
+                "reference": "65c9faf50d567b65d81764a44526545689e3fe63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/25de3be1bca1b17d52ff0dc02b646c667ac7266c",
-                "reference": "25de3be1bca1b17d52ff0dc02b646c667ac7266c",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/65c9faf50d567b65d81764a44526545689e3fe63",
+                "reference": "65c9faf50d567b65d81764a44526545689e3fe63",
                 "shasum": ""
             },
             "require": {
@@ -2142,7 +2142,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2021-11-30T15:53:04+00:00"
+            "time": "2022-02-01T16:29:39+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2773,16 +2773,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/maxonfjvipon/ElegantElephant.git",
-                "reference": "f41ec47f9203b6b3e5f9f763ee60e8a2dad0a5d5"
+                "reference": "584e94edc60c85b9f4a270d82ada3a37542e2524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maxonfjvipon/ElegantElephant/zipball/f41ec47f9203b6b3e5f9f763ee60e8a2dad0a5d5",
-                "reference": "f41ec47f9203b6b3e5f9f763ee60e8a2dad0a5d5",
+                "url": "https://api.github.com/repos/maxonfjvipon/ElegantElephant/zipball/584e94edc60c85b9f4a270d82ada3a37542e2524",
+                "reference": "584e94edc60c85b9f4a270d82ada3a37542e2524",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "maxonfjvipon/overloaded-elephant": "dev-main",
                 "php": ">=8.0"
             },
             "require-dev": {
@@ -2813,9 +2814,53 @@
             ],
             "support": {
                 "issues": "https://github.com/maxonfjvipon/ElegantElephant/issues",
-                "source": "https://github.com/maxonfjvipon/ElegantElephant/tree/0.0.4"
+                "source": "https://github.com/maxonfjvipon/ElegantElephant/tree/0.1.1"
             },
-            "time": "2022-01-30T23:43:41+00:00"
+            "time": "2022-02-02T22:57:02+00:00"
+        },
+        {
+            "name": "maxonfjvipon/overloaded-elephant",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxonfjvipon/overloaded-elephant.git",
+                "reference": "f3824811066783f55843e3bd6a4290e35f407885"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxonfjvipon/overloaded-elephant/zipball/f3824811066783f55843e3bd6a4290e35f407885",
+                "reference": "f3824811066783f55843e3bd6a4290e35f407885",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.5.13"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maxonfjvipon\\OverloadedElephant\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Max Trunnikov",
+                    "email": "mtrunnikov@gmail.com"
+                }
+            ],
+            "description": "php methods overloading",
+            "support": {
+                "issues": "https://github.com/maxonfjvipon/overloaded-elephant/issues",
+                "source": "https://github.com/maxonfjvipon/overloaded-elephant/tree/main"
+            },
+            "time": "2022-02-02T21:59:04+00:00"
         },
         {
             "name": "mcamara/laravel-localization",
@@ -8677,16 +8722,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.18.0",
+            "version": "v1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567"
+                "reference": "d7f08a622b3346766325488aa32ddc93ccdecc75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/2e77a868f6540695cf5ebf21e5ab472c65f47567",
-                "reference": "2e77a868f6540695cf5ebf21e5ab472c65f47567",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/d7f08a622b3346766325488aa32ddc93ccdecc75",
+                "reference": "d7f08a622b3346766325488aa32ddc93ccdecc75",
                 "shasum": ""
             },
             "require": {
@@ -8699,10 +8744,12 @@
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
+                "doctrine/persistence": "^1.3 || ^2.0",
                 "ext-intl": "*",
                 "symfony/phpunit-bridge": "^4.4 || ^5.2"
             },
             "suggest": {
+                "doctrine/orm": "Required to use Faker\\ORM\\Doctrine",
                 "ext-curl": "Required by Faker\\Provider\\Image to download images.",
                 "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
                 "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
@@ -8711,7 +8758,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "v1.18-dev"
+                    "dev-main": "v1.19-dev"
                 }
             },
             "autoload": {
@@ -8736,9 +8783,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.18.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.19.0"
             },
-            "time": "2022-01-23T17:56:23+00:00"
+            "time": "2022-02-02T17:38:57+00:00"
         },
         {
             "name": "filp/whoops",

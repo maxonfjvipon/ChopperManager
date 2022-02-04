@@ -39,7 +39,7 @@ final class TkRegisteredUser implements Take
      * Ctor.
      * @param Take $take
      */
-    private function __construct(Take $take)
+    public function __construct(Take $take)
     {
         $this->origin = $take;
     }

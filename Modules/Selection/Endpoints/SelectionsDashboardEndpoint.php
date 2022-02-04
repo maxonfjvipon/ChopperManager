@@ -26,10 +26,11 @@ final class SelectionsDashboardEndpoint extends Controller
      */
     public function __invoke($project_id): Responsable|Response
     {
-        return TkInertia::withStrComponent("Selection::Dashboard")
-            ->withArrayProps([
+        return TkInertia::new(
+            "Selection::Dashboard",
+            [
                 'project_id' => $project_id,
-                'selection_types' => ArrMapped::ofArrayable(
+                'selection_types' => ArrMapped::new(
                     ArrTenantSelectionTypes::new(),
                     fn(SelectionType $type) => [
                         'name' => $type->name,

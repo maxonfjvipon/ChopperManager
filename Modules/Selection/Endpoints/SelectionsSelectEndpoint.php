@@ -38,13 +38,13 @@ class SelectionsSelectEndpoint extends Controller
                     $num = 1;
                     $range = SelectionRange::allOrCached()->find($request->range_id);
                     $rates = Rates::new();
-                    $selectedPumps = ArrMerged::ofArrayables(
-                        ...ArrMapped::ofArrayable(
+                    $selectedPumps = ArrMerged::new(
+                        ...ArrMapped::new(
                             ArrPumpsForSelecting::new($request),
                             function (Pump $pump) use ($request, &$num, $rates, $range) {
                                 $performance = PPumpPerformance::construct($pump);
-                                return ArrFiltered::ofArrayable(
-                                    ArrMapped::ofArray(
+                                return ArrFiltered::new(
+                                    ArrMapped::new(
                                         $request->main_pumps_counts ?? [null],
                                         function ($mainPumpsCount) use ($pump, $request, &$num, $rates, $performance, $range) {
                                             $lastPumpPos = $mainPumpsCount ?? $request->dp_work_scheme_id;
@@ -76,8 +76,8 @@ class SelectionsSelectEndpoint extends Controller
                                                     return [
                                                         'key' => $num++,
                                                         'pumps_count' => $pumpsCount,
-                                                        'name' => TxtImploded::withString(" ")
-                                                            ->ofStrings(
+                                                        'name' => TxtImploded::new(
+                                                            " ",
                                                                 $mainPumpsCount ? $pumpsCount : "",
                                                                 $pump->brand->name,
                                                                 $pump->name
@@ -108,10 +108,7 @@ class SelectionsSelectEndpoint extends Controller
                             }
                         )->asArray()
                     )->asArray();
-                    return EqualityOf::numerables(
-                        LengthOf::array($selectedPumps),
-                        NumerableOf::int(0)
-                    )->asBool()
+                    return EqualityOf::new(LengthOf::new($selectedPumps), 0)->asBool()
                         ? ['info' => __('flash.selections.pumps_not_found')]
                         : [
                             'selected_pumps' => $selectedPumps,

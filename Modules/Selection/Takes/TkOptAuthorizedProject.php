@@ -49,7 +49,6 @@ final class TkOptAuthorizedProject implements Take
 
     /**
      * @inheritDoc
-     * @throws AuthorizationException
      */
     public function act(Request $request = null): Responsable|Response
     {
