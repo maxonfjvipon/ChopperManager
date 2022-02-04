@@ -12,7 +12,7 @@ use Modules\Core\Takes\TkRedirectedToProjectsIndex;
 use Modules\Core\Http\Requests\ProjectStoreRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-// hello world
+// hello world!
 
 /**
  * Projects store endpoint.
