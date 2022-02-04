@@ -25,7 +25,7 @@ jobs:
             git pull
 
       - name: Migrations
-        uses: appleboy/ssh-action@pump-manager.ru
+        uses: appleboy/ssh-action@master
 
         with:
           host: ${{ secrets.HOST }}
