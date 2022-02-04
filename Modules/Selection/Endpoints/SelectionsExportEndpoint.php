@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Selections export endpoint.
  * @package Modules\Selection\Endpoints
  */
-class SelectionsExportEndpoint extends Controller
+final class SelectionsExportEndpoint extends Controller
 {
     /**
      * @param ExportSelectionRequest $request

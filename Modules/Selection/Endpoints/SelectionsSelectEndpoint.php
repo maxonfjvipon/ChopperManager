@@ -11,7 +11,6 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Logical\EqualityOf;
 use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
-use Maxonfjvipon\Elegant_Elephant\Numerable\NumerableOf;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtImploded;
 use Modules\Core\Support\Rates;
 use Modules\Pump\Entities\Pump;
@@ -22,7 +21,7 @@ use Modules\Selection\Support\IIntersectionPoint;
 use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Symfony\Component\HttpFoundation\Response;
 
-class SelectionsSelectEndpoint extends Controller
+final class SelectionsSelectEndpoint extends Controller
 {
     /**
      * @param MakeSelectionRequest $request

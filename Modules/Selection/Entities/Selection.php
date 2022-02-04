@@ -2,10 +2,10 @@
 
 namespace Modules\Selection\Entities;
 
+use App\Traits\WithOrWithoutTrashed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
 use Modules\Core\Support\Rates;
 use Modules\Selection\Traits\WithSelectionAttributes;
 use Modules\Selection\Traits\WithSelectionCurves;
@@ -14,7 +14,8 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Selection extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, WithSelectionRelationships, WithSelectionAttributes, WithSelectionCurves;
+    use HasFactory, SoftDeletes, UsesTenantConnection, WithSelectionRelationships, WithSelectionAttributes,
+        WithSelectionCurves, WithOrWithoutTrashed;
 
     public $timestamps = false;
     protected $guarded = [];

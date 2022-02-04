@@ -3,7 +3,6 @@
 namespace Modules\Core\Endpoints;
 
 use App\Http\Controllers\Controller;
-use App\Support\ArrForFiltering;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use Exception;
@@ -39,11 +38,12 @@ final class ProjectsStatisticsEndpoint extends Controller
                     $deliveryStatuses = ProjectDeliveryStatus::allOrCached();
                     return [
                         'projects' => ArrMapped::new(
-                            [...Project::withCount('selections')
+                            [...Project::withTrashed()
+                                ->withCount('all_selections')
                                 ->with(['user' => function ($query) use ($rates) {
                                     $query->select('id', 'first_name', 'middle_name');
-                                }, 'selections', 'selections.pump', 'selections.pump.price_list',
-                                    'selections.pump.series.discount', 'selections.pump.price_list.currency'
+                                }, 'all_selections', 'all_selections.pump', 'all_selections.pump.price_list',
+                                    'all_selections.pump.series.discount', 'all_selections.pump.price_list.currency'
                                 ])
                                 ->get()],
                             fn(Project $project) => [
@@ -56,11 +56,12 @@ final class ProjectsStatisticsEndpoint extends Controller
                                     $project->user->middle_name
                                 )->asString(),
                                 'name' => $project->name,
-                                'selections_count' => $project->selections_count,
+                                'selections_count' => $project->all_selections_count,
                                 'price' => array_sum(
                                     ArrMapped::new(
-                                        [...$project->selections],
-                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price
+                                        [...$project->all_selections],
+                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price *
+                                            ($selection->pumps_count ?? 1)
                                     )->asArray()
                                 ),
                                 'status_id' => $project->status_id,

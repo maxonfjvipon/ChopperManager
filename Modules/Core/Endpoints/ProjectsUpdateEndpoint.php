@@ -24,17 +24,17 @@ final class ProjectsUpdateEndpoint extends Controller
 {
     /**
      * @param ProjectUpdateRequest $request
-     * @param Project $project
+     * @param $project_id
      * @return Responsable|Response
      */
-    public function __invoke(ProjectUpdateRequest $request, Project $project): Responsable|Response
+    public function __invoke(ProjectUpdateRequest $request, $project_id): Responsable|Response
     {
         return TkAuthorized::new(
             'project_edit',
-            TkAuthorizedProject::byProject(
-                $project,
+            TkAuthorizedProject::byId(
+                $project_id,
                 TkUpdatedProject::new(
-                    $project,
+                    Project::withTrashed()->find($project_id),
                     $request->has('name')
                         ? TkRedirectedToProjectsIndex::new()
                         : TkRedirectedBack::new()
