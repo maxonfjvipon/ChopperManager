@@ -80,10 +80,6 @@ final class ProjectsStatisticsEndpoint extends Controller
                                 'value' => $item->id
                             ])->asArray()
                         )->asArray(),
-//                    'filter_data' => ArrForFiltering::new([
-//                        'project_statuses' => $statuses->pluck('name')->all(),
-//                        'delivery_statuses' => $deliveryStatuses->pluck('name')->all(),
-//                    ])->asArray(),
                     ];
                 })
         )->act();
