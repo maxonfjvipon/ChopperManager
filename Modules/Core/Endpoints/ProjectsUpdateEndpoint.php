@@ -4,11 +4,8 @@ namespace Modules\Core\Endpoints;
 
 use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
-use App\Support\Take;
 use App\Takes\TkRedirectedBack;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Core\Takes\TkRedirectedToProjectsIndex;
 use Modules\Core\Takes\TkUpdatedProject;
