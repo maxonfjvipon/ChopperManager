@@ -31,7 +31,7 @@ class SelectionsExportEndpoint extends Controller
             $selection->project_id,
             TkAuthorized::new(
                 'selection_export',
-                TkDownloadedPDF::fromText(
+                TkDownloadedPDF::new(
                     TxtExportSelectionView::new($selection, $request)
                 )
             )

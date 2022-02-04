@@ -8,6 +8,7 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\Elegant_Elephant\Text\TextOf;
+use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
 use VerumConsilium\Browsershot\Facades\PDF;
 
@@ -17,38 +18,28 @@ use VerumConsilium\Browsershot\Facades\PDF;
  */
 final class TkDownloadedPDF implements Take
 {
+    use Overloadable;
+
     /**
-     * @var Text $html
+     * @var Text|string $html
      */
-    private Text $html;
+    private string|Text $html;
 
     /**
      * Ctor wrap.
-     * @param string $html
+     * @param string|Text $html
      * @return TkDownloadedPDF
-     * @throws Exception
      */
-    public static function fromString(string $html): TkDownloadedPDF
-    {
-        return TkDownloadedPDF::fromText(TextOf::string($html));
-    }
-
-    /**
-     * Ctor wrap.
-     * @param Text $html
-     * @return TkDownloadedPDF
-     * @throws Exception
-     */
-    public static function fromText(Text $html): TkDownloadedPDF
+    public static function new(string|Text $html): TkDownloadedPDF
     {
         return new self($html);
     }
 
     /**
      * Ctor.
-     * @param Text $html
+     * @param string|Text $html
      */
-    private function __construct(Text $html)
+    public function __construct(string|Text $html)
     {
         $this->html = $html;
     }
@@ -59,6 +50,9 @@ final class TkDownloadedPDF implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return PDF::loadHtml($this->html->asString())->download();
+        return PDF::loadHtml(self::overload([$this->html], [[
+            'string',
+            Text::class => fn(Text $txt) => $txt->asString()
+        ]])[0])->download();
     }
 }

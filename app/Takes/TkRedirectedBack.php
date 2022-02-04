@@ -25,13 +25,6 @@ final class TkRedirectedBack implements Take, TakeRedirect
     }
 
     /**
-     * Ctor.
-     */
-    private function __construct()
-    {
-    }
-
-    /**
      * @inheritDoc
      */
     public function act(Request $request = null): Responsable|Response

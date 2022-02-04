@@ -19,13 +19,12 @@ final class ProjectsCreateEndpoint extends Controller
 {
     /**
      * @return Responsable|Response
-     * @throws AuthorizationException
      */
     public function __invoke(): Responsable|Response
     {
         return TkAuthorized::new(
             'project_create',
-            TkInertia::withStrComponent('Core::Projects/Create')
+            TkInertia::new('Core::Projects/Create')
         )->act();
     }
 }

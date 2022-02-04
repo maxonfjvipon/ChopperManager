@@ -3,8 +3,10 @@
 namespace App\Takes;
 
 use App\Support\Take;
+use Closure;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
+use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -13,10 +15,12 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class TkJson implements Take
 {
+    use Overloadable;
+
     /**
-     * @var callable $callback
+     * @var callable|string|array $data
      */
-    private $callback;
+    private $data;
 
     /**
      * @var int $status
@@ -30,25 +34,25 @@ final class TkJson implements Take
 
     /**
      * Ctor wrap.
-     * @param callable $data_callback
+     * @param string|array|callable $data
      * @param int $status
      * @param array $headers
      * @return TkJson
      */
-    public static function new(callable $data_callback, $status = 200, array $headers = []): TkJson
+    public static function new(string|array|callable $data, $status = 200, array $headers = []): TkJson
     {
-        return new self($data_callback, $status, $headers);
+        return new self($data, $status, $headers);
     }
 
     /**
      * Ctor.
-     * @param callable $data_callback
+     * @param string|array|callable $data
      * @param int $status
      * @param array $headers
      */
-    public function __construct(callable $data_callback, $status = 200, array $headers = [])
+    public function __construct(string|array|callable $data, $status = 200, array $headers = [])
     {
-        $this->callback = $data_callback;
+        $this->data = $data;
         $this->status = $status;
         $this->headers = $headers;
     }
@@ -58,6 +62,12 @@ final class TkJson implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return response()->json(call_user_func($this->callback), $this->status, $this->headers);
+        return response()->json(self::overload([$this->data], [[
+            'boolean',
+            'string',
+            'array',
+            'callable' => fn(callable $callback) => call_user_func($callback),
+            Closure::class => fn(Closure $closure) => call_user_func($closure)
+        ]])[0], $this->status, $this->headers);
     }
 }

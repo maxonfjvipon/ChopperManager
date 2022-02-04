@@ -24,7 +24,6 @@ final class ProjectsExportEndpoint extends Controller
      * @param ExportProjectRequest $request
      * @param Project $project
      * @return Responsable|Response
-     * @throws AuthorizationException
      * @throws Exception
      */
     public function __invoke(ExportProjectRequest $request, Project $project): Responsable|Response
@@ -33,7 +32,7 @@ final class ProjectsExportEndpoint extends Controller
             $project,
             TkAuthorized::new(
                 'project_export',
-                TkDownloadedPDF::fromText(
+                TkDownloadedPDF::new(
                     TxtExportProjectView::new($project, $request)
                 )
             )

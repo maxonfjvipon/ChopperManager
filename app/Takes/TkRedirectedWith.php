@@ -47,7 +47,7 @@ final class TkRedirectedWith implements Take, TakeRedirect
      * @param $value
      * @param $origin
      */
-    private function __construct($key, $value, TakeRedirect $origin)
+    public function __construct($key, $value, TakeRedirect $origin)
     {
         $this->key = $key;
         $this->value = $value;

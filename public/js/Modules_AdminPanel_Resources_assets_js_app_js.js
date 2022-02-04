@@ -9715,8 +9715,6 @@ var Selection = function Selection(_ref) {
         value: option.id
       };
     })),
-    showSearch: true,
-    allowClear: true,
     filterOption: function filterOption(input, option) {
       return option.label.toString().toLowerCase().includes(input.toLowerCase());
     },

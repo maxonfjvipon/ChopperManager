@@ -44,7 +44,7 @@ final class TkAuthorized implements Take
      * @param Take $origin
      * @param string $ability
      */
-    private function __construct(string $ability, Take $origin)
+    public function __construct(string $ability, Take $origin)
     {
         $this->ability = $ability;
         $this->origin = $origin;

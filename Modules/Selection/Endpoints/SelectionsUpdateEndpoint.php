@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Selections update endpoint.
  * @package Modules\Selection\Endpoints
  */
-class SelectionsUpdateEndpoint extends Controller
+final class SelectionsUpdateEndpoint extends Controller
 {
     /**
      * @param SelectionRequest $request

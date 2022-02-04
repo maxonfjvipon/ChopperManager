@@ -2,6 +2,7 @@
 
 namespace Modules\AdminPanel\Entities;
 
+use App\Traits\Cached;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,11 +11,16 @@ use Spatie\Multitenancy\Models\Concerns\UsesLandlordConnection;
 
 class SelectionType extends Model
 {
-    use HasFactory, UsesLandlordConnection, HasTranslations, SoftDeletes;
+    use HasFactory, UsesLandlordConnection, HasTranslations, SoftDeletes, Cached;
 
     protected $guarded = [];
     public $translatable = ['name'];
     public $timestamps = false;
+
+    protected static function getCacheKey(): string
+    {
+        return "selection_types";
+    }
 
     public function imgForTenant()
     {

@@ -30,10 +30,9 @@ final class ProjectsShowEndpoint extends Controller
                 'selection_access',
                 TkAuthorizedProject::byProject(
                     $project,
-                    TkInertia::withStrComponent("Core::Projects/Show")
-                        ->withCallableProps(fn() => [
-                            'project' => new ShowProjectResource($project)
-                        ])
+                    TkInertia::new(
+                        "Core::Projects/Show",
+                        fn() => ['project' => new ShowProjectResource($project)])
                 )
             )
         )->act();

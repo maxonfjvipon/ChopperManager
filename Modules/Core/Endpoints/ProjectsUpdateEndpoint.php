@@ -5,6 +5,7 @@ namespace Modules\Core\Endpoints;
 use App\Takes\TkAuthorized;
 use App\Http\Controllers\Controller;
 use App\Support\Take;
+use App\Takes\TkRedirectedBack;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
@@ -34,7 +35,9 @@ final class ProjectsUpdateEndpoint extends Controller
                 $project,
                 TkUpdatedProject::new(
                     $project,
-                    TkRedirectedToProjectsIndex::new()
+                    $request->has('name')
+                        ? TkRedirectedToProjectsIndex::new()
+                        : TkRedirectedBack::new()
                 )
             )
         )->act($request);

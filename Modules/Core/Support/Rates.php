@@ -26,6 +26,7 @@ final class Rates
      * Ctor wrap.
      * @param int $round
      * @return Rates
+     * @throws Exception
      */
     public static function new($round = 5): Rates
     {

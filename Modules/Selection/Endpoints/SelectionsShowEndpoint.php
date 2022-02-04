@@ -28,7 +28,6 @@ final class SelectionsShowEndpoint extends Controller
     /**
      * @param Selection $selection
      * @return Responsable|Response
-     * @throws AuthorizationException
      * @throws Exception
      */
     public function __invoke(Selection $selection): Responsable|Response
@@ -37,14 +36,14 @@ final class SelectionsShowEndpoint extends Controller
             $selection->project_id,
             TkAuthorized::new(
                 'selection_show',
-                TkInertia::withTxtComponent(TxtSelectionsCreateComponent::new())
-                    ->withArrayableProps(
-                        ArrMerged::ofArrayables(
-                            ArrayableOf::array(['project_id' => $selection->project_id]),
-                            ArrSelectionProps::new(),
-                            ArrSelectionResource::new($selection)
-                        )
+                TkInertia::new(
+                    TxtSelectionsCreateComponent::new(),
+                    ArrMerged::new(
+                        ['project_id' => $selection->project_id],
+                        ArrSelectionProps::new(),
+                        ArrSelectionResource::new($selection)
                     )
+                )
             )
         )->act();
     }

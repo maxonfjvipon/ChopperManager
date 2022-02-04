@@ -24,8 +24,9 @@ final class ProjectsIndexEndpoint extends Controller
     {
         return TkAuthorized::new(
             'project_access',
-            TkInertia::withStrComponent("Core::Projects/Index")
-                ->withCallableProps(fn() => ['projects' => auth()->user()
+            TkInertia::new(
+                "Core::Projects/Index",
+                fn() => ['projects' => auth()->user()
                     ->projects()
                     ->withCount('selections')
                     ->with(['selections' => function ($query) {

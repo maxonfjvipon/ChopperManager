@@ -35,7 +35,7 @@ final class TxtView implements Text
      * @param string $name
      * @param array $data
      */
-    private function __construct(string $name, array $data)
+    public function __construct(string $name, array $data)
     {
         $this->name = $name;
         $this->data = $data;

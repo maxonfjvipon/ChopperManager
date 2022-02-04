@@ -41,7 +41,7 @@ final class TkRedirectedRoute implements Take, TakeRedirect
      * @param string $route
      * @param mixed ...$params
      */
-    private function __construct(string $route, ...$params)
+    public function __construct(string $route, ...$params)
     {
         $this->route = $route;
         $this->params = $params;

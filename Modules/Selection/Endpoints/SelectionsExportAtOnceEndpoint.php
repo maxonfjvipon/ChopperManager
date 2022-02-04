@@ -28,7 +28,7 @@ class SelectionsExportAtOnceEndpoint extends Controller
     {
         return TkAuthorized::new(
             'selection_export',
-            TkDownloadedPDF::fromText(
+            TkDownloadedPDF::new(
                 TxtExportSelectionView::new(
                     new Selection($request->validated()),
                     $request
