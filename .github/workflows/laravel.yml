@@ -34,8 +34,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html
-            php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations"
-            yes
+            php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations --force"
 
 #   laravel-tests:
 
