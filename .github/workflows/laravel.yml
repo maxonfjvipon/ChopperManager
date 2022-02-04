@@ -2,7 +2,7 @@ name: pump-manager.ru
 
 on:
   push:
-    branches: [ pump-manager.ru ]
+    branches: [ master ]
 
 jobs:
   deploy:
