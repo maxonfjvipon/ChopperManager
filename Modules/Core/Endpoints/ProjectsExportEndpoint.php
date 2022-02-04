@@ -6,7 +6,6 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkDownloadedPDF;
 use App\Http\Controllers\Controller;
 use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Core\Entities\Project;
