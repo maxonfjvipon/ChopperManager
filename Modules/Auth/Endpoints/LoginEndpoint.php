@@ -4,6 +4,7 @@ namespace Modules\Auth\Endpoints;
 
 use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
+use App\Takes\TkWithCallback;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +21,13 @@ final class LoginEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        if (!session()->has('url.intended')) {
-            session(['url.intended' => url()->previous()]);
-        }
-        return TkInertia::new('Auth::Login')->act();
+        return TkWithCallback::new(
+            function () {
+                if (!session()->has('url.intended')) {
+                    session(['url.intended' => url()->previous()]);
+                }
+            },
+            TkInertia::new('Auth::Login')
+        )->act();
     }
 }
