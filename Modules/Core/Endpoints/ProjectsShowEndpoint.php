@@ -6,7 +6,6 @@ use App\Takes\TkAuthorized;
 use Modules\Core\Takes\TkAuthorizedProject;
 use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Core\Entities\Project;
 use Modules\Core\Transformers\ShowProjectResource;
