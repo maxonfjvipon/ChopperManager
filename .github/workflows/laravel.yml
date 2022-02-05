@@ -12,6 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install dependencies
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html/
+            composer install --no-dev -n
+
       - name: Deployment
         uses: appleboy/ssh-action@master
 
@@ -24,7 +36,7 @@ jobs:
             cd /var/www/html/
             git pull origin pump-manager.ru
 
-      - name: Migrations
+      - name: Migrating
         uses: appleboy/ssh-action@master
 
         with:
