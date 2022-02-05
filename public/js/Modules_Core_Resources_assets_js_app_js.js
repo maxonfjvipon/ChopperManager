@@ -12381,6 +12381,7 @@ function Statistics() {
               projs.splice(index, 1, _objectSpread(_objectSpread({}, projs[index]), updated));
               _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_12__.Inertia.put(tRoute('projects.update', record.id), updated, {
                 preserveScroll: true,
+                preserveState: true,
                 only: ['delivery_statuses']
               });
 

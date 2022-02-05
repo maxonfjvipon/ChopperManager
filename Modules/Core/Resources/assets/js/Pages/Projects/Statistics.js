@@ -181,6 +181,7 @@ export default function Statistics() {
         projs.splice(index, 1, {...projs[index], ...updated})
         Inertia.put(tRoute('projects.update', record.id), updated, {
             preserveScroll: true,
+            preserveState: true,
             only: ['delivery_statuses']
         })
         _setProjects([...projs])
