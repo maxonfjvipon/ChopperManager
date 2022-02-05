@@ -2773,12 +2773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/maxonfjvipon/ElegantElephant.git",
-                "reference": "4763a688e6ef4f7cd94473920e5f5dc3bb0a77c6"
+                "reference": "f7df8c71d5c9b0e3f0a99e2fc705b7b57bc66a8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maxonfjvipon/ElegantElephant/zipball/4763a688e6ef4f7cd94473920e5f5dc3bb0a77c6",
-                "reference": "4763a688e6ef4f7cd94473920e5f5dc3bb0a77c6",
+                "url": "https://api.github.com/repos/maxonfjvipon/ElegantElephant/zipball/f7df8c71d5c9b0e3f0a99e2fc705b7b57bc66a8d",
+                "reference": "f7df8c71d5c9b0e3f0a99e2fc705b7b57bc66a8d",
                 "shasum": ""
             },
             "require": {
@@ -2814,9 +2814,9 @@
             ],
             "support": {
                 "issues": "https://github.com/maxonfjvipon/ElegantElephant/issues",
-                "source": "https://github.com/maxonfjvipon/ElegantElephant/tree/0.2.1"
+                "source": "https://github.com/maxonfjvipon/ElegantElephant/tree/0.2.2"
             },
-            "time": "2022-02-05T00:21:50+00:00"
+            "time": "2022-02-05T00:35:04+00:00"
         },
         {
             "name": "maxonfjvipon/overloaded-elephant",

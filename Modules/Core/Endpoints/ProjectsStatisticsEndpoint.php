@@ -8,6 +8,7 @@ use App\Takes\TkInertia;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtImploded;
 use Modules\Core\Entities\Project;
 use Modules\Core\Entities\ProjectDeliveryStatus;
@@ -57,13 +58,13 @@ final class ProjectsStatisticsEndpoint extends Controller
                                 )->asString(),
                                 'name' => $project->name,
                                 'selections_count' => $project->all_selections_count,
-                                'price' => array_sum(
+                                'price' => ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->all_selections],
                                         fn(Selection $selection) => $selection->withPrices($rates)->retail_price *
                                             ($selection->pumps_count ?? 1)
-                                    )->asArray()
-                                ),
+                                    )
+                                )->asNumber(),
                                 'status_id' => $project->status_id,
                                 'delivery_status_id' => $project->delivery_status_id,
                                 'comment' => $project->comment
