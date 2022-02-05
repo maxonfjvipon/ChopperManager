@@ -54,6 +54,7 @@ export default function Statistics() {
     const {compareDate} = useDate()
 
     // STATE
+    const [_projects, _setProjects] = useState(projects)
     const [projectsToShow, setProjectsToShow] = useState(projects)
     const [editingKey, setEditingKey] = useState('');
 
@@ -175,11 +176,14 @@ export default function Statistics() {
 
     const saveProjectHandler = record => async () => {
         const updated = await form.validateFields()
+        let projs = [..._projects]
+        const index = projs.findIndex(p => p.id === record.id)
+        projs.splice(index, 1, {...projs[index], ...updated})
         Inertia.put(tRoute('projects.update', record.id), updated, {
             preserveScroll: true,
-            preserveState: true,
-            only: ['projects']
+            only: ['delivery_statuses']
         })
+        _setProjects([...projs])
         setEditingKey('')
     }
 
@@ -190,16 +194,16 @@ export default function Statistics() {
     const searchProjectClickHandler = () => {
         const value = document.getElementById(searchId).value.toLowerCase()
         if (value === "") {
-            setProjectsToShow(projects)
+            setProjectsToShow(_projects)
         } else {
-            setProjectsToShow(projects.filter(project => project.name.toLowerCase().includes(value)))
+            setProjectsToShow(_projects.filter(project => project.name.toLowerCase().includes(value)))
         }
     }
 
     // EFFECTS
     useEffect(() => {
-        setProjectsToShow(projects)
-    }, [projects])
+        searchProjectClickHandler()
+    }, [_projects])
 
     return (
         <IndexContainer

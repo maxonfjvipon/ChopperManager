@@ -12098,6 +12098,14 @@ __webpack_require__.r(__webpack_exports__);
 var _excluded = ["editing", "dataIndex", "title", "record", "index", "children", "options"];
 
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -12195,13 +12203,18 @@ function Statistics() {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(projects),
       _useState2 = _slicedToArray(_useState, 2),
-      projectsToShow = _useState2[0],
-      setProjectsToShow = _useState2[1];
+      _projects = _useState2[0],
+      _setProjects = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(projects),
       _useState4 = _slicedToArray(_useState3, 2),
-      editingKey = _useState4[0],
-      setEditingKey = _useState4[1]; // CONSTS
+      projectsToShow = _useState4[0],
+      setProjectsToShow = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      editingKey = _useState6[0],
+      setEditingKey = _useState6[1]; // CONSTS
 
 
   var searchId = 'project-search-input';
@@ -12351,7 +12364,7 @@ function Statistics() {
 
   var saveProjectHandler = function saveProjectHandler(record) {
     return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var updated;
+      var updated, projs, index;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -12361,14 +12374,21 @@ function Statistics() {
 
             case 2:
               updated = _context.sent;
+              projs = _toConsumableArray(_projects);
+              index = projs.findIndex(function (p) {
+                return p.id === record.id;
+              });
+              projs.splice(index, 1, _objectSpread(_objectSpread({}, projs[index]), updated));
               _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_12__.Inertia.put(tRoute('projects.update', record.id), updated, {
                 preserveScroll: true,
-                preserveState: true,
-                only: ['projects']
+                only: ['delivery_statuses']
               });
+
+              _setProjects(_toConsumableArray(projs));
+
               setEditingKey('');
 
-            case 5:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -12387,9 +12407,9 @@ function Statistics() {
     var value = document.getElementById(searchId).value.toLowerCase();
 
     if (value === "") {
-      setProjectsToShow(projects);
+      setProjectsToShow(_projects);
     } else {
-      setProjectsToShow(projects.filter(function (project) {
+      setProjectsToShow(_projects.filter(function (project) {
         return project.name.toLowerCase().includes(value);
       }));
     }
@@ -12397,8 +12417,8 @@ function Statistics() {
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setProjectsToShow(projects);
-  }, [projects]);
+    searchProjectClickHandler();
+  }, [_projects]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.projects.statistics.title'),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_resources_js_src_Shared_SearchInput__WEBPACK_IMPORTED_MODULE_3__.SearchInput, {

@@ -21,9 +21,8 @@ final class ProjectsExportEndpoint extends Controller
 {
     /**
      * @param ExportProjectRequest $request
-     * @param Project $project
+     * @param $project_id
      * @return Responsable|Response
-     * @throws Exception
      */
     public function __invoke(ExportProjectRequest $request, $project_id): Responsable|Response
     {

@@ -21,9 +21,8 @@ final class SelectionsExportEndpoint extends Controller
 {
     /**
      * @param ExportSelectionRequest $request
-     * @param Selection $selection
+     * @param $selection_id
      * @return Responsable|Response
-     * @throws Exception
      */
     public function __invoke(ExportSelectionRequest $request, $selection_id): Responsable|Response
     {
