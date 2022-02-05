@@ -34,11 +34,16 @@ class TenantsSeeder extends Seeder
                     'status_id' => 1,
                     'delivery_status_id' => 1
                 ]);
+
+            DB::table($tenant->database . '.projects')
+                ->whereNotNull('deleted_at')
+                ->whereNotIn('status_id', [3, 4])
+                ->update(['status_id' => 4]);
+
             $pr1 = Permission::updateOrCreate(['name' => 'project_statistics', 'guard_name' => $tenant->guard],
                 ['name' => 'project_statistics', 'guard_name' => $tenant->guard]);
             $pr2 = Permission::updateOrCreate(['name' => 'user_statistics', 'guard_name' => $tenant->guard],
                 ['name' => 'user_statistics', 'guard_name' => $tenant->guard]);
-
 
             DB::table($tenant->database . '.role_has_permissions')
                 ->insertOrIgnore([
