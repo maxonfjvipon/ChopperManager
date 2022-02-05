@@ -50,7 +50,7 @@ final class TkDownloadedPDF implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return PDF::loadHtml(self::overload([$this->html], [[
+        return PDF::loadHtml($this->overload([$this->html], [[
             'string',
             Text::class => fn(Text $txt) => $txt->asString()
         ]])[0])->download();

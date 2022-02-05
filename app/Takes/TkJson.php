@@ -4,6 +4,7 @@ namespace App\Takes;
 
 use App\Support\Take;
 use Closure;
+use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
@@ -59,10 +60,11 @@ final class TkJson implements Take
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return response()->json(self::overload([$this->data], [[
+        return response()->json($this->overload([$this->data], [[
             'boolean',
             'string',
             'array',

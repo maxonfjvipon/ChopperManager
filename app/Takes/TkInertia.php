@@ -60,7 +60,7 @@ final class TkInertia implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return Inertia::render(...self::overload([$this->component, $this->props], [[
+        return Inertia::render(...$this->overload([$this->component, $this->props], [[
             'string',
             Text::class => fn(Text $txt) => $txt->asString()
         ], [
