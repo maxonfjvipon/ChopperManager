@@ -5,7 +5,7 @@ import {Button, Dropdown} from "antd";
 import {MoreOutlined} from "@ant-design/icons";
 
 export const TableActionsContainer = ({children}) => {
-    if (children.length < 5) {
+    if (!Array.isArray(children) || children.length < 5) {
         return <ActionsContainer actions={children} size="small"/>
     }
     return <Dropdown
