@@ -14197,7 +14197,7 @@ __webpack_require__.r(__webpack_exports__);
 var TableActionsContainer = function TableActionsContainer(_ref) {
   var children = _ref.children;
 
-  if (children.length < 5) {
+  if (!Array.isArray(children) || children.length < 5) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Containers_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__.ActionsContainer, {
       actions: children,
       size: "small"

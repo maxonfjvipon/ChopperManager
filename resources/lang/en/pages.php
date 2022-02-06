@@ -550,6 +550,9 @@ return [
                 'email' => 'E-mail',
                 'delete' => 'Are you sure you want to delete the user?'
             ],
+            'search' => [
+                'placeholder' => 'Search by full name and organization '
+            ],
             'button' => 'New user',
             'restore' => [
                 'title' => 'Restore user?',
