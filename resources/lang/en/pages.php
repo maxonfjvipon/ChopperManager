@@ -537,7 +537,7 @@ return [
         'back' => 'Back to users',
         'index' => [
             'table' => [
-                'created_at' => 'Created at',
+                'last_login_at' => 'Last logged in at',
                 'organization_name' => 'Name of the organization',
                 'full_name' => 'Full name',
                 'business' => 'Main business',

@@ -40,7 +40,7 @@ class UsersIndexEndpoint extends Controller
                 ])
                     ->withCount('projects')
                     ->get(['id', 'organization_name', 'business_id',
-                        'country_id', 'city', 'first_name', 'middle_name', 'last_name',
+                        'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at'
                     ])],
                     function (PMUser $user) {
                         $rates = Rates::new();
@@ -59,6 +59,7 @@ class UsersIndexEndpoint extends Controller
                         return [
                             'id' => $user->id,
                             'key' => $user->id,
+                            'last_login_at' => date_format($user->last_login_at, 'd.m.Y'),
                             'organization_name' => $user->organization_name,
                             'full_name' => TxtImploded::new(
                                 " ",

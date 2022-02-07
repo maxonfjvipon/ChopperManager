@@ -11,12 +11,14 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import Lang from "../../../../../../resources/js/translation/lang";
 import {PrimaryAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 import {SearchInput} from "../../../../../../resources/js/src/Shared/SearchInput";
+import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function Index() {
     // HOOKS
     const {users, filter_data} = usePage().props
     const tRoute = useTransRoutes()
     const {has} = usePermissions()
+    const {compareDate} = useDate()
 
     // STATE
     const [usersToShow, setUsersToShow] = useState(users)
@@ -24,6 +26,11 @@ export default function Index() {
     // CONSTS
     const searchId = 'users-search-input'
     const columns = [
+        {
+            title: Lang.get('pages.users.index.table.last_login_at'),
+            dataIndex: 'last_login_at',
+            sorter: (a, b) => compareDate(a.last_login_at, b.last_login_at)
+        },
         {
             title: Lang.get('pages.users.index.table.organization_name'),
             dataIndex: 'organization_name',
