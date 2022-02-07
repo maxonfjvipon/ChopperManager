@@ -52,6 +52,10 @@ class TenantsSeeder extends Seeder
                     ['permission_id' => $pr2->id, 'role_id' => 1],
                     ['permission_id' => $pr2->id, 'role_id' => 2],
                 ]);
+
+            DB::table($tenant->database . '.users')->whereNull('last_login_at')->update([
+                'last_login_at' => now()
+            ]);
         });
     }
 }
