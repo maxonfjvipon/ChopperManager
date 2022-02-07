@@ -14,7 +14,7 @@ import {SearchInput} from "../../../../../../resources/js/src/Shared/SearchInput
 
 export default function Index() {
     // HOOKS
-    const {users} = usePage().props
+    const {users, filter_data} = usePage().props
     const tRoute = useTransRoutes()
     const {has} = usePermissions()
 
@@ -24,20 +24,40 @@ export default function Index() {
     // CONSTS
     const searchId = 'users-search-input'
     const columns = [
-        {title: Lang.get('pages.users.index.table.created_at'), dataIndex: 'created_at'},
         {
             title: Lang.get('pages.users.index.table.organization_name'),
             dataIndex: 'organization_name',
+            sorter: (a, b) => a.organization_name.localeCompare(b.organization_name),
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
         },
-        {title: Lang.get('pages.users.index.table.email'), dataIndex: 'email'},
-
         {
-            title: Lang.get('pages.users.index.table.full_name'), dataIndex: 'full_name',
-            render: (_, record) => `${record.first_name} ${record.middle_name}`
+            title: Lang.get('pages.users.index.table.full_name'),
+            dataIndex: 'full_name',
+            sorter: (a, b) => a.full_name.localeCompare(b.full_name),
         },
-        {title: Lang.get('pages.users.index.table.city'), dataIndex: 'city'},
-        {title: Lang.get('pages.users.index.table.country'), dataIndex: 'country', render: (_, record) => record.country.name},
+        {
+            title: Lang.get('pages.users.index.table.business'),
+            dataIndex: 'business',
+            filters: filter_data.businesses,
+            onFilter: (business, record) => record.business === business
+        },
+        {title: Lang.get('pages.users.index.table.country'), dataIndex: 'country'},
+        {
+            title: Lang.get('pages.users.index.table.city'),
+            dataIndex: 'city',
+            sorter: (a, b) => a.city.localeCompare(b.city),
+        },
+        {title: Lang.get('pages.users.index.table.projects_count'), dataIndex: 'projects_count'},
+        {
+            title: Lang.get('pages.users.index.table.projects_price'),
+            dataIndex: 'projects_price',
+            sorter: (a, b) => a.projects_price - b.projects_price,
+        },
+        {
+            title: Lang.get('pages.users.index.table.avg_projects_price'),
+            dataIndex: 'avg_projects_price',
+            sorter: (a, b) => a.avg_projects_price - b.avg_projects_price,
+        },
         {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
@@ -54,7 +74,7 @@ export default function Index() {
         if (value === "") {
             setUsersToShow(users)
         } else {
-            setUsersToShow(users.filter(user => (user.first_name + user.middle_name + user.organization_name)
+            setUsersToShow(users.filter(user => (user.full_name + user.organization_name)
                 .toLowerCase()
                 .includes(value))
             )

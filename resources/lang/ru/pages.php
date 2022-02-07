@@ -541,16 +541,13 @@ return [
             'table' => [
                 'created_at' => 'Дата создания',
                 'organization_name' => 'Наименование организации',
-                'main_business' => 'Основная деятельность',
-                'itn' => 'ИНН',
-                'phone' => 'Телефон',
+                'full_name' => 'ФИО',
+                'business' => 'Основная деятельность',
                 'country' => 'Страна',
                 'city' => 'Город',
-                'postcode' => 'Индекс',
-                'currency' => 'Валюта',
-                'full_name' => 'ФИО',
-                'email' => 'E-mail',
-                'delete' => 'Вы точно хотите удалить этого пользователя?'
+                'projects_count' => 'К-во проектов',
+                'projects_price' => 'Цена проектов',
+                'avg_projects_price' => 'Средняя цена проектов',
             ],
             'search' => [
                 'placeholder' => 'Поиск по ФИО и организации'

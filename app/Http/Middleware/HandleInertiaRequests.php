@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
+use Maxonfjvipon\Elegant_Elephant\Text\TxtLowered;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Modules\Core\Entities\Currency;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 use Spatie\Multitenancy\Models\Tenant;
 
@@ -73,10 +75,14 @@ class HandleInertiaRequests extends Middleware
                 'auth' => function () use ($user) {
                     return [
                         'full_name' => Auth::check() ? $user->full_name : null,
-                        'currency' => Auth::check() ? strtolower($user->currency->symbol) : null, // todo: only for specific route
-                        'permissions' => Auth::check()
-                            ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)
+                        'currency' => Auth::check()
+                            ? TxtLowered::new(
+                                Currency::allOrCached()->firstWhere('id', Auth::id())->symbol
+                            )->asString()
                             : null,
+                        'permissions' => Auth::check()
+                        ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)
+                        : null,
                     ];
                 },
                 'locales' => function () use ($current_localized, $supported_locales, $request) {

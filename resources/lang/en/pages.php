@@ -539,16 +539,13 @@ return [
             'table' => [
                 'created_at' => 'Created at',
                 'organization_name' => 'Name of the organization',
-                'main_business' => 'Main business',
-                'itn' => 'Individual taxpayer number',
-                'phone' => 'Phone',
+                'full_name' => 'Full name',
+                'business' => 'Main business',
                 'country' => 'Country',
                 'city' => 'City',
-                'postcode' => 'Postcode',
-                'currency' => 'Currency',
-                'full_name' => 'Full name',
-                'email' => 'E-mail',
-                'delete' => 'Are you sure you want to delete the user?'
+                'projects_count' => 'Amount of projects',
+                'projects_price' => 'Total projects price',
+                'avg_projects_price' => 'Average projects price',
             ],
             'search' => [
                 'placeholder' => 'Search by full name and organization '
