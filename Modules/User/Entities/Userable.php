@@ -47,6 +47,7 @@ abstract class Userable extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime:d.m.Y H:i',
+        'last_login_at' => 'datetime: d.m.Y',
     ];
 
     // ATTRIBUTES

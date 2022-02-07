@@ -11,7 +11,7 @@ class PPUser extends Userable
 {
     protected $fillable = [
         'id', 'first_name', 'middle_name', 'last_name', 'email', 'password',
-        'country_id', 'currency_id',
+        'country_id', 'currency_id', 'last_login_at', 'is_active'
     ];
 
     /**
@@ -21,6 +21,8 @@ class PPUser extends Userable
      */
     protected $casts = [
         'email_verified_at' => 'datetime:d.m.Y H:i',
+        'last_login_at' => 'datetime: d.m.Y',
+        'is_active' => 'boolean'
     ];
 
     protected static function booted()

@@ -23,7 +23,7 @@ class PMUser extends Userable
     protected $fillable = [
         'id', 'organization_name', 'itn', 'phone', 'city', 'first_name', 'middle_name',
         'last_name', 'email', 'password', 'business_id', 'country_id', 'currency_id', 'city', 'postcode',
-        'is_active',
+        'is_active', 'last_login_at'
     ];
     /**
      * The attributes that should be cast to native types.
@@ -32,6 +32,7 @@ class PMUser extends Userable
      */
     protected $casts = [
         'email_verified_at' => 'datetime:d.m.Y H:i',
+        'last_login_at' => 'datetime: d.m.Y',
         'is_active' => 'boolean',
     ];
 
