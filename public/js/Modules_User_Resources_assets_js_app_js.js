@@ -9603,7 +9603,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Index() {
   // HOOKS
-  var users = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.users;
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
+      users = _usePage$props.users,
+      filter_data = _usePage$props.filter_data;
   var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_3__.useTransRoutes)();
 
   var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_4__.usePermissions)(),
@@ -9618,11 +9620,11 @@ function Index() {
 
   var searchId = 'users-search-input';
   var columns = [{
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.created_at'),
-    dataIndex: 'created_at'
-  }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.organization_name'),
     dataIndex: 'organization_name',
+    sorter: function sorter(a, b) {
+      return a.organization_name.localeCompare(b.organization_name);
+    },
     render: function render(text) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
         placement: "topLeft",
@@ -9631,22 +9633,41 @@ function Index() {
       });
     }
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.email'),
-    dataIndex: 'email'
-  }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.full_name'),
     dataIndex: 'full_name',
-    render: function render(_, record) {
-      return "".concat(record.first_name, " ").concat(record.middle_name);
+    sorter: function sorter(a, b) {
+      return a.full_name.localeCompare(b.full_name);
     }
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.city'),
-    dataIndex: 'city'
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.business'),
+    dataIndex: 'business',
+    filters: filter_data.businesses,
+    onFilter: function onFilter(business, record) {
+      return record.business === business;
+    }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.country'),
-    dataIndex: 'country',
-    render: function render(_, record) {
-      return record.country.name;
+    dataIndex: 'country'
+  }, {
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.city'),
+    dataIndex: 'city',
+    sorter: function sorter(a, b) {
+      return a.city.localeCompare(b.city);
+    }
+  }, {
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.projects_count'),
+    dataIndex: 'projects_count'
+  }, {
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.projects_price'),
+    dataIndex: 'projects_price',
+    sorter: function sorter(a, b) {
+      return a.projects_price - b.projects_price;
+    }
+  }, {
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_9__["default"].get('pages.users.index.table.avg_projects_price'),
+    dataIndex: 'avg_projects_price',
+    sorter: function sorter(a, b) {
+      return a.avg_projects_price - b.avg_projects_price;
     }
   }, {
     key: 'key',
@@ -9667,7 +9688,7 @@ function Index() {
       setUsersToShow(users);
     } else {
       setUsersToShow(users.filter(function (user) {
-        return (user.first_name + user.middle_name + user.organization_name).toLowerCase().includes(value);
+        return (user.full_name + user.organization_name).toLowerCase().includes(value);
       }));
     }
   };

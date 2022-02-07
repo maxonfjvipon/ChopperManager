@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Endpoints\UsersIndexEndpoint;
 use Modules\User\Http\Controllers\ProfileController;
 use Modules\User\Http\Controllers\UsersController;
 
@@ -22,6 +23,13 @@ Route::prefix('profile')->group(function () {
     Route::post('update-discount')->name('profile.discount.update')->uses([ProfileController::class, 'updateDiscount']);
 });
 
-Route::resource('users', UsersController::class)->except(['show']);
+Route::prefix('users')->group(function () {
+    Route::get('/')->name('users.index')->uses(UsersIndexEndpoint::class);
+    Route::get('create')->name('users.create')->uses([UsersController::class, 'create']);
+    Route::get('{user}/edit')->name('users.edit')->uses([UsersController::class, 'edit']);
+    Route::post('/')->name('users.store')->uses([UsersController::class, 'store']);
+    Route::put('{user}')->name('users.update')->uses([UsersController::class, 'update']);
+});
+//Route::resource('users', UsersController::class)->except(['show']);
 
 
