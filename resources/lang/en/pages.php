@@ -555,6 +555,17 @@ return [
                 'title' => 'Restore user?',
                 'button' => 'Restore'
             ],
+            'statistics' => [
+                'discounts' => [
+                    'tab' => "Producer's discounts"
+                ],
+                'analytics' => [
+                    'tab' => 'Analytics'
+                ],
+                'projects' => [
+                    'tab' => 'Projects'
+                ]
+            ]
         ],
         'edit' => [
             'title' => 'Edit user',

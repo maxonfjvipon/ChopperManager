@@ -61,12 +61,7 @@ class UsersIndexEndpoint extends Controller
                             'key' => $user->id,
                             'last_login_at' => date_format($user->last_login_at, 'd.m.Y'),
                             'organization_name' => $user->organization_name,
-                            'full_name' => TxtImploded::new(
-                                " ",
-                                $user->first_name,
-                                $user->middle_name,
-                                $user->last_name ?? ""
-                            )->asString(),
+                            'full_name' => $user->full_name,
                             'business' => $user->business->name,
                             'country' => $user->country->name,
                             'city' => $user->city,

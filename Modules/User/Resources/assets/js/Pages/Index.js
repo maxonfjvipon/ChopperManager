@@ -12,6 +12,9 @@ import Lang from "../../../../../../resources/js/translation/lang";
 import {PrimaryAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 import {SearchInput} from "../../../../../../resources/js/src/Shared/SearchInput";
 import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
+import {UserStatisticsDrawer} from "../Components/UserStatisticsDrawer";
+import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
+import {Statistics} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Statistics";
 
 export default function Index() {
     // HOOKS
@@ -19,9 +22,12 @@ export default function Index() {
     const tRoute = useTransRoutes()
     const {has} = usePermissions()
     const {compareDate} = useDate()
+    const {postRequest} = useHttp()
 
     // STATE
     const [usersToShow, setUsersToShow] = useState(users)
+    const [userInfo, setUserInfo] = useState(null)
+    const [userStatisticsVisible, setUserStatisticsVisible] = useState(false)
 
     // CONSTS
     const searchId = 'users-search-input'
@@ -70,6 +76,7 @@ export default function Index() {
                 return (
                     <TableActionsContainer>
                         {has('user_edit') && <Edit clickHandler={editUserHandler(record.id)}/>}
+                        {has('user_statistics') && <Statistics clickHandler={showUserHandler(record.id)}/>}
                     </TableActionsContainer>
                 )
             }
@@ -92,22 +99,36 @@ export default function Index() {
         Inertia.get(tRoute('users.edit', id))
     }
 
+    const showUserHandler = id => () => {
+        postRequest(tRoute('users.statistics', id))
+            .then(data => {
+                setUserInfo(data)
+            })
+    }
+
     // RENDER
     return (
-        <IndexContainer
-            actions={<PrimaryAction label={Lang.get('pages.users.create.title')} route={tRoute('users.create')}/>}
-            title={Lang.get('pages.users.title')}
-        >
-            <SearchInput
-                id={searchId}
-                placeholder={Lang.get('pages.users.index.search.placeholder')}
-                searchClickHandler={searchUserClickHandler}
+        <>
+            <IndexContainer
+                actions={<PrimaryAction label={Lang.get('pages.users.create.title')} route={tRoute('users.create')}/>}
+                title={Lang.get('pages.users.title')}
+            >
+                <SearchInput
+                    id={searchId}
+                    placeholder={Lang.get('pages.users.index.search.placeholder')}
+                    searchClickHandler={searchUserClickHandler}
+                />
+                <TTable
+                    columns={columns}
+                    dataSource={usersToShow}
+                    doubleClickHandler={has('user_edit') && editUserHandler}
+                />
+            </IndexContainer>
+            <UserStatisticsDrawer
+                user={userInfo}
+                visible={userStatisticsVisible}
+                setVisible={setUserStatisticsVisible}
             />
-            <TTable
-                columns={columns}
-                dataSource={usersToShow}
-                doubleClickHandler={has('user_edit') && editUserHandler}
-            />
-        </IndexContainer>
+        </>
     )
 }
