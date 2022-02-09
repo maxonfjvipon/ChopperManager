@@ -50,8 +50,7 @@ class UsersIndexEndpoint extends Controller
                                 fn(Project $project) => ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->selections],
-                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price
-                                            * ($selection->pumps_count ?? 1)
+                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price * $selection->total_pumps_count
                                     )
                                 )->asNumber()
                             )
@@ -68,7 +67,7 @@ class UsersIndexEndpoint extends Controller
                             'projects_count' => $user->projects_count,
                             'projects_price' => $projectsPrice,
                             'avg_projects_price' => $user->projects_count !== 0
-                                ? ($projectsPrice / $user->projects_count)
+                                ? round($projectsPrice / $user->projects_count, 1)
                                 : 0
                         ];
                     }

@@ -58,12 +58,13 @@ final class ProjectsStatisticsEndpoint extends Controller
                                 )->asString(),
                                 'name' => $project->name,
                                 'selections_count' => $project->all_selections_count,
-                                'price' => ArraySum::new(
+                                'price' => round(ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->all_selections],
-                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price * $selection->total_pumps_count
+                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price *
+                                            $selection->total_pumps_count
                                     )
-                                )->asNumber(),
+                                )->asNumber(), 1),
                                 'status_id' => $project->status_id,
                                 'delivery_status_id' => $project->delivery_status_id,
                                 'comment' => $project->comment
