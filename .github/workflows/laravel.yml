@@ -46,6 +46,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html
+            php artisan migrate --path=Modules/AdminPanel/Database/Migrations --database=landlord --force
             php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations --force"
 
       - name: Seeding

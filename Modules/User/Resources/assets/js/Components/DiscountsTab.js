@@ -78,8 +78,8 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
     )
 }
 
-export const DiscountsTab = () => {
-    const {discounts} = usePage().props
+export const DiscountsTab = ({userInfo}) => {
+    const {discounts} = userInfo || usePage().props
 
     const discountsForm = 'discounts-form'
     const tRoute = useTransRoutes()
@@ -90,13 +90,13 @@ export const DiscountsTab = () => {
             dataIndex: 'name',
             key: 'brand-name',
             width: "70%",
-            editable: false
+            editable: !!!userInfo
         },
         {
             title: Lang.get('pages.profile.discounts.discount'),
             dataIndex: 'value',
             key: 'discount',
-            editable: true,
+            editable: !!!userInfo,
         }
     ].map(col => {
         return {

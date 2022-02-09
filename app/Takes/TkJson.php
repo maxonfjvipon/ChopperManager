@@ -40,7 +40,7 @@ final class TkJson implements Take
      * @param array $headers
      * @return TkJson
      */
-    public static function new(string|array|callable $data, $status = 200, array $headers = []): TkJson
+    public static function new(string|array|callable $data, int $status = 200, array $headers = []): TkJson
     {
         return new self($data, $status, $headers);
     }
@@ -51,7 +51,7 @@ final class TkJson implements Take
      * @param int $status
      * @param array $headers
      */
-    public function __construct(string|array|callable $data, $status = 200, array $headers = [])
+    public function __construct(string|array|callable $data, int $status = 200, array $headers = [])
     {
         $this->data = $data;
         $this->status = $status;
