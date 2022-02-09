@@ -32,6 +32,16 @@ class Selection extends Model
     ];
 
     /**
+     * @param Rates $rates
+     * @return float|int
+     */
+    public function totalRetailPrice(Rates $rates): float|int
+    {
+        return round($this->pump->retailPrice($rates) * $this->total_pumps_count, 1) ?? 0;
+
+    }
+
+    /**
      * Calc pump prices (simple and discounted) and set them as attributes
      * @param Rates $rates
      * @return $this
