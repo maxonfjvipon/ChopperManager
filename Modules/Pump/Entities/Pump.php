@@ -113,6 +113,20 @@ class Pump extends Model
         ];
     }
 
+    /**
+     * @param Rates $rates
+     * @return float|int
+     */
+    public function retailPrice(Rates $rates): float|int
+    {
+        if ($this->price_list) {
+            return $this->price_list->currency->code === $rates->base()
+                ? $this->price_list->price
+                : round($this->price_list->price / $rates->rate($this->price_list->currency->code));
+        }
+        return 0;
+    }
+
     // RELATIONSHIPS
     public function series(): BelongsTo
     {

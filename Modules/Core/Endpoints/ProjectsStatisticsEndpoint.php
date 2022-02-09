@@ -42,27 +42,24 @@ final class ProjectsStatisticsEndpoint extends Controller
                             [...Project::withTrashed()
                                 ->withCount('all_selections')
                                 ->with(['user' => function ($query) use ($rates) {
-                                    $query->select('id', 'first_name', 'middle_name');
-                                }, 'all_selections', 'all_selections.pump', 'all_selections.pump.price_list',
-                                    'all_selections.pump.series.discount', 'all_selections.pump.price_list.currency'
-                                ])
-                                ->get()],
+                                        $query->select('id', 'first_name', 'middle_name', 'last_name');
+                                    }, 'all_selections' => function ($query) {
+                                        $query->select('id', 'pumps_count', 'pump_id', 'project_id');
+                                    }, 'all_selections.pump' => function ($query) {
+                                        $query->select('id', 'pumpable_type');
+                                    }, 'all_selections.pump.price_list', 'all_selections.pump.price_list.currency']
+                                )->get()],
                             fn(Project $project) => [
                                 'key' => $project->id,
                                 'id' => $project->id,
                                 'created_at' => date_format($project->created_at, "d.m.Y"),
-                                'user' => TxtImploded::new(
-                                    " ",
-                                    $project->user->first_name,
-                                    $project->user->middle_name
-                                )->asString(),
+                                'user' => $project->user->full_name,
                                 'name' => $project->name,
                                 'selections_count' => $project->all_selections_count,
                                 'price' => round(ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->all_selections],
-                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price *
-                                            $selection->total_pumps_count
+                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
                                 )->asNumber(), 1),
                                 'status_id' => $project->status_id,
