@@ -61,8 +61,7 @@ final class ProjectsStatisticsEndpoint extends Controller
                                 'price' => ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->all_selections],
-                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price *
-                                            ($selection->pumps_count ?? 1)
+                                        fn(Selection $selection) => $selection->withPrices($rates)->retail_price * $selection->total_pumps_count
                                     )
                                 )->asNumber(),
                                 'status_id' => $project->status_id,

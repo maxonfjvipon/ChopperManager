@@ -11,11 +11,11 @@ export const UserStatisticsDrawer = ({user, visible, setVisible}) => {
             key: 'discounts',
             comp: <DiscountsTab userInfo={user}/>
         },
-        {
-            name: Lang.get('pages.users.index.statistics.analytics.tab'),
-            key: 'analytics',
-            comp: <DiscountsTab/>
-        },
+        // {
+        //     name: Lang.get('pages.users.index.statistics.analytics.tab'),
+        //     key: 'analytics',
+        //     comp: <DiscountsTab/>
+        // },
         {
             name: Lang.get('pages.users.index.statistics.projects.tab'),
             key: 'projects',
@@ -37,10 +37,6 @@ export const UserStatisticsDrawer = ({user, visible, setVisible}) => {
             visible={visible}
             onClose={() => {
                 setVisible(false)
-            }}
-            afterVisibleChange={visible => {
-                // if (visible && needCurve)
-                //     document.getElementById('for-graphic').innerHTML = pumpInfo.svg
             }}
         >
             <Tabs type="card" defaultActiveKey={tabs[0].key}>

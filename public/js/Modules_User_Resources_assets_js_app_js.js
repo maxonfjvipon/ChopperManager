@@ -9628,11 +9628,12 @@ var UserStatisticsDrawer = function UserStatisticsDrawer(_ref) {
     comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DiscountsTab__WEBPACK_IMPORTED_MODULE_1__.DiscountsTab, {
       userInfo: user
     })
-  }, {
-    name: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.users.index.statistics.analytics.tab'),
-    key: 'analytics',
-    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DiscountsTab__WEBPACK_IMPORTED_MODULE_1__.DiscountsTab, {})
-  }, {
+  }, // {
+  //     name: Lang.get('pages.users.index.statistics.analytics.tab'),
+  //     key: 'analytics',
+  //     comp: <DiscountsTab/>
+  // },
+  {
     name: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.users.index.statistics.projects.tab'),
     key: 'projects',
     comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_UserProjectsTab__WEBPACK_IMPORTED_MODULE_3__.UserProjectsTab, {
@@ -9651,9 +9652,6 @@ var UserStatisticsDrawer = function UserStatisticsDrawer(_ref) {
     visible: visible,
     onClose: function onClose() {
       setVisible(false);
-    },
-    afterVisibleChange: function afterVisibleChange(visible) {// if (visible && needCurve)
-      //     document.getElementById('for-graphic').innerHTML = pumpInfo.svg
     },
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], {
       type: "card",

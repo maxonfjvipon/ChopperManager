@@ -32,7 +32,7 @@ class Project extends Model
     public $timestamps = false;
 
     protected $softCascade = ['selections'];
-    protected $cloneable_relations = ['selections'];
+    protected array $cloneable_relations = ['selections'];
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y'
