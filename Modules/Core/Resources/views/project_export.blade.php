@@ -90,12 +90,12 @@
                 <td>{{$selection->flow}}</td>
                 <td>{{$selection->head}}</td>
                 @if($request->personal_price)
-                    <td>{{$selection->discounted_price}}</td>
-                    <td>{{$selection->total_discounted_price}}</td>
+                    <td>{{number_format($selection->discounted_price, 1)}}</td>
+                    <td>{{number_format($selection->total_discounted_price, 1)}}</td>
                 @endif
                 @if($request->retail_price)
-                    <td>{{$selection->retail_price}}</td>
-                    <td>{{$selection->total_retail_price}}</td>
+                    <td>{{number_format($selection->retail_price, 1)}}</td>
+                    <td>{{number_format($selection->total_retail_price, 1)}}</td>
                 @endif
                 <td>{{$selection->pump_rated_power}}</td>
                 <td>{{$selection->total_rated_power}}</td>
@@ -106,13 +106,13 @@
                 <strong>Итого:</strong>
             </td>
             @if($request->personal_price)
-                <td>{{array_sum($project->selections->map(fn($selection) => $selection->total_discounted_price)->toArray())}}</td>
+                <td>{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_discounted_price)->toArray()), 1)}}</td>
             @endif
             @if($request->retail_price)
                 @if($request->personal_price)
                     <td></td>
                 @endif
-                <td>{{array_sum($project->selections->map(fn($selection) => $selection->total_retail_price)->toArray())}}</td>
+                <td>{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_retail_price)->toArray()), 1)}}</td>
             @endif
             <td colspan="2"></td>
         @endif

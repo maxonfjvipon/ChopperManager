@@ -49,10 +49,10 @@ class Selection extends Model
     public function withPrices(Rates $rates): self
     {
         $pump_prices = $this->pump->currentPrices($rates);
-        $this->{'discounted_price'} = round($pump_prices['discounted'], 1) ?? null;
-        $this->{'total_discounted_price'} = round($pump_prices['discounted'] * $this->total_pumps_count, 1) ?? null;
-        $this->{'retail_price'} = round($pump_prices['simple'], 1) ?? null;
-        $this->{'total_retail_price'} = round($pump_prices['simple'] * $this->total_pumps_count, 1) ?? null;
+        $this->{'discounted_price'} = $pump_prices['discounted'];
+        $this->{'total_discounted_price'} = $pump_prices['discounted'] * $this->total_pumps_count;
+        $this->{'retail_price'} = $pump_prices['simple'];
+        $this->{'total_retail_price'} = $pump_prices['simple'] * $this->total_pumps_count;
         return $this;
     }
 
