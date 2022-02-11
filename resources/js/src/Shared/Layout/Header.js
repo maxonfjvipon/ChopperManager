@@ -9,7 +9,7 @@ import {
     ProfileOutlined,
     UnorderedListOutlined,
     SnippetsOutlined,
-    UserOutlined, SplitCellsOutlined,
+    UserOutlined, SplitCellsOutlined, LineChartOutlined
 } from "@ant-design/icons";
 import Lang from "../../../translation/lang";
 import React from "react";
@@ -44,11 +44,6 @@ export const Header = () => {
             route: 'users.index',
             label: Lang.get('pages.users.title')
         },
-        has('project_statistics') && {
-            itemProps: {key: 'projects_statistics', icon: <SplitCellsOutlined/>},
-            route: 'projects.statistics',
-            label: Lang.get('pages.projects.statistics.title')
-        }
     ])
 
     return (
@@ -70,35 +65,52 @@ export const Header = () => {
                             </Menu.Item>
                         )
                     )}
+                    {has('project_statistics', 'user_statistics') && <Menu.SubMenu
+                        icon={<LineChartOutlined/>}
+                        key='statistics'
+                        title={Lang.get('pages.statistics.title')}
+                        popupOffset={[0, -5]}
+                    >
+                        <Menu.Item key='by_projects'>
+                            <Link href={tRoute('projects.statistics')}>
+                                {Lang.get('pages.statistics.projects.title')}
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key='by_users'>
+                            <Link href={tRoute('users.statistics')}>
+                                {Lang.get('pages.statistics.users.title')}
+                            </Link>
+                        </Menu.Item>
+                    </Menu.SubMenu>}
                 </Menu>
                 <Space>
                     <LocaleDropdown/>
                     {auth.full_name &&
-                    <Dropdown
-                        key="user-actions" arrow trigger={['click']}
-                        overlay={
-                            <Menu>
-                                <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                    <Link href={tRoute('profile.index')}>
-                                        {Lang.get('pages.profile.title')}
-                                    </Link>
-                                </Menu.Item>
-                                <Menu.Divider/>
-                                <Menu.Item
-                                    key="logout"
-                                    icon={<LogoutOutlined/>}
-                                >
-                                    <Link method="post" href={tRoute('logout')}>
-                                        {Lang.get('pages.email_verification.logout')}
-                                    </Link>
-                                </Menu.Item>
-                            </Menu>
-                        }
-                    >
-                        <Button color={"white"}>
-                            {auth?.full_name}<DownOutlined/>
-                        </Button>
-                    </Dropdown>}
+                        <Dropdown
+                            key="user-actions" arrow trigger={['click']}
+                            overlay={
+                                <Menu>
+                                    <Menu.Item key="profile" icon={<ProfileOutlined/>}>
+                                        <Link href={tRoute('profile.index')}>
+                                            {Lang.get('pages.profile.title')}
+                                        </Link>
+                                    </Menu.Item>
+                                    <Menu.Divider/>
+                                    <Menu.Item
+                                        key="logout"
+                                        icon={<LogoutOutlined/>}
+                                    >
+                                        <Link method="post" href={tRoute('logout')}>
+                                            {Lang.get('pages.email_verification.logout')}
+                                        </Link>
+                                    </Menu.Item>
+                                </Menu>
+                            }
+                        >
+                            <Button color={"white"}>
+                                {auth?.full_name}<DownOutlined/>
+                            </Button>
+                        </Dropdown>}
                 </Space>
             </div>
         </Layout.Header>

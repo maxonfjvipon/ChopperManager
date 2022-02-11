@@ -37,7 +37,7 @@ class Selection extends Model
      */
     public function totalRetailPrice(Rates $rates): float|int
     {
-        return round($this->pump->retailPrice($rates) * $this->total_pumps_count, 1) ?? 0;
+        return $this->pump->retailPrice($rates) * $this->total_pumps_count;
 
     }
 

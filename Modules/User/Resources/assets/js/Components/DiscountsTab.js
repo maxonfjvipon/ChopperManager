@@ -90,7 +90,7 @@ export const DiscountsTab = ({userInfo}) => {
             dataIndex: 'name',
             key: 'brand-name',
             width: "70%",
-            editable: !!!userInfo
+            editable: false
         },
         {
             title: Lang.get('pages.profile.discounts.discount'),

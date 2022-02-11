@@ -2,6 +2,49 @@
 
 return [
     'change_locale' => 'Change locale',
+    'statistics' => [
+        'title' => 'Statistics',
+        'projects' => [
+            'title' => 'By projects',
+            'full_title' => 'Statistics by projects',
+            'table' => [
+                'country' => 'Country',
+                'city' => 'City',
+                'created_at' => 'Created at',
+                'user_organization_name' => 'Client organization name',
+                'user_full_name' => 'Client full name',
+                'user_business' => "Client business",
+                'name' => 'Name',
+                'selections_count' => 'Selections count',
+                'retail_price' => 'Retail price',
+                'status' => 'Status',
+                'delivery_status' => 'Delivery status',
+                'comment' => 'Comment'
+            ],
+            'filters' => [
+                'search' => 'Project name',
+                'created_at' => 'Created at',
+                'selections_count' => 'Amount of selections',
+                'total_selections_price' => 'Total selections price',
+                'apply' => 'Apply'
+            ]
+        ],
+        'users' => [
+            'title' => 'By users',
+            'full_title' => 'Statistics by users',
+            'table' => [
+                'last_login_at' => 'Last logged in at',
+                'organization_name' => 'Organization name',
+                'full_name' => 'Full name',
+                'business' => "Main business",
+                'country' => 'Country',
+                'city' => 'City',
+                'projects_count' => 'Amount of projects',
+                'total_projects_price' => 'Total projects price',
+                'avg_projects_price' => 'Average projects price'
+            ]
+        ]
+    ],
     'login' => [
         'welcome' => 'Welcome!',
         'email' => 'E-mail',
@@ -118,16 +161,7 @@ return [
         ],
         'statistics' => [
             'title' => 'Projects statistics',
-            'table' => [
-                'created_at' => 'Created at',
-                'client' => 'Client',
-                'name' => 'Name',
-                'selections_count' => 'Selections count',
-                'retail_price' => 'Retail price',
-                'status' => 'Status',
-                'delivery_status' => 'Delivery status',
-                'comment' => 'Comment'
-            ],
+
         ]
     ],
     'pump_brands' => [
@@ -537,15 +571,15 @@ return [
         'back' => 'Back to users',
         'index' => [
             'table' => [
-                'last_login_at' => 'Last logged in at',
+                'created_at' => 'Created at',
+                'phone' => 'Phone',
+                'email' => 'E-mail',
+                'is_active' => 'Is active',
                 'organization_name' => 'Name of the organization',
                 'full_name' => 'Full name',
                 'business' => 'Main business',
                 'country' => 'Country',
                 'city' => 'City',
-                'projects_count' => 'Amount of projects',
-                'projects_price' => 'Total projects price',
-                'avg_projects_price' => 'Average projects price',
             ],
             'search' => [
                 'placeholder' => 'Search by full name and organization '

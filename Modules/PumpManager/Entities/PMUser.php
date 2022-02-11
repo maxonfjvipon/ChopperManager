@@ -31,6 +31,7 @@ class PMUser extends Userable
      * @var array
      */
     protected $casts = [
+        'created_at' => 'datetime:d.m.Y',
         'email_verified_at' => 'datetime:d.m.Y H:i',
         'last_login_at' => 'datetime: d.m.Y',
         'is_active' => 'boolean',

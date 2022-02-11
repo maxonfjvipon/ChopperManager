@@ -94,7 +94,9 @@ abstract class Userable extends Authenticatable implements MustVerifyEmail
                             $morphTo->morphWith([
                                 PumpBrand::class => [
                                     'series',
-                                    'series.discount'
+                                    'series.discount' => function ($query) {
+                                        $query->where('user_id', $this->id);
+                                    }
                                 ]
                             ]);
                         }])

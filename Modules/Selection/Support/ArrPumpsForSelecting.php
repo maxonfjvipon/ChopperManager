@@ -46,7 +46,7 @@ class ArrPumpsForSelecting implements Arrayable
             ->whereIsDiscontinued(false)
             ->with([
                 'series',
-                'series.discount',
+                'series.auth_discount',
                 'price_list',
                 'price_list.currency',
                 'brand',

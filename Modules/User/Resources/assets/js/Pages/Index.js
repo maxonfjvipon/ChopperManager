@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Tooltip} from "antd";
+import {Tag, Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
@@ -12,9 +12,6 @@ import Lang from "../../../../../../resources/js/translation/lang";
 import {PrimaryAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/PrimaryAction";
 import {SearchInput} from "../../../../../../resources/js/src/Shared/SearchInput";
 import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
-import {UserStatisticsDrawer} from "../Components/UserStatisticsDrawer";
-import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
-import {Statistics} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Statistics";
 
 export default function Index() {
     // HOOKS
@@ -22,20 +19,17 @@ export default function Index() {
     const tRoute = useTransRoutes()
     const {has} = usePermissions()
     const {compareDate} = useDate()
-    const {postRequest} = useHttp()
 
     // STATE
     const [usersToShow, setUsersToShow] = useState(users)
-    const [userInfo, setUserInfo] = useState(null)
-    const [userStatisticsVisible, setUserStatisticsVisible] = useState(false)
 
     // CONSTS
     const searchId = 'users-search-input'
     const columns = [
         {
-            title: Lang.get('pages.users.index.table.last_login_at'),
-            dataIndex: 'last_login_at',
-            sorter: (a, b) => compareDate(a.last_login_at, b.last_login_at)
+            title: Lang.get('pages.users.index.table.created_at'),
+            dataIndex: 'created_at',
+            sorter: (a, b) => compareDate(a.created_at, b.created_at)
         },
         {
             title: Lang.get('pages.users.index.table.organization_name'),
@@ -49,6 +43,14 @@ export default function Index() {
             sorter: (a, b) => a.full_name.localeCompare(b.full_name),
         },
         {
+            title: Lang.get('pages.users.index.table.phone'),
+            dataIndex: 'phone'
+        },
+        {
+            title: Lang.get('pages.users.index.table.email'),
+            dataIndex: 'email'
+        },
+        {
             title: Lang.get('pages.users.index.table.business'),
             dataIndex: 'business',
             filters: filter_data.businesses,
@@ -60,23 +62,21 @@ export default function Index() {
             dataIndex: 'city',
             sorter: (a, b) => a.city.localeCompare(b.city),
         },
-        {title: Lang.get('pages.users.index.table.projects_count'), dataIndex: 'projects_count'},
         {
-            title: Lang.get('pages.users.index.table.projects_price'),
-            dataIndex: 'projects_price',
-            sorter: (a, b) => a.projects_price - b.projects_price,
-        },
-        {
-            title: Lang.get('pages.users.index.table.avg_projects_price'),
-            dataIndex: 'avg_projects_price',
-            sorter: (a, b) => a.avg_projects_price - b.avg_projects_price,
+            title: Lang.get('pages.users.index.table.is_active'),
+            dataIndex: 'is_active',
+            render: (_, record) => record.is_active
+                ? <Tag color="green">
+                    {Lang.get('tooltips.popconfirm.yes')}
+                </Tag> : <Tag color="orange">
+                    {Lang.get('tooltips.popconfirm.no')}
+                </Tag>
         },
         {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
                         {has('user_edit') && <Edit clickHandler={editUserHandler(record.id)}/>}
-                        {has('user_statistics') && <Statistics clickHandler={showUserHandler(record.id)}/>}
                     </TableActionsContainer>
                 )
             }
@@ -99,13 +99,6 @@ export default function Index() {
         Inertia.get(tRoute('users.edit', id))
     }
 
-    const showUserHandler = id => () => {
-        postRequest(tRoute('users.statistics', id))
-            .then(data => {
-                setUserInfo(data)
-            })
-    }
-
     // RENDER
     return (
         <>
@@ -124,11 +117,6 @@ export default function Index() {
                     doubleClickHandler={has('user_edit') && editUserHandler}
                 />
             </IndexContainer>
-            <UserStatisticsDrawer
-                user={userInfo}
-                visible={userStatisticsVisible}
-                setVisible={setUserStatisticsVisible}
-            />
         </>
     )
 }

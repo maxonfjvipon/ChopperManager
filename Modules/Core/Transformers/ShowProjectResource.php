@@ -36,7 +36,7 @@ class ShowProjectResource extends JsonResource
                         'pump.price_list',
                         'pump.price_list.currency',
                         'pump.series',
-                        'pump.series.discount',
+                        'pump.series.auth_discount',
                         'pump.brand',
                         'pump.brand.discount'
                     ])

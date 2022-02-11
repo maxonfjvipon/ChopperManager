@@ -90,7 +90,7 @@
 /*    color: #1890ff;*/
 /*}*/
 
-button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item, .ant-input-affix-wrapper {
+button, input, textarea, .ant-select-selector, .ant-input-password, .ant-input-number, .ant-select-selection-item, .ant-input-affix-wrapper, .ant-picker, .ant-picker-range {
     border-radius: 7px !important;
 }
 

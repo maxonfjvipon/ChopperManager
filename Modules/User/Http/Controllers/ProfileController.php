@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Modules\Core\Entities\Currency;
 use Modules\User\Http\Requests\DiscountUpdateRequest;
 use Modules\Pump\Entities\PumpBrand;
@@ -27,52 +28,22 @@ class ProfileController extends Controller
      * Display a user profile.
      *
      * @return Response
+     * @throws \Exception
      */
     public function index(): Response
     {
-        $discounts = auth()->user()->discounts()
-            ->where('discountable_type', 'pump_brand')
-            ->with(['discountable' => function (MorphTo $morphTo) {
-                $morphTo->morphWith([
-                    PumpBrand::class => [
-                        'series',
-                        'series.discount'
-                    ]
-                ]);
-            }])
-            ->get()
-            ->filter(fn($discount) => $discount->discountable)
-            ->map(fn($discount) => [
-                'key' => $discount->discountable_id . '-' . $discount->discountable_type . '-' . $discount->user_id,
-                'discountable_id' => $discount->discountable_id,
-                'discountable_type' => $discount->discountable_type,
-                'user_id' => $discount->user_id,
-                'name' => $discount->discountable->name,
-                'value' => $discount->value,
-                'children' => $discount->discountable->series
-                    ->filter(fn($series) => $series->discount)
-                    ->map(fn($series) => [
-                        'key' => $series->discount->discountable_id
-                            . '-' . $series->discount->discountable_type
-                            . '-' . $series->discount->user_id,
-                        'discountable_id' => $series->discount->discountable_id,
-                        'discountable_type' => $series->discount->discountable_type,
-                        'user_id' => $series->discount->user_id,
-                        'name' => $series->name,
-                        'value' => $series->discount->value,
-                    ])->values()
-            ])->values();
         return Inertia::render('User::Profile', [
             'user' => new ProfileUserResource(Auth::user()),
-            'businesses' => Business::all(),
-            'countries' => Country::all(),
-            'currencies' => Currency::all()->map(function ($currency) {
-                return [
+            'businesses' => Business::allOrCached(),
+            'countries' => Country::allOrCached(),
+            'currencies' => ArrMapped::new(
+                [...Currency::allOrCached()],
+                fn($currency) => [
                     'id' => $currency->id,
                     'name' => $currency->name_code
-                ];
-            }),
-            'discounts' => $discounts]);
+                ]
+            )->asArray(),
+            'discounts' => auth()->user()->formatted_discounts]);
     }
 
     /**

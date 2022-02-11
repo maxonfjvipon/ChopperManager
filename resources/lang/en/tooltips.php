@@ -13,4 +13,5 @@ return [
     'clone' => 'Clone',
     'save' => 'Save',
     'statistics' => 'Statistics',
+    'detail' => 'Detail'
 ];

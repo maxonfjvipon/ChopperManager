@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Endpoints\UserDetailStatisticsEndpoint;
 use Modules\User\Endpoints\UsersIndexEndpoint;
 use Modules\User\Endpoints\UsersStatisticsEndpoint;
 use Modules\User\Http\Controllers\ProfileController;
@@ -27,12 +28,14 @@ Route::prefix('profile')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/')->name('users.index')->uses(UsersIndexEndpoint::class);
     Route::get('create')->name('users.create')->uses([UsersController::class, 'create']);
+    Route::get('statistics')->name('users.statistics')->uses(UsersStatisticsEndpoint::class);
+
     Route::post('/')->name('users.store')->uses([UsersController::class, 'store']);
 
-    Route::prefix("{user}")->group(function() {
+    Route::prefix("{user}")->group(function () {
+        Route::post('statistics/detail')->name('users.statistics.detail')->uses(UserDetailStatisticsEndpoint::class);
         Route::get('edit')->name('users.edit')->uses([UsersController::class, 'edit']);
         Route::put('/')->name('users.update')->uses([UsersController::class, 'update']);
-        Route::post('statistics')->name('users.statistics')->uses(UsersStatisticsEndpoint::class);
     });
 });
 

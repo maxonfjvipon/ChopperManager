@@ -75,7 +75,7 @@ class Project extends Model
             'selections.pump.series',
             'selections.pump.series.category',
             'selections.pump.series.power_adjustment',
-            'selections.pump.series.discount',
+            'selections.pump.series.auth_discount',
             'selections.pump.brand',
             'selections.pump.connection_type',
             'selections.pump.price_list',

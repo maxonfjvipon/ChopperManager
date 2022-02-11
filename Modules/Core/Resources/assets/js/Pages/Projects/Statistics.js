@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Lang from "../../../../../../../resources/js/translation/lang";
 import {SearchInput} from "../../../../../../../resources/js/src/Shared/SearchInput";
-import {Form, Input, Table, Tooltip} from "antd";
+import {Col, DatePicker, Divider, Form, Input, InputNumber, Row, Table, Tag, Tooltip} from "antd";
 import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {useTransRoutes} from "../../../../../../../resources/js/src/Hooks/routes.hook";
 import {usePage} from "@inertiajs/inertia-react";
@@ -14,6 +14,9 @@ import {Inertia} from "@inertiajs/inertia";
 import {Save} from "../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Save";
 import {Selection} from "../../../../../../../resources/js/src/Shared/Inputs/Selection";
 import {useInputRules} from "../../../../../../../resources/js/src/Hooks/input-rules.hook";
+import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
+import {PrimaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
+import moment from "moment";
 
 const EditableCell = ({
                           editing,
@@ -49,9 +52,10 @@ const EditableCell = ({
 export default function Statistics() {
     // HOOKS
     const tRoute = useTransRoutes()
-    const {projects, filter_data, project_statuses, delivery_statuses} = usePage().props
+    const {projects, filter_data, project_statuses, delivery_statuses, auth} = usePage().props
     const {has, filterPermissionsArray} = usePermissions()
     const {compareDate} = useDate()
+    const {reducedAntFormItemClassName, margin, fullWidth} = useStyles()
 
     // STATE
     const [_projects, _setProjects] = useState(projects)
@@ -61,41 +65,68 @@ export default function Statistics() {
     // CONSTS
     const searchId = 'project-search-input'
     const [form] = Form.useForm()
+    const [filtersForm] = Form.useForm()
     const columns = [
         {
-            title: Lang.get('pages.projects.statistics.table.created_at'),
+            title: Lang.get('pages.statistics.projects.table.created_at'),
             dataIndex: 'created_at',
             sorter: (a, b) => compareDate(a.created_at, b.created_at),
             defaultSortOrder: ['ascend'],
             editable: false,
         },
         {
-            title: Lang.get('pages.projects.statistics.table.client'),
-            dataIndex: 'user',
-            sorter: (a, b) => a.user.localeCompare(b.name),
-            editable: false,
-        },
-        {
-            title: Lang.get('pages.projects.statistics.table.name'),
+            title: Lang.get('pages.statistics.projects.table.name'),
             dataIndex: 'name',
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
             sorter: (a, b) => a.name.localeCompare(b.name),
             editable: false,
         },
         {
-            title: Lang.get('pages.projects.statistics.table.selections_count'),
+            title: Lang.get('pages.statistics.projects.table.user_organization_name'),
+            dataIndex: 'user_organization_name',
+            editable: false,
+            filters: filter_data.organizations,
+            onFilter: (organization, record) => organization === record.user_organization_name
+        },
+        {
+            title: Lang.get('pages.statistics.projects.table.user_full_name'),
+            dataIndex: 'user_full_name',
+            sorter: (a, b) => a.user.localeCompare(b.name),
+            editable: false,
+        },
+        {
+            title: Lang.get('pages.statistics.projects.table.user_business'),
+            dataIndex: 'user_business',
+            filters: filter_data.businesses,
+            onFilter: (business, record) => business === record.user_business,
+        },
+        {
+            title: Lang.get('pages.statistics.projects.table.country'),
+            dataIndex: 'country',
+            filters: filter_data.countries,
+            onFilter: (country, record) => country === record.country,
+        },
+        {
+            title: Lang.get('pages.statistics.projects.table.city'),
+            dataIndex: 'city',
+            sorter: (a, b) => a.city.localeCompare(b.city),
+            filters: filter_data.cities,
+            onFilter: (city, record) => city === record.city
+        },
+        {
+            title: Lang.get('pages.statistics.projects.table.selections_count'),
             dataIndex: 'selections_count',
             sorter: (a, b) => a.selections_count - b.selections_count,
             editable: false,
         },
         {
-            title: Lang.get('pages.projects.statistics.table.retail_price'),
+            title: Lang.get('pages.statistics.projects.table.retail_price') + ", " + auth.currency,
             dataIndex: 'price',
             sorter: (a, b) => a.price - b.price,
             editable: false,
         },
         {
-            title: Lang.get('pages.projects.statistics.table.status'),
+            title: Lang.get('pages.statistics.projects.table.status'),
             dataIndex: 'status_id',
             filters: filter_data.project_statuses,
             onFilter: (status_id, record) => status_id === record.status_id,
@@ -104,7 +135,7 @@ export default function Statistics() {
             render: (_, record) => selection(project_statuses, record.status_id)
         },
         {
-            title: Lang.get('pages.projects.statistics.table.delivery_status'),
+            title: Lang.get('pages.statistics.projects.table.delivery_status'),
             dataIndex: 'delivery_status_id',
             filters: filter_data.delivery_statuses,
             onFilter: (status_id, record) => record.delivery_status_id === status_id,
@@ -113,7 +144,7 @@ export default function Statistics() {
             render: (_, record) => selection(delivery_statuses, record.delivery_status_id)
         },
         {
-            title: Lang.get('pages.projects.statistics.table.comment'),
+            title: Lang.get('pages.statistics.projects.table.comment'),
             dataIndex: 'comment',
             editable: true,
             render: (_, record) => <Input.TextArea
@@ -192,29 +223,141 @@ export default function Statistics() {
         Inertia.get(tRoute('projects.show', id))
     }
 
-    const searchProjectClickHandler = () => {
-        const value = document.getElementById(searchId).value.toLowerCase()
-        if (value === "") {
-            setProjectsToShow(_projects)
-        } else {
-            setProjectsToShow(_projects.filter(project => project.name.toLowerCase().includes(value)))
-        }
+    const filterProjectsHandler = async () => {
+        const data = await filtersForm.validateFields()
+        setProjectsToShow(_projects.filter(project => {
+                if (!(!!!data.search) && data.search !== "" && !project.name.toLowerCase().includes(data.search.toLowerCase())) {
+                    return false
+                }
+
+                if (!(!!!data.selections_count || !!!data.selections_count_condition)) {
+                    if (data.selections_count_condition === ">=") {
+                        if (project.selections_count < data.selections_count) {
+                            return false
+                        }
+                    } else if (project.selections_count >= data.selections_count) {
+                        return false
+                    }
+                }
+
+                if (!(!!!data.selections_price || !!!data.selections_price_condition)) {
+                    const price = project.price.replaceAll(',', "")
+                    if (data.selections_price_condition === ">=") {
+                        if (price < data.selections_price) {
+                            return false
+                        }
+                    } else if (price >= data.selections_price) {
+                        return false
+                    }
+                }
+
+                if (!(!!!data.created_at || !!!data.created_at[0])) {
+                    if (moment(project.created_at, "DD.MM.YYYY").isBefore(data.created_at[0])) {
+                        return false
+                    }
+                }
+
+                if (!(!!!data.created_at || !!!data.created_at[1])) {
+                    if (moment(project.created_at, "DD.MM.YYYY").isAfter(data.created_at[1])) {
+                        return false
+                    }
+                }
+                return true
+            }
+        ))
     }
 
     // EFFECTS
     useEffect(() => {
-        searchProjectClickHandler()
+        filterProjectsHandler()
     }, [_projects])
 
     return (
         <IndexContainer
-            title={Lang.get('pages.projects.statistics.title')}
+            title={Lang.get('pages.statistics.projects.full_title')}
         >
-            <SearchInput
-                id={searchId}
-                placeholder={Lang.get('pages.projects.index.search.placeholder')}
-                searchClickHandler={searchProjectClickHandler}
-            />
+            {/*<SearchInput*/}
+            {/*    id={searchId}*/}
+            {/*    placeholder={Lang.get('pages.projects.index.search.placeholder')}*/}
+            {/*    searchClickHandler={searchProjectClickHandler}*/}
+            {/*/>*/}
+            <Form layout="vertical" form={filtersForm} onFinish={filterProjectsHandler}>
+                <Row gutter={10}>
+                    <Col xs={3}>
+                        <Form.Item className={reducedAntFormItemClassName}
+                                   name="search"
+                                   label={Lang.get('pages.statistics.projects.filters.search')}
+                        >
+                            <Input
+                                allowClear
+                                placeholder={Lang.get('pages.statistics.projects.filters.search')}
+                            />
+                        </Form.Item>
+                    </Col>
+                    <Col xs={3}>
+                        <Form.Item className={reducedAntFormItemClassName}
+                                   name='created_at'
+                                   label={Lang.get('pages.statistics.projects.filters.created_at')}
+                        >
+                            <DatePicker.RangePicker style={fullWidth} allowEmpty={[true, true]}/>
+                        </Form.Item>
+                    </Col>
+                    <Col xs={3}>
+                        <Row gutter={[10, 0]}>
+                            <Col xs={24}>
+                                {Lang.get('pages.statistics.projects.filters.selections_count')}
+                            </Col>
+                            <Col xs={12}>
+                                <Form.Item name='selections_count_condition' className={reducedAntFormItemClassName}>
+                                    <Selection
+                                        style={fullWidth}
+                                        options={[{id: ">=", value: ">="}, {id: "<", value: "<"}]}
+                                        allowClear
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={12}>
+                                <Form.Item name='selections_count' className={reducedAntFormItemClassName}>
+                                    <InputNumber min={0} style={fullWidth}/>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col xs={3}>
+                        <Row gutter={[10, 0]}>
+                            <Col xs={24}>
+                                {Lang.get('pages.statistics.projects.filters.total_selections_price')}
+                            </Col>
+                            <Col xs={12}>
+                                <Form.Item name='selections_price_condition' className={reducedAntFormItemClassName}>
+                                    <Selection
+                                        style={fullWidth}
+                                        options={[{id: ">=", value: ">="}, {id: "<", value: "<"}]}
+                                        allowClear
+                                    />
+                                </Form.Item>
+                            </Col>
+                            <Col xs={12}>
+                                <Form.Item name='selections_price' className={reducedAntFormItemClassName}>
+                                    <InputNumber min={0} style={fullWidth}/>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col xs={2}>
+                        <Row gutter={[10, 0]}>
+                            <Col xs={24} style={margin.top(20)}>
+                                <Form.Item name='more' className={reducedAntFormItemClassName}>
+                                    <PrimaryButton style={fullWidth} onClick={filterProjectsHandler}>
+                                        {Lang.get('pages.statistics.projects.filters.apply')}
+                                    </PrimaryButton>
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Form>
+            <Divider style={margin.all("5px 0 5px")}/>
             <Form form={form}>
                 <Table
                     components={{
