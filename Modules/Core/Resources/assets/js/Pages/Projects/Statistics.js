@@ -54,7 +54,7 @@ export default function Statistics() {
     // HOOKS
     const tRoute = useTransRoutes()
     const {projects, filter_data, project_statuses, delivery_statuses, auth} = usePage().props
-    const {has, filterPermissionsArray} = usePermissions()
+    const {has} = usePermissions()
     const {compareDate} = useDate()
     const {reducedAntFormItemClassName, margin, fullWidth} = useStyles()
 
@@ -243,12 +243,11 @@ export default function Statistics() {
                 }
 
                 if (!(!!!data.selections_price || !!!data.selections_price_condition)) {
-                    const price = project.price.replaceAll(',', "")
                     if (data.selections_price_condition === ">=") {
-                        if (price < data.selections_price) {
+                        if (project.price < data.selections_price) {
                             return false
                         }
-                    } else if (price >= data.selections_price) {
+                    } else if (project.price >= data.selections_price) {
                         return false
                     }
                 }
@@ -278,11 +277,6 @@ export default function Statistics() {
         <IndexContainer
             title={Lang.get('pages.statistics.projects.full_title')}
         >
-            {/*<SearchInput*/}
-            {/*    id={searchId}*/}
-            {/*    placeholder={Lang.get('pages.projects.index.search.placeholder')}*/}
-            {/*    searchClickHandler={searchProjectClickHandler}*/}
-            {/*/>*/}
             <Form layout="vertical" form={filtersForm}>
                 <Row gutter={10}>
                     <Col xs={4}>
@@ -384,7 +378,7 @@ export default function Statistics() {
                                 filtersForm.resetFields()
                                 setProjectsToShow(_projects)
                             }}>
-                                {Lang.get('pages.statistics.projects.filters.clear')}
+                                {Lang.get('pages.statistics.projects.filters.reset')}
                             </SecondaryButton>
                         </Form.Item>
                     </Col>

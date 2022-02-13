@@ -28,7 +28,7 @@ return [
                 'condition' => 'Condition',
                 'total_selections_price' => 'Total selections price',
                 'apply' => 'Apply',
-                'clear' => 'Clear'
+                'reset' => 'Reset'
             ]
         ],
         'users' => [
@@ -44,6 +44,16 @@ return [
                 'projects_count' => 'Amount of projects',
                 'total_projects_price' => 'Total projects price',
                 'avg_projects_price' => 'Average projects price'
+            ],
+            'filters' => [
+                'search' => 'Full name or organization name',
+                'last_login_at' => 'Last activity date',
+                'projects_count' => 'Amount of projects',
+                'condition' => 'Condition',
+                'total_projects_price' => 'Total projects price',
+                'apply' => 'Apply',
+                'reset' => 'Reset'
+
             ]
         ]
     ],

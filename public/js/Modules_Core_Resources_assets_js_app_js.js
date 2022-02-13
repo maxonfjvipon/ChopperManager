@@ -13448,8 +13448,7 @@ function Statistics() {
       auth = _usePage$props.auth;
 
   var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_7__.usePermissions)(),
-      has = _usePermissions.has,
-      filterPermissionsArray = _usePermissions.filterPermissionsArray;
+      has = _usePermissions.has;
 
   var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_8__.useDate)(),
       compareDate = _useDate.compareDate;
@@ -13727,13 +13726,11 @@ function Statistics() {
                 }
 
                 if (!(!!!data.selections_price || !!!data.selections_price_condition)) {
-                  var price = project.price.replaceAll(',', "");
-
                   if (data.selections_price_condition === ">=") {
-                    if (price < data.selections_price) {
+                    if (project.price < data.selections_price) {
                       return false;
                     }
-                  } else if (price >= data.selections_price) {
+                  } else if (project.price >= data.selections_price) {
                     return false;
                   }
                 }
@@ -13910,7 +13907,7 @@ function Statistics() {
                 filtersForm.resetFields();
                 setProjectsToShow(_projects);
               },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.clear')
+              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.reset')
             })
           })
         })]

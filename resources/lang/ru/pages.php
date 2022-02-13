@@ -28,8 +28,7 @@ return [
                 'condition' => 'Условие',
                 'total_selections_price' => 'Итоговая стоимость подборов',
                 'apply' => 'Применить',
-                'clear' => 'Очистить'
-
+                'reset' => 'Сбросить'
             ]
         ],
         'users' => [
@@ -45,6 +44,15 @@ return [
                 'projects_count' => 'Количество проектов',
                 'total_projects_price' => 'Итоговая стоимость проектов',
                 'avg_projects_price' => 'Средняя стоимость проектов'
+            ],
+            'filters' => [
+                'search' => 'ФИО или наименование организации',
+                'last_login_at' => 'Дата активности',
+                'projects_count' => 'Количество проектов',
+                'condition' => 'Условие',
+                'total_projects_price' => 'Итоговая стоимость проектов',
+                'apply' => 'Применить',
+                'reset' => 'Сбросить'
             ]
         ]
     ],

@@ -19,6 +19,7 @@ use Modules\Core\Support\Rates;
 use Modules\PumpManager\Entities\PMUser;
 use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Business;
+use Modules\User\Entities\Country;
 use Symfony\Component\HttpFoundation\Response;
 
 class UsersStatisticsEndpoint extends Controller
@@ -32,25 +33,23 @@ class UsersStatisticsEndpoint extends Controller
             'user_access',
             TkInertia::new('User::Statistics', function () {
                 $rates = Rates::new();
+                $users = PMUser::with(['country' => function ($query) {
+                    $query->select('id', 'name');
+                }, 'business', 'projects' => function ($query) {
+                    $query->select('id', 'user_id');
+                }, 'projects.selections' => function ($query) {
+                    $query->select('id', 'project_id', 'pump_id', 'pumps_count');
+                }, 'projects.selections.pump' => function ($query) {
+                    $query->select('id', 'pumpable_type');
+                }, 'projects.selections.pump.price_list', 'projects.selections.pump.price_list.currency'
+                ])
+                    ->withCount('projects')
+                    ->get(['id', 'organization_name', 'business_id',
+                        'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at'
+                    ]);
                 return [
-                    'filter_data' => ArrForFiltering::new(
-                        ['businesses' => Business::allOrCached()->pluck('name')->all()]
-                    )->asArray(),
                     'users' => ArrMapped::new(
-                        [...PMUser::with(['country' => function ($query) {
-                            $query->select('id', 'name');
-                        }, 'business', 'projects' => function ($query) {
-                            $query->select('id', 'user_id');
-                        }, 'projects.selections' => function ($query) {
-                            $query->select('id', 'project_id', 'pump_id', 'pumps_count');
-                        }, 'projects.selections.pump' => function ($query) {
-                            $query->select('id', 'pumpable_type');
-                        }, 'projects.selections.pump.price_list', 'projects.selections.pump.price_list.currency'
-                        ])
-                            ->withCount('projects')
-                            ->get(['id', 'organization_name', 'business_id',
-                                'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at'
-                            ])],
+                        [...$users],
                         function (PMUser $user) use ($rates) {
                             $projectsPrice = ArraySum::new(
                                 ArrMapped::new(
@@ -63,6 +62,9 @@ class UsersStatisticsEndpoint extends Controller
                                     )->asNumber()
                                 )
                             )->asNumber();
+                            $avgProjectsPrice = $user->projects_count !== 0
+                                ? $projectsPrice / $user->projects_count
+                                : 0;
                             return [
                                 'id' => $user->id,
                                 'key' => $user->id,
@@ -73,13 +75,23 @@ class UsersStatisticsEndpoint extends Controller
                                 'country' => $user->country->name,
                                 'city' => $user->city,
                                 'projects_count' => $user->projects_count,
-                                'total_projects_price' => number_format($projectsPrice, 1),
-                                'avg_projects_price' => $user->projects_count !== 0
-                                    ? number_format($projectsPrice / $user->projects_count, 1)
-                                    : 0
+                                'total_projects_price' => $projectsPrice,
+                                'formatted_total_projects_price' => number_format($projectsPrice, 1),
+                                'formatted_avg_projects_price' => number_format($avgProjectsPrice, 1),
+                                'avg_projects_price' => $avgProjectsPrice
                             ];
                         }
-                    )->asArray()
+                    )->asArray(),
+                    'filter_data' => ArrForFiltering::new(
+                        [
+                            'businesses' => Business::allOrCached()->whereIn('id', $users->pluck('business_id')->all())
+                                ->pluck('name')->all(),
+                            'countries' => Country::allOrCached()->whereIn('id', $users->pluck('country_id')->all())
+                                ->pluck('name')->all(),
+                            'cities' => [...$users->unique('city')->sortBy('city')->pluck('city')->all()],
+                            'organizations' => [...$users->unique('organization_name')->sortBy('organization_name')->pluck('organization_name')->all()],
+                        ]
+                    )->asArray(),
                 ];
             })
         )->act();
