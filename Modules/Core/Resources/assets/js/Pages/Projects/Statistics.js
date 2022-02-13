@@ -17,6 +17,7 @@ import {useInputRules} from "../../../../../../../resources/js/src/Hooks/input-r
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
 import {PrimaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import moment from "moment";
+import {SecondaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton";
 
 const EditableCell = ({
                           editing,
@@ -91,7 +92,7 @@ export default function Statistics() {
         {
             title: Lang.get('pages.statistics.projects.table.user_full_name'),
             dataIndex: 'user_full_name',
-            sorter: (a, b) => a.user.localeCompare(b.name),
+            sorter: (a, b) => a.user_full_name.localeCompare(b.user_full_name),
             editable: false,
         },
         {
@@ -121,7 +122,7 @@ export default function Statistics() {
         },
         {
             title: Lang.get('pages.statistics.projects.table.retail_price') + ", " + auth.currency,
-            dataIndex: 'price',
+            dataIndex: 'formatted_price',
             sorter: (a, b) => a.price - b.price,
             editable: false,
         },
@@ -226,7 +227,8 @@ export default function Statistics() {
     const filterProjectsHandler = async () => {
         const data = await filtersForm.validateFields()
         setProjectsToShow(_projects.filter(project => {
-                if (!(!!!data.search) && data.search !== "" && !project.name.toLowerCase().includes(data.search.toLowerCase())) {
+                if (!(!!!data.search) && data.search !== ""
+                    && !(project.name + project.user_organization_name).toLowerCase().includes(data.search.toLowerCase())) {
                     return false
                 }
 
@@ -281,9 +283,9 @@ export default function Statistics() {
             {/*    placeholder={Lang.get('pages.projects.index.search.placeholder')}*/}
             {/*    searchClickHandler={searchProjectClickHandler}*/}
             {/*/>*/}
-            <Form layout="vertical" form={filtersForm} onFinish={filterProjectsHandler}>
+            <Form layout="vertical" form={filtersForm}>
                 <Row gutter={10}>
-                    <Col xs={3}>
+                    <Col xs={4}>
                         <Form.Item className={reducedAntFormItemClassName}
                                    name="search"
                                    label={Lang.get('pages.statistics.projects.filters.search')}
@@ -291,6 +293,7 @@ export default function Statistics() {
                             <Input
                                 allowClear
                                 placeholder={Lang.get('pages.statistics.projects.filters.search')}
+                                onPressEnter={filterProjectsHandler}
                             />
                         </Form.Item>
                     </Col>
@@ -313,12 +316,24 @@ export default function Statistics() {
                                         style={fullWidth}
                                         options={[{id: ">=", value: ">="}, {id: "<", value: "<"}]}
                                         allowClear
+                                        placeholder={Lang.get('pages.statistics.projects.filters.condition')}
+                                        onClear={() => {
+                                            filtersForm.setFieldsValue({
+                                                ...filtersForm,
+                                                selections_count_condition: null,
+                                                selections_count: null,
+                                            })
+                                        }}
                                     />
                                 </Form.Item>
                             </Col>
                             <Col xs={12}>
                                 <Form.Item name='selections_count' className={reducedAntFormItemClassName}>
-                                    <InputNumber min={0} style={fullWidth}/>
+                                    <InputNumber
+                                        min={0}
+                                        style={fullWidth}
+                                        placeholder={Lang.get('pages.statistics.projects.filters.selections_count')}
+                                    />
                                 </Form.Item>
                             </Col>
                         </Row>
@@ -334,26 +349,44 @@ export default function Statistics() {
                                         style={fullWidth}
                                         options={[{id: ">=", value: ">="}, {id: "<", value: "<"}]}
                                         allowClear
+                                        placeholder={Lang.get('pages.statistics.projects.filters.condition')}
+                                        onClear={() => {
+                                            filtersForm.setFieldsValue({
+                                                ...filtersForm,
+                                                selections_price_condition: null,
+                                                selections_price: null,
+                                            })
+                                        }}
                                     />
                                 </Form.Item>
                             </Col>
                             <Col xs={12}>
                                 <Form.Item name='selections_price' className={reducedAntFormItemClassName}>
-                                    <InputNumber min={0} style={fullWidth}/>
+                                    <InputNumber
+                                        min={0}
+                                        style={fullWidth}
+                                        placeholder={Lang.get('pages.statistics.projects.filters.total_selections_price')}
+                                    />
                                 </Form.Item>
                             </Col>
                         </Row>
                     </Col>
                     <Col xs={2}>
-                        <Row gutter={[10, 0]}>
-                            <Col xs={24} style={margin.top(20)}>
-                                <Form.Item name='more' className={reducedAntFormItemClassName}>
-                                    <PrimaryButton style={fullWidth} onClick={filterProjectsHandler}>
-                                        {Lang.get('pages.statistics.projects.filters.apply')}
-                                    </PrimaryButton>
-                                </Form.Item>
-                            </Col>
-                        </Row>
+                        <Form.Item name='apply' className={reducedAntFormItemClassName}>
+                            <PrimaryButton style={{...fullWidth, ...margin.top(20)}} onClick={filterProjectsHandler}>
+                                {Lang.get('pages.statistics.projects.filters.apply')}
+                            </PrimaryButton>
+                        </Form.Item>
+                    </Col>
+                    <Col xs={2}>
+                        <Form.Item name='clear' className={reducedAntFormItemClassName}>
+                            <SecondaryButton style={{...fullWidth, ...margin.top(20)}} onClick={() => {
+                                filtersForm.resetFields()
+                                setProjectsToShow(_projects)
+                            }}>
+                                {Lang.get('pages.statistics.projects.filters.clear')}
+                            </SecondaryButton>
+                        </Form.Item>
                     </Col>
                 </Row>
             </Form>

@@ -4,6 +4,7 @@ namespace Modules\Pump\Actions\ImportPumps\PumpType;
 
 use App\Rules\ExistsAsKeyInArray;
 use App\Rules\ExistsInArray;
+use Illuminate\Support\Facades\Log;
 use Modules\Pump\Actions\ImportPumps\PumpImporter;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
@@ -47,7 +48,7 @@ class SinglePumpImporter extends PumpImporter
             '14' => ['required'], // ptp length
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
             '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // performance
-            '17' => ['required', 'boolean'],
+            '17' => ['required', 'boolean'], // is discontinued
             '18' => ['sometimes', 'nullable',], // description
             '19' => ['sometimes', 'nullable', 'string'], // pump image
             '20' => ['sometimes', 'nullable', 'string'], // pump sizes image
@@ -94,6 +95,7 @@ class SinglePumpImporter extends PumpImporter
 
     protected function importEntity($entity): array
     {
+        Log::info($entity);
         return [
             'pump' => [
                 'article_num_main' => trim($entity[0]),

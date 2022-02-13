@@ -22,11 +22,13 @@ return [
                 'comment' => 'Comment'
             ],
             'filters' => [
-                'search' => 'Project name',
+                'search' => 'Project or client organization name',
                 'created_at' => 'Created at',
                 'selections_count' => 'Amount of selections',
+                'condition' => 'Condition',
                 'total_selections_price' => 'Total selections price',
-                'apply' => 'Apply'
+                'apply' => 'Apply',
+                'clear' => 'Clear'
             ]
         ],
         'users' => [

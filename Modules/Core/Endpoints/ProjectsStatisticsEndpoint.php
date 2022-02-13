@@ -45,7 +45,7 @@ final class ProjectsStatisticsEndpoint extends Controller
                     $statuses = ProjectStatus::allOrCached();
                     $deliveryStatuses = ProjectDeliveryStatus::allOrCached();
                     $usersData = DB::table(Tenant::current()->database . '.users')
-                        ->select('city', 'organization_name')->get();
+                        ->select('city', 'organization_name', 'country_id', 'business_id')->get();
                     $cities = [...$usersData->unique('city')->sortBy('city')->pluck('city')->all()];
                     $organizations = [...$usersData->unique('organization_name')->sortBy('organization_name')->pluck('organization_name')->all()];
                     return [
@@ -61,29 +61,31 @@ final class ProjectsStatisticsEndpoint extends Controller
                                         $query->select('id', 'pumpable_type');
                                     }, 'all_selections.pump.price_list', 'all_selections.pump.price_list.currency']
                                 )->get()],
-                            fn(Project $project) => [
-                                'key' => $project->id,
-                                'id' => $project->id,
-                                'created_at' => date_format($project->created_at, "d.m.Y"),
-                                'name' => $project->name,
-                                'user_organization_name' => $project->user->organization_name,
-                                'user_full_name' => $project->user->full_name,
-                                'user_business' => $project->user->business->name,
-                                'country' => $project->user->country->name,
-                                'city' => $project->user->city,
-                                'selections_count' => $project->all_selections_count,
-                                'price' => number_format(
-                                    ArraySum::new(
-                                        ArrMapped::new(
-                                            [...$project->all_selections],
-                                            fn(Selection $selection) => $selection->totalRetailPrice($rates)
-                                        )
-                                    )->asNumber(), 1
-                                ),
-                                'status_id' => $project->status_id,
-                                'delivery_status_id' => $project->delivery_status_id,
-                                'comment' => $project->comment
-                            ]
+                            function (Project $project) use ($rates) {
+                                $price = ArraySum::new(
+                                    ArrMapped::new(
+                                        [...$project->all_selections],
+                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
+                                    )
+                                )->asNumber();
+                                return [
+                                    'key' => $project->id,
+                                    'id' => $project->id,
+                                    'created_at' => date_format($project->created_at, "d.m.Y"),
+                                    'name' => $project->name,
+                                    'user_organization_name' => $project->user->organization_name,
+                                    'user_full_name' => $project->user->full_name,
+                                    'user_business' => $project->user->business->name,
+                                    'country' => $project->user->country->name,
+                                    'city' => $project->user->city,
+                                    'selections_count' => $project->all_selections_count,
+                                    'formatted_price' => number_format($price, 1),
+                                    'price' => $price,
+                                    'status_id' => $project->status_id,
+                                    'delivery_status_id' => $project->delivery_status_id,
+                                    'comment' => $project->comment
+                                ];
+                            }
                         )->asArray(),
                         'project_statuses' => $statuses,
                         'delivery_statuses' => $deliveryStatuses,
@@ -99,8 +101,10 @@ final class ProjectsStatisticsEndpoint extends Controller
                                 ])->asArray(),
                             ),
                             ArrForFiltering::new([
-                                'countries' => Country::allOrCached()->pluck('name')->all(),
-                                'businesses' => Business::allOrCached()->pluck('name')->all(),
+                                'countries' => Country::allOrCached()->whereIn('id', $usersData->pluck('country_id')->all())
+                                    ->pluck('name')->all(),
+                                'businesses' => Business::allOrCached()->whereIn('id', $usersData->pluck('business_id')->all())
+                                    ->pluck('name')->all(),
                                 'cities' => $cities,
                                 'organizations' => $organizations
                             ])
