@@ -22,7 +22,8 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html/
-            composer install --no-dev -n
+            composer install --no-dev --optimize-autoloader -n
+
 
       - name: Deployment
         uses: appleboy/ssh-action@master
@@ -60,6 +61,18 @@ jobs:
           script: |
             cd /var/www/html
             php artisan db:seed --class=TenantsSeeder --force
+
+      - name: Clearing cache
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html
+            php artisan cache:clear && php artisan config:cache
 
 #   laravel-tests:
 
