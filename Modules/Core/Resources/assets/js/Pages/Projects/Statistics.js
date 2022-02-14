@@ -123,7 +123,8 @@ export default function Statistics() {
         },
         {
             title: Lang.get('pages.statistics.projects.table.retail_price') + ", " + auth.currency,
-            dataIndex: 'formatted_price',
+            dataIndex: 'price',
+            render: (_, record) => record.price.toLocaleString(),
             sorter: (a, b) => a.price - b.price,
             editable: false,
         },

@@ -4,6 +4,7 @@ namespace Modules\Core\Endpoints;
 
 use App\Http\Controllers\Controller;
 use App\Support\ArrForFiltering;
+use App\Support\FormattedPrice;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use Exception;
@@ -62,12 +63,6 @@ final class ProjectsStatisticsEndpoint extends Controller
                                     }, 'all_selections.pump.price_list', 'all_selections.pump.price_list.currency']
                                 )->get()],
                             function (Project $project) use ($rates) {
-                                $price = ArraySum::new(
-                                    ArrMapped::new(
-                                        [...$project->all_selections],
-                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
-                                    )
-                                )->asNumber();
                                 return [
                                     'key' => $project->id,
                                     'id' => $project->id,
@@ -79,8 +74,15 @@ final class ProjectsStatisticsEndpoint extends Controller
                                     'country' => $project->user->country->name,
                                     'city' => $project->user->city,
                                     'selections_count' => $project->all_selections_count,
-                                    'formatted_price' => number_format($price, 1),
-                                    'price' => $price,
+                                    'price' => round(
+                                        ArraySum::new(
+                                            ArrMapped::new(
+                                                [...$project->all_selections],
+                                                fn(Selection $selection) => $selection->totalRetailPrice($rates)
+                                            )
+                                        )->asNumber(),
+                                        2
+                                    ),
                                     'status_id' => $project->status_id,
                                     'delivery_status_id' => $project->delivery_status_id,
                                     'comment' => $project->comment

@@ -11608,13 +11608,19 @@ function Statistics() {
     }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.statistics.users.table.total_projects_price') + ", " + auth.currency,
-    dataIndex: 'formatted_total_projects_price',
+    dataIndex: 'total_projects_price',
+    render: function render(_, record) {
+      return record.total_projects_price.toLocaleString();
+    },
     sorter: function sorter(a, b) {
       return a.total_projects_price - b.total_projects_price;
     }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.statistics.users.table.avg_projects_price') + ", " + auth.currency,
-    dataIndex: 'formatted_avg_projects_price',
+    dataIndex: 'avg_projects_price',
+    render: function render(_, record) {
+      return record.avg_projects_price.toLocaleString();
+    },
     sorter: function sorter(a, b) {
       return a.avg_projects_price - b.avg_projects_price;
     }

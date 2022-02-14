@@ -83,11 +83,13 @@ export default function Show() {
         {
             title: Lang.get('pages.projects.show.table.power'),
             dataIndex: 'rated_power',
+            render: (_, record) => record.rated_power.toLocaleString(),
             sorter: (a, b) => a.rated_power - b.rated_power
         },
         {
             title: Lang.get('pages.projects.show.table.total_power'),
             dataIndex: 'total_rated_power',
+            render: (_, record) => record.total_rated_power.toLocaleString(),
             sorter: (a, b) => a.total_rated_power - b.total_rated_power
         },
         {

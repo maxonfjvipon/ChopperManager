@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Transformers;
 
+use App\Support\FormattedPrice;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;

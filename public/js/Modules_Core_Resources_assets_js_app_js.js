@@ -13216,12 +13216,18 @@ function Show() {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.table.power'),
     dataIndex: 'rated_power',
+    render: function render(_, record) {
+      return record.rated_power.toLocaleString();
+    },
     sorter: function sorter(a, b) {
       return a.rated_power - b.rated_power;
     }
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.projects.show.table.total_power'),
     dataIndex: 'total_rated_power',
+    render: function render(_, record) {
+      return record.total_rated_power.toLocaleString();
+    },
     sorter: function sorter(a, b) {
       return a.total_rated_power - b.total_rated_power;
     }
@@ -13556,7 +13562,10 @@ function Statistics() {
     editable: false
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.table.retail_price') + ", " + auth.currency,
-    dataIndex: 'formatted_price',
+    dataIndex: 'price',
+    render: function render(_, record) {
+      return record.price.toLocaleString();
+    },
     sorter: function sorter(a, b) {
       return a.price - b.price;
     },

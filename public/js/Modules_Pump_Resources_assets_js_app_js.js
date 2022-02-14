@@ -11035,7 +11035,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'weight',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.weight'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -11046,7 +11046,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'rated_power',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_power'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -11057,7 +11057,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'rated_current',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_current'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -11880,6 +11880,9 @@ var SinglePumpsTab = function SinglePumpsTab(_ref) {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.weight'),
     dataIndex: 'weight',
+    render: function render(_, record) {
+      return record.weight.toLocaleString();
+    },
     key: 'weight',
     width: 90,
     sorter: {
@@ -11890,6 +11893,9 @@ var SinglePumpsTab = function SinglePumpsTab(_ref) {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_power'),
     dataIndex: 'rated_power',
+    render: function render(_, record) {
+      return record.rated_power.toLocaleString();
+    },
     width: 95,
     sorter: {
       compare: function compare(a, b) {
@@ -11899,6 +11905,9 @@ var SinglePumpsTab = function SinglePumpsTab(_ref) {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_current'),
     dataIndex: 'rated_current',
+    render: function render(_, record) {
+      return record.rated_current.toLocaleString();
+    },
     width: 100,
     sorter: {
       compare: function compare(a, b) {

@@ -77,12 +77,14 @@ export default function Statistics() {
         },
         {
             title: Lang.get('pages.statistics.users.table.total_projects_price') + ", " + auth.currency,
-            dataIndex: 'formatted_total_projects_price',
+            dataIndex: 'total_projects_price',
+            render: (_, record) => record.total_projects_price.toLocaleString(),
             sorter: (a, b) => a.total_projects_price - b.total_projects_price,
         },
         {
             title: Lang.get('pages.statistics.users.table.avg_projects_price') + ", " + auth.currency,
-            dataIndex: 'formatted_avg_projects_price',
+            dataIndex: 'avg_projects_price',
+            render: (_, record) => record.avg_projects_price.toLocaleString(),
             sorter: (a, b) => a.avg_projects_price - b.avg_projects_price,
         },
         {

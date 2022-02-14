@@ -4,6 +4,7 @@ namespace Modules\User\Endpoints;
 
 use App\Http\Controllers\Controller;
 use App\Support\ArrForFiltering;
+use App\Support\FormattedPrice;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use App\Takes\TkJson;
@@ -75,10 +76,8 @@ class UsersStatisticsEndpoint extends Controller
                                 'country' => $user->country->name,
                                 'city' => $user->city,
                                 'projects_count' => $user->projects_count,
-                                'total_projects_price' => $projectsPrice,
-                                'formatted_total_projects_price' => number_format($projectsPrice, 1),
-                                'formatted_avg_projects_price' => number_format($avgProjectsPrice, 1),
-                                'avg_projects_price' => $avgProjectsPrice
+                                'total_projects_price' => round($projectsPrice, 2),
+                                'avg_projects_price' => round($avgProjectsPrice, 2)
                             ];
                         }
                     )->asArray(),

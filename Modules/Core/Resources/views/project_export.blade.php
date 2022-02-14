@@ -11,7 +11,7 @@
         }
 
         .page {
-            margin: 30px 20px
+            margin: 20px 20px
         }
 
         .td-top {
@@ -56,6 +56,10 @@
             margin-bottom: 30px;
         }
 
+        .price {
+            min-width: 85px
+        }
+
         body {
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
         }
@@ -72,12 +76,12 @@
             <th>Расход, м³/ч</th>
             <th>Напор, м</th>
             @if($request->personal_price)
-                <th>Цена со скидкой, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
-                <th>Итоговая цена со скидкой, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
+                <th class="price">Цена со скидкой, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
+                <th class="price">Итоговая цена со скидкой, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
             @endif
             @if($request->retail_price)
-                <th>Розничная цена, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
-                <th>Итоговая розничная цена, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
+                <th class="price">Розничная цена, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
+                <th class="price">Итоговая розничная цена, {{\Illuminate\Support\Facades\Auth::user()->currency->symbol}}</th>
             @endif
             <th>P, кВ</th>
             <th>P итого, кВ</th>
@@ -90,15 +94,15 @@
                 <td>{{$selection->flow}}</td>
                 <td>{{$selection->head}}</td>
                 @if($request->personal_price)
-                    <td>{{number_format($selection->discounted_price, 1)}}</td>
-                    <td>{{number_format($selection->total_discounted_price, 1)}}</td>
+                    <td class="price">{{number_format($selection->discounted_price, 1, ",", " ")}}</td>
+                    <td class="price">{{number_format($selection->total_discounted_price, 1, ",", " ")}}</td>
                 @endif
                 @if($request->retail_price)
-                    <td>{{number_format($selection->retail_price, 1)}}</td>
-                    <td>{{number_format($selection->total_retail_price, 1)}}</td>
+                    <td class="price">{{number_format($selection->retail_price, 1, ",", " ")}}</td>
+                    <td class="price">{{number_format($selection->total_retail_price, 1, ",", " ")}}</td>
                 @endif
-                <td>{{$selection->pump_rated_power}}</td>
-                <td>{{$selection->total_rated_power}}</td>
+                <td>{{str_replace(".", ",", $selection->pump_rated_power)}}</td>
+                <td>{{str_replace(".", ",", $selection->total_rated_power)}}</td>
             </tr>
         @endforeach
         @if($request->personal_price || $request->retail_price)
@@ -106,13 +110,15 @@
                 <strong>Итого:</strong>
             </td>
             @if($request->personal_price)
-                <td>{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_discounted_price)->toArray()), 1)}}</td>
+                <td class="price">{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_discounted_price)
+                ->toArray()), 1, ",", " ")}}</td>
             @endif
             @if($request->retail_price)
                 @if($request->personal_price)
                     <td></td>
                 @endif
-                <td>{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_retail_price)->toArray()), 1)}}</td>
+                <td class="price">{{number_format(array_sum($project->selections->map(fn($selection) => $selection->total_retail_price)
+                ->toArray()), 1, ",", " ")}}</td>
             @endif
             <td colspan="2"></td>
         @endif

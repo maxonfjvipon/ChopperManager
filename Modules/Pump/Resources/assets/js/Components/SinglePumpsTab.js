@@ -64,6 +64,7 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
         {
             title: Lang.get('pages.pumps.data.weight'),
             dataIndex: 'weight',
+            render: (_, record) => record.weight.toLocaleString(),
             key: 'weight',
             width: 90,
             sorter: {compare: (a, b) => a.weight - b.weight}
@@ -71,12 +72,14 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
         {
             title: Lang.get('pages.pumps.data.rated_power'),
             dataIndex: 'rated_power',
+            render: (_, record) => record.rated_power.toLocaleString(),
             width: 95,
             sorter: {compare: (a, b) => a.rated_power - b.rated_power}
         },
         {
             title: Lang.get('pages.pumps.data.rated_current'),
             dataIndex: 'rated_current',
+            render: (_, record) => record.rated_current.toLocaleString(),
             width: 100,
             sorter: {compare: (a, b) => a.rated_current - b.rated_current}
         },
