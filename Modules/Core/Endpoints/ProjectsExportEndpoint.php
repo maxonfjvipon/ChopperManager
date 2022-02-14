@@ -21,12 +21,12 @@ final class ProjectsExportEndpoint extends Controller
 {
     /**
      * @param ExportProjectRequest $request
-     * @param Project $project
+     * @param $project_id
      * @return Responsable|Response
-     * @throws Exception
      */
-    public function __invoke(ExportProjectRequest $request, Project $project): Responsable|Response
+    public function __invoke(ExportProjectRequest $request, $project_id): Responsable|Response
     {
+        $project = Project::withOrWithoutTrashed()->findOrFail($project_id);
         return TkAuthorizedProject::byProject(
             $project,
             TkAuthorized::new(

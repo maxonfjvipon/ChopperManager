@@ -12,18 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        uses: appleboy/ssh-action@master
-
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSHKEY }}
-          script: |
-            cd /var/www/html/
-            composer install --no-dev -n
-
       - name: Deployment
         uses: appleboy/ssh-action@master
 
@@ -36,6 +24,30 @@ jobs:
             cd /var/www/html/
             git pull origin pump-manager.ru
 
+      - name: Stoping the application
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html/
+            php artisan down --secret=maximtrun19
+
+      - name: Install dependencies
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html/
+            composer install --no-dev --optimize-autoloader -n
+
       - name: Migrating
         uses: appleboy/ssh-action@master
 
@@ -46,6 +58,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html
+            php artisan migrate --path=Modules/AdminPanel/Database/Migrations --database=landlord --force
             php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations --force"
 
       - name: Seeding
@@ -59,6 +72,30 @@ jobs:
           script: |
             cd /var/www/html
             php artisan db:seed --class=TenantsSeeder --force
+
+      - name: Clearing cache
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html
+            php artisan cache:clear && php artisan config:cache
+
+      - name: Reruning the application
+        uses: appleboy/ssh-action@master
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY }}
+          script: |
+            cd /var/www/html/
+            php artisan up
 
 #   laravel-tests:
 

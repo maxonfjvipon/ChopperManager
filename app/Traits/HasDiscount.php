@@ -16,9 +16,17 @@ trait HasDiscount
     /**
      * @return MorphOne
      */
+    public function auth_discount(): MorphOne
+    {
+        return $this->discount()->where('user_id', Auth::id());
+
+    }
+
+    /**
+     * @return MorphOne
+     */
     public function discount(): MorphOne
     {
-        return $this->morphOne(Discount::class, 'discountable')
-            ->where('user_id', Auth::id());
+        return $this->morphOne(Discount::class, 'discountable');
     }
 }

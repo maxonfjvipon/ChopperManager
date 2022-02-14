@@ -5,6 +5,7 @@ namespace Modules\Auth\Endpoints;
 use App\Takes\TkRedirectedRoute;
 use App\Http\Controllers\Controller;
 use App\Support\Take;
+use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,13 @@ final class LogoutEndpoint extends Controller
      */
     public function __invoke(Request $request): Responsable|Response
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return TkRedirectedRoute::new('login')->act($request);
+        return TkWithCallback::new(
+            function () use ($request) {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+            },
+            TkRedirectedRoute::new('login')
+        )->act($request);
     }
 }

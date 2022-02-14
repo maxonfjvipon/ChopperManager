@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Selections restore endpoint.
  * @package Modules\Selection\Endpoints
  */
-class SelectionsRestoreEndpoint extends Controller
+final class SelectionsRestoreEndpoint extends Controller
 {
     /**
      * @param $id

@@ -7,7 +7,6 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkDownloadedPDF;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\ExportAtOnceSelectionRequest;
 use Modules\Selection\Takes\TxtExportSelectionView;
@@ -17,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Selections export at once endpoint.
  * @package Modules\Selection\Endpoints
  */
-class SelectionsExportAtOnceEndpoint extends Controller
+final class SelectionsExportAtOnceEndpoint extends Controller
 {
     /**
      * @param ExportAtOnceSelectionRequest $request

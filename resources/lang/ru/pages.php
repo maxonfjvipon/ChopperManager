@@ -2,6 +2,60 @@
 
 return [
     'change_locale' => 'Сменить язык',
+    'statistics' => [
+        'title' => 'Статистика',
+        'projects' => [
+            'title' => 'По проектам',
+            'full_title' => 'Статистка по проектам',
+            'table' => [
+                'created_at' => 'Дата создания',
+                'name' => 'Наименование',
+                'user_organization_name' => 'Наименование организации клиента',
+                'user_full_name' => 'ФИО клиента',
+                'user_business' => 'Основная деятельность',
+                'country' => 'Страна',
+                'city' => 'Город',
+                'selections_count' => 'Количество подборов',
+                'retail_price' => 'Розничная стоимость',
+                'status' => 'Статус',
+                'delivery_status' => 'Статус поставки',
+                'comment' => 'Комментарий'
+            ],
+            'filters' => [
+                'search' => 'Наименование проекта или организации',
+                'created_at' => 'Дата создания',
+                'selections_count' => 'Количество подборов',
+                'condition' => 'Условие',
+                'total_selections_price' => 'Итоговая стоимость подборов',
+                'apply' => 'Применить',
+                'reset' => 'Сбросить'
+            ]
+        ],
+        'users' => [
+            'title' => 'По пользователям',
+            'full_title' => 'Статистика по пользователям',
+            'table' => [
+                'last_login_at' => 'Дата активности',
+                'organization_name' => 'Наименование ораганизации',
+                'full_name' => 'ФИО',
+                'business' => "Основная деятельность",
+                'country' => 'Страна',
+                'city' => 'Город',
+                'projects_count' => 'Количество проектов',
+                'total_projects_price' => 'Итоговая стоимость проектов',
+                'avg_projects_price' => 'Средняя стоимость проектов'
+            ],
+            'filters' => [
+                'search' => 'ФИО или наименование организации',
+                'last_login_at' => 'Дата активности',
+                'projects_count' => 'Количество проектов',
+                'condition' => 'Условие',
+                'total_projects_price' => 'Итоговая стоимость проектов',
+                'apply' => 'Применить',
+                'reset' => 'Сбросить'
+            ]
+        ]
+    ],
     'login' => [
         'welcome' => 'Добро пожаловать!',
         'email' => 'E-mail',
@@ -116,19 +170,6 @@ return [
             'm3h' => 'м³/ч',
             'm' => 'м',
         ],
-        'statistics' => [
-            'title' => 'Статистика по проектам',
-            'table' => [
-                'created_at' => 'Дата создания',
-                'client' => 'Клиент',
-                'name' => 'Наименование',
-                'selections_count' => 'Количество подборов',
-                'retail_price' => 'Розничная стоимость',
-                'status' => 'Статус',
-                'delivery_status' => 'Статус поставки',
-                'comment' => 'Комментарий'
-            ],
-        ]
     ],
     'pump_brands' => [
         'index' => [
@@ -541,22 +582,33 @@ return [
             'table' => [
                 'created_at' => 'Дата создания',
                 'organization_name' => 'Наименование организации',
-                'main_business' => 'Основная деятельность',
-                'itn' => 'ИНН',
+                'full_name' => 'ФИО',
                 'phone' => 'Телефон',
+                'email' => 'E-mail',
+                'business' => 'Основная деятельность',
                 'country' => 'Страна',
                 'city' => 'Город',
-                'postcode' => 'Индекс',
-                'currency' => 'Валюта',
-                'full_name' => 'ФИО',
-                'email' => 'E-mail',
-                'delete' => 'Вы точно хотите удалить этого пользователя?'
+                'is_active' => 'Активный',
+            ],
+            'search' => [
+                'placeholder' => 'Поиск по ФИО и организации'
             ],
             'button' => 'Создать пользователя',
             'restore' => [
                 'title' => 'Восстановить пользователя?',
                 'button' => 'Восстановить'
             ],
+            'statistics' => [
+                'discounts' => [
+                    'tab' => 'Скидки производителей'
+                ],
+                'analytics' => [
+                    'tab' => 'Аналитика пользователя'
+                ],
+                'projects' => [
+                    'tab' => 'Проекты пользователя'
+                ]
+            ]
         ],
         'edit' => [
             'title' => 'Изменить пользователя',

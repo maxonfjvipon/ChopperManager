@@ -10496,8 +10496,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
@@ -10505,7 +10504,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -10537,6 +10537,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
   var pumpInfo = _ref.pumpInfo,
       visible = _ref.visible,
@@ -10552,7 +10553,7 @@ var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
 
   var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__.useTransRoutes)();
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_12__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_13__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
 
@@ -10570,7 +10571,7 @@ var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose'),
       name: 'project_ids'
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__.MultipleSelection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__.MultipleSelection, {
       options: projects,
       placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose')
     })
@@ -10580,23 +10581,23 @@ var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.pumps_count'),
       name: 'pumps_count'
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__.InputNum, {
       style: fullWidth,
       max: 5,
       min: 1
     })
   }].filter(Boolean);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.title'),
     visible: visible,
     onClose: clearModal,
     width: 350,
     closable: false,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
       form: form,
       layout: "vertical",
       items: modalItems
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__.PrimaryButton, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__.PrimaryButton, {
       onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var body;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -10768,7 +10769,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'weight',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.weight'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -10779,7 +10780,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'rated_power',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_power'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -10790,7 +10791,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'rated_current',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_current'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current,
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -11288,12 +11289,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FiltersDrawer": () => (/* binding */ FiltersDrawer)
 /* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
@@ -11301,7 +11301,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11331,6 +11332,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ConditionSelectionFormItem = function ConditionSelectionFormItem(_ref) {
   var options = _ref.options,
       _ref$initialValue = _ref.initialValue,
@@ -11341,10 +11343,10 @@ var ConditionSelectionFormItem = function ConditionSelectionFormItem(_ref) {
   var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
       fullWidth = _useStyles.fullWidth;
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
     name: name,
     initialValue: initialValue,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
       style: fullWidth,
       placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.condition'),
       options: options,
@@ -11357,7 +11359,7 @@ var ConditionLimitCheckboxFormItem = function ConditionLimitCheckboxFormItem(_re
   var name = _ref2.name,
       initialValue = _ref2.initialValue,
       children = _ref2.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
     className: "ant-form-item-reduced",
     name: name,
     valuePropName: "checked",
@@ -11368,7 +11370,7 @@ var ConditionLimitCheckboxFormItem = function ConditionLimitCheckboxFormItem(_re
 
 var LimitRow = function LimitRow(_ref3) {
   var children = _ref3.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
     gutter: [10, 0],
     children: children
   });
@@ -11376,7 +11378,7 @@ var LimitRow = function LimitRow(_ref3) {
 
 var LimitCol = function LimitCol(_ref4) {
   var children = _ref4.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
     xs: 12,
     children: children
   });
@@ -11413,7 +11415,7 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
 
   var nextBelowStyle = _objectSpread(_objectSpread({}, fullWidth), marginBottomTen);
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
     width: 600,
     placement: "right",
     visible: visible,
@@ -11421,32 +11423,32 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
     onClose: function onClose() {
       setVisible(false);
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
       layout: "vertical",
       form: form,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
         gutter: [10, 10],
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
             label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
             name: "connection_type_ids",
             className: reducedAntFormItemClassName,
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.connection_types,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
               placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
               style: nextBelowStyle,
               options: connection_types
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
             label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
             name: "mains_connection_ids",
             className: reducedAntFormItemClassName,
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.mains_connections,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
               placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
               style: nextBelowStyle,
               options: mains_connections.map(function (connection) {
@@ -11456,12 +11458,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               })
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionLimitCheckboxFormItem, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
             name: "power_limit_checked",
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
               checked: limitChecks.power,
               onChange: function onChange(e) {
                 setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
@@ -11470,19 +11472,19 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               },
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power_limit')
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
                 options: limit_conditions,
                 name: "power_limit_condition_id",
                 disabled: !limitChecks.power,
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_condition_id
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
                 name: "power_limit_value",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_value,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, {
                   disabled: !limitChecks.power,
                   style: fullWidth,
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power')
@@ -11490,12 +11492,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               })
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionLimitCheckboxFormItem, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
             name: "ptp_length_limit_checked",
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
               checked: limitChecks.ptpLength,
               onChange: function onChange(e) {
                 setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
@@ -11504,19 +11506,19 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               },
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length_limit')
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
                 options: limit_conditions,
                 name: "ptp_length_limit_condition_id",
                 disabled: !limitChecks.ptpLength,
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_condition_id
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
                 name: "ptp_length_limit_value",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_value,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, {
                   disabled: !limitChecks.ptpLength,
                   style: fullWidth,
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length')
@@ -11524,12 +11526,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               })
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionLimitCheckboxFormItem, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
             name: "dn_suction_limit_checked",
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
               checked: limitChecks.dnSuction,
               onChange: function onChange(e) {
                 setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
@@ -11538,19 +11540,19 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               },
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input_limit')
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_condition_id,
                 options: limit_conditions,
                 name: "dn_suction_limit_condition_id",
                 disabled: !limitChecks.dnSuction
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
                 name: "dn_suction_limit_id",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_id,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input'),
                   options: dns,
                   disabled: !limitChecks.dnSuction,
@@ -11559,12 +11561,12 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               })
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
           span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionLimitCheckboxFormItem, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
             name: "dn_pressure_limit_checked",
             initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
               checked: limitChecks.dnPressure,
               onChange: function onChange(e) {
                 setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
@@ -11573,19 +11575,19 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
               },
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output_limit')
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(ConditionSelectionFormItem, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_condition_id,
                 options: limit_conditions,
                 name: "dn_pressure_limit_condition_id",
                 disabled: !limitChecks.dnPressure
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"].Item, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
                 name: "dn_pressure_limit_id",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_id,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output'),
                   options: dns,
                   disabled: !limitChecks.dnPressure,
@@ -11595,8 +11597,8 @@ var FiltersDrawer = function FiltersDrawer(_ref5) {
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_5__.BoxFlexEnd, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_5__.BoxFlexEnd, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
           onClick: function onClick() {
             setUseAdditionalFilters(true);
             setVisible(false);
@@ -11707,6 +11709,9 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.power'),
     dataIndex: 'rated_power',
+    render: function render(_, record) {
+      return record.rated_power.toLocaleString();
+    },
     key: 'rated_power',
     sorter: function sorter(a, b) {
       return a.rated_power - b.rated_power;
@@ -11715,6 +11720,9 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_power'),
     dataIndex: 'power_total',
+    render: function render(_, record) {
+      return record.power_total.toLocaleString();
+    },
     key: 'power_total',
     sorter: function sorter(a, b) {
       return a.power_total - b.power_total;
@@ -11887,10 +11895,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tree/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
@@ -11909,8 +11916,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_pumpable_type_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/pumpable_type.hook */ "./resources/js/src/Hooks/pumpable_type.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_pump_info_hook__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/pump_info.hook */ "./resources/js/src/Hooks/pump_info.hook.js");
-/* harmony import */ var _Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer */ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js");
+/* harmony import */ var _Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer */ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -12746,7 +12753,7 @@ var Selection = function Selection(_ref) {
                       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.temp_tooltip.orange')
                     })]
                   }),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
                     disabled: fieldsDisabled,
                     style: fullWidth,
                     min: -50,
@@ -12823,7 +12830,7 @@ var Selection = function Selection(_ref) {
                   name: "flow",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
                     placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.consumption'),
                     style: fullWidth,
                     min: 0,
@@ -12838,7 +12845,7 @@ var Selection = function Selection(_ref) {
                   name: "head",
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
                     placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.pressure'),
                     style: fullWidth,
                     min: 0,
@@ -12854,7 +12861,7 @@ var Selection = function Selection(_ref) {
                   initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
                   className: reducedAntFormItemClassName,
                   tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation_tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
                     placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation'),
                     style: fullWidth,
                     min: -50,
@@ -12881,10 +12888,10 @@ var Selection = function Selection(_ref) {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.backup_pumps_count'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.reserve_pumps_count) || 0,
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"].Group, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
                     value: 0,
                     children: [0, 1, 2, 3, 4].map(function (value) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
                         value: value,
                         children: value
                       }, 'bp' + value);
@@ -12899,9 +12906,9 @@ var Selection = function Selection(_ref) {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.double_pump.work_scheme'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.dp_work_scheme_id) || selection_props.work_schemes[0].id,
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"].Group, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
                     children: selection_props.work_schemes.map(function (scheme) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
                         value: scheme.id,
                         children: scheme.name
                       }, 'ws' + scheme.id);
@@ -12916,12 +12923,12 @@ var Selection = function Selection(_ref) {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.label'),
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id,
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"].Group, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
                     onChange: function onChange(e) {
                       setRangeDisabled(e.target.value !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id);
                     },
                     children: selection_props.selection_ranges.map(function (range) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
                         value: range.id,
                         children: range.name
                       }, 'bp' + range.name);
@@ -12936,7 +12943,7 @@ var Selection = function Selection(_ref) {
                   label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.custom.label'),
                   initialValue: (_selection$data$custo = selection === null || selection === void 0 ? void 0 : (_selection$data = selection.data) === null || _selection$data === void 0 ? void 0 : _selection$data.custom_range) !== null && _selection$data$custo !== void 0 ? _selection$data$custo : [0, 100],
                   className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
                     range: true,
                     disabled: rangeDisabled,
                     tipFormatter: function tipFormatter(value) {
@@ -13013,7 +13020,7 @@ var Selection = function Selection(_ref) {
                 ,
                 type: "inner",
                 title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-                extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_38__["default"], {
+                extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
                   children: [has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("a", {
                     onClick: function onClick(e) {
                       e.preventDefault();
@@ -13035,7 +13042,7 @@ var Selection = function Selection(_ref) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
       style: margin.top(16),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_38__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
         size: 8,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
           onClick: function onClick() {
@@ -13056,7 +13063,7 @@ var Selection = function Selection(_ref) {
           })]
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_24__.PumpPropsDrawer, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_23__.PumpPropsDrawer, {
       visible: pumpInfoVisible,
       setVisible: setPumpInfoVisible,
       pumpInfo: pumpInfo
@@ -13565,437 +13572,6 @@ var useInputRules = function useInputRules() {
 
 /***/ }),
 
-/***/ "./resources/js/src/Hooks/pump_info.hook.js":
-/*!**************************************************!*\
-  !*** ./resources/js/src/Hooks/pump_info.hook.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "usePumpInfo": () => (/* binding */ usePumpInfo)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/list/index.js");
-/* harmony import */ var _input_rules_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _routes_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _http_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FilePdfOutlined.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var usePumpInfo = function usePumpInfo() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      pumpInfoVisible = _useState2[0],
-      setPumpInfoVisible = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      pumpInfo = _useState4[0],
-      setPumpInfo = _useState4[1]; // useEffect(() => {
-  //     console.log('pump info', pumpInfo)
-  //     setPumpInfoVisible(!!pumpInfo)
-  // }, [pumpInfo])
-
-
-  var onClose = function onClose() {
-    setPumpInfoVisible(false);
-  };
-
-  var PumpInfoDrawer = function PumpInfoDrawer(_ref) {
-    var _ref$needCurve = _ref.needCurve,
-        needCurve = _ref$needCurve === void 0 ? false : _ref$needCurve,
-        _ref$title = _ref.title,
-        title = _ref$title === void 0 ? false : _ref$title,
-        _ref$addToProjects = _ref.addToProjects,
-        addToProjects = _ref$addToProjects === void 0 ? false : _ref$addToProjects;
-
-    var _img = function _img(_ref2) {
-      var src = _ref2.src;
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_1__.JustifiedRow, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
-            style: {
-              margin: "0 auto",
-              maxWidth: 600
-            },
-            alt: "./media/no_image.jpg",
-            src: src
-          })
-        })
-      });
-    };
-
-    var _useInputRules = (0,_input_rules_hook__WEBPACK_IMPORTED_MODULE_2__.useInputRules)(),
-        rules = _useInputRules.rules;
-
-    var projects = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.projects;
-
-    var _useStyles = (0,_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
-        fullWidth = _useStyles.fullWidth;
-
-    var tRoute = (0,_routes_hook__WEBPACK_IMPORTED_MODULE_5__.useTransRoutes)();
-
-    var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_13__["default"].useForm(),
-        _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
-        form = _Form$useForm2[0];
-
-    var _useHttp = (0,_http_hook__WEBPACK_IMPORTED_MODULE_6__.useHttp)(),
-        postRequest = _useHttp.postRequest;
-
-    var _useStyles2 = (0,_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
-        reducedAntFormItemClassName = _useStyles2.reducedAntFormItemClassName;
-
-    var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-        _useState6 = _slicedToArray(_useState5, 2),
-        modalVisible = _useState6[0],
-        setModalVisible = _useState6[1];
-
-    var items = [{
-      values: {
-        name: 'article_num_main',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.article_num_main'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_main,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'article_num_reserve',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.article_num_reserve'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_reserve,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'article_num_archive',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.article_num_archive'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_archive,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'weight',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.weight'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'rated_power',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.rated_power'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'rated_current',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.rated_current'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'connection_type',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.connection_type'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection_type,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'fluid_temp_min',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.fluid_temp_min'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.fluid_temp_min,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'fluid_temp_max',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.fluid_temp_max'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.fluid_temp_max,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'ptp_length',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.ptp_length'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.ptp_length,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'dn_suction',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.dn_suction'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_suction,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'dn_pressure',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.dn_pressure'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_pressure,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'category',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.category'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.category,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'connection',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.connection'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'types',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.types'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.types,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].TextArea, {
-        autoSize: true,
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'applications',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.applications'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.applications,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].TextArea, {
-        autoSize: true,
-        bordered: false,
-        readOnly: true
-      })
-    }, {
-      values: {
-        name: 'description',
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.data.description'),
-        initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.description,
-        className: reducedAntFormItemClassName
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].TextArea, {
-        autoSize: true,
-        bordered: false,
-        readOnly: true
-      })
-    }];
-    var modalItems = [{
-      values: {
-        rules: [rules.required],
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.add_to_projects.choose'),
-        name: 'project_ids'
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
-        options: projects,
-        placeholder: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.add_to_projects.choose')
-      })
-    }, (pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.pumpable_type) !== 'double_pump' && {
-      values: {
-        rules: [rules.required],
-        label: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.add_to_projects.pumps_count'),
-        name: 'pumps_count'
-      },
-      input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        style: fullWidth,
-        max: 5,
-        min: 1
-      })
-    }].filter(Boolean);
-
-    var clearModal = function clearModal() {
-      form.resetFields();
-      setModalVisible(false);
-    };
-
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      width: needCurve ? 800 : 650,
-      placement: "right",
-      title: title ? pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.full_name : _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.graphic.info'),
-      visible: pumpInfoVisible,
-      onClose: onClose,
-      closable: false,
-      getContainer: false // afterVisibleChange={visible => {
-      //     if (visible && needCurve)
-      //         document.getElementById('for-graphic').innerHTML = pumpInfo.svg
-      // }}
-      ,
-      extra: addToProjects && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-          onClick: function onClick() {
-            setModalVisible(true);
-          },
-          children: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.pumps.add_to_projects.button')
-        })
-      }),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
-        type: "card",
-        defaultActiveKey: "curve",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.props'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_10__.ItemsForm, {
-            layout: "horizontal",
-            labelSpan: {
-              xs: 6
-            },
-            items: items
-          })
-        }, "props"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.model_picture'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_img, {
-            src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.pump
-          })
-        }, "model_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.sizes_picture'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_img, {
-            src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.sizes
-          })
-        }, "size_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.electric_diagram'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_img, {
-            src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.electric_diagram
-          })
-        }, "electric_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.exploded_view'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_img, {
-            src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.cross_sectional_drawing
-          })
-        }, "expl_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"].TabPane, {
-          tab: _translation_lang__WEBPACK_IMPORTED_MODULE_7__["default"].get('pages.selections.single_pump.pump_info.files'),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"], {
-            size: "large",
-            itemLayout: "horizontal",
-            dataSource: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.files,
-            renderItem: function renderItem(file) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].Item, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].Item.Meta, {
-                  avatar: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_20__["default"], {}),
-                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("a", {
-                    download: true,
-                    href: file.link,
-                    children: file.name
-                  })
-                })
-              });
-            }
-          })
-        }, "files")]
-      })
-    });
-  };
-
-  return {
-    setPumpInfoVisible: setPumpInfoVisible,
-    setPumpInfo: setPumpInfo,
-    PumpInfoDrawer: PumpInfoDrawer
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/src/Hooks/pumpable_type.hook.js":
 /*!******************************************************!*\
   !*** ./resources/js/src/Hooks/pumpable_type.hook.js ***!
@@ -14318,6 +13894,52 @@ var RoundedCard = function RoundedCard(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread(_objectSpread({
     className: "rounded-card " + className
   }, rest), {}, {
+    children: children
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Inputs/InputNum.js":
+/*!****************************************************!*\
+  !*** ./resources/js/src/Shared/Inputs/InputNum.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "InputNum": () => (/* binding */ InputNum)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["children"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var InputNum = function InputNum(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({}, rest), {}, {
+    formatter: function formatter(value) {
+      return value.replace(',', '.');
+    },
+    parser: function parser(value) {
+      return value.replace(',', '.');
+    },
     children: children
   }));
 };

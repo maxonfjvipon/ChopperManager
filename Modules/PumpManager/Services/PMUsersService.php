@@ -104,6 +104,7 @@ class PMUsersService extends UsersServices
 
     /**
      * @return Response
+     * @throws Exception
      */
     public function create(): Response
     {

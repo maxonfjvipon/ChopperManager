@@ -68,6 +68,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
         {
             title: Lang.get('pages.selections.single_pump.table.power'),
             dataIndex: 'rated_power',
+            render: (_, record) => record.rated_power.toLocaleString(),
             key: 'rated_power',
             sorter: (a, b) => a.rated_power - b.rated_power,
             width: 80,
@@ -75,6 +76,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading}) =
         {
             title: Lang.get('pages.selections.single_pump.table.total_power'),
             dataIndex: 'power_total',
+            render: (_, record) => record.power_total.toLocaleString(),
             key: 'power_total',
             sorter: (a, b) => a.power_total - b.power_total
         },

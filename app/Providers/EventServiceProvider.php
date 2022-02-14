@@ -3,10 +3,11 @@
 namespace App\Providers;
 
 use App\Listeners\AssignRoleToRegisteredUser;
+use App\Listeners\LogUserLoginDate;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use Modules\AdminPanel\Events\TenantCreated;
 use Modules\AdminPanel\Listeners\CreateTenantDatabase;
 use Modules\AdminPanel\Listeners\DropIfExistsTenantDatabase;
@@ -31,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
             MigrateTenantDatabase::class,
             SeedTenantDatabase::class,
         ],
+        Login::class => [
+            LogUserLoginDate::class
+        ]
     ];
 
     /**

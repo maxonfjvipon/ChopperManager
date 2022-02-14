@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Entities;
 
+use App\Traits\WithOrWithoutTrashed;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Bkwld\Cloner\Cloneable;
 use Exception;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Core\Support\Rates;
+use Modules\PumpManager\Entities\PMUser;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Traits\ConstructsSelectionCurves;
 use Modules\User\Entities\Permission;
@@ -24,13 +26,13 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class Project extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable;
+    use HasFactory, SoftDeletes, UsesTenantConnection, UsesTenantModel, SoftCascadeTrait, Cloneable, HasUserable, WithOrWithoutTrashed;
 
     protected $guarded = ['id'];
     public $timestamps = false;
 
     protected $softCascade = ['selections'];
-    protected $cloneable_relations = ['selections'];
+    protected array $cloneable_relations = ['selections'];
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y'
@@ -45,6 +47,14 @@ class Project extends Model
                 'name' => 'project_access_' . $project->id
             ]);
             Auth::user()->givePermissionTo($permission->name);
+        });
+        self::deleted(function (self $project) {
+            if ($project->status_id !== 4 && $project->status_id !== 3)
+                $project->update(['status_id' => 4]);
+        });
+        self::restored(function (self $project) {
+            if ($project->status_id === 4 || $project->status_id === 3)
+                $project->update(['status_id' => 1]);
         });
     }
 
@@ -65,7 +75,7 @@ class Project extends Model
             'selections.pump.series',
             'selections.pump.series.category',
             'selections.pump.series.power_adjustment',
-            'selections.pump.series.discount',
+            'selections.pump.series.auth_discount',
             'selections.pump.brand',
             'selections.pump.connection_type',
             'selections.pump.price_list',
@@ -75,6 +85,11 @@ class Project extends Model
     }
 
     // RELATIONSHIPS
+
+    public function all_selections()
+    {
+        return $this->hasMany(Selection::class)->withTrashed();
+    }
 
     /**
      * @return HasMany
@@ -105,6 +120,6 @@ class Project extends Model
      */
     public function delivery_status(): HasOne
     {
-        return $this->hasOne(ProjectDeliveryStatus::class, 'id','delivery_status_id');
+        return $this->hasOne(ProjectDeliveryStatus::class, 'id', 'delivery_status_id');
     }
 }

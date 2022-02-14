@@ -17,16 +17,16 @@ use Symfony\Component\HttpFoundation\Response;
  * Selections export endpoint.
  * @package Modules\Selection\Endpoints
  */
-class SelectionsExportEndpoint extends Controller
+final class SelectionsExportEndpoint extends Controller
 {
     /**
      * @param ExportSelectionRequest $request
-     * @param Selection $selection
+     * @param $selection_id
      * @return Responsable|Response
-     * @throws Exception
      */
-    public function __invoke(ExportSelectionRequest $request, Selection $selection): Responsable|Response
+    public function __invoke(ExportSelectionRequest $request, $selection_id): Responsable|Response
     {
+        $selection = Selection::withOrWithoutTrashed()->findOrFail($selection_id);
         return TkAuthorizedProject::byId(
             $selection->project_id,
             TkAuthorized::new(

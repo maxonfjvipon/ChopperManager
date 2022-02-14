@@ -11,6 +11,7 @@ import {MultipleSelection} from "../Shared/Inputs/MultipleSelection";
 import {PrimaryButton} from "../Shared/Buttons/PrimaryButton";
 import {ItemsForm} from "../Shared/ItemsForm";
 import {FilePdfOutlined} from "@ant-design/icons";
+import {InputNum} from "../Shared/Inputs/InputNum";
 
 export const usePumpInfo = () => {
     const [pumpInfoVisible, setPumpInfoVisible] = useState(false)
@@ -236,7 +237,7 @@ export const usePumpInfo = () => {
                     rules: [rules.required],
                     label: Lang.get('pages.pumps.add_to_projects.pumps_count'),
                     name: 'pumps_count',
-                }, input: <InputNumber style={fullWidth} max={5} min={1}/>
+                }, input: <InputNum style={fullWidth} max={5} min={1}/>
             }
         ].filter(Boolean)
 

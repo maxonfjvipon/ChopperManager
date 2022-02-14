@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Core\Entities\Project;
 use Modules\Core\Transformers\ShowProjectResource;
+use Modules\Selection\Entities\Selection;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,17 +19,18 @@ use Symfony\Component\HttpFoundation\Response;
 final class ProjectsShowEndpoint extends Controller
 {
     /**
-     * @param Project $project
+     * @param $project_id
      * @return Responsable|Response
      */
-    public function __invoke(Project $project): Responsable|Response
+    public function __invoke($project_id): Responsable|Response
     {
+        $project = Project::withOrWithoutTrashed()->findOrFail($project_id);
         return TkAuthorized::new(
             'project_show',
             TkAuthorized::new(
                 'selection_access',
-                TkAuthorizedProject::byProject(
-                    $project,
+                TkAuthorizedProject::byId(
+                    $project_id,
                     TkInertia::new(
                         "Core::Projects/Show",
                         fn() => ['project' => new ShowProjectResource($project)])

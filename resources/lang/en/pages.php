@@ -2,6 +2,61 @@
 
 return [
     'change_locale' => 'Change locale',
+    'statistics' => [
+        'title' => 'Statistics',
+        'projects' => [
+            'title' => 'By projects',
+            'full_title' => 'Statistics by projects',
+            'table' => [
+                'country' => 'Country',
+                'city' => 'City',
+                'created_at' => 'Created at',
+                'user_organization_name' => 'Client organization name',
+                'user_full_name' => 'Client full name',
+                'user_business' => "Client business",
+                'name' => 'Name',
+                'selections_count' => 'Selections count',
+                'retail_price' => 'Retail price',
+                'status' => 'Status',
+                'delivery_status' => 'Delivery status',
+                'comment' => 'Comment'
+            ],
+            'filters' => [
+                'search' => 'Project or client organization name',
+                'created_at' => 'Created at',
+                'selections_count' => 'Amount of selections',
+                'condition' => 'Condition',
+                'total_selections_price' => 'Total selections price',
+                'apply' => 'Apply',
+                'reset' => 'Reset'
+            ]
+        ],
+        'users' => [
+            'title' => 'By users',
+            'full_title' => 'Statistics by users',
+            'table' => [
+                'last_login_at' => 'Last logged in at',
+                'organization_name' => 'Organization name',
+                'full_name' => 'Full name',
+                'business' => "Main business",
+                'country' => 'Country',
+                'city' => 'City',
+                'projects_count' => 'Amount of projects',
+                'total_projects_price' => 'Total projects price',
+                'avg_projects_price' => 'Average projects price'
+            ],
+            'filters' => [
+                'search' => 'Full name or organization name',
+                'last_login_at' => 'Last activity date',
+                'projects_count' => 'Amount of projects',
+                'condition' => 'Condition',
+                'total_projects_price' => 'Total projects price',
+                'apply' => 'Apply',
+                'reset' => 'Reset'
+
+            ]
+        ]
+    ],
     'login' => [
         'welcome' => 'Welcome!',
         'email' => 'E-mail',
@@ -118,16 +173,7 @@ return [
         ],
         'statistics' => [
             'title' => 'Projects statistics',
-            'table' => [
-                'created_at' => 'Created at',
-                'client' => 'Client',
-                'name' => 'Name',
-                'selections_count' => 'Selections count',
-                'retail_price' => 'Retail price',
-                'status' => 'Status',
-                'delivery_status' => 'Delivery status',
-                'comment' => 'Comment'
-            ],
+
         ]
     ],
     'pump_brands' => [
@@ -538,23 +584,34 @@ return [
         'index' => [
             'table' => [
                 'created_at' => 'Created at',
-                'organization_name' => 'Name of the organization',
-                'main_business' => 'Main business',
-                'itn' => 'Individual taxpayer number',
                 'phone' => 'Phone',
+                'email' => 'E-mail',
+                'is_active' => 'Is active',
+                'organization_name' => 'Name of the organization',
+                'full_name' => 'Full name',
+                'business' => 'Main business',
                 'country' => 'Country',
                 'city' => 'City',
-                'postcode' => 'Postcode',
-                'currency' => 'Currency',
-                'full_name' => 'Full name',
-                'email' => 'E-mail',
-                'delete' => 'Are you sure you want to delete the user?'
+            ],
+            'search' => [
+                'placeholder' => 'Search by full name and organization '
             ],
             'button' => 'New user',
             'restore' => [
                 'title' => 'Restore user?',
                 'button' => 'Restore'
             ],
+            'statistics' => [
+                'discounts' => [
+                    'tab' => "Producer's discounts"
+                ],
+                'analytics' => [
+                    'tab' => 'Analytics'
+                ],
+                'projects' => [
+                    'tab' => 'Projects'
+                ]
+            ]
         ],
         'edit' => [
             'title' => 'Edit user',

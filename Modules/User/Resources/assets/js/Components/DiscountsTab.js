@@ -6,6 +6,7 @@ import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/RoundedCard";
 import {usePage} from "@inertiajs/inertia-react";
+import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 const EditableContext = React.createContext(null)
 
@@ -56,7 +57,7 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
                             className={"ant-form-item-reduced"}
                             name={dataIndex}
                         >
-                            <InputNumber
+                            <InputNum
                                 size="small"
                                 max={100}
                                 min={0}
@@ -78,8 +79,8 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
     )
 }
 
-export const DiscountsTab = () => {
-    const {discounts} = usePage().props
+export const DiscountsTab = ({userInfo}) => {
+    const {discounts} = userInfo || usePage().props
 
     const discountsForm = 'discounts-form'
     const tRoute = useTransRoutes()
@@ -96,7 +97,7 @@ export const DiscountsTab = () => {
             title: Lang.get('pages.profile.discounts.discount'),
             dataIndex: 'value',
             key: 'discount',
-            editable: true,
+            editable: !!!userInfo,
         }
     ].map(col => {
         return {

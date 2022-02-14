@@ -5,6 +5,7 @@ namespace Modules\Auth\Endpoints;
 use App\Takes\TkRedirectedRoute;
 use App\Http\Controllers\Controller;
 use App\Support\Take;
+use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -24,12 +25,16 @@ final class LoginAttemptEndpoint extends Controller
     /**
      * @param LoginRequest $request
      * @return Responsable|Response
-     * @throws ValidationException
      */
     public function __invoke(LoginRequest $request): Responsable|Response
     {
-        $request->authenticate(Tenant::current()->guard);
-        $request->session()->regenerate();
-        return TkRedirectedRoute::new('projects.index')->act();
+        return TkWithCallback::new(
+            function () use ($request) {
+                $request->authenticate(Tenant::current()->guard);
+                $request->session()->regenerate();
+            },
+            TkRedirectedRoute::new('projects.index')
+        )->act($request);
+
     }
 }

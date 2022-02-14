@@ -11,5 +11,7 @@ return [
     'print' => 'Print',
     'delete' => 'Delete',
     'clone' => 'Clone',
-    'save' => 'Save'
+    'save' => 'Save',
+    'statistics' => 'Statistics',
+    'detail' => 'Detail'
 ];

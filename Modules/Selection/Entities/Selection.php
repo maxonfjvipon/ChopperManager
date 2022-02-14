@@ -2,10 +2,10 @@
 
 namespace Modules\Selection\Entities;
 
+use App\Traits\WithOrWithoutTrashed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
 use Modules\Core\Support\Rates;
 use Modules\Selection\Traits\WithSelectionAttributes;
 use Modules\Selection\Traits\WithSelectionCurves;
@@ -14,7 +14,8 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 class Selection extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, WithSelectionRelationships, WithSelectionAttributes, WithSelectionCurves;
+    use HasFactory, SoftDeletes, UsesTenantConnection, WithSelectionRelationships, WithSelectionAttributes,
+        WithSelectionCurves, WithOrWithoutTrashed;
 
     public $timestamps = false;
     protected $guarded = [];
@@ -31,6 +32,16 @@ class Selection extends Model
     ];
 
     /**
+     * @param Rates $rates
+     * @return float|int
+     */
+    public function totalRetailPrice(Rates $rates): float|int
+    {
+        return $this->pump->retailPrice($rates) * $this->total_pumps_count;
+
+    }
+
+    /**
      * Calc pump prices (simple and discounted) and set them as attributes
      * @param Rates $rates
      * @return $this
@@ -38,10 +49,10 @@ class Selection extends Model
     public function withPrices(Rates $rates): self
     {
         $pump_prices = $this->pump->currentPrices($rates);
-        $this->{'discounted_price'} = round($pump_prices['discounted'], 1) ?? null;
-        $this->{'total_discounted_price'} = round($pump_prices['discounted'] * $this->total_pumps_count, 1) ?? null;
-        $this->{'retail_price'} = round($pump_prices['simple'], 1) ?? null;
-        $this->{'total_retail_price'} = round($pump_prices['simple'] * $this->total_pumps_count, 1) ?? null;
+        $this->{'discounted_price'} = $pump_prices['discounted'];
+        $this->{'total_discounted_price'} = $pump_prices['discounted'] * $this->total_pumps_count;
+        $this->{'retail_price'} = $pump_prices['simple'];
+        $this->{'total_retail_price'} = $pump_prices['simple'] * $this->total_pumps_count;
         return $this;
     }
 

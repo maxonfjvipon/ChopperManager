@@ -5,12 +5,7 @@ namespace Modules\Selection\Endpoints;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
-use App\Support\Take;
-use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Modules\Core\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
@@ -26,12 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
 final class SelectionsShowEndpoint extends Controller
 {
     /**
-     * @param Selection $selection
+     * @param $selection_id
      * @return Responsable|Response
-     * @throws Exception
      */
-    public function __invoke(Selection $selection): Responsable|Response
+    public function __invoke($selection_id): Responsable|Response
     {
+        $selection = Selection::withOrWithoutTrashed()->findOrFail($selection_id);
         return TkAuthorizedProject::byId(
             $selection->project_id,
             TkAuthorized::new(

@@ -87,7 +87,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'weight',
                 label: Lang.get('pages.pumps.data.weight'),
-                initialValue: pumpInfo?.weight,
+                initialValue: pumpInfo?.weight.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -98,7 +98,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'rated_power',
                 label: Lang.get('pages.pumps.data.rated_power'),
-                initialValue: pumpInfo?.rated_power,
+                initialValue: pumpInfo?.rated_power.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -109,7 +109,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'rated_current',
                 label: Lang.get('pages.pumps.data.rated_current'),
-                initialValue: pumpInfo?.rated_current,
+                initialValue: pumpInfo?.rated_current.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}

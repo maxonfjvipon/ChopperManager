@@ -2,11 +2,13 @@
 
 namespace Modules\Core\Transformers;
 
+use App\Support\FormattedPrice;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Modules\Core\Support\Rates;
-use Modules\Pump\Entities\Pump;
+use Modules\Selection\Entities\Selection;
 
 class ShowProjectResource extends JsonResource
 {
@@ -15,42 +17,33 @@ class ShowProjectResource extends JsonResource
      *
      * @param Request $request
      * @return array
+     * @throws Exception
      */
     public function toArray($request): array
     {
         $rates = Rates::new(); // fixme
 
         // TODO: make selections
-
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'selections' => $this->selections()->with([
-                'pump' => function ($query) {
-                    $query->select('id', 'name', 'rated_power', 'series_id', 'article_num_main', 'pumpable_type');
-                },
-                'pump.price_list',
-                'pump.price_list.currency',
-                'pump.series',
-                'pump.series.discount',
-                'pump.brand',
-                'pump.brand.discount'
-            ])
-                ->get(['pump_id', 'selected_pump_name', 'pumps_count', 'head', 'flow', 'id', 'created_at'])
-                ->map(function ($selection) use ($rates) {
-                    $pump_price_list = null;
-                    $pump_price = null;
-                    $discounted_pump_price = null;
-                    if ($selection->pump->price_list) {
-                        $pump_price = $selection->pump->price_list->currency->code === $rates->base()
-                            ? $selection->pump->price_list->price
-                            : round($selection->pump->price_list->price / $rates->rate($selection->pump->price_list->currency->code), 2);
-                        $discount = $selection->pump->series->discount
-                            ? $selection->pump->series->discount->value
-                            : 0;
-                        $discounted_pump_price = $pump_price - $pump_price * $discount / 100;
-                    }
-
+            'selections' => ArrMapped::new(
+                [...Selection::withOrWithoutTrashed()
+                    ->whereProjectId($this->id)
+                    ->with([
+                        'pump' => function ($query) {
+                            $query->select('id', 'name', 'rated_power', 'series_id', 'article_num_main', 'pumpable_type');
+                        },
+                        'pump.price_list',
+                        'pump.price_list.currency',
+                        'pump.series',
+                        'pump.series.auth_discount',
+                        'pump.brand',
+                        'pump.brand.discount'
+                    ])
+                    ->get(['pump_id', 'selected_pump_name', 'pumps_count', 'head', 'flow', 'id', 'created_at'])],
+                function (Selection $selection) use ($rates) {
+                    $selection = $selection->withPrices($rates);
                     return [
                         'id' => $selection->id,
                         'pump_id' => $selection->pump->id,
@@ -59,13 +52,14 @@ class ShowProjectResource extends JsonResource
                         'flow' => $selection->flow,
                         'head' => $selection->head,
                         'selected_pump_name' => $selection->selected_pump_name,
-                        'discounted_price' => round($discounted_pump_price, 1) ?? null,
-                        'total_discounted_price' => round($discounted_pump_price * $selection->total_pumps_count, 1) ?? null,
+                        'discounted_price' => round($selection->discounted_price, 2),
+                        'total_discounted_price' => round($selection->total_discounted_price, 2),
                         'rated_power' => $selection->pump_rated_power,
                         'total_rated_power' => $selection->total_rated_power,
                         'pumpable_type' => $selection->pump_type
                     ];
-                })->all(),
+                }
+            )->asArray()
         ];
     }
 }
