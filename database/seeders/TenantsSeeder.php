@@ -51,6 +51,12 @@ class TenantsSeeder extends Seeder
                     ['permission_id' => $pr1->id, 'role_id' => 2],
                     ['permission_id' => $pr2->id, 'role_id' => 1],
                     ['permission_id' => $pr2->id, 'role_id' => 2],
+                    ['permission_id' => 11, 'role_id' => 2], // user edit
+                    ['permission_id' => 50, 'role_id' => 2], // price list import
+                    ['permission_id' => 51, 'role_id' => 2], // pump import
+                    ['permission_id' => 52, 'role_id' => 2], // pump import media
+                    ['permission_id' => 54, 'role_id' => 2], // series import
+                    ['permission_id' => 55, 'role_id' => 2], // series import media
                 ]);
 
             DB::table($tenant->database . '.users')->whereNull('last_login_at')->update([

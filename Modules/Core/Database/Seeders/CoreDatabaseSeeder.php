@@ -82,6 +82,7 @@ class CoreDatabaseSeeder extends Seeder
                 'user_access',
                 'user_create',
                 'user_show',
+                'user_edit',
                 'user_statistics',
 
                 'project_access',
@@ -100,6 +101,9 @@ class CoreDatabaseSeeder extends Seeder
                 'pump_edit',
                 'pump_delete',
                 'pump_restore',
+                'pump_import',
+                'pump_import_media',
+                'price_list_import',
 
                 'selection_access',
                 'selection_create',
@@ -123,6 +127,8 @@ class CoreDatabaseSeeder extends Seeder
                 'series_edit',
                 'series_delete',
                 'series_restore',
+                'series_import',
+                'series_import_media'
             ];
 
             foreach ($adminPermissions as $permission) {
