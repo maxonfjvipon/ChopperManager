@@ -104,7 +104,8 @@ class Pump extends Model
                 : round($this->price_list->price / $rates->rate($this->price_list->currency->code));
             return [
                 'simple' => $price,
-                'discounted' => $price - $price * ($this->series->discount->value ?? 0) / 100
+                'discounted' => $price - $price * ($this->series->auth_discount->value
+                        ?? $this->series->discount->value ?? 0) / 100
             ];
         }
         return [
