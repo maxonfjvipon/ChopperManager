@@ -18,6 +18,7 @@ import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook
 import {PrimaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import moment from "moment";
 import {SecondaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton";
+import {InputNum} from "../../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 const EditableCell = ({
                           editing,
@@ -323,7 +324,7 @@ export default function Statistics() {
                             </Col>
                             <Col xs={12}>
                                 <Form.Item name='selections_count' className={reducedAntFormItemClassName}>
-                                    <InputNumber
+                                    <InputNum
                                         min={0}
                                         style={fullWidth}
                                         placeholder={Lang.get('pages.statistics.projects.filters.selections_count')}
@@ -356,7 +357,7 @@ export default function Statistics() {
                             </Col>
                             <Col xs={12}>
                                 <Form.Item name='selections_price' className={reducedAntFormItemClassName}>
-                                    <InputNumber
+                                    <InputNum
                                         min={0}
                                         style={fullWidth}
                                         placeholder={Lang.get('pages.statistics.projects.filters.total_selections_price')}

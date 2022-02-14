@@ -13317,13 +13317,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _resources_js_src_Shared_SearchInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/SearchInput */ "./resources/js/src/Shared/SearchInput.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/date-picker/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/date-picker/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
@@ -13343,7 +13342,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_18__);
 /* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _excluded = ["editing", "dataIndex", "title", "record", "index", "children", "options"];
 
 
@@ -13404,6 +13404,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 var EditableCell = function EditableCell(_ref) {
   var editing = _ref.editing,
       dataIndex = _ref.dataIndex,
@@ -13414,19 +13415,19 @@ var EditableCell = function EditableCell(_ref) {
       options = _ref.options,
       restProps = _objectWithoutProperties(_ref, _excluded);
 
-  var inputNode = dataIndex === 'comment' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].TextArea, {
+  var inputNode = dataIndex === 'comment' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].TextArea, {
     autoSize: {
       maxRows: 6
     }
-  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
+  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
     options: options
   });
 
   var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_15__.useInputRules)(),
       rules = _useInputRules.rules;
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("td", _objectSpread(_objectSpread({}, restProps), {}, {
-    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("td", _objectSpread(_objectSpread({}, restProps), {}, {
+    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
       name: dataIndex,
       style: {
         margin: 0
@@ -13477,11 +13478,11 @@ function Statistics() {
 
   var searchId = 'project-search-input';
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_22__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_23__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
 
-  var _Form$useForm3 = antd__WEBPACK_IMPORTED_MODULE_22__["default"].useForm(),
+  var _Form$useForm3 = antd__WEBPACK_IMPORTED_MODULE_23__["default"].useForm(),
       _Form$useForm4 = _slicedToArray(_Form$useForm3, 1),
       filtersForm = _Form$useForm4[0];
 
@@ -13497,7 +13498,7 @@ function Statistics() {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.table.name'),
     dataIndex: 'name',
     render: function render(text) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         placement: "topLeft",
         title: text,
         children: text
@@ -13589,7 +13590,7 @@ function Statistics() {
     dataIndex: 'comment',
     editable: true,
     render: function render(_, record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].TextArea, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].TextArea, {
         readOnly: true,
         bordered: false,
         value: record.comment,
@@ -13603,12 +13604,12 @@ function Statistics() {
     width: '1%',
     render: function render(_, record) {
       var editing = isEditing(record);
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_9__.TableActionsContainer, {
-        children: [has('project_show') && !editing && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_10__.View, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_9__.TableActionsContainer, {
+        children: [has('project_show') && !editing && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_10__.View, {
           clickHandler: showProjectHandler(record.id)
-        }), has('project_edit') && editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_13__.Save, {
+        }), has('project_edit') && editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_13__.Save, {
           clickHandler: saveProjectHandler(record)
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_11__.Edit, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_11__.Edit, {
           clickHandler: editProjectHandler(record)
         })]
       });
@@ -13634,7 +13635,7 @@ function Statistics() {
   });
 
   var selection = function selection(options, value) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
       options: options,
       value: value,
       open: false,
@@ -13767,49 +13768,49 @@ function Statistics() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     filterProjectsHandler();
   }, [_projects]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.full_title'),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
       layout: "vertical",
       form: filtersForm,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
         gutter: 10,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 4,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
             className: reducedAntFormItemClassName,
             name: "search",
             label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.search'),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               allowClear: true,
               placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.search'),
               onPressEnter: filterProjectsHandler
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 3,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
             className: reducedAntFormItemClassName,
             name: "created_at",
             label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.created_at'),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"].RangePicker, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"].RangePicker, {
               style: fullWidth,
               allowEmpty: [true, true]
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 3,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
             gutter: [10, 0],
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 24,
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.selections_count')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 12,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
                 name: "selections_count_condition",
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
                   style: fullWidth,
                   options: [{
                     id: ">=",
@@ -13828,12 +13829,12 @@ function Statistics() {
                   }
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 12,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
                 name: "selections_count",
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_20__.InputNum, {
                   min: 0,
                   style: fullWidth,
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.selections_count')
@@ -13841,19 +13842,19 @@ function Statistics() {
               })
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 3,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
             gutter: [10, 0],
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 24,
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.total_selections_price')
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 12,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
                 name: "selections_price_condition",
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_14__.Selection, {
                   style: fullWidth,
                   options: [{
                     id: ">=",
@@ -13872,12 +13873,12 @@ function Statistics() {
                   }
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
               xs: 12,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
                 name: "selections_price",
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_20__.InputNum, {
                   min: 0,
                   style: fullWidth,
                   placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.total_selections_price')
@@ -13885,23 +13886,23 @@ function Statistics() {
               })
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 2,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
             name: "apply",
             className: reducedAntFormItemClassName,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_17__.PrimaryButton, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_17__.PrimaryButton, {
               style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
               onClick: filterProjectsHandler,
               children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.statistics.projects.filters.apply')
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
           xs: 2,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Item, {
             name: "clear",
             className: reducedAntFormItemClassName,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_19__.SecondaryButton, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_19__.SecondaryButton, {
               style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
               onClick: function onClick() {
                 filtersForm.resetFields();
@@ -13912,11 +13913,11 @@ function Statistics() {
           })
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
       style: margin.all("5px 0 5px")
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
       form: form,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
         components: {
           body: {
             cell: EditableCell
@@ -14537,6 +14538,52 @@ var RoundedCard = function RoundedCard(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread(_objectSpread({
     className: "rounded-card " + className
   }, rest), {}, {
+    children: children
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Inputs/InputNum.js":
+/*!****************************************************!*\
+  !*** ./resources/js/src/Shared/Inputs/InputNum.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "InputNum": () => (/* binding */ InputNum)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["children"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var InputNum = function InputNum(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({}, rest), {}, {
+    formatter: function formatter(value) {
+      return value.replace(',', '.');
+    },
+    parser: function parser(value) {
+      return value.replace(',', '.');
+    },
     children: children
   }));
 };

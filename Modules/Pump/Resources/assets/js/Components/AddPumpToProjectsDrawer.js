@@ -9,6 +9,7 @@ import {usePage} from "@inertiajs/inertia-react";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
+import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 export const AddPumpsToProjectsDrawer = ({pumpInfo, visible, setVisible}) => {
     const {rules} = useInputRules()
@@ -39,7 +40,7 @@ export const AddPumpsToProjectsDrawer = ({pumpInfo, visible, setVisible}) => {
                 rules: [rules.required],
                 label: Lang.get('pages.pumps.add_to_projects.pumps_count'),
                 name: 'pumps_count',
-            }, input: <InputNumber style={fullWidth} max={5} min={1}/>
+            }, input: <InputNum style={fullWidth} max={5} min={1}/>
         }
     ].filter(Boolean)
 

@@ -22,8 +22,8 @@ import {useForm} from "antd/es/form/Form";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {usePumpableType} from "../../../../../../resources/js/src/Hooks/pumpable_type.hook";
-import {usePumpInfo} from "../../../../../../resources/js/src/Hooks/pump_info.hook";
 import {PumpPropsDrawer} from "../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer";
+import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 export const Selection = ({pageTitle, widths}) => {
     // HOOKS
@@ -541,7 +541,7 @@ export const Selection = ({pageTitle, widths}) => {
                                             <span>{Lang.get('pages.selections.single_pump.temp_tooltip.orange')}</span>
                                         </>}
                                     >
-                                        <InputNumber
+                                        <InputNum
                                             disabled={fieldsDisabled}
                                             style={fullWidth}
                                             min={-50}
@@ -622,7 +622,7 @@ export const Selection = ({pageTitle, widths}) => {
                                         initialValue={selection?.data.flow}
                                         className={reducedAntFormItemClassName}
                                     >
-                                        <InputNumber
+                                        <InputNum
                                             placeholder={Lang.get('pages.selections.single_pump.consumption')}
                                             style={fullWidth}
                                             min={0}
@@ -639,7 +639,7 @@ export const Selection = ({pageTitle, widths}) => {
                                         initialValue={selection?.data.head}
                                         className={reducedAntFormItemClassName}
                                     >
-                                        <InputNumber
+                                        <InputNum
                                             placeholder={Lang.get('pages.selections.single_pump.pressure')}
                                             style={fullWidth}
                                             min={0}
@@ -657,7 +657,7 @@ export const Selection = ({pageTitle, widths}) => {
                                         className={reducedAntFormItemClassName}
                                         tooltip={Lang.get('pages.selections.single_pump.deviation_tooltip')}
                                     >
-                                        <InputNumber
+                                        <InputNum
                                             placeholder={Lang.get('pages.selections.single_pump.deviation')}
                                             style={fullWidth}
                                             min={-50}

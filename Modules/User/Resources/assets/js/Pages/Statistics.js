@@ -15,6 +15,7 @@ import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/P
 import {SecondaryButton} from "../../../../../../resources/js/src/Shared/Buttons/SecondaryButton";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import moment from "moment";
+import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 export default function Statistics() {
     // HOOKS
@@ -198,7 +199,7 @@ export default function Statistics() {
                                 </Col>
                                 <Col xs={12}>
                                     <Form.Item name='projects_count' className={reducedAntFormItemClassName}>
-                                        <InputNumber
+                                        <InputNum
                                             min={0}
                                             style={fullWidth}
                                             placeholder={Lang.get('pages.statistics.users.filters.projects_count')}
@@ -231,7 +232,7 @@ export default function Statistics() {
                                 </Col>
                                 <Col xs={12}>
                                     <Form.Item name='total_projects_price' className={reducedAntFormItemClassName}>
-                                        <InputNumber
+                                        <InputNum
                                             min={0}
                                             style={fullWidth}
                                             placeholder={Lang.get('pages.statistics.users.filters.total_projects_price')}

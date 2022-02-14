@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {BoxFlexEnd} from "../../../../../../resources/js/src/Shared/Box/BoxFlexEnd";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
+import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
 
 const ConditionSelectionFormItem = ({options, initialValue = null, name, disabled}) => {
     const {fullWidth} = useStyles()
@@ -139,7 +140,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     name="power_limit_value"
                                     initialValue={selection?.data.power_limit_value}
                                 >
-                                    <InputNumber
+                                    <InputNum
                                         disabled={!limitChecks.power}
                                         style={fullWidth}
                                         placeholder={Lang.get('pages.selections.single_pump.power')}
@@ -180,7 +181,7 @@ export const FiltersDrawer = ({form, setUseAdditionalFilters, selection, selecti
                                     name="ptp_length_limit_value"
                                     initialValue={selection?.data.ptp_length_limit_value}
                                 >
-                                    <InputNumber
+                                    <InputNum
                                         disabled={!limitChecks.ptpLength}
                                         style={fullWidth}
                                         placeholder={Lang.get('pages.selections.single_pump.ptp_length')}
