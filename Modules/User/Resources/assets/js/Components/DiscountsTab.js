@@ -57,7 +57,7 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
                             className={"ant-form-item-reduced"}
                             name={dataIndex}
                         >
-                            <InputNum
+                            <InputNumber
                                 size="small"
                                 max={100}
                                 min={0}
@@ -65,6 +65,8 @@ const EditableCell = ({editable, title, dataIndex, record, children, handleSave,
                                 ref={inputRef}
                                 onPressEnter={save}
                                 onBlur={save}
+                                formatter={value => value.replace(',', '.')}
+                                parser={value => value.replace(',', '.')}
                             />
                         </Form.Item>
                     )
