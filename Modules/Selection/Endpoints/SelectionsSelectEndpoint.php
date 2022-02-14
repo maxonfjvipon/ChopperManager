@@ -67,7 +67,8 @@ final class SelectionsSelectEndpoint extends Controller
                                                 && $request->flow <= $qEnd
                                                 && $intersectionPoint->x() >= $qStart + ($qEnd - $qStart) * $rStart
                                                 && $intersectionPoint->x() <= $qEnd - ($qEnd - $qStart) * $rEnd
-                                                && $intersectionPoint->y() >= $request->head + $request->head * ($request->deviation ?? 0 / 100)
+                                                && $intersectionPoint->y() >= $request->head + $request->head
+                                                * (($request->deviation ?? 0) / 100)
                                             ) {
                                                 $pumpPrice = $pump->currentPrices($rates);
                                                 $pumpsCount = $request->pumps_count
