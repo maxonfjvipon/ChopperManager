@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.SSHKEY_COM }}
           script: |
             cd /var/www/html/
-            git pull git@github.com:maxonfjvipon/pump-manager.git
+            git pull origin master
 
       - name: Stoping the application
         uses: appleboy/ssh-action@master
