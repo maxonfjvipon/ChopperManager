@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.SSHKEY_COM }}
           script: |
             cd /var/www/html/
-            git pull origin master
+            git pull
 
       - name: Stoping the application
         uses: appleboy/ssh-action@master
