@@ -52,8 +52,8 @@ class ShowProjectResource extends JsonResource
                         'flow' => $selection->flow,
                         'head' => $selection->head,
                         'selected_pump_name' => $selection->selected_pump_name,
-                        'discounted_price' => $selection->discounted_price,
-                        'total_discounted_price' => $selection->total_discounted_price,
+                        'discounted_price' => round($selection->discounted_price, 2),
+                        'total_discounted_price' => round($selection->total_discounted_price, 2),
                         'rated_power' => $selection->pump_rated_power,
                         'total_rated_power' => $selection->total_rated_power,
                         'pumpable_type' => $selection->pump_type
