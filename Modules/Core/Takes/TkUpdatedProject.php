@@ -59,10 +59,7 @@ final class TkUpdatedProject implements Take
         return TkWithCallback::new(
             function () use ($request) {
                 $this->project->update($request->validated());
-                if (Disjunction::new(
-                    EqualityOf::new($this->project->status_id, 4),
-                    EqualityOf::new($this->project->status_id, 3)
-                )->asBool()) {
+                if (in_array($this->project->status_id, [3, 4])) {
                     if (!$this->project->trashed())
                         $this->project->delete();
                 } else

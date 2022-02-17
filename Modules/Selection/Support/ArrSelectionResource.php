@@ -12,7 +12,7 @@ use Modules\Selection\Transformers\SelectionResources\SinglePumpSelectionResourc
  * Selection resource as arrayable.
  * @package Modules\Selection\Support
  */
-class ArrSelectionResource implements Arrayable
+final class ArrSelectionResource implements Arrayable
 {
     /**
      * @var Selection

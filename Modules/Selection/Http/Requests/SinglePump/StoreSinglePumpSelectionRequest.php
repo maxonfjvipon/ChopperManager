@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\SinglePump;
 
 use Modules\Selection\Http\Requests\SelectionRequest;
 
-class StoreSinglePumpSelectionRequest extends SelectionRequest
+final class StoreSinglePumpSelectionRequest extends SelectionRequest
 {
     protected function prepareForValidation()
     {

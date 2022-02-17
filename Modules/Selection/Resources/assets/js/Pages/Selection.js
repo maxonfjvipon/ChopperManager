@@ -363,20 +363,19 @@ export const Selection = ({pageTitle, widths}) => {
     useEffect(() => {
         if (stationToShow) {
             if (chosenSelectedPumps[stationToShow.key]?.svg === undefined) {
-                const body = {
-                    pump_id: stationToShow.pump_id,
-                    head: stationToShow.head,
-                    flow: stationToShow.flow,
-                    dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
-                    pumps_count: stationToShow.pumps_count || undefined,
-                    main_pumps_count: stationToShow.main_pumps_count || undefined,
-                    pumpable_type: pumpableType(),
-                }
                 try {
                     axios.request({
                         url: tRoute('selections.curves'),
                         method: 'POST',
-                        data: body,
+                        data: {
+                            pump_id: stationToShow.pump_id,
+                            head: stationToShow.head,
+                            flow: stationToShow.flow,
+                            dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
+                            pumps_count: stationToShow.pumps_count || undefined,
+                            main_pumps_count: stationToShow.main_pumps_count || undefined,
+                            pumpable_type: pumpableType(),
+                        },
                     }).then(res => {
                         document.getElementById('for-graphic').innerHTML = res.data
                         chosenSelectedPumps[stationToShow.key] = {
@@ -408,12 +407,9 @@ export const Selection = ({pageTitle, widths}) => {
                 pump_info: data
             }
         } else {
-            // console.log(pumpInfo, stationToShow, chosenSelectedPumps)
             if (pumpInfo.id === stationToShow.pump_id) {
-                // console.log('equal')
                 setPumpInfoVisible(true)
             } else {
-                // console.log('new')
                 setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info)
             }
         }
@@ -828,8 +824,8 @@ export const Selection = ({pageTitle, widths}) => {
                 <Space size={8}>
                     <SecondaryButton onClick={() => {
                         Inertia.get(tRoute(project_id !== '-1'
-                            ? 'projects.show'
-                            : 'projects.index',
+                                ? 'projects.show'
+                                : 'projects.index',
                             project_id))
                     }}>
                         {Lang.get('pages.selections.single_pump.exit')}

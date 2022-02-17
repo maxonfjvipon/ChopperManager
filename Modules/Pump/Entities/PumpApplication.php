@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpApplication extends Model
+/**
+ * Pump application.
+ */
+final class PumpApplication extends Model
 {
     use HasTranslations, UsesTenantConnection, Cached;
 

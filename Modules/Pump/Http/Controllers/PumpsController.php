@@ -3,6 +3,7 @@
 namespace Modules\Pump\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Support\TenantStorage;
 use Box\Spout\Common\Exception\IOException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Redirect;
 use Modules\AdminPanel\Entities\Tenant;
 use Modules\Core\Http\Requests\FilesUploadRequest;
 use Modules\Core\Http\Requests\MediaUploadRequest;
-use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Actions\ImportPumps\ImportPumpsAction;
 use Modules\Pump\Actions\ImportPumpsPriceListsAction;
 use Illuminate\Auth\Access\AuthorizationException;

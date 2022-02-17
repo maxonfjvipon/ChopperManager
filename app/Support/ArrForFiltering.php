@@ -10,7 +10,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
  * @see https://ant.design/components/table/#components-table-demo-head
  * @package App\Support
  */
-class ArrForFiltering implements Arrayable
+final class ArrForFiltering implements Arrayable
 {
     /**
      * @var array|Arrayable $data;

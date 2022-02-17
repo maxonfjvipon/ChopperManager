@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Core\Entities\Currency;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpsPriceList extends Model
+/**
+ * Pumps price list
+ * @property Currency $currency
+ * @property float $price
+ */
+final class PumpsPriceList extends Model
 {
     use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 

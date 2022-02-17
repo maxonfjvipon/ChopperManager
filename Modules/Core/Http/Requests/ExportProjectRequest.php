@@ -7,14 +7,13 @@ use App\Rules\ExistsInIdsArray;
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Selection\Entities\Selection;
 
-class ExportProjectRequest extends FormRequest
+final class ExportProjectRequest extends FormRequest
 {
     protected function prepareForValidation()
     {
         $this->merge([
             'retail_price' => filter_var($this->retail_price, FILTER_VALIDATE_BOOLEAN),
             'personal_price' => filter_var($this->personal_price, FILTER_VALIDATE_BOOLEAN),
-//            'pump_info' => filter_var($this->pump_info, FILTER_VALIDATE_BOOLEAN),
             'pump_image' => filter_var($this->pump_image, FILTER_VALIDATE_BOOLEAN),
             'pump_sizes_image' => filter_var($this->pump_sizes_image, FILTER_VALIDATE_BOOLEAN),
             'pump_electric_diagram_image' => filter_var($this->pump_electric_diagram_image, FILTER_VALIDATE_BOOLEAN),
@@ -33,7 +32,6 @@ class ExportProjectRequest extends FormRequest
             'selection_ids' => ['required', 'array'], // todo: every item should exists in database
             'retail_price' => ['required', 'boolean'],
             'personal_price' => ['required', 'boolean'],
-//            'pump_info' => ['required', 'boolean'],
             'pump_image' => ['required', 'boolean'],
             'pump_sizes_image' => ['required', 'boolean'],
             'pump_electric_diagram_image' => ['required', 'boolean'],

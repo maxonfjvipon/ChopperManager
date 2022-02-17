@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class ProjectStatus extends Model
+/**
+ * Project status.
+ */
+final class ProjectStatus extends Model
 {
     use HasFactory, UsesTenantConnection, HasTranslations, Cached;
 
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
     protected $fillable = ['name'];
     public $timestamps = false;
 

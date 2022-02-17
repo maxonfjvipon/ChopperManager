@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\SinglePump;
 
 use Modules\Selection\Http\Requests\MakeSelectionRequest;
 
-class MakeSinglePumpSelectionRequest extends MakeSelectionRequest
+final class MakeSinglePumpSelectionRequest extends MakeSelectionRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,11 +16,11 @@ class MakeSinglePumpSelectionRequest extends MakeSelectionRequest
         return [
             'series_ids' => ['required', 'array'],
 
-            'main_pumps_counts' => ['required', 'array'],
-            'reserve_pumps_count' => ['required', 'integer'],
             'head' => ['required', 'numeric', 'min:0', 'not_in:0'],
             'flow' => ['required', 'numeric', 'min:0', 'not_in:0'],
             'deviation' => ['sometimes', 'nullable', 'numeric', 'min:-50', 'max:50'],
+            'main_pumps_counts' => ['required', 'array'],
+            'reserve_pumps_count' => ['required', 'integer'],
             'fluid_temperature' => ['required', 'numeric'],
             'range_id' => ['required', 'exists:tenant.selection_ranges,id'], // fixme
             'custom_range' => ['required', 'array'],

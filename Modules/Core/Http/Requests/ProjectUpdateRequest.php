@@ -2,8 +2,20 @@
 
 namespace Modules\Core\Http\Requests;
 
-class ProjectUpdateRequest extends ProjectStoreRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+final class ProjectUpdateRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     /**
      * @return string[][]
      */

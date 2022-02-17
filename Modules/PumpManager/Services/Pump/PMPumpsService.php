@@ -34,7 +34,6 @@ class PMPumpsService extends PumpsService
                 ->pluck('pump_brands.name')
                 ->all(),
             'series' => $availableSeries->pluck('name')->all(),
-//            'categories' => PumpCategory::pluck('name')->all(),
             'connections' => ConnectionType::pluck('name')->all(),
             'dns' => DN::pluck('value')->all(),
             'power_adjustments' => ElPowerAdjustment::pluck('name')->all(),

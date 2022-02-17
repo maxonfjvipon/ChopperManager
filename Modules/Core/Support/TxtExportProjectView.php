@@ -11,7 +11,7 @@ use Modules\Core\Entities\Project;
  * Export project view as {@Text}
  * @package Modules\Core\Support
  */
-class TxtExportProjectView implements Text
+final class TxtExportProjectView implements Text
 {
     /**
      * @var Project $project

@@ -12544,21 +12544,19 @@ var Selection = function Selection(_ref) {
       var _chosenSelectedPumps$;
 
       if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.key]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.svg) === undefined) {
-        var body = {
-          pump_id: stationToShow.pump_id,
-          head: stationToShow.head,
-          flow: stationToShow.flow,
-          dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
-          pumps_count: stationToShow.pumps_count || undefined,
-          main_pumps_count: stationToShow.main_pumps_count || undefined,
-          pumpable_type: pumpableType()
-        };
-
         try {
           axios.request({
             url: tRoute('selections.curves'),
             method: 'POST',
-            data: body
+            data: {
+              pump_id: stationToShow.pump_id,
+              head: stationToShow.head,
+              flow: stationToShow.flow,
+              dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
+              pumps_count: stationToShow.pumps_count || undefined,
+              main_pumps_count: stationToShow.main_pumps_count || undefined,
+              pumpable_type: pumpableType()
+            }
           }).then(function (res) {
             document.getElementById('for-graphic').innerHTML = res.data;
             chosenSelectedPumps[stationToShow.key] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.key]), {}, {
@@ -12607,12 +12605,9 @@ var Selection = function Selection(_ref) {
               break;
 
             case 9:
-              // console.log(pumpInfo, stationToShow, chosenSelectedPumps)
               if (pumpInfo.id === stationToShow.pump_id) {
-                // console.log('equal')
                 setPumpInfoVisible(true);
               } else {
-                // console.log('new')
                 setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info);
               }
 

@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\SinglePump;
 
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 
-class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
+final class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
 {
     protected function prepareForValidation()
     {

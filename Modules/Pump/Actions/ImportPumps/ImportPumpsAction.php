@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpCoefficients;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
@@ -88,18 +89,17 @@ class ImportPumpsAction
                             DB::table($database . '.pumps_and_coefficients')
                                 ->whereIn('pump_id', array_map(fn($pump) => $pump['id'], $pumps->toArray()))
                                 ->delete();
-                            $pumpsAndCoefficients = [];
+                            $coefficients = [];
                             foreach ($pumps as $pump) {
                                 if ($pump->coefficients->isEmpty()) {
                                     $count = $pump->coefficientsCount();
-                                    $pumpPerformance = PPumpPerformance::construct($pump);
                                     for ($pos = 1; $pos <= $count; ++$pos) {
-                                        $pumpsAndCoefficients[] = $pumpPerformance->coefficientsToCreate($pos);
+                                        $coefficients[] = PumpCoefficients::createdForPumpAtPosition($pump, $pos);
                                     }
                                 }
                             }
-                            if (!empty($pumpsAndCoefficients)) {
-                                DB::table($database . '.pumps_and_coefficients')->insert($pumpsAndCoefficients);
+                            if (!empty($coefficients)) {
+                                DB::table($database . '.pump_coefficients')->insert($coefficients);
                             }
                         });
                 }

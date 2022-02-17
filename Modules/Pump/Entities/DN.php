@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class DN extends Model
+/**
+ * DN
+ */
+final class DN extends Model
 {
     use HasFactory, UsesTenantConnection, Cached;
 

@@ -12,7 +12,7 @@ use Modules\Selection\Entities\Selection;
  * Export selection view as {@Text}
  * @package Modules\Selection\Takes
  */
-class TxtExportSelectionView implements Text
+final class TxtExportSelectionView implements Text
 {
     /**
      * @var Selection $selection

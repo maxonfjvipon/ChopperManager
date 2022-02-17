@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpType extends Model
+/**
+ * Pump type.
+ */
+final class PumpType extends Model
 {
     use HasTranslations, HasFactory, UsesTenantConnection, Cached;
 

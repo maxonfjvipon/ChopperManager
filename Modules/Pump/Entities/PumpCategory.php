@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Modules\Pump\Entities;
 
 use App\Traits\Cached;
@@ -8,7 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpCategory extends Model
+/**
+ * Pump category.
+ */
+final class PumpCategory extends Model
 {
     use HasTranslations, UsesTenantConnection, Cached;
 

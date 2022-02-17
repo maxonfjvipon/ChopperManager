@@ -10,7 +10,7 @@ use Modules\AdminPanel\Entities\Tenant;
 use Modules\PumpManager\Http\Requests\PMUpdateUserRequest;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class UserAndSelectionType extends Model
+final class UserAndSelectionType extends Model
 {
     use HasFactory, UsesTenantConnection, HasCompositePrimaryKey;
 

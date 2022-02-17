@@ -11,7 +11,7 @@ use Modules\AdminPanel\Entities\Tenant;
 use Modules\Pump\Entities\PumpBrand;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class Discount extends Model
+final class Discount extends Model
 {
     use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 

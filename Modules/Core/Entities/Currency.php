@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class Currency extends Model
+/**
+ * Currency.
+ * @property string $code
+ * @property string $name
+ * @property int $id
+ */
+final class Currency extends Model
 {
     use HasFactory, UsesTenantConnection, Cached;
 
@@ -19,7 +25,7 @@ class Currency extends Model
         return "currencies";
     }
 
-    public function getNameCodeAttribute()
+    public function getCodeNameAttribute(): string
     {
         return "{$this->code} / {$this->name}";
     }

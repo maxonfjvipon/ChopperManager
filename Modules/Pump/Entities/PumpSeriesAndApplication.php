@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\DB;
 use Modules\AdminPanel\Entities\Tenant;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpSeriesAndApplication extends Model
+/**
+ * Pump series application.
+ */
+final class PumpSeriesAndApplication extends Model
 {
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
+
     protected $guarded = [];
     public $timestamps = false;
     public $incrementing = false;
     protected $primaryKey = ['series_id', 'application_id'];
-    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 
     public static function createForSeries(PumpSeries $series, $applications)
     {

@@ -4,7 +4,6 @@ namespace Modules\Core\Takes;
 
 use App\Takes\TkAuthorized;
 use App\Support\Take;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Modules\Core\Entities\Project;
@@ -52,7 +51,7 @@ final class TkAuthorizedProject implements Take
      * @param string $project_id
      * @param Take $take
      */
-    private function __construct(string $project_id, Take $take)
+    public function __construct(string $project_id, Take $take)
     {
         $this->project_id = $project_id;
         $this->origin = $take;

@@ -11,14 +11,18 @@ use Modules\AdminPanel\Entities\Tenant;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
-class PumpSeriesAndType extends Model
+/**
+ * Pump series and type
+ */
+final class PumpSeriesAndType extends Model
 {
+    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection, UsesTenantModel;
+
     protected $table = 'pump_series_and_types';
     protected $primaryKey = ['series_id', 'type_id'];
     public $incrementing = false;
     protected $guarded = [];
     public $timestamps = false;
-    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection, UsesTenantModel;
 
     public static function createForSeries(PumpSeries $series, $types)
     {

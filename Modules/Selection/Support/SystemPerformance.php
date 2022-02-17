@@ -1,39 +1,50 @@
 <?php
 
-
 namespace Modules\Selection\Support;
 
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
 
-class SystemPerformance
+/**
+ * System performance.
+ */
+final class SystemPerformance implements Arrayable
 {
-    private static $instance;
-    private IntersectionPoint $intersectionPoint;
-    private $flow, $head;
+    /**
+     * @var float $flow
+     */
+    private float $flow;
 
-    private function __construct()
+    /**
+     * @var float $head
+     */
+    private float $head;
+
+    /**
+     * @var float $to
+     */
+    private float $to;
+
+    /**
+     * @var float $dist
+     */
+    private float $dist;
+
+    public function __construct($flow, $head, $to, $dist = 1)
     {
+        $this->flow = $flow;
+        $this->head = $head;
+        $this->to = $to;
+        $this->dist = $dist;
     }
 
-    public static function by($intersectionPoint, $flow, $head)
-    {
-        if (self::$instance === null) {
-            self::$instance = new self;
-        }
-        self::$instance->intersectionPoint = $intersectionPoint;
-        self::$instance->flow = $flow;
-        self::$instance->head = $head;
-        return self::$instance;
-    }
-
-    public function asLineData(): array
+    public function asArray(): array
     {
         $systemPerformance = [];
         $y = 0;
-        $dist = $this->intersectionPoint->x() < 50 ? 0.5 : 1;
-        for ($q = 0.1; $y < $this->intersectionPoint->y(); $q += $dist) {
-            $y = round($this->head / ($this->flow * $this->flow) * $q * $q, 1); // to fixed 1
+        for ($q = 0.1; $y < $this->to; $q += $this->dist) {
+            $y = $this->head / ($this->flow * $this->flow) * $q * $q;
             $systemPerformance[] = [
-                'x' => round($q, 1), // to fixed 1
+                'x' => $q,
                 'y' => $y
             ];
         }

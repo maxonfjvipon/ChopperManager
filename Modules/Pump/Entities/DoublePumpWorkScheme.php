@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class DoublePumpWorkScheme extends Model
+/**
+ * Double pump work scheme
+ */
+final class DoublePumpWorkScheme extends Model
 {
     use HasFactory, HasTranslations, UsesTenantConnection, Cached;
 

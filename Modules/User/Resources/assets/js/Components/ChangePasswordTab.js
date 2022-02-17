@@ -7,11 +7,13 @@ import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/P
 import {Col, Form, Input} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
+import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 
 export const ChangePasswordTab = () => {
     const {reducedAntFormItemClassName, margin} = useStyles()
     const changePasswordForm = 'change-password-form'
     const [changePwdForm] = Form.useForm()
+    const tRoute = useTransRoutes()
 
     const changePasswordHandler = body => {
         Inertia.post(tRoute('profile.password.change'), body, {

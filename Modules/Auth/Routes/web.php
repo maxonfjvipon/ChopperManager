@@ -12,11 +12,11 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Auth\Endpoints\LoginAttemptEndpoint;
-use Modules\Auth\Endpoints\LoginEndpoint;
-use Modules\Auth\Endpoints\LogoutEndpoint;
-use Modules\Auth\Endpoints\RegisterAttemptEndpoint;
-use Modules\Auth\Endpoints\RegisterEndpoint;
+use Modules\Auth\Http\Endpoints\LoginAttemptEndpoint;
+use Modules\Auth\Http\Endpoints\LoginEndpoint;
+use Modules\Auth\Http\Endpoints\LogoutEndpoint;
+use Modules\Auth\Http\Endpoints\RegisterAttemptEndpoint;
+use Modules\Auth\Http\Endpoints\RegisterEndpoint;
 use Modules\Auth\Http\Controllers\EmailVerificationController;
 
 Route::middleware('guest.module')->group(function () {

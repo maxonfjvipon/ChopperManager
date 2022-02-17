@@ -131,17 +131,11 @@ class UserServiceProvider extends ServiceProvider
         if (Tenant::checkCurrent())
             switch (Tenant::current()->type->id) {
                 case TenantType::$PUMPPRODUCER:
-                    $this->app->when(UsersController::class)
-                        ->needs(UsersServiceContract::class)
-                        ->give(PPUsersService::class);
                     $this->app->bind(CreateUserRequest::class, PPCreateUserRequest::class);
                     $this->app->bind(UpdateUserRequest::class, PPUpdateUserRequest::class);
                     $this->app->bind(UpdateProfileRequest::class, PPUpdateProfileRequest::class);
                     break;
                 default:
-                    $this->app->when(UsersController::class)
-                        ->needs(UsersServiceContract::class)
-                        ->give(PMUsersService::class);
                     $this->app->bind(CreateUserRequest::class, PMCreateUserRequest::class);
                     $this->app->bind(UpdateUserRequest::class, PMUpdateUserRequest::class);
                     $this->app->bind(UpdateProfileRequest::class, PMUpdateProfileRequest::class);

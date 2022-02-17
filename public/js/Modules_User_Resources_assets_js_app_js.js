@@ -10011,11 +10011,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10040,6 +10041,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var ChangePasswordTab = function ChangePasswordTab() {
   var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__.useStyles)(),
       reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
@@ -10047,9 +10049,11 @@ var ChangePasswordTab = function ChangePasswordTab() {
 
   var changePasswordForm = 'change-password-form';
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_9__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_10__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       changePwdForm = _Form$useForm2[0];
+
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_8__.useTransRoutes)();
 
   var changePasswordHandler = function changePasswordHandler(body) {
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia.post(tRoute('profile.password.change'), body, {
@@ -10064,14 +10068,14 @@ var ChangePasswordTab = function ChangePasswordTab() {
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.current_password'),
       rules: []
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
   }, {
     values: {
       name: 'password',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.new_password'),
       rules: []
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
   }, {
     values: {
       name: 'password_confirmation',
@@ -10079,14 +10083,14 @@ var ChangePasswordTab = function ChangePasswordTab() {
       rules: [],
       className: reducedAntFormItemClassName
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_1__.RoundedCard, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_1__.RoundedCard, {
       type: "inner",
       title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.cards.password'),
       style: margin.top(16),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
         form: changePwdForm,
         layout: "horizontal",
         labelSpan: {
@@ -10100,9 +10104,9 @@ var ChangePasswordTab = function ChangePasswordTab() {
         onFinish: changePasswordHandler,
         name: changePasswordForm
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_4__.BoxFlex, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Box_BoxFlex__WEBPACK_IMPORTED_MODULE_4__.BoxFlex, {
       style: margin.top(16),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__.PrimaryButton, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__.PrimaryButton, {
         htmlType: "submit",
         form: changePasswordForm,
         children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.profile.index.change_password')

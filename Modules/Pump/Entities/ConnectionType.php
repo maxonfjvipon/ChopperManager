@@ -11,7 +11,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
  * Connection type
  * @package Modules\Pump\Entities
  */
-class ConnectionType extends Model
+final class ConnectionType extends Model
 {
     use HasTranslations, UsesTenantConnection, Cached;
 

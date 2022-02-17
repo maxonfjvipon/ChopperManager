@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\DoublePump;
 
 use Modules\Selection\Http\Requests\SelectionRequest;
 
-class StoreDoublePumpSelectionRequest extends SelectionRequest
+final class StoreDoublePumpSelectionRequest extends SelectionRequest
 {
     /**
      * Get the validation rules that apply to the request.

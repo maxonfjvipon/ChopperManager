@@ -7,7 +7,7 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use TypeError;
 
-class FormattedPrice implements Text
+final class FormattedPrice implements Text
 {
     /**
      * @var float|int $price

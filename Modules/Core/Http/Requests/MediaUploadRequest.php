@@ -4,7 +4,7 @@ namespace Modules\Core\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MediaUploadRequest extends FormRequest
+final class MediaUploadRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

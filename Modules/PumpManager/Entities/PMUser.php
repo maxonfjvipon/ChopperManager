@@ -16,7 +16,7 @@ use Modules\User\Entities\Userable;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class PMUser extends Userable
+final class PMUser extends Userable
 {
     use HasRelationships;
 
@@ -44,7 +44,7 @@ class PMUser extends Userable
 
     protected static function booted()
     {
-        static::created(function (self $user) {
+        self::created(function (self $user) {
             UserAndPumpSeries::updateAvailableSeriesForUser(PumpSeries::pluck('id')->all(), $user);
             UserAndSelectionType::updateAvailableSelectionTypesForUser([1, 2], $user);
         });

@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\DoublePump;
 
 use Modules\Selection\Http\Requests\ExportAtOnceSelectionRequest;
 
-class ExportAtOnceDoublePumpSelectionRequest extends ExportAtOnceSelectionRequest
+final class ExportAtOnceDoublePumpSelectionRequest extends ExportAtOnceSelectionRequest
 {
     /**
      * Get the validation rules that apply to the request.

@@ -2,6 +2,6 @@
 
 namespace Modules\Core\Http\Requests;
 
-class CloneProjectRequest extends ProjectStoreRequest
+final class CloneProjectRequest extends ProjectStoreRequest
 {
 }

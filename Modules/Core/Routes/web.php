@@ -7,17 +7,17 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Core\Endpoints\ProjectsCloneEndpoint;
-use Modules\Core\Endpoints\ProjectsCreateEndpoint;
-use Modules\Core\Endpoints\ProjectsDestroyEndpoint;
-use Modules\Core\Endpoints\ProjectsEditEndpoint;
-use Modules\Core\Endpoints\ProjectsExportEndpoint;
-use Modules\Core\Endpoints\ProjectsIndexEndpoint;
-use Modules\Core\Endpoints\ProjectsRestoreEndpoint;
-use Modules\Core\Endpoints\ProjectsShowEndpoint;
-use Modules\Core\Endpoints\ProjectsStatisticsEndpoint;
-use Modules\Core\Endpoints\ProjectsStoreEndpoint;
-use Modules\Core\Endpoints\ProjectsUpdateEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsCloneEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsCreateEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsDestroyEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsEditEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsExportEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsIndexEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsRestoreEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsShowEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsStatisticsEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsStoreEndpoint;
+use Modules\Core\Http\Endpoints\ProjectsUpdateEndpoint;
 
 Route::redirect('/', app()->getLocale() . '/projects')->name('index');
 

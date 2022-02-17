@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Multitenancy\Models\Concerns\UsesLandlordConnection;
 
+/**
+ * @property mixed $pumpable_type
+ * @property mixed $default_img
+ * @property mixed $name
+ */
 class SelectionType extends Model
 {
     use HasFactory, UsesLandlordConnection, HasTranslations, SoftDeletes, Cached;

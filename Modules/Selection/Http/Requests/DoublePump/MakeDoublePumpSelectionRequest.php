@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\DoublePump;
 
 use Modules\Selection\Http\Requests\MakeSelectionRequest;
 
-class MakeDoublePumpSelectionRequest extends MakeSelectionRequest
+final class MakeDoublePumpSelectionRequest extends MakeSelectionRequest
 {
     protected function prepareForValidation()
     {

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use Modules\Pump\Http\Controllers\PumpBrandsController;
 use Modules\Pump\Http\Controllers\PumpsController;
 use Modules\Pump\Http\Controllers\PumpSeriesController;
+use Modules\Pump\Http\Endpoints\Pump\PumpsIndexEndpoint;
 
 
 // PUMP BRANDS
@@ -38,10 +39,11 @@ Route::prefix('pumps/import')->group(function () {
     Route::post('media')->name('pumps.import.media')->uses([PumpsController::class, 'importMedia']);
 });
 Route::prefix('pumps')->group(function () {
+    Route::get('/')->name('pumps.index')->uses(PumpsIndexEndpoint::class);
     Route::post('load')->name('pumps.load')->uses([PumpsController::class, 'load']);
     Route::prefix('{pump}')->group(function () {
         Route::post('/')->name('pumps.show')->uses([PumpsController::class, 'show']);
         Route::post('add-to-projects')->name('pumps.add_to_projects')->uses([PumpsController::class, 'addToProjects']);
     });
 });
-Route::resource('pumps', PumpsController::class)->except(['edit', 'create', 'show']);
+//Route::resource('pumps', PumpsController::class)->except(['edit', 'create', 'show']);

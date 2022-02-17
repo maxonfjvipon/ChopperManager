@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\DoublePump;
 
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 
-class CurvesForDoublePumpSelectionRequest extends CurvesForSelectionRequest
+final class CurvesForDoublePumpSelectionRequest extends CurvesForSelectionRequest
 {
     /**
      * Get the validation rules that apply to the request.

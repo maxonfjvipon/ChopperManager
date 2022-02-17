@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class ProjectDeliveryStatus extends Model
+/**
+ * Project delivery status.
+ */
+final class ProjectDeliveryStatus extends Model
 {
     use HasFactory, UsesTenantConnection, HasTranslations, Cached;
 

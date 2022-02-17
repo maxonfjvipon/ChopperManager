@@ -10,7 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Core\Entities\Currency;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class Country extends Model
+/**
+ * Country.
+ */
+final class Country extends Model
 {
     use HasFactory, UsesTenantConnection, HasTranslations, Cached;
 

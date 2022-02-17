@@ -11,7 +11,7 @@ use Modules\User\Entities\Discount;
 use Modules\User\Entities\Userable;
 use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class UserAndPumpSeries extends Model
+final class UserAndPumpSeries extends Model
 {
     use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
 

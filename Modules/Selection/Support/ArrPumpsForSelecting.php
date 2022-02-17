@@ -8,10 +8,10 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\LimitCondition;
 
 /**
- * Pumps for selection
+ * Pumps for select from
  * @package Modules\Selection\Support
  */
-class ArrPumpsForSelecting implements Arrayable
+final class ArrPumpsForSelecting implements Arrayable
 {
     /**
      * @var Request $request
@@ -32,7 +32,7 @@ class ArrPumpsForSelecting implements Arrayable
      * Ctor.
      * @param Request $req
      */
-    private function __construct(Request $req)
+    public function __construct(Request $req)
     {
         $this->request = $req;
     }
