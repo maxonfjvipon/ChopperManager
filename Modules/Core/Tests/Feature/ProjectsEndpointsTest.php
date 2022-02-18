@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Testing\Assert;
 use Modules\Core\Entities\Project;
@@ -9,6 +10,8 @@ use Tests\TenantTestCase;
 
 class ProjectsEndpointsTest extends TenantTestCase
 {
+    use DatabaseMigrations;
+
     protected function tenantId(): int
     {
         return 1;
@@ -21,8 +24,9 @@ class ProjectsEndpointsTest extends TenantTestCase
      */
     public function test_projects_index()
     {
-        $this->actAs()
+        $this->actingAs($this->user, $this->guard)
             ->get(route('projects.index'))
+            ->dd()
             ->assertInertia(fn($page) => $page
                 ->component('Core::Projects/Index', false)
                 ->has('projects', Auth::user()->projects()->count())

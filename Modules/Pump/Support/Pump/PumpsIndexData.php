@@ -41,24 +41,21 @@ final class PumpsIndexData implements Arrayable
             ArrObject::new(
                 "filter_data",
                 ArrForFiltering::new(
-                    ArrMerged::new(
-                        [
-                            'brands' => Auth::user()->available_brands()->distinct()->pluck('pump_brands.name')->all(),
-                            'series' => $availableSeries->pluck('name')->all(),
-                            'connection_types' => ConnectionType::allOrCached()->pluck('name')->all(),
-                            'dns' => DN::allOrCached()->pluck('value')->all(),
-                            'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('name')->all(),
-                            'types' => PumpType::availableForUserSeries($availableSeriesIds)->pluck('name')->all(), // todo fix
-                            'applications' => PumpApplication::availableForUserSeries($availableSeriesIds)->pluck('name')->all(),
-                        ],
-                        ArrObject::new(
-                            "mains_connections",
-                            ArrMapped::new(
-                                MainsConnection::allOrCached()->all(),
-                                fn(MainsConnection $mc) => $mc->full_value
-                            )
+                    ArrMerged::new([
+                        'brands' => Auth::user()->available_brands()->distinct()->pluck('pump_brands.name')->all(),
+                        'series' => $availableSeries->pluck('name')->all(),
+                        'connection_types' => ConnectionType::allOrCached()->pluck('name')->all(),
+                        'dns' => DN::allOrCached()->pluck('value')->all(),
+                        'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('name')->all(),
+                        'types' => PumpType::availableForUserSeries($availableSeriesIds)->pluck('name')->all(), // todo fix
+                        'applications' => PumpApplication::availableForUserSeries($availableSeriesIds)->pluck('name')->all(),
+                    ], ArrObject::new(
+                        "mains_connections",
+                        ArrMapped::new(
+                            MainsConnection::allOrCached()->all(),
+                            fn(MainsConnection $mc) => $mc->full_value
                         )
-                    )
+                    ))
                 )
             ),
             ['projects' => Auth::user()->projects()->get(['id', 'name'])->all()]

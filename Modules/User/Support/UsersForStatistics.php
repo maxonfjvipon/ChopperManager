@@ -59,16 +59,13 @@ final class UsersForStatistics implements Arrayable
                     function (PMUser $user) use ($rates) {
                         $projectsPrice = ArraySum::new(
                             ArrMapped::new(
-                                ArrMapped::new(
-                                    [...$user->projects],
-                                    fn(Project $project) => ArraySum::new(
-                                        ArrMapped::new(
-                                            [...$project->selections],
-                                            fn(Selection $selection) => $selection->totalRetailPrice($rates)
-                                        )
+                                [...$user->projects],
+                                fn(Project $project) => ArraySum::new(
+                                    ArrMapped::new(
+                                        [...$project->selections],
+                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
-                                ),
-                                fn (Numerable $num) => $num->asNumber()
+                                )->asNumber()
                             )
                         )->asNumber();
                         $avgProjectsPrice = $user->projects_count !== 0
