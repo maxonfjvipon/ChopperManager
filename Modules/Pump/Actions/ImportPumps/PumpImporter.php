@@ -2,11 +2,9 @@
 
 namespace Modules\Pump\Actions\ImportPumps;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Maxonfjvipon\Elegant_Elephant\Logical\EqualityOf;
-use Maxonfjvipon\Elegant_Elephant\Logical\Negation;
 use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
 
 abstract class PumpImporter

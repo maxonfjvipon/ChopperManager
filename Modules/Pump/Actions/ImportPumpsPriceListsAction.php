@@ -14,8 +14,8 @@ class ImportPumpsPriceListsAction extends ImportAction
     {
         $db = [
             'pumps' => Pump::pluck('id', 'article_num_main')->all(),
-            'countries' => Country::pluck('id', 'code')->all(),
-            'currencies' => Currency::pluck('id', 'code')->all(),
+            'countries' => Country::allOrCached()->pluck('id', 'code')->all(),
+            'currencies' => Currency::allOrCached()->pluck('id', 'code')->all(),
         ];
         parent::__construct($db, [
             '0' => ['required', new ExistsAsKeyInArray($db['pumps'])], // article num main
@@ -55,7 +55,7 @@ class ImportPumpsPriceListsAction extends ImportAction
     protected function import($sheet)
     {
         foreach (array_chunk($sheet, 100) as $chunkedSheet) {
-            DB::table( 'pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
+            DB::table('pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
         }
     }
 }

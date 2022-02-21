@@ -77,21 +77,33 @@ class ImportAction
         }
     }
 
+    /**
+     * @throws Exception
+     */
     private function throwOverwrittenException()
     {
         throw new Exception("Method should be overwritten");
     }
 
+    /**
+     * @throws Exception
+     */
     protected function errorBagEntity($entity, $message)
     {
         $this->throwOverwrittenException();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function importEntity($entity)
     {
         $this->throwOverwrittenException();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function import($sheet)
     {
         $this->throwOverwrittenException();

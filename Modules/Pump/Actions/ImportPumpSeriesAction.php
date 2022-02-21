@@ -7,6 +7,8 @@ namespace Modules\Pump\Actions;
 use App\Rules\ExistsAsKeyInArray;
 use App\Rules\ExistsInArray;
 use App\Rules\ExistsInIdsArray;
+use App\Rules\NotEmptyStr;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Modules\Pump\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\PumpApplication;
@@ -19,23 +21,26 @@ use Modules\Pump\Entities\PumpType;
 
 class ImportPumpSeriesAction extends ImportAction
 {
+    /**
+     * @throws Exception
+     */
     public function __construct($files)
     {
         $db = [
             'brands' => PumpBrand::pluck('id', 'name')->all(),
-            'categories' => PumpCategory::pluck('id')->all(),
-            'power_adjustments' => ElPowerAdjustment::pluck('id')->all(),
-            'applications' => PumpApplication::pluck('id')->all(),
-            'types' => PumpType::pluck('id')->all(),
+            'categories' => PumpCategory::allOrCached()->pluck('id')->all(),
+            'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('id')->all(),
+            'applications' => PumpApplication::allOrCached()->pluck('id')->all(),
+            'types' => PumpType::allOrCached()->pluck('id')->all(),
         ];
         parent::__construct($db, [
             '0' => ['required', new ExistsAsKeyInArray($db['brands'])], // brand name
-            '1' => ['required'], // series name
+            '1' => ['required', new NotEmptyStr()], // series name
             '2' => ['required', new ExistsInArray($db['categories'])], // category
             '3' => ['required', new ExistsInArray($db['power_adjustments'])], // power adjustment
             '4' => ['required', new ExistsInIdsArray($db['applications'], ",")], // applications
             '5' => ['required', new ExistsInIdsArray($db['types'], ",")], // types
-            '6' => ['required', 'boolean'],
+            '6' => ['required', 'in:0,1'],
             '7' => ['sometimes', 'nullable', 'string'], // icon
         ], [
             '0' => __('validation.attributes.import.pump_series.brand'),
