@@ -7,7 +7,7 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkRedirectedBack;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,15 +23,15 @@ final class SelectionsDestroyEndpoint extends Controller
      */
     public function __invoke(Selection $selection): Responsable|Response
     {
-        return TkAuthorizedProject::byId(
+        return (new TkAuthorizedProject(
             $selection->project_id,
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_delete',
-                TkWithCallback::new(
+                new TkWithCallback(
                     fn() => $selection->delete(),
-                    TkRedirectedBack::new()
+                    new TkRedirectedBack()
                 )
             )
-        )->act();
+        ))->act();
     }
 }

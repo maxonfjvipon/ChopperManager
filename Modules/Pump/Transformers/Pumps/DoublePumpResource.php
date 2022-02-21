@@ -10,7 +10,7 @@ use Modules\Selection\Support\Performance\PpHMax;
 use Modules\Selection\Support\Performance\PumpPerfLine;
 use Modules\Selection\Traits\AxisStep;
 
-class DoublePumpResource extends PumpResource
+final class DoublePumpResource extends PumpResource
 {
     use AxisStep;
 

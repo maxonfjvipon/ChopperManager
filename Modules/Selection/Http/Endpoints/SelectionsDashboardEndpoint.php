@@ -6,9 +6,11 @@ use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Support\Facades\Auth;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Modules\AdminPanel\Entities\SelectionType;
-use Modules\AdminPanel\Support\ArrTenantSelectionTypes;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
+use Modules\Selection\Entities\SelectionType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -24,18 +26,22 @@ final class SelectionsDashboardEndpoint extends Controller
      */
     public function __invoke($project_id): Responsable|Response
     {
-        return TkInertia::new(
+        return (new TkInertia(
             "Selection::Dashboard",
-            [
-                'project_id' => $project_id,
-                'selection_types' => ArrMapped::new(
-                    ArrTenantSelectionTypes::new(),
-                    fn(SelectionType $type) => [
-                        'name' => $type->name,
-                        'pumpable_type' => $type->pumpable_type,
-                        'img' => $type->imgForTenant()
-                    ]
-                )->asArray()
-            ])->act();
+            new ArrMerged(
+                ['project_id' => $project_id],
+                new ArrObject(
+                    "selection_types",
+                    new ArrMapped(
+                        [...Auth::user()->available_selection_types],
+                        fn(SelectionType $type) => [
+                            'name' => $type->name,
+                            'pumpable_type' => $type->pumpable_type,
+                            'img' => $type->img
+                        ]
+                    )
+                )
+            )
+        ))->act();
     }
 }

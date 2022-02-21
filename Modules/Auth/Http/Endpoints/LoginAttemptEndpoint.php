@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Modules\AdminPanel\Entities\Tenant;
 use Modules\Auth\Http\Requests\LoginRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,7 +26,7 @@ final class LoginAttemptEndpoint extends Controller
     {
         return TkWithCallback::new(
             function () use ($request) {
-                $request->authenticate(Tenant::current()->guard);
+                $request->authenticate();
                 $request->session()->regenerate();
             },
             TkRedirectedRoute::new('projects.index')

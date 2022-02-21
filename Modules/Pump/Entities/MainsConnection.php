@@ -5,14 +5,13 @@ namespace Modules\Pump\Entities;
 use App\Traits\Cached;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Mains connection
  */
 final class MainsConnection extends Model
 {
-    use HasFactory, UsesTenantConnection, Cached;
+    use HasFactory, Cached;
 
     protected $fillable = ['phase', 'voltage'];
     public $timestamps = false;

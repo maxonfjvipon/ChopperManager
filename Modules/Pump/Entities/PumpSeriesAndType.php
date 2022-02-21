@@ -7,16 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
-use Modules\AdminPanel\Entities\Tenant;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 /**
  * Pump series and type
  */
 final class PumpSeriesAndType extends Model
 {
-    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection, UsesTenantModel;
+    use HasFactory, HasCompositePrimaryKey;
 
     protected $table = 'pump_series_and_types';
     protected $primaryKey = ['series_id', 'type_id'];
@@ -27,7 +24,7 @@ final class PumpSeriesAndType extends Model
     public static function createForSeries(PumpSeries $series, $types)
     {
         if ($types) {
-            return DB::table(Tenant::current()->database . '.pump_series_and_types')
+            return DB::table('pump_series_and_types')
                 ->insertOrIgnore(array_map(function ($type_id) use ($series) {
                     return ['type_id' => $type_id, 'series_id' => $series->id];
                 }, $types));

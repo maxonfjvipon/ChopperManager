@@ -12,7 +12,7 @@ class PumpBrandUpdateRequest extends PumpBrandStoreRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255', 'unique:tenant.pump_brands,name,' . $this->pump_brand->id]
+            'name' => ['required', 'string', 'max:255', 'unique:pump_brands,name,' . $this->pump_brand->id]
         ];
     }
 }

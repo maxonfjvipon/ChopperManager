@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtLowered;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use Modules\Core\Entities\Currency;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
-use Spatie\Multitenancy\Models\Tenant;
+use Modules\Project\Entities\Currency;
 
 class HandleInertiaRequests extends Middleware
 {
-    use UsesTenantModel;
+
 
     /**
      * The root template that's loaded on the first page visit.
@@ -62,41 +60,37 @@ class HandleInertiaRequests extends Middleware
                 ];
             },
         ];
-        if (Tenant::checkCurrent()) {
-            $supported_locales = config('app.supported_locales');
-            $current_localized = [];
-            foreach ($supported_locales as $locale) {
-                $current_localized[$locale] = LaravelLocalization::getLocalizedURL($locale, null, [], true);
-            }
-            $currentTenant = $this->getTenantModel()::current();
-            $user = Auth()->user();
-            return array_merge(parent::share($request), [
-                'title' => $currentTenant->name,
-                'auth' => function () use ($user) {
-                    return [
-                        'full_name' => Auth::check() ? $user->full_name : null,
-                        'currency' => Auth::check()
-                            ? TxtLowered::new(
-                                Currency::allOrCached()->firstWhere('id', Auth::user()->currency_id)->symbol
-                            )->asString()
-                            : null,
-                        'permissions' => Auth::check()
+        $supported_locales = config('app.supported_locales');
+        $current_localized = [];
+        foreach ($supported_locales as $locale) {
+            $current_localized[$locale] = LaravelLocalization::getLocalizedURL($locale, null, [], true);
+        }
+        $user = Auth()->user();
+        return array_merge(parent::share($request), [
+            'title' => 'Pump Manager',
+            'auth' => function () use ($user) {
+                return [
+                    'full_name' => Auth::check() ? $user->full_name : null,
+                    'currency' => Auth::check()
+                        ? TxtLowered::new(
+                            Currency::allOrCached()->firstWhere('id', Auth::user()->currency_id)->symbol
+                        )->asString()
+                        : null,
+                    'permissions' => Auth::check()
                         ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)
                         : null,
-                    ];
-                },
-                'locales' => function () use ($current_localized, $supported_locales, $request) {
-                    return [
-                        'current' => app()->getLocale(),
-                        'default' => config('app.fallback_locale'),
-                        'supported' => $supported_locales,
-                        'current_localized' => $current_localized,
-                    ];
-                },
-            ], $flash, $this->doesRequestContain($request, 'login') ? [
-                'has_registration' => $currentTenant->has_registration, // todo: only for specific route
-            ] : []);
-        }
-        return array_merge(parent::share($request), $flash);
+                ];
+            },
+            'locales' => function () use ($current_localized, $supported_locales, $request) {
+                return [
+                    'current' => app()->getLocale(),
+                    'default' => config('app.fallback_locale'),
+                    'supported' => $supported_locales,
+                    'current_localized' => $current_localized,
+                ];
+            },
+        ], $flash, $this->doesRequestContain($request, 'login') ? [
+            'has_registration' => true, // todo: only for specific route
+        ] : []);
     }
 }

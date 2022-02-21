@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Pump type.
  */
 final class PumpType extends Model
 {
-    use HasTranslations, HasFactory, UsesTenantConnection, Cached;
+    use HasTranslations, HasFactory, Cached;
 
     protected static function getCacheKey(): string
     {

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Support\UserProfile;

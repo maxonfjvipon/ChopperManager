@@ -7,15 +7,14 @@ use App\Traits\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Core\Entities\Currency;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
+use Modules\Project\Entities\Currency;
 
 /**
  * Country.
  */
 final class Country extends Model
 {
-    use HasFactory, UsesTenantConnection, HasTranslations, Cached;
+    use HasFactory, HasTranslations, Cached;
 
     public $translatable = ['name'];
     protected $fillable = ['name', 'code', 'currency_id'];

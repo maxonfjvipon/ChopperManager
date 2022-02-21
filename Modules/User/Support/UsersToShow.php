@@ -7,7 +7,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Modules\User\Entities\Business;
 
 /**
@@ -39,14 +39,14 @@ final class UsersToShow implements Arrayable
             ArrObject::new(
                 "users",
                 ArrMapped::new(
-                    PMUser::with(['country' => function ($query) {
+                    User::with(['country' => function ($query) {
                         $query->select('id', 'name');
                     }, 'business'])
                         ->withCount('projects')
                         ->get(['id', 'organization_name', 'business_id', 'created_at',
                             'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'is_active', 'phone', 'email'
                         ])->all(),
-                    fn(PMUser $user) => [
+                    fn(User $user) => [
                         'id' => $user->id,
                         'key' => $user->id,
                         'created_at' => date_format($user->created_at, 'd.m.Y'),

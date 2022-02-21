@@ -9,7 +9,7 @@ use App\Takes\TkInertia;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Modules\User\Entities\Business;
 use Modules\User\Support\UsersToShow;
 use Symfony\Component\HttpFoundation\Response;

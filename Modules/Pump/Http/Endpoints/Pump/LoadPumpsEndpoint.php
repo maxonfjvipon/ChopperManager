@@ -40,11 +40,11 @@ final class LoadPumpsEndpoint extends Controller
      */
     public function __invoke(LoadPumpsRequest $request): Responsable|Response
     {
-        return TkJson::new(
-            LoadedPumpsMapped::new(
-                LoadedPumpsAsArrayable::new(
-                    AvailablePumps::new(
-                        FilteredPumps::new(
+        return (new TkJson(
+            new LoadedPumpsMapped(
+                new LoadedPumpsAsArrayable(
+                    new AvailablePumps(
+                        new FilteredPumps(
                             $this->loadedPumps,
                             $request->filter,
                         )
@@ -52,6 +52,6 @@ final class LoadPumpsEndpoint extends Controller
                 ),
                 $request
             )
-        )->act($request);
+        ))->act($request);
     }
 }

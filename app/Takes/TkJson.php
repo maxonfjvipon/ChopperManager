@@ -7,6 +7,7 @@ use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
@@ -21,7 +22,7 @@ final class TkJson implements Take
     use Overloadable;
 
     /**
-     * @var string|array|callable|Arrayable|Text $data
+     * @var string|array|callable|Arrayable|Text|JsonResource $data
      */
     private $data;
 
@@ -37,23 +38,31 @@ final class TkJson implements Take
 
     /**
      * Ctor wrap.
-     * @param string|array|callable|Arrayable|Text $data
+     * @param string|array|callable|Arrayable|Text|JsonResource $data
      * @param int $status
      * @param array $headers
      * @return TkJson
      */
-    public static function new(string|array|callable|Arrayable|Text $data, int $status = 200, array $headers = []): TkJson
+    public static function new(
+        string|array|callable|Arrayable|Text|JsonResource $data,
+        int                                               $status = 200,
+        array                                             $headers = []
+    ): TkJson
     {
         return new self($data, $status, $headers);
     }
 
     /**
      * Ctor.
-     * @param string|array|callable|Arrayable|Text $data
+     * @param string|array|callable|Arrayable|Text|JsonResource $data
      * @param int $status
      * @param array $headers
      */
-    public function __construct(string|array|callable|Arrayable|Text $data, int $status = 200, array $headers = [])
+    public function __construct(
+        string|array|callable|Arrayable|Text|JsonResource $data,
+        int                                               $status = 200,
+        array                                             $headers = []
+    )
     {
         $this->data = $data;
         $this->status = $status;
@@ -73,6 +82,7 @@ final class TkJson implements Take
             'callable' => fn(callable $callback) => call_user_func($callback),
             Closure::class => fn(Closure $closure) => call_user_func($closure),
             Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
+            JsonResource::class => fn(JsonResource $resource) => $resource->toArray($request),
             Text::class => fn(Text $txt) => $txt->asString()
         ]])[0], $this->status, $this->headers);
     }

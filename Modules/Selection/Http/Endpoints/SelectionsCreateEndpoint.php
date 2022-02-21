@@ -28,18 +28,18 @@ final class SelectionsCreateEndpoint extends Controller
      */
     public function __invoke(PumpableRequest $request, string $project_id): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'selection_create',
-            TkOptAuthorizedProject::new(
+            new TkOptAuthorizedProject(
                 $project_id,
-                TkInertia::new(
-                    TxtSelectionsCreateComponent::new($request),
-                    fn() => ArrMerged::new(
+                new TkInertia(
+                    new TxtSelectionsCreateComponent($request),
+                    new ArrMerged(
                         ['project_id' => $project_id],
-                        ArrSelectionProps::new($request),
-                    )->asArray()
+                        new ArrSelectionProps($request),
+                    )
                 ),
             )
-        )->act($request);
+        ))->act($request);
     }
 }

@@ -10448,10 +10448,10 @@ function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
 
 /***/ }),
 
-/***/ "./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js":
-/*!***************************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js ***!
-  \***************************************************************************/
+/***/ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js":
+/*!******************************************************************************!*\
+  !*** ./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11779,7 +11779,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
 /* harmony import */ var _Components_DashboardCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/DashboardCard */ "./Modules/Selection/Resources/assets/js/Components/DashboardCard.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _Core_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../Core/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js");
+/* harmony import */ var _Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../Project/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -11836,7 +11836,7 @@ function Dashboard() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__.IndexContainer, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.subtitle'),
-    extra: project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Core_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__.BackToProjectsLink, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__.BackLink, {
+    extra: project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__.BackToProjectsLink, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__.BackLink, {
       href: tRoute('projects.show', project_id),
       title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.back.to_project')
     }),

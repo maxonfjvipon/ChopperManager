@@ -8,6 +8,8 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\Performance\PpHMax;
 use Modules\Selection\Support\Performance\PumpPerfLines;
@@ -17,7 +19,6 @@ use Modules\Selection\Support\SystemPerformance;
 use Modules\Selection\Traits\AxisStep;
 use Modules\Selection\Traits\SelectionAttributes;
 use Modules\Selection\Traits\SelectionRelationships;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Selection.
@@ -37,7 +38,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
  */
 final class Selection extends Model
 {
-    use HasFactory, SoftDeletes, UsesTenantConnection, WithOrWithoutTrashed;
+    use HasFactory, SoftDeletes, WithOrWithoutTrashed;
     use SelectionRelationships, SelectionAttributes, AxisStep;
 
     public $timestamps = false;
@@ -127,24 +128,41 @@ final class Selection extends Model
                 $this->flow,
                 $this->head
             );
-            $data = array_merge($data, [
-                'system_performance' => (new SystemPerformance(
-                    $this->flow,
-                    $this->head,
-                    max($intersectionPoint->y(), $this->head),
-                    $intersectionPoint->x() < 50 ? 0.5 : 1
-                ))->asArray(),
-                'working_point' => [
-                    'flow' => $this->flow,
-                    'head' => $this->head,
-                ],
-                'intersection_point' => [
-                    'flow' => $intersectionPoint->x(),
-                    'head' => $intersectionPoint->y(),
-                ],
-            ]);
+            $data = (new ArrMerged(
+                $data,
+                new ArrObject(
+                    "system_performance",
+                    new SystemPerformance(
+                        $this->flow,
+                        $this->head,
+                        max($intersectionPoint->y(), $this->head),
+                        $intersectionPoint->x() < 50 ? 0.5 : 1
+                    )
+                ),
+                [
+                    'working_point' => [
+                        'flow' => $this->flow,
+                        'head' => $this->head,
+                    ],
+                    'intersection_point' => [
+                        'flow' => $intersectionPoint->x(),
+                        'head' => $intersectionPoint->y(),
+                    ]
+                ]
+            ))->asArray();
         }
         $this->{'curves_data'} = $data;
+        return $this;
+    }
+
+    /**
+     * Update self and return
+     * @param array $attributes
+     * @return $this
+     */
+    public function updatedFrom(array $attributes = [])
+    {
+        $this->update($attributes);
         return $this;
     }
 }

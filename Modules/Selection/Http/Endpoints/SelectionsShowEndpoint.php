@@ -6,8 +6,9 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Support\ArrSelectionProps;
 use Modules\Selection\Support\ArrSelectionResource;
@@ -21,25 +22,26 @@ use Symfony\Component\HttpFoundation\Response;
 final class SelectionsShowEndpoint extends Controller
 {
     /**
-     * @param $selection_id
+     * @param Request $request
+     * @param int $selection_id
      * @return Responsable|Response
      */
-    public function __invoke($selection_id): Responsable|Response
+    public function __invoke(Request $request, int $selection_id): Responsable|Response
     {
         $selection = Selection::withOrWithoutTrashed()->findOrFail($selection_id);
-        return TkAuthorizedProject::byId(
+        return (new TkAuthorizedProject(
             $selection->project_id,
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_show',
-                TkInertia::new(
-                    TxtSelectionsCreateComponent::new(),
-                    ArrMerged::new(
+                new TkInertia(
+                    new TxtSelectionsCreateComponent($request),
+                    new ArrMerged(
                         ['project_id' => $selection->project_id],
-                        ArrSelectionProps::new(),
-                        ArrSelectionResource::new($selection)
+                        new ArrSelectionProps(),
+                        new ArrSelectionResource($selection)
                     )
                 )
             )
-        )->act();
+        ))->act($request);
     }
 }

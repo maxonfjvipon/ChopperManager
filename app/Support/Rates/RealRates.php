@@ -5,11 +5,11 @@ namespace App\Support\Rates;
 use AmrShawky\LaravelCurrency\Facade\Currency as RateCurrency;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 
 /**
  * Exchange rates.
- * @package Modules\Core\Support
+ * @package Modules\Project\Support
  */
 final class RealRates implements Rates
 {

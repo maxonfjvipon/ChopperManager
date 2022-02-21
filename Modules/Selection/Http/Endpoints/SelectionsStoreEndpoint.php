@@ -8,8 +8,8 @@ use App\Takes\TkRedirectedWith;
 use App\Http\Controllers\Controller;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Takes\TkAuthorizedProject;
-use Modules\Core\Entities\Project;
+use Modules\Project\Takes\TkAuthorizedProject;
+use Modules\Project\Entities\Project;
 use Modules\Selection\Http\Requests\SelectionRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,19 +26,19 @@ final class SelectionsStoreEndpoint extends Controller
      */
     public function __invoke(SelectionRequest $request, Project $project): Responsable|Response
     {
-        return TkAuthorizedProject::byProject(
+        return (new TkAuthorizedProject(
             $project,
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_create',
-                TkWithCallback::new(
+                new TkWithCallback(
                     fn() => $project->selections()->create($request->validated()),
-                    TkRedirectedWith::new(
+                    new TkRedirectedWith(
                         'success',
                         __('flash.selections.added'),
-                        TkRedirectedBack::new()
+                        new TkRedirectedBack()
                     )
                 )
             )
-        )->act($request);
+        ))->act($request);
     }
 }

@@ -9,10 +9,9 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
-use Modules\Core\Entities\Project;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\Project\Entities\Project;
+use Modules\User\Entities\User;
 use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
@@ -37,7 +36,7 @@ final class UsersForStatistics implements Arrayable
     public function asArray(): array
     {
         $rates = StickyRates::new(RealRates::new());
-        $users = PMUser::with(['country' => function ($query) {
+        $users = User::with(['country' => function ($query) {
             $query->select('id', 'name');
         }, 'business', 'projects' => function ($query) {
             $query->select('id', 'user_id');
@@ -56,7 +55,7 @@ final class UsersForStatistics implements Arrayable
                 "users",
                 ArrMapped::new(
                     $users->all(),
-                    function (PMUser $user) use ($rates) {
+                    function (User $user) use ($rates) {
                         $projectsPrice = ArraySum::new(
                             ArrMapped::new(
                                 [...$user->projects],

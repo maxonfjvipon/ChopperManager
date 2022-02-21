@@ -25,14 +25,14 @@ final class SelectionsExportAtOnceEndpoint extends Controller
      */
     public function __invoke(ExportAtOnceSelectionRequest $request): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'selection_export',
-            TkDownloadedPDF::new(
-                TxtExportSelectionView::new(
+            new TkDownloadedPDF(
+                new TxtExportSelectionView(
                     new Selection($request->validated()),
                     $request
                 )
             )
-        )->act($request);
+        ))->act($request);
     }
 }

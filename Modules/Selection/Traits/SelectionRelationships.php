@@ -3,7 +3,7 @@
 namespace Modules\Selection\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Core\Entities\Project;
+use Modules\Project\Entities\Project;
 use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\Pump;
 

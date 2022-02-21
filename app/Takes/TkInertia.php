@@ -47,7 +47,7 @@ final class TkInertia implements Take
      * @param string|Text $component
      * @param array|callable|Arrayable $props
      */
-    public function __construct(string|Text $component, array|callable|Arrayable $props)
+    public function __construct(string|Text $component, array|callable|Arrayable $props = [])
     {
         $this->component = $component;
         $this->props = $props;

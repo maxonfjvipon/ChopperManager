@@ -4,7 +4,6 @@ namespace App\Support;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
-use Modules\AdminPanel\Entities\Tenant;
 
 final class TenantStorage
 {
@@ -15,7 +14,7 @@ final class TenantStorage
     public function __construct($disk = 'media')
     {
         $this->storage = Storage::disk($disk);
-        $this->currentTenantFolder = Tenant::current()->id . '/';
+        $this->currentTenantFolder = '1/';
     }
 
     public function urlToTenantFolder(): string

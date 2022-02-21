@@ -40,11 +40,11 @@ final class TxtSelectionCurvesView implements Text
      */
     public function asString(): string
     {
-        return TxtView::new(
+        return (new TxtView(
             'selection::selection_perf_curves',
             $this->selection
                 ->withCurves()
                 ->curves_data
-        )->asString();
+        ))->asString();
     }
 }

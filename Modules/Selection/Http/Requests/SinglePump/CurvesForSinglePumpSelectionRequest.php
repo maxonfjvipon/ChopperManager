@@ -21,7 +21,7 @@ final class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionReques
     public function rules(): array
     {
         return [
-            'pump_id' => ['required', 'exists:tenant.pumps,id'],
+            'pump_id' => ['required', 'exists:pumps,id'],
             'pumpable_type' => ['required', 'string'],
             'pumps_count' => ['required', 'numeric'],
             'main_pumps_count' => ['required', 'numeric'],

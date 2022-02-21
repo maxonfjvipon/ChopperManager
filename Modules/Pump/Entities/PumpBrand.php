@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasDiscount;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Pump brand.
@@ -18,7 +17,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
  */
 final class PumpBrand extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, HasDiscount;
 
     protected $fillable = ['name'];
     protected array $softCascade = ['series'];

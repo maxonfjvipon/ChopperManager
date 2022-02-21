@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Takes\TkAuthorized;
 use App\Takes\TkDownloadedPDF;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\ExportSelectionRequest;
 use Modules\Selection\Takes\TxtExportSelectionView;
@@ -26,14 +26,14 @@ final class SelectionsExportEndpoint extends Controller
     public function __invoke(ExportSelectionRequest $request, $selection_id): Responsable|Response
     {
         $selection = Selection::withOrWithoutTrashed()->findOrFail($selection_id);
-        return TkAuthorizedProject::byId(
+        return (new TkAuthorizedProject(
             $selection->project_id,
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_export',
-                TkDownloadedPDF::new(
-                    TxtExportSelectionView::new($selection, $request)
+                new TkDownloadedPDF(
+                    new TxtExportSelectionView($selection, $request)
                 )
             )
-        )->act($request);
+        ))->act($request);
     }
 }

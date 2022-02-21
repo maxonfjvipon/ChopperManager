@@ -19,10 +19,11 @@ final class PumpsIndexEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new('pump_access',
-            TkInertia::new("Pump::Pumps/Index",
-                PumpsIndexData::new()
+        return (new TkAuthorized(
+            'pump_access',
+            new TkInertia("Pump::Pumps/Index",
+                new PumpsIndexData()
             )
-        )->act();
+        ))->act();
     }
 }

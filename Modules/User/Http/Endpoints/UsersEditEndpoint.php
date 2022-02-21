@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Takes\TkAuthorized;
 use App\Takes\TkInertia;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Modules\User\Support\UserToEdit;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,7 +25,7 @@ final class UsersEditEndpoint extends Controller
             'user_edit',
             TkInertia::new(
                 'User::Edit',
-                UserToEdit::new(PMUser::find($user_id))
+                UserToEdit::new(User::find($user_id))
             )
         )->act();
     }

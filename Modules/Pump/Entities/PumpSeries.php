@@ -2,8 +2,6 @@
 
 namespace Modules\Pump\Entities;
 
-use Illuminate\Http\Request;
-use Modules\AdminPanel\Entities\TenantType;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
@@ -14,8 +12,6 @@ use App\Traits\HasDiscount;
 use Modules\Pump\Traits\PumpSeries\PumpSeriesRelationships;
 use Modules\Pump\Traits\PumpSeries\PumpSeriesAttributes;
 use Modules\Pump\Traits\PumpSeries\PumpSeriesScopes;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 /**
  * Pump series.
@@ -24,7 +20,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
  */
 final class PumpSeries extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount, UsesTenantModel;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, HasDiscount;
     use PumpSeriesAttributes, PumpSeriesRelationships, PumpSeriesScopes;
 
     protected $guarded = [];

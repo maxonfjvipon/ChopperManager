@@ -7,7 +7,7 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkRedirectedRoute;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Modules\User\Http\Requests\CreateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,7 +26,7 @@ final class UsersStoreEndpoint extends Controller
             'user_create',
             TkWithCallback::new(
                 function () use ($request) {
-                    $user = PMUser::create($request->userProps());
+                    $user = User::create($request->userProps());
                     $user->updateAvailablePropsFromRequest($request);
                     if ($request->email_verified) {
                         $user->markEmailAsVerified();

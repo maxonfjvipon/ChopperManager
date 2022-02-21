@@ -32,7 +32,7 @@ final class TxtSelectionsCreateComponent implements Text
      * Ctor.
      * @param Request|null $request
      */
-    private function __construct(?Request $request)
+    public function __construct(Request $request = null)
     {
         $this->request = $request ?? request();
     }

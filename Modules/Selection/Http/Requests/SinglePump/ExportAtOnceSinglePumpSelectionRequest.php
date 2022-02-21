@@ -15,7 +15,7 @@ final class ExportAtOnceSinglePumpSelectionRequest extends ExportAtOnceSelection
     {
         return array_merge(parent::rules(), [
             'selected_pump_name' => ['required', 'string'],
-            'pump_id' => ['required', 'exists:tenant.pumps,id'],
+            'pump_id' => ['required', 'exists:pumps,id'],
             'pumps_count' => ['required', 'numeric', 'max:9', 'min:1'],
             'reserve_pumps_count' => ['required', 'numeric', 'max:4', 'min:0'],
             'flow' => ['sometimes', 'nullable', 'numeric'],

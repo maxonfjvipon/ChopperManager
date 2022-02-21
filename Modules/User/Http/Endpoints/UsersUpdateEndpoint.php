@@ -7,7 +7,7 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkRedirectedRoute;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Modules\User\Http\Requests\UpdateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,22 +18,19 @@ final class UsersUpdateEndpoint extends Controller
 {
     /**
      * @param UpdateUserRequest $request
-     * @param int $user_id
+     * @param User $user
      * @return Responsable|Response
      */
-    public function __invoke(UpdateUserRequest $request, int $user_id): Responsable|Response
+    public function __invoke(UpdateUserRequest $request, User $user): Responsable|Response
     {
         return TkAuthorized::new(
             'user_edit',
             TkWithCallback::new(
-                function () use ($request, $user_id) {
-                    $user = PMUser::find($user_id);
+                function () use ($request, $user) {
                     $user->update($request->userProps());
                     $user->updateAvailablePropsFromRequest($request);
                 },
-                TkRedirectedRoute::new(
-                    'users.index'
-                )
+                TkRedirectedRoute::new('users.index')
             )
         )->act($request);
     }

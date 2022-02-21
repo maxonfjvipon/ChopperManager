@@ -25,16 +25,16 @@ final class SelectionsCurvesEndpoint extends Controller
      */
     public function __invoke(CurvesForSelectionRequest $request): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'selection_create',
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_edit',
-                TkJson::new(
-                    fn() => TxtSelectionCurvesView::new(
+                new TkJson(
+                    new TxtSelectionCurvesView(
                         new Selection($request->validated())
-                    )->asString()
+                    )
                 )
             )
-        )->act($request);
+        ))->act($request);
     }
 }

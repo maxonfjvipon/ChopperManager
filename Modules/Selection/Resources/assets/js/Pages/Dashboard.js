@@ -7,7 +7,7 @@ import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.ho
 import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
 import {DashboardCard} from "../Components/DashboardCard";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
-import {BackToProjectsLink} from "../../../../../Core/Resources/assets/js/Components/BackToProjectsLink";
+import {BackToProjectsLink} from "../../../../../Project/Resources/assets/js/Components/BackToProjectsLink";
 import {BackLink} from "../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
 
 export default function Dashboard() {

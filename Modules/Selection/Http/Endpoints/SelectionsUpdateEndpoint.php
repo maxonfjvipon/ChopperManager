@@ -5,9 +5,8 @@ namespace Modules\Selection\Http\Endpoints;
 use App\Http\Controllers\Controller;
 use App\Takes\TkAuthorized;
 use App\Takes\TkRedirectedRoute;
-use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\SelectionRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,12 +28,9 @@ final class SelectionsUpdateEndpoint extends Controller
             $selection->project_id,
             TkAuthorized::new(
                 'selection_edit',
-                TkWithCallback::new(
-                    fn() => $selection->update($request->validated()),
-                    TkRedirectedRoute::new(
-                        'projects.show',
-                        $selection->project_id
-                    )
+                TkRedirectedRoute::new(
+                    'projects.show',
+                    $selection->updatedFrom($request->validated())->project_id
                 )
             )
         )->act($request);

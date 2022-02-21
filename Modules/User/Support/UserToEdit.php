@@ -3,7 +3,7 @@
 namespace Modules\User\Support;
 
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 
 /**
  * User to edit.
@@ -11,21 +11,21 @@ use Modules\PumpManager\Entities\PMUser;
 final class UserToEdit implements Arrayable
 {
     /**
-     * @var PMUser $user
+     * @var User $user
      */
-    private PMUser $user;
+    private User $user;
 
     /**
      * Ctor wrap.
-     * @param PMUser $user
+     * @param User $user
      * @return UserToEdit
      */
-    public static function new(PMUser $user): UserToEdit
+    public static function new(User $user): UserToEdit
     {
         return new self($user);
     }
 
-    public function __construct(PMUser $user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }

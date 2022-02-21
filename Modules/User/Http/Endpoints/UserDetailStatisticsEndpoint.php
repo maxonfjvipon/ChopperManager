@@ -7,17 +7,17 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkJson;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpManager\Entities\PMUser;
+use Modules\User\Entities\User;
 use Symfony\Component\HttpFoundation\Response;
 
 final class UserDetailStatisticsEndpoint extends Controller
 {
     /**
-     * @param PMUser $user
+     * @param User $user
      * @return Responsable|Response
      * @throws Exception
      */
-    public function __invoke(PMUser $user): Responsable|Response
+    public function __invoke(User $user): Responsable|Response
     {
 //        $rates = Rates::new();
 //        $projectsByMonths = DB::table(Tenant::current()->database . '.projects')

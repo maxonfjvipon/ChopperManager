@@ -5,6 +5,7 @@ namespace Modules\Pump\Entities;
 use App\Support\Rates\Rates;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Exception;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Pump\Traits\Pump\PumpAttributes;
@@ -13,7 +14,6 @@ use Modules\Pump\Traits\Pump\PumpScopes;
 use Modules\Selection\Support\Performance\DPPerformance;
 use Modules\Selection\Support\Performance\SPPerformance;
 use Modules\Selection\Support\Performance\PumpPerformance;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 /**
@@ -37,7 +37,7 @@ final class Pump extends Model
     public static string $STATION_WATER = 'station_water';
     public static string $STATION_FIRE = 'station_fire';
 
-    use SoftDeletes, SoftCascadeTrait, UsesTenantConnection, BelongsToThrough;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, BelongsToThrough;
     use PumpRelationships, PumpScopes, PumpAttributes;
 
     protected array $softCascade = ['selections'];

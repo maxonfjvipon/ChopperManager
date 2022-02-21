@@ -9,7 +9,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 trait UsesClassesFromModule
 {
-    use UsesTenantModel;
+
 
     public function classFromModule(string $folder, string $className, ?string $default = null): ?string
     {

@@ -2,7 +2,7 @@
 
 namespace App\Support\Rates;
 
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 
 /**
  * Rates.

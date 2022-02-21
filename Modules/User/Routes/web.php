@@ -29,12 +29,12 @@ Route::prefix('profile')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/')->name('users.index')->uses(UsersIndexEndpoint::class);
     Route::get('create')->name('users.create')->uses(UsersCreateEndpoint::class);
-    Route::get('statistics')->name('users.statistics')->uses(UsersStatisticsEndpoint::class);
+    Route::get('stats')->name('users.statistics')->uses(UsersStatisticsEndpoint::class);
 
     Route::post('/')->name('users.store')->uses(UsersStoreEndpoint::class);
 
     Route::prefix("{user}")->group(function () {
-        Route::post('statistics/detail')->name('users.statistics.detail')->uses(UserDetailStatisticsEndpoint::class);
+        Route::post('stats/detail')->name('users.statistics.detail')->uses(UserDetailStatisticsEndpoint::class);
         Route::get('edit')->name('users.edit')->uses(UsersEditEndpoint::class);
         Route::put('/')->name('users.update')->uses(UsersUpdateEndpoint::class);
     });

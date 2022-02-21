@@ -14,9 +14,9 @@ final class CurvesForDoublePumpSelectionRequest extends CurvesForSelectionReques
     public function rules(): array
     {
         return [
-            'pump_id' => ['required', 'exists:tenant.pumps,id'],
+            'pump_id' => ['required', 'exists:pumps,id'],
             'pumpable_type' => ['required', 'string'],
-            'dp_work_scheme_id' => ['sometimes', 'required', 'nullable', 'exists:tenant.double_pump_work_schemes,id'],
+            'dp_work_scheme_id' => ['sometimes', 'required', 'nullable', 'exists:double_pump_work_schemes,id'],
             'head' => ['sometimes', 'nullable', 'numeric'],
             'flow' => ['sometimes', 'nullable', 'numeric'],
         ];

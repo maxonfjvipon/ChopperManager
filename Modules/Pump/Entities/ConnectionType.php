@@ -5,7 +5,6 @@ namespace Modules\Pump\Entities;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 use App\Traits\Cached;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Connection type
@@ -13,7 +12,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
  */
 final class ConnectionType extends Model
 {
-    use HasTranslations, UsesTenantConnection, Cached;
+    use HasTranslations, Cached;
 
     protected static function getCacheKey(): string
     {

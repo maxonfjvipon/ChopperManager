@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Selection\Support\Regression\EqPolynomial;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Pump coefficients
@@ -18,7 +17,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
  */
 final class PumpCoefficients extends Model
 {
-    use HasFactory, UsesTenantConnection;
+    use HasFactory;
 
     protected $table = "pump_coefficients";
     protected $fillable = ['pump_id', 'position', 'k', 'b', 'c'];

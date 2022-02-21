@@ -7,15 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
-use Modules\AdminPanel\Entities\Tenant;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
 /**
  * Pump series application.
  */
 final class PumpSeriesAndApplication extends Model
 {
-    use HasFactory, HasCompositePrimaryKey, UsesTenantConnection;
+    use HasFactory, HasCompositePrimaryKey;
 
     protected $guarded = [];
     public $timestamps = false;
@@ -25,7 +23,7 @@ final class PumpSeriesAndApplication extends Model
     public static function createForSeries(PumpSeries $series, $applications)
     {
         if ($applications)
-            return DB::table(Tenant::current()->database . '.pump_series_and_applications')
+            return DB::table('pump_series_and_applications')
                 ->insertOrIgnore(array_map(function ($application_id) use ($series) {
                     return ['application_id' => $application_id, 'series_id' => $series->id];
                 }, $applications));

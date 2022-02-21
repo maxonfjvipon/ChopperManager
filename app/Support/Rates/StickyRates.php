@@ -3,7 +3,7 @@
 namespace App\Support\Rates;
 
 use Exception;
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 
 /**
  * Exchange rates with caching.

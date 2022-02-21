@@ -7,7 +7,7 @@ use App\Takes\TkAuthorized;
 use App\Takes\TkRedirectedBack;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Modules\Selection\Entities\Selection;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,15 +24,15 @@ final class SelectionsRestoreEndpoint extends Controller
     public function __invoke($id): Responsable|Response
     {
         $selection = Selection::withTrashed()->find($id);
-        return TkAuthorizedProject::byId(
+        return (new TkAuthorizedProject(
             $selection->project_id,
-            TkAuthorized::new(
+            new TkAuthorized(
                 'selection_restore',
-                TkWithCallback::new(
+                new TkWithCallback(
                     fn() => $selection->restore(),
-                    TkRedirectedBack::new()
+                    new TkRedirectedBack()
                 )
             )
-        )->act();
+        ))->act();
     }
 }

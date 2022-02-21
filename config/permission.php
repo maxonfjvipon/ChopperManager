@@ -1,8 +1,8 @@
 <?php
 
 
-use Modules\User\Entities\Permission;
-use Modules\User\Entities\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 return [
 

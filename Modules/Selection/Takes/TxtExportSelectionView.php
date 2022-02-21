@@ -40,7 +40,7 @@ final class TxtExportSelectionView implements Text
      * @param Selection $selection
      * @param Request $request
      */
-    private function __construct(Selection $selection, Request $request)
+    public function __construct(Selection $selection, Request $request)
     {
         $this->selection = $selection;
         $this->request = $request;

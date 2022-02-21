@@ -15,8 +15,8 @@ final class ExportAtOnceDoublePumpSelectionRequest extends ExportAtOnceSelection
     {
         return array_merge(parent::rules(), [
             'selected_pump_name' => ['required', 'string'],
-            'pump_id' => ['required', 'exists:tenant.pumps,id'],
-            'dp_work_scheme_id' => ['sometimes', 'nullable', 'exists:tenant.double_pump_work_schemes,id'],
+            'pump_id' => ['required', 'exists:pumps,id'],
+            'dp_work_scheme_id' => ['sometimes', 'nullable', 'exists:double_pump_work_schemes,id'],
             'flow' => ['sometimes', 'nullable', 'numeric'],
             'head' => ['sometimes', 'nullable', 'numeric'],
             'fluid_temperature' => ['required', 'numeric']

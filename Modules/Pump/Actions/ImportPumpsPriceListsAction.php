@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Modules\Pump\Actions;
-
 
 use App\Rules\ExistsAsKeyInArray;
 use Illuminate\Support\Facades\DB;
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 use Modules\Pump\Entities\Pump;
 use Modules\User\Entities\Country;
 
@@ -57,7 +55,7 @@ class ImportPumpsPriceListsAction extends ImportAction
     protected function import($sheet)
     {
         foreach (array_chunk($sheet, 100) as $chunkedSheet) {
-            DB::table( $this->getTenantModel()::current()->database . '.pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
+            DB::table( 'pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
         }
     }
 }

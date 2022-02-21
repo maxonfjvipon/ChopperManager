@@ -19,16 +19,14 @@ use Modules\Auth\Http\Endpoints\RegisterAttemptEndpoint;
 use Modules\Auth\Http\Endpoints\RegisterEndpoint;
 use Modules\Auth\Http\Controllers\EmailVerificationController;
 
-Route::middleware('guest.module')->group(function () {
+Route::middleware('guest')->group(function () {
     // LOGIN
     Route::get('login')->name('login')->uses(LoginEndpoint::class);
     Route::post('login')->name('login.attempt')->uses(LoginAttemptEndpoint::class);
 
     // REGISTER
-    Route::middleware('has_registration')->group(function () {
-        Route::get('register')->name('register')->uses(RegisterEndpoint::class);
-        Route::post('register')->name('register.attempt')->uses(RegisterAttemptEndpoint::class);
-    });
+    Route::get('register')->name('register')->uses(RegisterEndpoint::class);
+    Route::post('register')->name('register.attempt')->uses(RegisterAttemptEndpoint::class);
 });
 
 
@@ -36,7 +34,7 @@ Route::middleware('guest.module')->group(function () {
 Route::post('logout')->name('logout')->uses(LogoutEndpoint::class);
 
 // AUTHORIZED
-Route::middleware('auth.module')->group(function () {
+Route::middleware('auth')->group(function () {
     // EMAIL VERIFICATION
     Route::get('/email/verify')->name('verification.notice')->uses([EmailVerificationController::class, 'notice']);
     Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses([EmailVerificationController::class, 'verify']);

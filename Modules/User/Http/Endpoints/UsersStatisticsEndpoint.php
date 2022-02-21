@@ -16,12 +16,12 @@ final class UsersStatisticsEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_access',
-            TkInertia::new(
+            new TkInertia(
                 'User::Statistics',
-                UsersForStatistics::new()
+                new UsersForStatistics()
             )
-        )->act();
+        ))->act();
     }
 }

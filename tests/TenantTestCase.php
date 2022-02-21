@@ -3,15 +3,10 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Modules\AdminPanel\Entities\Tenant;
-use Modules\User\Entities\Userable;
-use Modules\User\Traits\HasUserable;
 
 abstract class TenantTestCase extends TestCase
 {
-    use HasUserable, RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * @var Userable

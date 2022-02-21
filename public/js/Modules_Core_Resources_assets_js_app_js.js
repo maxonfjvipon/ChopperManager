@@ -12138,7 +12138,7 @@ function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
 
 /***/ "./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js":
 /*!***************************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js ***!
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12169,7 +12169,7 @@ var BackToProjectsLink = function BackToProjectsLink() {
 
 /***/ "./Modules/Core/Resources/assets/js/Components/CloneProjectDrawer.js":
 /*!***************************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/CloneProjectDrawer.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Components/CloneProjectDrawer.js ***!
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12306,7 +12306,7 @@ var CloneProjectDrawer = function CloneProjectDrawer(_ref) {
 
 /***/ "./Modules/Core/Resources/assets/js/Components/ErrorLayout.js":
 /*!********************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/ErrorLayout.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Components/ErrorLayout.js ***!
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12357,7 +12357,7 @@ function ErrorLayout(_ref) {
 
 /***/ "./Modules/Core/Resources/assets/js/Components/ExportProjectDrawer.js":
 /*!****************************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/ExportProjectDrawer.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Components/ExportProjectDrawer.js ***!
   \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12588,7 +12588,7 @@ var ExportProjectDrawer = function ExportProjectDrawer(_ref) {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Error.js":
 /*!*********************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Error.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Error.js ***!
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12647,7 +12647,7 @@ ErrorPage.layout = function (page) {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Projects/Create.js":
 /*!*******************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Projects/Create.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Projects/Create.js ***!
   \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12726,7 +12726,7 @@ function Create() {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Projects/Edit.js":
 /*!*****************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Projects/Edit.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Projects/Edit.js ***!
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12809,7 +12809,7 @@ function Edit() {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Projects/Index.js":
 /*!******************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Projects/Index.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Projects/Index.js ***!
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13059,7 +13059,7 @@ function Index() {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Projects/Show.js":
 /*!*****************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Projects/Show.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Projects/Show.js ***!
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13309,7 +13309,7 @@ function Show() {
 
 /***/ "./Modules/Core/Resources/assets/js/Pages/Projects/Statistics.js":
 /*!***********************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Pages/Projects/Statistics.js ***!
+  !*** ./Modules/Project/Resources/assets/js/Pages/Projects/Statistics.js ***!
   \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13945,7 +13945,7 @@ function Statistics() {
 
 /***/ "./Modules/Core/Resources/assets/js/app.js":
 /*!*************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/app.js ***!
+  !*** ./Modules/Project/Resources/assets/js/app.js ***!
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -15553,7 +15553,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 			blob,
 			reader;
 			myBlob= myBlob.call ? myBlob.bind(self) : Blob ;
-	  
+
 		if(String(this)==="true"){ //reverse arguments, allowing download.bind(true, "text/xml", "export.xml") to act as a callback
 			payload=[payload, mimeType];
 			mimeType=payload[0];
@@ -15568,7 +15568,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         		var ajax=new XMLHttpRequest();
         		ajax.open( "GET", url, true);
         		ajax.responseType = 'blob';
-        		ajax.onload= function(e){ 
+        		ajax.onload= function(e){
 				  download(e.target.response, fileName, defaultMime);
 				};
         		setTimeout(function(){ ajax.send();}, 0); // allows setting custom ajax headers using the return:
@@ -15579,22 +15579,22 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 		//go ahead and download dataURLs right away
 		if(/^data:([\w+-]+\/[\w+.-]+)?[,;]/.test(payload)){
-		
+
 			if(payload.length > (1024*1024*1.999) && myBlob !== toString ){
 				payload=dataUrlToBlob(payload);
 				mimeType=payload.type || defaultMime;
-			}else{			
+			}else{
 				return navigator.msSaveBlob ?  // IE10 can't do a[download], only Blobs:
 					navigator.msSaveBlob(dataUrlToBlob(payload), fileName) :
 					saver(payload) ; // everyone else can save dataURLs un-processed
 			}
-			
+
 		}else{//not data url, is it a string with special needs?
-			if(/([\x80-\xff])/.test(payload)){			  
+			if(/([\x80-\xff])/.test(payload)){
 				var i=0, tempUiArr= new Uint8Array(payload.length), mx=tempUiArr.length;
 				for(i;i<mx;++i) tempUiArr[i]= payload.charCodeAt(i);
 			 	payload=new myBlob([tempUiArr], {type: mimeType});
-			}		  
+			}
 		}
 		blob = payload instanceof myBlob ?
 			payload :

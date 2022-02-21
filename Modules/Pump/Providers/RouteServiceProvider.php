@@ -2,7 +2,7 @@
 
 namespace Modules\Pump\Providers;
 
-use Modules\Core\Providers\CoreRouteServiceProvider;
+use Modules\Project\Providers\CoreRouteServiceProvider;
 
 class RouteServiceProvider extends CoreRouteServiceProvider
 {

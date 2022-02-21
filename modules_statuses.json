@@ -1,10 +1,7 @@
 {
-    "AdminPanel": true,
     "Pump": true,
-    "Core": true,
+    "Project": true,
     "User": true,
     "Auth": true,
-    "PumpManager": true,
-    "PumpProducer": true,
     "Selection": true
 }

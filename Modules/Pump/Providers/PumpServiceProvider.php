@@ -151,32 +151,5 @@ class PumpServiceProvider extends ServiceProvider
                 default => App::make(SinglePumpService::class),
             };
         });
-
-        $this->app->when(PumpsController::class)
-            ->needs(PumpsService::class)
-            ->give(function () {
-                return App::make(match (Tenant::current()->type->id) {
-                    TenantType::$PUMPPRODUCER => PPPumpsService::class,
-                    default => PMPumpsService::class,
-                });
-            });
-
-        $this->app->when(PumpSeriesController::class)
-            ->needs(PumpSeriesContract::class)
-            ->give(function () {
-                return App::make(match (Tenant::current()->type->id) {
-                    TenantType::$PUMPPRODUCER => PPPumpSeriesService::class,
-                    default => PMPumpSeriesService::class,
-                });
-            });
-
-        $this->app->when(PumpBrandsController::class)
-            ->needs(PumpBrandsContract::class)
-            ->give(function () {
-                return App::make(match (Tenant::current()->type->id) {
-                    TenantType::$PUMPPRODUCER => PPPumpBrandsService::class,
-                    default => PMPumpBrandsService::class,
-                });
-            });
     }
 }
