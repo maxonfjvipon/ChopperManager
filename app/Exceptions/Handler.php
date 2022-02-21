@@ -3,14 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Inertia\Inertia;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    use UsesTenantModel;
-
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,7 +46,7 @@ class Handler extends ExceptionHandler
 //
 //        // TODO: fix for production
 //        if (!app()->environment(['production']) && in_array($response->status(), [500, 503, 404, 403])) {
-//            return Inertia::render('Core::Error', [
+//            return Inertia::render('Project::Error', [
 //                'status' => $response->status(),
 //                'title' => $currentTenant->name ?? "Pump Manager"
 //            ])

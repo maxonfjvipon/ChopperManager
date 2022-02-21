@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware(['web', 'tenant'])->group(function() {
+        Route::middleware('web')->group(function() {
             Route::namespace($this->namespace)
                 ->prefix(LaravelLocalization::setLocale())
                 ->middleware(['localizationRedirect'])

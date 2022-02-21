@@ -2,15 +2,18 @@
 
 namespace Modules\Selection\Transformers\SelectionResources;
 
+use Exception;
 use Illuminate\Http\Request;
+use Modules\Selection\Support\TxtSelectionCurvesView;
 
-class SinglePumpSelectionResource extends PumpSelectionResource
+final class SinglePumpSelectionResource extends PumpSelectionResource
 {
     /**
      * Transform the resource into an array.
      *
      * @param Request $request
      * @return array
+     * @throws Exception
      */
     public function toArray($request): array
     {
@@ -60,11 +63,6 @@ class SinglePumpSelectionResource extends PumpSelectionResource
                 'flow' => $this->flow,
                 'head' => $this->head,
                 'fluid_temperature' => $this->fluid_temperature,
-                'svg' => view(
-                    'selection::selection_perf_curves',
-                    $this->selectionCurvesData($this->resource)
-                )->render(),
-//                'pump_info' => $this->pumpInfo(),
             ],
         ];
     }

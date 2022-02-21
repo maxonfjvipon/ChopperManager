@@ -4,7 +4,7 @@ namespace Modules\Selection\Http\Requests\SinglePump;
 
 use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
 
-class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
+final class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
 {
     protected function prepareForValidation()
     {
@@ -21,7 +21,7 @@ class CurvesForSinglePumpSelectionRequest extends CurvesForSelectionRequest
     public function rules(): array
     {
         return [
-            'pump_id' => ['required', 'exists:tenant.pumps,id'],
+            'pump_id' => ['required', 'exists:pumps,id'],
             'pumpable_type' => ['required', 'string'],
             'pumps_count' => ['required', 'numeric'],
             'main_pumps_count' => ['required', 'numeric'],

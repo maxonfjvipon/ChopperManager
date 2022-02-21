@@ -35,10 +35,10 @@ class PumpSeriesStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'brand_id' => ['required', 'exists:tenant.pump_brands,id'],
+            'brand_id' => ['required', 'exists:pump_brands,id'],
             'name' => ['required'], // TODO: unique only for current brand
-            'power_adjustment_id' => ['required', 'exists:tenant.electronic_power_adjustments,id'],
-            'category_id' => ['required', 'exists:tenant.pump_categories,id'],
+            'power_adjustment_id' => ['required', 'exists:electronic_power_adjustments,id'],
+            'category_id' => ['required', 'exists:pump_categories,id'],
             'types' => ['array'], // TODO: every elem in array should exists in DB
             'applications' => ['array'], // TODO: every elem in array should exists in DB
             'image' => ['sometimes', 'nullable', 'string']

@@ -3,10 +3,9 @@
 namespace Modules\Selection\Takes;
 
 use App\Support\Take;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Core\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizedProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

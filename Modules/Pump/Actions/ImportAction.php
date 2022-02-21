@@ -15,7 +15,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class ImportAction
 {
-    use UsesTenantModel;
+
 
     protected array $db, $rules, $attributes, $messages, $files;
     private int $MAX_EXECUTION_TIME = 180;

@@ -19,15 +19,7 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Modules\AdminPanel\Http\Middleware\AuthenticateAdmin;
-use Modules\AdminPanel\Http\Middleware\CheckTenantIsActive;
-use Modules\AdminPanel\Http\Middleware\HasRegistration;
-use Modules\AdminPanel\Http\Middleware\RedirectIfAuthenticatedAdmin;
-use Modules\Auth\Http\Middleware\AuthenticateInModule;
-use Modules\Auth\Http\Middleware\RedirectIfAuthenticatedInModule;
-use Modules\Core\Http\Middleware\CheckUserIsActive;
-use Spatie\Multitenancy\Http\Middleware\EnsureValidTenantSession;
-use Spatie\Multitenancy\Http\Middleware\NeedsTenant;
+use Modules\User\Http\Middleware\CheckUserIsActive;
 
 class Kernel extends HttpKernel
 {
@@ -65,12 +57,6 @@ class Kernel extends HttpKernel
             HandleInertiaRequests::class,
         ],
 
-        'tenant' => [
-            NeedsTenant::class,
-            EnsureValidTenantSession::class,
-            CheckTenantIsActive::class,
-        ],
-
         'api' => [
             'throttle:api',
             SubstituteBindings::class,
@@ -86,20 +72,14 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => Authenticate::class,
-        'auth.admin' => AuthenticateAdmin::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
 
-        'auth.module' => AuthenticateInModule::class,
         'auth.active' => CheckUserIsActive::class,
 
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,
 
         'guest' => RedirectIfAuthenticated::class,
-        'guest.admin' => RedirectIfAuthenticatedAdmin::class,
-        'guest.module' => RedirectIfAuthenticatedInModule::class,
-
-        'has_registration' => HasRegistration::class,
 
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,

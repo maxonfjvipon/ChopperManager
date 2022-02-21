@@ -2,17 +2,11 @@
 
 namespace Tests;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Modules\AdminPanel\Entities\Tenant;
-use Modules\PumpManager\Entities\PMUser;
-use Modules\User\Entities\Userable;
-use Modules\User\Traits\HasUserable;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 abstract class TenantTestCase extends TestCase
 {
-    use HasUserable;
+    use RefreshDatabase;
 
     /**
      * @var Userable
@@ -29,17 +23,21 @@ abstract class TenantTestCase extends TestCase
         parent::setUp();
         $this->createApplication();
         config()->set('multitenancy.landlord_database_connection_name', 'landlord_test');
-        $tenant = $this->activatedTenant();
+        $tenant = Tenant::find($this->tenantId());
+        $tenant->makeCurrent();
         $this->guard = $tenant->guard;
         $this->user = (new ($this->getUserClass()))->find(1);
-        Auth::guard($tenant->guard)->login($this->user);
+
+        // here
+//        Auth::guard($tenant->guard)->login($this->user);
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
-        Auth::guard($this->guard)->logout();
+//        Auth::guard($this->guard)->logout();
         Tenant::current()->forget();
+        var_dump('tear down');
     }
 
     /**

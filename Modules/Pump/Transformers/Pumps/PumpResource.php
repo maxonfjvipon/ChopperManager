@@ -2,9 +2,9 @@
 
 namespace Modules\Pump\Transformers\Pumps;
 
+use App\Support\TenantStorage;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Core\Support\TenantStorage;
 
 class PumpResource extends JsonResource
 {

@@ -11,12 +11,12 @@ use Modules\Pump\Entities\Pump;
  * Selection create component as {@Text}
  * @package Modules\Selection\Support
  */
-class TxtSelectionsCreateComponent implements Text
+final class TxtSelectionsCreateComponent implements Text
 {
     /**
-     * @var ?Request $request
+     * @var Request $request
      */
-    private ?Request $request;
+    private Request $request;
 
     /**
      * Ctor wrap.
@@ -32,7 +32,7 @@ class TxtSelectionsCreateComponent implements Text
      * Ctor.
      * @param Request|null $request
      */
-    private function __construct(?Request $request)
+    public function __construct(Request $request = null)
     {
         $this->request = $request ?? request();
     }

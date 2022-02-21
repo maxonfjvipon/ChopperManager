@@ -31,12 +31,12 @@ final class TkAuthorized implements Take
     /**
      * Ctor wrap.
      * @param string $ability
-     * @param Take $renderable
+     * @param Take $take
      * @return TkAuthorized
      */
-    public static function new(string $ability, Take $renderable): TkAuthorized
+    public static function new(string $ability, Take $take): TkAuthorized
     {
-        return new self($ability, $renderable);
+        return new self($ability, $take);
     }
 
     /**
