@@ -2,7 +2,12 @@
 
 namespace Modules\Pump\Actions\ImportPumps;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Maxonfjvipon\Elegant_Elephant\Logical\EqualityOf;
+use Maxonfjvipon\Elegant_Elephant\Logical\Negation;
+use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
 
 abstract class PumpImporter
 {
@@ -23,18 +28,15 @@ abstract class PumpImporter
 
     public function importCallback(&$errorBag): callable
     {
-        return function($entity) use (&$errorBag)
-        {
+        return function ($entity) use (&$errorBag) {
             try {
-                validator()
-                    ->make($entity, $this->rules(), $this->messages(), $this->attributes())
-                    ->validate();
+                Validator::make($entity, $this->rules(), $this->messages(), $this->attributes())->validate();
             } catch (ValidationException $exception) {
                 array_map(function ($message) use ($entity, &$errorBag) {
                     $errorBag[] = $this->errorBagEntity($entity, $message);
                 }, $exception->validator->errors()->messages());
             }
-            if (empty($errorBar)) {
+            if ((new EqualityOf(new LengthOf($errorBag), 0))->asBool()) {
                 return $this->importEntity($entity);
             }
         };

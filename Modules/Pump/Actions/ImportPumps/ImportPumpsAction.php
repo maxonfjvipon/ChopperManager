@@ -11,12 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Pump\Entities\Pump;
-use Modules\Pump\Entities\PumpCoefficients;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
 use Modules\Selection\Support\Regression\EqPolynomial;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class ImportPumpsAction
 {
