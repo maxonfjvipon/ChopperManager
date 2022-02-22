@@ -77,7 +77,7 @@ final class PumpPerfLine implements Arrayable
     private function qStep(array $xx): float|int
     {
         $graphicsDist = $xx[count($xx) - 1] - $xx[0];
-        foreach ([0.5, 1, 2, 5, 10, 20] as $step) {
+        foreach ([0.1, 0.5, 1, 2, 5, 10, 20] as $step) {
             if ($graphicsDist <= $step * 50) {
                 return $step;
             }
