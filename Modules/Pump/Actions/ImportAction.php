@@ -15,7 +15,7 @@ use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class ImportAction
 {
-    use UsesTenantModel;
+
 
     protected array $db, $rules, $attributes, $messages, $files;
     private int $MAX_EXECUTION_TIME = 180;
@@ -77,21 +77,33 @@ class ImportAction
         }
     }
 
+    /**
+     * @throws Exception
+     */
     private function throwOverwrittenException()
     {
         throw new Exception("Method should be overwritten");
     }
 
+    /**
+     * @throws Exception
+     */
     protected function errorBagEntity($entity, $message)
     {
         $this->throwOverwrittenException();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function importEntity($entity)
     {
         $this->throwOverwrittenException();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function import($sheet)
     {
         $this->throwOverwrittenException();

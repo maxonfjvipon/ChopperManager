@@ -4,6 +4,7 @@ namespace Modules\Pump\Actions\ImportPumps\PumpType;
 
 use App\Rules\ExistsAsKeyInArray;
 use App\Rules\ExistsInArray;
+use App\Rules\NotEmptyStr;
 use Illuminate\Support\Facades\Log;
 use Modules\Pump\Actions\ImportPumps\PumpImporter;
 use Modules\Pump\Entities\ConnectionType;
@@ -21,34 +22,34 @@ class SinglePumpImporter extends PumpImporter
         parent::__construct([
             'brands' => PumpBrand::pluck('id', 'name')->all(),
             'series' => PumpSeries::pluck('id', 'name')->all(),
-            'connectionTypes' => ConnectionType::pluck('id')->all(),
-            'dns' => DN::pluck('id', 'value')->all(),
-            'mainsConnections' => MainsConnection::pluck('id')->all(),
-            'powerAdjustments' => ElPowerAdjustment::pluck('id')->all(),
+            'connectionTypes' => ConnectionType::allOrCached()->pluck('id')->all(),
+            'dns' => DN::allOrCached()->pluck('id', 'value')->all(),
+            'mainsConnections' => MainsConnection::allOrCached()->pluck('id')->all(),
+            'powerAdjustments' => ElPowerAdjustment::allOrCached()->pluck('id')->all(),
         ]);
     }
 
     protected function rules(): array
     {
         return [
-            '0' => ['required'], // main part num
+            '0' => ['required', new NotEmptyStr()], // main part num
             '1' => ['nullable'], // backup part num
             '2' => ['nullable'], // archive part num
             '3' => ['required', new ExistsAsKeyInArray($this->db['brands'])], // brand,
             '4' => ['required', new ExistsAsKeyInArray($this->db['series'])], // series
-            '5' => ['required'], // name
-            '6' => ['required'], // weight
-            '7' => ['required'], // rated power,
-            '8' => ['required'], // rated current
+            '5' => ['required', new NotEmptyStr()], // name
+            '6' => ['required', new NotEmptyStr()], // weight
+            '7' => ['required', new NotEmptyStr()], // rated power,
+            '8' => ['required', new NotEmptyStr()], // rated current
             '9' => ['required', new ExistsInArray($this->db['connectionTypes'])], // connection type
             '10' => ['required', new ExistsAsKeyInArray($this->db['dns'])], // dn
             '11' => ['required', new ExistsAsKeyInArray($this->db['dns'])], // dn
-            '12' => ['required'], // min temp
-            '13' => ['required'], // max temp
-            '14' => ['required'], // ptp length
+            '12' => ['required', new NotEmptyStr()], // min temp
+            '13' => ['required', new NotEmptyStr()], // max temp
+            '14' => ['required', new NotEmptyStr()], // ptp length
             '15' => ['required', new ExistsInArray($this->db['mainsConnections'])], // mains connection
             '16' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // performance
-            '17' => ['required', 'boolean'], // is discontinued
+            '17' => ['required', 'in:0,1'], // is discontinued
             '18' => ['sometimes', 'nullable',], // description
             '19' => ['sometimes', 'nullable', 'string'], // pump image
             '20' => ['sometimes', 'nullable', 'string'], // pump sizes image
@@ -95,7 +96,7 @@ class SinglePumpImporter extends PumpImporter
 
     protected function importEntity($entity): array
     {
-        Log::info($entity);
+//        Log::info($entity);
         return [
             'pump' => [
                 'article_num_main' => trim($entity[0]),
@@ -121,6 +122,7 @@ class SinglePumpImporter extends PumpImporter
                 'electric_diagram_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
                 'cross_sectional_drawing_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
                 'pumpable_type' => Pump::$SINGLE_PUMP,
+                'deleted_at' => null
             ],
             'files' => array_key_exists(23, $entity) ? $this->idsArrayFromString($entity[23]) : []
         ];

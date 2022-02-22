@@ -2,10 +2,10 @@
 
 namespace Modules\Selection\Support;
 
+use App\Support\TenantStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Modules\Core\Support\TenantStorage;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\DoublePumpWorkScheme;
@@ -25,9 +25,9 @@ use Modules\Selection\Entities\SelectionRange;
 final class ArrSelectionProps implements Arrayable
 {
     /**
-     * @var ?Request $request
+     * @var Request $request
      */
-    private ?Request $request;
+    private Request $request;
 
     /**
      * Ctor wrap.
@@ -43,7 +43,7 @@ final class ArrSelectionProps implements Arrayable
      * Ctor.
      * @param ?Request $request
      */
-    private function __construct(?Request $request)
+    public function __construct(Request $request = null)
     {
         $this->request = $request ?? request();
     }

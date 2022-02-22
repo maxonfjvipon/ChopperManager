@@ -5,6 +5,7 @@ namespace App\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Cached model
@@ -33,5 +34,13 @@ trait Cached
         $all = self::all();
         Cache::put(self::getCacheKey(), $all);
         return $all;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public static function clearCache()
+    {
+        Cache::forget(self::getCacheKey());
     }
 }

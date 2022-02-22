@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Modules\Pump\Actions;
-
 
 use App\Rules\ExistsAsKeyInArray;
 use Illuminate\Support\Facades\DB;
-use Modules\Core\Entities\Currency;
+use Modules\Project\Entities\Currency;
 use Modules\Pump\Entities\Pump;
 use Modules\User\Entities\Country;
 
@@ -15,9 +13,9 @@ class ImportPumpsPriceListsAction extends ImportAction
     public function __construct($files)
     {
         $db = [
-            'pumps' => Pump::pluck('id', 'article_num_main')->all(),
-            'countries' => Country::pluck('id', 'code')->all(),
-            'currencies' => Currency::pluck('id', 'code')->all(),
+            'pumps' => Pump::allOrCached()->pluck('id', 'article_num_main')->all(),
+            'countries' => Country::allOrCached()->pluck('id', 'code')->all(),
+            'currencies' => Currency::allOrCached()->pluck('id', 'code')->all(),
         ];
         parent::__construct($db, [
             '0' => ['required', new ExistsAsKeyInArray($db['pumps'])], // article num main
@@ -57,7 +55,7 @@ class ImportPumpsPriceListsAction extends ImportAction
     protected function import($sheet)
     {
         foreach (array_chunk($sheet, 100) as $chunkedSheet) {
-            DB::table( $this->getTenantModel()::current()->database . '.pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
+            DB::table('pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
         }
     }
 }

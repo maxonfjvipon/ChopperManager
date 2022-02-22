@@ -58,8 +58,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html
-            php artisan migrate --path=Modules/AdminPanel/Database/Migrations --database=landlord --force
-            php artisan tenants:artisan "migrate --database=tenant --path=Modules/Core/Database/Migrations --force"
+            php artisan migrate --force
 
       - name: Seeding
         uses: appleboy/ssh-action@master
@@ -71,7 +70,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/html
-            php artisan db:seed --class=TenantsSeeder --force
+            php artisan db:seed --force
 
       - name: Clearing cache
         uses: appleboy/ssh-action@master

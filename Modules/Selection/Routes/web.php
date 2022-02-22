@@ -7,17 +7,17 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Selection\Endpoints\SelectionsCreateEndpoint;
-use Modules\Selection\Endpoints\SelectionsCurvesEndpoint;
-use Modules\Selection\Endpoints\SelectionsDashboardEndpoint;
-use Modules\Selection\Endpoints\SelectionsDestroyEndpoint;
-use Modules\Selection\Endpoints\SelectionsExportAtOnceEndpoint;
-use Modules\Selection\Endpoints\SelectionsExportEndpoint;
-use Modules\Selection\Endpoints\SelectionsRestoreEndpoint;
-use Modules\Selection\Endpoints\SelectionsSelectEndpoint;
-use Modules\Selection\Endpoints\SelectionsShowEndpoint;
-use Modules\Selection\Endpoints\SelectionsStoreEndpoint;
-use Modules\Selection\Endpoints\SelectionsUpdateEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsCreateEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsCurvesEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsDashboardEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsDestroyEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsExportAtOnceEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsExportEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsRestoreEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsSelectEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsShowEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsStoreEndpoint;
+use Modules\Selection\Http\Endpoints\SelectionsUpdateEndpoint;
 
 Route::prefix('projects/{project}')->group(function () {
     Route::prefix('selections')->group(function () {

@@ -2,11 +2,11 @@
 
 namespace Modules\Pump\Transformers;
 
+use App\Support\TenantStorage;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
-use Modules\Core\Support\TenantStorage;
 
 class PumpSeriesResource extends JsonResource
 {

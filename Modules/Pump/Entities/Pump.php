@@ -2,27 +2,46 @@
 
 namespace Modules\Pump\Entities;
 
+use App\Support\Rates\Rates;
+use App\Traits\Cached;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use Exception;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
-use Modules\Core\Support\Rates;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
+use Modules\Pump\Traits\Pump\PumpAttributes;
+use Modules\Pump\Traits\Pump\PumpRelationships;
+use Modules\Pump\Traits\Pump\PumpScopes;
+use Modules\Selection\Support\Performance\DPPerformance;
+use Modules\Selection\Support\Performance\SPPerformance;
+use Modules\Selection\Support\Performance\PumpPerformance;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
-class Pump extends Model
+/**
+ * @property PumpsPriceList $price_list
+ * @property string $pumpable_type
+ * @property int $id
+ * @property PumpSeries $series
+ * @property PumpBrand $brand
+ * @property string $name
+ * @property string $sp_performance
+ * @property string $dp_standby_performance
+ * @property string $dp_peak_performance
+ * @property mixed $coefficients
+ * @property float $rated_power
+ * @property string $article_num_main
+ */
+final class Pump extends Model
 {
     public static string $SINGLE_PUMP = 'single_pump';
     public static string $DOUBLE_PUMP = 'double_pump';
     public static string $STATION_WATER = 'station_water';
     public static string $STATION_FIRE = 'station_fire';
 
-    use SoftDeletes, SoftCascadeTrait, UsesTenantConnection, BelongsToThrough;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, BelongsToThrough, Cached;
+    use PumpRelationships, PumpScopes, PumpAttributes;
 
-    protected $softCascade = ['selections'];
+    protected array $softCascade = ['selections'];
     protected $guarded = [];
     public $timestamps = false;
     protected $table = 'pumps';
@@ -31,59 +50,36 @@ class Pump extends Model
         'is_discontinued' => 'boolean'
     ];
 
-    // ATTRIBUTES
-    public function getIsDiscontinuedWithSeriesAttribute(): bool
+    protected static function getCacheKey(): string
     {
-        return $this->series->is_discontinued
-            ? true
-            : $this->getOriginal('is_discontinued');
+        return "pumps";
     }
 
-    public function getFullNameAttribute(): string
+    /**
+     * TODO: mb make an attribute
+     * Creates performance for pump and caches it
+     * @return PumpPerformance
+     */
+    public function performance(): PumpPerformance
     {
-        return "{$this->brand->name} {$this->name}";
+        if (!$this->getAttribute('perf')) {
+            $this->{'perf'} = match ($this->pumpable_type) {
+                self::$SINGLE_PUMP => new SPPerformance($this),
+                self::$DOUBLE_PUMP => new DPPerformance($this)
+            };
+        }
+        return $this->perf;
     }
 
-    public function getTypesAttribute(): string
+    /**
+     * @throws Exception
+     */
+    public function coefficientsAt(int $position): PumpCoefficients
     {
-        return $this->series->imploded_types;
+        return $this->coefficients->firstWhere('position', $position)
+            ?? PumpCoefficients::createdForPumpAtPosition($this, $position);
     }
 
-    public function getApplicationsAttribute(): string
-    {
-        return $this->series->imploded_applications;
-    }
-
-    // SCOPES
-    public function scopePerformanceData($query, $seriesId)
-    {
-        return match (PumpSeries::find($seriesId)->category_id) {
-            PumpCategory::$SINGLE_PUMP => $query->addSelect('sp_performance'),
-            PumpCategory::$DOUBLE_PUMP => $query->addSelect('dp_peak_performance', 'dp_standby_performance'),
-        };
-    }
-
-    public function scopeOnPumpableType($query, $pumpable_type)
-    {
-        return $query->where('pumpable_type', $pumpable_type);
-    }
-
-    public function scopeDoublePumps($query)
-    {
-        return $this->scopeOnPumpableType($query, self::$DOUBLE_PUMP);
-    }
-
-    public function scopeSinglePumps($query)
-    {
-        return $this->scopeOnPumpableType($query, self::$SINGLE_PUMP);
-    }
-
-    public function scopeAvailableForCurrentUser($query)
-    {
-        return $query->whereIn('id', Auth::user()->available_pumps()->pluck('pumps.id')->all());
-    }
-
-    // FUNCTIONS
     public function coefficientsCount(): int
     {
         return match ($this->pumpable_type) {
@@ -95,13 +91,14 @@ class Pump extends Model
     /**
      * @param Rates $rates
      * @return array
+     * @throws Exception
      */
     public function currentPrices(Rates $rates): array
     {
         if ($this->price_list) {
-            $price = $this->price_list->currency->code === $rates->base()
+            $price = $rates->hasTheSameBaseAs($this->price_list->currency)
                 ? $this->price_list->price
-                : round($this->price_list->price / $rates->rate($this->price_list->currency->code));
+                : round($this->price_list->price / $rates->rateFor($this->price_list->currency->code));
             return [
                 'simple' => $price,
                 'discounted' => $price - $price * ($this->series->auth_discount->value
@@ -117,64 +114,15 @@ class Pump extends Model
     /**
      * @param Rates $rates
      * @return float|int
+     * @throws Exception
      */
     public function retailPrice(Rates $rates): float|int
     {
         if ($this->price_list) {
-            return $this->price_list->currency->code === $rates->base()
+            return $rates->hasTheSameBaseAs($this->price_list->currency)
                 ? $this->price_list->price
-                : round($this->price_list->price / $rates->rate($this->price_list->currency->code));
+                : round($this->price_list->price / $rates->rateFor($this->price_list->currency->code));
         }
         return 0;
-    }
-
-    // RELATIONSHIPS
-    public function series(): BelongsTo
-    {
-        return $this->belongsTo(PumpSeries::class, 'series_id');
-    }
-
-    public function brand(): \Znck\Eloquent\Relations\BelongsToThrough
-    {
-        return $this->belongsToThrough(PumpBrand::class, PumpSeries::class, null, '', [
-            PumpBrand::class => 'brand_id',
-            PumpSeries::class => 'series_id'
-        ]);
-    }
-
-    public function price_list(): HasOne
-    {
-        return $this->hasOne(PumpsPriceList::class, 'pump_id')
-            ->where('country_id', Auth::user()->country_id);
-    }
-
-    public function connection_type(): BelongsTo
-    {
-        return $this->belongsTo(ConnectionType::class);
-    }
-
-    public function dn_suction(): BelongsTo
-    {
-        return $this->belongsTo(DN::class, 'dn_suction_id');
-    }
-
-    public function dn_pressure(): BelongsTo
-    {
-        return $this->belongsTo(DN::class, 'dn_pressure_id');
-    }
-
-    public function mains_connection(): BelongsTo
-    {
-        return $this->belongsTo(MainsConnection::class, 'connection_id');
-    }
-
-    public function coefficients(): HasMany
-    {
-        return $this->hasMany(PumpsAndCoefficients::class, 'pump_id');
-    }
-
-    public function files(): HasMany
-    {
-        return $this->hasMany(PumpFile::class, 'pump_id');
     }
 }

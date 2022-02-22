@@ -10448,10 +10448,10 @@ function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
 
 /***/ }),
 
-/***/ "./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js":
-/*!***************************************************************************!*\
-  !*** ./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js ***!
-  \***************************************************************************/
+/***/ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js":
+/*!******************************************************************************!*\
+  !*** ./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11081,8 +11081,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
@@ -11192,6 +11193,9 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
                 setLoading(false);
                 var content = res.headers['content-type'];
                 downloadjs__WEBPACK_IMPORTED_MODULE_5___default()(res.data, stationToShow.name + ".pdf", content);
+              })["catch"](function (reason) {
+                setLoading(false);
+                antd__WEBPACK_IMPORTED_MODULE_9__["default"].error("Error downloading. Please contact the administrator", 7);
               });
 
             case 13:
@@ -11215,7 +11219,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.pump_image')
     })
   }, {
@@ -11226,7 +11230,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.sizes_image')
     })
   }, {
@@ -11237,7 +11241,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.electric_diagram')
     })
   }, {
@@ -11248,7 +11252,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.exploded_view')
     })
   }, {
@@ -11259,7 +11263,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.button')
     })
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
     width: 300,
     placement: "right",
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.title'),
@@ -11779,7 +11783,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
 /* harmony import */ var _Components_DashboardCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/DashboardCard */ "./Modules/Selection/Resources/assets/js/Components/DashboardCard.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _Core_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../Core/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Core/Resources/assets/js/Components/BackToProjectsLink.js");
+/* harmony import */ var _Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../Project/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -11836,7 +11840,7 @@ function Dashboard() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__.IndexContainer, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.subtitle'),
-    extra: project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Core_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__.BackToProjectsLink, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__.BackLink, {
+    extra: project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__.BackToProjectsLink, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__.BackLink, {
       href: tRoute('projects.show', project_id),
       title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.back.to_project')
     }),
@@ -12544,21 +12548,19 @@ var Selection = function Selection(_ref) {
       var _chosenSelectedPumps$;
 
       if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.key]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.svg) === undefined) {
-        var body = {
-          pump_id: stationToShow.pump_id,
-          head: stationToShow.head,
-          flow: stationToShow.flow,
-          dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
-          pumps_count: stationToShow.pumps_count || undefined,
-          main_pumps_count: stationToShow.main_pumps_count || undefined,
-          pumpable_type: pumpableType()
-        };
-
         try {
           axios.request({
             url: tRoute('selections.curves'),
             method: 'POST',
-            data: body
+            data: {
+              pump_id: stationToShow.pump_id,
+              head: stationToShow.head,
+              flow: stationToShow.flow,
+              dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
+              pumps_count: stationToShow.pumps_count || undefined,
+              main_pumps_count: stationToShow.main_pumps_count || undefined,
+              pumpable_type: pumpableType()
+            }
           }).then(function (res) {
             document.getElementById('for-graphic').innerHTML = res.data;
             chosenSelectedPumps[stationToShow.key] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.key]), {}, {
@@ -12607,12 +12609,9 @@ var Selection = function Selection(_ref) {
               break;
 
             case 9:
-              // console.log(pumpInfo, stationToShow, chosenSelectedPumps)
               if (pumpInfo.id === stationToShow.pump_id) {
-                // console.log('equal')
                 setPumpInfoVisible(true);
               } else {
-                // console.log('new')
                 setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info);
               }
 

@@ -19,7 +19,7 @@ class MigrateForTenantsFromCoreModule extends Command
      *
      * @var string
      */
-    protected $description = 'Migrate all migrations for all tenant from Core module';
+    protected $description = 'Migrate all migrations for all tenant from Project module';
 
     /**
      * Create a new command instance.
@@ -36,6 +36,6 @@ class MigrateForTenantsFromCoreModule extends Command
      */
     public function handle()
     {
-        Artisan::call("tenants:artisan \"migrate --database=tenant --path=Modules/Core/Database/Migrations\"");
+        Artisan::call("tenants:artisan \"migrate --database=tenant --path=Modules/Project/Database/Migrations\"");
     }
 }

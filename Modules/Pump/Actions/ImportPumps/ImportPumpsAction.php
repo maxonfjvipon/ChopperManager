@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Redirect;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
-use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
+use Modules\Selection\Support\Regression\EqPolynomial;
 
 class ImportPumpsAction
 {
-    use UsesTenantModel;
-
     private int $MAX_EXECUTION_TIME = 180;
     private bool $createCoefs = true;
 
@@ -27,6 +24,7 @@ class ImportPumpsAction
      * @param $files
      * @return RedirectResponse
      * @throws IOException
+     * @throws Exception
      */
     public function execute($files): RedirectResponse
     {
@@ -50,9 +48,8 @@ class ImportPumpsAction
 
         try {
             foreach ($sheets as $sheet) {
-                $database = $this->getTenantModel()::current()->database;
                 foreach (array_chunk($sheet, 100) as $chunkedSheet) {
-                    DB::table($database . '.pumps')->upsert(array_map(fn($sheetInfo) => $sheetInfo['pump'],
+                    DB::table('pumps')->upsert(array_map(fn($sheetInfo) => $sheetInfo['pump'],
                         $chunkedSheet), ['article_num_main']);
                 }
                 $seriesId = $sheet[0]['pump']['series_id'];
@@ -78,35 +75,46 @@ class ImportPumpsAction
                                 ];
                         }
                     }
-                    DB::table($database . '.pump_files')->insert($pumpFiles);
+                    DB::table('pump_files')->insert($pumpFiles);
                 }
                 if ($this->createCoefs) {
                     $pumpsBySeries->with('coefficients')
                         ->select('id', 'pumpable_type')
                         ->performanceData($seriesId)
-                        ->chunk(100, function ($pumps) use ($database) {
-                            DB::table($database . '.pumps_and_coefficients')
+                        ->chunk(100, function ($pumps) {
+                            DB::table('pump_coefficients')
                                 ->whereIn('pump_id', array_map(fn($pump) => $pump['id'], $pumps->toArray()))
                                 ->delete();
-                            $pumpsAndCoefficients = [];
+                            $coefficients = [];
                             foreach ($pumps as $pump) {
                                 if ($pump->coefficients->isEmpty()) {
                                     $count = $pump->coefficientsCount();
-                                    $pumpPerformance = PPumpPerformance::construct($pump);
                                     for ($pos = 1; $pos <= $count; ++$pos) {
-                                        $pumpsAndCoefficients[] = $pumpPerformance->coefficientsToCreate($pos);
+                                        $eq = EqPolynomial::new(
+                                            $pump->performance()->asArrayAt($pos)
+                                        )->asArray();
+                                        $coefficients[] = [
+                                            'pump_id' => $pump->id,
+                                            'position' => $pos,
+                                            'k' => $eq[0],
+                                            'b' => $eq[1],
+                                            'c' => $eq[2]
+                                        ];
                                     }
                                 }
                             }
-                            if (!empty($pumpsAndCoefficients)) {
-                                DB::table($database . '.pumps_and_coefficients')->insert($pumpsAndCoefficients);
+                            if (!empty($coefficients)) {
+                                DB::table('pump_coefficients')->insert($coefficients);
                             }
                         });
                 }
             }
         } catch (UnsupportedTypeException | Exception $exception) {
+            Log::error($exception->getMessage());
             Log::error($exception->getTraceAsString());
             return $this->redirectWithErrors("Ошибка загрузки. Не удалось заполнить базу данных.");
+        } finally {
+            Pump::clearCache();
         }
         return Redirect::route('pumps.index')->with('success', __('flash.pumps.imported'));
     }

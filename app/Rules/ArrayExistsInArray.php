@@ -30,7 +30,7 @@ class ArrayExistsInArray implements Rule
     #[Pure] public function passes($attribute, $value): bool
     {
         foreach ($value as $item) {
-            if (array_search($item, $this->searchArray) === false) {
+            if (!in_array($item, $this->searchArray)) {
                 return false;
             }
         }

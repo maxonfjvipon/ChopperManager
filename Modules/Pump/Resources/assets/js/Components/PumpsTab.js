@@ -15,13 +15,14 @@ export const PumpsTab = ({
                              setBrandsToShow,
                              setSeriesToShow,
                              setPumpInfo,
+                             pumps,
+                             setPumps,
+                             ...rest
                          }) => {
     const {postRequest, loading} = useHttp()
     const {has} = usePermissions()
     const tRoute = useTransRoutes()
     const searchFieldId = 'search-pumps-input' + pumpable_type
-
-    const [pumps, setPumps] = useState([])
 
     const showPumpClickHandler = id => () => {
         postRequest(tRoute('pumps.show', id), {
@@ -87,6 +88,7 @@ export const PumpsTab = ({
                 doubleClickHandler={has('pump_show') && showPumpClickHandler}
                 scroll={{x: 4000, y: "70vh"}}
                 loading={loading}
+                {...rest}
             />
         </>
     )

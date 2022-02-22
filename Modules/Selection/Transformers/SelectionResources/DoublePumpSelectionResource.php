@@ -3,13 +3,14 @@
 
 namespace Modules\Selection\Transformers\SelectionResources;
 
-use Modules\Selection\Traits\ConstructsSelectionCurves;
+use Exception;
 
-class DoublePumpSelectionResource extends PumpSelectionResource
+final class DoublePumpSelectionResource extends PumpSelectionResource
 {
-    use ConstructsSelectionCurves;
-
-    public function toArray($request)
+    /**
+     * @throws Exception
+     */
+    public function toArray($request): array
     {
         return [
             'id' => $this->id,
@@ -52,12 +53,7 @@ class DoublePumpSelectionResource extends PumpSelectionResource
                 'flow' => $this->flow,
                 'head' => $this->head,
                 'fluid_temperature' => $this->fluid_temperature,
-                'svg' => view(
-                    'selection::selection_perf_curves',
-                    $this->selectionCurvesData($this->resource)
-                )->render(),
                 'dp_work_scheme_id' => $this->dp_work_scheme_id,
-//                'pump_info' => $this->pumpInfo(),
             ]
         ];
     }

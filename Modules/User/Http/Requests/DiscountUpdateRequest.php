@@ -4,7 +4,7 @@ namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DiscountUpdateRequest extends FormRequest
+final class DiscountUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class DiscountUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'discountable_id' => ['required', 'exists:tenant.discounts,discountable_id'],
-            'discountable_type' => ['required', 'exists:tenant.discounts,discountable_type'],
-            'user_id' => ['required', 'exists:tenant.users,id'],
+            'discountable_id' => ['required', 'exists:discounts,discountable_id'],
+            'discountable_type' => ['required', 'exists:discounts,discountable_type'],
+            'user_id' => ['required', 'exists:users,id'],
             'value' => ['required', 'nullable', 'min:0', 'max:100']
         ];
     }

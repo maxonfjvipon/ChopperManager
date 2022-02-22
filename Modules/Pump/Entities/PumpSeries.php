@@ -2,24 +2,26 @@
 
 namespace Modules\Pump\Entities;
 
-use Illuminate\Http\Request;
-use Modules\AdminPanel\Entities\TenantType;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasDiscount;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
+use Modules\Pump\Traits\PumpSeries\PumpSeriesRelationships;
+use Modules\Pump\Traits\PumpSeries\PumpSeriesAttributes;
+use Modules\Pump\Traits\PumpSeries\PumpSeriesScopes;
 
-class PumpSeries extends Model
+/**
+ * Pump series.
+ * @property mixed|string $image
+ * @property mixed $applications
+ */
+final class PumpSeries extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, UsesTenantConnection, HasDiscount, UsesTenantModel;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, HasDiscount;
+    use PumpSeriesAttributes, PumpSeriesRelationships, PumpSeriesScopes;
 
     protected $guarded = [];
     public $timestamps = false;
@@ -29,40 +31,6 @@ class PumpSeries extends Model
         'is_discontinued' => 'boolean'
     ];
 
-    // ATTRIBUTES
-    public function getTempsMinAttribute(): array|bool
-    {
-        return $this->explodedAttribute('temps_min');
-    }
-
-    public function getTempsMaxAttribute(): array|bool
-    {
-        return $this->explodedAttribute('temps_max');
-    }
-
-    protected function explodedAttribute($originalKey, $separator = ","): array
-    {
-        return $this->original[$originalKey] !== null
-            ? array_map('intval', explode($separator, $this->original[$originalKey]))
-            : [];
-    }
-
-    private function implodedAttributes($attributes, $separator = ","): string
-    {
-        return implode($separator, $attributes->map(fn($attribute) => $attribute->name)->toArray());
-    }
-
-    public function getImplodedTypesAttribute(): string
-    {
-        return $this->implodedAttributes($this->types, ", ");
-    }
-
-    public function getImplodedApplicationsAttribute(): string
-    {
-        return $this->implodedAttributes($this->applications, ", ");
-    }
-
-    // STATIC
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
         $series = self::create($request->seriesFields());
@@ -81,75 +49,5 @@ class PumpSeries extends Model
             PumpSeriesAndApplication::updateForSeries($this, $request->applications);
         }
         return $updated;
-    }
-
-    // SCOPES
-    public function scopeNotDiscontinued($query)
-    {
-        return $query->whereIsDiscontinued(false);
-    }
-
-    public function scopeAvailable($query)
-    {
-        if ($this->getTenantModel()::checkCurrent()) {
-            return match ($this->getTenantModel()::current()->type->id) {
-                TenantType::$PUMPMANAGER => $query
-            };
-        }
-        return $query;
-    }
-
-    public function scopeCategorized($query, Request $request)
-    {
-        return match ($request->pumpable_type) {
-            Pump::$DOUBLE_PUMP => $query->double(),
-            default => $query->single()
-        };
-    }
-
-    protected function scopeOnCategory($query, $categoryId)
-    {
-        return $query->whereCategoryId($categoryId);
-    }
-
-    protected function scopeDouble($query)
-    {
-        return $query->onCategory(PumpCategory::$DOUBLE_PUMP);
-    }
-
-    protected function scopeSingle($query)
-    {
-        return $query->onCategory(PumpCategory::$SINGLE_PUMP);
-    }
-
-    // RELATIONSHIPS
-    public function brand(): BelongsTo
-    {
-        return $this->belongsTo(PumpBrand::class, 'brand_id', 'id');
-    }
-
-    public function pumps(): HasMany
-    {
-        return $this->hasMany(Pump::class, 'series_id');
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(PumpCategory::class, 'category_id');
-    }
-
-    public function power_adjustment(): BelongsTo
-    {
-        return $this->belongsTo(ElPowerAdjustment::class, 'power_adjustment_id');
-    }
-
-    public function types(): BelongsToMany
-    {
-        return $this->belongsToMany(PumpType::class, 'pump_series_and_types', 'series_id', 'type_id');
-    }
-
-    public function applications(): BelongsToMany
-    {
-        return $this->belongsToMany(PumpApplication::class, 'pump_series_and_applications', 'series_id', 'application_id');
     }
 }

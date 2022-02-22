@@ -5,11 +5,6 @@ namespace Modules\Pump\Http\Requests;
 
 class LoadPumpsRequest extends PumpableRequest
 {
-    protected function prepareForValidation()
-    {
-//        dd($this->filter);
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *

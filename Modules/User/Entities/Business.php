@@ -6,11 +6,10 @@ use App\Traits\Cached;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class Business extends Model
+final class Business extends Model
 {
-    use HasFactory, HasTranslations, UsesTenantConnection, Cached;
+    use HasFactory, HasTranslations, Cached;
 
     protected static function getCacheKey(): string
     {

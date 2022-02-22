@@ -12,7 +12,7 @@ use Modules\Selection\Entities\Selection;
  * Export selection view as {@Text}
  * @package Modules\Selection\Takes
  */
-class TxtExportSelectionView implements Text
+final class TxtExportSelectionView implements Text
 {
     /**
      * @var Selection $selection
@@ -40,7 +40,7 @@ class TxtExportSelectionView implements Text
      * @param Selection $selection
      * @param Request $request
      */
-    private function __construct(Selection $selection, Request $request)
+    public function __construct(Selection $selection, Request $request)
     {
         $this->selection = $selection;
         $this->request = $request;

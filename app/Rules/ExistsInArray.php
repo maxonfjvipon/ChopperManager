@@ -15,6 +15,6 @@ class ExistsInArray extends InArrayFromDB
      */
     public function passes($attribute, $value): bool
     {
-        return array_search($value, $this->array) !== false;
+        return in_array($value, $this->array);
     }
 }

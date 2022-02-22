@@ -2,28 +2,30 @@
 
 namespace Modules\Pump\Transformers\Pumps;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Pump\Entities\Pump;
-use Modules\Selection\Support\PumpPerformance\PPumpPerformance;
-use Modules\Selection\Traits\HasAxisStep;
+use Modules\Selection\Support\Performance\PpHMax;
+use Modules\Selection\Support\Performance\PumpPerfLine;
+use Modules\Selection\Traits\AxisStep;
 
-class DoublePumpResource extends PumpResource
+final class DoublePumpResource extends PumpResource
 {
-    use HasAxisStep;
+    use AxisStep;
 
     /**
      * Transform the resource into an array.
      *
      * @param Request $request
      * @return array
+     * @throws Exception
      */
     public function toArray($request): array
     {
         $data = array_merge(parent::toArray($request), [
             'id' => $this->id,
             'article_num_main' => $this->article_num_main,
-//            'article_num_reserve' => $this->article_num_reserve,
             'article_num_archive' => $this->article_num_archive,
             'is_discontinued' => __($this->is_discontinued_with_series
                 ? 'tooltips.popconfirm.no'
@@ -32,7 +34,7 @@ class DoublePumpResource extends PumpResource
             'full_name' => $this->full_name,
             'weight' => $this->weight,
             'price' => $this->price_list->price ?? null,
-            'currency' => $this->price_list->currency->name_code ?? null,
+            'currency' => $this->price_list->currency->code_name ?? null,
             'rated_power' => $this->rated_power,
             'rated_current' => $this->rated_current,
             'connection_type' => $this->connection_type->name,
@@ -50,11 +52,10 @@ class DoublePumpResource extends PumpResource
             'pumpable_type' => Pump::$DOUBLE_PUMP,
         ]);
         if ($request->need_curves) {
-            $pumpPerformance = PPumpPerformance::construct($this->resource);
-            $standbyPerfLine = $pumpPerformance->asRegressedPointArray();
-            $peakPerfLine = $pumpPerformance->asRegressedPointArray(2);
+            $standbyPerfLine = PumpPerfLine::new($this->resource, 1)->asArray();
+            $peakPerfLine = PumpPerfLine::new($this->resource, 2)->asArray();
             $xMax = $peakPerfLine[count($peakPerfLine) - 1]['x'];
-            $yMax = $pumpPerformance->hMax();
+            $yMax = (new PpHMax($this->resource->performance()))->asNumber();
             $data = array_merge($data, [
                 'svg' => view('pump::pump_performance', [
                     'performance_lines' => [$standbyPerfLine, $peakPerfLine],
@@ -63,8 +64,10 @@ class DoublePumpResource extends PumpResource
                     'x_axis_step' => $this->axisStep($xMax),
                     'y_axis_step' => $this->axisStep($yMax),
                     'dots_data' => Auth::user()->isAdmin()
-                        ? [$pumpPerformance->asArrayData(), $pumpPerformance->asArrayData(2)]
-                        : []
+                        ? [
+                            $this->resource->performance()->asArrayAt(1),
+                            $this->resource->performance()->asArrayAt(2)
+                        ] : []
                 ])->render(),
             ]);
         }

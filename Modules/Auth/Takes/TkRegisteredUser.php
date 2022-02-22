@@ -7,9 +7,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\AdminPanel\Entities\Tenant;
-use Modules\Auth\Http\Requests\RegisterRequest;
-use Modules\User\Traits\HasUserable;
+use Modules\Auth\Http\Requests\RegisterUserRequest;
+use Modules\User\Entities\User;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,8 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class TkRegisteredUser implements Take
 {
-    use HasUserable;
-
     /**
      * @var Take $origin
      */
@@ -47,12 +44,12 @@ final class TkRegisteredUser implements Take
     /**
      * @inheritDoc
      */
-    public function act(RegisterRequest|Request $request = null): Responsable|Response
+    public function act(RegisterUserRequest|Request $request = null): Responsable|Response
     {
-        $user = $this->createdUser($request->userProps());
+        $user = User::create($request->userProps());
 
         event(new Registered($user));
-        Auth::guard(Tenant::current()->guard)->login($user);
+        Auth::guard()->login($user);
 
         return $this->origin->act($request);
     }

@@ -132,14 +132,14 @@
             </td>
         </tr>
         @if($request->print_pump_image && $selection->pump->image)
-            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->image))
+            @if(\Illuminate\Support\Facades\Storage::disk('media')->exists('1/' . $selection->pump->image))
                 <tr>
                     <td class="with-border td-top with-padding">
                         Фото насоса
                     </td>
                     <td class="with-border" colspan="2" style="text-align: center">
                         <img style="max-height: 300px;"
-                             src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->image)}}"/>
+                             src="{{storage_path('app/media/1/' . $selection->pump->image)}}"/>
                     </td>
                 </tr>
             @endif
@@ -165,10 +165,10 @@
                         Размеры насоса
                     </td>
                     <td class="with-border td-top with-padding">
-                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->sizes_image))
+                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists('1/' . $selection->pump->sizes_image))
                             <div style="text-align: center">
                                 <img style="max-height: 300px;"
-                                     src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->sizes_image)}}"/>
+                                     src="{{storage_path('app/media/1/' . $selection->pump->sizes_image)}}"/>
                             </div>
                         @endif
                     </td>
@@ -180,11 +180,11 @@
                         Электрическая схема
                     </td>
                     <td class="with-border td-top with-padding">
-                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .
+                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists('1/' .
                            $selection->pump->electric_diagram_image))
                             <div style="text-align: center">
-                                <img style="max-height: 300px;" src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()
-            ->id . '/' . $selection->pump->electric_diagram_image)}}"/>
+                                <img style="max-height: 300px;" src="{{storage_path('app/media/1/' .
+                                $selection->pump->electric_diagram_image)}}"/>
                             </div>
                         @endif
                     </td>
@@ -196,11 +196,11 @@
                         Взрыв модель
                     </td>
                     <td class="with-border td-top with-padding">
-                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists(\Modules\AdminPanel\Entities\Tenant::current()->id . '/' .
-                    $selection->pump->cross_sectional_drawing_image))
+                        @if(\Illuminate\Support\Facades\Storage::disk('media')->exists('1/' .
+                        $selection->pump->cross_sectional_drawing_image))
                             <div style="text-align: center">
                                 <img style="max-height: 300px;"
-                                     src="{{storage_path('app/media/' . \Modules\AdminPanel\Entities\Tenant::current()->id . '/' . $selection->pump->cross_sectional_drawing_image)}}"/>
+                                     src="{{storage_path('app/media/1/' . $selection->pump->cross_sectional_drawing_image)}}"/>
                             </div>
                         @endif
                     </td>

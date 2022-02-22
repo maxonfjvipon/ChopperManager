@@ -4,11 +4,13 @@ namespace Modules\Pump\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantConnection;
 
-class PumpFile extends Model
+/**
+ * Pump file.
+ */
+final class PumpFile extends Model
 {
-    use HasFactory, UsesTenantConnection;
+    use HasFactory;
 
     protected $guarded = [];
     public $timestamps = false;

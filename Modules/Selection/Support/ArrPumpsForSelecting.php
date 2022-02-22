@@ -3,15 +3,16 @@
 namespace Modules\Selection\Support;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\LimitCondition;
 
 /**
- * Pumps for selection
+ * Pumps for select from
  * @package Modules\Selection\Support
  */
-class ArrPumpsForSelecting implements Arrayable
+final class ArrPumpsForSelecting implements Arrayable
 {
     /**
      * @var Request $request
@@ -32,7 +33,7 @@ class ArrPumpsForSelecting implements Arrayable
      * Ctor.
      * @param Request $req
      */
-    private function __construct(Request $req)
+    public function __construct(Request $req)
     {
         $this->request = $req;
     }
@@ -61,7 +62,8 @@ class ArrPumpsForSelecting implements Arrayable
                         }]
                     );
                 }
-            ])->onPumpableType($this->request->pumpable_type)
+            ])
+            ->onPumpableType($this->request->pumpable_type)
             ->when($this->request->use_additional_filters, function ($query) {
                 $query
                     ->when(
