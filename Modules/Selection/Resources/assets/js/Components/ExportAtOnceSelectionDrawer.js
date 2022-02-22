@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Checkbox, Drawer, Form, Input, List, Tabs} from "antd";
+import {Checkbox, Drawer, Form, Input, List, message, Tabs} from "antd";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
@@ -49,6 +49,9 @@ export const ExportAtOnceSelectionDrawer = ({stationToShow, visible, setVisible,
             setLoading(false)
             const content = res.headers['content-type'];
             download(res.data, stationToShow.name + ".pdf", content)
+        }).catch(reason => {
+            setLoading(false)
+            message.error("Error downloading. Please contact the administrator", 7)
         })
     }
 

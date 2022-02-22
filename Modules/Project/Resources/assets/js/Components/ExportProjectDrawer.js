@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Checkbox, Drawer, Form} from "antd";
+import {Checkbox, Drawer, Form, message} from "antd";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {MultipleSelection} from "../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
@@ -24,6 +24,9 @@ export const ExportProjectDrawer = ({project, visible, setVisible}) => {
             setLoading(false)
             const content = res.headers['content-type'];
             download(res.data, project.name + ".pdf", content) // fixme: name
+        }).catch(reason => {
+            setLoading(false)
+            message.error("Error downloading. Please contact the administrator", 7)
         })
     }
 

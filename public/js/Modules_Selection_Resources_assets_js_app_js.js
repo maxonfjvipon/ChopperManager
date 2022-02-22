@@ -11081,8 +11081,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
@@ -11192,6 +11193,9 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
                 setLoading(false);
                 var content = res.headers['content-type'];
                 downloadjs__WEBPACK_IMPORTED_MODULE_5___default()(res.data, stationToShow.name + ".pdf", content);
+              })["catch"](function (reason) {
+                setLoading(false);
+                antd__WEBPACK_IMPORTED_MODULE_9__["default"].error("Error downloading. Please contact the administrator", 7);
               });
 
             case 13:
@@ -11215,7 +11219,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.pump_image')
     })
   }, {
@@ -11226,7 +11230,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.sizes_image')
     })
   }, {
@@ -11237,7 +11241,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.electric_diagram')
     })
   }, {
@@ -11248,7 +11252,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       initialValue: true // className: reducedAntFormItemClassName,
 
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.exploded_view')
     })
   }, {
@@ -11259,7 +11263,7 @@ var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
       children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.button')
     })
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
     width: 300,
     placement: "right",
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.title'),
