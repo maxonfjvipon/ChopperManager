@@ -68,7 +68,7 @@ final class Project extends Model
     public function readyForExport(Request $request): self
     {
         $rates = StickyRates::new(RealRates::new());
-        return $this->load(['selections' => function ($query) use ($request) {
+        $this->load(['selections' => function ($query) use ($request) {
             $query->whereIn('id', $request->selection_ids);
         },
             'selections.pump',
@@ -81,5 +81,6 @@ final class Project extends Model
             'selections.pump.price_list',
             'selections.pump.price_list.currency',
         ])->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());
+        return $this;
     }
 }

@@ -11,6 +11,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
+use Maxonfjvipon\Elegant_Elephant\Numerable\Rounded;
 use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectDeliveryStatus;
 use Modules\Project\Entities\ProjectStatus;
@@ -72,15 +73,15 @@ final class ProjectsForStatistics implements Arrayable
                             'country' => $project->user->country->name,
                             'city' => $project->user->city,
                             'selections_count' => $project->all_selections_count,
-                            'price' => round(
+                            'price' => Rounded::new(
                                 ArraySum::new(
                                     ArrMapped::new(
                                         [...$project->all_selections],
                                         fn(Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
-                                )->asNumber(),
+                                ),
                                 2
-                            ),
+                            )->asNumber(),
                             'status_id' => $project->status_id,
                             'delivery_status_id' => $project->delivery_status_id,
                             'comment' => $project->comment
