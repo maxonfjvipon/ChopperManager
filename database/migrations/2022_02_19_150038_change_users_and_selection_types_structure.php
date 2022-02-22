@@ -14,6 +14,7 @@ class ChangeUsersAndSelectionTypesStructure extends Migration
     public function up()
     {
         Schema::table('users_and_selection_types', function (Blueprint $table) {
+            $table->dropForeign('users_and_selection_types_type_id_foreign');
             $table->foreign('type_id')->references('id')->on('selection_types')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
