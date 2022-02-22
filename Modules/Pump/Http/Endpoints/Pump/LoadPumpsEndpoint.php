@@ -7,11 +7,11 @@ use App\Takes\TkJson;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Pump\Http\Requests\LoadPumpsRequest;
-use Modules\Pump\Support\Pump\AvailablePumps;
-use Modules\Pump\Support\Pump\FilteredPumps;
-use Modules\Pump\Support\Pump\LoadedPumps;
-use Modules\Pump\Support\Pump\LoadedPumpsAsArrayable;
-use Modules\Pump\Support\Pump\MappedLoadedPumps\LoadedPumpsMapped;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\LazyLoadedPumps;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\LzLdAvailablePumps;
+use Modules\Pump\Support\Pump\LoadedPumps\FilteredPumps;
+use Modules\Pump\Support\Pump\LoadedPumps\LoadedPumpsAsArrayable;
+use Modules\Pump\Support\Pump\LoadedPumps\MappedLoadedPumps\LoadedPumpsMapped;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -20,15 +20,15 @@ use Symfony\Component\HttpFoundation\Response;
 final class LoadPumpsEndpoint extends Controller
 {
     /**
-     * @var LoadedPumps $loadedPumps
+     * @var LazyLoadedPumps $loadedPumps
      */
-    private LoadedPumps $loadedPumps;
+    private LazyLoadedPumps $loadedPumps;
 
     /**
      * Ctor.
-     * @param LoadedPumps $pumps
+     * @param LazyLoadedPumps $pumps
      */
-    public function __construct(LoadedPumps $pumps)
+    public function __construct(LazyLoadedPumps $pumps)
     {
         $this->loadedPumps = $pumps;
     }
@@ -43,7 +43,7 @@ final class LoadPumpsEndpoint extends Controller
         return (new TkJson(
             new LoadedPumpsMapped(
                 new LoadedPumpsAsArrayable(
-                    new AvailablePumps(
+                    new LzLdAvailablePumps(
                         new FilteredPumps(
                             $this->loadedPumps,
                             $request->filter,

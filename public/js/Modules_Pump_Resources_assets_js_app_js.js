@@ -10710,7 +10710,7 @@ var DoublePumpsTab = function DoublePumpsTab(_ref) {
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_archive'),
-    dataIndex: 'part_num_archive',
+    dataIndex: 'article_num_archive',
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.is_discontinued'),
@@ -11828,7 +11828,7 @@ var SinglePumpsTab = function SinglePumpsTab(_ref) {
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_archive'),
-    dataIndex: 'part_num_archive',
+    dataIndex: 'article_num_archive',
     width: 120
   }, {
     title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.is_discontinued'),

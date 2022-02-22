@@ -14,6 +14,7 @@ use Modules\Pump\Entities\PumpCoefficients;
 use Modules\Pump\Entities\PumpFile;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpsPriceList;
+use Modules\Selection\Entities\Selection;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
 trait PumpRelationships
@@ -66,5 +67,10 @@ trait PumpRelationships
     public function files(): HasMany
     {
         return $this->hasMany(PumpFile::class, 'pump_id');
+    }
+
+    public function selections(): HasMany
+    {
+        return $this->hasMany(Selection::class, 'pump_id');
     }
 }

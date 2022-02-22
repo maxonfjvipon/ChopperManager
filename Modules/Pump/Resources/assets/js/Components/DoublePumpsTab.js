@@ -17,7 +17,7 @@ export const DoublePumpsTab = ({setPumpInfo}) => {
         },
         {
             title: Lang.get('pages.pumps.data.article_num_archive'),
-            dataIndex: 'part_num_archive',
+            dataIndex: 'article_num_archive',
             width: 120
         },
         {

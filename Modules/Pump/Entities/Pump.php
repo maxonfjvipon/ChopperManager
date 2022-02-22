@@ -3,6 +3,7 @@
 namespace Modules\Pump\Entities;
 
 use App\Support\Rates\Rates;
+use App\Traits\Cached;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,7 +38,7 @@ final class Pump extends Model
     public static string $STATION_WATER = 'station_water';
     public static string $STATION_FIRE = 'station_fire';
 
-    use HasFactory, SoftDeletes, SoftCascadeTrait, BelongsToThrough;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, BelongsToThrough, Cached;
     use PumpRelationships, PumpScopes, PumpAttributes;
 
     protected array $softCascade = ['selections'];
@@ -48,6 +49,11 @@ final class Pump extends Model
     protected $casts = [
         'is_discontinued' => 'boolean'
     ];
+
+    protected static function getCacheKey(): string
+    {
+        return "pumps";
+    }
 
     /**
      * TODO: mb make an attribute

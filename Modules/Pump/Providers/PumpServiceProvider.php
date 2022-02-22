@@ -5,28 +5,17 @@ namespace Modules\Pump\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Modules\AdminPanel\Entities\Tenant;
-use Modules\AdminPanel\Entities\TenantType;
-use Modules\Pump\Contracts\PumpBrands\PumpBrandsContract;
-use Modules\Pump\Contracts\PumpSeries\PumpSeriesContract;
 use Modules\Pump\Entities\Pump;
-use Modules\Pump\Http\Controllers\PumpBrandsController;
-use Modules\Pump\Http\Controllers\PumpsController;
-use Modules\Pump\Http\Controllers\PumpSeriesController;
 use Modules\Pump\Http\Endpoints\Pump\LoadPumpsEndpoint;
-use Modules\Pump\Services\Pumps\PumpsService;
 use Modules\Pump\Services\Pumps\PumpType\DoublePumpService;
 use Modules\Pump\Services\Pumps\PumpType\PumpableTypePumpService;
 use Modules\Pump\Services\Pumps\PumpType\SinglePumpService;
-use Modules\Pump\Support\Pump\DPLoaded;
-use Modules\Pump\Support\Pump\LoadedPumps;
-use Modules\Pump\Support\Pump\SPLoaded;
-use Modules\PumpManager\Services\Pump\PMPumpBrandsService;
-use Modules\PumpManager\Services\Pump\PMPumpSeriesService;
-use Modules\PumpManager\Services\Pump\PMPumpsService;
-use Modules\PumpProducer\Services\Pump\PPPumpBrandsService;
-use Modules\PumpProducer\Services\Pump\PPPumpSeriesService;
-use Modules\PumpProducer\Services\Pump\PPPumpsService;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\DPLazyLoaded;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\LazyLoadedPumps;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\SPLazyLoaded;
+use Modules\Pump\Support\Pump\LoadedPumps\DPLoaded;
+use Modules\Pump\Support\Pump\LoadedPumps\LoadedPumps;
+use Modules\Pump\Support\Pump\LoadedPumps\SPLoaded;
 
 class PumpServiceProvider extends ServiceProvider
 {
@@ -142,6 +131,15 @@ class PumpServiceProvider extends ServiceProvider
                 return App::make(match (request()->pumpable_type) {
                     Pump::$DOUBLE_PUMP => DPLoaded::class,
                     default => SPLoaded::class
+                });
+            });
+
+        $this->app->when(LoadPumpsEndpoint::class)
+            ->needs(LazyLoadedPumps::class)
+            ->give(function() {
+                return App::make(match (request()->pumpable_type) {
+                    Pump::$DOUBLE_PUMP => DPLazyLoaded::class,
+                    default => SPLazyLoaded::class
                 });
             });
 
