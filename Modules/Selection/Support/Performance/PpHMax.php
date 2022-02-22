@@ -25,11 +25,11 @@ final class PpHMax implements Numerable
     /**
      * Ctor.
      * @param PumpPerformance $performance
-     * @param float $head
+     * @param float|null $head
      */
-    public function __construct(PumpPerformance $performance, float $head = 0)
+    public function __construct(PumpPerformance $performance, float $head = null)
     {
-        $this->head = $head;
+        $this->head = $head ?? 0;
         $this->performance = $performance;
     }
 
