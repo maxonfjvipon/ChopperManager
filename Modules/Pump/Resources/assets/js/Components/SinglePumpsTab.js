@@ -8,6 +8,7 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
     const {filter_data} = usePage().props
     const [brandsToShow, setBrandsToShow] = useState([])
     const [seriesToShow, setSeriesToShow] = useState([])
+    const [pumps, setPumps] = useState([])
 
     const columns = [
         {
@@ -172,7 +173,17 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
             pumpable_type='single_pump'
             setBrandsToShow={setBrandsToShow}
             setSeriesToShow={setSeriesToShow}
+            pumps={pumps}
+            setPumps={setPumps}
             setPumpInfo={setPumpInfo}
+            onChange={(pagination, filters, sorter, extra) => {
+                if (extra.action === "filter") { // TODO: make better
+                    setSeriesToShow(filter_data.series
+                        .filter(series => pumps.findIndex(pump => (filters.brand != null ? filters.brand.includes(pump.brand) : true)
+                            && pump.series === series.value) !== -1)
+                    )
+                }
+            }}
         />
     )
 }

@@ -7,7 +7,6 @@ use Box\Spout\Common\Exception\UnsupportedTypeException;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -111,6 +110,7 @@ class ImportPumpsAction
                 }
             }
         } catch (UnsupportedTypeException | Exception $exception) {
+            Log::error($exception->getMessage());
             Log::error($exception->getTraceAsString());
             return $this->redirectWithErrors("Ошибка загрузки. Не удалось заполнить базу данных.");
         } finally {

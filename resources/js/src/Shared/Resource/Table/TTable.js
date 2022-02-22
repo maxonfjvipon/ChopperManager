@@ -37,7 +37,6 @@ export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleCl
                     }
                 }
             }}
-
             {...rest}
         />
     )

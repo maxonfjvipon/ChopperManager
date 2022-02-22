@@ -122,6 +122,7 @@ class SinglePumpImporter extends PumpImporter
                 'electric_diagram_image' => array_key_exists(21, $entity) ? trim($entity[21]) : null,
                 'cross_sectional_drawing_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
                 'pumpable_type' => Pump::$SINGLE_PUMP,
+                'deleted_at' => null
             ],
             'files' => array_key_exists(23, $entity) ? $this->idsArrayFromString($entity[23]) : []
         ];

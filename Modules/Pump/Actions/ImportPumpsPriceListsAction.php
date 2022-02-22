@@ -13,7 +13,7 @@ class ImportPumpsPriceListsAction extends ImportAction
     public function __construct($files)
     {
         $db = [
-            'pumps' => Pump::pluck('id', 'article_num_main')->all(),
+            'pumps' => Pump::allOrCached()->pluck('id', 'article_num_main')->all(),
             'countries' => Country::allOrCached()->pluck('id', 'code')->all(),
             'currencies' => Currency::allOrCached()->pluck('id', 'code')->all(),
         ];

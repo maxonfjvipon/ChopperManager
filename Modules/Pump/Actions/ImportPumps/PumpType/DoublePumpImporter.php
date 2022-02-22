@@ -126,6 +126,7 @@ class DoublePumpImporter extends PumpImporter
                 'electric_diagram_image' => array_key_exists(22, $entity) ? trim($entity[22]) : null,
                 'cross_sectional_drawing_image' => array_key_exists(23, $entity) ? trim($entity[23]) : null,
                 'pumpable_type' => Pump::$DOUBLE_PUMP,
+                'deleted_at' => null
             ],
             'files' => array_key_exists(24, $entity) ? $this->idsArrayFromString($entity[24]) : []
         ];
