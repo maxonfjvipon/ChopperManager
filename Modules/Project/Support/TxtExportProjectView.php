@@ -50,7 +50,7 @@ final class TxtExportProjectView implements Text
      */
     public function asString(): string
     {
-        return TxtView::new('core::project_export', [
+        return TxtView::new('project::project_export', [
             'project' => $this->project->readyForExport($this->request),
             'request' => $this->request
         ])->asString();
