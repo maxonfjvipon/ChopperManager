@@ -48,53 +48,53 @@ jobs:
             cd /var/www/html/
             composer install --no-dev --optimize-autoloader -n
 
-        - name: Migrating
-          uses: appleboy/ssh-action@master
+      - name: Migrating
+        uses: appleboy/ssh-action@master
 
-          with:
-            host: ${{ secrets.HOST_COM }}
-            username: ${{ secrets.USERNAME_COM }}
-            port: ${{ secrets.PORT }}
-            key: ${{ secrets.SSHKEY_COM }}
-            script: |
-              cd /var/www/html
-              php artisan migrate --force
+        with:
+          host: ${{ secrets.HOST_COM }}
+          username: ${{ secrets.USERNAME_COM }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY_COM }}
+          script: |
+            cd /var/www/html
+            php artisan migrate --force
 
-        - name: Seeding
-          uses: appleboy/ssh-action@master
+      - name: Seeding
+        uses: appleboy/ssh-action@master
 
-          with:
-            host: ${{ secrets.HOST_COM }}
-            username: ${{ secrets.USERNAME_COM }}
-            port: ${{ secrets.PORT }}
-            key: ${{ secrets.SSHKEY_COM }}
-            script: |
-              cd /var/www/html
-              php artisan db:seed --force
+        with:
+          host: ${{ secrets.HOST_COM }}
+          username: ${{ secrets.USERNAME_COM }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY_COM }}
+          script: |
+            cd /var/www/html
+            php artisan db:seed --force
 
-        - name: Clearing cache
-          uses: appleboy/ssh-action@master
+      - name: Clearing cache
+        uses: appleboy/ssh-action@master
 
-          with:
-            host: ${{ secrets.HOST_COM }}
-            username: ${{ secrets.USERNAME_COM }}
-            port: ${{ secrets.PORT }}
-            key: ${{ secrets.SSHKEY_COM }}
-            script: |
-              cd /var/www/html
-              php artisan cache:clear && php artisan config:cache
+        with:
+          host: ${{ secrets.HOST_COM }}
+          username: ${{ secrets.USERNAME_COM }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY_COM }}
+          script: |
+            cd /var/www/html
+            php artisan cache:clear && php artisan config:cache
 
-        - name: Reruning the application
-          uses: appleboy/ssh-action@master
+      - name: Reruning the application
+        uses: appleboy/ssh-action@master
 
-          with:
-            host: ${{ secrets.HOST_COM }}
-            username: ${{ secrets.USERNAME_COM }}
-            port: ${{ secrets.PORT }}
-            key: ${{ secrets.SSHKEY_COM }}
-            script: |
-              cd /var/www/html/
-              php artisan up
+        with:
+          host: ${{ secrets.HOST_COM }}
+          username: ${{ secrets.USERNAME_COM }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSHKEY_COM }}
+          script: |
+            cd /var/www/html/
+            php artisan up
 
 #   laravel-tests:
 
