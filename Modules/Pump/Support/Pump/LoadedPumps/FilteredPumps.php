@@ -4,6 +4,7 @@ namespace Modules\Pump\Support\Pump\LoadedPumps;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\Pump\Entities\Pump;
 use Modules\Pump\Support\Pump\LazyLoadedPumps\LazyLoadedPumps;
 
 /**
@@ -48,21 +49,25 @@ final class FilteredPumps implements LoadedPumps, LazyLoadedPumps
      */
     public function loaded(): Builder
     {
-        return $this->filtered($this->origin->loaded());
-    }
-
-    public function lazyLoaded(): Collection
-    {
-        return $this->filtered($this->origin->lazyLoaded());
-    }
-
-    private function filtered(Builder|Collection $query): Collection|Builder
-    {
-        return $query->when($this->search, function ($query, $search) {
+        return $this->origin->loaded()->when($this->search, function ($query, $search) {
             return $query->where(function ($query) use ($search) {
                 $query->where('article_num_main', 'like', '%' . $search . '%')
                     ->orWhere('article_num_archive', 'like', '%' . $search . '%')
                     ->orWhere('name', 'like', '%' . $search . '%');
+            });
+        });
+    }
+
+    /**
+     * @return Collection
+     */
+    public function lazyLoaded(): Collection
+    {
+        return $this->origin->lazyLoaded()->when($this->search, function (Collection $pumps) {
+            return $pumps->filter(function (Pump $pump) {
+                return stristr($pump->article_num_main, $this->search) ||
+                    stristr($pump->article_num_archive, $this->search) ||
+                    stristr($pump->name, $this->search);
             });
         });
     }
