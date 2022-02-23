@@ -42,16 +42,14 @@ trait UserRelationships
 
     /**
      * Available series for pump-manager users
-     * @return Collection|array|BelongsToMany
+     * @return BelongsToMany
      */
-    public function available_series(): Collection|array|BelongsToMany
+    public function available_series(): BelongsToMany
     {
         return $this->belongsToMany(PumpSeries::class, 'users_and_pump_series', 'user_id', 'series_id');
     }
 
     /**
-     * Available selection types for user
-     *
      * @return BelongsToMany
      */
     public function available_selection_types(): BelongsToMany
