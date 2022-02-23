@@ -11778,6 +11778,9 @@ var PumpsTab = function PumpsTab(_ref) {
           });
         }
       }]),
+      pagination: {
+        pageSizeOptions: [10, 20, 50]
+      },
       dataSource: pumps,
       clickRecord: true,
       doubleClickHandler: has('pump_show') && showPumpClickHandler,

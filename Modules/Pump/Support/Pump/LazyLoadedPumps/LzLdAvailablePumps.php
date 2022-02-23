@@ -4,6 +4,9 @@ namespace Modules\Pump\Support\Pump\LazyLoadedPumps;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpSeries;
+use Modules\User\Entities\UserAndPumpSeries;
 
 final class LzLdAvailablePumps implements LazyLoadedPumps
 {
@@ -37,6 +40,6 @@ final class LzLdAvailablePumps implements LazyLoadedPumps
     public function lazyLoaded(): Collection
     {
         return $this->origin->lazyLoaded()
-            ->whereIn('id', Auth::user()->available_pumps()->pluck('pumps.id')->all());
+            ->whereIn('series_id', Auth::user()->available_series()->pluck('id')->all());
     }
 }

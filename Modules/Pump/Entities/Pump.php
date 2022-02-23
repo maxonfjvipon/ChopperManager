@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 use Modules\Pump\Traits\Pump\PumpAttributes;
 use Modules\Pump\Traits\Pump\PumpRelationships;
 use Modules\Pump\Traits\Pump\PumpScopes;
@@ -54,6 +55,19 @@ final class Pump extends Model
     protected static function getCacheKey(): string
     {
         return "pumps";
+    }
+
+    public static function clearCache()
+    {
+        foreach ([
+                     self::getCacheKey(),
+                     self::$SINGLE_PUMP,
+                     self::$DOUBLE_PUMP,
+                     self::$STATION_WATER,
+                     self::$STATION_FIRE
+                 ] as $cacheKey) {
+            Cache::forget($cacheKey);
+        }
     }
 
     /**

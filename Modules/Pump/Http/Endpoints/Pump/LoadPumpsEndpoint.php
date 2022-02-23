@@ -7,6 +7,7 @@ use App\Takes\TkJson;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Modules\Pump\Http\Requests\LoadPumpsRequest;
+use Modules\Pump\Support\Pump\LazyLoadedPumps\CachedPumps;
 use Modules\Pump\Support\Pump\LazyLoadedPumps\LazyLoadedPumps;
 use Modules\Pump\Support\Pump\LazyLoadedPumps\LzLdAvailablePumps;
 use Modules\Pump\Support\Pump\LoadedPumps\FilteredPumps;
@@ -44,9 +45,12 @@ final class LoadPumpsEndpoint extends Controller
             new LoadedPumpsMapped(
                 new LoadedPumpsAsArrayable(
                     new LzLdAvailablePumps(
-                        new FilteredPumps(
-                            $this->loadedPumps,
-                            $request->filter,
+                        new CachedPumps(
+                            new FilteredPumps(
+                                $this->loadedPumps,
+                                $request->filter,
+                            ),
+                            $request->pumpable_type
                         )
                     )
                 ),

@@ -83,6 +83,7 @@ export const PumpsTab = ({
                         )
                     }
                 }]}
+                pagination={{pageSizeOptions: [10, 20, 50]}}
                 dataSource={pumps}
                 clickRecord
                 doubleClickHandler={has('pump_show') && showPumpClickHandler}
