@@ -30,6 +30,7 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property mixed $coefficients
  * @property float $rated_power
  * @property string $article_num_main
+ * @property string $article_num_archive
  */
 final class Pump extends Model
 {
