@@ -45,12 +45,12 @@ final class LoadPumpsEndpoint extends Controller
             new LoadedPumpsMapped(
                 new LoadedPumpsAsArrayable(
                     new LzLdAvailablePumps(
-                        new CachedPumps(
-                            new FilteredPumps(
+                        new FilteredPumps(
+                            new CachedPumps(
                                 $this->loadedPumps,
-                                $request->filter,
+                                $request->pumpable_type,
                             ),
-                            $request->pumpable_type
+                            $request->filter,
                         )
                     )
                 ),
