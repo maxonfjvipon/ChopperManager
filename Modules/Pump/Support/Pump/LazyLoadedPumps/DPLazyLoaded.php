@@ -25,8 +25,8 @@ final class DPLazyLoaded implements LazyLoadedPumps
             'dn_suction',
             'dn_pressure',
             'connection_type',
-            'price_list',
-            'price_list.currency'
+            'price_lists',
+            'price_lists.currency'
         ])->where('pumpable_type', Pump::$DOUBLE_PUMP);
     }
 }

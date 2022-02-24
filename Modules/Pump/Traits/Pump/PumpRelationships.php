@@ -39,6 +39,11 @@ trait PumpRelationships
             ->where('country_id', Auth::user()->country_id);
     }
 
+    public function price_lists(): HasMany
+    {
+        return $this->hasMany(PumpsPriceList::class, 'pump_id');
+    }
+
     public function connection_type(): BelongsTo
     {
         return $this->belongsTo(ConnectionType::class);

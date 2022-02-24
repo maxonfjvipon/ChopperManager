@@ -57,5 +57,6 @@ class ImportPumpsPriceListsAction extends ImportAction
         foreach (array_chunk($sheet, 100) as $chunkedSheet) {
             DB::table('pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);
         }
+        Pump::clearCache();
     }
 }

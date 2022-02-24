@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Modules\Pump\Traits\Pump\PumpAttributes;
 use Modules\Pump\Traits\Pump\PumpRelationships;
@@ -32,6 +33,7 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property float $rated_power
  * @property string $article_num_main
  * @property string $article_num_archive
+ * @property mixed $price_lists
  */
 final class Pump extends Model
 {
@@ -84,6 +86,11 @@ final class Pump extends Model
             };
         }
         return $this->perf;
+    }
+
+    public function priceListForCurrentUser()
+    {
+        return $this->price_lists->firstWhere('country_id', Auth::user()->country_id);
     }
 
     /**

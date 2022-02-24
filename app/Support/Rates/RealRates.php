@@ -2,9 +2,7 @@
 
 namespace App\Support\Rates;
 
-use AmrShawky\LaravelCurrency\Facade\Currency as RateCurrency;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Modules\Project\Entities\Currency;
 
 /**
@@ -14,24 +12,23 @@ use Modules\Project\Entities\Currency;
 final class RealRates implements Rates
 {
     /**
-     * @var int $round
+     * @var bool $fromForex
      */
-    private int $round;
+    private static bool $fromForex = true;
 
     /**
-     * @var string $base
+     * @var Rates $rates
      */
-    private string $base;
+    private Rates $rates;
 
     /**
      * Ctor wrap.
-     * @param int $round
      * @return RealRates
      * @throws Exception
      */
-    public static function new(int $round = 5): RealRates
+    public static function new(): RealRates
     {
-        return new self($round);
+        return new self();
     }
 
     /**
@@ -41,8 +38,10 @@ final class RealRates implements Rates
      */
     public function __construct(int $round = 5)
     {
-        $this->round = $round;
-        $this->base = Currency::allOrCached()->find(Auth::user()->currency_id)->code;
+        $this->rates = self::$fromForex
+            ? new ForexRates()
+            : new CBRRates();
+
     }
 
     /**
@@ -51,7 +50,7 @@ final class RealRates implements Rates
      */
     public function hasTheSameBaseAs(Currency $currency): bool
     {
-        return $this->base === $currency->code;
+        return $this->rates->hasTheSameBaseAs($currency);
     }
 
     /**
@@ -61,13 +60,6 @@ final class RealRates implements Rates
      */
     public function rateFor(string $code): mixed
     {
-        $rates = RateCurrency::rates()
-            ->latest()
-            ->symbols(Currency::allOrCached()->pluck('code')->all())
-            ->base($this->base)
-            ->amount(1)
-            ->round($this->round)
-            ->get();
-        return $rates[array_key_exists($code, $rates) ? $code : $this->base];
+        return $this->rates->rateFor($code);
     }
 }

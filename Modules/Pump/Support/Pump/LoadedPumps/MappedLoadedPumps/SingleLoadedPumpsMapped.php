@@ -43,7 +43,7 @@ final class SingleLoadedPumpsMapped implements Arrayable
     {
         return ArrMapped::new(
             $this->pumps,
-            fn (Pump $pump) => [
+            fn(Pump $pump) => [
                 'id' => $pump->id,
                 'article_num_main' => $pump->article_num_main,
                 'article_num_archive' => $pump->article_num_archive,
@@ -51,8 +51,8 @@ final class SingleLoadedPumpsMapped implements Arrayable
                 'series' => $pump->series->name,
                 'name' => $pump->name,
                 'weight' => $pump->weight,
-                'price' => $pump->price_list ? round($pump->price_list->price, 2) : null,
-                'currency' => $pump->price_list->currency->code ?? null,
+                'price' => $pump->priceListForCurrentUser() ? round($pump->priceListForCurrentUser()->price, 2) : null,
+                'currency' => $pump->priceListForCurrentUser()->currency->code ?? null,
                 'rated_power' => $pump->rated_power,
                 'rated_current' => $pump->rated_current,
                 'fluid_temp_min' => $pump->fluid_temp_min,
