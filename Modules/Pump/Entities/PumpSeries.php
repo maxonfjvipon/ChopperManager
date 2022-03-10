@@ -2,6 +2,8 @@
 
 namespace Modules\Pump\Entities;
 
+use Exception;
+use Modules\Pump\Database\factories\PumpSeriesFactory;
 use Modules\Pump\Http\Requests\PumpSeriesStoreRequest;
 use Modules\Pump\Http\Requests\PumpSeriesUpdateRequest;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
@@ -15,8 +17,23 @@ use Modules\Pump\Traits\PumpSeries\PumpSeriesScopes;
 
 /**
  * Pump series.
- * @property mixed|string $image
+ *
+ * @property string $image
  * @property mixed $applications
+ * @property int $id
+ * @property PumpBrand $brand
+ * @property string $name
+ * @property PumpCategory $category
+ * @property ElPowerAdjustment $power_adjustment
+ * @property string $imploded_applications
+ * @property string $imploded_types
+ * @property bool $is_discontinued
+ * @property int $brand_id
+ * @property int $power_adjustment_id
+ * @property int $category_id
+ *
+ * @method static int count()
+ * @method static self create(array $attributes)
  */
 final class PumpSeries extends Model
 {
@@ -25,11 +42,16 @@ final class PumpSeries extends Model
 
     protected $guarded = [];
     public $timestamps = false;
-    protected $softCascade = ['pumps'];
+    protected array $softCascade = ['pumps'];
 
     protected $casts = [
         'is_discontinued' => 'boolean'
     ];
+
+    protected static function newFactory(): PumpSeriesFactory
+    {
+        return PumpSeriesFactory::new();
+    }
 
     public static function createFromRequest(PumpSeriesStoreRequest $request): self
     {
@@ -41,12 +63,18 @@ final class PumpSeries extends Model
         return $series;
     }
 
+    /**
+     * @param PumpSeriesUpdateRequest $request
+     * @return bool
+     * @throws Exception
+     */
     public function updateFromRequest(PumpSeriesUpdateRequest $request): bool
     {
         $updated = $this->update($request->seriesFields());
         if ($updated) {
             PumpSeriesAndType::updateForSeries($this, $request->types);
             PumpSeriesAndApplication::updateForSeries($this, $request->applications);
+            Pump::clearCache();
         }
         return $updated;
     }

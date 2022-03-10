@@ -22,7 +22,7 @@ class PumpSeriesFactory extends Factory
      * @return array
      * @throws Exception
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->name(),
