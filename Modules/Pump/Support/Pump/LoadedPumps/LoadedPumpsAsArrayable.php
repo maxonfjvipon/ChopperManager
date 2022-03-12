@@ -19,16 +19,6 @@ final class LoadedPumpsAsArrayable implements Arrayable
     private LoadedPumps|LazyLoadedPumps $origin;
 
     /**
-     * Ctor wrap.
-     * @param LoadedPumps|LazyLoadedPumps $pumps
-     * @return LoadedPumpsAsArrayable
-     */
-    public static function new(LoadedPumps|LazyLoadedPumps $pumps): LoadedPumpsAsArrayable
-    {
-        return new self($pumps);
-    }
-
-    /**
      * Ctor.
      * @param LoadedPumps|LazyLoadedPumps $pumps
      */

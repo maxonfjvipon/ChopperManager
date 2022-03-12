@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
 class RouteServiceProvider extends ServiceProvider
 {

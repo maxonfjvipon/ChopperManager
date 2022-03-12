@@ -18,12 +18,12 @@ final class PumpSeriesRestoreEndpoint extends Controller
      */
     public function __invoke(int $pumpSeriesId): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'series_restore',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => PumpSeries::withTrashed()->find($pumpSeriesId)->restore(),
-                TkRedirectedBack::new()
+                new TkRedirectedBack()
             )
-        )->act();
+        ))->act();
     }
 }

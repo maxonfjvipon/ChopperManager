@@ -54,6 +54,11 @@ class ImportPumpSeriesAction extends ImportAction
         ], [], $files, 'pump_series.index', __('flash.pump_series.imported'));
     }
 
+    /**
+     * @param $entity
+     * @param $message
+     * @return array
+     */
     protected function errorBagEntity($entity, $message): array
     {
         return [
@@ -84,7 +89,11 @@ class ImportPumpSeriesAction extends ImportAction
         ];
     }
 
-    protected function import($sheet)
+    /**
+     * @param $sheet
+     * @return void
+     */
+    protected function import($sheet): void
     {
         foreach ($sheet as $row) {
             $series = PumpSeries::updateOrCreate([

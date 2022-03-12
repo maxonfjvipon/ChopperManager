@@ -4,6 +4,7 @@ namespace Modules\Selection\Support\Regression;
 
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrReversed;
 
 /**
  * Calculate regression.
@@ -45,12 +46,12 @@ trait CalculateRegression
             $rhs[] = $c;
         }
         $rhs[] = $lhs;
-        return array_reverse(
-            ArrMapped::new(
+        return (new ArrReversed(
+            new ArrMapped(
                 $this->gaussianElimination($rhs, $k),
-                fn ($value) => $this->rounded($value, $precision)
-            )->asArray()
-        );
+                fn($value) => $this->rounded($value, $precision)
+            ))
+        )->asArray();
     }
 
     /**

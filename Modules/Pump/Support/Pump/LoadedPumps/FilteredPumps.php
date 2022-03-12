@@ -23,17 +23,6 @@ final class FilteredPumps implements LoadedPumps, LazyLoadedPumps
     private ?string $search;
 
     /**
-     * Ctor wrap.
-     * @param LoadedPumps|LazyLoadedPumps $pumps
-     * @param string|null $search
-     * @return FilteredPumps
-     */
-    public static function new(LoadedPumps|LazyLoadedPumps $pumps, string $search = null): FilteredPumps
-    {
-        return new self($pumps, $search);
-    }
-
-    /**
      * Ctor.
      * @param LoadedPumps|LazyLoadedPumps $pumps
      * @param string|null $search

@@ -18,12 +18,12 @@ final class PumpBrandsDestroyEndpoint extends Controller
      */
     public function __invoke(PumpBrand $pumpBrand): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_delete',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => $pumpBrand->delete(),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act();
+        ))->act();
     }
 }

@@ -20,28 +20,17 @@ use Modules\Pump\Entities\PumpType;
  */
 final class PumpsIndexData implements Arrayable
 {
-
-    /**
-     * Ctor wrap.
-     * @return PumpsIndexData
-     */
-    public static function new(): PumpsIndexData
-    {
-        return new self();
-    }
-
     /**
      * @inheritDoc
      */
     public function asArray(): array
     {
-        $availableSeries = Auth::user()->available_series;
-        $availableSeriesIds = $availableSeries->pluck('id')->all();
-        return ArrMerged::new(
-            ArrObject::new(
+        $availableSeriesIds = ($availableSeries = Auth::user()->available_series)->pluck('id')->all();
+        return (new ArrMerged(
+            new ArrObject(
                 "filter_data",
-                ArrForFiltering::new(
-                    ArrMerged::new([
+                new ArrForFiltering(
+                    new ArrMerged([
                         'brands' => Auth::user()->available_brands()->distinct()->pluck('pump_brands.name')->all(),
                         'series' => $availableSeries->pluck('name')->all(),
                         'connection_types' => ConnectionType::allOrCached()->pluck('name')->all(),
@@ -49,9 +38,9 @@ final class PumpsIndexData implements Arrayable
                         'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('name')->all(),
                         'types' => PumpType::availableForUserSeries($availableSeriesIds)->pluck('name')->all(), // todo fix
                         'applications' => PumpApplication::availableForUserSeries($availableSeriesIds)->pluck('name')->all(),
-                    ], ArrObject::new(
+                    ], new ArrObject(
                         "mains_connections",
-                        ArrMapped::new(
+                        new ArrMapped(
                             MainsConnection::allOrCached()->all(),
                             fn(MainsConnection $mc) => $mc->full_value
                         )
@@ -59,6 +48,6 @@ final class PumpsIndexData implements Arrayable
                 )
             ),
             ['projects' => Auth::user()->projects()->get(['id', 'name'])->all()]
-        )->asArray();
+        ))->asArray();
     }
 }

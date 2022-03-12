@@ -16,16 +16,6 @@ final class LzLdAvailablePumps implements LazyLoadedPumps
     private LazyLoadedPumps $origin;
 
     /**
-     * Ctor wrap.
-     * @param LazyLoadedPumps $pumps
-     * @return LazyLoadedPumps
-     */
-    public static function new(LazyLoadedPumps $pumps): LazyLoadedPumps
-    {
-        return new self($pumps);
-    }
-
-    /**
      * Ctor.
      * @param LazyLoadedPumps $pumps
      */

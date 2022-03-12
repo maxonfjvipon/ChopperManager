@@ -20,15 +20,6 @@ final class EqFromPumpCoefficients implements Equation
 
     /**
      * @param PumpCoefficients $coefficients
-     * @return EqFromPumpCoefficients
-     */
-    public static function new(PumpCoefficients $coefficients): EqFromPumpCoefficients
-    {
-        return new self($coefficients);
-    }
-
-    /**
-     * @param PumpCoefficients $coefficients
      */
     public function __construct(PumpCoefficients $coefficients)
     {

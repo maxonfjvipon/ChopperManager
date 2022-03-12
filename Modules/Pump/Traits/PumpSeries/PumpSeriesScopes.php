@@ -3,7 +3,6 @@
 namespace Modules\Pump\Traits\PumpSeries;
 
 use Illuminate\Http\Request;
-use Modules\AdminPanel\Entities\TenantType;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpCategory;
 
@@ -16,16 +15,6 @@ trait PumpSeriesScopes
     public function scopeNotDiscontinued($query)
     {
         return $query->whereIsDiscontinued(false);
-    }
-
-    public function scopeAvailable($query)
-    {
-        if ($this->getTenantModel()::checkCurrent()) {
-            return match ($this->getTenantModel()::current()->type->id) {
-                TenantType::$PUMPMANAGER => $query
-            };
-        }
-        return $query;
     }
 
     public function scopeCategorized($query, Request $request)

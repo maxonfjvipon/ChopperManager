@@ -616,7 +616,7 @@ namespace App\Models\users{
  *
  * @property int $id
  * @property string $name
- * @property string $inn
+ * @property string $itn
  * @property string $email
  * @property string $password
  * @property string|null $remember_token

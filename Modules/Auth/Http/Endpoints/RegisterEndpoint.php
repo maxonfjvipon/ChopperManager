@@ -25,13 +25,13 @@ final class RegisterEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkInertia::new(
+        return (new TkInertia(
             "Auth::Register",
-            ArrMerged::new(
+            new ArrMerged(
                 ['businesses' => Business::allOrCached()->all()],
-                ArrObject::new(
+                new ArrObject(
                     "countries",
-                    ArrMapped::new(
+                    new ArrMapped(
                         Country::allOrCached()->all(),
                         fn(Country $country) => [
                             'id' => $country->id,
@@ -40,6 +40,6 @@ final class RegisterEndpoint extends Controller
                     )
                 )
             )
-        )->act();
+        ))->act();
     }
 }

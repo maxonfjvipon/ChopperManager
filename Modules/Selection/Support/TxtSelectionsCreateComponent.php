@@ -3,7 +3,6 @@
 namespace Modules\Selection\Support;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Modules\Pump\Entities\Pump;
 
@@ -17,16 +16,6 @@ final class TxtSelectionsCreateComponent implements Text
      * @var Request $request
      */
     private Request $request;
-
-    /**
-     * Ctor wrap.
-     * @param Request|null $request
-     * @return TxtSelectionsCreateComponent
-     */
-    public static function new(Request $request = null): TxtSelectionsCreateComponent
-    {
-        return new self($request);
-    }
 
     /**
      * Ctor.

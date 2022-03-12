@@ -3,6 +3,7 @@
 namespace Modules\Auth\Takes;
 
 use App\Support\Take;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
@@ -12,8 +13,9 @@ use Modules\User\Entities\User;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Endpoint where user is being registered.
+ * Take where user is being registered.
  * @package Modules\Auth\Takes\Deep
+ * @see AuthEndpointsTest
  */
 final class TkRegisteredUser implements Take
 {
@@ -21,16 +23,6 @@ final class TkRegisteredUser implements Take
      * @var Take $origin
      */
     private Take $origin;
-
-    /**
-     * Ctor wrap.
-     * @param Take $take
-     * @return TkRegisteredUser
-     */
-    public static function new(Take $take): TkRegisteredUser
-    {
-        return new self($take);
-    }
 
     /**
      * Ctor.
@@ -43,6 +35,7 @@ final class TkRegisteredUser implements Take
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function act(RegisterUserRequest|Request $request = null): Responsable|Response
     {

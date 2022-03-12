@@ -40,10 +40,10 @@ final class PpHMax implements Numerable
     {
         $max = (new MaxOf(
             $this->head,
-            ...ArrMapped::new(
+            ...(new ArrMapped(
                 $this->performance->asArrayAt(1),
                 fn(array $point) => $point[1]
-            )->asArray())
+            ))->asArray())
         )->asNumber();
         return $max + ($max < 10 ? 3 : 10);
     }

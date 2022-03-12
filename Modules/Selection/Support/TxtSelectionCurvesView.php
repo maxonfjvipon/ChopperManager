@@ -17,16 +17,6 @@ final class TxtSelectionCurvesView implements Text
     private Selection $selection;
 
     /**
-     * Ctor wrap.
-     * @param Selection $selection
-     * @return TxtSelectionCurvesView
-     */
-    public static function new(Selection $selection): TxtSelectionCurvesView
-    {
-        return new self($selection);
-    }
-
-    /**
      * Ctor.
      * @param Selection $selection
      */

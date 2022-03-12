@@ -8,32 +8,25 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\Elegant_Elephant\Text\TextOf;
+use Maxonfjvipon\Elegant_Elephant\Text\TxtOverloadable;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkDownloadedDPFTest;
 use VerumConsilium\Browsershot\Facades\PDF;
 
 /**
  * Endpoint that render pdf to download.
  * @package App\Takes
+ * @see TkDownloadedDPFTest
  */
 final class TkDownloadedPDF implements Take
 {
-    use Overloadable;
+    use TxtOverloadable;
 
     /**
      * @var Text|string $html
      */
     private string|Text $html;
-
-    /**
-     * Ctor wrap.
-     * @param string|Text $html
-     * @return TkDownloadedPDF
-     */
-    public static function new(string|Text $html): TkDownloadedPDF
-    {
-        return new self($html);
-    }
 
     /**
      * Ctor.
@@ -50,9 +43,6 @@ final class TkDownloadedPDF implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return PDF::loadHtml($this->overload([$this->html], [[
-            'string',
-            Text::class => fn(Text $txt) => $txt->asString()
-        ]])[0])->download();
+        return PDF::loadHtml($this->firstTxtOverloaded($this->html))->download();
     }
 }

@@ -3,6 +3,7 @@
 namespace Modules\Pump\Actions;
 
 use App\Rules\ExistsAsKeyInArray;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Modules\Project\Entities\Currency;
 use Modules\Pump\Entities\Pump;
@@ -30,6 +31,11 @@ class ImportPumpsPriceListsAction extends ImportAction
         ], [], $files, 'pumps.index', __('flash.price_lists.imported'));
     }
 
+    /**
+     * @param $entity
+     * @param $message
+     * @return array
+     */
     protected function errorBagEntity($entity, $message): array
     {
         return [
@@ -42,6 +48,10 @@ class ImportPumpsPriceListsAction extends ImportAction
         ];
     }
 
+    /**
+     * @param $entity
+     * @return array
+     */
     protected function importEntity($entity): array
     {
         return [
@@ -52,7 +62,12 @@ class ImportPumpsPriceListsAction extends ImportAction
         ];
     }
 
-    protected function import($sheet)
+    /**
+     * @param $sheet
+     * @return void
+     * @throws Exception
+     */
+    protected function import($sheet): void
     {
         foreach (array_chunk($sheet, 100) as $chunkedSheet) {
             DB::table('pumps_price_lists')->upsert($chunkedSheet, ['pump_id', 'country_id'], ['price', 'currency_id']);

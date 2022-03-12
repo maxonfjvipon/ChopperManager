@@ -12,10 +12,12 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkJsonTest;
 
 /**
  * Json take
  * @package App\Takes
+ * @see TkJsonTest
  */
 final class TkJson implements Take
 {
@@ -35,22 +37,6 @@ final class TkJson implements Take
      * @var array
      */
     private array $headers;
-
-    /**
-     * Ctor wrap.
-     * @param string|array|callable|Arrayable|Text|JsonResource $data
-     * @param int $status
-     * @param array $headers
-     * @return TkJson
-     */
-    public static function new(
-        string|array|callable|Arrayable|Text|JsonResource $data,
-        int                                               $status = 200,
-        array                                             $headers = []
-    ): TkJson
-    {
-        return new self($data, $status, $headers);
-    }
 
     /**
      * Ctor.

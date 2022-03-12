@@ -18,12 +18,12 @@ final class PumpBrandsRestoreEndpoint extends Controller
      */
     public function __invoke(int $brand_id): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_restore',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => PumpBrand::withTrashed()->find($brand_id)->restore(),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act();
+        ))->act();
     }
 }

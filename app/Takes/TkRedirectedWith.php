@@ -7,10 +7,12 @@ use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkRedirectedTest;
 
 /**
  * Redirect endpoint with.
  * @package App\Takes
+ * @see TkRedirectedTest
  */
 final class TkRedirectedWith implements Take, TakeRedirect
 {
@@ -30,22 +32,10 @@ final class TkRedirectedWith implements Take, TakeRedirect
     private mixed $value;
 
     /**
-     * Ctor wrap.
-     * @param $key
-     * @param $value
-     * @param TakeRedirect $origin
-     * @return TkRedirectedWith
-     */
-    public static function new($key, $value, TakeRedirect $origin)
-    {
-        return new self($key, $value, $origin);
-    }
-
-    /**
      * Ctor.
      * @param $key
      * @param $value
-     * @param $origin
+     * @param TakeRedirect $origin
      */
     public function __construct($key, $value, TakeRedirect $origin)
     {

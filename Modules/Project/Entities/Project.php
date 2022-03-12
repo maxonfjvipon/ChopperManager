@@ -7,14 +7,18 @@ use App\Support\Rates\StickyRates;
 use App\Traits\WithOrWithoutTrashed;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Bkwld\Cloner\Cloneable;
+use DateTimeInterface;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\Project\Database\factories\ProjectFactory;
 use Modules\Project\Traits\ProjectRelationShips;
 use Modules\Selection\Entities\Selection;
+use Modules\User\Entities\User;
 use Spatie\Permission\Models\Permission;
 
 /**
@@ -23,10 +27,16 @@ use Spatie\Permission\Models\Permission;
  * @property int $status_id
  * @property string $name
  * @property int $id
+ * @property User $user
+ * @property string $comment
+ * @property string $delivery_status_id
+ * @property Collection $all_selections
+ * @property DateTimeInterface $created_at
+ * @method static self latest()
  */
 final class Project extends Model
 {
-    use HasFactory, SoftDeletes , SoftCascadeTrait, Cloneable;
+    use HasFactory, SoftDeletes, SoftCascadeTrait, Cloneable;
     use WithOrWithoutTrashed, ProjectRelationShips;
 
     protected $guarded = ['id'];
@@ -34,6 +44,11 @@ final class Project extends Model
 
     protected array $softCascade = ['selections'];
     protected array $cloneable_relations = ['selections'];
+
+    protected static function newFactory(): ProjectFactory
+    {
+        return ProjectFactory::new();
+    }
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y'
@@ -43,7 +58,7 @@ final class Project extends Model
     protected static function booted()
     {
         self::created(function (self $project) {
-            Auth::user()->givePermissionTo(
+            $project->user->givePermissionTo(
                 Permission::create([
                     'name' => 'project_access_' . $project->id
                 ])->name
@@ -67,7 +82,7 @@ final class Project extends Model
      */
     public function readyForExport(Request $request): self
     {
-        $rates = StickyRates::new(RealRates::new());
+        $rates = new StickyRates(new RealRates());
         $this->load(['selections' => function ($query) use ($request) {
             $query->whereIn('id', $request->selection_ids);
         },
@@ -82,5 +97,15 @@ final class Project extends Model
             'selections.pump.price_list.currency',
         ])->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());
         return $this;
+    }
+
+    /**
+     * @param User $user
+     * @param int|null $count
+     * @return Collection<Project>|static
+     */
+    public static function fakeForUser(User $user, int $count = null): self|Collection
+    {
+        return self::factory()->count($count)->create(['user_id' => $user->id]);
     }
 }

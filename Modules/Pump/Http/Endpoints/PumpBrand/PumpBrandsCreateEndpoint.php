@@ -18,9 +18,9 @@ final class PumpBrandsCreateEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_create',
-            TkInertia::new("Pump::PumpBrands/Create")
-        )->act();
+            new TkInertia("Pump::PumpBrands/Create")
+        ))->act();
     }
 }

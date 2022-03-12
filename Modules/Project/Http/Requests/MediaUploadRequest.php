@@ -11,7 +11,7 @@ final class MediaUploadRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'files' => ['required', 'array'],
@@ -24,7 +24,7 @@ final class MediaUploadRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }

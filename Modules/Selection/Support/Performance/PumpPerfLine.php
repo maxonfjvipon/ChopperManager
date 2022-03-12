@@ -27,17 +27,6 @@ final class PumpPerfLine implements Arrayable
     private int $position;
 
     /**
-     * Ctor wrap.
-     * @param Pump $pump
-     * @param int $position
-     * @return PumpPerfLine
-     */
-    public static function new(Pump $pump, int $position): PumpPerfLine
-    {
-        return new self($pump, $position);
-    }
-
-    /**
      * Ctor.
      * @param Pump $pump
      * @param int $position
@@ -53,15 +42,15 @@ final class PumpPerfLine implements Arrayable
      */
     public function asArray(): array
     {
-        $xx = ArrMapped::new(
+        $xx = (new ArrMapped(
             $this->pump->performance()->asArrayAt($this->position),
             fn (array $point) => $point[0]
-        )->asArray();
-        $qStep = $this->qStep($xx);
-        $length = LengthOf::new($xx)->asNumber();
-        $eq = EqFromPumpCoefficients::new($this->pump->coefficientsAt($this->position));
+        ))->asArray();
+        $qStep = $this->qStep($xx) * $this->position;
+        $length = (new LengthOf($xx))->asNumber();
+        $eq = new EqFromPumpCoefficients($this->pump->coefficientsAt($this->position));
         $line = [];
-        for ($x = $xx[0]; $x < $xx[$length - 1]; $x += $qStep * $this->position) {
+        for ($x = $xx[0]; $x < $xx[$length - 1]; $x += $qStep) {
             $line[] = $this->linePoint($x, $eq);
         }
         if ($line[count($line) - 1]['x'] != $xx[$length - 1]) {
@@ -92,6 +81,6 @@ final class PumpPerfLine implements Arrayable
      */
     private function linePoint(float $x, Equation $eq): array
     {
-        return SimplePoint::new($x, $eq->y($x))->asArray();
+        return (new SimplePoint($x, $eq->y($x)))->asArray();
     }
 }

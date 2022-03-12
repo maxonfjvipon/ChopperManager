@@ -22,17 +22,6 @@ final class PumpPerfLines implements Arrayable
     private Pump $pump;
 
     /**
-     * Ctor wrap.
-     * @param Pump $pump
-     * @param int $count
-     * @return PumpPerfLines
-     */
-    public static function new(Pump $pump, int $count = 1): PumpPerfLines
-    {
-        return new self($pump, $count);
-    }
-
-    /**
      * Ctor.
      * @param Pump $pump
      * @param int $count

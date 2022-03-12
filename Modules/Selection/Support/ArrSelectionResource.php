@@ -15,18 +15,9 @@ use Modules\Selection\Transformers\SelectionResources\SinglePumpSelectionResourc
 final class ArrSelectionResource implements Arrayable
 {
     /**
-     * @var Selection
+     * @var Selection $selection
      */
     private Selection $selection;
-
-    /**
-     * @param Selection $selection
-     * @return ArrSelectionResource
-     */
-    public static function new(Selection $selection): ArrSelectionResource
-    {
-        return new self($selection);
-    }
 
     /**
      * Ctor.

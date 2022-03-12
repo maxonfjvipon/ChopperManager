@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class UsersStatisticsEndpoint extends Controller
 {
     /**
+     *
      * @return Responsable|Response
      */
     public function __invoke(): Responsable|Response

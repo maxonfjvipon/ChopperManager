@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * DN
+ * @property int $value
  */
 final class DN extends Model
 {

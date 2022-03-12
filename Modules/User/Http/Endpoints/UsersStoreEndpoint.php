@@ -22,9 +22,9 @@ final class UsersStoreEndpoint extends Controller
      */
     public function __invoke(CreateUserRequest $request): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_create',
-            TkWithCallback::new(
+            new TkWithCallback(
                 function () use ($request) {
                     $user = User::create($request->userProps());
                     $user->updateAvailablePropsFromRequest($request);
@@ -33,8 +33,8 @@ final class UsersStoreEndpoint extends Controller
                     }
                     $user->assignRole('Client');
                 },
-                TkRedirectedRoute::new('users.index')
+                new TkRedirectedRoute('users.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

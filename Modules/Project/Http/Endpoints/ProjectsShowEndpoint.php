@@ -29,7 +29,7 @@ final class ProjectsShowEndpoint extends Controller
                 'selection_access',
                 new TkAuthorizedProject(
                     $project_id,
-                    TkInertia::new(
+                    new TkInertia(
                         "Project::Projects/Show",
                         new ProjectToShow(
                             Project::withOrWithoutTrashed()->findOrFail($project_id)

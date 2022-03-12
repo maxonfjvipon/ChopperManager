@@ -20,16 +20,6 @@ final class ArrPumpsForSelecting implements Arrayable
     private Request $request;
 
     /**
-     * Ctor wrap.
-     * @param Request $req
-     * @return ArrPumpsForSelecting
-     */
-    public static function new(Request $req): ArrPumpsForSelecting
-    {
-        return new self($req);
-    }
-
-    /**
      * Ctor.
      * @param Request $req
      */

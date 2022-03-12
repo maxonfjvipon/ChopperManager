@@ -30,16 +30,6 @@ final class ArrSelectionProps implements Arrayable
     private Request $request;
 
     /**
-     * Ctor wrap.
-     * @param Request|null $request
-     * @return ArrSelectionProps
-     */
-    public static function new(Request $request = null): ArrSelectionProps
-    {
-        return new self($request);
-    }
-
-    /**
      * Ctor.
      * @param ?Request $request
      */

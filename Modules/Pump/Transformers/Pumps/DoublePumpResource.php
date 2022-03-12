@@ -52,8 +52,8 @@ final class DoublePumpResource extends PumpResource
             'pumpable_type' => Pump::$DOUBLE_PUMP,
         ]);
         if ($request->need_curves) {
-            $standbyPerfLine = PumpPerfLine::new($this->resource, 1)->asArray();
-            $peakPerfLine = PumpPerfLine::new($this->resource, 2)->asArray();
+            $standbyPerfLine = (new PumpPerfLine($this->resource, 1))->asArray();
+            $peakPerfLine = (new PumpPerfLine($this->resource, 2))->asArray();
             $xMax = $peakPerfLine[count($peakPerfLine) - 1]['x'];
             $yMax = (new PpHMax($this->resource->performance()))->asNumber();
             $data = array_merge($data, [

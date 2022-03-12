@@ -18,18 +18,10 @@ final class TkDuplicatedProject implements Take
      */
     private Project $project;
 
-    private Take $origin;
-
     /**
-     * Ctor wrap.
-     * @param Project $project
-     * @param Take $take
-     * @return TkDuplicatedProject
+     * @var Take $origin
      */
-    public static function new(Project $project, Take $take): TkDuplicatedProject
-    {
-        return new self($project, $take);
-    }
+    private Take $origin;
 
     /**
      * Ctor.

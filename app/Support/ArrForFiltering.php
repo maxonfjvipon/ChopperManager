@@ -4,27 +4,20 @@ namespace App\Support;
 
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Tests\Unit\ArrForFilteringTest;
 
 /**
  * Array that represent data in format to filtering on front-end
  * @see https://ant.design/components/table/#components-table-demo-head
  * @package App\Support
+ * @see ArrForFilteringTest
  */
 final class ArrForFiltering implements Arrayable
 {
     /**
-     * @var array|Arrayable $data;
+     * @var array|Arrayable $data ;
      */
     private Arrayable|array $data;
-
-    /**
-     * @param array|Arrayable $data
-     * @return ArrForFiltering
-     */
-    public static function new(array|Arrayable $data)
-    {
-        return new self($data);
-    }
 
     /**
      * Ctor.
@@ -40,15 +33,15 @@ final class ArrForFiltering implements Arrayable
      */
     public function asArray(): array
     {
-        return ArrMapped::new(
+        return (new ArrMapped(
             $this->data,
-            fn($item) => ArrMapped::new(
+            fn($item) => (new ArrMapped(
                 $item,
                 fn($value) => [
                     'text' => $value,
                     'value' => $value
                 ]
-            )->asArray()
-        )->asArray();
+            ))->asArray()
+        ))->asArray();
     }
 }

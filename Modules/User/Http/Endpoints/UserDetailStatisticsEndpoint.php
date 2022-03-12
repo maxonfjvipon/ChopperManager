@@ -29,9 +29,9 @@ final class UserDetailStatisticsEndpoint extends Controller
 //            ->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")
 //            ->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")
 //            ->get();
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_statistics',
-            TkJson::new(fn() => [
+            new TkJson(fn() => [
                 'id' => $user->id,
                 'full_name' => $user->full_name,
                 'discounts' => $user->formatted_discounts,
@@ -40,6 +40,6 @@ final class UserDetailStatisticsEndpoint extends Controller
                     ->get(['id', 'created_at', 'name']),
 //                'projects_by_months' => $projectsByMonths,
             ])
-        )->act();
+        ))->act();
     }
 }

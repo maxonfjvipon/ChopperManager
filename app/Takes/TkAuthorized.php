@@ -9,10 +9,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkAuthorizedTest;
 
 /**
  * Endpoint that authorize user abilities
  * @package App\Takes
+ * @see TkAuthorizedTest
  */
 final class TkAuthorized implements Take
 {
@@ -27,17 +29,6 @@ final class TkAuthorized implements Take
      * @var Take $origin
      */
     private Take $origin;
-
-    /**
-     * Ctor wrap.
-     * @param string $ability
-     * @param Take $take
-     * @return TkAuthorized
-     */
-    public static function new(string $ability, Take $take): TkAuthorized
-    {
-        return new self($ability, $take);
-    }
 
     /**
      * Ctor.
@@ -56,9 +47,9 @@ final class TkAuthorized implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return TkWithCallback::new(
+        return (new TkWithCallback(
             fn() => $this->authorize($this->ability),
             $this->origin
-        )->act($request);
+        ))->act($request);
     }
 }

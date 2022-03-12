@@ -27,16 +27,6 @@ final class EqPolynomial implements Equation
     /**
      * @param array|Arrayable $data
      * @param int $precision
-     * @return EqPolynomial
-     */
-    public static function new(array|Arrayable $data, int $precision = 8): EqPolynomial
-    {
-        return new self($data, $precision);
-    }
-
-    /**
-     * @param array|Arrayable $data
-     * @param int $precision
      */
     public function __construct(array|Arrayable $data, int $precision = 8)
     {

@@ -3,18 +3,48 @@
 namespace Modules\User\Entities;
 
 use Closure;
+use DateTimeInterface;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Modules\Pump\Entities\PumpSeries;
 use Modules\User\Contracts\ChangeUser\WithAvailableProps;
+use Modules\User\Database\factories\UserFactory;
 use Modules\User\Traits\UserAttributes;
 use Modules\User\Traits\UserRelationships;
 use Spatie\Permission\Traits\HasRoles;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+/**
+ * @property int $id
+ * @property string $organization_name
+ * @property string $itn
+ * @property string $phone
+ * @property int $country_id
+ * @property int $business_id
+ * @property string $city
+ * @property string $postcode
+ * @property string $first_name
+ * @property string $middle_name
+ * @property string $last_name
+ * @property string $full_name
+ * @property string $email
+ * @property bool $is_active
+ * @property DateTimeInterface $email_verified_at
+ * @property DateTimeInterface $last_login_at
+ * @property Business $business
+ * @property Country $country
+ * @property int $currency_id
+ * @property string $password
+ *
+ * @method static self create(array $attributes)
+ * @method static int count()
+ * @method static self find(int $user_id)
+ */
 final class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes, HasRoles;
@@ -22,11 +52,6 @@ final class User extends Authenticatable implements MustVerifyEmail
 
     public $timestamps = false;
     protected $table = 'users';
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
 
     protected $hidden = [
         'password',
@@ -49,6 +74,11 @@ final class User extends Authenticatable implements MustVerifyEmail
         'last_login_at' => 'datetime: d.m.Y',
         'is_active' => 'boolean',
     ];
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 
     /**
      * @return string
@@ -101,5 +131,16 @@ final class User extends Authenticatable implements MustVerifyEmail
     public function isAdmin(): bool
     {
         return $this->hasAnyRole('SuperAdmin', 'Admin');
+    }
+
+    /**
+     * @param string $role
+     * @return self
+     */
+    public static function fakeWithRole(string $role = "Client"): self
+    {
+        $user = self::factory()->create();
+        $user->assignRole($role);
+        return $user;
     }
 }

@@ -3,10 +3,12 @@
 namespace App\Support;
 
 use Maxonfjvipon\Elegant_Elephant\Text;
+use Tests\Unit\TxtViewTest;
 
 /**
  * View as html
  * @package App\Support
+ * @see TxtViewTest
  */
 final class TxtView implements Text
 {
@@ -21,21 +23,11 @@ final class TxtView implements Text
     private array $data;
 
     /**
-     * @param string $name
-     * @param array $data
-     * @return TxtView
-     */
-    public static function new(string $name, array $data): TxtView
-    {
-        return new self($name, $data);
-    }
-
-    /**
      * Ctor.
      * @param string $name
      * @param array $data
      */
-    public function __construct(string $name, array $data)
+    public function __construct(string $name, array $data = [])
     {
         $this->name = $name;
         $this->data = $data;

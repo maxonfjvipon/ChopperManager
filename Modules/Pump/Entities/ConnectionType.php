@@ -8,6 +8,7 @@ use App\Traits\Cached;
 
 /**
  * Connection type
+ * @property string $name
  * @package Modules\Pump\Entities
  */
 final class ConnectionType extends Model

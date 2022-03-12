@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasTranslations;
 
+/**
+ * @property string $name
+ */
 final class Business extends Model
 {
     use HasFactory, HasTranslations, Cached;
@@ -16,7 +19,7 @@ final class Business extends Model
         return "businesses";
     }
 
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
     protected $fillable = ['name'];
     public $timestamps = false;
 }

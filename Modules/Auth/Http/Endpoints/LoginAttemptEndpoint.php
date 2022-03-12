@@ -24,13 +24,13 @@ final class LoginAttemptEndpoint extends Controller
      */
     public function __invoke(LoginRequest $request): Responsable|Response
     {
-        return TkWithCallback::new(
+        return (new TkWithCallback(
             function () use ($request) {
                 $request->authenticate();
                 $request->session()->regenerate();
             },
-            TkRedirectedRoute::new('projects.index')
-        )->act($request);
+            new TkRedirectedRoute('projects.index')
+        ))->act($request);
 
     }
 }

@@ -10,6 +10,7 @@ use App\Traits\HasTranslations;
 
 /**
  * Pump category.
+ * @property string $name
  */
 final class PumpCategory extends Model
 {
@@ -23,7 +24,7 @@ final class PumpCategory extends Model
         return "pump_categories";
     }
 
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
     protected $fillable = ['name'];
     public $timestamps = false;
 }

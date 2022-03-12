@@ -2,11 +2,13 @@
 
 namespace App\Support;
 
-use Exception;
-use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Text;
-use TypeError;
+use Tests\Unit\FormattedPriceTest;
 
+/**
+ * Formatted price for Russian standards
+ * @see FormattedPriceTest
+ */
 final class FormattedPrice implements Text
 {
     /**
@@ -20,22 +22,11 @@ final class FormattedPrice implements Text
     private int $decimals;
 
     /**
-     * Ctor wrap.
-     * @param float|int $price
-     * @param int $decimals
-     * @return FormattedPrice
-     */
-    public static function new(float|int $price, int $decimals = 1): FormattedPrice
-    {
-        return new self($price, $decimals);
-    }
-
-    /**
      * Ctor.
      * @param float|int $price
      * @param int $decimals
      */
-    public function __construct(float|int $price, int $decimals = 1)
+    public function __construct(float|int $price, int $decimals = 2)
     {
         $this->price = $price;
         $this->decimals = $decimals;

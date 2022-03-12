@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Modules\Pump\Database\factories\PumpFactory;
 use Modules\Pump\Traits\Pump\PumpAttributes;
 use Modules\Pump\Traits\Pump\PumpRelationships;
 use Modules\Pump\Traits\Pump\PumpScopes;
@@ -34,6 +35,18 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property string $article_num_main
  * @property string $article_num_archive
  * @property mixed $price_lists
+ * @property ConnectionType $connection_type
+ * @property float $rated_current
+ * @property float $fluid_temp_min
+ * @property float $fluid_temp_max
+ * @property int $ptp_length
+ * @property DN $dn_suction
+ * @property DN $dn_pressure
+ * @property MainsConnection $mains_connection
+ * @property string $applications
+ * @property string $types
+ * @property bool $is_discontinued_with_series
+ * @property float $weight
  */
 final class Pump extends Model
 {
@@ -49,6 +62,11 @@ final class Pump extends Model
     protected $guarded = [];
     public $timestamps = false;
     protected $table = 'pumps';
+
+    protected static function newFactory(): PumpFactory
+    {
+        return PumpFactory::new();
+    }
 
     protected $casts = [
         'is_discontinued' => 'boolean'

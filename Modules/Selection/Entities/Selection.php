@@ -4,13 +4,17 @@ namespace Modules\Selection\Entities;
 
 use App\Support\Rates\Rates;
 use App\Traits\WithOrWithoutTrashed;
+use DateTimeInterface;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
+use Modules\Project\Entities\Project;
 use Modules\Pump\Entities\Pump;
+use Modules\Selection\Database\factories\SelectionFactory;
 use Modules\Selection\Support\Performance\PpHMax;
 use Modules\Selection\Support\Performance\PumpPerfLines;
 use Modules\Selection\Support\Point\IntersectionPoint;
@@ -22,6 +26,7 @@ use Modules\Selection\Traits\SelectionRelationships;
 
 /**
  * Selection.
+ *
  * @property Pump $pump
  * @property array $curves_data
  * @property int $project_id
@@ -33,7 +38,7 @@ use Modules\Selection\Traits\SelectionRelationships;
  * @property string $pump_type
  * @property float $total_rated_power
  * @property int $id
- * @property mixed $created_at
+ * @property DateTimeInterface $created_at
  * @property string $selected_pump_name
  */
 final class Selection extends Model
@@ -44,6 +49,11 @@ final class Selection extends Model
     public $timestamps = false;
     protected $guarded = [];
     protected $table = "selections";
+
+    public static function newFactory(): SelectionFactory
+    {
+        return SelectionFactory::new();
+    }
 
     protected $casts = [
         'created_at' => 'datetime:d.m.Y',
@@ -120,7 +130,7 @@ final class Selection extends Model
         ];
         if ($this->flow !== null && $this->head !== null) {
             $intersectionPoint = new IntersectionPoint(
-                EqFromPumpCoefficients::new(
+                new EqFromPumpCoefficients(
                     $this->pump->coefficientsAt(
                         $this->dp_work_scheme_id ??
                         ($this->pumps_count - $this->reserve_pumps_count))
@@ -155,14 +165,8 @@ final class Selection extends Model
         return $this;
     }
 
-    /**
-     * Update self and return
-     * @param array $attributes
-     * @return $this
-     */
-    public function updatedFrom(array $attributes = [])
+    public static function fakeForProject(Project $project, int $count = null): Model|Collection
     {
-        $this->update($attributes);
-        return $this;
+        return self::factory()->count($count)->create(['project_id' => $project->id]);
     }
 }

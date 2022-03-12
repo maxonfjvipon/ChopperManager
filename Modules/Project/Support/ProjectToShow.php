@@ -20,15 +20,6 @@ final class ProjectToShow implements Arrayable
      */
     private Project $project;
 
-    /**
-     * Ctor wrap.
-     * @param Project $project
-     * @return ProjectToShow
-     */
-    public static function new(Project $project)
-    {
-        return new self($project);
-    }
 
     /**
      * Ctor.
@@ -45,13 +36,13 @@ final class ProjectToShow implements Arrayable
      */
     public function asArray(): array
     {
-        $rates = StickyRates::new(RealRates::new());
+        $rates = new StickyRates(new RealRates());
         return [
             'project' => [
                 'data' => [
                     'id' => $this->project->id,
                     'name' => $this->project->name,
-                    'selections' => ArrMapped::new(
+                    'selections' => (new ArrMapped(
                         Selection::withOrWithoutTrashed()
                             ->whereProjectId($this->project->id)
                             ->with([
@@ -82,7 +73,7 @@ final class ProjectToShow implements Arrayable
                                 'pumpable_type' => $selection->pump_type
                             ];
                         }
-                    )->asArray()
+                    ))->asArray()
                 ]
             ]
         ];

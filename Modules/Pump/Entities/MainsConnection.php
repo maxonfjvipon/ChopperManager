@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Mains connection
+ * @property string $full_value
+ * @property int $voltage
+ * @property int $phase
  */
 final class MainsConnection extends Model
 {
@@ -23,7 +26,7 @@ final class MainsConnection extends Model
 
     protected $appends = ['full_value'];
 
-    public function getFullValueAttribute()
+    public function getFullValueAttribute(): string
     {
         return "{$this->phase}({$this->voltage})";
     }

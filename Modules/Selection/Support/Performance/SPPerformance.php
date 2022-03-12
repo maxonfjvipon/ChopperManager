@@ -3,9 +3,14 @@
 namespace Modules\Selection\Support\Performance;
 
 use Exception;
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrExploded;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrTernary;
+use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
+use Maxonfjvipon\Elegant_Elephant\Logical\Negation;
 use Modules\Pump\Entities\Pump;
+use PhpParser\Node\Expr\New_;
 
 /**
  * Single pump performance.
@@ -21,16 +26,6 @@ final class SPPerformance implements PumpPerformance
      * @var array $cache
      */
     private array $cache = [];
-
-    /**
-     * Ctor wrap.
-     * @param Pump $pump
-     * @return SPPerformance
-     */
-    public static function new(Pump $pump)
-    {
-        return new self($pump);
-    }
 
     /**
      * Ctor.
@@ -52,26 +47,22 @@ final class SPPerformance implements PumpPerformance
      */
     public function asArrayAt(int $position): array
     {
-        if (!array_key_exists($position, $this->cache)) {
-            if (!array_key_exists(1, $this->cache)) {
-                $perfAsArr = ArrMapped::new(
-                    ArrExploded::new(
-                        " ",
-                        $this->pump->sp_performance
-                    ),
-                    fn($value) => floatval($value)
-                )->asArray();
-                $arr = [];
-                for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
-                    $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];
-                }
-                $this->cache[1] = $arr;
-            }
-            $this->cache[$position] = ArrMapped::new(
-                $this->cache[1],
-                fn (array $dot) => [$dot[0] * $position, $dot[1]]
-            )->asArray();
-        }
-        return $this->cache[$position];
+        return $this->cache[$position] ?? $this->cache[$position] = (new ArrMapped(
+                $this->cache[1] ?? $this->cache[1] = (function () {
+                    $perfAsArr = (new ArrMapped(
+                        new ArrExploded(
+                            " ",
+                            $this->pump->sp_performance
+                        ),
+                        fn($value) => floatval($value)
+                    ))->asArray();
+                    $arr = [];
+                    for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
+                        $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];
+                    }
+                    return $arr;
+                })(),
+                fn(array $dot) => [$dot[0] * $position, $dot[1]]
+            ))->asArray();
     }
 }

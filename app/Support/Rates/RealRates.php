@@ -22,21 +22,9 @@ final class RealRates implements Rates
     private Rates $rates;
 
     /**
-     * Ctor wrap.
-     * @return RealRates
-     * @throws Exception
-     */
-    public static function new(): RealRates
-    {
-        return new self();
-    }
-
-    /**
      * Ctor.
-     * @param int $round
-     * @throws Exception
      */
-    public function __construct(int $round = 5)
+    public function __construct()
     {
         $this->rates = self::$fromForex
             ? new ForexRates()

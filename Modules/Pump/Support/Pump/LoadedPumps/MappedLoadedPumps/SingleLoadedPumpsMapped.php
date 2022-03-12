@@ -18,16 +18,6 @@ final class SingleLoadedPumpsMapped implements Arrayable
     private Arrayable $pumps;
 
     /**
-     * Ctor wrap.
-     * @param Arrayable $pumps
-     * @return SingleLoadedPumpsMapped
-     */
-    public static function new(Arrayable $pumps)
-    {
-        return new self($pumps);
-    }
-
-    /**
      * Ctor.
      * @param Arrayable $pumps
      */
@@ -41,7 +31,7 @@ final class SingleLoadedPumpsMapped implements Arrayable
      */
     public function asArray(): array
     {
-        return ArrMapped::new(
+        return (new ArrMapped(
             $this->pumps,
             fn(Pump $pump) => [
                 'id' => $pump->id,
@@ -53,6 +43,7 @@ final class SingleLoadedPumpsMapped implements Arrayable
                 'weight' => $pump->weight,
                 'price' => $pump->priceListForCurrentUser() ? round($pump->priceListForCurrentUser()->price, 2) : null,
                 'currency' => $pump->priceListForCurrentUser()->currency->code ?? null,
+                'connection_type' => $pump->connection_type->name,
                 'rated_power' => $pump->rated_power,
                 'rated_current' => $pump->rated_current,
                 'fluid_temp_min' => $pump->fluid_temp_min,
@@ -68,6 +59,6 @@ final class SingleLoadedPumpsMapped implements Arrayable
                 'pumpable_type' => $pump->pumpable_type,
                 'is_discontinued' => $pump->is_discontinued_with_series,
             ]
-        )->asArray();
+        ))->asArray();
     }
 }

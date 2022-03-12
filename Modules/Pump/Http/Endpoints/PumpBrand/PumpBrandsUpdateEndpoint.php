@@ -20,12 +20,12 @@ final class PumpBrandsUpdateEndpoint extends Controller
      */
     public function __invoke(PumpBrandUpdateRequest $request, PumpBrand $pumpBrand): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_edit',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => $pumpBrand->update($request->validated()),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

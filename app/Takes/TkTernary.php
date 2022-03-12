@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 use Maxonfjvipon\Elegant_Elephant\Logical;
 use Maxonfjvipon\Elegant_Elephant\Logical\LogicalOverloadable;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkTernaryTest;
 
 /**
  * Ternary take.
+ * @package App\Takes
+ * @see TkTernaryTest
  */
 final class TkTernary implements Take
 {
@@ -31,18 +34,6 @@ final class TkTernary implements Take
      * @var Take $alt
      */
     private Take $alt;
-
-    /**
-     * Ctor wrap.
-     * @param bool|Logical $cond
-     * @param Take $first
-     * @param Take $alt
-     * @return TkTernary
-     */
-    public static function new(bool|Logical $cond, Take $first, Take $alt)
-    {
-        return new self($cond, $first, $alt);
-    }
 
     /**
      * Ctor wrap.

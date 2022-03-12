@@ -19,12 +19,12 @@ final class UsersCreateEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_create',
-            TkInertia::new(
+            new TkInertia(
                 'User::Create',
-                UsersFilterData::new()
+                new UsersFilterData()
             )
-        )->act();
+        ))->act();
     }
 }

@@ -8,22 +8,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkRedirectedTest;
 
 /**
  * Redirect back endpoint.
  * @package App\Takes
+ * @see TkRedirectedTest
  */
 final class TkRedirectedBack implements Take, TakeRedirect
 {
-    /**
-     * Ctor wrap.
-     * @return TkRedirectedBack
-     */
-    public static function new(): TkRedirectedBack
-    {
-        return new self();
-    }
-
     /**
      * @inheritDoc
      */

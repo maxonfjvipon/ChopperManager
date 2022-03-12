@@ -16,29 +16,20 @@ use Modules\User\Entities\Business;
 final class UsersToShow implements Arrayable
 {
     /**
-     * Ctor wrap.
-     * @return UsersToShow
-     */
-    public static function new(): UsersToShow
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function asArray(): array
     {
-        return ArrMerged::new(
-            ArrObject::new(
+        return (new ArrMerged(
+            new ArrObject(
                 "filter_data",
-                ArrForFiltering::new(
+                new ArrForFiltering(
                     ['businesses' => Business::allOrCached()->pluck('name')->all()]
                 )
             ),
-            ArrObject::new(
+            new ArrObject(
                 "users",
-                ArrMapped::new(
+                new ArrMapped(
                     User::with(['country' => function ($query) {
                         $query->select('id', 'name');
                     }, 'business'])
@@ -61,6 +52,6 @@ final class UsersToShow implements Arrayable
                     ]
                 )
             )
-        )->asArray();
+        ))->asArray();
     }
 }

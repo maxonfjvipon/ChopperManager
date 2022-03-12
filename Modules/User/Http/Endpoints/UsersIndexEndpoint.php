@@ -22,12 +22,12 @@ final class UsersIndexEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_access',
-            TkInertia::new(
+            new TkInertia(
                 'User::Index',
-                UsersToShow::new()
+                new UsersToShow()
             )
-        )->act();
+        ))->act();
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * Pump application.
+ * @method static availableForUserSeries($availableSeriesIds)
  */
 final class PumpApplication extends Model
 {
