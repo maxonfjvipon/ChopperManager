@@ -24,17 +24,6 @@ final class TxtExportProjectView implements Text
     private Request $request;
 
     /**
-     * Ctor wrap.
-     * @param Project $project
-     * @param Request $request
-     * @return TxtExportProjectView
-     */
-    public static function new(Project $project, Request $request): TxtExportProjectView
-    {
-        return new self($project, $request);
-    }
-
-    /**
      * Ctor.
      * @param Project $project
      * @param Request $request
@@ -50,9 +39,9 @@ final class TxtExportProjectView implements Text
      */
     public function asString(): string
     {
-        return TxtView::new('project::project_export', [
+        return (new TxtView('project::project_export', [
             'project' => $this->project->readyForExport($this->request),
             'request' => $this->request
-        ])->asString();
+        ]))->asString();
     }
 }

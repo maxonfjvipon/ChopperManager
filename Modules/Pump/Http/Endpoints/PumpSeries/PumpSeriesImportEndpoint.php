@@ -3,6 +3,7 @@
 namespace Modules\Pump\Http\Endpoints\PumpSeries;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Modules\Project\Http\Requests\FilesUploadRequest;
@@ -14,6 +15,7 @@ final class PumpSeriesImportEndpoint extends Controller
      * @param FilesUploadRequest $request
      * @return RedirectResponse
      * @throws AuthorizationException
+     * @throws Exception
      */
     public function __invoke(FilesUploadRequest $request): RedirectResponse
     {

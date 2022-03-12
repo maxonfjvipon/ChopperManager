@@ -22,12 +22,12 @@ final class PumpBrandsStoreEndpoint extends Controller
      */
     public function __invoke(PumpBrandStoreRequest $request): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_create',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => PumpBrand::create($request->validated()),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

@@ -29,6 +29,8 @@ class AddDoublePumpWorkSchemeIdToSelectionTable extends Migration
     {
         Schema::table('selections', function (Blueprint $table) {
             $table->dropForeign('selections_double_pump_work_scheme_id_foreign');
+        });
+        Schema::table('pumps', function (Blueprint $table) {
             $table->dropColumn('double_pump_work_scheme_id');
         });
     }

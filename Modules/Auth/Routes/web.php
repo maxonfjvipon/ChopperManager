@@ -29,14 +29,13 @@ Route::middleware('guest')->group(function () {
     Route::post('register')->name('register.attempt')->uses(RegisterAttemptEndpoint::class);
 });
 
-
-// LOGOUT
-Route::post('logout')->name('logout')->uses(LogoutEndpoint::class);
-
 // AUTHORIZED
 Route::middleware('auth')->group(function () {
     // EMAIL VERIFICATION
     Route::get('/email/verify')->name('verification.notice')->uses([EmailVerificationController::class, 'notice']);
     Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses([EmailVerificationController::class, 'verify']);
     Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses([EmailVerificationController::class, 'resendVerification']);
+
+    // LOGOUT
+    Route::post('logout')->name('logout')->uses(LogoutEndpoint::class);
 });

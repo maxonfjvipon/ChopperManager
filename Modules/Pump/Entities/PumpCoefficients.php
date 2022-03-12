@@ -28,9 +28,9 @@ final class PumpCoefficients extends Model
      */
     public static function createdForPumpAtPosition(Pump $pump, int $position): self
     {
-        $eq = EqPolynomial::new(
+        $eq = (new EqPolynomial(
             $pump->performance()->asArrayAt($position)
-        )->asArray();
+        ))->asArray();
         return self::create([
             'pump_id' => $pump->id,
             'position' => $position,

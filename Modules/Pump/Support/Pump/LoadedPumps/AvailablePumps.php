@@ -15,16 +15,6 @@ final class AvailablePumps implements LoadedPumps
     private LoadedPumps $origin;
 
     /**
-     * Ctor wrap.
-     * @param LoadedPumps $pumps
-     * @return AvailablePumps
-     */
-    public static function new(LoadedPumps $pumps): AvailablePumps
-    {
-        return new self($pumps);
-    }
-
-    /**
      * Ctor.
      * @param LoadedPumps $pumps
      */

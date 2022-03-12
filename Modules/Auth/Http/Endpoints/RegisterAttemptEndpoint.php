@@ -18,11 +18,12 @@ final class RegisterAttemptEndpoint extends Controller
     /**
      * @param RegisterUserRequest $request
      * @return Responsable|Response
+     * @throws \Exception
      */
     public function __invoke(RegisterUserRequest $request): Responsable|Response
     {
-        return TkRegisteredUser::new(
-            TkRedirectedRoute::new('verification.notice')
-        )->act($request);
+        return (new TkRegisteredUser(
+            new TkRedirectedRoute('verification.notice')
+        ))->act($request);
     }
 }

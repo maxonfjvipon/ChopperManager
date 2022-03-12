@@ -22,20 +22,11 @@ use Modules\User\Entities\Country;
 final class UsersForStatistics implements Arrayable
 {
     /**
-     * Ctor wrap.
-     * @return UsersForStatistics
-     */
-    public static function new(): UsersForStatistics
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function asArray(): array
     {
-        $rates = StickyRates::new(RealRates::new());
+        $rates = new StickyRates(new RealRates());
         $users = User::with(['country' => function ($query) {
             $query->select('id', 'name');
         }, 'business', 'projects' => function ($query) {
@@ -50,23 +41,23 @@ final class UsersForStatistics implements Arrayable
             ->get(['id', 'organization_name', 'business_id',
                 'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at'
             ]);
-        return ArrMerged::new(
-            ArrObject::new(
+        return (new ArrMerged(
+            new ArrObject(
                 "users",
-                ArrMapped::new(
+                new ArrMapped(
                     $users->all(),
                     function (User $user) use ($rates) {
-                        $projectsPrice = ArraySum::new(
-                            ArrMapped::new(
+                        $projectsPrice = (new ArraySum(
+                            new ArrMapped(
                                 [...$user->projects],
-                                fn(Project $project) => ArraySum::new(
-                                    ArrMapped::new(
+                                fn(Project $project) => (new ArraySum(
+                                    new ArrMapped(
                                         [...$project->selections],
                                         fn(Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
-                                )->asNumber()
+                                ))->asNumber()
                             )
-                        )->asNumber();
+                        ))->asNumber();
                         $avgProjectsPrice = $user->projects_count !== 0
                             ? $projectsPrice / $user->projects_count
                             : 0;
@@ -86,9 +77,9 @@ final class UsersForStatistics implements Arrayable
                     }
                 )
             ),
-            ArrObject::new(
+            new ArrObject(
                 "filter_data",
-                ArrForFiltering::new(
+                new ArrForFiltering(
                     [
                         'businesses' => Business::allOrCached()->whereIn('id', $users->pluck('business_id')->all())
                             ->pluck('name')->all(),
@@ -100,6 +91,6 @@ final class UsersForStatistics implements Arrayable
                     ]
                 )
             ),
-        )->asArray();
+        ))->asArray();
     }
 }

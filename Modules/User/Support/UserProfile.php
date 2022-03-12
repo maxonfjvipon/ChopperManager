@@ -4,6 +4,7 @@ namespace Modules\User\Support;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Modules\User\Entities\User;
 
 /**
  * User profile.
@@ -11,25 +12,15 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 final class UserProfile implements Arrayable
 {
     /**
-     * @var Authenticatable $user
+     * @var Authenticatable|User $user
      */
-    private Authenticatable $user;
-
-    /**
-     * Ctor wrap.
-     * @param Authenticatable $user
-     * @return UserProfile
-     */
-    public static function new(Authenticatable $user)
-    {
-        return new self($user);
-    }
+    private Authenticatable|User $user;
 
     /**
      * Ctor.
-     * @param Authenticatable $user
+     * @param Authenticatable|User $user
      */
-    public function __construct(Authenticatable $user)
+    public function __construct(Authenticatable|User $user)
     {
         $this->user = $user;
     }

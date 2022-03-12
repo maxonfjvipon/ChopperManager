@@ -11,12 +11,16 @@ use Modules\Project\Entities\Currency;
 
 /**
  * Country.
+ * @property int $id
+ * @property string $country_code
+ * @property string $name
+ * @property string $code
  */
 final class Country extends Model
 {
     use HasFactory, HasTranslations, Cached;
 
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
     protected $fillable = ['name', 'code', 'currency_id'];
     public $timestamps = false;
 

@@ -17,16 +17,6 @@ final class DoubleLoadedPumpMapped implements Arrayable
     private Arrayable $pumps;
 
     /**
-     * Ctor wrap.
-     * @param Arrayable $pumps
-     * @return DoubleLoadedPumpMapped
-     */
-    public static function new(Arrayable $pumps)
-    {
-        return new self($pumps);
-    }
-
-    /**
      * Ctor.
      * @param Arrayable $pumps
      */
@@ -40,7 +30,7 @@ final class DoubleLoadedPumpMapped implements Arrayable
      */
     public function asArray(): array
     {
-        return ArrMapped::new(
+        return (new ArrMapped(
             $this->pumps,
             fn (Pump $pump) => [
                 'id' => $pump->id,
@@ -68,6 +58,6 @@ final class DoubleLoadedPumpMapped implements Arrayable
                 'pumpable_type' => $pump->pumpable_type,
                 'is_discontinued' => $pump->is_discontinued_with_series,
             ]
-        )->asArray();
+        ))->asArray();
     }
 }

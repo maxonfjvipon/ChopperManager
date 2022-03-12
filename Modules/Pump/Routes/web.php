@@ -65,7 +65,7 @@ Route::prefix('pump_series')->group(function () {
 Route::prefix('pumps')->group(function () {
     Route::prefix('import')->group(function () {
         Route::post('/')->name('pumps.import')->uses(PumpsImportEndpoint::class);
-        Route::post('price_list')->name('pumps.import.price_lists')->uses(PumpsImportPriceListsEndpoint::class);
+        Route::post('price_lists')->name('pumps.import.price_lists')->uses(PumpsImportPriceListsEndpoint::class);
         Route::post('media')->name('pumps.import.media')->uses(PumpsImportMediaEndpoint::class);
     });
 

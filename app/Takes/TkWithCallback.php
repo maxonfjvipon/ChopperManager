@@ -6,10 +6,12 @@ use App\Support\Take;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkWithCallbackTest;
 
 /**
  * Take that calls function.
  * @package App\Takes
+ * @see TkWithCallbackTest
  */
 final class TkWithCallback implements Take
 {
@@ -22,17 +24,6 @@ final class TkWithCallback implements Take
      * @var Take $origin
      */
     private Take $origin;
-
-    /**
-     * Ctor wrap.
-     * @param callable $callable
-     * @param Take $take
-     * @return TkWithCallback
-     */
-    public static function new(callable $callable, Take $take): TkWithCallback
-    {
-        return new self($callable, $take);
-    }
 
     /**
      * Ctor.

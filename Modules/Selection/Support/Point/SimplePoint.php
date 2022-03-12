@@ -18,17 +18,6 @@ final class SimplePoint implements Point
     private float $y;
 
     /**
-     * Ctor wrap.
-     * @param float $x
-     * @param float $y
-     * @return SimplePoint
-     */
-    public static function new(float $x, float $y): SimplePoint
-    {
-        return new self($x, $y);
-    }
-
-    /**
      * Ctor.
      * @param float $x
      * @param float $y

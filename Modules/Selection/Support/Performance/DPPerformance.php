@@ -32,9 +32,9 @@ final class DPPerformance implements PumpPerformance
      */
     public function asArrayAt(int $position): array
     {
-        if (!array_key_exists($position, $this->performances)) {
-            $perfAsArr = ArrMapped::new(
-                ArrExploded::new(
+        return $this->performances[$position] ?? $this->performances[$position] = (function () use ($position) {
+            $perfAsArr = (new ArrMapped(
+                new ArrExploded(
                     " ",
                     match ($position) {
                         1 => $this->pump->dp_standby_performance,
@@ -42,13 +42,12 @@ final class DPPerformance implements PumpPerformance
                     }
                 ),
                 fn($value) => floatval($value)
-            )->asArray();
+            ))->asArray();
             $arr = [];
             for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
                 $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];
             }
-            $this->performances[$position] = $arr;
-        }
-        return $this->performances[$position];
+            return $arr;
+        })();
     }
 }

@@ -36,19 +36,19 @@ trait ProjectRelationShips
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @return HasOne
-     */
-    public function status(): HasOne
-    {
-        return $this->hasOne(ProjectStatus::class, 'id', 'status_id');
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function delivery_status(): HasOne
-    {
-        return $this->hasOne(ProjectDeliveryStatus::class, 'id', 'delivery_status_id');
-    }
+//    /**
+//     * @return HasOne
+//     */
+//    public function status(): HasOne
+//    {
+//        return $this->hasOne(ProjectStatus::class, 'id', 'status_id');
+//    }
+//
+//    /**
+//     * @return HasOne
+//     */
+//    public function delivery_status(): HasOne
+//    {
+//        return $this->hasOne(ProjectDeliveryStatus::class, 'id', 'delivery_status_id');
+//    }
 }

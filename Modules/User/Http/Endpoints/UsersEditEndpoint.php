@@ -21,12 +21,12 @@ final class UsersEditEndpoint extends Controller
      */
     public function __invoke(int $user_id): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_edit',
-            TkInertia::new(
+            new TkInertia(
                 'User::Edit',
-                UserToEdit::new(User::find($user_id))
+                new UserToEdit(User::find($user_id))
             )
-        )->act();
+        ))->act();
     }
 }

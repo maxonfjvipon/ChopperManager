@@ -12,11 +12,12 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Unit\Takes\TkInertiaTest;
 
 /**
  * Inertia endpoint.
- * // TODO: make overridable
  * @package App\Takes
+ * @see TkInertiaTest
  */
 final class TkInertia implements Take
 {
@@ -31,16 +32,6 @@ final class TkInertia implements Take
      * @var array|callable|Arrayable $props
      */
     private $props;
-
-    /**
-     * @param string|Text $component
-     * @param array|callable|Arrayable $props
-     * @return TkInertia
-     */
-    public static function new(string|Text $component, array|callable|Arrayable $props = []): TkInertia
-    {
-        return new self($component, $props);
-    }
 
     /**
      * Ctor.

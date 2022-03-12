@@ -26,27 +26,6 @@ final class TkAuthorizedProject implements Take
     private Take $origin;
 
     /**
-     * Ctor wrap.
-     * @param Project $project
-     * @param Take $take
-     * @return TkAuthorizedProject
-     */
-    public static function byProject(Project $project, Take $take): TkAuthorizedProject
-    {
-        return TkAuthorizedProject::byId($project->id, $take);
-    }
-
-    /**
-     * @param string $project_id
-     * @param Take $take
-     * @return TkAuthorizedProject
-     */
-    public static function byId(string $project_id, Take $take): TkAuthorizedProject
-    {
-        return new self($project_id, $take);
-    }
-
-    /**
      * Ctor.
      * @param string $project_id
      * @param Take $take
@@ -62,9 +41,9 @@ final class TkAuthorizedProject implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'project_access_' . $this->project_id,
             $this->origin
-        )->act($request);
+        ))->act($request);
     }
 }

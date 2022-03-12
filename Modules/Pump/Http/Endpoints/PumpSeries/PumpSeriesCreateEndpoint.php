@@ -16,12 +16,12 @@ final class PumpSeriesCreateEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'series_create',
-            TkInertia::new(
+            new TkInertia(
                 "Pump::PumpSeries/Create",
-                PumpSeriesProps::new()
+                new PumpSeriesProps()
             )
-        )->act();
+        ))->act();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\Auth\Http\Requests;
 
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Contracts\ChangeUser\WithUserProps;
@@ -33,6 +34,9 @@ class RegisterUserRequest extends FormRequest implements WithUserProps
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public function userProps(): array
     {
         return [
@@ -47,7 +51,7 @@ class RegisterUserRequest extends FormRequest implements WithUserProps
             'city' => $this->city,
             'postcode' => $this->postcode,
             'country_id' => $this->country_id,
-            'currency_id' => Country::find($this->country_id)->first()->currency_id,
+            'currency_id' => Country::allOrCached()->find($this->country_id)->currency_id,
             'business_id' => $this->business_id,
         ];
     }

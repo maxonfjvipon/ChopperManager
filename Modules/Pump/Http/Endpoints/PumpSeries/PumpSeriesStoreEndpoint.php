@@ -20,12 +20,12 @@ final class PumpSeriesStoreEndpoint extends Controller
      */
     public function __invoke(PumpSeriesStoreRequest $request): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             "series_create",
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn () => User::addNewSeriesForSuperAdmins(PumpSeries::createFromRequest($request)),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

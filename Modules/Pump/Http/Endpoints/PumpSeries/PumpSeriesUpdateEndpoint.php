@@ -20,12 +20,12 @@ final class PumpSeriesUpdateEndpoint extends Controller
      */
     public function __invoke(PumpSeriesUpdateRequest $request, PumpSeries $pumpSeries): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'series_edit',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => $pumpSeries->updateFromRequest($request),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

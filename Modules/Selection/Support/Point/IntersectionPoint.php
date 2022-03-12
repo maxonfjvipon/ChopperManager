@@ -47,17 +47,16 @@ final class IntersectionPoint implements Point
      */
     public function asArray(): array
     {
-        if (!array_key_exists('point', $this->cache)) {
-            $z = $this->head / ($this->flow * $this->flow);
-            $eq = $this->equation->asArray();
-            $t = $eq[0] - $z;
-            $x = (-$eq[1] - sqrt($eq[1] * $eq[1] - 4 * $t * $eq[2])) / (2 * $t);
-            $this->cache['point'] = [
-                'x' => $x,
-                'y' => $z * $x * $x
-            ];
-        }
-        return $this->cache['point'];
+        return $this->cache['point'] ?? $this->cache['point'] = (function () {
+                $z = $this->head / ($this->flow * $this->flow);
+                $eq = $this->equation->asArray();
+                $t = $eq[0] - $z;
+                $x = (-$eq[1] - sqrt($eq[1] * $eq[1] - 4 * $t * $eq[2])) / (2 * $t);
+                return [
+                    'x' => $x,
+                    'y' => $z * $x * $x
+                ];
+            })();
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Traits\HasTranslations;
 
 /**
  * Electric power adjustment
+ * @property string $name
  */
 final class ElPowerAdjustment extends Model
 {
@@ -20,7 +21,7 @@ final class ElPowerAdjustment extends Model
     }
 
     protected $table = "electronic_power_adjustments";
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
     protected $guarded = [];
     public $timestamps = false;
 

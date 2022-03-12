@@ -17,12 +17,12 @@ trait UserAttributes
      */
     public function getFullNameAttribute(): string
     {
-        return TxtImploded::new(
+        return (new TxtImploded(
             " ",
             $this->first_name,
             $this->middle_name,
             $this->last_name,
-        )->asString();
+        ))->asString();
     }
 
     /**
@@ -38,10 +38,10 @@ trait UserAttributes
      */
     public function getFormattedDiscountsAttribute(): array
     {
-        return ArrValues::new(
-            ArrMapped::new(
-                ArrFiltered::new(
-                    [...$this->discounts()
+        return (new ArrValues(
+            new ArrMapped(
+                new ArrFiltered(
+                    $this->discounts()
                         ->where('discountable_type', 'pump_brand')
                         ->with(['discountable' => function (MorphTo $morphTo) {
                             $morphTo->morphWith([
@@ -53,7 +53,8 @@ trait UserAttributes
                                 ]
                             ]);
                         }])
-                        ->get()],
+                        ->get()
+                        ->all(),
                     fn($discount) => $discount->discountable
                 ),
                 fn($discount) => [
@@ -63,9 +64,9 @@ trait UserAttributes
                     'user_id' => $discount->user_id,
                     'name' => $discount->discountable->name,
                     'value' => $discount->value,
-                    'children' => ArrValues::new(
-                        ArrMapped::new(
-                            ArrFiltered::new(
+                    'children' => (new ArrValues(
+                        new ArrMapped(
+                            new ArrFiltered(
                                 [...$discount->discountable->series],
                                 fn($series) => $series->discount
                             ),
@@ -80,9 +81,9 @@ trait UserAttributes
                                 'value' => $series->discount->value,
                             ]
                         )
-                    )->asArray(),
+                    ))->asArray(),
                 ]
             )
-        )->asArray();
+        ))->asArray();
     }
 }

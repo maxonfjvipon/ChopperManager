@@ -15,6 +15,8 @@ class AllPumpsInOneTable extends Migration
     {
         Schema::table('pumps', function (Blueprint $table) {
             $table->renameColumn('performance', 'sp_performance');
+        });
+        Schema::table('pumps', function (Blueprint $table) {
             $table->string('pumpable_type');
             $table->text('dp_peak_performance')->nullable();
             $table->text('dp_standby_performance')->nullable();
@@ -36,8 +38,14 @@ class AllPumpsInOneTable extends Migration
         });
         Schema::table('pumps', function (Blueprint $table) {
             $table->renameColumn('sp_performance', 'performance');
+        });
+        Schema::table('pumps', function (Blueprint $table) {
             $table->dropColumn('pumpable_type');
+        });
+        Schema::table('pumps', function (Blueprint $table) {
             $table->dropColumn('dp_standby_performance');
+        });
+        Schema::table('pumps', function (Blueprint $table) {
             $table->dropColumn('dp_peak_performance');
         });
     }

@@ -72,9 +72,9 @@ class HandleInertiaRequests extends Middleware
                 return [
                     'full_name' => Auth::check() ? $user->full_name : null,
                     'currency' => Auth::check()
-                        ? TxtLowered::new(
+                        ? (new TxtLowered(
                             Currency::allOrCached()->firstWhere('id', Auth::user()->currency_id)->symbol
-                        )->asString()
+                        ))->asString()
                         : null,
                     'permissions' => Auth::check()
                         ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)

@@ -26,17 +26,6 @@ final class TkUpdatedProject implements Take
     private Take $origin;
 
     /**
-     * Ctor wrap.
-     * @param Project $project
-     * @param Take $take
-     * @return TkUpdatedProject
-     */
-    public static function new(Project $project, Take $take): TkUpdatedProject
-    {
-        return new self($project, $take);
-    }
-
-    /**
      * & Ctor.
      * @param Project $project
      * @param Take $take
@@ -58,10 +47,9 @@ final class TkUpdatedProject implements Take
                 if (in_array($this->project->status_id, [3, 4])) {
                     if (!$this->project->trashed())
                         $this->project->delete();
-                } else
-                    if ($this->project->trashed()) {
-                        $this->project->restore();
-                    }
+                } else if ($this->project->trashed()) {
+                    $this->project->restore();
+                }
             },
             $this->origin
         ))->act($request);

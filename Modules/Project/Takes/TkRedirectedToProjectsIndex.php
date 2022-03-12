@@ -15,19 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 final class TkRedirectedToProjectsIndex implements Take
 {
     /**
-     * Ctor wrap.
-     * @return TkRedirectedToProjectsIndex
-     */
-    public static function new(): TkRedirectedToProjectsIndex
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return TkRedirectedRoute::new('projects.index')->act($request);
+        return (new TkRedirectedRoute('projects.index'))->act($request);
     }
 }

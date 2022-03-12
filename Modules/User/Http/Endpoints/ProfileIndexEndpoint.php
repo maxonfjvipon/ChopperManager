@@ -27,13 +27,13 @@ final class ProfileIndexEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkInertia::new(
+        return (new TkInertia(
             "User::Profile",
-            ArrMerged::new(
-                ArrObject::new('user', UserProfile::new(Auth::user())),
-                ArrObject::new(
+            new ArrMerged(
+                new ArrObject('user', new UserProfile(Auth::user())),
+                new ArrObject(
                     "currencies",
-                    ArrMapped::new(
+                    new ArrMapped(
                         Currency::allOrCached()->all(),
                         fn(Currency $currency) => [
                             'id' => $currency->id,
@@ -41,11 +41,12 @@ final class ProfileIndexEndpoint extends Controller
                         ]
                     )
                 ),
-                ['businesses' => Business::allOrCached()->all(),
+                [
+                    'businesses' => Business::allOrCached()->all(),
                     'countries' => Country::allOrCached()->all(),
-                    'discounts' => auth()->user()->formatted_discounts
+                    'discounts' => Auth::user()->formatted_discounts
                 ]
             )
-        )->act();
+        ))->act();
     }
 }

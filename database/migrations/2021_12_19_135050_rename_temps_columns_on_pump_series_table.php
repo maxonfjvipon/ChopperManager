@@ -15,7 +15,9 @@ class RenameTempsColumnsOnPumpSeriesTable extends Migration
     {
         Schema::table('pump_series', function (Blueprint $table) {
              $table->renameColumn('temp_min', 'temps_min');
-             $table->renameColumn('temp_max', 'temps_max');
+        });
+        Schema::table('pump_series', function (Blueprint $table) {
+            $table->renameColumn('temp_max', 'temps_max');
         });
     }
 
@@ -28,6 +30,8 @@ class RenameTempsColumnsOnPumpSeriesTable extends Migration
     {
         Schema::table('pump_series', function (Blueprint $table) {
             $table->renameColumn('temps_min', 'temp_min');
+        });
+        Schema::table('pump_series', function (Blueprint $table) {
             $table->renameColumn('temps_max', 'temp_max');
         });
     }

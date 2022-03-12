@@ -3,6 +3,7 @@
 namespace Modules\Selection\Takes;
 
 use App\Support\Take;
+use App\Takes\TkTernary;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Modules\Project\Takes\TkAuthorizedProject;
@@ -25,17 +26,6 @@ final class TkOptAuthorizedProject implements Take
     private Take $origin;
 
     /**
-     * Ctor wrap.
-     * @param string $project_id
-     * @param Take $take
-     * @return TkOptAuthorizedProject
-     */
-    public static function new(string $project_id, Take $take)
-    {
-        return new self($project_id, $take);
-    }
-
-    /**
      * Ctor.
      * @param string $project_id
      * @param Take $take
@@ -48,15 +38,14 @@ final class TkOptAuthorizedProject implements Take
 
     /**
      * @inheritDoc
+     * @throws \Exception
      */
     public function act(Request $request = null): Responsable|Response
     {
-        if ($this->project_id !== "-1") {
-            return TkAuthorizedProject::byId(
-                $this->project_id,
-                $this->origin
-            )->act($request);
-        }
-        return $this->origin->act($request);
+        return (new TkTernary(
+            $this->project_id !== "-1",
+            new TkAuthorizedProject($this->project_id, $this->origin),
+            $this->origin
+        ))->act($request);
     }
 }

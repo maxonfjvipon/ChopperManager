@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Redirect endpoint.
  * @package App\Takes
+ * @see TkRedirectedTest
  */
 final class TkRedirectedRoute implements Take, TakeRedirect
 {
@@ -24,17 +25,6 @@ final class TkRedirectedRoute implements Take, TakeRedirect
      * @var array $params;
      */
     private array $params;
-
-    /**
-     * Ctor wrap.
-     * @param string $route
-     * @param mixed ...$params
-     * @return TkRedirectedRoute
-     */
-    public static function new(string $route, ...$params): TkRedirectedRoute
-    {
-        return new self($route, ...$params);
-    }
 
     /**
      * Ctor.

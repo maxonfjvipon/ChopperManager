@@ -18,12 +18,12 @@ final class PumpSeriesDestroyEndpoint extends Controller
      */
     public function __invoke(PumpSeries $pumpSeries): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'series_delete',
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => $pumpSeries->delete(),
-                TkRedirectedRoute::new('pump_series.index')
+                new TkRedirectedRoute('pump_series.index')
             )
-        )->act();
+        ))->act();
     }
 }

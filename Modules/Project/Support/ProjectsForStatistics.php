@@ -25,31 +25,23 @@ use Modules\User\Entities\Country;
 final class ProjectsForStatistics implements Arrayable
 {
     /**
-     * @return ProjectsForStatistics
-     */
-    public static function new(): ProjectsForStatistics
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function asArray(): array
     {
-        $rates = StickyRates::new(RealRates::new());
+        $rates = new StickyRates(new RealRates());
         $statuses = ProjectStatus::allOrCached()->all();
         $deliveryStatuses = ProjectDeliveryStatus::allOrCached()->all();
         $usersData = DB::table('users')
             ->select('city', 'organization_name', 'country_id', 'business_id')->get();
-        return ArrMerged::new(
+        return (new ArrMerged(
             [
                 'project_statuses' => $statuses,
                 'delivery_statuses' => $deliveryStatuses
             ],
-            ArrObject::new(
+            new ArrObject(
                 "projects",
-                ArrMapped::new(
+                new ArrMapped(
                     Project::withTrashed()
                         ->withCount('all_selections')
                         ->with(['user' => function ($query) {
@@ -73,15 +65,15 @@ final class ProjectsForStatistics implements Arrayable
                             'country' => $project->user->country->name,
                             'city' => $project->user->city,
                             'selections_count' => $project->all_selections_count,
-                            'price' => Rounded::new(
-                                ArraySum::new(
-                                    ArrMapped::new(
+                            'price' => (new Rounded(
+                                new ArraySum(
+                                    new ArrMapped(
                                         [...$project->all_selections],
                                         fn(Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
                                 ),
                                 2
-                            )->asNumber(),
+                            ))->asNumber(),
                             'status_id' => $project->status_id,
                             'delivery_status_id' => $project->delivery_status_id,
                             'comment' => $project->comment
@@ -89,20 +81,20 @@ final class ProjectsForStatistics implements Arrayable
                     }
                 )
             ),
-            ArrObject::new(
+            new ArrObject(
                 "filter_data",
-                ArrMerged::new(
-                    ArrMapped::new([
+                new ArrMerged(
+                    new ArrMapped([
                         'project_statuses' => $statuses,
                         'delivery_statuses' => $deliveryStatuses,
-                    ], fn(array $arr) => ArrMapped::new(
+                    ], fn(array $arr) => (new ArrMapped(
                         $arr,
                         fn($item) => [
                             'text' => $item->name,
                             'value' => $item->id
-                        ])->asArray()
+                        ]))->asArray()
                     ),
-                    ArrForFiltering::new([
+                    new ArrForFiltering([
                         'countries' => Country::allOrCached()->whereIn('id', $usersData->pluck('country_id')->all())
                             ->pluck('name')->all(),
                         'businesses' => Business::allOrCached()->whereIn('id', $usersData->pluck('business_id')->all())
@@ -113,6 +105,6 @@ final class ProjectsForStatistics implements Arrayable
                     ])
                 )
             )
-        )->asArray();
+        ))->asArray();
     }
 }

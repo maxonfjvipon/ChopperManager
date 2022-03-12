@@ -28,8 +28,6 @@ final class UpdateUserRequest extends FormRequest implements ChangeUserContract
     {
         return [
             'organization_name' => 'required|string|max:255',
-//            'itn' => 'sometimes|nullable|max:12',
-//            'email' => 'required|string|email|max:255',
             'itn' => 'sometimes|nullable|max:12|unique:users,itn,' . $this->user->id,
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->user->id,
             'phone' => 'required|max:12',

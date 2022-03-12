@@ -90,9 +90,9 @@ class ImportPumpsAction
                                 if ($pump->coefficients->isEmpty()) {
                                     $count = $pump->coefficientsCount();
                                     for ($pos = 1; $pos <= $count; ++$pos) {
-                                        $eq = EqPolynomial::new(
+                                        $eq = (new EqPolynomial(
                                             $pump->performance()->asArrayAt($pos)
-                                        )->asArray();
+                                        ))->asArray();
                                         $coefficients[] = [
                                             'pump_id' => $pump->id,
                                             'position' => $pos,
@@ -121,7 +121,6 @@ class ImportPumpsAction
 
     private function redirectWithErrors($errors): RedirectResponse
     {
-        return Redirect::route("pumps.index")
-            ->withErrors($errors);
+        return Redirect::route("pumps.index")->withErrors($errors);
     }
 }

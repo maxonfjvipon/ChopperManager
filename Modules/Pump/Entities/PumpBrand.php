@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\HasDiscount;
+use Modules\Pump\Database\factories\PumpBrandFactory;
 
 /**
  * Pump brand.
@@ -22,6 +23,11 @@ final class PumpBrand extends Model
     protected $fillable = ['name'];
     protected array $softCascade = ['series'];
     public $timestamps = false;
+
+    protected static function newFactory(): PumpBrandFactory
+    {
+        return PumpBrandFactory::new();
+    }
 
     public function series(): HasMany
     {

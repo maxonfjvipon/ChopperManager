@@ -18,15 +18,6 @@ final class PumpSeriesAsResource implements Arrayable
 
     /**
      * @param PumpSeries $pumpSeries
-     * @return PumpSeriesAsResource
-     */
-    public static function new(PumpSeries $pumpSeries): PumpSeriesAsResource
-    {
-        return new self($pumpSeries);
-    }
-
-    /**
-     * @param PumpSeries $pumpSeries
      */
     public function __construct(PumpSeries $pumpSeries)
     {

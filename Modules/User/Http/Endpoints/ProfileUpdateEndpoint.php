@@ -22,13 +22,13 @@ final class ProfileUpdateEndpoint extends Controller
      */
     public function __invoke(UpdateProfileRequest $request): Responsable|Response
     {
-        return TkWithCallback::new(
+        return (new TkWithCallback(
             fn () => Auth::user()->update($request->validated()),
-            TkRedirectedWith::new(
+            new TkRedirectedWith(
                 'success',
                 __('flash.users.updated'),
-                TkRedirectedBack::new()
+                new TkRedirectedBack()
             )
-        )->act($request);
+        ))->act($request);
     }
 }

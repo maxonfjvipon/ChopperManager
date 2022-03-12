@@ -21,13 +21,13 @@ final class LoginEndpoint extends Controller
      */
     public function __invoke(): Responsable|Response
     {
-        return TkWithCallback::new(
+        return (new TkWithCallback(
             function () {
                 if (!session()->has('url.intended')) {
                     session(['url.intended' => url()->previous()]);
                 }
             },
-            TkInertia::new('Auth::Login')
-        )->act();
+            new TkInertia('Auth::Login')
+        ))->act();
     }
 }

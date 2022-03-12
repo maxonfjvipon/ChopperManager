@@ -23,15 +23,15 @@ final class UsersUpdateEndpoint extends Controller
      */
     public function __invoke(UpdateUserRequest $request, User $user): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'user_edit',
-            TkWithCallback::new(
+            new TkWithCallback(
                 function () use ($request, $user) {
                     $user->update($request->userProps());
                     $user->updateAvailablePropsFromRequest($request);
                 },
-                TkRedirectedRoute::new('users.index')
+                new TkRedirectedRoute('users.index')
             )
-        )->act($request);
+        ))->act($request);
     }
 }

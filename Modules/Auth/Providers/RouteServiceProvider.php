@@ -5,7 +5,6 @@ namespace Modules\Auth\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use Modules\AdminPanel\Entities\Tenant;
 
 class RouteServiceProvider extends ServiceProvider
 {

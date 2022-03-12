@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Testing\Concerns\Has;
 use Modules\User\Http\Requests\UserPasswordUpdateRequest;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,17 +27,17 @@ final class ChangePasswordEndpoint extends Controller
      */
     public function __invoke(UserPasswordUpdateRequest $request): Responsable|Response
     {
-        return TkTernary::new(
+        return (new TkTernary(
             $request->has('password') && $request->password != null,
-            TkWithCallback::new(
+            new TkWithCallback(
                 fn() => Auth::user()->update(['password' => Hash::make($request->password)]),
-                TkRedirectedWith::new(
+                new TkRedirectedWith(
                     'success',
                     __('flash.users.password_changed'),
-                    TkRedirectedBack::new()
+                    new TkRedirectedBack()
                 )
             ),
-            TkRedirectedBack::new()
-        )->act($request);
+            new TkRedirectedBack()
+        ))->act($request);
     }
 }

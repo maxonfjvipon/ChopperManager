@@ -34,8 +34,7 @@ final class PpQEnd implements Numerable
      */
     public function asNumber(): float|int
     {
-        $perfAsArray = $this->origin->asArrayAt($this->position);
-        return $perfAsArray[count($perfAsArray) - 1][0];
+        return ($perfAsArray = $this->origin->asArrayAt($this->position))[count($perfAsArray) - 1][0];
 
     }
 }

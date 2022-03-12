@@ -17,9 +17,9 @@ abstract class PumpSelectionResource extends JsonResource
     {
         return $string === null
             ? []
-            : ArrMapped::new(
+            : (new ArrMapped(
                 ArrExploded::byComma($string),
                 'intval'
-            )->asArray();
+            ))->asArray();
     }
 }

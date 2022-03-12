@@ -2,6 +2,11 @@
 
 namespace Modules\Pump\Http\Requests;
 
+/**
+ * @property array $types
+ * @property array $applications
+ * @property bool $is_discontinued
+ */
 class PumpSeriesUpdateRequest extends PumpSeriesStoreRequest
 {
     public function rules(): array

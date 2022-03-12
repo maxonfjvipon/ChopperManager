@@ -14,14 +14,6 @@ use Modules\Pump\Entities\PumpType;
 final class PumpSeriesProps implements Arrayable
 {
     /**
-     * @return PumpSeriesProps
-     */
-    public static function new(): PumpSeriesProps
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function asArray(): array

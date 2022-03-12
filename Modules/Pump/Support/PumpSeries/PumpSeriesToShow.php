@@ -17,36 +17,26 @@ use Modules\Pump\Entities\PumpType;
 final class PumpSeriesToShow implements Arrayable
 {
     /**
-     * @return PumpSeriesToShow
-     */
-    public static function new(): PumpSeriesToShow
-    {
-        return new self();
-    }
-
-    /**
      * @inheritDoc
      */
     public function asArray(): array
     {
         $brands = PumpBrand::all();
-        return ArrMerged::new(
-            ArrObject::new(
+        return (new ArrMerged(
+            new ArrObject(
                 "filter_data",
-                ArrForFiltering::new(
-                    [
-                        'brands' => $brands->pluck('name')->all(),
-                        'categories' => PumpCategory::allOrCached()->pluck('name')->all(),
-                        'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('name')->all(),
-                        'applications' => PumpApplication::allOrCached()->pluck('name')->all(),
-                        'types' => PumpType::allOrCached()->pluck('name')->all(),
-                    ]
-                )
+                new ArrForFiltering([
+                    'brands' => $brands->pluck('name')->all(),
+                    'categories' => PumpCategory::allOrCached()->pluck('name')->all(),
+                    'power_adjustments' => ElPowerAdjustment::allOrCached()->pluck('name')->all(),
+                    'applications' => PumpApplication::allOrCached()->pluck('name')->all(),
+                    'types' => PumpType::allOrCached()->pluck('name')->all(),
+                ])
             ),
             ['brands' => $brands],
-            ArrObject::new(
+            new ArrObject(
                 "series",
-                ArrMapped::new(
+                new ArrMapped(
                     PumpSeries::with(['brand', 'category', 'power_adjustment', 'types', 'applications'])
                         ->get()
                         ->all(),
@@ -62,6 +52,6 @@ final class PumpSeriesToShow implements Arrayable
                     ]
                 )
             )
-        )->asArray();
+        ))->asArray();
     }
 }

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\DB;
 use Modules\Pump\Entities\PumpBrand;
 
+/**
+ * Discount
+ */
 final class Discount extends Model
 {
     use HasFactory, HasCompositePrimaryKey;

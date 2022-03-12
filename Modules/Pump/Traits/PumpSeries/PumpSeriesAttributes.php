@@ -32,13 +32,13 @@ trait PumpSeriesAttributes
     protected function explodedAttribute($originalKey, $separator = ","): array
     {
         return $this->original[$originalKey] !== null
-            ? ArrMapped::new(
-                ArrExploded::new(
+            ? (new ArrMapped(
+                new ArrExploded(
                     $separator,
                     $this->original[$originalKey]
                 ),
                 'intval'
-            )->asArray()
+            ))->asArray()
             : [];
     }
 
@@ -47,13 +47,13 @@ trait PumpSeriesAttributes
      */
     private function implodedAttributes($attributes, $separator = ","): string
     {
-        return TxtImploded::new(
+        return (new TxtImploded(
             $separator,
-            ...ArrMapped::new(
+            ...(new ArrMapped(
                 [...$attributes],
                 fn ($attribute) => $attribute->name
-            )->asArray()
-        )->asString();
+            ))->asArray()
+        ))->asString();
     }
 
     /**

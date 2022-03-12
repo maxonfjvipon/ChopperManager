@@ -11,12 +11,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\ValidationException;
 use Rap2hpoutre\FastExcel\FastExcel;
-use Spatie\Multitenancy\Models\Concerns\UsesTenantModel;
 
-class ImportAction
+abstract class ImportAction
 {
-
-
     protected array $db, $rules, $attributes, $messages, $files;
     private int $MAX_EXECUTION_TIME = 180;
     protected string $redirectRouteName, $flashMessageSuccess;
@@ -80,33 +77,15 @@ class ImportAction
     /**
      * @throws Exception
      */
-    private function throwOverwrittenException()
-    {
-        throw new Exception("Method should be overwritten");
-    }
+    abstract protected function errorBagEntity($entity, $message): array;
 
     /**
      * @throws Exception
      */
-    protected function errorBagEntity($entity, $message)
-    {
-        $this->throwOverwrittenException();
-    }
+    abstract protected function importEntity($entity): array;
 
     /**
      * @throws Exception
      */
-    protected function importEntity($entity)
-    {
-        $this->throwOverwrittenException();
-    }
-
-    /**
-     * @throws Exception
-     */
-    protected function import($sheet)
-    {
-        $this->throwOverwrittenException();
-    }
-
+    abstract protected function import($sheet): void;
 }

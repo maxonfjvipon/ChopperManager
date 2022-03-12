@@ -50,4 +50,6 @@ final class PumpSeriesAndType extends Model
     {
         return $this->belongsTo(PumpType::class, 'type_id');
     }
+
+
 }

@@ -2,23 +2,23 @@
 
 namespace Tests;
 
-use Database\Seeders\FullDatabaseSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Tests\Concerns\RefreshDatabase;
 
+// TODO: TestListener will be removed in PHPUnit 10
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
-    protected function setUp(): void
+    protected function setUpTraits(): array
     {
-        parent::setUp();
-        $this->seed(FullDatabaseSeeder::class);
-        var_dump("set up");
-    }
+        $uses = parent::setUpTraits();
 
-    protected function tearDown(): void
-    {
-        var_dump("tear down");
+        if (isset($uses[RefreshDatabase::class])) {
+            $this->refreshDatabase();
+        }
+
+        return $uses;
     }
 }

@@ -20,15 +20,15 @@ final class PumpSeriesEditEndpoint extends Controller
      */
     public function __invoke(PumpSeries $pumpSeries): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             "series_edit",
-            TkInertia::new(
+            new TkInertia(
                 "Pump::PumpSeries/Edit",
-                ArrMerged::new(
-                    PumpSeriesProps::new(),
-                    PumpSeriesAsResource::new($pumpSeries)
+                new ArrMerged(
+                    new PumpSeriesProps(),
+                    new PumpSeriesAsResource($pumpSeries)
                 )
             )
-        )->act();
+        ))->act();
     }
 }

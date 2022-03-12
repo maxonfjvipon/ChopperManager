@@ -74,10 +74,9 @@ final class SelectedSinglePumps implements Arrayable
                                         * (($this->request->deviation ?? 0) / 100)
                                     ) {
                                         $pumpPrices = $pump->currentPrices($rates);
-                                        $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count;
                                         return [
                                             'key' => $num++,
-                                            'pumps_count' => $pumpsCount,
+                                            'pumps_count' => $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count,
                                             'name' => (new TxtImploded(
                                                 " ",
                                                 $pumpsCount,

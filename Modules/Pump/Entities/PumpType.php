@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * Pump type.
+ * @method static availableForUserSeries($availableSeriesIds)
  */
 final class PumpType extends Model
 {

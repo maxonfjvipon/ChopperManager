@@ -18,16 +18,6 @@ final class ForexRates implements Rates
     private string $base;
 
     /**
-     * Ctor wrap.
-     * @return ForexRates
-     * @throws Exception
-     */
-    public static function new(): ForexRates
-    {
-        return new self();
-    }
-
-    /**
      * Ctor.
      * @throws Exception
      */

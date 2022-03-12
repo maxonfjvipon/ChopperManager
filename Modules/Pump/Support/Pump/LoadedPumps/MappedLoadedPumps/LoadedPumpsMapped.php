@@ -24,17 +24,6 @@ final class LoadedPumpsMapped implements Arrayable
     private Request $request;
 
     /**
-     * Ctor wrap.
-     * @param Arrayable $pumps
-     * @param Request $request
-     * @return LoadedPumpsMapped
-     */
-    public static function new(Arrayable $pumps, Request $request)
-    {
-        return new self($pumps, $request);
-    }
-
-    /**
      * Ctor.
      * @param Arrayable $pumps
      * @param Request $request
@@ -49,8 +38,8 @@ final class LoadedPumpsMapped implements Arrayable
     {
         return (new ArrValues(
             match ($this->request->pumpable_type) {
-                Pump::$DOUBLE_PUMP => DoubleLoadedPumpMapped::new($this->pumps),
-                Pump::$SINGLE_PUMP => SingleLoadedPumpsMapped::new($this->pumps)
+                Pump::$DOUBLE_PUMP => new DoubleLoadedPumpMapped($this->pumps),
+                Pump::$SINGLE_PUMP => new SingleLoadedPumpsMapped($this->pumps)
             })
         )->asArray();
     }

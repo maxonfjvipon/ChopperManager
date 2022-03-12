@@ -31691,7 +31691,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             // backwards compat for now: also set the locale
             getSetGlobalLocale(name);
         } else {
-            // pass null for config to unupdate, useful for tests
+            // pass null for config to unupdate, useful for testing
             if (locales[name] != null) {
                 if (locales[name].parentLocale != null) {
                     locales[name] = locales[name].parentLocale;
@@ -34717,7 +34717,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             months = 0;
         }
 
-        // The following code bubbles up values, see the tests for
+        // The following code bubbles up values, see the testing for
         // examples of what that means.
         data.milliseconds = milliseconds % 1000;
 

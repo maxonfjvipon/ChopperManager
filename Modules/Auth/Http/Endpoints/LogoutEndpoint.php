@@ -22,13 +22,13 @@ final class LogoutEndpoint extends Controller
      */
     public function __invoke(Request $request): Responsable|Response
     {
-        return TkWithCallback::new(
+        return (new TkWithCallback(
             function () use ($request) {
                 Auth::logout();
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
             },
-            TkRedirectedRoute::new('login')
-        )->act($request);
+            new TkRedirectedRoute('login')
+        ))->act($request);
     }
 }

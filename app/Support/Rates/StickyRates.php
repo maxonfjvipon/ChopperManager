@@ -21,17 +21,6 @@ final class StickyRates implements Rates
     private array $cached = [];
 
     /**
-     * Ctor wrap.
-     * @param Rates $origin
-     * @return StickyRates
-     * @throws Exception
-     */
-    public static function new(Rates $origin): StickyRates
-    {
-        return new self($origin);
-    }
-
-    /**
      * Ctor.
      * @param Rates $origin
      */

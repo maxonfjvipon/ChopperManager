@@ -21,9 +21,9 @@ final class PumpBrandsEditEndpoint extends Controller
      */
     public function __invoke(PumpBrand $pumpBrand): Responsable|Response
     {
-        return TkAuthorized::new(
+        return (new TkAuthorized(
             'brand_edit',
-            TkInertia::new("Pump::PumpBrands/Edit", [
+            new TkInertia("Pump::PumpBrands/Edit", [
                     'brand' => [
                         'data' => [
                             'id' => $pumpBrand->id,
@@ -32,6 +32,6 @@ final class PumpBrandsEditEndpoint extends Controller
                     ]
                 ]
             )
-        )->act();
+        ))->act();
     }
 }

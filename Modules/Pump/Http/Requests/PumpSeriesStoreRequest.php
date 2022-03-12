@@ -4,6 +4,13 @@ namespace Modules\Pump\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $name
+ * @property int $brand_id
+ * @property int $category_id
+ * @property int $power_adjustment_id
+ * @property string $image
+ */
 class PumpSeriesStoreRequest extends FormRequest
 {
     /**
@@ -16,6 +23,9 @@ class PumpSeriesStoreRequest extends FormRequest
         return true;
     }
 
+    /**
+     * @return array
+     */
     public function seriesFields(): array
     {
         return [

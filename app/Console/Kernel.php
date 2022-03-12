@@ -2,9 +2,6 @@
 
 namespace App\Console;
 
-use App\Console\Commands\MigrateAndSeedAllTenants;
-use App\Console\Commands\MigrateForTenantsFromCoreModule;
-use App\Console\Commands\SeedTenants;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,15 +13,12 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        MigrateForTenantsFromCoreModule::class,
-        SeedTenants::class,
-        MigrateAndSeedAllTenants::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)

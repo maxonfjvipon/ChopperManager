@@ -16,24 +16,19 @@ use Modules\User\Entities\Country;
  */
 final class UsersFilterData implements Arrayable
 {
-    public static function new(): UsersFilterData
-    {
-        return new self();
-    }
-
     /**
      * @inheritDoc
      */
     public function asArray(): array
     {
-        return ArrMerged::new(
+        return (new ArrMerged(
             [
                 'selection_types' => SelectionType::all(['id', 'name']),
                 'businesses' => Business::allOrCached()
             ],
-            ArrObject::new(
+            new ArrObject(
                 "series",
-                ArrMapped::new(
+                new ArrMapped(
                     PumpSeries::with('brand')->get()->all(),
                     fn(PumpSeries $series) => [
                         'id' => $series->id,
@@ -41,9 +36,9 @@ final class UsersFilterData implements Arrayable
                     ]
                 )
             ),
-            ArrObject::new(
+            new ArrObject(
                 "countries",
-                ArrMapped::new(
+                new ArrMapped(
                     Country::allOrCached()->all(),
                     fn(Country $country) => [
                         'id' => $country->id,
@@ -51,6 +46,6 @@ final class UsersFilterData implements Arrayable
                     ]
                 )
             ),
-        )->asArray();
+        ))->asArray();
     }
 }

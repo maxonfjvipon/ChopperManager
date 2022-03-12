@@ -52,7 +52,7 @@ final class SinglePumpResource extends PumpResource
             'pumpable_type' => Pump::$SINGLE_PUMP,
         ]);
         if ($request->need_curves) {
-            $performanceLine = PumpPerfLine::new($this->resource, 1)->asArray();
+            $performanceLine = (new PumpPerfLine($this->resource, 1))->asArray();
             $xMax = $performanceLine[count($performanceLine) - 1]['x'];
             $yMax = (new PpHMax($this->resource->performance()))->asNumber();
             $data = array_merge($data, [

@@ -1,13 +1,14 @@
 <?php
 
 use App\Support\FormattedPrice;
+use JetBrains\PhpStorm\Pure;
 
 if (!function_exists('formatted_price')) {
     /**
      * @throws Exception
      */
-    function formatted_price(float|int $price, int $decimals = 2): float|int
+    #[Pure] function formatted_price(float|int $price, int $decimals = 2): float|int
     {
-        return FormattedPrice::new($price, $decimals)->asString();
+        return (new FormattedPrice($price, $decimals))->asString();
     }
 }

@@ -25,17 +25,6 @@ final class TxtExportSelectionView implements Text
     private Request $request;
 
     /**
-     * Ctor wrap.
-     * @param Selection $selection
-     * @param Request $request
-     * @return TxtExportSelectionView
-     */
-    public static function new(Selection $selection, Request $request): TxtExportSelectionView
-    {
-        return new self($selection, $request);
-    }
-
-    /**
      * Ctor.
      * @param Selection $selection
      * @param Request $request
@@ -52,9 +41,9 @@ final class TxtExportSelectionView implements Text
      */
     public function asString(): string
     {
-        return TxtView::new('selection::selection_to_export', [
+        return (new TxtView('selection::selection_to_export', [
             'selection' => $this->selection->readyForExport(),
             'request' => $this->request
-        ])->asString();
+        ]))->asString();
     }
 }
