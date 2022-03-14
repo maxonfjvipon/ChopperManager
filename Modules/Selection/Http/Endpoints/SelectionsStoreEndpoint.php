@@ -27,7 +27,7 @@ final class SelectionsStoreEndpoint extends Controller
     public function __invoke(SelectionRequest $request, Project $project): Responsable|Response
     {
         return (new TkAuthorizedProject(
-            $project,
+            $project->id,
             new TkAuthorized(
                 'selection_create',
                 new TkWithCallback(
