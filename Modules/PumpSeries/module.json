@@ -1,0 +1,13 @@
+{
+    "name": "PumpSeries",
+    "alias": "pumpseries",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PumpSeries\\Providers\\PumpSeriesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

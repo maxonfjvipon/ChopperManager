@@ -7,35 +7,25 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Project\Http\Endpoints\ProjectsCloneEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsCreateEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsDestroyEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsEditEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsExportEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsIndexEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsRestoreEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsShowEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsStatisticsEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsStoreEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsUpdateEndpoint;
+use Modules\Project\Http\Endpoints\EpCreateProject;
+use Modules\Project\Http\Endpoints\EpEditProject;
+use Modules\Project\Http\Endpoints\EpProjects;
+use Modules\Project\Http\Endpoints\EpShowProject;
+use Modules\Project\Http\Endpoints\EpStoreProject;
+use Modules\Project\Http\Endpoints\EpUpdateProject;
 
-Route::redirect('/', app()->getLocale() . '/projects')->name('index');
+Route::redirect('/', app()->getLocale() . '/projects')->name('default');
 
-Route::prefix('projects')->group(function () {
-    Route::get('/')->name('projects.index')->uses(ProjectsIndexEndpoint::class);
-    Route::get('create')->name('projects.create')->uses(ProjectsCreateEndpoint::class);
-    Route::get('statistics')->name('projects.statistics')->uses(ProjectsStatisticsEndpoint::class);
+Route::prefix('projects')->as('projects.')->group(function () {
+    Route::get('/')->name('index')->uses(EpProjects::class);
+    Route::get('create')->name('create')->uses(EpCreateProject::class);
 
-    Route::prefix('{project}')->group(function () {
-        Route::get('/')->name('projects.show')->uses(ProjectsShowEndpoint::class);
-        Route::get('edit')->name('projects.edit')->uses(ProjectsEditEndpoint::class);
-        Route::get('restore')->name('projects.restore')->uses(ProjectsRestoreEndpoint::class);
+    Route::post('/')->name('store')->uses(EpStoreProject::class);
 
-        Route::post('clone')->name('projects.clone')->uses(ProjectsCloneEndpoint::class);
-        Route::post('export')->name('projects.export')->uses(ProjectsExportEndpoint::class);
-        Route::put('/')->name('projects.update')->uses(ProjectsUpdateEndpoint::class);
-        Route::delete('/')->name('projects.destroy')->uses(ProjectsDestroyEndpoint::class);
+    Route::prefix('{project}')->middleware('auth.project')->group(function () {
+        Route::get('edit')->name('edit')->uses(EpEditProject::class);
+        Route::get('/')->name('show')->uses(EpShowProject::class);
+
+        Route::put('/')->name('update')->uses(EpUpdateProject::class);
     });
-
-    Route::post('/')->name('projects.store')->uses(ProjectsStoreEndpoint::class);
 });

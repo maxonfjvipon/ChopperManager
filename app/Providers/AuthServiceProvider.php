@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Modules\User\Entities\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        // 'App\Models\Enums\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::before(function ($user, $ability) {
-            return $user->hasRole('SuperAdmin') ? true : null;
+        Gate::before(function (User $user, $ability) {
+            return $user->isAdmin() ? true : null;
         });
     }
 }

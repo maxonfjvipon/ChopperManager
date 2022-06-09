@@ -10,24 +10,11 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 final class PpQStart implements Numerable
 {
     /**
-     * @var PumpPerformance $origin
+     * Ctor.
+     * @param PumpPerformance $origin
+     * @param int $position
      */
-    private PumpPerformance $origin;
-
-    /**
-     * @var int
-     */
-    private int $position;
-
-    /**
-     * @param PumpPerformance $performance
-     * @param int $pos
-     */
-    public function __construct(PumpPerformance $performance, int $pos)
-    {
-        $this->origin = $performance;
-        $this->position = $pos;
-    }
+    public function __construct(private PumpPerformance $origin, private int $position) {}
 
     /**
      * @inheritDoc

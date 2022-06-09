@@ -4,6 +4,7 @@ namespace Modules\Selection\Support\Regression;
 
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 
@@ -12,26 +13,20 @@ use Maxonfjvipon\OverloadedElephant\Overloadable;
  */
 final class EqPolynomial implements Equation
 {
-    use CalculateRegression, Overloadable, CanCalcPolynomialEquation;
+    use CalculateRegression, Overloadable, CanCalcPolynomialEquation, ArrayableOverloaded;
 
     /**
-     * @var array|Arrayable $data
+     * @var array $cache
      */
-    private array|Arrayable $data;
+    private array $cache = [];
 
     /**
-     * @var int $precision
-     */
-    private int $precision;
-
-    /**
+     * Ctor.
      * @param array|Arrayable $data
      * @param int $precision
      */
-    public function __construct(array|Arrayable $data, int $precision = 8)
+    public function __construct(private array|Arrayable $data, private int $precision = 8)
     {
-        $this->data = $data;
-        $this->precision = $precision;
     }
 
     /**
@@ -50,9 +45,6 @@ final class EqPolynomial implements Equation
      */
     public function asArray(): array
     {
-        return $this->leastSquaresCoefs($this->overload([$this->data], [[
-            'array',
-            Arrayable::class => fn(Arrayable $arr) => $arr->asArray()
-        ]])[0], 2, $this->precision);
+        return $this->cache[0] ??= $this->leastSquaresCoefs($this->firstArrayableOverloaded($this->data), 2, $this->precision);
     }
 }

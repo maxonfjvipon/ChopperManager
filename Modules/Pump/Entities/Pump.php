@@ -1,168 +1,119 @@
 <?php
 
+namespace App\Models;
+
 namespace Modules\Pump\Entities;
 
-use App\Support\Rates\Rates;
 use App\Traits\Cached;
-use Askedio\SoftCascade\Traits\SoftCascadeTrait;
+use App\Traits\HasPriceByRates;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
-use Modules\Pump\Database\factories\PumpFactory;
-use Modules\Pump\Traits\Pump\PumpAttributes;
-use Modules\Pump\Traits\Pump\PumpRelationships;
-use Modules\Pump\Traits\Pump\PumpScopes;
-use Modules\Selection\Support\Performance\DPPerformance;
-use Modules\Selection\Support\Performance\SPPerformance;
+use Illuminate\Support\Collection;
+use Modules\Pump\Traits\PumpAttributes;
+use Modules\PumpSeries\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Support\Performance\PumpPerformance;
+use Modules\Selection\Support\Performance\SPPerformance;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 /**
- * @property PumpsPriceList $price_list
- * @property string $pumpable_type
+ * Pump.
+ *
  * @property int $id
- * @property PumpSeries $series
- * @property PumpBrand $brand
- * @property string $name
- * @property string $sp_performance
- * @property string $dp_standby_performance
- * @property string $dp_peak_performance
- * @property mixed $coefficients
- * @property float $rated_power
- * @property string $article_num_main
- * @property string $article_num_archive
- * @property mixed $price_lists
- * @property ConnectionType $connection_type
- * @property float $rated_current
- * @property float $fluid_temp_min
- * @property float $fluid_temp_max
- * @property int $ptp_length
- * @property DN $dn_suction
- * @property DN $dn_pressure
- * @property MainsConnection $mains_connection
- * @property string $applications
- * @property string $types
- * @property bool $is_discontinued_with_series
+ * @property string $performance
+ * @property int $dn_suction
+ * @property int $dn_pressure
+ * @property float $power
  * @property float $weight
+ * @property string $article
+ * @property int $ptp_lenght
+ *
+ * @property PumpSeries $series
+ * @property Carbon $price_updated_at
+ * @property Collection<PumpCoefficients>|PumpCoefficients[] $coefficients
+ * @property CollectorSwitch $collector_switch
  */
-final class Pump extends Model
+class Pump extends Model
 {
-    public static string $SINGLE_PUMP = 'single_pump';
-    public static string $DOUBLE_PUMP = 'double_pump';
-    public static string $STATION_WATER = 'station_water';
-    public static string $STATION_FIRE = 'station_fire';
+    use HasFactory, SoftDeletes, BelongsToThrough;
+    use PumpAttributes, Cached, HasPriceByRates;
 
-    use HasFactory, SoftDeletes, SoftCascadeTrait, BelongsToThrough, Cached;
-    use PumpRelationships, PumpScopes, PumpAttributes;
-
-    protected array $softCascade = ['selections'];
     protected $guarded = [];
     public $timestamps = false;
-    protected $table = 'pumps';
-
-    protected static function newFactory(): PumpFactory
-    {
-        return PumpFactory::new();
-    }
 
     protected $casts = [
-        'is_discontinued' => 'boolean'
+        'connection_type' => ConnectionType::class,
+        'orientation' => PumpOrientation::class,
+        'collector_switch' => CollectorSwitch::class,
+        'price_updated_at' => 'datetime:d.m.Y'
     ];
 
+    /**
+     * @return string
+     */
     protected static function getCacheKey(): string
     {
-        return "pumps";
-    }
-
-    public static function clearCache()
-    {
-        foreach ([
-                     self::getCacheKey(),
-                     self::$SINGLE_PUMP,
-                     self::$DOUBLE_PUMP,
-                     self::$STATION_WATER,
-                     self::$STATION_FIRE
-                 ] as $cacheKey) {
-            Cache::forget($cacheKey);
-        }
+        return 'pumps';
     }
 
     /**
-     * TODO: mb make an attribute
      * Creates performance for pump and caches it
      * @return PumpPerformance
      */
     public function performance(): PumpPerformance
     {
-        if (!$this->getAttribute('perf')) {
-            $this->{'perf'} = match ($this->pumpable_type) {
-                self::$SINGLE_PUMP => new SPPerformance($this),
-                self::$DOUBLE_PUMP => new DPPerformance($this)
-            };
+        if (!$this->getAttribute('__performance')) {
+            $this->{'__performance'} = new SPPerformance($this);
         }
-        return $this->perf;
-    }
-
-    public function priceListForCurrentUser()
-    {
-        return $this->price_lists->firstWhere('country_id', Auth::user()->country_id);
+        return $this->__performance;
     }
 
     /**
+     * Coefficient at {@code $position}
+     *
+     * @param int $position
+     * @return PumpCoefficients
      * @throws Exception
      */
     public function coefficientsAt(int $position): PumpCoefficients
     {
-        return $this->coefficients->firstWhere('position', $position)
+        return $this->coefficients
+                ->where('position', '=', $position)
+                ->first()
             ?? PumpCoefficients::createdForPumpAtPosition($this, $position);
     }
 
-    public function coefficientsCount(): int
+    // RELATIONSHIPS
+
+    /**
+     * @return \Znck\Eloquent\Relations\BelongsToThrough
+     */
+    public function brand(): \Znck\Eloquent\Relations\BelongsToThrough
     {
-        return match ($this->pumpable_type) {
-            self::$SINGLE_PUMP => 9,
-            self::$DOUBLE_PUMP => 2,
-        };
+        return $this->belongsToThrough(PumpBrand::class, PumpSeries::class, null, '', [
+            PumpBrand::class => 'brand_id',
+            PumpSeries::class => 'series_id'
+        ]);
     }
 
     /**
-     * @param Rates $rates
-     * @return array
-     * @throws Exception
+     * @return BelongsTo
      */
-    public function currentPrices(Rates $rates): array
+    public function series(): BelongsTo
     {
-        if ($this->price_list) {
-            $price = $rates->hasTheSameBaseAs($this->price_list->currency)
-                ? $this->price_list->price
-                : round($this->price_list->price / $rates->rateFor($this->price_list->currency->code));
-            return [
-                'simple' => $price,
-                'discounted' => $price - $price * ($this->series->auth_discount->value
-                        ?? $this->series->discount->value ?? 0) / 100
-            ];
-        }
-        return [
-            'simple' => 0,
-            'discounted' => 0
-        ];
+        return $this->belongsTo(PumpSeries::class, 'series_id');
     }
 
     /**
-     * @param Rates $rates
-     * @return float|int
-     * @throws Exception
+     * @return HasMany
      */
-    public function retailPrice(Rates $rates): float|int
+    public function coefficients(): HasMany
     {
-        if ($this->price_list) {
-            return $rates->hasTheSameBaseAs($this->price_list->currency)
-                ? $this->price_list->price
-                : round($this->price_list->price / $rates->rateFor($this->price_list->currency->code));
-        }
-        return 0;
+        return $this->hasMany(PumpCoefficients::class, 'pump_id');
     }
 }

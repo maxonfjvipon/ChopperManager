@@ -12,7 +12,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtImploded;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\SelectionRange;
-use Modules\Selection\Http\Requests\MakeSelectionRequest;
+use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrPumpsForSelecting;
 use Modules\Selection\Support\Performance\PpQEnd;
 use Modules\Selection\Support\Performance\PpQStart;
@@ -27,9 +27,9 @@ final class SelectedDoublePumps implements Arrayable
     private Request $request;
 
     /**
-     * @param MakeSelectionRequest $req
+     * @param RqMakeSelection $req
      */
-    public function __construct(MakeSelectionRequest $req)
+    public function __construct(RqMakeSelection $req)
     {
         $this->request = $req;
     }

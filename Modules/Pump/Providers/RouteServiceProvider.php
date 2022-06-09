@@ -2,12 +2,13 @@
 
 namespace Modules\Pump\Providers;
 
-use Modules\Project\Providers\CoreRouteServiceProvider;
+use JetBrains\PhpStorm\Pure;
+use App\Providers\RouteServiceProvider as BaseRouteServiceProvider;
 
-class RouteServiceProvider extends CoreRouteServiceProvider
+class RouteServiceProvider extends BaseRouteServiceProvider
 {
-    protected function moduleName(): string
+    #[Pure] public function __construct($app)
     {
-        return 'Pump';
+        parent::__construct($app, "Pump");
     }
 }

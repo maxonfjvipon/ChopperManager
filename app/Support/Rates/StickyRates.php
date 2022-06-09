@@ -2,8 +2,8 @@
 
 namespace App\Support\Rates;
 
+use App\Models\Enums\Currency;
 use Exception;
-use Modules\Project\Entities\Currency;
 
 /**
  * Exchange rates with caching.
@@ -32,7 +32,7 @@ final class StickyRates implements Rates
     /**
      * @inheritDoc
      */
-    public function hasTheSameBaseAs(Currency $currency): bool
+    public function hasTheSameBaseAs(Currency|int $currency): bool
     {
         return $this->origin->hasTheSameBaseAs($currency);
     }
@@ -43,9 +43,6 @@ final class StickyRates implements Rates
      */
     public function rateFor(string $code): mixed
     {
-        if (!array_key_exists($code, $this->cached)) {
-            $this->cached[$code] = $this->origin->rateFor($code);
-        }
-        return $this->cached[$code];
+        return $this->cached[$code] ??= $this->cached[$code] = $this->origin->rateFor($code) ;
     }
 }

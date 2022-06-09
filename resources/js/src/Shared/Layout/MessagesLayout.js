@@ -7,7 +7,7 @@ export const MessagesLayout = ({children}) => {
     const {flash, errors} = usePage().props
 
     const {isEmptyObj, isUndefined} = useCheck()
-
+    //
     useEffect(() => {
         if (errors && !isUndefined(errors) && !isEmptyObj(errors))
             for (let key in errors) {

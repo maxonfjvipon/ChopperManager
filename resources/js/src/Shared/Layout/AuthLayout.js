@@ -2,17 +2,17 @@ import {Layout} from "antd";
 import React from "react";
 import {Footer} from "../Footer";
 import {MessagesLayout} from "./MessagesLayout";
-import {LocaleLayout} from "./LocaleLayout";
 import {Header} from "./Header";
+import {LocaleLayout} from "./LocaleLayout";
 
 const {Content} = Layout;
 
-export default function AuthLayout({children, header = <Header/>}) {
+export default function AuthLayout({children}) {
     return (
-        <MessagesLayout>
-            <LocaleLayout>
+        <LocaleLayout>
+            <MessagesLayout>
                 <Layout className="main-layout">
-                    {header}
+                    <Header/>
                     <Layout className="outer-content-layout">
                         <Content className="inner-content-layout">
                             {children}
@@ -20,7 +20,7 @@ export default function AuthLayout({children, header = <Header/>}) {
                         <Footer/>
                     </Layout>
                 </Layout>
-            </LocaleLayout>
-        </MessagesLayout>
+            </MessagesLayout>
+        </LocaleLayout>
     );
 }

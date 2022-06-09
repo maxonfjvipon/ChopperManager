@@ -21,9 +21,7 @@ export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleCl
         <Table
             size="small"
             columns={_columns}
-            dataSource={dataSource?.map(item => {
-                return {key: item.id, ...item}
-            })}
+            dataSource={dataSource?.map(item => ({key: item.id || item.key, ...item}))}
             rowClassName={rowClassName}
             onRow={(record, _) => {
                 return {

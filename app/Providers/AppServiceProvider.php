@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
-use Modules\Pump\Entities\PumpBrand;
-use Modules\Pump\Entities\PumpSeries;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,9 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Relation::morphMap([
-            'pump_brand' => PumpBrand::class,
-            'pump_series' => PumpSeries::class,
-        ]);
+        JsonResource::withoutWrapping();
     }
 }

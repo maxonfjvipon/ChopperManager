@@ -1,15 +1,15 @@
-import Index from './Pages/Projects/Index';
-import Edit from './Pages/Projects/Edit'
-import Create from './Pages/Projects/Create'
-import Show from './Pages/Projects/Show'
+import Index from './Pages';
+import Edit from './Pages/Edit'
+import Create from './Pages/Create'
+import Show from './Pages/Show'
 import ErrorPage from "./Pages/Error";
-import Statistics from "./Pages/Projects/Statistics";
+import Statistics from "./Pages/Statistics";
 
 export default {
-    'Projects/Index': Index,
-    'Projects/Edit': Edit,
-    'Projects/Create': Create,
-    'Projects/Show': Show,
-    'Projects/Statistics': Statistics,
-    'Error': ErrorPage,
+    Index,
+    Edit,
+    Create,
+    Show,
+    Statistics,
+    ErrorPage,
 }

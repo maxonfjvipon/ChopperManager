@@ -12,25 +12,11 @@ use Modules\Pump\Entities\Pump;
 final class PumpPerfLines implements Arrayable
 {
     /**
-     * @var int $position
-     */
-    private int $count;
-
-    /**
-     * @var Pump $pump
-     */
-    private Pump $pump;
-
-    /**
      * Ctor.
      * @param Pump $pump
      * @param int $count
      */
-    public function __construct(Pump $pump, int $count = 1)
-    {
-        $this->pump = $pump;
-        $this->count = $count;
-    }
+    public function __construct(private Pump $pump, private int $count = 1) {}
 
     /**
      * @return array

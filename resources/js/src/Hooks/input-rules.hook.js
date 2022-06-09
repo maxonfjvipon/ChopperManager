@@ -35,11 +35,6 @@ export const useInputRules = () => {
             password: [required],
             itn: [itn],
             phone: [required, phone],
-            city: citiesToShow => [required, {
-                validator: (_, cityId) => citiesToShow.some(cityToShow => cityToShow.id === cityId)
-                    ? Promise.resolve()
-                    : Promise.reject(new Error(Lang.get('validation.custom.city.correct')))
-            }],
             required,
             number,
             max,

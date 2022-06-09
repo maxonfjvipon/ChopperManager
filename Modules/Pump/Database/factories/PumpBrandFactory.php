@@ -2,7 +2,7 @@
 namespace Modules\Pump\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Pump\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpBrand;
 
 class PumpBrandFactory extends Factory
 {

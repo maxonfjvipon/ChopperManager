@@ -2,110 +2,127 @@
 
 namespace Modules\Project\Entities;
 
-use App\Support\Rates\RealRates;
-use App\Support\Rates\StickyRates;
-use App\Traits\WithOrWithoutTrashed;
-use Askedio\SoftCascade\Traits\SoftCascadeTrait;
-use Bkwld\Cloner\Cloneable;
-use DateTimeInterface;
+use App\Traits\HasArea;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Modules\Project\Database\factories\ProjectFactory;
 use Modules\Project\Traits\ProjectRelationShips;
-use Modules\Selection\Entities\Selection;
+use Modules\User\Entities\Area;
+use Modules\User\Entities\ClientRole;
 use Modules\User\Entities\User;
+use phpDocumentor\Reflection\Types\Array_;
 use Spatie\Permission\Models\Permission;
 
 /**
  * Project.
- * @property mixed $selections
- * @property int $status_id
- * @property string $name
+ *
  * @property int $id
+ * @property string $name
+ * @property int $area_id
+ * @property int $installer_id
+ * @property int $designer_id
+ * @property int $customer_id
+ * @property int $dealer_id
+ * @property int $created_by
+ *
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
+ * @property ProjectStatus $status
  * @property User $user
- * @property string $comment
- * @property string $delivery_status_id
- * @property Collection $all_selections
- * @property DateTimeInterface $created_at
- * @method static self latest()
+ * @property User $installer
+ * @property User $designer
+ * @property User $customer
+ * @property User $dealer
+ * @property Area $area
+ *
+ * @method static self find(int $id)
  */
-final class Project extends Model
+class Project extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, Cloneable;
-    use WithOrWithoutTrashed, ProjectRelationShips;
+    use HasFactory, HasArea, SoftDeletes, ProjectRelationShips;
 
-    protected $guarded = ['id'];
-    public $timestamps = false;
-
-    protected array $softCascade = ['selections'];
-    protected array $cloneable_relations = ['selections'];
-
-    protected static function newFactory(): ProjectFactory
-    {
-        return ProjectFactory::new();
-    }
+    protected $guarded = [];
 
     protected $casts = [
-        'created_at' => 'datetime:d.m.Y'
+        'created_at' => 'datetime:d.m.Y',
+        'updated_at' => 'datetime:d.m.Y',
+        'status' => ProjectStatus::class
     ];
 
     // BOOTED
     protected static function booted()
     {
         self::created(function (self $project) {
-            $project->user->givePermissionTo(
-                Permission::create([
-                    'name' => 'project_access_' . $project->id
-                ])->name
-            );
-        });
-        self::deleted(function (self $project) {
-            if ($project->status_id !== 4 && $project->status_id !== 3)
-                $project->update(['status_id' => 4]);
-        });
-        self::restored(function (self $project) {
-            if ($project->status_id === 4 || $project->status_id === 3)
-                $project->update(['status_id' => 1]);
+            if (!$project->user->isAdmin()) {
+                $project->update(match ($project->user->client_role->value) {
+                    ClientRole::Dealer => ['dealer_id' => $project->user->id],
+                    ClientRole::DesignInstitute => ['designer_id' => $project->user->id],
+                });
+            }
         });
     }
 
     /**
-     * Prepare project for export
-     * @param Request $request
-     * @return $this
-     * @throws Exception
+     * @return array
      */
-    public function readyForExport(Request $request): self
+    public function asArray(): array
     {
-        $rates = new StickyRates(new RealRates());
-        $this->load(['selections' => function ($query) use ($request) {
-            $query->whereIn('id', $request->selection_ids);
-        },
-            'selections.pump',
-            'selections.pump.series',
-            'selections.pump.series.category',
-            'selections.pump.series.power_adjustment',
-            'selections.pump.series.auth_discount',
-            'selections.pump.brand',
-            'selections.pump.connection_type',
-            'selections.pump.price_list',
-            'selections.pump.price_list.currency',
-        ])->selections->transform(fn(Selection $selection) => $selection->withPrices($rates)->withCurves());
-        return $this;
+        return Auth::user()->isAdmin()
+            ? $this->asArrayForAdmin()
+            : $this->asArrayforClient();
     }
 
     /**
-     * @param User $user
-     * @param int|null $count
-     * @return Collection<Project>|static
+     * @return array
      */
-    public static function fakeForUser(User $user, int $count = null): self|Collection
+    public function asArrayForAdmin(): array
     {
-        return self::factory()->count($count)->create(['user_id' => $user->id]);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'area' => $this->area->name,
+            'status' => $this->status->description,
+            'installer' => $this->installer?->full_name,
+            'designer' => $this->designer?->full_name,
+            'customer' => $this->customer?->full_name,
+            'dealer' => $this->dealer?->full_name,
+            'created_at' => formatted_date($this->created_at),
+            'updated_at' => formatted_date($this->updated_at),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function asArrayforClient(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'area' => $this->area->name,
+            'status' => $this->status->description,
+            'created_at' => formatted_date($this->created_at),
+            'updated_at' => formatted_date($this->updated_at),
+        ];
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeWithAllPartners($query): mixed
+    {
+        return $query->with([
+            'installer' => ($callback = function ($query) {
+                $query->select('id', 'first_name', 'middle_name', 'last_name');
+            }),
+            'designer' => $callback,
+            'customer' => $callback,
+            'dealer' => $callback,
+        ]);
     }
 }

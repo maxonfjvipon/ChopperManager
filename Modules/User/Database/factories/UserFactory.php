@@ -3,6 +3,7 @@
 namespace Modules\User\Database\factories;
 
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Modules\Project\Entities\Currency;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;

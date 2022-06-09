@@ -10,33 +10,24 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 final class SystemPerformance implements Arrayable
 {
     /**
-     * @var float $flow
+     * Ctor.
+     * @param float $flow
+     * @param float $head
+     * @param float $to
+     * @param float $dist
      */
-    private float $flow;
-
-    /**
-     * @var float $head
-     */
-    private float $head;
-
-    /**
-     * @var float $to
-     */
-    private float $to;
-
-    /**
-     * @var float $dist
-     */
-    private float $dist;
-
-    public function __construct($flow, $head, $to, $dist = 1)
+    public function __construct(
+        private float $flow,
+        private float $head,
+        private float $to,
+        private float $dist = 1)
     {
-        $this->flow = $flow;
-        $this->head = $head;
-        $this->to = $to;
-        $this->dist = $dist;
     }
 
+    /**
+     * @return array
+     * @todo need test
+     */
     public function asArray(): array
     {
         $systemPerformance = [];

@@ -6,16 +6,16 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Pump\Entities\Pump;
-use Modules\Pump\Http\Endpoints\Pump\LoadPumpsEndpoint;
+use Modules\Pump\Http\Endpoints\EpLoadPumps;
 use Modules\Pump\Services\Pumps\PumpType\DoublePumpService;
 use Modules\Pump\Services\Pumps\PumpType\PumpableTypePumpService;
 use Modules\Pump\Services\Pumps\PumpType\SinglePumpService;
-use Modules\Pump\Support\Pump\LazyLoadedPumps\DPLazyLoaded;
-use Modules\Pump\Support\Pump\LazyLoadedPumps\LazyLoadedPumps;
-use Modules\Pump\Support\Pump\LazyLoadedPumps\SPLazyLoaded;
-use Modules\Pump\Support\Pump\LoadedPumps\DPLoaded;
-use Modules\Pump\Support\Pump\LoadedPumps\LoadedPumps;
-use Modules\Pump\Support\Pump\LoadedPumps\SPLoaded;
+use Modules\Pump\Support\LazyLoadedPumps\DPLazyLoaded;
+use Modules\Pump\Support\LazyLoadedPumps\LazyLoadedPumps;
+use Modules\Pump\Support\LazyLoadedPumps\SPLazyLoaded;
+use Modules\Pump\Support\LoadedPumps\DPLoaded;
+use Modules\Pump\Support\LoadedPumps\LoadedPumps;
+use Modules\Pump\Support\LoadedPumps\SPLoaded;
 
 class PumpServiceProvider extends ServiceProvider
 {
@@ -125,7 +125,7 @@ class PumpServiceProvider extends ServiceProvider
 
     public function bindPumpServices()
     {
-        $this->app->when(LoadPumpsEndpoint::class)
+        $this->app->when(EpLoadPumps::class)
             ->needs(LoadedPumps::class)
             ->give(function() {
                 return App::make(match (request()->pumpable_type) {
@@ -134,7 +134,7 @@ class PumpServiceProvider extends ServiceProvider
                 });
             });
 
-        $this->app->when(LoadPumpsEndpoint::class)
+        $this->app->when(EpLoadPumps::class)
             ->needs(LazyLoadedPumps::class)
             ->give(function() {
                 return App::make(match (request()->pumpable_type) {
@@ -142,12 +142,5 @@ class PumpServiceProvider extends ServiceProvider
                     default => SPLazyLoaded::class
                 });
             });
-
-        $this->app->bind(PumpableTypePumpService::class, function () {
-            return match (request()->pumpable_type) {
-                Pump::$DOUBLE_PUMP => App::make(DoublePumpService::class),
-                default => App::make(SinglePumpService::class),
-            };
-        });
     }
 }

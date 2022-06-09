@@ -2,12 +2,13 @@
 
 namespace Modules\User\Providers;
 
-use Modules\Project\Providers\CoreRouteServiceProvider;
+use App\Providers\RouteServiceProvider as BaseRouteServiceProvider;
+use JetBrains\PhpStorm\Pure;
 
-class RouteServiceProvider extends CoreRouteServiceProvider
+class RouteServiceProvider extends BaseRouteServiceProvider
 {
-    protected function moduleName(): string
+    #[Pure] public function __construct($app)
     {
-        return 'User';
+        parent::__construct($app, "User");
     }
 }

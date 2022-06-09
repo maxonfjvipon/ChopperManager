@@ -14,8 +14,6 @@ export const ExcelFileUploader = ({title, route}) => {
         if (data.files) {
             post(route, data)
             setData({files: null})
-            // if (setReload)
-            //     setReload(true)
         }
     }, [data])
 
@@ -24,7 +22,6 @@ export const ExcelFileUploader = ({title, route}) => {
             <input hidden type="file" multiple onClick={(e) => {
                 e.target.value = null
             }} ref={ref} onChange={e => {
-                // console.log(e)
                 setData('files', e.target.files)
             }} accept=".xlsx, .xls, .cvs"/>
             <PrimaryButton

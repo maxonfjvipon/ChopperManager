@@ -2,13 +2,15 @@
 
 namespace App\Http\Middleware;
 
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Inertia\Middleware;
-use Maxonfjvipon\Elegant_Elephant\Text\TxtLowered;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use Modules\Project\Entities\Currency;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
+use Spatie\Permission\Models\Permission;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -45,52 +47,31 @@ class HandleInertiaRequests extends Middleware
      * @see https://inertiajs.com/shared-data
      * @param Request $request
      * @return array
+     * @throws Exception
      */
     public function share(Request $request): array
     {
-        $flash = [
+        $filter = $this->permFilter($request);
+        return array_merge(parent::share($request), [
+            'title' => 'BPE Pump Master',
+            'auth' => array_merge([
+                'full_name' => Auth::user()->full_name ?? null,
+            ], Auth::user()?->isAdmin()
+                ? ['is_admin' => true]
+                : []),
             'flash' => function () use ($request) {
                 return [
-                    'reload' => $request->session()->get('reload'),
                     'success' => $request->session()->get('success'),
                     'warning' => $request->session()->get('warning'),
                     'info' => $request->session()->get('info'),
                     'error' => $request->session()->get('error'),
                     'errorBag' => $request->session()->get('errorBag'),
                 ];
-            },
-        ];
-        $supported_locales = config('app.supported_locales');
-        $current_localized = [];
-        foreach ($supported_locales as $locale) {
-            $current_localized[$locale] = LaravelLocalization::getLocalizedURL($locale, null, [], true);
-        }
-        $user = Auth()->user();
-        return array_merge(parent::share($request), [
-            'title' => 'Pump Manager',
-            'auth' => function () use ($user) {
-                return [
-                    'full_name' => Auth::check() ? $user->full_name : null,
-                    'currency' => Auth::check()
-                        ? (new TxtLowered(
-                            Currency::allOrCached()->firstWhere('id', Auth::user()->currency_id)->symbol
-                        ))->asString()
-                        : null,
-                    'permissions' => Auth::check()
-                        ? $user->getPermissionsViaRoles()->map(fn($permission) => $permission->name)
-                        : null,
-                ];
-            },
-            'locales' => function () use ($current_localized, $supported_locales, $request) {
-                return [
-                    'current' => app()->getLocale(),
-                    'default' => config('app.fallback_locale'),
-                    'supported' => $supported_locales,
-                    'current_localized' => $current_localized,
-                ];
-            },
-        ], $flash, $this->doesRequestContain($request, 'login') ? [
-            'has_registration' => true, // todo: only for specific route
-        ] : []);
+            }]);
+    }
+
+    private function permFilter(Request $request): string
+    {
+        return explode('/', Route::getCurrentRoute()->uri)[0];
     }
 }

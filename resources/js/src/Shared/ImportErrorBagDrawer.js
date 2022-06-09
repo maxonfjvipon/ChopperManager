@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {Col, Drawer, List, Typography} from "antd";
+import {Drawer, List} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
-import Row from "antd/es/descriptions/Row";
 import {RoundedCard} from "./Cards/RoundedCard";
 
 export const ImportErrorBagDrawer = ({title}) => {
@@ -12,7 +11,6 @@ export const ImportErrorBagDrawer = ({title}) => {
         if (errorBag) {
             setVisible(true)
         }
-        // console.log("error bag", errorBag)
     }, [errorBag])
 
     return (
@@ -26,7 +24,6 @@ export const ImportErrorBagDrawer = ({title}) => {
             }}
             title={title}
         >
-            {/*<Typography.Title level={3}>{title}</Typography.Title>*/}
             {errorBag && <List
                 itemLayout="horizontal"
                 dataSource={errorBag}

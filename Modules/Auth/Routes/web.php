@@ -12,30 +12,28 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Auth\Http\Endpoints\LoginAttemptEndpoint;
-use Modules\Auth\Http\Endpoints\LoginEndpoint;
-use Modules\Auth\Http\Endpoints\LogoutEndpoint;
-use Modules\Auth\Http\Endpoints\RegisterAttemptEndpoint;
-use Modules\Auth\Http\Endpoints\RegisterEndpoint;
-use Modules\Auth\Http\Controllers\EmailVerificationController;
+use Modules\Auth\Http\Endpoints\EpAwait;
+use Modules\Auth\Http\Endpoints\EpLoginAttempt;
+use Modules\Auth\Http\Endpoints\EpLogin;
+use Modules\Auth\Http\Endpoints\EpLogout;
+use Modules\Auth\Http\Endpoints\EpRegisterAttempt;
+use Modules\Auth\Http\Endpoints\EpRegister;
 
 Route::middleware('guest')->group(function () {
     // LOGIN
-    Route::get('login')->name('login')->uses(LoginEndpoint::class);
-    Route::post('login')->name('login.attempt')->uses(LoginAttemptEndpoint::class);
+    Route::get('login')->name('login')->uses(EpLogin::class);
+    Route::post('login')->name('login.attempt')->uses(EpLoginAttempt::class);
 
     // REGISTER
-    Route::get('register')->name('register')->uses(RegisterEndpoint::class);
-    Route::post('register')->name('register.attempt')->uses(RegisterAttemptEndpoint::class);
+    Route::get('register')->name('register')->uses(EpRegister::class);
+    Route::post('register')->name('register.attempt')->uses(EpRegisterAttempt::class);
 });
 
 // AUTHORIZED
 Route::middleware('auth')->group(function () {
-    // EMAIL VERIFICATION
-    Route::get('/email/verify')->name('verification.notice')->uses([EmailVerificationController::class, 'notice']);
-    Route::get('/email/verify/{id}/{hash}')->name('verification.verify')->middleware('signed')->uses([EmailVerificationController::class, 'verify']);
-    Route::post('/email/verification-notification')->name('verification.send')->middleware('throttle:6,1')->uses([EmailVerificationController::class, 'resendVerification']);
-
     // LOGOUT
-    Route::post('logout')->name('logout')->uses(LogoutEndpoint::class);
+    Route::post('logout')->name('logout')->uses(EpLogout::class);
+
+    // AWAIT
+    Route::get('await')->name('await')->uses(EpAwait::class);
 });

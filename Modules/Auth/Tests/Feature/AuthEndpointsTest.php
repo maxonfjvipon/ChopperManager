@@ -19,7 +19,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see LoginEndpoint
+     * @see EpLogin
      * @author Max Trunnikov
      */
     public function test_login_page_endpoint()
@@ -33,7 +33,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see RegisterEndpoint
+     * @see EpRegister
      * @author Max Trunnikov
      */
     public function test_register_page_endpoint()
@@ -58,7 +58,7 @@ class AuthEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see LoginAttemptEndpoint
+     * @see EpLoginAttempt
      */
     public function test_login_attempt_endpoint()
     {
@@ -77,7 +77,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see LoginAttemptEndpoint
+     * @see EpLoginAttempt
      * @author Max Trunnikov
      */
     public function test_if_user_cannot_login_with_invalid_password()
@@ -96,7 +96,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see LoginAttemptEndpoint
+     * @see EpLoginAttempt
      * @author Max Trunnikov
      */
     public function test_if_user_cannot_login_with_invalid_email()
@@ -116,7 +116,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see LoginEndpoint
+     * @see EpLogin
      * @author Max Trunnikov
      */
     public function test_if_authenticated_user_cannot_see_login_page()
@@ -129,7 +129,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see RegisterEndpoint
+     * @see EpRegister
      * @author Max Trunnikov
      */
     public function test_if_authenticated_user_cannot_see_register_page()
@@ -144,7 +144,7 @@ class AuthEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see RegisterAttemptEndpoint
+     * @see EpRegisterAttempt
      */
     public function test_register_attempt_endpoint()
     {
@@ -174,7 +174,7 @@ class AuthEndpointsTest extends TestCase
     /**
      * @return void
      * @throws Exception
-     * @see RegisterAttemptEndpoint
+     * @see EpRegisterAttempt
      * @author Max Trunnikov
      */
     public function test_if_user_with_the_email_exists()
@@ -207,7 +207,7 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see LogoutEndpoint
+     * @see EpLogout
      * @author Max Trunnikov
      */
     public function test_logout_endpoint()

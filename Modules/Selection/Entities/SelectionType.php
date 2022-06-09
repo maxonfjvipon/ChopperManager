@@ -2,27 +2,20 @@
 
 namespace Modules\Selection\Entities;
 
-use App\Traits\Cached;
-use App\Traits\HasTranslations;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\EnumHelpers;
+use BenSampo\Enum\Attributes\Description;
+use BenSampo\Enum\Enum;
 
 /**
- * @property mixed $pumpable_type
- * @property mixed $default_img
- * @property mixed $name
+ * Selection type.
  */
-final class SelectionType extends Model
+final class SelectionType extends Enum
 {
-    use HasFactory, HasTranslations, SoftDeletes, Cached;
+    use EnumHelpers;
 
-    protected $guarded = [];
-    public array $translatable = ['name'];
-    public $timestamps = false;
+    #[Description("Автоматический")]
+    const Auto = 1;
 
-    protected static function getCacheKey(): string
-    {
-        return "selection_types";
-    }
+    #[Description("Ручной")]
+    const Handle = 2;
 }

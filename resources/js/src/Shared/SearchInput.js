@@ -3,7 +3,7 @@ import {Input, Space} from "antd";
 import Lang from "../../translation/lang";
 import {PrimaryButton} from "./Buttons/PrimaryButton";
 
-export const SearchInput = ({id, loading = false, searchClickHandler, placeholder}) => {
+export const SearchInput = ({id, loading = false, searchClickHandler, placeholder, ...rest}) => {
     return (
         <Space style={{marginBottom: "8px"}}>
             <Input
@@ -13,7 +13,7 @@ export const SearchInput = ({id, loading = false, searchClickHandler, placeholde
                 allowClear
                 style={{width: 300}}
             />
-            <PrimaryButton loading={loading} onClick={searchClickHandler}>
+            <PrimaryButton loading={loading} onClick={searchClickHandler} {...rest}>
                 {Lang.get('pages.pumps.search.button')}
             </PrimaryButton>
         </Space>

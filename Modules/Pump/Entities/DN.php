@@ -2,24 +2,16 @@
 
 namespace Modules\Pump\Entities;
 
-use App\Traits\Cached;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
 /**
- * DN
- * @property int $value
+ * DN.
  */
-final class DN extends Model
+final class DN
 {
-    use HasFactory, Cached;
-
-    protected static function getCacheKey(): string
+    /**
+     * @return int[]
+     */
+    public static function values(): array
     {
-        return "dns";
+        return [15, 20, 25, 32, 40, 50, 65, 80, 100, 125, 150, 200, 250, 300];
     }
-
-    protected $fillable = ['value'];
-    protected $table = 'dns';
-    public $timestamps = false;
 }

@@ -3,7 +3,22 @@ import {Inertia} from "@inertiajs/inertia";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import Lang from "../../../../../../resources/js/translation/lang";
 import {BackLink} from "../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
-import {Checkbox, Col, Divider, Form, InputNumber, message, notification, Radio, Row, Slider, Space, Tree} from "antd";
+import {
+    Carousel,
+    Checkbox,
+    Col,
+    Divider,
+    Form,
+    InputNumber,
+    message,
+    notification,
+    Radio,
+    Row,
+    Slider,
+    Space,
+    Tabs,
+    Tree
+} from "antd";
 import {RequiredFormItem} from "../../../../../../resources/js/src/Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
 import {SecondaryButton} from "../../../../../../resources/js/src/Shared/Buttons/SecondaryButton";
@@ -24,6 +39,7 @@ import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {usePumpableType} from "../../../../../../resources/js/src/Hooks/pumpable_type.hook";
 import {PumpPropsDrawer} from "../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer";
 import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
+import {LeftOutlined, RightOutlined} from "@ant-design/icons";
 
 export const Selection = ({pageTitle, widths}) => {
     // HOOKS
@@ -38,7 +54,7 @@ export const Selection = ({pageTitle, widths}) => {
     const {fullWidth, marginBottomTen, margin, reducedAntFormItemClassName, color} = useStyles()
     const pumpableType = usePumpableType()
 
-    // console.log(selection_props)
+    console.log(selection_props)
 
     // STATE
     const [showBrandsList, setShowBrandsList] = useState(false)
@@ -207,7 +223,9 @@ export const Selection = ({pageTitle, widths}) => {
             return
         }
         setStationToShow(null)
-        document.getElementById('for-graphic').innerHTML = ""
+        document.getElementById('main-curves').innerHTML = ""
+        if (document.getElementById('add-curves'))
+            document.getElementById('add-curves').innerHTML = ""
         if (!updated) {
             setUpdated(true)
         }
@@ -362,7 +380,7 @@ export const Selection = ({pageTitle, widths}) => {
     // CHECK CHANGE SELECTION
     useEffect(() => {
         if (stationToShow) {
-            if (chosenSelectedPumps[stationToShow.key]?.svg === undefined) {
+            if (chosenSelectedPumps[stationToShow.key]?.main_curves === undefined) {
                 try {
                     axios.request({
                         url: tRoute('selections.curves'),
@@ -377,17 +395,20 @@ export const Selection = ({pageTitle, widths}) => {
                             pumpable_type: pumpableType(),
                         },
                     }).then(res => {
-                        document.getElementById('for-graphic').innerHTML = res.data
+                        document.getElementById('main-curves').innerHTML = res.data.main_curves
+                        document.getElementById('add-curves').innerHTML = res.data.additional_curves || ""
                         chosenSelectedPumps[stationToShow.key] = {
                             ...chosenSelectedPumps[stationToShow.key],
-                            svg: res.data,
+                            main_curves: res.data.main_curves,
+                            additional_curves: res.data.additional_curves || '',
                         }
                         setChosenSelectedPumps(chosenSelectedPumps)
                     })
                 } catch (e) {
                 }
             } else {
-                document.getElementById('for-graphic').innerHTML = chosenSelectedPumps[stationToShow.key].svg
+                document.getElementById('main-curves').innerHTML = chosenSelectedPumps[stationToShow.key].main_curves
+                document.getElementById('add-curves').innerHTML = chosenSelectedPumps[stationToShow.key].additional_curves
             }
         } else {
             setChosenSelectedPumps({})
@@ -813,7 +834,20 @@ export const Selection = ({pageTitle, widths}) => {
                                         </a>
                                     </Space>}
                                 >
-                                    <div id="for-graphic"/>
+                                    {pumpableType() === "double_pump"
+                                        ? <div id="main-curves"/>
+                                        : <Tabs defaultActiveKey="main-curves">
+                                            <Tabs.TabPane forceRender={true} key="main-curves"
+                                                          tab={Lang.get('pages.selections.single_pump.graphic.main_tab')}>
+                                                <div id="main-curves"/>
+                                            </Tabs.TabPane>
+                                            {chosenSelectedPumps[stationToShow?.key]?.additional_curves !== '' &&
+                                                <Tabs.TabPane forceRender={true} key="add-curves"
+                                                              tab={Lang.get('pages.selections.single_pump.graphic.add_tab')}>
+                                                    <div id="add-curves"/>
+                                                </Tabs.TabPane>}
+                                        </Tabs>
+                                    }
                                 </RoundedCard>
                             </Col>
                         </Row>

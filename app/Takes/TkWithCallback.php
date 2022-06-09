@@ -2,7 +2,7 @@
 
 namespace App\Takes;
 
-use App\Support\Take;
+use App\Takes\Take;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -2,8 +2,12 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Administrate;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
+use Modules\Project\Http\Middleware\AuthorizeProject;
+use Modules\Selection\Http\Middleware\DetermineSelection;
+use Modules\User\Http\Middleware\EnsureUserIsVerified;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -21,7 +25,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Modules\User\Http\Middleware\CheckUserIsActive;
 
-class Kernel extends HttpKernel
+final class Kernel extends HttpKernel
 {
     /**
      * The application's global HTTP middleware stack.
@@ -74,23 +78,22 @@ class Kernel extends HttpKernel
         'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
 
-        'auth.active' => CheckUserIsActive::class,
+        'auth.project' => AuthorizeProject::class,
+
+        'admin' => Administrate::class,
+
+        'verified' => EnsureUserIsVerified::class,
 
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,
 
         'guest' => RedirectIfAuthenticated::class,
 
+        'determine_selection' => DetermineSelection::class,
+
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
-        'verified' => EnsureEmailIsVerified::class,
-
-        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-        'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-        'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-        'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
-
+//        'verified' => EnsureEmailIsVerified::class,
     ];
 }

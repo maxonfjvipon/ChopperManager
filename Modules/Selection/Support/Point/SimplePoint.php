@@ -8,24 +8,12 @@ namespace Modules\Selection\Support\Point;
 final class SimplePoint implements Point
 {
     /**
-     * @var float $x
-     */
-    private float $x;
-
-    /**
-     * @var float $y
-     */
-    private float $y;
-
-    /**
      * Ctor.
      * @param float $x
      * @param float $y
      */
-    public function __construct(float $x, float $y)
+    public function __construct(private float $x, private float $y)
     {
-        $this->x = $x;
-        $this->y = $y;
     }
 
     /**
@@ -39,11 +27,17 @@ final class SimplePoint implements Point
         ];
     }
 
+    /**
+     * @return float
+     */
     public function x(): float
     {
         return $this->x;
     }
 
+    /**
+     * @return float
+     */
     public function y(): float
     {
         return $this->y;

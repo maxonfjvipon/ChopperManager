@@ -2,8 +2,8 @@
 
 namespace App\Support\Rates;
 
+use App\Models\Enums\Currency;
 use Exception;
-use Modules\Project\Entities\Currency;
 
 /**
  * Exchange rates.
@@ -14,7 +14,7 @@ final class RealRates implements Rates
     /**
      * @var bool $fromForex
      */
-    private static bool $fromForex = true;
+    private static bool $fromForex = false;
 
     /**
      * @var Rates $rates
@@ -33,10 +33,10 @@ final class RealRates implements Rates
     }
 
     /**
-     * @param Currency $currency
+     * @param Currency|int $currency
      * @return bool
      */
-    public function hasTheSameBaseAs(Currency $currency): bool
+    public function hasTheSameBaseAs(Currency|int $currency): bool
     {
         return $this->rates->hasTheSameBaseAs($currency);
     }

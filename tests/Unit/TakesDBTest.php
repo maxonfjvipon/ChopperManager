@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
-use App\Takes\TkAuthorized;
-use App\Takes\TkDownloadedPDF;
+use App\Takes\TkAuthorize;
+use App\Takes\TkDownloadPDF;
 use App\Takes\TkFake;
 use App\Takes\TkInertia;
 use App\Takes\TkJson;
-use App\Takes\TkRedirectedBack;
-use App\Takes\TkRedirectedRoute;
-use App\Takes\TkRedirectedWith;
+use App\Takes\TkRedirectBack;
+use App\Takes\TkRedirectToRoute;
+use App\Takes\TkRedirectWith;
 use App\Takes\TkTernary;
 use App\Takes\TkWithCallback;
 use Exception;
@@ -46,7 +46,7 @@ class TakesDBTest extends TestCase
     {
         $this->actingAs(User::fakeWithRole())
             ->expectException(AuthorizationException::class);
-        (new TkAuthorized(
+        (new TkAuthorize(
             $this->permissionName,
             new TkFake()
         ))->act();
@@ -62,7 +62,7 @@ class TakesDBTest extends TestCase
         $this->actingAs($user);
         $this->assertEquals(
             200,
-            (new TkAuthorized(
+            (new TkAuthorize(
                 $this->permissionName,
                 new TkFake()
             ))->act()->getStatusCode()
@@ -76,7 +76,7 @@ class TakesDBTest extends TestCase
     {
         $this->assertInstanceOf(
             Response::class,
-            (new TkDownloadedPDF($this->html))->act()
+            (new TkDownloadPDF($this->html))->act()
         );
     }
 
@@ -86,7 +86,7 @@ class TakesDBTest extends TestCase
     public function test_take_downloaded_pdf_downloads_file()
     {
         $this->createTestResponse(
-            (new TkDownloadedPDF($this->html))->act()
+            (new TkDownloadPDF($this->html))->act()
         )
             ->assertDownload()
             ->assertStatus(200)
@@ -204,7 +204,7 @@ class TakesDBTest extends TestCase
         $this->setFakeRoute();
         $this->assertInstanceOf(
             RedirectResponse::class,
-            (new TkRedirectedRoute(
+            (new TkRedirectToRoute(
                 'fake'
             ))->act()
         );
@@ -218,7 +218,7 @@ class TakesDBTest extends TestCase
         $this->setFakeRoute();
         $this->assertInstanceOf(
             RedirectResponse::class,
-            (new TkRedirectedRoute(
+            (new TkRedirectToRoute(
                 'fake'
             ))->redirect()
         );
@@ -231,7 +231,7 @@ class TakesDBTest extends TestCase
     {
         $this->setFakeRoute("fake_with_params", 'fake/{fake}');
         $this->createTestResponse(
-            (new TkRedirectedRoute(
+            (new TkRedirectToRoute(
                 'fake_with_params',
                 2
             ))->act()
@@ -249,7 +249,7 @@ class TakesDBTest extends TestCase
         $this->from(\route('fake'))
             ->assertInstanceOf(
                 RedirectResponse::class,
-                (new TkRedirectedBack())->act()
+                (new TkRedirectBack())->act()
             );
     }
 
@@ -261,7 +261,7 @@ class TakesDBTest extends TestCase
         $this->setFakeRoute();
         $this->from(\route('fake'))
             ->createTestResponse(
-                (new TkRedirectedBack())->act()
+                (new TkRedirectBack())->act()
             )->assertStatus(302)
             ->assertRedirect(\route('fake'));
     }
@@ -274,10 +274,10 @@ class TakesDBTest extends TestCase
         $this->setFakeRoute();
         $this->assertInstanceOf(
             RedirectResponse::class,
-            (new TkRedirectedWith(
+            (new TkRedirectWith(
                 'key',
                 'value',
-                new TkRedirectedBack()
+                new TkRedirectBack()
             ))->act()
         );
     }
@@ -290,10 +290,10 @@ class TakesDBTest extends TestCase
         $this->setFakeRoute();
         $this->from(\route('fake'))
             ->createTestResponse(
-                (new TkRedirectedWith(
+                (new TkRedirectWith(
                     'key',
                     'value',
-                    new TkRedirectedBack()
+                    new TkRedirectBack()
                 ))->act()
             )->assertRedirect(\route('fake'))
             ->assertStatus(302)
@@ -310,7 +310,7 @@ class TakesDBTest extends TestCase
             (new TkTernary(
                 true,
                 new TkFake(),
-                new TkRedirectedBack()
+                new TkRedirectBack()
             ))->act(),
         );
     }
@@ -325,7 +325,7 @@ class TakesDBTest extends TestCase
             (new TkTernary(
                 false,
                 new TkFake(),
-                new TkRedirectedBack()
+                new TkRedirectBack()
             ))->act()
         );
     }

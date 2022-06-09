@@ -1,48 +1,35 @@
 import {Button, Dropdown, Menu, Space, Layout} from "antd";
 import {AppTitle} from "./Components/AppTitle";
 import {Link, usePage} from "@inertiajs/inertia-react";
-import {LocaleDropdown} from "./Components/LocaleDropdown";
 import {
     ClusterOutlined,
     DownOutlined,
     LogoutOutlined,
-    ProfileOutlined,
-    UnorderedListOutlined,
-    SnippetsOutlined,
-    UserOutlined, SplitCellsOutlined, LineChartOutlined
+    ProfileOutlined, SnippetsOutlined,
+    UnorderedListOutlined, OrderedListOutlined,
 } from "@ant-design/icons";
-import Lang from "../../../translation/lang";
 import React from "react";
-import {useTransRoutes} from "../../Hooks/routes.hook";
 import {useStyles} from "../../Hooks/styles.hook";
 import {usePermissions} from "../../Hooks/permissions.hook";
 
 export const Header = () => {
     const {auth} = usePage().props
-    const {has, filterPermissionsArray} = usePermissions()
+    const {filteredBoolArray} = usePermissions()
     const {padding} = useStyles()
-    const tRoute = useTransRoutes()
 
-    const menuItems = filterPermissionsArray([
-        has('project_access') && {
+    const menuItems = filteredBoolArray([
+        {
             itemProps: {key: 'projects', icon: <UnorderedListOutlined/>},
             route: 'projects.index',
-            label: Lang.get('pages.projects.title')
-        },
-        has('series_access', 'brand_access') && {
-            itemProps: {key: 'series', icon: <SnippetsOutlined/>},
+            label: "Проекты"
+        }, auth.is_admin && {
+            itemProps: {key: 'pump_series', icon: <SnippetsOutlined/>},
             route: 'pump_series.index',
-            label: Lang.get('pages.pump_series.index.title'),
-        },
-        has('pump_access') && {
+            label: "Бренды и серии"
+        }, auth.is_admin && {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},
             route: 'pumps.index',
-            label: Lang.get('pages.pumps.title')
-        },
-        has('user_access') && {
-            itemProps: {key: 'users', icon: <UserOutlined/>},
-            route: 'users.index',
-            label: Lang.get('pages.users.title')
+            label: "Насосы"
         },
     ])
 
@@ -59,40 +46,54 @@ export const Header = () => {
                 >
                     {menuItems.map(item => (
                             <Menu.Item {...item.itemProps}>
-                                <Link href={tRoute(item.route)}>
+                                <Link href={route(item.route)}>
                                     {item.label}
                                 </Link>
                             </Menu.Item>
                         )
                     )}
-                    {has('project_statistics', 'user_statistics') && <Menu.SubMenu
-                        icon={<LineChartOutlined/>}
-                        key='statistics'
-                        title={Lang.get('pages.statistics.title')}
+                    {auth.is_admin && <Menu.SubMenu
+                        icon={<OrderedListOutlined />}
+                        key='components'
+                        title="Компоненты"
                         popupOffset={[0, -5]}
                     >
-                        <Menu.Item key='by_projects'>
-                            <Link href={tRoute('projects.statistics')}>
-                                {Lang.get('pages.statistics.projects.title')}
+                        <Menu.Item key='armature'>
+                            <Link href={route('armature.index')}>
+                                Арматура
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key='by_users'>
-                            <Link href={tRoute('users.statistics')}>
-                                {Lang.get('pages.statistics.users.title')}
+                        <Menu.Item key='collectors'>
+                            <Link href={route('collectors.index')}>
+                                Коллекторы
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key='assembly-jobs'>
+                            <Link href={route('assembly_jobs.index')}>
+                                Работы по сборке
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key='chassis'>
+                            <Link href={route('chassis.index')}>
+                                Рамы
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key='control-systems'>
+                            <Link href={route('control_systems.index')}>
+                                Системы управления
                             </Link>
                         </Menu.Item>
                     </Menu.SubMenu>}
                 </Menu>
                 <Space>
-                    <LocaleDropdown/>
                     {auth.full_name &&
                         <Dropdown
                             key="user-actions" arrow trigger={['click']}
                             overlay={
                                 <Menu>
                                     <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                        <Link href={tRoute('profile.index')}>
-                                            {Lang.get('pages.profile.title')}
+                                        <Link href={route('profile.index')}>
+                                            Профиль
                                         </Link>
                                     </Menu.Item>
                                     <Menu.Divider/>
@@ -100,8 +101,8 @@ export const Header = () => {
                                         key="logout"
                                         icon={<LogoutOutlined/>}
                                     >
-                                        <Link method="post" href={tRoute('logout')}>
-                                            {Lang.get('pages.email_verification.logout')}
+                                        <Link method="post" href={route('logout')}>
+                                            Выйти
                                         </Link>
                                     </Menu.Item>
                                 </Menu>
@@ -113,6 +114,7 @@ export const Header = () => {
                         </Dropdown>}
                 </Space>
             </div>
+
         </Layout.Header>
     )
 }

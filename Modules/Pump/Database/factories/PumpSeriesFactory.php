@@ -3,9 +3,9 @@ namespace Modules\Pump\Database\factories;
 
 use Exception;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Pump\Entities\ElPowerAdjustment;
-use Modules\Pump\Entities\PumpBrand;
-use Modules\Pump\Entities\PumpCategory;
+use Modules\PumpSeries\Entities\ElPowerAdjustment;
+use Modules\PumpSeries\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpCategory;
 
 class PumpSeriesFactory extends Factory
 {
@@ -14,7 +14,7 @@ class PumpSeriesFactory extends Factory
      *
      * @var string
      */
-    protected $model = \Modules\Pump\Entities\PumpSeries::class;
+    protected $model = \Modules\PumpSeries\Entities\PumpSeries::class;
 
     /**
      * Define the model's default state.

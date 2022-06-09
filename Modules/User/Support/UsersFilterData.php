@@ -6,7 +6,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Modules\Pump\Entities\PumpSeries;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Entities\SelectionType;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;

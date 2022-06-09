@@ -3,9 +3,10 @@
 namespace App\Support\Rates;
 
 use AmrShawky\LaravelCurrency\Facade\Currency as RateCurrency;
+use App\Models\Enums\Currency;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Modules\Project\Entities\Currency;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Rates from Forex
@@ -13,9 +14,9 @@ use Modules\Project\Entities\Currency;
 final class ForexRates implements Rates
 {
     /**
-     * @var string $base
+     * @var Currency $base
      */
-    private string $base;
+    private Currency $base;
 
     /**
      * Ctor.
@@ -23,16 +24,16 @@ final class ForexRates implements Rates
      */
     public function __construct()
     {
-        $this->base = Currency::allOrCached()->find(Auth::user()->currency_id)->code;
+        $this->base = Currency::fromValue(Currency::RUB);
     }
 
 
     /**
      * @inheritDoc
      */
-    public function hasTheSameBaseAs(Currency $currency): bool
+    #[Pure] public function hasTheSameBaseAs(Currency|int $currency): bool
     {
-        return $this->base === $currency->code;
+        return $this->base->is($currency);
     }
 
     /**
@@ -43,11 +44,11 @@ final class ForexRates implements Rates
     {
         $rates = RateCurrency::rates()
             ->latest()
-            ->symbols(Currency::allOrCached()->pluck('code')->all())
-            ->base($this->base)
+            ->symbols(Currency::getKeys())
+            ->base($this->base->key)
             ->amount(1)
             ->round(5)
             ->get();
-        return $rates[array_key_exists($code, $rates) ? $code : $this->base];
+        return $rates[array_key_exists($code, $rates) ? $code : $this->base->key];
     }
 }

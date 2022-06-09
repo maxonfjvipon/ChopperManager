@@ -7,7 +7,7 @@ use Modules\Project\Entities\Project;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\Pump;
-use Modules\Pump\Entities\PumpSeries;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Entities\LimitCondition;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionRange;
@@ -34,10 +34,10 @@ class SelectionFactory extends Factory
             'pump_id'                           => Pump::factory(),
             'selected_pump_name'                => $this->faker->text(),
             'pumps_count'                       => $this->faker->numberBetween(3, 9),
-            'flow'                              => $this->faker->randomFloat(),
-            'head'                              => $this->faker->randomFloat(),
+            'flow'                              => $this->faker->randomFloat(2, 0, 1000),
+            'head'                              => $this->faker->randomFloat(2, 0, 1000),
             'fluid_temperature'                 => $this->faker->randomFloat(2, -30, 200),
-            'deviation'                         => $this->faker->randomFloat(1, -50, 50),
+            'deviation'                         => $this->faker->randomFloat(2, -50, 50),
             'reserve_pumps_count'               => $this->faker->numberBetween(1, 2),
             'range_id'                          => SelectionRange::allOrCached()->random()->id,
             'custom_range'                      => "0,100",

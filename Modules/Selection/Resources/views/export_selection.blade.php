@@ -39,14 +39,14 @@
                             <strong>Фактические параметры:</strong>
                         </td>
                     </tr>
-                    @if(array_key_exists('intersection_point', $selection->curves_data))
+                    @if(array_key_exists('intersection_point', $selection->main_curves))
                         <tr>
                             <td class="td-top">Расход</td>
-                            <td class="td-top">{{round($selection->curves_data['intersection_point']['flow'],1)}} м3/ч</td>
+                            <td class="td-top">{{round($selection->main_curves['intersection_point']['flow'],1)}} м3/ч</td>
                         </tr>
                         <tr>
                             <td class="td-top">Напор</td>
-                            <td class="td-top">{{round($selection->curves_data['intersection_point']['head'],1)}} м</td>
+                            <td class="td-top">{{round($selection->main_curves['intersection_point']['head'],1)}} м</td>
                         </tr>
                     @endif
                     @if($selection->pump_type !== \Modules\Pump\Entities\Pump::$DOUBLE_PUMP)
@@ -150,9 +150,17 @@
 <div class="page-break"></div>
 <div class="page">
     <h4>Гидравлическая характеристика</h4>
-    @include('selection::selection_perf_curves', $selection->curves_data)
+    @include('selection::selection_perf_curves', $selection->main_curves)
     @include("selection::created_by")
 </div>
+@isset($selection->additional_curves)
+    <div class="page-break"></div>
+    <div class="page">
+        <h4>Дополнительные характеристики</h4>
+        @include('selection::selection_add_curves', $selection->additional_curves)
+        @include("selection::created_by")
+    </div>
+@endisset
 @if(($request->print_pump_sizes_image && $selection->pump->sizes_image) ||
 ($request->print_pump_electric_diagram_image && $selection->pump->electric_diagram_image) ||
 ($request->print_pump_cross_sectional_drawing_image && $selection->pump->cross_sectional_drawing_image))

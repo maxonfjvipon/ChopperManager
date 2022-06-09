@@ -21,9 +21,9 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
             AssignRoleToRegisteredUser::class,
         ],
-        Login::class => [
-            LogUserLoginDate::class
-        ]
+//        Login::class => [
+//            LogUserLoginDate::class
+//        ]
     ];
 
     /**

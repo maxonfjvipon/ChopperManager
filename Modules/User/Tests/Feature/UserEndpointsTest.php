@@ -9,7 +9,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Inertia\Testing\AssertableInertia;
 use Modules\Project\Entities\Project;
-use Modules\Pump\Entities\PumpSeries;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionType;
 use Modules\User\Entities\Business;
@@ -18,13 +18,13 @@ use Modules\User\Entities\Discount;
 use Modules\User\Entities\User;
 use Modules\User\Entities\UserAndPumpSeries;
 use Modules\User\Entities\UserAndSelectionType;
-use Modules\User\Http\Endpoints\UserDetailStatisticsEndpoint;
-use Modules\User\Http\Endpoints\UsersCreateEndpoint;
-use Modules\User\Http\Endpoints\UsersEditEndpoint;
-use Modules\User\Http\Endpoints\UsersIndexEndpoint;
-use Modules\User\Http\Endpoints\UsersStatisticsEndpoint;
-use Modules\User\Http\Endpoints\UsersStoreEndpoint;
-use Modules\User\Http\Endpoints\UsersUpdateEndpoint;
+use Modules\User\Http\Endpoints\EpDetailUserStatistics;
+use Modules\User\Http\Endpoints\EpCreateUser;
+use Modules\User\Http\Endpoints\EpEditUser;
+use Modules\User\Http\Endpoints\EqUsers;
+use Modules\User\Http\Endpoints\EpUsersStatistics;
+use Modules\User\Http\Endpoints\EpStoreUser;
+use Modules\User\Http\Endpoints\EpUpdateUser;
 use Modules\User\Http\Middleware\CheckUserIsActive;
 use Modules\User\Support\UsersFilterData;
 use Tests\TestCase;
@@ -35,10 +35,10 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see UsersIndexEndpoint
-     * @see UsersEditEndpoint
-     * @see UsersCreateEndpoint
-     * @see UsersStatisticsEndpoint
+     * @see EqUsers
+     * @see EpEditUser
+     * @see EpCreateUser
+     * @see EpUsersStatistics
      * @author Max Trunnikov
      */
     public function test_if_regular_user_cannot_get_access_to_users_pages()
@@ -60,7 +60,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see UsersIndexEndpoint
+     * @see EqUsers
      * @author Max Trunnikov
      */
     public function test_users_index_endpoint()
@@ -123,7 +123,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersCreateEndpoint
+     * @see EpCreateUser
      */
     public function test_users_create_endpoint()
     {
@@ -139,7 +139,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersEditEndpoint
+     * @see EpEditUser
      */
     public function test_users_edit_endpoint()
     {
@@ -181,7 +181,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersStoreEndpoint
+     * @see EpStoreUser
      */
     public function test_if_client_cannot_store_user()
     {
@@ -213,7 +213,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersStoreEndpoint
+     * @see EpStoreUser
      */
     public function test_users_store_endpoint()
     {
@@ -277,7 +277,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersUpdateEndpoint
+     * @see EpUpdateUser
      */
     public function test_if_client_cannot_update_user()
     {
@@ -307,7 +307,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see UsersUpdateEndpoint
+     * @see EpUpdateUser
      */
     public function test_users_update_endpoint()
     {
@@ -370,7 +370,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see UsersStatisticsEndpoint
+     * @see EpUsersStatistics
      * @author Max Trunnikov
      */
     public function test_users_statistics_endpoint()
@@ -427,7 +427,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see UserDetailStatisticsEndpoint
+     * @see EpDetailUserStatistics
      * @author Max Trunnikov
      */
     public function test_client_cannot_get_access_to_user_detail_statistics()
@@ -442,7 +442,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see UserDetailStatisticsEndpoint
+     * @see EpDetailUserStatistics
      * @author Max Trunnikov
      */
     public function test_user_detail_statistics_endpoint()

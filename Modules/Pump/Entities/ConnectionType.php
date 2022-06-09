@@ -2,25 +2,20 @@
 
 namespace Modules\Pump\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Traits\HasTranslations;
-use App\Traits\Cached;
+use App\Traits\EnumHelpers;
+use BenSampo\Enum\Attributes\Description;
+use BenSampo\Enum\Enum;
 
 /**
- * Connection type
- * @property string $name
- * @package Modules\Pump\Entities
+ * Connection type.
  */
-final class ConnectionType extends Model
+final class ConnectionType extends Enum
 {
-    use HasTranslations, Cached;
+    use EnumHelpers;
 
-    protected static function getCacheKey(): string
-    {
-        return "connection_types";
-    }
+    #[Description("Резьбовой")]
+    const Threaded = 1;
 
-    public $translatable = ['name'];
-    protected $fillable = ['name'];
-    public $timestamps = false;
+    #[Description("Фланцевый")]
+    const Flanged = 2;
 }

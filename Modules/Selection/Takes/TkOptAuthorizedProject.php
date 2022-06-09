@@ -2,11 +2,12 @@
 
 namespace Modules\Selection\Takes;
 
-use App\Support\Take;
+use App\Takes\Take;
 use App\Takes\TkTernary;
+use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Project\Takes\TkAuthorizedProject;
+use Modules\Project\Takes\TkAuthorizeProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -38,13 +39,13 @@ final class TkOptAuthorizedProject implements Take
 
     /**
      * @inheritDoc
-     * @throws \Exception
+     * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response
     {
         return (new TkTernary(
             $this->project_id !== "-1",
-            new TkAuthorizedProject($this->project_id, $this->origin),
+            new TkAuthorizeProject($this->project_id, $this->origin),
             $this->origin
         ))->act($request);
     }

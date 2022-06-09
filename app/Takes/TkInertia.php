@@ -2,7 +2,7 @@
 
 namespace App\Takes;
 
-use App\Support\Take;
+use App\Takes\Take;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
@@ -58,7 +58,7 @@ final class TkInertia implements Take
             'array',
             Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
             'callable' => fn(callable $callback) => call_user_func($callback),
-            Closure::class => fn(Closure $closure) => call_user_func($closure)
+            Closure::class => fn(Closure $closure) => call_user_func($closure),
         ]]));
     }
 }

@@ -2,24 +2,26 @@
 
 namespace Modules\Project\Entities;
 
-use App\Traits\Cached;
-use App\Traits\HasTranslations;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\EnumHelpers;
+use BenSampo\Enum\Attributes\Description;
+use BenSampo\Enum\Enum;
 
 /**
  * Project status.
  */
-final class ProjectStatus extends Model
+final class ProjectStatus extends Enum
 {
-    use HasFactory, HasTranslations, Cached;
+    use EnumHelpers;
 
-    public array $translatable = ['name'];
-    protected $fillable = ['name'];
-    public $timestamps = false;
+    #[Description("Проект")]
+    const Project = 1;
 
-    protected static function getCacheKey(): string
-    {
-        return 'project_statuses';
-    }
+    #[Description("Цикл 0")]
+    const Phase0 = 2;
+
+    #[Description("Цикл крыша")]
+    const PhaseRoof = 3;
+
+    #[Description("Архив")]
+    const Archive = 4;
 }

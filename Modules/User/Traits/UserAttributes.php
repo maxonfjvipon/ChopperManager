@@ -8,7 +8,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtImploded;
-use Modules\Pump\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpBrand;
 
 trait UserAttributes
 {

@@ -16,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'pumpmanager',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -38,7 +38,7 @@ return [
     */
 
     'guards' => [
-        'pumpmanager' => [
+        'web' => [
             'driver' => 'session',
             'provider' => 'users'
         ],

@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Modules\Selection\Support\TxtSelectionCurvesView;
 
-final class SinglePumpSelectionResource extends PumpSelectionResource
+final class SinglePumpSelectionResource extends SelectionResource
 {
     /**
      * Transform the resource into an array.

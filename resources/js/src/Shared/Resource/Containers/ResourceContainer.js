@@ -11,7 +11,7 @@ export const ResourceContainer = ({title, actions, extra, children, ...rest}) =>
             <RoundedCard
                 title={title}
                 extra={extra && <ActionsContainer actions={extra}/>}
-                style={actions && margin.bottom(16)}
+                style={margin.bottom(actions ? 16 : 0)}
                 {...rest}
             >
                 {children}

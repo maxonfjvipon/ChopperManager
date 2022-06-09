@@ -2,7 +2,7 @@
 
 namespace Modules\Pump\Takes;
 
-use App\Support\Take;
+use App\Takes\Take;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Support\Responsable;

@@ -5,7 +5,7 @@ namespace Modules\Selection\Transformers\SelectionResources;
 
 use Exception;
 
-final class DoublePumpSelectionResource extends PumpSelectionResource
+final class DoublePumpSelectionResource extends SelectionResource
 {
     /**
      * @throws Exception

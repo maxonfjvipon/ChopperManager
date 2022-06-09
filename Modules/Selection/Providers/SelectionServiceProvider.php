@@ -5,18 +5,21 @@ namespace Modules\Selection\Providers;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Pump\Entities\Pump;
-use Modules\Selection\Http\Requests\CurvesForSelectionRequest;
-use Modules\Selection\Http\Requests\DoublePump\CurvesForDoublePumpSelectionRequest;
-use Modules\Selection\Http\Requests\DoublePump\ExportAtOnceDoublePumpSelectionRequest;
-use Modules\Selection\Http\Requests\DoublePump\MakeDoublePumpSelectionRequest;
-use Modules\Selection\Http\Requests\DoublePump\StoreDoublePumpSelectionRequest;
-use Modules\Selection\Http\Requests\ExportAtOnceSelectionRequest;
-use Modules\Selection\Http\Requests\MakeSelectionRequest;
-use Modules\Selection\Http\Requests\SinglePump\CurvesForSinglePumpSelectionRequest;
-use Modules\Selection\Http\Requests\SinglePump\ExportAtOnceSinglePumpSelectionRequest;
-use Modules\Selection\Http\Requests\SinglePump\MakeSinglePumpSelectionRequest;
-use Modules\Selection\Http\Requests\SinglePump\StoreSinglePumpSelectionRequest;
-use Modules\Selection\Http\Requests\SelectionRequest;
+use Modules\Selection\Entities\SelectionType;
+use Modules\Selection\Entities\StationType;
+use Modules\Selection\Http\Requests\RqPumpStationCurves;
+use Modules\Selection\Http\Requests\DoublePump\RqDoublePumpSelectionCurves;
+use Modules\Selection\Http\Requests\DoublePump\RqExportDoublePumpSelectionAtOnce;
+use Modules\Selection\Http\Requests\DoublePump\RqMakeDoublePumpSelection;
+use Modules\Selection\Http\Requests\DoublePump\RqStoreDoublePumpSelection;
+use Modules\Selection\Http\Requests\RqExportAtOnceSelection;
+use Modules\Selection\Http\Requests\RqMakeSelection;
+use Modules\Selection\Http\Requests\SinglePump\RqSinglePumpSelectionCurves;
+use Modules\Selection\Http\Requests\SinglePump\RqExportSinglePumpSelectionAtOnce;
+use Modules\Selection\Http\Requests\SinglePump\RqMakeSinglePumpSelection;
+use Modules\Selection\Http\Requests\SinglePump\RqStoreSinglePumpSelection;
+use Modules\Selection\Http\Requests\RqStoreSelection;
+use Modules\Selection\Http\Requests\WaterAuto\RqMakeWaterAutoSelection;
 
 class SelectionServiceProvider extends ServiceProvider
 {
@@ -126,21 +129,53 @@ class SelectionServiceProvider extends ServiceProvider
 
     public function bindSelectionDependencies()
     {
-        switch (request()->pumpable_type) {
-            case Pump::$DOUBLE_PUMP:
-                // REQUESTS
-                $this->app->bind(MakeSelectionRequest::class, MakeDoublePumpSelectionRequest::class);
-                $this->app->bind(CurvesForSelectionRequest::class, CurvesForDoublePumpSelectionRequest::class);
-                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceDoublePumpSelectionRequest::class);
-                $this->app->bind(SelectionRequest::class, StoreDoublePumpSelectionRequest::class);
-                break;
-            default:
-                // REQUESTS
-                $this->app->bind(MakeSelectionRequest::class, MakeSinglePumpSelectionRequest::class);
-                $this->app->bind(CurvesForSelectionRequest::class, CurvesForSinglePumpSelectionRequest::class);
-                $this->app->bind(ExportAtOnceSelectionRequest::class, ExportAtOnceSinglePumpSelectionRequest::class);
-                $this->app->bind(SelectionRequest::class, StoreSinglePumpSelectionRequest::class);
-                break;
+        if (request()->selection_type && request()->station_type) {
+            $binder = [
+                StationType::fromValue(StationType::Water)->key => [
+                    SelectionType::fromValue(SelectionType::Auto)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+                    ],
+                    SelectionType::fromValue(SelectionType::Handle)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+                    ]
+                ],
+                StationType::fromValue(StationType::Fire)->key => [
+                    SelectionType::fromValue(SelectionType::Auto)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+
+                    ],
+                    SelectionType::fromValue(SelectionType::Handle)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+                    ]
+                ],
+                StationType::fromValue(StationType::Combine)->key => [
+                    SelectionType::fromValue(SelectionType::Auto)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+                    ],
+                    SelectionType::fromValue(SelectionType::Handle)->key => [
+                        'make_selection' => RqMakeWaterAutoSelection::class,
+                    ]
+                ]
+            ];
+            $this->app->bind(RqMakeSelection::class, $binder[request()->station_type][request()->selection_type]['make_selection']);
         }
+//        dd(request());
+
+//        switch (request()->pumpable_type) {
+//            case Pump::$DOUBLE_PUMP:
+//                // REQUESTS
+//                $this->app->bind(RqMakeSelection::class, RqMakeDoublePumpSelection::class);
+//                $this->app->bind(RqSelectionCurves::class, RqDoublePumpSelectionCurves::class);
+//                $this->app->bind(RqExportAtOnceSelection::class, RqExportDoublePumpSelectionAtOnce::class);
+//                $this->app->bind(RqStoreSelection::class, RqStoreDoublePumpSelection::class);
+//                break;
+//            case Pump::$SINGLE_PUMP:
+//                // REQUESTS
+//                $this->app->bind(RqMakeSelection::class, RqMakeSinglePumpSelection::class);
+//                $this->app->bind(RqSelectionCurves::class, RqSinglePumpSelectionCurves::class);
+//                $this->app->bind(RqExportAtOnceSelection::class, RqExportSinglePumpSelectionAtOnce::class);
+//                $this->app->bind(RqStoreSelection::class, RqStoreSinglePumpSelection::class);
+//                break;
+//        }
     }
 }

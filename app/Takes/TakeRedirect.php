@@ -2,13 +2,14 @@
 
 namespace App\Takes;
 
+use App\Takes\Take;
 use Illuminate\Http\RedirectResponse;
 
 /**
  * For redirect endpoints
  * @package App\Takes
  */
-interface TakeRedirect
+interface TakeRedirect extends Take
 {
     /**
      * @return RedirectResponse

@@ -3,12 +3,13 @@
 namespace Modules\Selection\Support\Performance;
 
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrExploded;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Modules\Pump\Entities\Pump;
+use Modules\Selection\Support\PumpPerformanceAsPoints;
+use Modules\Selection\Tests\Unit\DPPerformanceTest;
 
 /**
  * Double pump performance.
+ * @see DPPerformanceTest
  */
 final class DPPerformance implements PumpPerformance
 {
@@ -22,6 +23,10 @@ final class DPPerformance implements PumpPerformance
      */
     private array $performances = [];
 
+    /**
+     * Ctor.
+     * @param Pump $pump
+     */
     public function __construct(Pump $pump)
     {
         $this->pump = $pump;
@@ -32,22 +37,12 @@ final class DPPerformance implements PumpPerformance
      */
     public function asArrayAt(int $position): array
     {
-        return $this->performances[$position] ?? $this->performances[$position] = (function () use ($position) {
-            $perfAsArr = (new ArrMapped(
-                new ArrExploded(
-                    " ",
-                    match ($position) {
-                        1 => $this->pump->dp_standby_performance,
-                        default => $this->pump->dp_peak_performance
-                    }
-                ),
-                fn($value) => floatval($value)
+        return $this->performances[$position]
+            ?? $this->performances[$position] = (new PumpPerformanceAsPoints(
+                match ($position) {
+                    1 => $this->pump->dp_standby_performance,
+                    default => $this->pump->dp_peak_performance
+                }
             ))->asArray();
-            $arr = [];
-            for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
-                $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];
-            }
-            return $arr;
-        })();
     }
 }

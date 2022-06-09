@@ -12010,29 +12010,30 @@ var useHttp = function useHttp() {
               headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
               auth = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
               setLoading(true);
-              _context.prev = 5;
-              _context.next = 8;
+              console.log(body);
+              _context.prev = 6;
+              _context.next = 9;
               return axios.request({
                 url: url,
                 method: method,
                 data: body
               });
 
-            case 8:
+            case 9:
               response = _context.sent;
               data = response.data;
-              _context.next = 16;
+              _context.next = 17;
               break;
 
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](5);
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](6);
               setLoading(false);
               throw new Error(_context.t0);
 
-            case 16:
+            case 17:
               if (!(response.status === 419)) {
-                _context.next = 20;
+                _context.next = 21;
                 break;
               }
 
@@ -12040,9 +12041,9 @@ var useHttp = function useHttp() {
               antd__WEBPACK_IMPORTED_MODULE_2__["default"].info('Your session may be expired. Reload the page');
               throw new Error();
 
-            case 20:
+            case 21:
               if (!(response.statusText !== "OK")) {
-                _context.next = 24;
+                _context.next = 25;
                 break;
               }
 
@@ -12054,7 +12055,7 @@ var useHttp = function useHttp() {
 
               throw new Error();
 
-            case 24:
+            case 25:
               for (_key in data) {
                 if (antd__WEBPACK_IMPORTED_MODULE_2__["default"].hasOwnProperty(_key)) {
                   antd__WEBPACK_IMPORTED_MODULE_2__["default"][_key](data[_key]);
@@ -12064,12 +12065,12 @@ var useHttp = function useHttp() {
               setLoading(false);
               return _context.abrupt("return", data);
 
-            case 27:
+            case 28:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[5, 12]]);
+      }, _callee, null, [[6, 13]]);
     }));
 
     return function request(_x) {
@@ -12269,21 +12270,62 @@ var useInputRules = function useInputRules() {
       password: [required],
       itn: [itn],
       phone: [required, phone],
-      city: function city(citiesToShow) {
-        return [required, {
-          validator: function validator(_, cityId) {
-            return citiesToShow.some(function (cityToShow) {
-              return cityToShow.id === cityId;
-            }) ? Promise.resolve() : Promise.reject(new Error(_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('validation.custom.city.correct')));
-          }
-        }];
-      },
       required: required,
       number: number,
       max: max
     }
   };
 };
+
+/***/ }),
+
+/***/ "./resources/js/src/Hooks/routes.hook.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/Hooks/routes.hook.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useTransRoutes": () => (/* binding */ useTransRoutes)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+var useTransRoutes = function useTransRoutes() {
+  var locales = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.locales;
+
+  var tRoute = function tRoute(name) {
+    for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      params[_key - 1] = arguments[_key];
+    }
+
+    var splitUrl = route.apply(void 0, [name].concat(params)).split("/");
+    var locale = splitUrl[3]; // locale from url
+
+    splitUrl.splice(3, locales !== null && locales !== void 0 && locales.supported.includes(locale) ? 1 : 0);
+
+    if ((locales === null || locales === void 0 ? void 0 : locales["default"]) !== (locales === null || locales === void 0 ? void 0 : locales.current)) {
+      splitUrl.splice(3, 0, locales === null || locales === void 0 ? void 0 : locales.current);
+    }
+
+    return splitUrl.join('/');
+  };
+
+  return tRoute;
+}; // export default function tRoute (name, ...params) {
+//     const {locales} = usePage().props
+//
+//     const splitUrl = route(name, ...params).split("/")
+//     const locale = splitUrl[3] // locale from url
+//
+//     splitUrl.splice(3, locales.supported.includes(locale) ? 1 : 0)
+//     if (locales.default !== locales.current) {
+//         splitUrl.splice(3, 0, locales.current)
+//     }
+//
+//     return splitUrl.join('/')
+// }
 
 /***/ }),
 
@@ -12631,10 +12673,12 @@ var Selection = function Selection(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
     options: _toConsumableArray(options.map(function (option) {
       return {
-        label: option.customValue || option.name || option.value,
-        value: option.id
+        label: option.customValue || option.name || option.value || option,
+        value: option.id || option.value || option.name || option
       };
     })),
+    allowClear: true,
+    showSearch: true,
     filterOption: function filterOption(input, option) {
       return option.label.toString().toLowerCase().includes(input.toLowerCase());
     },
@@ -12772,17 +12816,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["label", "form"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
 var SubmitAction = function SubmitAction(_ref) {
   var label = _ref.label,
-      form = _ref.form;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__.PrimaryButton, {
+      form = _ref.form,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_1__.PrimaryButton, _objectSpread(_objectSpread({
     form: form,
-    htmlType: "submit",
+    htmlType: "submit"
+  }, rest), {}, {
     children: label
-  });
+  }));
 };
 
 /***/ }),
@@ -12981,7 +13040,7 @@ var ResourceContainer = function ResourceContainer(_ref) {
       extra: extra && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__.ActionsContainer, {
         actions: extra
       }),
-      style: actions && margin.bottom(16)
+      style: margin.bottom(actions ? 16 : 0)
     }, rest), {}, {
       children: children
     })), actions && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__.ActionsContainer, {
@@ -13040,11 +13099,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Edit": () => (/* binding */ Edit)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/EditOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/EditOutlined.js");
 /* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _TableAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -13052,12 +13111,43 @@ __webpack_require__.r(__webpack_exports__);
 
 var Edit = function Edit(_ref) {
   var clickHandler = _ref.clickHandler;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TableAction__WEBPACK_IMPORTED_MODULE_2__.TableAction, {
+    clickHandler: clickHandler,
+    title: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/TableAction.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TableAction": () => (/* binding */ TableAction)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var TableAction = function TableAction(_ref) {
+  var title = _ref.title,
+      clickHandler = _ref.clickHandler,
+      icon = _ref.icon;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], {
     placement: "topRight",
-    title: _translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('tooltips.edit'),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: title,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
       onClick: clickHandler,
-      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      icon: icon
     })
   });
 };
@@ -13226,7 +13316,7 @@ var TTable = function TTable(_ref) {
     columns: _columns,
     dataSource: dataSource === null || dataSource === void 0 ? void 0 : dataSource.map(function (item) {
       return _objectSpread({
-        key: item.id
+        key: item.id || item.key
       }, item);
     }),
     rowClassName: rowClassName,
@@ -13261,6 +13351,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["id", "loading", "searchClickHandler", "placeholder"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -13272,7 +13374,9 @@ var SearchInput = function SearchInput(_ref) {
       _ref$loading = _ref.loading,
       loading = _ref$loading === void 0 ? false : _ref$loading,
       searchClickHandler = _ref.searchClickHandler,
-      placeholder = _ref.placeholder;
+      placeholder = _ref.placeholder,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
       marginBottom: "8px"
@@ -13285,12 +13389,2070 @@ var SearchInput = function SearchInput(_ref) {
       style: {
         width: 300
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, _objectSpread(_objectSpread({
       loading: loading,
-      onClick: searchClickHandler,
+      onClick: searchClickHandler
+    }, rest), {}, {
       children: _translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.pumps.search.button')
-    })]
+    }))]
   });
+};
+
+/***/ }),
+
+/***/ "./resources/js/translation/lang.js":
+/*!******************************************!*\
+  !*** ./resources/js/translation/lang.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lang.js */ "./node_modules/lang.js/src/lang.js");
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lang_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./translations */ "./resources/js/translation/translations.js");
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_translations__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var Lang = new (lang_js__WEBPACK_IMPORTED_MODULE_0___default())({
+  messages: (_translations__WEBPACK_IMPORTED_MODULE_1___default()),
+  locale: 'ru',
+  fallback: 'ru'
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Lang);
+
+/***/ }),
+
+/***/ "./resources/js/translation/translations.js":
+/*!**************************************************!*\
+  !*** ./resources/js/translation/translations.js ***!
+  \**************************************************/
+/***/ ((module) => {
+
+module.exports = {
+  "en.auth": {
+    "failed": "These credentials do not match our records.",
+    "password": "The provided password is incorrect.",
+    "throttle": "Too many login attempts. Please try again in :seconds seconds."
+  },
+  "en.flash": {
+    "email_verification": {
+      "sent_again": "Link to the email confirmation was sent again",
+      "verified": "Email has been successfully confirmed"
+    },
+    "price_lists": {
+      "imported": "Price lists were imported successfully"
+    },
+    "projects": {
+      "created": "Project was created successfully",
+      "deleted": "Project was deleted successfully",
+      "updated": "Project was updated successfully"
+    },
+    "pump_series": {
+      "imported": "Pump series were imported successfully"
+    },
+    "pumps": {
+      "imported": "Pumps were imported successfully"
+    },
+    "selections": {
+      "added": "Selection was successfully added to project",
+      "deleted": "Selection was deleted successfully",
+      "pumps_not_found": "No pumps were found for the specified parameters"
+    },
+    "users": {
+      "password_changed": "Password was changed successfully",
+      "updated": "User info was updated successfully"
+    }
+  },
+  "en.graphic": {
+    "axis": {
+      "flow": "Volume flow, m\xB3/h",
+      "head": "Delivery head, m"
+    },
+    "legend": {
+      "flow": "Flow",
+      "head": "Head",
+      "intersection_point": "Intersection point",
+      "working_point": "Working point"
+    }
+  },
+  "en.messages": {
+    "function_development": "The function is under development",
+    "selections": {
+      "no_series_selected": "No series selected",
+      "notification": {
+        "attention": "Attention!",
+        "description": {
+          "applications": "applications",
+          "power_adjustment": "power adjustment",
+          "types": "types",
+          "1": "Selected series",
+          "2": "does not match to selected filter params:"
+        }
+      }
+    },
+    "service_development": "The service is under development"
+  },
+  "en.pages": {
+    "change_locale": "Change locale",
+    "dashboard": {
+      "marketplace": "Marketplace",
+      "pumps": "Pumps",
+      "select": "Selection of pumping stations",
+      "title": "Dashboard"
+    },
+    "email_verification": {
+      "logout": "Logout",
+      "send_again": "Send email again",
+      "text1": "Before you get started, could you please confirm your email address, by clicking on the link that we just sent you by email?",
+      "text2": "If you have not received an email, we will be happy to send you another one. Also, just in case, check the \"Spam\" folder",
+      "thanks": "Thank you for registering"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "Login",
+      "not_registered": "Not registered yet?",
+      "password": "Password",
+      "welcome": "Welcome!"
+    },
+    "profile": {
+      "discounts": {
+        "discount": "Discount, %",
+        "name": "Name",
+        "tab": "Producer's discounts"
+      },
+      "index": {
+        "cards": {
+          "password": "Change password",
+          "user_info": "Update user info"
+        },
+        "change_password": "Change password",
+        "city": "City",
+        "country": "Country",
+        "currency": {
+          "label": "Currency",
+          "tooltip": "Currency affects on ..."
+        },
+        "current_password": "Current password",
+        "email": "E-mail",
+        "first_name": "First name",
+        "itn": "Individual taxpayer number",
+        "last_name": "Last name",
+        "main_business": "Main business",
+        "middle_name": "Middle name",
+        "new_password": "New password",
+        "new_password_confirmation": "Confirm new password",
+        "organization_name": "Name of the organization",
+        "phone": "Phone",
+        "postcode": "Postcode",
+        "save_changes": "Save changes",
+        "tab": "User info"
+      },
+      "title": "Profile"
+    },
+    "projects": {
+      "back": "Back to projects",
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create project"
+      },
+      "edit": {
+        "button": "Update project",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update project"
+      },
+      "export": {
+        "button": "Export",
+        "choose_selections": "Choose selection to export",
+        "m": "m",
+        "m3h": "m\xB3/h",
+        "print": {
+          "electric_diagram": "Print pump electric diagram",
+          "exploded_view": "Print pump exploded view",
+          "personal_price": "Print personal price",
+          "pump_image": "Print pump image",
+          "pump_info": "Print pump info",
+          "retail_price": "Print retail price",
+          "sizes_image": "Print pump sizes"
+        },
+        "title": "Export project"
+      },
+      "index": {
+        "button": "Create project",
+        "clone": {
+          "button": "Clone",
+          "save_as": "Save as",
+          "title": "Clone project"
+        },
+        "restore": {
+          "button": "Restore",
+          "title": "Restore project?"
+        },
+        "search": {
+          "placeholder": "Search projects by name"
+        },
+        "selection": "Hydraulic selection without saving",
+        "table": {
+          "count": "Selections count",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the project?",
+          "name": "Name"
+        }
+      },
+      "show": {
+        "label": "Name",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore selection?"
+        },
+        "save_button": "Save changes",
+        "selection": "Hydraulic selection",
+        "table": {
+          "consumption": "Volume flow, m\xB3/h",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the selection?",
+          "part_num": "Article number",
+          "power": "P\u2081, kW",
+          "pressure": "Delivery head, m",
+          "price": "Discounted price",
+          "selected_pump": "Product name",
+          "total_power": "P total, kW",
+          "total_price": "Total discounted price"
+        }
+      },
+      "statistics": {
+        "title": "Projects statistics"
+      },
+      "title": "Projects"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create brand"
+      },
+      "edit": {
+        "button": "Update brand",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update brand"
+      },
+      "index": {
+        "button": "Create brand",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore brand?"
+        },
+        "table": {
+          "delete": "Are you sure you want to delete the brand?",
+          "name": "Name"
+        },
+        "title": "Brands"
+      }
+    },
+    "pump_series": {
+      "back": "Back to series",
+      "create": {
+        "button": "Create",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Create series"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Edit series"
+      },
+      "errors_title": "Import errors:",
+      "index": {
+        "button": "Create series",
+        "create": "Create",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore series?"
+        },
+        "table": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "delete": "Are you sure you want to delete the series?",
+          "is_discontinued": "Is active",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Brands and series",
+        "upload": "Upload series",
+        "upload_images": {
+          "images": {
+            "icons": "Icons",
+            "title": "Images (max 300, .jpg, .jpeg, .png)"
+          },
+          "title": "Upload images"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "Add to projects",
+        "choose": "Choose projects where to add the pump",
+        "ok": "Add",
+        "pumps_count": "Pumps count",
+        "title": "Add pump to projects"
+      },
+      "back": "Back to pumps",
+      "consumption": "Volume flow, m\xB3/h",
+      "data": {
+        "applications": "Applications",
+        "article_num_archive": "Archive article number",
+        "article_num_main": "Main article number",
+        "article_num_reserve": "Reserve article number",
+        "brand": "Brand",
+        "category": "Category",
+        "connection": "Mains connection",
+        "connection_type": "Connection",
+        "currency": "Currency",
+        "description": "Description",
+        "dn_pressure": "Pressure side DN",
+        "dn_suction": "Suction side DN",
+        "fluid_temp_max": "Max. fluid temp, \xB0C",
+        "fluid_temp_min": "Min. fluid temp, \xB0C",
+        "is_discontinued": "Active",
+        "name": "Name",
+        "power_adjustment": "El. power adjustment",
+        "price": "Price",
+        "ptp_length": "Port-to-port length, mm",
+        "rated_current": "Rated current, A",
+        "rated_power": "P, kW",
+        "series": "Series",
+        "types": "Types",
+        "weight": "Weight, kg"
+      },
+      "errors_title": "Import errors:",
+      "hydraulic_perf": "Hydraulic performance",
+      "pressure": "Delivery head, m",
+      "props": "Properties",
+      "search": {
+        "button": "Search",
+        "placeholder": "Search pumps by article nums and name"
+      },
+      "tabs": {
+        "double": "Double pumps",
+        "single": "Single pumps"
+      },
+      "title": "Pumps",
+      "upload": "Upload pumps",
+      "upload_price_lists": "Upload price lists",
+      "upload_tech_info": {
+        "files": {
+          "files": "Files",
+          "title": "Files (max 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "Cross sectional drawings images",
+          "pump_electric_diagrams": "Electrical diagram images",
+          "pump_sizes": "Pump sizes images",
+          "pumps": "Pumps images",
+          "title": "Images (max 300, .jpg, .jpeg, .png)"
+        },
+        "title": "Upload tech-info"
+      }
+    },
+    "register": {
+      "already_registered": "Already registered?",
+      "city": "City",
+      "country": "Country",
+      "email": "E-mail",
+      "first_name": "First name",
+      "itn": "Individual taxpayer number",
+      "last_name": "Last name",
+      "main_business": "Main business",
+      "middle_name": "Middle name",
+      "organization_name": "Name of the organization",
+      "password": "Password",
+      "password_confirmation": "Confirm your password",
+      "phone": "Phone",
+      "please_register": "Please register",
+      "postcode": "Postcode",
+      "register": "Register"
+    },
+    "selections": {
+      "back": {
+        "to_project": "Back to project",
+        "to_selections_dashboard": "Back to selections dashboard"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "Back to project",
+          "to_projects": "Back to projects"
+        },
+        "double_analogy": "Double pump selection by analogy",
+        "double_prefs": "Double pump selection by preferences",
+        "fire_station_analogy": "Fire extinguishing pumping station selection by analogy",
+        "fire_station_prefs": "Fire extinguishing pumping station selection by preferences",
+        "preferences": {
+          "pump": {
+            "borehole": "Borehole pump selection",
+            "double": "Double pump selection",
+            "drainage": "Drainage pump selection",
+            "single": "Single pump selection"
+          },
+          "station": {
+            "fire": "Fire extinguishing pumping station selection",
+            "water": "Water supply pumping station selection"
+          }
+        },
+        "single_analogy": "Single pump selection by analogy",
+        "single_prefs": "Single pump selection by preferences",
+        "subtitle": "Choose selection type",
+        "title": "Hydraulic selections",
+        "water_station_analogy": "Watter supply pumping station selection by analogy",
+        "water_station_prefs": "Watter supply pumping station selection by preferences",
+        "404": {
+          "back": "Back to projects",
+          "subtitle": "Please contact the administrator",
+          "title": "Sorry, you don't have access to any of selection types"
+        }
+      },
+      "double_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "title_new": "Double pump selection by preferences",
+        "title_show": "Viewing the double pump selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection",
+        "work_scheme": "Work scheme"
+      },
+      "single_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "applications": {
+          "label": "Applications",
+          "tooltip": "The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)"
+        },
+        "backup_pumps_count": "Reserve pumps count",
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "main_pumps_count": "Main pumps count",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "curves": "Curve(s)",
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "temp_tooltip": {
+          "orange": "Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected",
+          "red": "Red - the series isn't suitable for the selected temperature"
+        },
+        "title_new": "Single pump selection by preferences",
+        "title_show": "Viewing the selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "created_at": "Created at",
+          "reset": "Reset",
+          "search": "Project or client organization name",
+          "selections_count": "Amount of selections",
+          "total_selections_price": "Total selections price"
+        },
+        "full_title": "Statistics by projects",
+        "table": {
+          "city": "City",
+          "comment": "Comment",
+          "country": "Country",
+          "created_at": "Created at",
+          "delivery_status": "Delivery status",
+          "name": "Name",
+          "retail_price": "Retail price",
+          "selections_count": "Selections count",
+          "status": "Status",
+          "user_business": "Client business",
+          "user_full_name": "Client full name",
+          "user_organization_name": "Client organization name"
+        },
+        "title": "By projects"
+      },
+      "title": "Statistics",
+      "users": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "last_login_at": "Last activity date",
+          "projects_count": "Amount of projects",
+          "reset": "Reset",
+          "search": "Full name or organization name",
+          "total_projects_price": "Total projects price"
+        },
+        "full_title": "Statistics by users",
+        "table": {
+          "avg_projects_price": "Average projects price",
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "full_name": "Full name",
+          "last_login_at": "Last logged in at",
+          "organization_name": "Organization name",
+          "projects_count": "Amount of projects",
+          "total_projects_price": "Total projects price"
+        },
+        "title": "By users"
+      }
+    },
+    "users": {
+      "back": "Back to users",
+      "create": {
+        "button": "Create",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "email_verified": "Email confirmed",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "password": "Password",
+          "password_confirmation": "Confirm your password",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Create user"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Edit user"
+      },
+      "index": {
+        "button": "New user",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore user?"
+        },
+        "search": {
+          "placeholder": "Search by full name and organization "
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "Analytics"
+          },
+          "discounts": {
+            "tab": "Producer's discounts"
+          },
+          "projects": {
+            "tab": "Projects"
+          }
+        },
+        "table": {
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "created_at": "Created at",
+          "email": "E-mail",
+          "full_name": "Full name",
+          "is_active": "Is active",
+          "organization_name": "Name of the organization",
+          "phone": "Phone"
+        }
+      },
+      "title": "Users"
+    }
+  },
+  "en.pagination": {
+    "next": "Next &raquo;",
+    "previous": "&laquo; Previous"
+  },
+  "en.passwords": {
+    "reset": "Your password has been reset!",
+    "sent": "We have emailed your password reset link!",
+    "throttled": "Please wait before retrying.",
+    "token": "This password reset token is invalid.",
+    "user": "We can't find a user with that email address."
+  },
+  "en.tooltips": {
+    "clone": "Clone",
+    "delete": "Delete",
+    "detail": "Detail",
+    "edit": "Edit",
+    "export": "Export",
+    "popconfirm": {
+      "no": "No",
+      "yes": "Yes"
+    },
+    "print": "Print",
+    "save": "Save",
+    "statistics": "Statistics",
+    "view": "View"
+  },
+  "en.validation": {
+    "accepted": "The :attribute must be accepted.",
+    "accepted_if": "The :attribute must be accepted when :other is :value.",
+    "active_url": "The :attribute is not a valid URL.",
+    "after": "The :attribute must be a date after :date.",
+    "after_or_equal": "The :attribute must be a date after or equal to :date.",
+    "alpha": "The :attribute must only contain letters.",
+    "alpha_dash": "The :attribute must only contain letters, numbers, dashes and underscores.",
+    "alpha_num": "The :attribute must only contain letters and numbers.",
+    "array": "The :attribute must be an array.",
+    "attributes": {
+      "address": "Address",
+      "age": "Age",
+      "available": "Available",
+      "city": "City",
+      "content": "Content",
+      "country": "Country",
+      "date": "Date",
+      "day": "Day",
+      "description": "Description",
+      "email": "e-mail",
+      "excerpt": "Excerpt",
+      "first_name": "First name",
+      "gender": "Gender",
+      "hour": "Hour",
+      "import": {
+        "price_lists": {
+          "article_num_main": "Main article number",
+          "country": "Country",
+          "currency": "Currency",
+          "price": "Price"
+        },
+        "pump_series": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "icon": "Icon image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El power adjustment",
+          "types": "Types"
+        },
+        "pumps": {
+          "applications": "Applications",
+          "article_num_archive": "Archive article number",
+          "article_num_main": "Main article number",
+          "article_num_reserve": "Reserve article number",
+          "brand": "Brand",
+          "category": "Category",
+          "connection_type": "Connection type",
+          "currency": "Currency",
+          "description": "Description",
+          "dn_pressure": "Pressure side DN",
+          "dn_suction": "Suction side DN",
+          "dp_peak_performance": "Peak hydraulic performance",
+          "dp_standby_performance": "Standby hydraulic performance",
+          "fluid_temp_max": "Min. fluid temp",
+          "fluid_temp_min": "Max. fluid temp",
+          "is_discontinued": "Is discontinued",
+          "mains_connection": "Mains connection",
+          "name": "Name",
+          "power_adjustment": "El. power adjustment",
+          "price": "Price",
+          "ptp_length": "Port-to-port length",
+          "pump_cross_sectional_drawing_image": "Pump cross sectional drawing image",
+          "pump_electric_diagram_image": "Pump electric diagram image",
+          "pump_files": "Pump files",
+          "pump_image": "Pump image",
+          "pump_sizes_image": "Pump sizes image",
+          "rated_current": "Rated current",
+          "rated_power": "Rated power",
+          "series": "Series",
+          "sp_performance": "Hydraulic performance",
+          "types": "Types",
+          "weight": "Weight"
+        }
+      },
+      "itn": "ITN",
+      "last_name": "Last name",
+      "middle_name": "Middle name",
+      "minute": "Minute",
+      "mobile": "Mobile",
+      "month": "Month",
+      "name": "Name",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "phone": "Phone",
+      "price_lists": "Price lists",
+      "pumps": "Pumps",
+      "second": "Second",
+      "sex": "Sex",
+      "size": "Size",
+      "time": "Time",
+      "title": "Title",
+      "username": "Username",
+      "year": "Year"
+    },
+    "before": "The :attribute must be a date before :date.",
+    "before_or_equal": "The :attribute must be a date before or equal to :date.",
+    "between": {
+      "array": "The :attribute must have between :min and :max items.",
+      "file": "The :attribute must be between :min and :max kilobytes.",
+      "numeric": "The :attribute must be between :min and :max.",
+      "string": "The :attribute must be between :min and :max characters."
+    },
+    "boolean": "The :attribute field must be true or false.",
+    "confirmed": "The :attribute confirmation does not match.",
+    "current_password": "The password is incorrect.",
+    "custom": {
+      "city": {
+        "correct": "Choose a correct city for area"
+      }
+    },
+    "date": "The :attribute is not a valid date.",
+    "date_equals": "The :attribute must be a date equal to :date.",
+    "date_format": "The :attribute does not match the format :format.",
+    "different": "The :attribute and :other must be different.",
+    "digits": "The :attribute must be :digits digits.",
+    "digits_between": "The :attribute must be between :min and :max digits.",
+    "dimensions": "The :attribute has invalid image dimensions.",
+    "distinct": "The :attribute field has a duplicate value.",
+    "email": "The :attribute must be a valid email address.",
+    "ends_with": "The :attribute must end with one of the following: :values.",
+    "exists": "The selected :attribute is invalid.",
+    "file": "The :attribute must be a file.",
+    "filled": "The :attribute field must have a value.",
+    "gt": {
+      "array": "The :attribute must have more than :value items.",
+      "file": "The :attribute must be greater than :value kilobytes.",
+      "numeric": "The :attribute must be greater than :value.",
+      "string": "The :attribute must be greater than :value characters."
+    },
+    "gte": {
+      "array": "The :attribute must have :value items or more.",
+      "file": "The :attribute must be greater than or equal :value kilobytes.",
+      "numeric": "The :attribute must be greater than or equal :value.",
+      "string": "The :attribute must be greater than or equal :value characters."
+    },
+    "image": "The :attribute must be an image.",
+    "import": {
+      "exception": ":attribute weren't fully uploaded. Reload the page and try again",
+      "in_array": "The :attribute is invalid. Not found in database",
+      "in_array_complex": "The :attribute is invalid. Follow ids dont exist in database",
+      "sheet_name": {
+        "brand": "Brand in list name doesn't exist",
+        "series": "Series in list name doesn't exist"
+      }
+    },
+    "in": "The selected :attribute is invalid.",
+    "in_array": "The :attribute field does not exist in :other.",
+    "integer": "The :attribute must be an integer.",
+    "ip": "The :attribute must be a valid IP address.",
+    "ipv4": "The :attribute must be a valid IPv4 address.",
+    "ipv6": "The :attribute must be a valid IPv6 address.",
+    "json": "The :attribute must be a valid JSON string.",
+    "lt": {
+      "array": "The :attribute must have less than :value items.",
+      "file": "The :attribute must be less than :value kilobytes.",
+      "numeric": "The :attribute must be less than :value.",
+      "string": "The :attribute must be less than :value characters."
+    },
+    "lte": {
+      "array": "The :attribute must not have more than :value items.",
+      "file": "The :attribute must be less than or equal :value kilobytes.",
+      "numeric": "The :attribute must be less than or equal :value.",
+      "string": "The :attribute must be less than or equal :value characters."
+    },
+    "max": {
+      "array": "The :attribute must not have more than :max items.",
+      "file": "The :attribute must not be greater than :max kilobytes.",
+      "numeric": "The :attribute must not be greater than :max.",
+      "string": "The :attribute must not be greater than :max characters."
+    },
+    "mimes": "The :attribute must be a file of type: :values.",
+    "mimetypes": "The :attribute must be a file of type: :values.",
+    "min": {
+      "array": "The :attribute must have at least :min items.",
+      "file": "The :attribute must be at least :min kilobytes.",
+      "numeric": "The :attribute must be at least :min.",
+      "string": "The :attribute must be at least :min characters."
+    },
+    "multiple_of": "The :attribute must be a multiple of :value.",
+    "not_in": "The selected :attribute is invalid.",
+    "not_regex": "The :attribute format is invalid.",
+    "numeric": "The :attribute must be a number.",
+    "password": "The password is incorrect.",
+    "present": "The :attribute field must be present.",
+    "prohibited": "The :attribute field is prohibited.",
+    "prohibited_if": "The :attribute field is prohibited when :other is :value.",
+    "prohibited_unless": "The :attribute field is prohibited unless :other is in :values.",
+    "regex": "The :attribute format is invalid.",
+    "required": "The :attribute field is required.",
+    "required_if": "The :attribute field is required when :other is :value.",
+    "required_unless": "The :attribute field is required unless :other is in :values.",
+    "required_with": "The :attribute field is required when :values is present.",
+    "required_with_all": "The :attribute field is required when :values are present.",
+    "required_without": "The :attribute field is required when :values is not present.",
+    "required_without_all": "The :attribute field is required when none of :values are present.",
+    "same": "The :attribute and :other must match.",
+    "size": {
+      "array": "The :attribute must contain :size items.",
+      "file": "The :attribute must be :size kilobytes.",
+      "numeric": "The :attribute must be :size.",
+      "string": "The :attribute must be :size characters."
+    },
+    "starts_with": "The :attribute must start with one of the following: :values.",
+    "string": "The :attribute must be a string.",
+    "timezone": "The :attribute must be a valid timezone.",
+    "unique": "The :attribute has already been taken.",
+    "uploaded": "The :attribute failed to upload.",
+    "url": "The :attribute must be a valid URL.",
+    "uuid": "The :attribute must be a valid UUID."
+  },
+  "ru.auth": {
+    "failed": "\u041D\u0435\u0432\u0435\u0440\u043D\u043E\u0435 \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "throttle": "\u0421\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u043F\u043E\u043F\u044B\u0442\u043E\u043A \u0432\u0445\u043E\u0434\u0430. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437 \u0447\u0435\u0440\u0435\u0437 :seconds \u0441\u0435\u043A\u0443\u043D\u0434."
+  },
+  "ru.flash": {
+    "email_verification": {
+      "sent_again": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 Email \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E ",
+      "verified": "Email \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D"
+    },
+    "price_lists": {
+      "imported": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "projects": {
+      "created": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0441\u043E\u0437\u0434\u0430\u043D",
+      "deleted": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "updated": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"
+    },
+    "pump_series": {
+      "imported": "\u0421\u0435\u0440\u0438\u0438 \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "pumps": {
+      "imported": "\u041D\u0430\u0441\u043E\u0441\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "selections": {
+      "added": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+      "deleted": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "pumps_not_found": "\u041F\u043E \u0437\u0430\u0434\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E"
+    },
+    "users": {
+      "password_changed": "\u041F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0438\u0437\u043C\u0435\u043D\u0435\u043D",
+      "updated": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435 \u0431\u044B\u043B\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430"
+    }
+  },
+  "ru.graphic": {
+    "axis": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "head": "\u041D\u0430\u043F\u043E\u0440, \u043C"
+    },
+    "legend": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434",
+      "head": "\u041D\u0430\u043F\u043E\u0440",
+      "intersection_point": "\u0422\u043E\u0447\u043A\u0430 \u043F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u044F",
+      "working_point": "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u0442\u043E\u0447\u043A\u0430"
+    }
+  },
+  "ru.messages": {
+    "function_development": "\u0424\u0443\u043D\u043A\u0446\u0438\u044F \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435",
+    "selections": {
+      "no_series_selected": "\u041D\u0435 \u0432\u044B\u0431\u0440\u0430\u043D\u0430 \u043D\u0438 \u043E\u0434\u043D\u0430 \u0441\u0435\u0440\u0438\u044F",
+      "notification": {
+        "attention": "\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435",
+        "description": {
+          "applications": "\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "power_adjustment": "\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0442\u0438\u043F\u044B",
+          "1": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u0430\u044F \u0441\u0435\u0440\u0438\u044F",
+          "2": "\u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u0444\u0438\u043B\u044C\u0442\u0440\u0430:"
+        }
+      }
+    },
+    "service_development": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435"
+  },
+  "ru.pages": {
+    "change_locale": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A",
+    "dashboard": {
+      "marketplace": "\u041C\u0430\u0440\u043A\u0435\u0442\u043F\u043B\u0435\u0439\u0441",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "select": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A",
+      "title": "\u0414\u0430\u0448\u0431\u043E\u0440\u0434"
+    },
+    "email_verification": {
+      "logout": "\u0412\u044B\u0439\u0442\u0438",
+      "send_again": "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0441\u0441\u044B\u043B\u043A\u0443 \u0435\u0449\u0435 \u0440\u0430\u0437",
+      "text1": "\u041F\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043C \u043F\u0440\u0438\u0441\u0442\u0443\u043F\u0438\u0442\u044C \u043A \u0440\u0430\u0431\u043E\u0442\u0435, \u043D\u0435 \u043C\u043E\u0433\u043B\u0438 \u0431\u044B \u0432\u044B \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C \u0441\u0432\u043E\u0439 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B, \u043F\u0435\u0440\u0435\u0439\u0434\u044F \u043F\u043E \u0441\u0441\u044B\u043B\u043A\u0435, \u043A\u043E\u0442\u043E\u0440\u0443\u044E \u043C\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u043B\u0438 \u0432\u0430\u043C \u043F\u043E \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u0435?",
+      "text2": "\u0415\u0441\u043B\u0438 \u0432\u044B \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0435 \u043F\u0438\u0441\u044C\u043C\u043E, \u043C\u044B \u0441 \u0440\u0430\u0434\u043E\u0441\u0442\u044C\u044E \u0432\u044B\u0448\u043B\u0435\u043C \u0432\u0430\u043C \u0434\u0440\u0443\u0433\u043E\u0435. \u0422\u0430\u043A\u0436\u0435 \u043D\u0430 \u0432\u0441\u044F\u043A\u0438\u0439 \u0441\u043B\u0443\u0447\u0430\u0439 \u043F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u0430\u043F\u043A\u0443 \"\u0421\u043F\u0430\u043C\"",
+      "thanks": "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0447\u0442\u043E \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043B\u0438\u0441\u044C"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "\u0412\u043E\u0439\u0442\u0438",
+      "not_registered": "\u0415\u0449\u0451 \u043D\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "welcome": "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C!"
+    },
+    "profile": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "discounts": {
+        "discount": "\u0421\u043A\u0438\u0434\u043A\u0430, %",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+      },
+      "index": {
+        "cards": {
+          "password": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+          "user_info": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435"
+        },
+        "change_password": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+        "city": "\u0413\u043E\u0440\u043E\u0434",
+        "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+        "currency": {
+          "label": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "tooltip": "\u0412\u0430\u043B\u044E\u0442\u0430 \u0432\u043B\u0438\u044F\u0435\u0442 \u043D\u0430 ..."
+        },
+        "current_password": "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "email": "E-mail",
+        "first_name": "\u0418\u043C\u044F",
+        "itn": "\u0418\u041D\u041D",
+        "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+        "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+        "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+        "new_password": "\u041D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "new_password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+        "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+        "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+        "save_changes": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "tab": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F"
+      },
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "title": "\u041F\u0440\u043E\u0444\u0438\u043B\u044C"
+    },
+    "projects": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "export": {
+        "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+        "choose_selections": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0431\u043E\u0440\u044B \u0434\u043B\u044F \u044D\u043A\u0441\u043F\u043E\u0440\u0442\u0430",
+        "m": "\u043C",
+        "m3h": "\u043C\xB3/\u0447",
+        "print": {
+          "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+          "personal_price": "\u0412\u044B\u0432\u043E\u0434 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_info": "\u0412\u044B\u0432\u043E\u0434 \u0442\u0435\u0445-\u0438\u043D\u0444\u043E",
+          "retail_price": "\u0412\u044B\u0432\u043E\u0434 \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+        },
+        "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u0440\u043E\u0435\u043A\u0442\u0430"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+        "clone": {
+          "button": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+          "save_as": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u0430\u043A",
+          "title": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+        },
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432 \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E"
+        },
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F",
+        "table": {
+          "count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        }
+      },
+      "show": {
+        "label": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?"
+        },
+        "save_button": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "table": {
+          "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P\u2081, \u043A\u0412",
+          "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+          "price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "selected_pump": "\u041E\u0431\u043E\u0437\u043D. \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439"
+        }
+      },
+      "title": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?"
+        },
+        "table": {
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B"
+      }
+    },
+    "pump_series": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u0435\u0440\u0438\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "is_discontinued": "\u0421\u043D\u044F\u0442\u0430 \u0441 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E",
+        "create": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?"
+        },
+        "table": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?",
+          "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B \u0438 \u0441\u0435\u0440\u0438\u0438",
+        "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u0438",
+        "upload_images": {
+          "images": {
+            "icons": "\u0418\u043A\u043E\u043D\u043A\u0438",
+            "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441 300, .jpg, .jpeg, .png)"
+          },
+          "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B",
+        "choose": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B, \u0432 \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441",
+        "ok": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C",
+        "pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "title": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441 \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B"
+      },
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "data": {
+        "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "article_num_archive": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0430\u0440\u0445\u0438\u0432\u043D\u044B\u0439",
+        "article_num_main": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439",
+        "article_num_reserve": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439",
+        "brand": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C",
+        "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+        "connection": "\u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+        "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+        "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "price": "\u0426\u0435\u043D\u0430",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+        "rated_current": "\u0422\u043E\u043A, A",
+        "rated_power": "P, \u043A\u0412",
+        "series": "\u0421\u0435\u0440\u0438\u044F",
+        "types": "\u0422\u0438\u043F\u044B",
+        "weight": "\u041C\u0430\u0441\u0441\u0430, \u043A\u0433"
+      },
+      "errors_title": "\u041E\u0448\u0438\u0431\u043A\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438:",
+      "hydraulic_perf": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+      "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "search": {
+        "button": "\u041F\u043E\u0438\u0441\u043A",
+        "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043F\u043E \u0430\u0440\u0442\u0438\u043A\u0443\u043B\u0430\u043C\u0438 \u0438 \u0438\u043C\u0435\u043D\u0438"
+      },
+      "tabs": {
+        "double": "\u0421\u0434\u0432\u043E\u0435\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+        "single": "\u041E\u0434\u0438\u043D\u0430\u0440\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B"
+      },
+      "title": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u044B",
+      "upload_price_lists": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "upload_tech_info": {
+        "files": {
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "title": "\u0424\u0430\u0439\u043B\u044B (\u043C\u0430\u043A\u0441. 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "\u0412\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagrams": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0441\u0445\u0435\u043C\u044B \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "pump_sizes": "\u0421\u0445\u0435\u043C\u044B \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432",
+          "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+          "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441. 300, .jpg, .jpeg, .png)"
+        },
+        "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0442\u0435\u0445-\u0438\u043D\u0444\u043E"
+      }
+    },
+    "register": {
+      "already_registered": "\u0423\u0436\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "email": "E-mail",
+      "first_name": "\u0418\u043C\u044F",
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+      "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+      "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+      "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+      "please_register": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C",
+      "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+      "register": "\u0417\u0430\u0440\u0433\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
+    },
+    "selections": {
+      "back": {
+        "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "to_selections_dashboard": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+          "to_projects": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+        },
+        "double_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "double_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "fire_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "fire_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "preferences": {
+          "pump": {
+            "borehole": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u043A\u0432\u0430\u0436\u0438\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "double": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "drainage": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0434\u0440\u0435\u043D\u0430\u0436\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "single": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430"
+          },
+          "station": {
+            "fire": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F",
+            "water": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F"
+          }
+        },
+        "single_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "single_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "subtitle": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043F \u043F\u043E\u0434\u0431\u043E\u0440\u0430",
+        "title": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "water_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "water_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "404": {
+          "back": "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+          "subtitle": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u043E\u043C",
+          "title": "\u0418\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0443 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043D\u0438 \u043A \u043E\u0434\u043D\u043E\u043C\u0443 \u0442\u0438\u043F\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        }
+      },
+      "double_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439"
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440",
+        "work_scheme": "\u0421\u0445\u0435\u043C\u0430 \u0440\u0430\u0431\u043E\u0442\u044B"
+      },
+      "single_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "applications": {
+          "label": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0439! (\u043D\u0430\u0441\u043E\u0441\u0430\u043C \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0440\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u043C \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F)\n"
+        },
+        "backup_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "main_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0441\u043D\u043E\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "curves": "\u041A\u0440\u0438\u0432\u0430\u044F(\u044B\u0435)",
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432."
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "temp_tooltip": {
+          "orange": "\u041E\u0440\u0430\u043D\u0436\u0435\u0432\u044B\u0439 - \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0430\u0441\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u0432 \u0441\u0435\u0440\u0438\u0438 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443, \u0438 \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u043D\u0438 \u0431\u0443\u0434\u0443\u0442 \u043F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u044B",
+          "red": "\u041A\u0440\u0430\u0441\u043D\u044B\u0439 - \u0441\u0435\u0440\u0438\u044F \u043D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u0438\u043B\u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "total_selections_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u043A\u0430 \u043F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+        "table": {
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "comment": "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delivery_status": "\u0421\u0442\u0430\u0442\u0443\u0441 \u043F\u043E\u0441\u0442\u0430\u0432\u043A\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "status": "\u0421\u0442\u0430\u0442\u0443\u0441",
+          "user_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "user_full_name": "\u0424\u0418\u041E \u043A\u043B\u0438\u0435\u043D\u0442\u0430",
+          "user_organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438 \u043A\u043B\u0438\u0435\u043D\u0442\u0430"
+        },
+        "title": "\u041F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+      },
+      "title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+      "users": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u0424\u0418\u041E \u0438\u043B\u0438 \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430 \u043F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+        "table": {
+          "avg_projects_price": "\u0421\u0440\u0435\u0434\u043D\u044F\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "full_name": "\u0424\u0418\u041E",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0430\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "title": "\u041F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C"
+      }
+    },
+    "users": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "email_verified": "E-mail \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+          "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0424\u0418\u041E \u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438"
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "\u0410\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          },
+          "discounts": {
+            "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+          },
+          "projects": {
+            "tab": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          }
+        },
+        "table": {
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "email": "E-mail",
+          "full_name": "\u0424\u0418\u041E",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
+        }
+      },
+      "title": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438"
+    }
+  },
+  "ru.pagination": {
+    "next": "\u0412\u043F\u0435\u0440\u0451\u0434 &raquo;",
+    "previous": "&laquo; \u041D\u0430\u0437\u0430\u0434"
+  },
+  "ru.passwords": {
+    "reset": "\u0412\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0441\u0431\u0440\u043E\u0448\u0435\u043D!",
+    "sent": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u0441\u0431\u0440\u043E\u0441 \u043F\u0430\u0440\u043E\u043B\u044F \u0431\u044B\u043B\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430!",
+    "throttled": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u0434\u043E\u0436\u0434\u0438\u0442\u0435 \u043F\u0435\u0440\u0435\u0434 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0439 \u043F\u043E\u043F\u044B\u0442\u043A\u043E\u0439.",
+    "token": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u043A\u043E\u0434 \u0441\u0431\u0440\u043E\u0441\u0430 \u043F\u0430\u0440\u043E\u043B\u044F.",
+    "user": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043D\u0430\u0439\u0442\u0438 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441 \u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C."
+  },
+  "ru.tooltips": {
+    "clone": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+    "delete": "\u0423\u0434\u0430\u043B\u0438\u0442\u044C",
+    "detail": "\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435",
+    "edit": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C",
+    "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+    "popconfirm": {
+      "no": "\u041D\u0435\u0442",
+      "yes": "\u0414\u0430"
+    },
+    "print": "\u041F\u0435\u0447\u0430\u0442\u044C",
+    "save": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
+    "statistics": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+    "view": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
+  },
+  "ru.validation": {
+    "accepted": "\u0412\u044B \u0434\u043E\u043B\u0436\u043D\u044B \u043F\u0440\u0438\u043D\u044F\u0442\u044C :attribute.",
+    "active_url": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432\u043E\u043C.",
+    "attributes": {
+      "address": "\u0410\u0434\u0440\u0435\u0441",
+      "age": "\u0412\u043E\u0437\u0440\u0430\u0441\u0442",
+      "available": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u043E",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "content": "\u041A\u043E\u043D\u0442\u0435\u043D\u0442",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "date": "\u0414\u0430\u0442\u0430",
+      "day": "\u0414\u0435\u043D\u044C",
+      "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+      "email": "e-mail",
+      "excerpt": "\u0412\u044B\u0434\u0435\u0440\u0436\u043A\u0430",
+      "first_name": "\u0418\u043C\u044F",
+      "gender": "\u041F\u043E\u043B",
+      "hour": "\u0427\u0430\u0441",
+      "import": {
+        "price_lists": {
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "price": "\u0426\u0435\u043D\u0430"
+        },
+        "pump_series": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "icon": "\u0418\u043A\u043E\u043D\u043A\u0430",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0442\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "pumps": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "article_num_archive": "\u0410\u0440\u0445\u0438\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_reserve": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+          "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dp_peak_performance": "\u041F\u0438\u043A\u043E\u0432\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "dp_standby_performance": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "mains_connection": "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A \u0441\u0435\u0442\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u042D\u043B.\u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438",
+          "price": "\u0426\u0435\u043D\u0430",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+          "pump_cross_sectional_drawing_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0432\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagram_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0441\u0445\u0435\u043C\u044B",
+          "pump_files": "\u0424\u0430\u0439\u043B\u044B",
+          "pump_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_sizes_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "rated_current": "\u041D\u043E\u043C\u0438\u043D\u0430\u043B\u044C\u043D\u044B\u0439 \u0442\u043E\u043A",
+          "rated_power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C",
+          "series": "\u0421\u0435\u0440\u0438\u044F",
+          "sp_performance": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "types": "\u0422\u0438\u043F\u044B",
+          "weight": "\u041C\u0430\u0441\u0441\u0430"
+        }
+      },
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "minute": "\u041C\u0438\u043D\u0443\u0442\u0430",
+      "mobile": "\u041C\u043E\u0431. \u043D\u043E\u043C\u0435\u0440",
+      "month": "\u041C\u0435\u0441\u044F\u0446",
+      "name": "\u0418\u043C\u044F",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u0430\u0440\u043E\u043B\u044F",
+      "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+      "price_lists": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "second": "\u0421\u0435\u043A\u0443\u043D\u0434\u0430",
+      "sex": "\u041F\u043E\u043B",
+      "size": "\u0420\u0430\u0437\u043C\u0435\u0440",
+      "time": "\u0412\u0440\u0435\u043C\u044F",
+      "title": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+      "username": "\u041D\u0438\u043A\u043D\u0435\u0439\u043C",
+      "year": "\u0413\u043E\u0434"
+    },
+    "before": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "city": {
+        "correct": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0438\u0439 \u0433\u043E\u0440\u043E\u0434 \u0438\u0437 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0439 \u043E\u0431\u043B\u0430\u0441\u0442\u0438"
+      }
+    },
+    "date": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u043E\u0439 \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u041F\u043E\u043B\u044F :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0440\u0430\u0437\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F.",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F.",
+    "distinct": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ends_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043C.",
+    "import": {
+      "exception": ":attribute \u0431\u044B\u043B\u0438 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B \u043D\u0435 \u0434\u043E \u043A\u043E\u043D\u0446\u0430. \u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0438 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0441\u043D\u043E\u0432\u0430",
+      "in_array": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u041D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "in_array_complex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "sheet_name": {
+        "brand": "\u0411\u0440\u0435\u043D\u0434 \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D",
+        "series": "\u0421\u0435\u0440\u0438\u044F \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u0430"
+      }
+    },
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u044B\u043C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "ip": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IP-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv4": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv4-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv6": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv6-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "json": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043F\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C.",
+    "regex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439 :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "timezone": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u0447\u0430\u0441\u043E\u0432\u044B\u043C \u043F\u043E\u044F\u0441\u043E\u043C.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043F\u043E\u043B\u044F :attribute \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u043C UUID."
+  },
+  "ru.validation-inline": {
+    "accepted": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043F\u0440\u0438\u043D\u044F\u0442\u043E.",
+    "active_url": "\u041D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432.",
+    "before": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "attribute-name": {
+        "rule-name": "custom-message"
+      }
+    },
+    "date": "\u041D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043E\u0442\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F \u043E\u0442 :other",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B.",
+    "distinct": "\u041F\u043E\u043B\u0435 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0439 \u0430\u0434\u0440\u0435\u0441 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C.",
+    "ends_with": "\u0414\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u0421\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435.",
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u043E\u0435 \u0447\u0438\u0441\u043B\u043E.",
+    "ip": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IP-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv4": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv4-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv6": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv6-\u0430\u0434\u0440\u0435\u0441.",
+    "json": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C.",
+    "regex": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C \u0441 :other.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u0430.",
+    "timezone": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u043F\u043E\u044F\u0441.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 UUID."
+  }
 };
 
 /***/ }),
@@ -13308,6 +15470,704 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function t(t){return"object"==typeof t&&null!=t&&1===t.nodeType}function e(t,e){return(!e||"hidden"!==t)&&"visible"!==t&&"clip"!==t}function n(t,n){if(t.clientHeight<t.scrollHeight||t.clientWidth<t.scrollWidth){var r=getComputedStyle(t,null);return e(r.overflowY,n)||e(r.overflowX,n)||function(t){var e=function(t){if(!t.ownerDocument||!t.ownerDocument.defaultView)return null;try{return t.ownerDocument.defaultView.frameElement}catch(t){return null}}(t);return!!e&&(e.clientHeight<t.scrollHeight||e.clientWidth<t.scrollWidth)}(t)}return!1}function r(t,e,n,r,i,o,l,d){return o<t&&l>e||o>t&&l<e?0:o<=t&&d<=n||l>=e&&d>=n?o-t-r:l>e&&d<n||o<t&&d>n?l-e+i:0}/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(e,i){var o=window,l=i.scrollMode,d=i.block,u=i.inline,h=i.boundary,a=i.skipOverflowHiddenElements,c="function"==typeof h?h:function(t){return t!==h};if(!t(e))throw new TypeError("Invalid target");for(var f=document.scrollingElement||document.documentElement,s=[],p=e;t(p)&&c(p);){if((p=p.parentElement)===f){s.push(p);break}null!=p&&p===document.body&&n(p)&&!n(document.documentElement)||null!=p&&n(p,a)&&s.push(p)}for(var m=o.visualViewport?o.visualViewport.width:innerWidth,g=o.visualViewport?o.visualViewport.height:innerHeight,w=window.scrollX||pageXOffset,v=window.scrollY||pageYOffset,W=e.getBoundingClientRect(),b=W.height,H=W.width,y=W.top,E=W.right,M=W.bottom,V=W.left,x="start"===d||"nearest"===d?y:"end"===d?M:y+b/2,I="center"===u?V+H/2:"end"===u?E:V,C=[],T=0;T<s.length;T++){var k=s[T],B=k.getBoundingClientRect(),D=B.height,O=B.width,R=B.top,X=B.right,Y=B.bottom,L=B.left;if("if-needed"===l&&y>=0&&V>=0&&M<=g&&E<=m&&y>=R&&M<=Y&&V>=L&&E<=X)return C;var S=getComputedStyle(k),j=parseInt(S.borderLeftWidth,10),q=parseInt(S.borderTopWidth,10),z=parseInt(S.borderRightWidth,10),A=parseInt(S.borderBottomWidth,10),F=0,G=0,J="offsetWidth"in k?k.offsetWidth-k.clientWidth-j-z:0,K="offsetHeight"in k?k.offsetHeight-k.clientHeight-q-A:0;if(f===k)F="start"===d?x:"end"===d?x-g:"nearest"===d?r(v,v+g,g,q,A,v+x,v+x+b,b):x-g/2,G="start"===u?I:"center"===u?I-m/2:"end"===u?I-m:r(w,w+m,m,j,z,w+I,w+I+H,H),F=Math.max(0,F+v),G=Math.max(0,G+w);else{F="start"===d?x-R-q:"end"===d?x-Y+A+K:"nearest"===d?r(R,Y,D,q,A+K,x,x+b,b):x-(R+D/2)+K/2,G="start"===u?I-L-j:"center"===u?I-(L+O/2)+J/2:"end"===u?I-X+z+J:r(L,X,O,j,z+J,I,I+H,H);var N=k.scrollLeft,P=k.scrollTop;x+=P-(F=Math.max(0,Math.min(P+F,k.scrollHeight-D+K))),I+=N-(G=Math.max(0,Math.min(N+G,k.scrollWidth-O+J)))}C.push({el:k,top:F,left:G})}return C}
 //# sourceMappingURL=index.module.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/lang.js/src/lang.js":
+/*!******************************************!*\
+  !*** ./node_modules/lang.js/src/lang.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ *  Lang.js for Laravel localization in JavaScript.
+ *
+ *  @version 1.1.12
+ *  @license MIT https://github.com/rmariuzzo/Lang.js/blob/master/LICENSE
+ *  @site    https://github.com/rmariuzzo/Lang.js
+ *  @author  Rubens Mariuzzo <rubens@mariuzzo.com>
+ */
+
+(function(root, factory) {
+    'use strict';
+
+    if (true) {
+        // AMD support.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else {}
+
+}(this, function() {
+    'use strict';
+
+    function inferLocale() {
+        if (typeof document !== 'undefined' && document.documentElement) {
+            return document.documentElement.lang;
+        }
+    };
+
+    function convertNumber(str) {
+        if (str === '-Inf') {
+            return -Infinity;
+        } else if (str === '+Inf' || str === 'Inf' || str === '*') {
+            return Infinity;
+        }
+        return parseInt(str, 10);
+    }
+
+    // Derived from: https://github.com/symfony/translation/blob/460390765eb7bb9338a4a323b8a4e815a47541ba/Interval.php
+    var intervalRegexp = /^({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])$/;
+    var anyIntervalRegexp = /({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])/;
+
+    // Default options //
+
+    var defaults = {
+        locale: 'en'/** The default locale if not set. */
+    };
+
+    // Constructor //
+
+    var Lang = function(options) {
+        options = options || {};
+        this.locale = options.locale || inferLocale() || defaults.locale;
+        this.fallback = options.fallback;
+        this.messages = options.messages;
+    };
+
+    // Methods //
+
+    /**
+     * Set messages source.
+     *
+     * @param messages {object} The messages source.
+     *
+     * @return void
+     */
+    Lang.prototype.setMessages = function(messages) {
+        this.messages = messages;
+    };
+
+    /**
+     * Get the current locale.
+     *
+     * @return {string} The current locale.
+     */
+    Lang.prototype.getLocale = function() {
+        return this.locale || this.fallback;
+    };
+
+    /**
+     * Set the current locale.
+     *
+     * @param locale {string} The locale to set.
+     *
+     * @return void
+     */
+    Lang.prototype.setLocale = function(locale) {
+        this.locale = locale;
+    };
+
+    /**
+     * Get the fallback locale being used.
+     *
+     * @return void
+     */
+    Lang.prototype.getFallback = function() {
+        return this.fallback;
+    };
+
+    /**
+     * Set the fallback locale being used.
+     *
+     * @param fallback {string} The fallback locale.
+     *
+     * @return void
+     */
+    Lang.prototype.setFallback = function(fallback) {
+        this.fallback = fallback;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {boolean} true if the given key is defined on the messages source, otherwise false.
+     */
+    Lang.prototype.has = function(key, locale) {
+        if (typeof key !== 'string' || !this.messages) {
+            return false;
+        }
+
+        return this._getMessage(key, locale) !== null;
+    };
+
+    /**
+     * Get a translation message.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.get = function(key, replacements, locale) {
+        if (!this.has(key, locale)) {
+            return key;
+        }
+
+        var message = this._getMessage(key, locale);
+        if (message === null) {
+            return key;
+        }
+
+        if (replacements) {
+            message = this._applyReplacements(message, replacements);
+        }
+
+        return message;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.trans = function(key, replacements) {
+        return this.get(key, replacements);
+    };
+
+    /**
+     * Gets the plural or singular form of the message specified based on an integer value.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.choice = function(key, number, replacements, locale) {
+        // Set default values for parameters replace and locale
+        replacements = typeof replacements !== 'undefined'
+            ? replacements
+            : {};
+
+        // The count must be replaced if found in the message
+        replacements.count = number;
+
+        // Message to get the plural or singular
+        var message = this.get(key, replacements, locale);
+
+        // Check if message is not null or undefined
+        if (message === null || message === undefined) {
+            return message;
+        }
+
+        // Separate the plural from the singular, if any
+        var messageParts = message.split('|');
+
+        // Get the explicit rules, If any
+        var explicitRules = [];
+
+        for (var i = 0; i < messageParts.length; i++) {
+            messageParts[i] = messageParts[i].trim();
+
+            if (anyIntervalRegexp.test(messageParts[i])) {
+                var messageSpaceSplit = messageParts[i].split(/\s/);
+                explicitRules.push(messageSpaceSplit.shift());
+                messageParts[i] = messageSpaceSplit.join(' ');
+            }
+        }
+
+        // Check if there's only one message
+        if (messageParts.length === 1) {
+            // Nothing to do here
+            return message;
+        }
+
+        // Check the explicit rules
+        for (var j = 0; j < explicitRules.length; j++) {
+            if (this._testInterval(number, explicitRules[j])) {
+                return messageParts[j];
+            }
+        }
+
+        locale = locale || this._getLocale(key);
+        var pluralForm = this._getPluralForm(number, locale);
+
+        return messageParts[pluralForm];
+    };
+
+    /**
+     * This method act as an alias to choice() method.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.transChoice = function(key, count, replacements) {
+        return this.choice(key, count, replacements);
+    };
+
+    /**
+     * Parse a message key into components.
+     *
+     * @param key {string} The message key to parse.
+     * @param key {string} The message locale to parse
+     * @return {object} A key object with source and entries properties.
+     */
+    Lang.prototype._parseKey = function(key, locale) {
+        if (typeof key !== 'string' || typeof locale !== 'string') {
+            return null;
+        }
+
+        var segments = key.split('.');
+        var source = segments[0].replace(/\//g, '.');
+
+        return {
+            source: locale + '.' + source,
+            sourceFallback: this.getFallback() + '.' + source,
+            entries: segments.slice(1)
+        };
+    };
+
+    /**
+     * Returns a translation message. Use `Lang.get()` method instead, this methods assumes the key exists.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {string} The translation message for the given key.
+     */
+    Lang.prototype._getMessage = function(key, locale) {
+        locale = locale || this.getLocale();
+        
+        key = this._parseKey(key, locale);
+
+        // Ensure message source exists.
+        if (this.messages[key.source] === undefined && this.messages[key.sourceFallback] === undefined) {
+            return null;
+        }
+
+        // Get message from default locale.
+        var message = this.messages[key.source];
+        var entries = key.entries.slice();
+        var subKey = entries.join('.');
+        message = message !== undefined ? this._getValueInKey(message, subKey) : undefined;
+
+
+        // Get message from fallback locale.
+        if (typeof message !== 'string' && this.messages[key.sourceFallback]) {
+            message = this.messages[key.sourceFallback];
+            entries = key.entries.slice();
+            subKey = '';
+            while (entries.length && message !== undefined) {
+                var subKey = !subKey ? entries.shift() : subKey.concat('.', entries.shift());
+                if (message[subKey]) {
+                    message = message[subKey]
+                    subKey = '';
+                }
+            }
+        }
+
+        if (typeof message !== 'string') {
+            return null;
+        }
+
+        return message;
+    };
+
+    Lang.prototype._getValueInKey = function(obj, str) {
+        // If the full key exists just return the value
+        if (typeof obj[str] === 'string') {
+            return obj[str]
+        }
+
+        str = str.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        str = str.replace(/^\./, '');           // strip a leading dot
+
+        var parts = str.split('.');
+
+        for (var i = 0, n = parts.length; i < n; ++i) {
+            var currentKey = parts.slice(0, i + 1).join('.');
+            var restOfTheKey = parts.slice(i + 1, parts.length).join('.')
+            
+            if (obj[currentKey]) {
+                return this._getValueInKey(obj[currentKey], restOfTheKey)
+            }
+        }
+
+        return obj;
+    };
+
+    /**
+     * Return the locale to be used between default and fallback.
+     * @param {String} key
+     * @return {String}
+     */
+    Lang.prototype._getLocale = function(key) {
+        key = this._parseKey(key, this.locale)
+        if (this.messages[key.source]) {
+            return this.locale;
+        }
+        if (this.messages[key.sourceFallback]) {
+            return this.fallback;
+        }
+        return null;
+    };
+
+    /**
+     * Find a message in a translation tree using both dotted keys and regular ones
+     *
+     * @param pathSegments {array} An array of path segments such as ['family', 'father']
+     * @param tree {object} The translation tree
+     */
+    Lang.prototype._findMessageInTree = function(pathSegments, tree) {
+        while (pathSegments.length && tree !== undefined) {
+            var dottedKey = pathSegments.join('.');
+            if (tree[dottedKey]) {
+                tree = tree[dottedKey];
+                break;
+            }
+
+            tree = tree[pathSegments.shift()]
+        }
+
+        return tree;
+    };
+
+    /**
+     * Sort replacement keys by length in descending order.
+     *
+     * @param a {string} Replacement key
+     * @param b {string} Sibling replacement key
+     * @return {number}
+     * @private
+     */
+    Lang.prototype._sortReplacementKeys = function(a, b) {
+        return b.length - a.length;
+    };
+
+    /**
+     * Apply replacements to a string message containing placeholders.
+     *
+     * @param message {string} The text message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The string message with replacements applied.
+     */
+    Lang.prototype._applyReplacements = function(message, replacements) {
+        var keys = Object.keys(replacements).sort(this._sortReplacementKeys);
+
+        keys.forEach(function(replace) {
+            message = message.replace(new RegExp(':' + replace, 'gi'), function (match) {
+                var value = replacements[replace];
+
+                // Capitalize all characters.
+                var allCaps = match === match.toUpperCase();
+                if (allCaps) {
+                    return value.toUpperCase();
+                }
+
+                // Capitalize first letter.
+                var firstCap = match === match.replace(/\w/i, function(letter) {
+                    return letter.toUpperCase();
+                });
+                if (firstCap) {
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                }
+
+                return value;
+            })
+        });
+        return message;
+    };
+
+    /**
+     * Checks if the given `count` is within the interval defined by the {string} `interval`
+     *
+     * @param  count     {int}    The amount of items.
+     * @param  interval  {string} The interval to be compared with the count.
+     * @return {boolean}          Returns true if count is within interval; false otherwise.
+     */
+    Lang.prototype._testInterval = function(count, interval) {
+        /**
+         * From the Symfony\Component\Translation\Interval Docs
+         *
+         * Tests if a given number belongs to a given math interval.
+         *
+         * An interval can represent a finite set of numbers:
+         *
+         *  {1,2,3,4}
+         *
+         * An interval can represent numbers between two numbers:
+         *
+         *  [1, +Inf]
+         *  ]-1,2[
+         *
+         * The left delimiter can be [ (inclusive) or ] (exclusive).
+         * The right delimiter can be [ (exclusive) or ] (inclusive).
+         * Beside numbers, you can use -Inf and +Inf for the infinite.
+         */
+
+        if (typeof interval !== 'string') {
+            throw 'Invalid interval: should be a string.';
+        }
+
+        interval = interval.trim();
+
+        var matches = interval.match(intervalRegexp);
+        if (!matches) {
+            throw 'Invalid interval: ' + interval;
+        }
+
+        if (matches[2]) {
+            var items = matches[2].split(',');
+            for (var i = 0; i < items.length; i++) {
+                if (parseInt(items[i], 10) === count) {
+                    return true;
+                }
+            }
+        } else {
+            // Remove falsy values.
+            matches = matches.filter(function(match) {
+                return !!match;
+            });
+
+            var leftDelimiter = matches[1];
+            var leftNumber = convertNumber(matches[2]);
+            if (leftNumber === Infinity) {
+                leftNumber = -Infinity;
+            }
+            var rightNumber = convertNumber(matches[3]);
+            var rightDelimiter = matches[4];
+
+            return (leftDelimiter === '[' ? count >= leftNumber : count > leftNumber)
+                && (rightDelimiter === ']' ? count <= rightNumber : count < rightNumber);
+        }
+
+        return false;
+    };
+
+    /**
+     * Returns the plural position to use for the given locale and number.
+     *
+     * The plural rules are derived from code of the Zend Framework (2010-09-25),
+     * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
+     * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+     *
+     * @param {Number} count
+     * @param {String} locale
+     * @return {Number}
+     */
+    Lang.prototype._getPluralForm = function(count, locale) {
+        switch (locale) {
+            case 'az':
+            case 'bo':
+            case 'dz':
+            case 'id':
+            case 'ja':
+            case 'jv':
+            case 'ka':
+            case 'km':
+            case 'kn':
+            case 'ko':
+            case 'ms':
+            case 'th':
+            case 'tr':
+            case 'vi':
+            case 'zh':
+                return 0;
+
+            case 'af':
+            case 'bn':
+            case 'bg':
+            case 'ca':
+            case 'da':
+            case 'de':
+            case 'el':
+            case 'en':
+            case 'eo':
+            case 'es':
+            case 'et':
+            case 'eu':
+            case 'fa':
+            case 'fi':
+            case 'fo':
+            case 'fur':
+            case 'fy':
+            case 'gl':
+            case 'gu':
+            case 'ha':
+            case 'he':
+            case 'hu':
+            case 'is':
+            case 'it':
+            case 'ku':
+            case 'lb':
+            case 'ml':
+            case 'mn':
+            case 'mr':
+            case 'nah':
+            case 'nb':
+            case 'ne':
+            case 'nl':
+            case 'nn':
+            case 'no':
+            case 'om':
+            case 'or':
+            case 'pa':
+            case 'pap':
+            case 'ps':
+            case 'pt':
+            case 'so':
+            case 'sq':
+            case 'sv':
+            case 'sw':
+            case 'ta':
+            case 'te':
+            case 'tk':
+            case 'ur':
+            case 'zu':
+                return (count == 1)
+                    ? 0
+                    : 1;
+
+            case 'am':
+            case 'bh':
+            case 'fil':
+            case 'fr':
+            case 'gun':
+            case 'hi':
+            case 'hy':
+            case 'ln':
+            case 'mg':
+            case 'nso':
+            case 'xbr':
+            case 'ti':
+            case 'wa':
+                return ((count === 0) || (count === 1))
+                    ? 0
+                    : 1;
+
+            case 'be':
+            case 'bs':
+            case 'hr':
+            case 'ru':
+            case 'sr':
+            case 'uk':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'cs':
+            case 'sk':
+                return (count == 1)
+                    ? 0
+                    : (((count >= 2) && (count <= 4))
+                        ? 1
+                        : 2);
+
+            case 'ga':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : 2);
+
+            case 'lt':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'sl':
+                return (count % 100 == 1)
+                    ? 0
+                    : ((count % 100 == 2)
+                        ? 1
+                        : (((count % 100 == 3) || (count % 100 == 4))
+                            ? 2
+                            : 3));
+
+            case 'mk':
+                return (count % 10 == 1)
+                    ? 0
+                    : 1;
+
+            case 'mt':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 1) && (count % 100 < 11)))
+                        ? 1
+                        : (((count % 100 > 10) && (count % 100 < 20))
+                            ? 2
+                            : 3));
+
+            case 'lv':
+                return (count === 0)
+                    ? 0
+                    : (((count % 10 == 1) && (count % 100 != 11))
+                        ? 1
+                        : 2);
+
+            case 'pl':
+                return (count == 1)
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 12) || (count % 100 > 14)))
+                        ? 1
+                        : 2);
+
+            case 'cy':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : (((count == 8) || (count == 11))
+                            ? 2
+                            : 3));
+
+            case 'ro':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 0) && (count % 100 < 20)))
+                        ? 1
+                        : 2);
+
+            case 'ar':
+                return (count === 0)
+                    ? 0
+                    : ((count == 1)
+                        ? 1
+                        : ((count == 2)
+                            ? 2
+                            : (((count % 100 >= 3) && (count % 100 <= 10))
+                                ? 3
+                                : (((count % 100 >= 11) && (count % 100 <= 99))
+                                    ? 4
+                                    : 5))));
+
+            default:
+                return 0;
+        }
+    };
+
+    return Lang;
+
+}));
 
 
 /***/ }),
@@ -14003,9 +16863,10 @@ module.exports = toNumber;
         months: 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
             '_'
         ),
-        monthsShort: 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
-            '_'
-        ),
+        monthsShort:
+            'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
+                '_'
+            ),
         weekdays: 'الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
         weekdaysShort: 'احد_اتنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
         weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
@@ -14062,7 +16923,7 @@ module.exports = toNumber;
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
 //! moment.js locale configuration
-//! locale : Arabic (Lybia) [ar-ly]
+//! locale : Arabic (Libya) [ar-ly]
 //! author : Ali Hmer: https://github.com/kikoanis
 
 ;(function (global, factory) {
@@ -14267,9 +17128,10 @@ module.exports = toNumber;
         months: 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
             '_'
         ),
-        monthsShort: 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
-            '_'
-        ),
+        monthsShort:
+            'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split(
+                '_'
+            ),
         weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
         weekdaysShort: 'احد_اثنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
         weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
@@ -14365,9 +17227,10 @@ module.exports = toNumber;
         months: 'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
             '_'
         ),
-        monthsShort: 'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
-            '_'
-        ),
+        monthsShort:
+            'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
+                '_'
+            ),
         weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
         weekdaysShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
         weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
@@ -14463,9 +17326,10 @@ module.exports = toNumber;
         months: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
             '_'
         ),
-        monthsShort: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
-            '_'
-        ),
+        monthsShort:
+            'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split(
+                '_'
+            ),
         weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
         weekdaysShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
         weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
@@ -14766,9 +17630,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'yan_fev_mar_apr_may_iyn_iyl_avq_sen_okt_noy_dek'.split('_'),
-        weekdays: 'Bazar_Bazar ertəsi_Çərşənbə axşamı_Çərşənbə_Cümə axşamı_Cümə_Şənbə'.split(
-            '_'
-        ),
+        weekdays:
+            'Bazar_Bazar ertəsi_Çərşənbə axşamı_Çərşənbə_Cümə axşamı_Cümə_Şənbə'.split(
+                '_'
+            ),
         weekdaysShort: 'Baz_BzE_ÇAx_Çər_CAx_Cüm_Şən'.split('_'),
         weekdaysMin: 'Bz_BE_ÇA_Çə_CA_Cü_Şə'.split('_'),
         weekdaysParseExact: true,
@@ -14893,20 +17758,21 @@ module.exports = toNumber;
             format: 'студзеня_лютага_сакавіка_красавіка_траўня_чэрвеня_ліпеня_жніўня_верасня_кастрычніка_лістапада_снежня'.split(
                 '_'
             ),
-            standalone: 'студзень_люты_сакавік_красавік_травень_чэрвень_ліпень_жнівень_верасень_кастрычнік_лістапад_снежань'.split(
-                '_'
-            ),
+            standalone:
+                'студзень_люты_сакавік_красавік_травень_чэрвень_ліпень_жнівень_верасень_кастрычнік_лістапад_снежань'.split(
+                    '_'
+                ),
         },
-        monthsShort: 'студ_лют_сак_крас_трав_чэрв_ліп_жнів_вер_каст_ліст_снеж'.split(
-            '_'
-        ),
+        monthsShort:
+            'студ_лют_сак_крас_трав_чэрв_ліп_жнів_вер_каст_ліст_снеж'.split('_'),
         weekdays: {
             format: 'нядзелю_панядзелак_аўторак_сераду_чацвер_пятніцу_суботу'.split(
                 '_'
             ),
-            standalone: 'нядзеля_панядзелак_аўторак_серада_чацвер_пятніца_субота'.split(
-                '_'
-            ),
+            standalone:
+                'нядзеля_панядзелак_аўторак_серада_чацвер_пятніца_субота'.split(
+                    '_'
+                ),
             isFormat: /\[ ?[Ууў] ?(?:мінулую|наступную)? ?\] ?dddd/,
         },
         weekdaysShort: 'нд_пн_ат_ср_чц_пт_сб'.split('_'),
@@ -15225,9 +18091,10 @@ module.exports = toNumber;
         months: 'জানুয়ারি_ফেব্রুয়ারি_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর'.split(
             '_'
         ),
-        monthsShort: 'জানু_ফেব্রু_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্ট_অক্টো_নভে_ডিসে'.split(
-            '_'
-        ),
+        monthsShort:
+            'জানু_ফেব্রু_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্ট_অক্টো_নভে_ডিসে'.split(
+                '_'
+            ),
         weekdays: 'রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পতিবার_শুক্রবার_শনিবার'.split(
             '_'
         ),
@@ -15372,9 +18239,10 @@ module.exports = toNumber;
         months: 'জানুয়ারি_ফেব্রুয়ারি_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর'.split(
             '_'
         ),
-        monthsShort: 'জানু_ফেব্রু_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্ট_অক্টো_নভে_ডিসে'.split(
-            '_'
-        ),
+        monthsShort:
+            'জানু_ফেব্রু_মার্চ_এপ্রিল_মে_জুন_জুলাই_আগস্ট_সেপ্ট_অক্টো_নভে_ডিসে'.split(
+                '_'
+            ),
         weekdays: 'রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পতিবার_শুক্রবার_শনিবার'.split(
             '_'
         ),
@@ -15509,14 +18377,16 @@ module.exports = toNumber;
         months: 'ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ'.split(
             '_'
         ),
-        monthsShort: 'ཟླ་1_ཟླ་2_ཟླ་3_ཟླ་4_ཟླ་5_ཟླ་6_ཟླ་7_ཟླ་8_ཟླ་9_ཟླ་10_ཟླ་11_ཟླ་12'.split(
-            '_'
-        ),
+        monthsShort:
+            'ཟླ་1_ཟླ་2_ཟླ་3_ཟླ་4_ཟླ་5_ཟླ་6_ཟླ་7_ཟླ་8_ཟླ་9_ཟླ་10_ཟླ་11_ཟླ་12'.split(
+                '_'
+            ),
         monthsShortRegex: /^(ཟླ་\d{1,2})/,
         monthsParseExact: true,
-        weekdays: 'གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་'.split(
-            '_'
-        ),
+        weekdays:
+            'གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་'.split(
+                '_'
+            ),
         weekdaysShort: 'ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་'.split(
             '_'
         ),
@@ -15679,9 +18549,12 @@ module.exports = toNumber;
             /^du/i,
             /^ker/i,
         ],
-        monthsRegex = /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu|gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
-        monthsStrictRegex = /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu)/i,
-        monthsShortStrictRegex = /^(gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
+        monthsRegex =
+            /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu|gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
+        monthsStrictRegex =
+            /^(genver|c[ʼ\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu)/i,
+        monthsShortStrictRegex =
+            /^(gen|c[ʼ\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
         fullWeekdaysParse = [
             /^sul/i,
             /^lun/i,
@@ -15872,9 +18745,10 @@ module.exports = toNumber;
         months: 'januar_februar_mart_april_maj_juni_juli_august_septembar_oktobar_novembar_decembar'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mar._apr._maj._jun._jul._aug._sep._okt._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mar._apr._maj._jun._jul._aug._sep._okt._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota'.split(
             '_'
@@ -15975,21 +18849,24 @@ module.exports = toNumber;
 
     var ca = moment.defineLocale('ca', {
         months: {
-            standalone: 'gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre'.split(
-                '_'
-            ),
+            standalone:
+                'gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre'.split(
+                    '_'
+                ),
             format: "de gener_de febrer_de març_d'abril_de maig_de juny_de juliol_d'agost_de setembre_d'octubre_de novembre_de desembre".split(
                 '_'
             ),
             isFormat: /D[oD]?(\s)+MMMM/,
         },
-        monthsShort: 'gen._febr._març_abr._maig_juny_jul._ag._set._oct._nov._des.'.split(
-            '_'
-        ),
+        monthsShort:
+            'gen._febr._març_abr._maig_juny_jul._ag._set._oct._nov._des.'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte'.split(
-            '_'
-        ),
+        weekdays:
+            'diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte'.split(
+                '_'
+            ),
         weekdaysShort: 'dg._dl._dt._dc._dj._dv._ds.'.split('_'),
         weekdaysMin: 'dg_dl_dt_dc_dj_dv_ds'.split('_'),
         weekdaysParseExact: true,
@@ -16089,9 +18966,15 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var months = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split(
-            '_'
-        ),
+    var months = {
+            format: 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split(
+                '_'
+            ),
+            standalone:
+                'ledna_února_března_dubna_května_června_července_srpna_září_října_listopadu_prosince'.split(
+                    '_'
+                ),
+        },
         monthsShort = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_'),
         monthsParse = [
             /^led/i,
@@ -16109,7 +18992,8 @@ module.exports = toNumber;
         ],
         // NOTE: 'červen' is substring of 'červenec'; therefore 'červenec' must precede 'červen' in the regex to be fully matched.
         // Otherwise parser matches '1. červenec' as '1. červen' + 'ec'.
-        monthsRegex = /^(leden|únor|březen|duben|květen|červenec|července|červen|června|srpen|září|říjen|listopad|prosinec|led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i;
+        monthsRegex =
+            /^(leden|únor|březen|duben|květen|červenec|července|červen|června|srpen|září|říjen|listopad|prosinec|led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i;
 
     function plural(n) {
         return n > 1 && n < 5 && ~~(n / 10) !== 1;
@@ -16175,8 +19059,10 @@ module.exports = toNumber;
         monthsShortRegex: monthsRegex,
         // NOTE: 'červen' is substring of 'červenec'; therefore 'červenec' must precede 'červen' in the regex to be fully matched.
         // Otherwise parser matches '1. červenec' as '1. červen' + 'ec'.
-        monthsStrictRegex: /^(leden|ledna|února|únor|březen|března|duben|dubna|květen|května|červenec|července|červen|června|srpen|srpna|září|říjen|října|listopadu|listopad|prosinec|prosince)/i,
-        monthsShortStrictRegex: /^(led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i,
+        monthsStrictRegex:
+            /^(leden|ledna|února|únor|březen|března|duben|dubna|květen|května|červenec|července|červen|června|srpen|srpna|září|říjen|října|listopadu|listopad|prosinec|prosince)/i,
+        monthsShortStrictRegex:
+            /^(led|úno|bře|dub|kvě|čvn|čvc|srp|zář|říj|lis|pro)/i,
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
@@ -16284,9 +19170,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'кӑр_нар_пуш_ака_май_ҫӗр_утӑ_ҫур_авн_юпа_чӳк_раш'.split('_'),
-        weekdays: 'вырсарникун_тунтикун_ытларикун_юнкун_кӗҫнерникун_эрнекун_шӑматкун'.split(
-            '_'
-        ),
+        weekdays:
+            'вырсарникун_тунтикун_ытларикун_юнкун_кӗҫнерникун_эрнекун_шӑматкун'.split(
+                '_'
+            ),
         weekdaysShort: 'выр_тун_ытл_юн_кӗҫ_эрн_шӑм'.split('_'),
         weekdaysMin: 'вр_тн_ыт_юн_кҫ_эр_шм'.split('_'),
         longDateFormat: {
@@ -16368,9 +19255,10 @@ module.exports = toNumber;
         monthsShort: 'Ion_Chwe_Maw_Ebr_Mai_Meh_Gor_Aws_Med_Hyd_Tach_Rhag'.split(
             '_'
         ),
-        weekdays: 'Dydd Sul_Dydd Llun_Dydd Mawrth_Dydd Mercher_Dydd Iau_Dydd Gwener_Dydd Sadwrn'.split(
-            '_'
-        ),
+        weekdays:
+            'Dydd Sul_Dydd Llun_Dydd Mawrth_Dydd Mercher_Dydd Iau_Dydd Gwener_Dydd Sadwrn'.split(
+                '_'
+            ),
         weekdaysShort: 'Sul_Llun_Maw_Mer_Iau_Gwe_Sad'.split('_'),
         weekdaysMin: 'Su_Ll_Ma_Me_Ia_Gw_Sa'.split('_'),
         weekdaysParseExact: true,
@@ -16570,13 +19458,13 @@ module.exports = toNumber;
         months: 'Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
             '_'
         ),
-        monthsShort: 'Jän._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
-            '_'
-        ),
+        monthsShort:
+            'Jän._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),
         monthsParseExact: true,
-        weekdays: 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
-            '_'
-        ),
+        weekdays:
+            'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
+                '_'
+            ),
         weekdaysShort: 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
         weekdaysMin: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
         weekdaysParseExact: true,
@@ -16665,13 +19553,13 @@ module.exports = toNumber;
         months: 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
             '_'
         ),
-        monthsShort: 'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
-            '_'
-        ),
+        monthsShort:
+            'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),
         monthsParseExact: true,
-        weekdays: 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
-            '_'
-        ),
+        weekdays:
+            'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
+                '_'
+            ),
         weekdaysShort: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
         weekdaysMin: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
         weekdaysParseExact: true,
@@ -16762,13 +19650,13 @@ module.exports = toNumber;
         months: 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split(
             '_'
         ),
-        monthsShort: 'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split(
-            '_'
-        ),
+        monthsShort:
+            'Jan._Feb._März_Apr._Mai_Juni_Juli_Aug._Sep._Okt._Nov._Dez.'.split('_'),
         monthsParseExact: true,
-        weekdays: 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
-            '_'
-        ),
+        weekdays:
+            'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split(
+                '_'
+            ),
         weekdaysShort: 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
         weekdaysMin: 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
         weekdaysParseExact: true,
@@ -16955,12 +19843,14 @@ module.exports = toNumber;
     }
 
     var el = moment.defineLocale('el', {
-        monthsNominativeEl: 'Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος'.split(
-            '_'
-        ),
-        monthsGenitiveEl: 'Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου'.split(
-            '_'
-        ),
+        monthsNominativeEl:
+            'Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος'.split(
+                '_'
+            ),
+        monthsGenitiveEl:
+            'Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου'.split(
+                '_'
+            ),
         months: function (momentToFormat, format) {
             if (!momentToFormat) {
                 return this._monthsNominativeEl;
@@ -17844,9 +20734,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
-            '_'
-        ),
+    var monthsShortDot =
+            'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
+                '_'
+            ),
         monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_'),
         monthsParse = [
             /^ene/i,
@@ -17862,7 +20753,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dic/i,
         ],
-        monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
+        monthsRegex =
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
 
     var esDo = moment.defineLocale('es-do', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split(
@@ -17879,8 +20771,10 @@ module.exports = toNumber;
         },
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
-        monthsShortStrictRegex: /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
+        monthsStrictRegex:
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
+        monthsShortStrictRegex:
+            /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
@@ -17968,9 +20862,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
-            '_'
-        ),
+    var monthsShortDot =
+            'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
+                '_'
+            ),
         monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_'),
         monthsParse = [
             /^ene/i,
@@ -17986,7 +20881,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dic/i,
         ],
-        monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
+        monthsRegex =
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
 
     var esMx = moment.defineLocale('es-mx', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split(
@@ -18003,8 +20899,10 @@ module.exports = toNumber;
         },
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
-        monthsShortStrictRegex: /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
+        monthsStrictRegex:
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
+        monthsShortStrictRegex:
+            /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
@@ -18094,9 +20992,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
-            '_'
-        ),
+    var monthsShortDot =
+            'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
+                '_'
+            ),
         monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_'),
         monthsParse = [
             /^ene/i,
@@ -18112,7 +21011,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dic/i,
         ],
-        monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
+        monthsRegex =
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
 
     var esUs = moment.defineLocale('es-us', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split(
@@ -18129,8 +21029,10 @@ module.exports = toNumber;
         },
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
-        monthsShortStrictRegex: /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
+        monthsStrictRegex:
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
+        monthsShortStrictRegex:
+            /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
@@ -18218,9 +21120,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
-            '_'
-        ),
+    var monthsShortDot =
+            'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split(
+                '_'
+            ),
         monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_'),
         monthsParse = [
             /^ene/i,
@@ -18236,7 +21139,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dic/i,
         ],
-        monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
+        monthsRegex =
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
 
     var es = moment.defineLocale('es', {
         months: 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split(
@@ -18253,8 +21157,10 @@ module.exports = toNumber;
         },
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
-        monthsShortStrictRegex: /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
+        monthsStrictRegex:
+            /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)/i,
+        monthsShortStrictRegex:
+            /^(ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i,
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
@@ -18368,12 +21274,12 @@ module.exports = toNumber;
         months: 'jaanuar_veebruar_märts_aprill_mai_juuni_juuli_august_september_oktoober_november_detsember'.split(
             '_'
         ),
-        monthsShort: 'jaan_veebr_märts_apr_mai_juuni_juuli_aug_sept_okt_nov_dets'.split(
-            '_'
-        ),
-        weekdays: 'pühapäev_esmaspäev_teisipäev_kolmapäev_neljapäev_reede_laupäev'.split(
-            '_'
-        ),
+        monthsShort:
+            'jaan_veebr_märts_apr_mai_juuni_juuli_aug_sept_okt_nov_dets'.split('_'),
+        weekdays:
+            'pühapäev_esmaspäev_teisipäev_kolmapäev_neljapäev_reede_laupäev'.split(
+                '_'
+            ),
         weekdaysShort: 'P_E_T_K_N_R_L'.split('_'),
         weekdaysMin: 'P_E_T_K_N_R_L'.split('_'),
         longDateFormat: {
@@ -18444,13 +21350,15 @@ module.exports = toNumber;
         months: 'urtarrila_otsaila_martxoa_apirila_maiatza_ekaina_uztaila_abuztua_iraila_urria_azaroa_abendua'.split(
             '_'
         ),
-        monthsShort: 'urt._ots._mar._api._mai._eka._uzt._abu._ira._urr._aza._abe.'.split(
-            '_'
-        ),
+        monthsShort:
+            'urt._ots._mar._api._mai._eka._uzt._abu._ira._urr._aza._abe.'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'igandea_astelehena_asteartea_asteazkena_osteguna_ostirala_larunbata'.split(
-            '_'
-        ),
+        weekdays:
+            'igandea_astelehena_asteartea_asteazkena_osteguna_ostirala_larunbata'.split(
+                '_'
+            ),
         weekdaysShort: 'ig._al._ar._az._og._ol._lr.'.split('_'),
         weekdaysMin: 'ig_al_ar_az_og_ol_lr'.split('_'),
         weekdaysParseExact: true,
@@ -18551,15 +21459,18 @@ module.exports = toNumber;
         months: 'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split(
             '_'
         ),
-        monthsShort: 'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split(
-            '_'
-        ),
-        weekdays: 'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split(
-            '_'
-        ),
-        weekdaysShort: 'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split(
-            '_'
-        ),
+        monthsShort:
+            'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split(
+                '_'
+            ),
+        weekdays:
+            'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split(
+                '_'
+            ),
+        weekdaysShort:
+            'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split(
+                '_'
+            ),
         weekdaysMin: 'ی_د_س_چ_پ_ج_ش'.split('_'),
         weekdaysParseExact: true,
         longDateFormat: {
@@ -18651,9 +21562,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var numbersPast = 'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(
-            ' '
-        ),
+    var numbersPast =
+            'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(
+                ' '
+            ),
         numbersFuture = [
             'nolla',
             'yhden',
@@ -18715,12 +21627,14 @@ module.exports = toNumber;
         months: 'tammikuu_helmikuu_maaliskuu_huhtikuu_toukokuu_kesäkuu_heinäkuu_elokuu_syyskuu_lokakuu_marraskuu_joulukuu'.split(
             '_'
         ),
-        monthsShort: 'tammi_helmi_maalis_huhti_touko_kesä_heinä_elo_syys_loka_marras_joulu'.split(
-            '_'
-        ),
-        weekdays: 'sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai'.split(
-            '_'
-        ),
+        monthsShort:
+            'tammi_helmi_maalis_huhti_touko_kesä_heinä_elo_syys_loka_marras_joulu'.split(
+                '_'
+            ),
+        weekdays:
+            'sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai'.split(
+                '_'
+            ),
         weekdaysShort: 'su_ma_ti_ke_to_pe_la'.split('_'),
         weekdaysMin: 'su_ma_ti_ke_to_pe_la'.split('_'),
         longDateFormat: {
@@ -18874,9 +21788,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_'),
-        weekdays: 'sunnudagur_mánadagur_týsdagur_mikudagur_hósdagur_fríggjadagur_leygardagur'.split(
-            '_'
-        ),
+        weekdays:
+            'sunnudagur_mánadagur_týsdagur_mikudagur_hósdagur_fríggjadagur_leygardagur'.split(
+                '_'
+            ),
         weekdaysShort: 'sun_mán_týs_mik_hós_frí_ley'.split('_'),
         weekdaysMin: 'su_má_tý_mi_hó_fr_le'.split('_'),
         longDateFormat: {
@@ -18947,9 +21862,10 @@ module.exports = toNumber;
         months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split(
             '_'
         ),
-        monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
-            '_'
-        ),
+        monthsShort:
+            'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
         weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
@@ -19035,9 +21951,10 @@ module.exports = toNumber;
         months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split(
             '_'
         ),
-        monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
-            '_'
-        ),
+        monthsShort:
+            'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
         weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
@@ -19123,9 +22040,12 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsStrictRegex = /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
-        monthsShortStrictRegex = /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?)/i,
-        monthsRegex = /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?|janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+    var monthsStrictRegex =
+            /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
+        monthsShortStrictRegex =
+            /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?)/i,
+        monthsRegex =
+            /(janv\.?|févr\.?|mars|avr\.?|mai|juin|juil\.?|août|sept\.?|oct\.?|nov\.?|déc\.?|janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i,
         monthsParse = [
             /^janv/i,
             /^févr/i,
@@ -19145,9 +22065,10 @@ module.exports = toNumber;
         months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split(
             '_'
         ),
-        monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
-            '_'
-        ),
+        monthsShort:
+            'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split(
+                '_'
+            ),
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
         monthsStrictRegex: monthsStrictRegex,
@@ -19246,12 +22167,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split(
-            '_'
-        ),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split(
-            '_'
-        );
+    var monthsShortWithDots =
+            'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split('_'),
+        monthsShortWithoutDots =
+            'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_');
 
     var fy = moment.defineLocale('fy', {
         months: 'jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber'.split(
@@ -19574,9 +22493,10 @@ module.exports = toNumber;
         months: 'xaneiro_febreiro_marzo_abril_maio_xuño_xullo_agosto_setembro_outubro_novembro_decembro'.split(
             '_'
         ),
-        monthsShort: 'xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'domingo_luns_martes_mércores_xoves_venres_sábado'.split('_'),
         weekdaysShort: 'dom._lun._mar._mér._xov._ven._sáb.'.split('_'),
@@ -19683,17 +22603,19 @@ module.exports = toNumber;
 
     var gomDeva = moment.defineLocale('gom-deva', {
         months: {
-            standalone: 'जानेवारी_फेब्रुवारी_मार्च_एप्रील_मे_जून_जुलय_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर'.split(
-                '_'
-            ),
+            standalone:
+                'जानेवारी_फेब्रुवारी_मार्च_एप्रील_मे_जून_जुलय_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर'.split(
+                    '_'
+                ),
             format: 'जानेवारीच्या_फेब्रुवारीच्या_मार्चाच्या_एप्रीलाच्या_मेयाच्या_जूनाच्या_जुलयाच्या_ऑगस्टाच्या_सप्टेंबराच्या_ऑक्टोबराच्या_नोव्हेंबराच्या_डिसेंबराच्या'.split(
                 '_'
             ),
             isFormat: /MMMM(\s)+D[oD]?/,
         },
-        monthsShort: 'जाने._फेब्रु._मार्च_एप्री._मे_जून_जुल._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.'.split(
-            '_'
-        ),
+        monthsShort:
+            'जाने._फेब्रु._मार्च_एप्री._मे_जून_जुल._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'आयतार_सोमार_मंगळार_बुधवार_बिरेस्तार_सुक्रार_शेनवार'.split('_'),
         weekdaysShort: 'आयत._सोम._मंगळ._बुध._ब्रेस्त._सुक्र._शेन.'.split('_'),
@@ -19826,17 +22748,17 @@ module.exports = toNumber;
 
     var gomLatn = moment.defineLocale('gom-latn', {
         months: {
-            standalone: 'Janer_Febrer_Mars_Abril_Mai_Jun_Julai_Agost_Setembr_Otubr_Novembr_Dezembr'.split(
-                '_'
-            ),
+            standalone:
+                'Janer_Febrer_Mars_Abril_Mai_Jun_Julai_Agost_Setembr_Otubr_Novembr_Dezembr'.split(
+                    '_'
+                ),
             format: 'Janerachea_Febrerachea_Marsachea_Abrilachea_Maiachea_Junachea_Julaiachea_Agostachea_Setembrachea_Otubrachea_Novembrachea_Dezembrachea'.split(
                 '_'
             ),
             isFormat: /MMMM(\s)+D[oD]?/,
         },
-        monthsShort: 'Jan._Feb._Mars_Abr._Mai_Jun_Jul._Ago._Set._Otu._Nov._Dez.'.split(
-            '_'
-        ),
+        monthsShort:
+            'Jan._Feb._Mars_Abr._Mai_Jun_Jul._Ago._Set._Otu._Nov._Dez.'.split('_'),
         monthsParseExact: true,
         weekdays: "Aitar_Somar_Mongllar_Budhvar_Birestar_Sukrar_Son'var".split('_'),
         weekdaysShort: 'Ait._Som._Mon._Bud._Bre._Suk._Son.'.split('_'),
@@ -19978,9 +22900,10 @@ module.exports = toNumber;
         months: 'જાન્યુઆરી_ફેબ્રુઆરી_માર્ચ_એપ્રિલ_મે_જૂન_જુલાઈ_ઑગસ્ટ_સપ્ટેમ્બર_ઑક્ટ્બર_નવેમ્બર_ડિસેમ્બર'.split(
             '_'
         ),
-        monthsShort: 'જાન્યુ._ફેબ્રુ._માર્ચ_એપ્રિ._મે_જૂન_જુલા._ઑગ._સપ્ટે._ઑક્ટ્._નવે._ડિસે.'.split(
-            '_'
-        ),
+        monthsShort:
+            'જાન્યુ._ફેબ્રુ._માર્ચ_એપ્રિ._મે_જૂન_જુલા._ઑગ._સપ્ટે._ઑક્ટ્._નવે._ડિસે.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'રવિવાર_સોમવાર_મંગળવાર_બુધ્વાર_ગુરુવાર_શુક્રવાર_શનિવાર'.split(
             '_'
@@ -20095,9 +23018,8 @@ module.exports = toNumber;
         months: 'ינואר_פברואר_מרץ_אפריל_מאי_יוני_יולי_אוגוסט_ספטמבר_אוקטובר_נובמבר_דצמבר'.split(
             '_'
         ),
-        monthsShort: 'ינו׳_פבר׳_מרץ_אפר׳_מאי_יוני_יולי_אוג׳_ספט׳_אוק׳_נוב׳_דצמ׳'.split(
-            '_'
-        ),
+        monthsShort:
+            'ינו׳_פבר׳_מרץ_אפר׳_מאי_יוני_יולי_אוג׳_ספט׳_אוק׳_נוב׳_דצמ׳'.split('_'),
         weekdays: 'ראשון_שני_שלישי_רביעי_חמישי_שישי_שבת'.split('_'),
         weekdaysShort: 'א׳_ב׳_ג׳_ד׳_ה׳_ו׳_ש׳'.split('_'),
         weekdaysMin: 'א_ב_ג_ד_ה_ו_ש'.split('_'),
@@ -20159,7 +23081,8 @@ module.exports = toNumber;
                 return number + ' שנים';
             },
         },
-        meridiemParse: /אחה"צ|לפנה"צ|אחרי הצהריים|לפני הצהריים|לפנות בוקר|בבוקר|בערב/i,
+        meridiemParse:
+            /אחה"צ|לפנה"צ|אחרי הצהריים|לפני הצהריים|לפנות בוקר|בבוקר|בערב/i,
         isPM: function (input) {
             return /^(אחה"צ|אחרי הצהריים|בערב)$/.test(input);
         },
@@ -20260,13 +23183,13 @@ module.exports = toNumber;
             format: 'जनवरी_फ़रवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितम्बर_अक्टूबर_नवम्बर_दिसम्बर'.split(
                 '_'
             ),
-            standalone: 'जनवरी_फरवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितंबर_अक्टूबर_नवंबर_दिसंबर'.split(
-                '_'
-            ),
+            standalone:
+                'जनवरी_फरवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितंबर_अक्टूबर_नवंबर_दिसंबर'.split(
+                    '_'
+                ),
         },
-        monthsShort: 'जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.'.split(
-            '_'
-        ),
+        monthsShort:
+            'जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.'.split('_'),
         weekdays: 'रविवार_सोमवार_मंगलवार_बुधवार_गुरूवार_शुक्रवार_शनिवार'.split('_'),
         weekdaysShort: 'रवि_सोम_मंगल_बुध_गुरू_शुक्र_शनि'.split('_'),
         weekdaysMin: 'र_सो_मं_बु_गु_शु_श'.split('_'),
@@ -20283,13 +23206,17 @@ module.exports = toNumber;
         longMonthsParse: monthsParse,
         shortMonthsParse: shortMonthsParse,
 
-        monthsRegex: /^(जनवरी|जन\.?|फ़रवरी|फरवरी|फ़र\.?|मार्च?|अप्रैल|अप्रै\.?|मई?|जून?|जुलाई|जुल\.?|अगस्त|अग\.?|सितम्बर|सितंबर|सित\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर|नव\.?|दिसम्बर|दिसंबर|दिस\.?)/i,
+        monthsRegex:
+            /^(जनवरी|जन\.?|फ़रवरी|फरवरी|फ़र\.?|मार्च?|अप्रैल|अप्रै\.?|मई?|जून?|जुलाई|जुल\.?|अगस्त|अग\.?|सितम्बर|सितंबर|सित\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर|नव\.?|दिसम्बर|दिसंबर|दिस\.?)/i,
 
-        monthsShortRegex: /^(जनवरी|जन\.?|फ़रवरी|फरवरी|फ़र\.?|मार्च?|अप्रैल|अप्रै\.?|मई?|जून?|जुलाई|जुल\.?|अगस्त|अग\.?|सितम्बर|सितंबर|सित\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर|नव\.?|दिसम्बर|दिसंबर|दिस\.?)/i,
+        monthsShortRegex:
+            /^(जनवरी|जन\.?|फ़रवरी|फरवरी|फ़र\.?|मार्च?|अप्रैल|अप्रै\.?|मई?|जून?|जुलाई|जुल\.?|अगस्त|अग\.?|सितम्बर|सितंबर|सित\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर|नव\.?|दिसम्बर|दिसंबर|दिस\.?)/i,
 
-        monthsStrictRegex: /^(जनवरी?|फ़रवरी|फरवरी?|मार्च?|अप्रैल?|मई?|जून?|जुलाई?|अगस्त?|सितम्बर|सितंबर|सित?\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर?|दिसम्बर|दिसंबर?)/i,
+        monthsStrictRegex:
+            /^(जनवरी?|फ़रवरी|फरवरी?|मार्च?|अप्रैल?|मई?|जून?|जुलाई?|अगस्त?|सितम्बर|सितंबर|सित?\.?|अक्टूबर|अक्टू\.?|नवम्बर|नवंबर?|दिसम्बर|दिसंबर?)/i,
 
-        monthsShortStrictRegex: /^(जन\.?|फ़र\.?|मार्च?|अप्रै\.?|मई?|जून?|जुल\.?|अग\.?|सित\.?|अक्टू\.?|नव\.?|दिस\.?)/i,
+        monthsShortStrictRegex:
+            /^(जन\.?|फ़र\.?|मार्च?|अप्रै\.?|मई?|जून?|जुल\.?|अग\.?|सित\.?|अक्टू\.?|नव\.?|दिस\.?)/i,
 
         calendar: {
             sameDay: '[आज] LT',
@@ -20452,13 +23379,15 @@ module.exports = toNumber;
             format: 'siječnja_veljače_ožujka_travnja_svibnja_lipnja_srpnja_kolovoza_rujna_listopada_studenoga_prosinca'.split(
                 '_'
             ),
-            standalone: 'siječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac'.split(
+            standalone:
+                'siječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac'.split(
+                    '_'
+                ),
+        },
+        monthsShort:
+            'sij._velj._ožu._tra._svi._lip._srp._kol._ruj._lis._stu._pro.'.split(
                 '_'
             ),
-        },
-        monthsShort: 'sij._velj._ožu._tra._svi._lip._srp._kol._ruj._lis._stu._pro.'.split(
-            '_'
-        ),
         monthsParseExact: true,
         weekdays: 'nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota'.split(
             '_'
@@ -20559,9 +23488,8 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var weekEndings = 'vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton'.split(
-        ' '
-    );
+    var weekEndings =
+        'vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton'.split(' ');
     function translate(number, withoutSuffix, key, isFuture) {
         var num = number;
         switch (key) {
@@ -20609,9 +23537,10 @@ module.exports = toNumber;
         months: 'január_február_március_április_május_június_július_augusztus_szeptember_október_november_december'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._márc._ápr._máj._jún._júl._aug._szept._okt._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._márc._ápr._máj._jún._júl._aug._szept._okt._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'vasárnap_hétfő_kedd_szerda_csütörtök_péntek_szombat'.split('_'),
         weekdaysShort: 'vas_hét_kedd_sze_csüt_pén_szo'.split('_'),
@@ -20700,14 +23629,16 @@ module.exports = toNumber;
             format: 'հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի'.split(
                 '_'
             ),
-            standalone: 'հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split(
-                '_'
-            ),
+            standalone:
+                'հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split(
+                    '_'
+                ),
         },
         monthsShort: 'հնվ_փտր_մրտ_ապր_մյս_հնս_հլս_օգս_սպտ_հկտ_նմբ_դկտ'.split('_'),
-        weekdays: 'կիրակի_երկուշաբթի_երեքշաբթի_չորեքշաբթի_հինգշաբթի_ուրբաթ_շաբաթ'.split(
-            '_'
-        ),
+        weekdays:
+            'կիրակի_երկուշաբթի_երեքշաբթի_չորեքշաբթի_հինգշաբթի_ուրբաթ_շաբաթ'.split(
+                '_'
+            ),
         weekdaysShort: 'կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ'.split('_'),
         weekdaysMin: 'կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ'.split('_'),
         longDateFormat: {
@@ -20990,9 +23921,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'jan_feb_mar_apr_maí_jún_júl_ágú_sep_okt_nóv_des'.split('_'),
-        weekdays: 'sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur'.split(
-            '_'
-        ),
+        weekdays:
+            'sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur'.split(
+                '_'
+            ),
         weekdaysShort: 'sun_mán_þri_mið_fim_fös_lau'.split('_'),
         weekdaysMin: 'Su_Má_Þr_Mi_Fi_Fö_La'.split('_'),
         longDateFormat: {
@@ -21535,9 +24467,10 @@ module.exports = toNumber;
         ),
         monthsShort: 'იან_თებ_მარ_აპრ_მაი_ივნ_ივლ_აგვ_სექ_ოქტ_ნოე_დეკ'.split('_'),
         weekdays: {
-            standalone: 'კვირა_ორშაბათი_სამშაბათი_ოთხშაბათი_ხუთშაბათი_პარასკევი_შაბათი'.split(
-                '_'
-            ),
+            standalone:
+                'კვირა_ორშაბათი_სამშაბათი_ოთხშაბათი_ხუთშაბათი_პარასკევი_შაბათი'.split(
+                    '_'
+                ),
             format: 'კვირას_ორშაბათს_სამშაბათს_ოთხშაბათს_ხუთშაბათს_პარასკევს_შაბათს'.split(
                 '_'
             ),
@@ -21563,13 +24496,12 @@ module.exports = toNumber;
         },
         relativeTime: {
             future: function (s) {
-                return s.replace(/(წამ|წუთ|საათ|წელ|დღ|თვ)(ი|ე)/, function (
-                    $0,
-                    $1,
-                    $2
-                ) {
-                    return $2 === 'ი' ? $1 + 'ში' : $1 + $2 + 'ში';
-                });
+                return s.replace(
+                    /(წამ|წუთ|საათ|წელ|დღ|თვ)(ი|ე)/,
+                    function ($0, $1, $2) {
+                        return $2 === 'ი' ? $1 + 'ში' : $1 + $2 + 'ში';
+                    }
+                );
             },
             past: function (s) {
                 if (/(წამი|წუთი|საათი|დღე|თვე)/.test(s)) {
@@ -21770,9 +24702,10 @@ module.exports = toNumber;
         months: 'មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ'.split(
             '_'
         ),
-        monthsShort: 'មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ'.split(
-            '_'
-        ),
+        monthsShort:
+            'មករា_កុម្ភៈ_មីនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ'.split(
+                '_'
+            ),
         weekdays: 'អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍'.split('_'),
         weekdaysShort: 'អា_ច_អ_ព_ព្រ_សុ_ស'.split('_'),
         weekdaysMin: 'អា_ច_អ_ព_ព្រ_សុ_ស'.split('_'),
@@ -21891,9 +24824,10 @@ module.exports = toNumber;
         months: 'ಜನವರಿ_ಫೆಬ್ರವರಿ_ಮಾರ್ಚ್_ಏಪ್ರಿಲ್_ಮೇ_ಜೂನ್_ಜುಲೈ_ಆಗಸ್ಟ್_ಸೆಪ್ಟೆಂಬರ್_ಅಕ್ಟೋಬರ್_ನವೆಂಬರ್_ಡಿಸೆಂಬರ್'.split(
             '_'
         ),
-        monthsShort: 'ಜನ_ಫೆಬ್ರ_ಮಾರ್ಚ್_ಏಪ್ರಿಲ್_ಮೇ_ಜೂನ್_ಜುಲೈ_ಆಗಸ್ಟ್_ಸೆಪ್ಟೆಂ_ಅಕ್ಟೋ_ನವೆಂ_ಡಿಸೆಂ'.split(
-            '_'
-        ),
+        monthsShort:
+            'ಜನ_ಫೆಬ್ರ_ಮಾರ್ಚ್_ಏಪ್ರಿಲ್_ಮೇ_ಜೂನ್_ಜುಲೈ_ಆಗಸ್ಟ್_ಸೆಪ್ಟೆಂ_ಅಕ್ಟೋ_ನವೆಂ_ಡಿಸೆಂ'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'ಭಾನುವಾರ_ಸೋಮವಾರ_ಮಂಗಳವಾರ_ಬುಧವಾರ_ಗುರುವಾರ_ಶುಕ್ರವಾರ_ಶನಿವಾರ'.split(
             '_'
@@ -22140,12 +25074,12 @@ module.exports = toNumber;
     var ku = moment.defineLocale('ku', {
         months: months,
         monthsShort: months,
-        weekdays: 'یه‌كشه‌ممه‌_دووشه‌ممه‌_سێشه‌ممه‌_چوارشه‌ممه‌_پێنجشه‌ممه‌_هه‌ینی_شه‌ممه‌'.split(
-            '_'
-        ),
-        weekdaysShort: 'یه‌كشه‌م_دووشه‌م_سێشه‌م_چوارشه‌م_پێنجشه‌م_هه‌ینی_شه‌ممه‌'.split(
-            '_'
-        ),
+        weekdays:
+            'یه‌كشه‌ممه‌_دووشه‌ممه‌_سێشه‌ممه‌_چوارشه‌ممه‌_پێنجشه‌ممه‌_هه‌ینی_شه‌ممه‌'.split(
+                '_'
+            ),
+        weekdaysShort:
+            'یه‌كشه‌م_دووشه‌م_سێشه‌م_چوارشه‌م_پێنجشه‌م_هه‌ینی_شه‌ممه‌'.split('_'),
         weekdaysMin: 'ی_د_س_چ_پ_ه_ش'.split('_'),
         weekdaysParseExact: true,
         longDateFormat: {
@@ -22409,13 +25343,15 @@ module.exports = toNumber;
         months: 'Januar_Februar_Mäerz_Abrëll_Mee_Juni_Juli_August_September_Oktober_November_Dezember'.split(
             '_'
         ),
-        monthsShort: 'Jan._Febr._Mrz._Abr._Mee_Jun._Jul._Aug._Sept._Okt._Nov._Dez.'.split(
-            '_'
-        ),
+        monthsShort:
+            'Jan._Febr._Mrz._Abr._Mee_Jun._Jul._Aug._Sept._Okt._Nov._Dez.'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'Sonndeg_Méindeg_Dënschdeg_Mëttwoch_Donneschdeg_Freideg_Samschdeg'.split(
-            '_'
-        ),
+        weekdays:
+            'Sonndeg_Méindeg_Dënschdeg_Mëttwoch_Donneschdeg_Freideg_Samschdeg'.split(
+                '_'
+            ),
         weekdaysShort: 'So._Mé._Dë._Më._Do._Fr._Sa.'.split('_'),
         weekdaysMin: 'So_Mé_Dë_Më_Do_Fr_Sa'.split('_'),
         weekdaysParseExact: true,
@@ -22496,9 +25432,10 @@ module.exports = toNumber;
         months: 'ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ'.split(
             '_'
         ),
-        monthsShort: 'ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ'.split(
-            '_'
-        ),
+        monthsShort:
+            'ມັງກອນ_ກຸມພາ_ມີນາ_ເມສາ_ພຶດສະພາ_ມິຖຸນາ_ກໍລະກົດ_ສິງຫາ_ກັນຍາ_ຕຸລາ_ພະຈິກ_ທັນວາ'.split(
+                '_'
+            ),
         weekdays: 'ອາທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ'.split('_'),
         weekdaysShort: 'ທິດ_ຈັນ_ອັງຄານ_ພຸດ_ພະຫັດ_ສຸກ_ເສົາ'.split('_'),
         weekdaysMin: 'ທ_ຈ_ອຄ_ພ_ພຫ_ສກ_ສ'.split('_'),
@@ -22630,9 +25567,10 @@ module.exports = toNumber;
             format: 'sausio_vasario_kovo_balandžio_gegužės_birželio_liepos_rugpjūčio_rugsėjo_spalio_lapkričio_gruodžio'.split(
                 '_'
             ),
-            standalone: 'sausis_vasaris_kovas_balandis_gegužė_birželis_liepa_rugpjūtis_rugsėjis_spalis_lapkritis_gruodis'.split(
-                '_'
-            ),
+            standalone:
+                'sausis_vasaris_kovas_balandis_gegužė_birželis_liepa_rugpjūtis_rugsėjis_spalis_lapkritis_gruodis'.split(
+                    '_'
+                ),
             isFormat: /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?|MMMM?(\[[^\[\]]*\]|\s)+D[oD]?/,
         },
         monthsShort: 'sau_vas_kov_bal_geg_bir_lie_rgp_rgs_spa_lap_grd'.split('_'),
@@ -22640,9 +25578,10 @@ module.exports = toNumber;
             format: 'sekmadienį_pirmadienį_antradienį_trečiadienį_ketvirtadienį_penktadienį_šeštadienį'.split(
                 '_'
             ),
-            standalone: 'sekmadienis_pirmadienis_antradienis_trečiadienis_ketvirtadienis_penktadienis_šeštadienis'.split(
-                '_'
-            ),
+            standalone:
+                'sekmadienis_pirmadienis_antradienis_trečiadienis_ketvirtadienis_penktadienis_šeštadienis'.split(
+                    '_'
+                ),
             isFormat: /dddd HH:mm/,
         },
         weekdaysShort: 'Sek_Pir_Ant_Tre_Ket_Pen_Šeš'.split('_'),
@@ -22760,9 +25699,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'jan_feb_mar_apr_mai_jūn_jūl_aug_sep_okt_nov_dec'.split('_'),
-        weekdays: 'svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena'.split(
-            '_'
-        ),
+        weekdays:
+            'svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena'.split(
+                '_'
+            ),
         weekdaysShort: 'Sv_P_O_T_C_Pk_S'.split('_'),
         weekdaysMin: 'Sv_P_O_T_C_Pk_S'.split('_'),
         weekdaysParseExact: true,
@@ -22867,9 +25807,8 @@ module.exports = toNumber;
         months: 'januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.'.split('_'),
         monthsParseExact: true,
         weekdays: 'nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota'.split(
             '_'
@@ -22971,9 +25910,10 @@ module.exports = toNumber;
         months: 'Kohi-tāte_Hui-tanguru_Poutū-te-rangi_Paenga-whāwhā_Haratua_Pipiri_Hōngoingoi_Here-turi-kōkā_Mahuru_Whiringa-ā-nuku_Whiringa-ā-rangi_Hakihea'.split(
             '_'
         ),
-        monthsShort: 'Kohi_Hui_Pou_Pae_Hara_Pipi_Hōngoi_Here_Mahu_Whi-nu_Whi-ra_Haki'.split(
-            '_'
-        ),
+        monthsShort:
+            'Kohi_Hui_Pou_Pae_Hara_Pipi_Hōngoi_Here_Mahu_Whi-nu_Whi-ra_Haki'.split(
+                '_'
+            ),
         monthsRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
         monthsStrictRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
         monthsShortRegex: /(?:['a-z\u0101\u014D\u016B]+\-?){1,3}/i,
@@ -23154,13 +26094,15 @@ module.exports = toNumber;
         months: 'ജനുവരി_ഫെബ്രുവരി_മാർച്ച്_ഏപ്രിൽ_മേയ്_ജൂൺ_ജൂലൈ_ഓഗസ്റ്റ്_സെപ്റ്റംബർ_ഒക്ടോബർ_നവംബർ_ഡിസംബർ'.split(
             '_'
         ),
-        monthsShort: 'ജനു._ഫെബ്രു._മാർ._ഏപ്രി._മേയ്_ജൂൺ_ജൂലൈ._ഓഗ._സെപ്റ്റ._ഒക്ടോ._നവം._ഡിസം.'.split(
-            '_'
-        ),
+        monthsShort:
+            'ജനു._ഫെബ്രു._മാർ._ഏപ്രി._മേയ്_ജൂൺ_ജൂലൈ._ഓഗ._സെപ്റ്റ._ഒക്ടോ._നവം._ഡിസം.'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'ഞായറാഴ്ച_തിങ്കളാഴ്ച_ചൊവ്വാഴ്ച_ബുധനാഴ്ച_വ്യാഴാഴ്ച_വെള്ളിയാഴ്ച_ശനിയാഴ്ച'.split(
-            '_'
-        ),
+        weekdays:
+            'ഞായറാഴ്ച_തിങ്കളാഴ്ച_ചൊവ്വാഴ്ച_ബുധനാഴ്ച_വ്യാഴാഴ്ച_വെള്ളിയാഴ്ച_ശനിയാഴ്ച'.split(
+                '_'
+            ),
         weekdaysShort: 'ഞായർ_തിങ്കൾ_ചൊവ്വ_ബുധൻ_വ്യാഴം_വെള്ളി_ശനി'.split('_'),
         weekdaysMin: 'ഞാ_തി_ചൊ_ബു_വ്യാ_വെ_ശ'.split('_'),
         longDateFormat: {
@@ -23279,9 +26221,10 @@ module.exports = toNumber;
         months: 'Нэгдүгээр сар_Хоёрдугаар сар_Гуравдугаар сар_Дөрөвдүгээр сар_Тавдугаар сар_Зургадугаар сар_Долдугаар сар_Наймдугаар сар_Есдүгээр сар_Аравдугаар сар_Арван нэгдүгээр сар_Арван хоёрдугаар сар'.split(
             '_'
         ),
-        monthsShort: '1 сар_2 сар_3 сар_4 сар_5 сар_6 сар_7 сар_8 сар_9 сар_10 сар_11 сар_12 сар'.split(
-            '_'
-        ),
+        monthsShort:
+            '1 сар_2 сар_3 сар_4 сар_5 сар_6 сар_7 сар_8 сар_9 сар_10 сар_11 сар_12 сар'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'Ням_Даваа_Мягмар_Лхагва_Пүрэв_Баасан_Бямба'.split('_'),
         weekdaysShort: 'Ням_Дав_Мяг_Лха_Пүр_Баа_Бям'.split('_'),
@@ -23481,9 +26424,10 @@ module.exports = toNumber;
         months: 'जानेवारी_फेब्रुवारी_मार्च_एप्रिल_मे_जून_जुलै_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर'.split(
             '_'
         ),
-        monthsShort: 'जाने._फेब्रु._मार्च._एप्रि._मे._जून._जुलै._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.'.split(
-            '_'
-        ),
+        monthsShort:
+            'जाने._फेब्रु._मार्च._एप्रि._मे._जून._जुलै._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'रविवार_सोमवार_मंगळवार_बुधवार_गुरूवार_शुक्रवार_शनिवार'.split('_'),
         weekdaysShort: 'रवि_सोम_मंगळ_बुध_गुरू_शुक्र_शनि'.split('_'),
@@ -23782,9 +26726,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'Jan_Fra_Mar_Apr_Mej_Ġun_Lul_Aww_Set_Ott_Nov_Diċ'.split('_'),
-        weekdays: 'Il-Ħadd_It-Tnejn_It-Tlieta_L-Erbgħa_Il-Ħamis_Il-Ġimgħa_Is-Sibt'.split(
-            '_'
-        ),
+        weekdays:
+            'Il-Ħadd_It-Tnejn_It-Tlieta_L-Erbgħa_Il-Ħamis_Il-Ġimgħa_Is-Sibt'.split(
+                '_'
+            ),
         weekdaysShort: 'Ħad_Tne_Tli_Erb_Ħam_Ġim_Sib'.split('_'),
         weekdaysMin: 'Ħa_Tn_Tl_Er_Ħa_Ġi_Si'.split('_'),
         longDateFormat: {
@@ -23967,9 +26912,8 @@ module.exports = toNumber;
         months: 'januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mars_apr._mai_juni_juli_aug._sep._okt._nov._des.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mars_apr._mai_juni_juli_aug._sep._okt._nov._des.'.split('_'),
         monthsParseExact: true,
         weekdays: 'søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag'.split('_'),
         weekdaysShort: 'sø._ma._ti._on._to._fr._lø.'.split('_'),
@@ -24070,9 +27014,10 @@ module.exports = toNumber;
         months: 'जनवरी_फेब्रुवरी_मार्च_अप्रिल_मई_जुन_जुलाई_अगष्ट_सेप्टेम्बर_अक्टोबर_नोभेम्बर_डिसेम्बर'.split(
             '_'
         ),
-        monthsShort: 'जन._फेब्रु._मार्च_अप्रि._मई_जुन_जुलाई._अग._सेप्ट._अक्टो._नोभे._डिसे.'.split(
-            '_'
-        ),
+        monthsShort:
+            'जन._फेब्रु._मार्च_अप्रि._मई_जुन_जुलाई._अग._सेप्ट._अक्टो._नोभे._डिसे.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'आइतबार_सोमबार_मङ्गलबार_बुधबार_बिहिबार_शुक्रबार_शनिबार'.split(
             '_'
@@ -24181,12 +27126,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split(
-            '_'
-        ),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split(
-            '_'
-        ),
+    var monthsShortWithDots =
+            'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
+        monthsShortWithoutDots =
+            'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_'),
         monthsParse = [
             /^jan/i,
             /^feb/i,
@@ -24201,7 +27144,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dec/i,
         ],
-        monthsRegex = /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
+        monthsRegex =
+            /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
 
     var nlBe = moment.defineLocale('nl-be', {
         months: 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split(
@@ -24219,16 +27163,17 @@ module.exports = toNumber;
 
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
-        monthsShortStrictRegex: /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
+        monthsStrictRegex:
+            /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
+        monthsShortStrictRegex:
+            /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
 
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
 
-        weekdays: 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split(
-            '_'
-        ),
+        weekdays:
+            'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
         weekdaysShort: 'zo._ma._di._wo._do._vr._za.'.split('_'),
         weekdaysMin: 'zo_ma_di_wo_do_vr_za'.split('_'),
         weekdaysParseExact: true,
@@ -24302,12 +27247,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split(
-            '_'
-        ),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split(
-            '_'
-        ),
+    var monthsShortWithDots =
+            'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
+        monthsShortWithoutDots =
+            'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_'),
         monthsParse = [
             /^jan/i,
             /^feb/i,
@@ -24322,7 +27265,8 @@ module.exports = toNumber;
             /^nov/i,
             /^dec/i,
         ],
-        monthsRegex = /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
+        monthsRegex =
+            /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
 
     var nl = moment.defineLocale('nl', {
         months: 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split(
@@ -24340,16 +27284,17 @@ module.exports = toNumber;
 
         monthsRegex: monthsRegex,
         monthsShortRegex: monthsRegex,
-        monthsStrictRegex: /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
-        monthsShortStrictRegex: /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
+        monthsStrictRegex:
+            /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december)/i,
+        monthsShortStrictRegex:
+            /^(jan\.?|feb\.?|mrt\.?|apr\.?|mei|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i,
 
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
 
-        weekdays: 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split(
-            '_'
-        ),
+        weekdays:
+            'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
         weekdaysShort: 'zo._ma._di._wo._do._vr._za.'.split('_'),
         weekdaysMin: 'zo_ma_di_wo_do_vr_za'.split('_'),
         weekdaysParseExact: true,
@@ -24429,9 +27374,8 @@ module.exports = toNumber;
         months: 'januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mars_apr._mai_juni_juli_aug._sep._okt._nov._des.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mars_apr._mai_juni_juli_aug._sep._okt._nov._des.'.split('_'),
         monthsParseExact: true,
         weekdays: 'sundag_måndag_tysdag_onsdag_torsdag_fredag_laurdag'.split('_'),
         weekdaysShort: 'su._må._ty._on._to._fr._lau.'.split('_'),
@@ -24505,17 +27449,19 @@ module.exports = toNumber;
 
     var ocLnc = moment.defineLocale('oc-lnc', {
         months: {
-            standalone: 'genièr_febrièr_març_abril_mai_junh_julhet_agost_setembre_octòbre_novembre_decembre'.split(
-                '_'
-            ),
+            standalone:
+                'genièr_febrièr_març_abril_mai_junh_julhet_agost_setembre_octòbre_novembre_decembre'.split(
+                    '_'
+                ),
             format: "de genièr_de febrièr_de març_d'abril_de mai_de junh_de julhet_d'agost_de setembre_d'octòbre_de novembre_de decembre".split(
                 '_'
             ),
             isFormat: /D[oD]?(\s)+MMMM/,
         },
-        monthsShort: 'gen._febr._març_abr._mai_junh_julh._ago._set._oct._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'gen._febr._març_abr._mai_junh_julh._ago._set._oct._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'dimenge_diluns_dimars_dimècres_dijòus_divendres_dissabte'.split(
             '_'
@@ -24635,9 +27581,10 @@ module.exports = toNumber;
         months: 'ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ'.split(
             '_'
         ),
-        monthsShort: 'ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ'.split(
-            '_'
-        ),
+        monthsShort:
+            'ਜਨਵਰੀ_ਫ਼ਰਵਰੀ_ਮਾਰਚ_ਅਪ੍ਰੈਲ_ਮਈ_ਜੂਨ_ਜੁਲਾਈ_ਅਗਸਤ_ਸਤੰਬਰ_ਅਕਤੂਬਰ_ਨਵੰਬਰ_ਦਸੰਬਰ'.split(
+                '_'
+            ),
         weekdays: 'ਐਤਵਾਰ_ਸੋਮਵਾਰ_ਮੰਗਲਵਾਰ_ਬੁਧਵਾਰ_ਵੀਰਵਾਰ_ਸ਼ੁੱਕਰਵਾਰ_ਸ਼ਨੀਚਰਵਾਰ'.split(
             '_'
         ),
@@ -24745,12 +27692,14 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split(
-            '_'
-        ),
-        monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split(
-            '_'
-        ),
+    var monthsNominative =
+            'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split(
+                '_'
+            ),
+        monthsSubjective =
+            'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split(
+                '_'
+            ),
         monthsParse = [
             /^sty/i,
             /^lut/i,
@@ -24804,9 +27753,8 @@ module.exports = toNumber;
         monthsParse: monthsParse,
         longMonthsParse: monthsParse,
         shortMonthsParse: monthsParse,
-        weekdays: 'niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota'.split(
-            '_'
-        ),
+        weekdays:
+            'niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota'.split('_'),
         weekdaysShort: 'ndz_pon_wt_śr_czw_pt_sob'.split('_'),
         weekdaysMin: 'Nd_Pn_Wt_Śr_Cz_Pt_So'.split('_'),
         longDateFormat: {
@@ -24908,9 +27856,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'jan_fev_mar_abr_mai_jun_jul_ago_set_out_nov_dez'.split('_'),
-        weekdays: 'domingo_segunda-feira_terça-feira_quarta-feira_quinta-feira_sexta-feira_sábado'.split(
-            '_'
-        ),
+        weekdays:
+            'domingo_segunda-feira_terça-feira_quarta-feira_quinta-feira_sexta-feira_sábado'.split(
+                '_'
+            ),
         weekdaysShort: 'dom_seg_ter_qua_qui_sex_sáb'.split('_'),
         weekdaysMin: 'do_2ª_3ª_4ª_5ª_6ª_sá'.split('_'),
         weekdaysParseExact: true,
@@ -24984,9 +27933,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'jan_fev_mar_abr_mai_jun_jul_ago_set_out_nov_dez'.split('_'),
-        weekdays: 'Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado'.split(
-            '_'
-        ),
+        weekdays:
+            'Domingo_Segunda-feira_Terça-feira_Quarta-feira_Quinta-feira_Sexta-feira_Sábado'.split(
+                '_'
+            ),
         weekdaysShort: 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
         weekdaysMin: 'Do_2ª_3ª_4ª_5ª_6ª_Sá'.split('_'),
         weekdaysParseExact: true,
@@ -25083,9 +28033,10 @@ module.exports = toNumber;
         months: 'ianuarie_februarie_martie_aprilie_mai_iunie_iulie_august_septembrie_octombrie_noiembrie_decembrie'.split(
             '_'
         ),
-        monthsShort: 'ian._feb._mart._apr._mai_iun._iul._aug._sept._oct._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'ian._feb._mart._apr._mai_iun._iul._aug._sept._oct._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'duminică_luni_marți_miercuri_joi_vineri_sâmbătă'.split('_'),
         weekdaysShort: 'Dum_Lun_Mar_Mie_Joi_Vin_Sâm'.split('_'),
@@ -25203,23 +28154,26 @@ module.exports = toNumber;
             format: 'января_февраля_марта_апреля_мая_июня_июля_августа_сентября_октября_ноября_декабря'.split(
                 '_'
             ),
-            standalone: 'январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь'.split(
-                '_'
-            ),
+            standalone:
+                'январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь'.split(
+                    '_'
+                ),
         },
         monthsShort: {
             // по CLDR именно "июл." и "июн.", но какой смысл менять букву на точку?
             format: 'янв._февр._мар._апр._мая_июня_июля_авг._сент._окт._нояб._дек.'.split(
                 '_'
             ),
-            standalone: 'янв._февр._март_апр._май_июнь_июль_авг._сент._окт._нояб._дек.'.split(
-                '_'
-            ),
+            standalone:
+                'янв._февр._март_апр._май_июнь_июль_авг._сент._окт._нояб._дек.'.split(
+                    '_'
+                ),
         },
         weekdays: {
-            standalone: 'воскресенье_понедельник_вторник_среда_четверг_пятница_суббота'.split(
-                '_'
-            ),
+            standalone:
+                'воскресенье_понедельник_вторник_среда_четверг_пятница_суббота'.split(
+                    '_'
+                ),
             format: 'воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу'.split(
                 '_'
             ),
@@ -25232,16 +28186,20 @@ module.exports = toNumber;
         shortMonthsParse: monthsParse,
 
         // полные названия с падежами, по три буквы, для некоторых, по 4 буквы, сокращения с точкой и без точки
-        monthsRegex: /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
+        monthsRegex:
+            /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
 
         // копия предыдущего
-        monthsShortRegex: /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
+        monthsShortRegex:
+            /^(январ[ья]|янв\.?|феврал[ья]|февр?\.?|марта?|мар\.?|апрел[ья]|апр\.?|ма[йя]|июн[ья]|июн\.?|июл[ья]|июл\.?|августа?|авг\.?|сентябр[ья]|сент?\.?|октябр[ья]|окт\.?|ноябр[ья]|нояб?\.?|декабр[ья]|дек\.?)/i,
 
         // полные названия с падежами
-        monthsStrictRegex: /^(январ[яь]|феврал[яь]|марта?|апрел[яь]|ма[яй]|июн[яь]|июл[яь]|августа?|сентябр[яь]|октябр[яь]|ноябр[яь]|декабр[яь])/i,
+        monthsStrictRegex:
+            /^(январ[яь]|феврал[яь]|марта?|апрел[яь]|ма[яй]|июн[яь]|июл[яь]|августа?|сентябр[яь]|октябр[яь]|ноябр[яь]|декабр[яь])/i,
 
         // Выражение, которое соответствует только сокращённым формам
-        monthsShortStrictRegex: /^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,
+        monthsShortStrictRegex:
+            /^(янв\.|февр?\.|мар[т.]|апр\.|ма[яй]|июн[ья.]|июл[ья.]|авг\.|сент?\.|окт\.|нояб?\.|дек\.)/i,
         longDateFormat: {
             LT: 'H:mm',
             LTS: 'H:mm:ss',
@@ -25483,12 +28441,12 @@ module.exports = toNumber;
         months: 'ođđajagemánnu_guovvamánnu_njukčamánnu_cuoŋománnu_miessemánnu_geassemánnu_suoidnemánnu_borgemánnu_čakčamánnu_golggotmánnu_skábmamánnu_juovlamánnu'.split(
             '_'
         ),
-        monthsShort: 'ođđj_guov_njuk_cuo_mies_geas_suoi_borg_čakč_golg_skáb_juov'.split(
-            '_'
-        ),
-        weekdays: 'sotnabeaivi_vuossárga_maŋŋebárga_gaskavahkku_duorastat_bearjadat_lávvardat'.split(
-            '_'
-        ),
+        monthsShort:
+            'ođđj_guov_njuk_cuo_mies_geas_suoi_borg_čakč_golg_skáb_juov'.split('_'),
+        weekdays:
+            'sotnabeaivi_vuossárga_maŋŋebárga_gaskavahkku_duorastat_bearjadat_lávvardat'.split(
+                '_'
+            ),
         weekdaysShort: 'sotn_vuos_maŋ_gask_duor_bear_láv'.split('_'),
         weekdaysMin: 's_v_m_g_d_b_L'.split('_'),
         longDateFormat: {
@@ -25563,9 +28521,10 @@ module.exports = toNumber;
         monthsShort: 'ජන_පෙබ_මාර්_අප්_මැයි_ජූනි_ජූලි_අගෝ_සැප්_ඔක්_නොවැ_දෙසැ'.split(
             '_'
         ),
-        weekdays: 'ඉරිදා_සඳුදා_අඟහරුවාදා_බදාදා_බ්‍රහස්පතින්දා_සිකුරාදා_සෙනසුරාදා'.split(
-            '_'
-        ),
+        weekdays:
+            'ඉරිදා_සඳුදා_අඟහරුවාදා_බදාදා_බ්‍රහස්පතින්දා_සිකුරාදා_සෙනසුරාදා'.split(
+                '_'
+            ),
         weekdaysShort: 'ඉරි_සඳු_අඟ_බදා_බ්‍රහ_සිකු_සෙන'.split('_'),
         weekdaysMin: 'ඉ_ස_අ_බ_බ්‍ර_සි_සෙ'.split('_'),
         weekdaysParseExact: true,
@@ -25643,9 +28602,10 @@ module.exports = toNumber;
 
     //! moment.js locale configuration
 
-    var months = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split(
-            '_'
-        ),
+    var months =
+            'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split(
+                '_'
+            ),
         monthsShort = 'jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec'.split('_');
     function plural(n) {
         return n > 1 && n < 5;
@@ -25893,9 +28853,10 @@ module.exports = toNumber;
         months: 'januar_februar_marec_april_maj_junij_julij_avgust_september_oktober_november_december'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mar._apr._maj._jun._jul._avg._sep._okt._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mar._apr._maj._jun._jul._avg._sep._okt._nov._dec.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'nedelja_ponedeljek_torek_sreda_četrtek_petek_sobota'.split('_'),
         weekdaysShort: 'ned._pon._tor._sre._čet._pet._sob.'.split('_'),
@@ -26083,32 +29044,43 @@ module.exports = toNumber;
         words: {
             //Different grammatical cases
             ss: ['секунда', 'секунде', 'секунди'],
-            m: ['један минут', 'једне минуте'],
-            mm: ['минут', 'минуте', 'минута'],
+            m: ['један минут', 'једног минута'],
+            mm: ['минут', 'минута', 'минута'],
             h: ['један сат', 'једног сата'],
             hh: ['сат', 'сата', 'сати'],
+            d: ['један дан', 'једног дана'],
             dd: ['дан', 'дана', 'дана'],
+            M: ['један месец', 'једног месеца'],
             MM: ['месец', 'месеца', 'месеци'],
-            yy: ['година', 'године', 'година'],
+            y: ['једну годину', 'једне године'],
+            yy: ['годину', 'године', 'година'],
         },
         correctGrammaticalCase: function (number, wordKey) {
-            return number === 1
-                ? wordKey[0]
-                : number >= 2 && number <= 4
-                ? wordKey[1]
-                : wordKey[2];
-        },
-        translate: function (number, withoutSuffix, key) {
-            var wordKey = translator.words[key];
-            if (key.length === 1) {
-                return withoutSuffix ? wordKey[0] : wordKey[1];
-            } else {
-                return (
-                    number +
-                    ' ' +
-                    translator.correctGrammaticalCase(number, wordKey)
-                );
+            if (
+                number % 10 >= 1 &&
+                number % 10 <= 4 &&
+                (number % 100 < 10 || number % 100 >= 20)
+            ) {
+                return number % 10 === 1 ? wordKey[0] : wordKey[1];
             }
+            return wordKey[2];
+        },
+        translate: function (number, withoutSuffix, key, isFuture) {
+            var wordKey = translator.words[key];
+
+            if (key.length === 1) {
+                // Nominativ
+                if (key === 'y' && withoutSuffix) return 'једна година';
+                return isFuture || withoutSuffix ? wordKey[0] : wordKey[1];
+            }
+
+            const word = translator.correctGrammaticalCase(number, wordKey);
+            // Nominativ
+            if (key === 'yy' && withoutSuffix && word === 'годину') {
+                return number + ' година';
+            }
+
+            return number + ' ' + word;
         },
     };
 
@@ -26116,9 +29088,8 @@ module.exports = toNumber;
         months: 'јануар_фебруар_март_април_мај_јун_јул_август_септембар_октобар_новембар_децембар'.split(
             '_'
         ),
-        monthsShort: 'јан._феб._мар._апр._мај_јун_јул_авг._сеп._окт._нов._дец.'.split(
-            '_'
-        ),
+        monthsShort:
+            'јан._феб._мар._апр._мај_јун_јул_авг._сеп._окт._нов._дец.'.split('_'),
         monthsParseExact: true,
         weekdays: 'недеља_понедељак_уторак_среда_четвртак_петак_субота'.split('_'),
         weekdaysShort: 'нед._пон._уто._сре._чет._пет._суб.'.split('_'),
@@ -26174,11 +29145,11 @@ module.exports = toNumber;
             mm: translator.translate,
             h: translator.translate,
             hh: translator.translate,
-            d: 'дан',
+            d: translator.translate,
             dd: translator.translate,
-            M: 'месец',
+            M: translator.translate,
             MM: translator.translate,
-            y: 'годину',
+            y: translator.translate,
             yy: translator.translate,
         },
         dayOfMonthOrdinalParse: /\d{1,2}\./,
@@ -26218,32 +29189,43 @@ module.exports = toNumber;
         words: {
             //Different grammatical cases
             ss: ['sekunda', 'sekunde', 'sekundi'],
-            m: ['jedan minut', 'jedne minute'],
-            mm: ['minut', 'minute', 'minuta'],
+            m: ['jedan minut', 'jednog minuta'],
+            mm: ['minut', 'minuta', 'minuta'],
             h: ['jedan sat', 'jednog sata'],
             hh: ['sat', 'sata', 'sati'],
+            d: ['jedan dan', 'jednog dana'],
             dd: ['dan', 'dana', 'dana'],
+            M: ['jedan mesec', 'jednog meseca'],
             MM: ['mesec', 'meseca', 'meseci'],
-            yy: ['godina', 'godine', 'godina'],
+            y: ['jednu godinu', 'jedne godine'],
+            yy: ['godinu', 'godine', 'godina'],
         },
         correctGrammaticalCase: function (number, wordKey) {
-            return number === 1
-                ? wordKey[0]
-                : number >= 2 && number <= 4
-                ? wordKey[1]
-                : wordKey[2];
-        },
-        translate: function (number, withoutSuffix, key) {
-            var wordKey = translator.words[key];
-            if (key.length === 1) {
-                return withoutSuffix ? wordKey[0] : wordKey[1];
-            } else {
-                return (
-                    number +
-                    ' ' +
-                    translator.correctGrammaticalCase(number, wordKey)
-                );
+            if (
+                number % 10 >= 1 &&
+                number % 10 <= 4 &&
+                (number % 100 < 10 || number % 100 >= 20)
+            ) {
+                return number % 10 === 1 ? wordKey[0] : wordKey[1];
             }
+            return wordKey[2];
+        },
+        translate: function (number, withoutSuffix, key, isFuture) {
+            var wordKey = translator.words[key];
+
+            if (key.length === 1) {
+                // Nominativ
+                if (key === 'y' && withoutSuffix) return 'jedna godina';
+                return isFuture || withoutSuffix ? wordKey[0] : wordKey[1];
+            }
+
+            const word = translator.correctGrammaticalCase(number, wordKey);
+            // Nominativ
+            if (key === 'yy' && withoutSuffix && word === 'godinu') {
+                return number + ' godina';
+            }
+
+            return number + ' ' + word;
         },
     };
 
@@ -26251,9 +29233,8 @@ module.exports = toNumber;
         months: 'januar_februar_mart_april_maj_jun_jul_avgust_septembar_oktobar_novembar_decembar'.split(
             '_'
         ),
-        monthsShort: 'jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.'.split(
-            '_'
-        ),
+        monthsShort:
+            'jan._feb._mar._apr._maj_jun_jul_avg._sep._okt._nov._dec.'.split('_'),
         monthsParseExact: true,
         weekdays: 'nedelja_ponedeljak_utorak_sreda_četvrtak_petak_subota'.split(
             '_'
@@ -26311,11 +29292,11 @@ module.exports = toNumber;
             mm: translator.translate,
             h: translator.translate,
             hh: translator.translate,
-            d: 'dan',
+            d: translator.translate,
             dd: translator.translate,
-            M: 'mesec',
+            M: translator.translate,
             MM: translator.translate,
-            y: 'godinu',
+            y: translator.translate,
             yy: translator.translate,
         },
         dayOfMonthOrdinalParse: /\d{1,2}\./,
@@ -26355,9 +29336,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'Bhi_Ina_Inu_Mab_Ink_Inh_Kho_Igc_Iny_Imp_Lwe_Igo'.split('_'),
-        weekdays: 'Lisontfo_Umsombuluko_Lesibili_Lesitsatfu_Lesine_Lesihlanu_Umgcibelo'.split(
-            '_'
-        ),
+        weekdays:
+            'Lisontfo_Umsombuluko_Lesibili_Lesitsatfu_Lesine_Lesihlanu_Umgcibelo'.split(
+                '_'
+            ),
         weekdaysShort: 'Lis_Umb_Lsb_Les_Lsi_Lsh_Umg'.split('_'),
         weekdaysMin: 'Li_Us_Lb_Lt_Ls_Lh_Ug'.split('_'),
         weekdaysParseExact: true,
@@ -26544,9 +29526,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ago_Sep_Okt_Nov_Des'.split('_'),
-        weekdays: 'Jumapili_Jumatatu_Jumanne_Jumatano_Alhamisi_Ijumaa_Jumamosi'.split(
-            '_'
-        ),
+        weekdays:
+            'Jumapili_Jumatatu_Jumanne_Jumatano_Alhamisi_Ijumaa_Jumamosi'.split(
+                '_'
+            ),
         weekdaysShort: 'Jpl_Jtat_Jnne_Jtan_Alh_Ijm_Jmos'.split('_'),
         weekdaysMin: 'J2_J3_J4_J5_Al_Ij_J1'.split('_'),
         weekdaysParseExact: true,
@@ -26641,12 +29624,14 @@ module.exports = toNumber;
         months: 'ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்'.split(
             '_'
         ),
-        monthsShort: 'ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்'.split(
-            '_'
-        ),
-        weekdays: 'ஞாயிற்றுக்கிழமை_திங்கட்கிழமை_செவ்வாய்கிழமை_புதன்கிழமை_வியாழக்கிழமை_வெள்ளிக்கிழமை_சனிக்கிழமை'.split(
-            '_'
-        ),
+        monthsShort:
+            'ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்'.split(
+                '_'
+            ),
+        weekdays:
+            'ஞாயிற்றுக்கிழமை_திங்கட்கிழமை_செவ்வாய்கிழமை_புதன்கிழமை_வியாழக்கிழமை_வெள்ளிக்கிழமை_சனிக்கிழமை'.split(
+                '_'
+            ),
         weekdaysShort: 'ஞாயிறு_திங்கள்_செவ்வாய்_புதன்_வியாழன்_வெள்ளி_சனி'.split(
             '_'
         ),
@@ -26764,13 +29749,15 @@ module.exports = toNumber;
         months: 'జనవరి_ఫిబ్రవరి_మార్చి_ఏప్రిల్_మే_జూన్_జులై_ఆగస్టు_సెప్టెంబర్_అక్టోబర్_నవంబర్_డిసెంబర్'.split(
             '_'
         ),
-        monthsShort: 'జన._ఫిబ్ర._మార్చి_ఏప్రి._మే_జూన్_జులై_ఆగ._సెప్._అక్టో._నవ._డిసె.'.split(
-            '_'
-        ),
+        monthsShort:
+            'జన._ఫిబ్ర._మార్చి_ఏప్రి._మే_జూన్_జులై_ఆగ._సెప్._అక్టో._నవ._డిసె.'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'ఆదివారం_సోమవారం_మంగళవారం_బుధవారం_గురువారం_శుక్రవారం_శనివారం'.split(
-            '_'
-        ),
+        weekdays:
+            'ఆదివారం_సోమవారం_మంగళవారం_బుధవారం_గురువారం_శుక్రవారం_శనివారం'.split(
+                '_'
+            ),
         weekdaysShort: 'ఆది_సోమ_మంగళ_బుధ_గురు_శుక్ర_శని'.split('_'),
         weekdaysMin: 'ఆ_సో_మం_బు_గు_శు_శ'.split('_'),
         longDateFormat: {
@@ -26982,9 +29969,10 @@ module.exports = toNumber;
             format: 'январи_феврали_марти_апрели_майи_июни_июли_августи_сентябри_октябри_ноябри_декабри'.split(
                 '_'
             ),
-            standalone: 'январ_феврал_март_апрел_май_июн_июл_август_сентябр_октябр_ноябр_декабр'.split(
-                '_'
-            ),
+            standalone:
+                'январ_феврал_март_апрел_май_июн_июл_август_сентябр_октябр_ноябр_декабр'.split(
+                    '_'
+                ),
         },
         monthsShort: 'янв_фев_мар_апр_май_июн_июл_авг_сен_окт_ноя_дек'.split('_'),
         weekdays: 'якшанбе_душанбе_сешанбе_чоршанбе_панҷшанбе_ҷумъа_шанбе'.split(
@@ -27091,9 +30079,10 @@ module.exports = toNumber;
         months: 'มกราคม_กุมภาพันธ์_มีนาคม_เมษายน_พฤษภาคม_มิถุนายน_กรกฎาคม_สิงหาคม_กันยายน_ตุลาคม_พฤศจิกายน_ธันวาคม'.split(
             '_'
         ),
-        monthsShort: 'ม.ค._ก.พ._มี.ค._เม.ย._พ.ค._มิ.ย._ก.ค._ส.ค._ก.ย._ต.ค._พ.ย._ธ.ค.'.split(
-            '_'
-        ),
+        monthsShort:
+            'ม.ค._ก.พ._มี.ค._เม.ย._พ.ค._มิ.ย._ก.ค._ส.ค._ก.ย._ต.ค._พ.ย._ธ.ค.'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัสบดี_ศุกร์_เสาร์'.split('_'),
         weekdaysShort: 'อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัส_ศุกร์_เสาร์'.split('_'), // yes, three characters difference
@@ -27423,19 +30412,18 @@ module.exports = toNumber;
         months: 'tera’ jar wa’_tera’ jar cha’_tera’ jar wej_tera’ jar loS_tera’ jar vagh_tera’ jar jav_tera’ jar Soch_tera’ jar chorgh_tera’ jar Hut_tera’ jar wa’maH_tera’ jar wa’maH wa’_tera’ jar wa’maH cha’'.split(
             '_'
         ),
-        monthsShort: 'jar wa’_jar cha’_jar wej_jar loS_jar vagh_jar jav_jar Soch_jar chorgh_jar Hut_jar wa’maH_jar wa’maH wa’_jar wa’maH cha’'.split(
-            '_'
-        ),
+        monthsShort:
+            'jar wa’_jar cha’_jar wej_jar loS_jar vagh_jar jav_jar Soch_jar chorgh_jar Hut_jar wa’maH_jar wa’maH wa’_jar wa’maH cha’'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj'.split(
             '_'
         ),
-        weekdaysShort: 'lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj'.split(
-            '_'
-        ),
-        weekdaysMin: 'lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj'.split(
-            '_'
-        ),
+        weekdaysShort:
+            'lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj'.split('_'),
+        weekdaysMin:
+            'lojmItjaj_DaSjaj_povjaj_ghItlhjaj_loghjaj_buqjaj_ghInjaj'.split('_'),
         longDateFormat: {
             LT: 'HH:mm',
             LTS: 'HH:mm:ss',
@@ -27530,7 +30518,7 @@ module.exports = toNumber;
         weekdays: 'Pazar_Pazartesi_Salı_Çarşamba_Perşembe_Cuma_Cumartesi'.split(
             '_'
         ),
-        weekdaysShort: 'Paz_Pts_Sal_Çar_Per_Cum_Cts'.split('_'),
+        weekdaysShort: 'Paz_Pzt_Sal_Çar_Per_Cum_Cmt'.split('_'),
         weekdaysMin: 'Pz_Pt_Sa_Ça_Pe_Cu_Ct'.split('_'),
         meridiem: function (hours, minutes, isLower) {
             if (hours < 12) {
@@ -27737,9 +30725,10 @@ module.exports = toNumber;
         months: 'innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir'.split(
             '_'
         ),
-        monthsShort: 'innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir'.split(
-            '_'
-        ),
+        monthsShort:
+            'innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir'.split(
+                '_'
+            ),
         weekdays: 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
         weekdaysShort: 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
         weekdaysMin: 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
@@ -27809,9 +30798,10 @@ module.exports = toNumber;
         months: 'ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ'.split(
             '_'
         ),
-        monthsShort: 'ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ'.split(
-            '_'
-        ),
+        monthsShort:
+            'ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ'.split(
+                '_'
+            ),
         weekdays: 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
         weekdaysShort: 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
         weekdaysMin: 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
@@ -27881,9 +30871,10 @@ module.exports = toNumber;
         months: 'يانۋار_فېۋرال_مارت_ئاپرېل_ماي_ئىيۇن_ئىيۇل_ئاۋغۇست_سېنتەبىر_ئۆكتەبىر_نويابىر_دېكابىر'.split(
             '_'
         ),
-        monthsShort: 'يانۋار_فېۋرال_مارت_ئاپرېل_ماي_ئىيۇن_ئىيۇل_ئاۋغۇست_سېنتەبىر_ئۆكتەبىر_نويابىر_دېكابىر'.split(
-            '_'
-        ),
+        monthsShort:
+            'يانۋار_فېۋرال_مارت_ئاپرېل_ماي_ئىيۇن_ئىيۇل_ئاۋغۇست_سېنتەبىر_ئۆكتەبىر_نويابىر_دېكابىر'.split(
+                '_'
+            ),
         weekdays: 'يەكشەنبە_دۈشەنبە_سەيشەنبە_چارشەنبە_پەيشەنبە_جۈمە_شەنبە'.split(
             '_'
         ),
@@ -28034,15 +31025,18 @@ module.exports = toNumber;
     }
     function weekdaysCaseReplace(m, format) {
         var weekdays = {
-                nominative: 'неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота'.split(
-                    '_'
-                ),
-                accusative: 'неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу'.split(
-                    '_'
-                ),
-                genitive: 'неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи'.split(
-                    '_'
-                ),
+                nominative:
+                    'неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота'.split(
+                        '_'
+                    ),
+                accusative:
+                    'неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу'.split(
+                        '_'
+                    ),
+                genitive:
+                    'неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи'.split(
+                        '_'
+                    ),
             },
             nounCase;
 
@@ -28073,9 +31067,10 @@ module.exports = toNumber;
             format: 'січня_лютого_березня_квітня_травня_червня_липня_серпня_вересня_жовтня_листопада_грудня'.split(
                 '_'
             ),
-            standalone: 'січень_лютий_березень_квітень_травень_червень_липень_серпень_вересень_жовтень_листопад_грудень'.split(
-                '_'
-            ),
+            standalone:
+                'січень_лютий_березень_квітень_травень_червень_липень_серпень_вересень_жовтень_листопад_грудень'.split(
+                    '_'
+                ),
         },
         monthsShort: 'січ_лют_бер_квіт_трав_черв_лип_серп_вер_жовт_лист_груд'.split(
             '_'
@@ -28294,9 +31289,10 @@ module.exports = toNumber;
             '_'
         ),
         monthsShort: 'Yan_Fev_Mar_Apr_May_Iyun_Iyul_Avg_Sen_Okt_Noy_Dek'.split('_'),
-        weekdays: 'Yakshanba_Dushanba_Seshanba_Chorshanba_Payshanba_Juma_Shanba'.split(
-            '_'
-        ),
+        weekdays:
+            'Yakshanba_Dushanba_Seshanba_Chorshanba_Payshanba_Juma_Shanba'.split(
+                '_'
+            ),
         weekdaysShort: 'Yak_Dush_Sesh_Chor_Pay_Jum_Shan'.split('_'),
         weekdaysMin: 'Ya_Du_Se_Cho_Pa_Ju_Sha'.split('_'),
         longDateFormat: {
@@ -28436,9 +31432,10 @@ module.exports = toNumber;
         months: 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split(
             '_'
         ),
-        monthsShort: 'Thg 01_Thg 02_Thg 03_Thg 04_Thg 05_Thg 06_Thg 07_Thg 08_Thg 09_Thg 10_Thg 11_Thg 12'.split(
-            '_'
-        ),
+        monthsShort:
+            'Thg 01_Thg 02_Thg 03_Thg 04_Thg 05_Thg 06_Thg 07_Thg 08_Thg 09_Thg 10_Thg 11_Thg 12'.split(
+                '_'
+            ),
         monthsParseExact: true,
         weekdays: 'chủ nhật_thứ hai_thứ ba_thứ tư_thứ năm_thứ sáu_thứ bảy'.split(
             '_'
@@ -28533,13 +31530,15 @@ module.exports = toNumber;
         months: 'J~áñúá~rý_F~ébrú~árý_~Márc~h_Áp~ríl_~Máý_~Júñé~_Júl~ý_Áú~gúst~_Sép~témb~ér_Ó~ctób~ér_Ñ~óvém~bér_~Décé~mbér'.split(
             '_'
         ),
-        monthsShort: 'J~áñ_~Féb_~Már_~Ápr_~Máý_~Júñ_~Júl_~Áúg_~Sép_~Óct_~Ñóv_~Déc'.split(
-            '_'
-        ),
+        monthsShort:
+            'J~áñ_~Féb_~Már_~Ápr_~Máý_~Júñ_~Júl_~Áúg_~Sép_~Óct_~Ñóv_~Déc'.split(
+                '_'
+            ),
         monthsParseExact: true,
-        weekdays: 'S~úñdá~ý_Mó~ñdáý~_Túé~sdáý~_Wéd~ñésd~áý_T~húrs~dáý_~Fríd~áý_S~átúr~dáý'.split(
-            '_'
-        ),
+        weekdays:
+            'S~úñdá~ý_Mó~ñdáý~_Túé~sdáý~_Wéd~ñésd~áý_T~húrs~dáý_~Fríd~áý_S~átúr~dáý'.split(
+                '_'
+            ),
         weekdaysShort: 'S~úñ_~Móñ_~Túé_~Wéd_~Thú_~Frí_~Sát'.split('_'),
         weekdaysMin: 'S~ú_Mó~_Tú_~Wé_T~h_Fr~_Sá'.split('_'),
         weekdaysParseExact: true,
@@ -29479,7 +32478,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /* module decorator */ module = __webpack_require__.nmd(module);
 //! moment.js
-//! version : 2.29.1
+//! version : 2.29.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
 //! license : MIT
 //! momentjs.com
@@ -29555,8 +32554,9 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
     function map(arr, fn) {
         var res = [],
-            i;
-        for (i = 0; i < arr.length; ++i) {
+            i,
+            arrLen = arr.length;
+        for (i = 0; i < arrLen; ++i) {
             res.push(fn(arr[i], i));
         }
         return res;
@@ -29685,7 +32685,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         updateInProgress = false;
 
     function copyConfig(to, from) {
-        var i, prop, val;
+        var i,
+            prop,
+            val,
+            momentPropertiesLen = momentProperties.length;
 
         if (!isUndefined(from._isAMomentObject)) {
             to._isAMomentObject = from._isAMomentObject;
@@ -29718,8 +32721,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             to._locale = from._locale;
         }
 
-        if (momentProperties.length > 0) {
-            for (i = 0; i < momentProperties.length; i++) {
+        if (momentPropertiesLen > 0) {
+            for (i = 0; i < momentPropertiesLen; i++) {
                 prop = momentProperties[i];
                 val = from[prop];
                 if (!isUndefined(val)) {
@@ -29774,8 +32777,9 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
                 var args = [],
                     arg,
                     i,
-                    key;
-                for (i = 0; i < arguments.length; i++) {
+                    key,
+                    argLen = arguments.length;
+                for (i = 0; i < argLen; i++) {
                     arg = '';
                     if (typeof arguments[i] === 'object') {
                         arg += '\n[' + i + '] ';
@@ -29925,7 +32929,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         );
     }
 
-    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|N{1,5}|YYYYYY|YYYYY|YYYY|YY|y{2,4}|yo?|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,
+    var formattingTokens =
+            /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|N{1,5}|YYYYYY|YYYYY|YYYY|YY|y{2,4}|yo?|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,
         localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
         formatFunctions = {},
         formatTokenFunctions = {};
@@ -30229,8 +33234,9 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         if (typeof units === 'object') {
             units = normalizeObjectUnits(units);
             var prioritized = getPrioritizedUnits(units),
-                i;
-            for (i = 0; i < prioritized.length; i++) {
+                i,
+                prioritizedLen = prioritized.length;
+            for (i = 0; i < prioritizedLen; i++) {
                 this[prioritized[i].unit](units[prioritized[i].unit]);
             }
         } else {
@@ -30260,7 +33266,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         matchTimestamp = /[+-]?\d+(\.\d{1,3})?/, // 123456789 123456789.123
         // any word (or two) characters or numbers including two/three word month in arabic.
         // includes scottish gaelic two word and hyphenated months
-        matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i,
+        matchWord =
+            /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i,
         regexes;
 
     regexes = {};
@@ -30286,15 +33293,12 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         return regexEscape(
             s
                 .replace('\\', '')
-                .replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (
-                    matched,
-                    p1,
-                    p2,
-                    p3,
-                    p4
-                ) {
-                    return p1 || p2 || p3 || p4;
-                })
+                .replace(
+                    /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
+                    function (matched, p1, p2, p3, p4) {
+                        return p1 || p2 || p3 || p4;
+                    }
+                )
         );
     }
 
@@ -30306,7 +33310,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
     function addParseToken(token, callback) {
         var i,
-            func = callback;
+            func = callback,
+            tokenLen;
         if (typeof token === 'string') {
             token = [token];
         }
@@ -30315,7 +33320,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
                 array[callback] = toInt(input);
             };
         }
-        for (i = 0; i < token.length; i++) {
+        tokenLen = token.length;
+        for (i = 0; i < tokenLen; i++) {
             tokens[token[i]] = func;
         }
     }
@@ -30426,12 +33432,12 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
     // LOCALES
 
-    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split(
-            '_'
-        ),
-        defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split(
-            '_'
-        ),
+    var defaultLocaleMonths =
+            'January_February_March_April_May_June_July_August_September_October_November_December'.split(
+                '_'
+            ),
+        defaultLocaleMonthsShort =
+            'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
         MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
         defaultMonthsShortRegex = matchWord,
         defaultMonthsRegex = matchWord;
@@ -30873,14 +33879,12 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
     addRegexToken('W', match1to2);
     addRegexToken('WW', match1to2, match2);
 
-    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (
-        input,
-        week,
-        config,
-        token
-    ) {
-        week[token.substr(0, 1)] = toInt(input);
-    });
+    addWeekParseToken(
+        ['w', 'ww', 'W', 'WW'],
+        function (input, week, config, token) {
+            week[token.substr(0, 1)] = toInt(input);
+        }
+    );
 
     // HELPERS
 
@@ -31005,9 +34009,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         return ws.slice(n, 7).concat(ws.slice(0, n));
     }
 
-    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split(
-            '_'
-        ),
+    var defaultLocaleWeekdays =
+            'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
         defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
         defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
         defaultWeekdaysRegex = matchWord,
@@ -31555,6 +34558,11 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         return globalLocale;
     }
 
+    function isLocaleNameSane(name) {
+        // Prevent names that look like filesystem paths, i.e contain '/' or '\'
+        return name.match('^[^/\\\\]*$') != null;
+    }
+
     function loadLocale(name) {
         var oldLocale = null,
             aliasedRequire;
@@ -31563,7 +34571,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             locales[name] === undefined &&
             "object" !== 'undefined' &&
             module &&
-            module.exports
+            module.exports &&
+            isLocaleNameSane(name)
         ) {
             try {
                 oldLocale = globalLocale._abbr;
@@ -31691,7 +34700,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             // backwards compat for now: also set the locale
             getSetGlobalLocale(name);
         } else {
-            // pass null for config to unupdate, useful for testing
+            // pass null for config to unupdate, useful for tests
             if (locales[name] != null) {
                 if (locales[name].parentLocale != null) {
                     locales[name] = locales[name].parentLocale;
@@ -31780,8 +34789,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
     // iso 8601 regex
     // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
-    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
-        basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d|))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
+    var extendedIsoRegex =
+            /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
+        basicIsoRegex =
+            /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d|))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
         tzRegex = /Z|[+-]\d\d(?::?\d\d)?/,
         isoDates = [
             ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
@@ -31812,7 +34823,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         ],
         aspNetJsonRegex = /^\/?Date\((-?\d+)/i,
         // RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
-        rfc2822 = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/,
+        rfc2822 =
+            /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/,
         obsOffsets = {
             UT: 0,
             GMT: 0,
@@ -31835,12 +34847,13 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             allowTime,
             dateFormat,
             timeFormat,
-            tzFormat;
+            tzFormat,
+            isoDatesLen = isoDates.length,
+            isoTimesLen = isoTimes.length;
 
         if (match) {
             getParsingFlags(config).iso = true;
-
-            for (i = 0, l = isoDates.length; i < l; i++) {
+            for (i = 0, l = isoDatesLen; i < l; i++) {
                 if (isoDates[i][1].exec(match[1])) {
                     dateFormat = isoDates[i][0];
                     allowTime = isoDates[i][2] !== false;
@@ -31852,7 +34865,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
                 return;
             }
             if (match[3]) {
-                for (i = 0, l = isoTimes.length; i < l; i++) {
+                for (i = 0, l = isoTimesLen; i < l; i++) {
                     if (isoTimes[i][1].exec(match[3])) {
                         // match[2] should be 'T' or space
                         timeFormat = (match[2] || ' ') + isoTimes[i][0];
@@ -32232,12 +35245,13 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             skipped,
             stringLength = string.length,
             totalParsedInputLength = 0,
-            era;
+            era,
+            tokenLen;
 
         tokens =
             expandFormat(config._f, config._locale).match(formattingTokens) || [];
-
-        for (i = 0; i < tokens.length; i++) {
+        tokenLen = tokens.length;
+        for (i = 0; i < tokenLen; i++) {
             token = tokens[i];
             parsedInput = (string.match(getParseRegexForToken(token, config)) ||
                 [])[0];
@@ -32332,15 +35346,16 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             i,
             currentScore,
             validFormatFound,
-            bestFormatIsValid = false;
+            bestFormatIsValid = false,
+            configfLen = config._f.length;
 
-        if (config._f.length === 0) {
+        if (configfLen === 0) {
             getParsingFlags(config).invalidFormat = true;
             config._d = new Date(NaN);
             return;
         }
 
-        for (i = 0; i < config._f.length; i++) {
+        for (i = 0; i < configfLen; i++) {
             currentScore = 0;
             validFormatFound = false;
             tempConfig = copyConfig({}, config);
@@ -32581,7 +35596,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
     function isDurationValid(m) {
         var key,
             unitHasDecimal = false,
-            i;
+            i,
+            orderLen = ordering.length;
         for (key in m) {
             if (
                 hasOwnProp(m, key) &&
@@ -32594,7 +35610,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             }
         }
 
-        for (i = 0; i < ordering.length; ++i) {
+        for (i = 0; i < orderLen; ++i) {
             if (m[ordering[i]]) {
                 if (unitHasDecimal) {
                     return false; // only allow non-integers for smallest unit
@@ -32919,7 +35935,8 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
         // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
         // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
         // and further modified to allow for strings containing both week and day
-        isoRegex = /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
+        isoRegex =
+            /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
 
     function createDuration(input, key) {
         var duration = input,
@@ -33140,9 +36157,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
                 'ms',
             ],
             i,
-            property;
+            property,
+            propertyLen = properties.length;
 
-        for (i = 0; i < properties.length; i += 1) {
+        for (i = 0; i < propertyLen; i += 1) {
             property = properties[i];
             propertyTest = propertyTest || hasOwnProp(input, property);
         }
@@ -33765,19 +36783,17 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
     addRegexToken('NNNN', matchEraName);
     addRegexToken('NNNNN', matchEraNarrow);
 
-    addParseToken(['N', 'NN', 'NNN', 'NNNN', 'NNNNN'], function (
-        input,
-        array,
-        config,
-        token
-    ) {
-        var era = config._locale.erasParse(input, token, config._strict);
-        if (era) {
-            getParsingFlags(config).era = era;
-        } else {
-            getParsingFlags(config).invalidEra = input;
+    addParseToken(
+        ['N', 'NN', 'NNN', 'NNNN', 'NNNNN'],
+        function (input, array, config, token) {
+            var era = config._locale.erasParse(input, token, config._strict);
+            if (era) {
+                getParsingFlags(config).era = era;
+            } else {
+                getParsingFlags(config).invalidEra = input;
+            }
         }
-    });
+    );
 
     addRegexToken('y', matchUnsigned);
     addRegexToken('yy', matchUnsigned);
@@ -34069,14 +37085,12 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
     addRegexToken('GGGGG', match1to6, match6);
     addRegexToken('ggggg', match1to6, match6);
 
-    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (
-        input,
-        week,
-        config,
-        token
-    ) {
-        week[token.substr(0, 2)] = toInt(input);
-    });
+    addWeekParseToken(
+        ['gggg', 'ggggg', 'GGGG', 'GGGGG'],
+        function (input, week, config, token) {
+            week[token.substr(0, 2)] = toInt(input);
+        }
+    );
 
     addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
         week[token] = hooks.parseTwoDigitYear(input);
@@ -34717,7 +37731,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
             months = 0;
         }
 
-        // The following code bubbles up values, see the testing for
+        // The following code bubbles up values, see the tests for
         // examples of what that means.
         data.milliseconds = milliseconds % 1000;
 
@@ -35099,7 +38113,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
     //! moment.js
 
-    hooks.version = '2.29.1';
+    hooks.version = '2.29.2';
 
     setHookCallback(createLocal);
 

@@ -5,7 +5,7 @@ import {Inertia} from "@inertiajs/inertia";
 
 export const useNotifications = () => {
 
-    const openRestoreNotification = (_message, restoreRoute, buttonLabel, width = 220) => {
+    const openRestoreNotification = (_message, restoreRoute, buttonLabel = "Восстановить", width = 220) => {
         message.info({
             content: <Space>
                 {_message}

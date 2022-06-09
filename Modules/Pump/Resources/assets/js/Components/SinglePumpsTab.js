@@ -114,7 +114,6 @@ export const SinglePumpsTab = ({setPumpInfo}) => {
             sorter: {
                 compare: (a, b) => a.ptp_length - b.ptp_length
             },
-
         },
         {
             title: Lang.get('pages.pumps.data.dn_suction'),

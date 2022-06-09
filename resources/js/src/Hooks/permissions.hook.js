@@ -12,10 +12,10 @@ export const usePermissions = () => {
         return true
     }
 
-    const filterPermissionsArray = (arr) => arr.filter(Boolean)
+    const filteredBoolArray = (arr) => arr.filter(Boolean)
 
     return {
         has,
-        filterPermissionsArray
+        filteredBoolArray
     }
 }

@@ -1,7 +1,10 @@
 {
     "Pump": true,
+    "PumpSeries": true,
     "Project": true,
     "User": true,
     "Auth": true,
-    "Selection": true
+    "Selection": true,
+    "PumpStation": true,
+    "Components": true
 }

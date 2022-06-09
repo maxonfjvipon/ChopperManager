@@ -7,18 +7,18 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Testing\AssertableInertia;
 use Modules\Project\Entities\Currency;
-use Modules\Pump\Entities\PumpBrand;
-use Modules\Pump\Entities\PumpSeries;
+use Modules\PumpSeries\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Entities\Discount;
 use Modules\User\Entities\User;
-use Modules\User\Http\Endpoints\ChangePasswordEndpoint;
-use Modules\User\Http\Endpoints\ProfileIndexEndpoint;
-use Modules\User\Http\Endpoints\ProfileUpdateEndpoint;
-use Modules\User\Http\Endpoints\UpdateDiscountsEndpoint;
-use Modules\User\Http\Requests\DiscountUpdateRequest;
-use Modules\User\Http\Requests\UserPasswordUpdateRequest;
+use Modules\User\Http\Endpoints\Profile\EpChangePassword;
+use Modules\User\Http\Endpoints\Profile\EpProfile;
+use Modules\User\Http\Endpoints\Profile\EpUpdateProfile;
+use Modules\User\Http\Endpoints\Profile\EpUpdateDiscount;
+use Modules\User\Http\Requests\RqUpdateDiscount;
+use Modules\User\Http\Requests\RqChangePassword;
 use Modules\User\Traits\UserAttributes;
 use Tests\TestCase;
 
@@ -28,7 +28,7 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ProfileIndexEndpoint
+     * @see EpProfile
      * @author Max Trunnikov
      */
     public function test_if_unauthorized_user_cannot_get_access_to_profile()
@@ -40,7 +40,7 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ProfileIndexEndpoint
+     * @see EpProfile
      * @see UserAttributes
      * @author Max Trunnikov
      */
@@ -117,7 +117,7 @@ class UserProfileEndpointTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see ProfileUpdateEndpoint
+     * @see EpUpdateProfile
      */
     public function test_profile_update_endpoint()
     {
@@ -152,7 +152,7 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ChangePasswordEndpoint
+     * @see EpChangePassword
      * @author Max Trunnikov
      */
     public function test_change_password_endpoint()
@@ -178,8 +178,8 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ChangePasswordEndpoint
-     * @see UserPasswordUpdateRequest
+     * @see EpChangePassword
+     * @see RqChangePassword
      * @author Max Trunnikov
      */
     public function test_user_cannot_change_password_without_passing_an_old_one()
@@ -208,8 +208,8 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ChangePasswordEndpoint
-     * @see UserPasswordUpdateRequest
+     * @see EpChangePassword
+     * @see RqChangePassword
      * @author Max Trunnikov
      */
     public function test_user_cannot_change_password_with_incorrect_an_old_one()
@@ -239,8 +239,8 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see ChangePasswordEndpoint
-     * @see UserPasswordUpdateRequest
+     * @see EpChangePassword
+     * @see RqChangePassword
      * @author Max Trunnikov
      */
     public function test_user_cannot_update_password_if_new_password_is_not_confirmed()
@@ -270,8 +270,8 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see UpdateDiscountsEndpoint
-     * @see DiscountUpdateRequest
+     * @see EpUpdateDiscount
+     * @see RqUpdateDiscount
      * @author Max Trunnikov
      */
     public function test_update_series_discount()
@@ -301,8 +301,8 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
-     * @see UpdateDiscountsEndpoint
-     * @see DiscountUpdateRequest
+     * @see EpUpdateDiscount
+     * @see RqUpdateDiscount
      * @author Max Trunnikov
      */
     public function test_update_brand_discount()

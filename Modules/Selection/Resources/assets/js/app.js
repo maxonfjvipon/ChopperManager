@@ -1,9 +1,7 @@
 import Dashboard from "./Pages/Dashboard";
-import SinglePump from "./Pages/Selections/SinglePump";
-import DoublePump from "./Pages/Selections/DoublePump";
+import WaterAuto from "./Pages/Selections/WaterAuto";
 
 export default {
     Dashboard,
-    SinglePump,
-    DoublePump,
+    WaterAuto
 }

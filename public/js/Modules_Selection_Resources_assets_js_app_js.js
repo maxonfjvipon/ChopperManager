@@ -54,6 +54,24 @@ var CaretUpOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var DeleteOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z" } }] }, "name": "delete", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteOutlined);
+
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js ***!
@@ -234,6 +252,24 @@ var HolderOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/LineChartOutlined.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/LineChartOutlined.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var LineChartOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM305.8 637.7c3.1 3.1 8.1 3.1 11.3 0l138.3-137.6L583 628.5c3.1 3.1 8.2 3.1 11.3 0l275.4-275.3c3.1-3.1 3.1-8.2 0-11.3l-39.6-39.6a8.03 8.03 0 00-11.3 0l-230 229.9L461.4 404a8.03 8.03 0 00-11.3 0L266.3 586.7a8.03 8.03 0 000 11.3l39.5 39.7z" } }] }, "name": "line-chart", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LineChartOutlined);
+
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/MinusSquareOutlined.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/@ant-design/icons-svg/es/asn/MinusSquareOutlined.js ***!
@@ -248,6 +284,24 @@ __webpack_require__.r(__webpack_exports__);
 // This icon file is generated automatically.
 var MinusSquareOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MinusSquareOutlined);
+
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/MoreOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/MoreOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var MoreOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M456 231a56 56 0 10112 0 56 56 0 10-112 0zm0 280a56 56 0 10112 0 56 56 0 10-112 0zm0 280a56 56 0 10112 0 56 56 0 10-112 0z" } }] }, "name": "more", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MoreOutlined);
 
 
 /***/ }),
@@ -302,6 +356,24 @@ __webpack_require__.r(__webpack_exports__);
 // This icon file is generated automatically.
 var QuestionCircleOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z" } }] }, "name": "question-circle", "theme": "outlined" };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QuestionCircleOutlined);
+
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var SaveOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z" } }] }, "name": "save", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveOutlined);
 
 
 /***/ }),
@@ -459,6 +531,40 @@ var CaretUpOutlined = function CaretUpOutlined(props, ref) {
 
 CaretUpOutlined.displayName = 'CaretUpOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(CaretUpOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_DeleteOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/DeleteOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var DeleteOutlined = function DeleteOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_DeleteOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+DeleteOutlined.displayName = 'DeleteOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(DeleteOutlined));
 
 /***/ }),
 
@@ -802,6 +908,40 @@ HolderOutlined.displayName = 'HolderOutlined';
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons/es/icons/LineChartOutlined.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/LineChartOutlined.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_LineChartOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/LineChartOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/LineChartOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var LineChartOutlined = function LineChartOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_LineChartOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+LineChartOutlined.displayName = 'LineChartOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(LineChartOutlined));
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons/es/icons/MinusSquareOutlined.js":
 /*!************************************************************************!*\
   !*** ./node_modules/@ant-design/icons/es/icons/MinusSquareOutlined.js ***!
@@ -833,6 +973,40 @@ var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
 
 MinusSquareOutlined.displayName = 'MinusSquareOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(MinusSquareOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/MoreOutlined.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/MoreOutlined.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_MoreOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/MoreOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/MoreOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var MoreOutlined = function MoreOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_MoreOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+MoreOutlined.displayName = 'MoreOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(MoreOutlined));
 
 /***/ }),
 
@@ -935,6 +1109,40 @@ var QuestionCircleOutlined = function QuestionCircleOutlined(props, ref) {
 
 QuestionCircleOutlined.displayName = 'QuestionCircleOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(QuestionCircleOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/SaveOutlined.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/SaveOutlined.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_SaveOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/SaveOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var SaveOutlined = function SaveOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_SaveOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+SaveOutlined.displayName = 'SaveOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(SaveOutlined));
 
 /***/ }),
 
@@ -2012,392 +2220,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../grid */ "./node_modules/antd/es/grid/col.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_grid__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-/***/ }),
-
-/***/ "./node_modules/antd/es/divider/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/antd/es/divider/index.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
-
-
-
-var __rest = undefined && undefined.__rest || function (s, e) {
-  var t = {};
-
-  for (var p in s) {
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-  }
-
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
-  }
-  return t;
-};
-
-
-
-
-
-var Divider = function Divider(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_config_provider__WEBPACK_IMPORTED_MODULE_4__.ConfigConsumer, null, function (_ref) {
-    var _classNames;
-
-    var getPrefixCls = _ref.getPrefixCls,
-        direction = _ref.direction;
-
-    var customizePrefixCls = props.prefixCls,
-        _props$type = props.type,
-        type = _props$type === void 0 ? 'horizontal' : _props$type,
-        _props$orientation = props.orientation,
-        orientation = _props$orientation === void 0 ? 'center' : _props$orientation,
-        className = props.className,
-        children = props.children,
-        dashed = props.dashed,
-        plain = props.plain,
-        restProps = __rest(props, ["prefixCls", "type", "orientation", "className", "children", "dashed", "plain"]);
-
-    var prefixCls = getPrefixCls('divider', customizePrefixCls);
-    var orientationPrefix = orientation.length > 0 ? "-".concat(orientation) : orientation;
-    var hasChildren = !!children;
-    var classString = classnames__WEBPACK_IMPORTED_MODULE_3___default()(prefixCls, "".concat(prefixCls, "-").concat(type), (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-with-text"), hasChildren), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-with-text").concat(orientationPrefix), hasChildren), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-dashed"), !!dashed), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-plain"), !!plain), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-      className: classString
-    }, restProps, {
-      role: "separator"
-    }), children && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
-      className: "".concat(prefixCls, "-inner-text")
-    }, children));
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Divider);
-
-/***/ }),
-
-/***/ "./node_modules/antd/es/drawer/index.js":
-/*!**********************************************!*\
-  !*** ./node_modules/antd/es/drawer/index.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_drawer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-drawer */ "./node_modules/rc-drawer/es/index.js");
-/* harmony import */ var _ant_design_icons_es_icons_CloseOutlined__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ant-design/icons/es/icons/CloseOutlined */ "./node_modules/@ant-design/icons/es/icons/CloseOutlined.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
-/* harmony import */ var _util_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../_util/type */ "./node_modules/antd/es/_util/type.js");
-/* harmony import */ var _util_hooks_useForceUpdate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../_util/hooks/useForceUpdate */ "./node_modules/antd/es/_util/hooks/useForceUpdate.js");
-
-
-
-
-var __rest = undefined && undefined.__rest || function (s, e) {
-  var t = {};
-
-  for (var p in s) {
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-  }
-
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
-  }
-  return t;
-};
-
-
-
-
-
-
-
-
-var DrawerContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createContext(null);
-var PlacementTypes = (0,_util_type__WEBPACK_IMPORTED_MODULE_6__.tuple)('top', 'right', 'bottom', 'left');
-var SizeTypes = (0,_util_type__WEBPACK_IMPORTED_MODULE_6__.tuple)('default', 'large');
-var defaultPushState = {
-  distance: 180
-};
-var Drawer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_a, ref) {
-  var width = _a.width,
-      height = _a.height,
-      _a$size = _a.size,
-      size = _a$size === void 0 ? 'default' : _a$size,
-      _a$closable = _a.closable,
-      closable = _a$closable === void 0 ? true : _a$closable,
-      _a$placement = _a.placement,
-      placement = _a$placement === void 0 ? 'right' : _a$placement,
-      _a$maskClosable = _a.maskClosable,
-      maskClosable = _a$maskClosable === void 0 ? true : _a$maskClosable,
-      _a$mask = _a.mask,
-      mask = _a$mask === void 0 ? true : _a$mask,
-      _a$level = _a.level,
-      level = _a$level === void 0 ? null : _a$level,
-      _a$keyboard = _a.keyboard,
-      keyboard = _a$keyboard === void 0 ? true : _a$keyboard,
-      _a$push = _a.push,
-      _push = _a$push === void 0 ? defaultPushState : _a$push,
-      _a$closeIcon = _a.closeIcon,
-      closeIcon = _a$closeIcon === void 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_ant_design_icons_es_icons_CloseOutlined__WEBPACK_IMPORTED_MODULE_7__["default"], null) : _a$closeIcon,
-      bodyStyle = _a.bodyStyle,
-      drawerStyle = _a.drawerStyle,
-      prefixCls = _a.prefixCls,
-      className = _a.className,
-      direction = _a.direction,
-      visible = _a.visible,
-      children = _a.children,
-      zIndex = _a.zIndex,
-      destroyOnClose = _a.destroyOnClose,
-      style = _a.style,
-      title = _a.title,
-      headerStyle = _a.headerStyle,
-      onClose = _a.onClose,
-      footer = _a.footer,
-      footerStyle = _a.footerStyle,
-      extra = _a.extra,
-      rest = __rest(_a, ["width", "height", "size", "closable", "placement", "maskClosable", "mask", "level", "keyboard", "push", "closeIcon", "bodyStyle", "drawerStyle", "prefixCls", "className", "direction", "visible", "children", "zIndex", "destroyOnClose", "style", "title", "headerStyle", "onClose", "footer", "footerStyle", "extra"]);
-
-  var forceUpdate = (0,_util_hooks_useForceUpdate__WEBPACK_IMPORTED_MODULE_8__["default"])();
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_3__.useState(false),
-      _React$useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState, 2),
-      internalPush = _React$useState2[0],
-      setPush = _React$useState2[1];
-
-  var parentDrawer = react__WEBPACK_IMPORTED_MODULE_3__.useContext(DrawerContext);
-  var destroyClose = react__WEBPACK_IMPORTED_MODULE_3__.useRef(false);
-  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
-    // fix: delete drawer in child and re-render, no push started.
-    // <Drawer>{show && <Drawer />}</Drawer>
-    if (visible && parentDrawer) {
-      parentDrawer.push();
-    }
-
-    return function () {
-      if (parentDrawer) {
-        parentDrawer.pull(); // parentDrawer = null;
-      }
-    };
-  }, []);
-  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
-    if (parentDrawer) {
-      if (visible) {
-        parentDrawer.push();
-      } else {
-        parentDrawer.pull();
-      }
-    }
-  }, [visible]);
-  var operations = react__WEBPACK_IMPORTED_MODULE_3__.useMemo(function () {
-    return {
-      push: function push() {
-        if (_push) {
-          setPush(true);
-        }
-      },
-      pull: function pull() {
-        if (_push) {
-          setPush(false);
-        }
-      }
-    };
-  }, [_push]);
-  react__WEBPACK_IMPORTED_MODULE_3__.useImperativeHandle(ref, function () {
-    return operations;
-  }, [operations]);
-  var isDestroyOnClose = destroyOnClose && !visible;
-
-  var onDestroyTransitionEnd = function onDestroyTransitionEnd() {
-    if (!isDestroyOnClose) {
-      return;
-    }
-
-    if (!visible) {
-      destroyClose.current = true;
-      forceUpdate();
-    }
-  };
-
-  var getOffsetStyle = function getOffsetStyle() {
-    // https://github.com/ant-design/ant-design/issues/24287
-    if (!visible && !mask) {
-      return {};
-    }
-
-    var offsetStyle = {};
-
-    if (placement === 'left' || placement === 'right') {
-      var defaultWidth = size === 'large' ? 736 : 378;
-      offsetStyle.width = typeof width === 'undefined' ? defaultWidth : width;
-    } else {
-      var defaultHeight = size === 'large' ? 736 : 378;
-      offsetStyle.height = typeof height === 'undefined' ? defaultHeight : height;
-    }
-
-    return offsetStyle;
-  };
-
-  var getRcDrawerStyle = function getRcDrawerStyle() {
-    // get drawer push width or height
-    var getPushTransform = function getPushTransform(_placement) {
-      var distance;
-
-      if (typeof _push === 'boolean') {
-        distance = _push ? defaultPushState.distance : 0;
-      } else {
-        distance = _push.distance;
-      }
-
-      distance = parseFloat(String(distance || 0));
-
-      if (_placement === 'left' || _placement === 'right') {
-        return "translateX(".concat(_placement === 'left' ? distance : -distance, "px)");
-      }
-
-      if (_placement === 'top' || _placement === 'bottom') {
-        return "translateY(".concat(_placement === 'top' ? distance : -distance, "px)");
-      }
-    }; // 当无 mask 时，将 width 应用到外层容器上
-    // 解决 https://github.com/ant-design/ant-design/issues/12401 的问题
-
-
-    var offsetStyle = mask ? {} : getOffsetStyle();
-    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
-      zIndex: zIndex,
-      transform: internalPush ? getPushTransform(placement) : undefined
-    }, offsetStyle), style);
-  };
-
-  var closeIconNode = closable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
-    type: "button",
-    onClick: onClose,
-    "aria-label": "Close",
-    className: "".concat(prefixCls, "-close")
-  }, closeIcon);
-
-  function renderHeader() {
-    if (!title && !closable) {
-      return null;
-    }
-
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()("".concat(prefixCls, "-header"), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, "".concat(prefixCls, "-header-close-only"), closable && !title && !extra)),
-      style: headerStyle
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "".concat(prefixCls, "-header-title")
-    }, closeIconNode, title && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "".concat(prefixCls, "-title")
-    }, title)), extra && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "".concat(prefixCls, "-extra")
-    }, extra));
-  }
-
-  function renderFooter() {
-    if (!footer) {
-      return null;
-    }
-
-    var footerClassName = "".concat(prefixCls, "-footer");
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: footerClassName,
-      style: footerStyle
-    }, footer);
-  } // render drawer body dom
-
-
-  var renderBody = function renderBody() {
-    if (destroyClose.current && !visible) {
-      return null;
-    }
-
-    destroyClose.current = false;
-    var containerStyle = {};
-
-    if (isDestroyOnClose) {
-      // Increase the opacity transition, delete children after closing.
-      containerStyle.opacity = 0;
-      containerStyle.transition = 'opacity .3s';
-    }
-
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "".concat(prefixCls, "-wrapper-body"),
-      style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, containerStyle), drawerStyle),
-      onTransitionEnd: onDestroyTransitionEnd
-    }, renderHeader(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "".concat(prefixCls, "-body"),
-      style: bodyStyle
-    }, children), renderFooter());
-  };
-
-  var drawerClassName = classnames__WEBPACK_IMPORTED_MODULE_5___default()((0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    'no-mask': !mask
-  }, "".concat(prefixCls, "-rtl"), direction === 'rtl'), className);
-  var offsetStyle = mask ? getOffsetStyle() : {};
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(DrawerContext.Provider, {
-    value: operations
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(rc_drawer__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    handler: false
-  }, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    placement: placement,
-    prefixCls: prefixCls,
-    maskClosable: maskClosable,
-    level: level,
-    keyboard: keyboard,
-    children: children,
-    onClose: onClose
-  }, rest), offsetStyle, {
-    open: visible,
-    showMask: mask,
-    style: getRcDrawerStyle(),
-    className: drawerClassName
-  }), renderBody()));
-});
-Drawer.displayName = 'Drawer';
-var DrawerWrapper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (props, ref) {
-  var customizePrefixCls = props.prefixCls,
-      customizeGetContainer = props.getContainer;
-
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_3__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_9__.ConfigContext),
-      getPopupContainer = _React$useContext.getPopupContainer,
-      getPrefixCls = _React$useContext.getPrefixCls,
-      direction = _React$useContext.direction;
-
-  var prefixCls = getPrefixCls('drawer', customizePrefixCls);
-  var getContainer = // 有可能为 false，所以不能直接判断
-  customizeGetContainer === undefined && getPopupContainer ? function () {
-    return getPopupContainer(document.body);
-  } : customizeGetContainer;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Drawer, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
-    ref: ref,
-    prefixCls: prefixCls,
-    getContainer: getContainer,
-    direction: direction
-  }));
-});
-DrawerWrapper.displayName = 'DrawerWrapper';
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerWrapper);
 
 /***/ }),
 
@@ -4499,432 +4321,6 @@ _Input__WEBPACK_IMPORTED_MODULE_0__["default"].Password = _Password__WEBPACK_IMP
 
 /***/ }),
 
-/***/ "./node_modules/antd/es/list/Item.js":
-/*!*******************************************!*\
-  !*** ./node_modules/antd/es/list/Item.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Meta": () => (/* binding */ Meta),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index */ "./node_modules/antd/es/list/index.js");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../grid */ "./node_modules/antd/es/grid/col.js");
-/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
-/* harmony import */ var _util_reactNode__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../_util/reactNode */ "./node_modules/antd/es/_util/reactNode.js");
-
-
-
-var __rest = undefined && undefined.__rest || function (s, e) {
-  var t = {};
-
-  for (var p in s) {
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-  }
-
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
-  }
-  return t;
-};
-
-
-
-
-
-
-
-var Meta = function Meta(_a) {
-  var customizePrefixCls = _a.prefixCls,
-      className = _a.className,
-      avatar = _a.avatar,
-      title = _a.title,
-      description = _a.description,
-      others = __rest(_a, ["prefixCls", "className", "avatar", "title", "description"]);
-
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_2__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_4__.ConfigContext),
-      getPrefixCls = _React$useContext.getPrefixCls;
-
-  var prefixCls = getPrefixCls('list', customizePrefixCls);
-  var classString = classnames__WEBPACK_IMPORTED_MODULE_3___default()("".concat(prefixCls, "-item-meta"), className);
-  var content = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-item-meta-content")
-  }, title && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("h4", {
-    className: "".concat(prefixCls, "-item-meta-title")
-  }, title), description && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-item-meta-description")
-  }, description));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, others, {
-    className: classString
-  }), avatar && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-item-meta-avatar")
-  }, avatar), (title || description) && content);
-};
-
-var Item = function Item(_a) {
-  var customizePrefixCls = _a.prefixCls,
-      children = _a.children,
-      actions = _a.actions,
-      extra = _a.extra,
-      className = _a.className,
-      colStyle = _a.colStyle,
-      others = __rest(_a, ["prefixCls", "children", "actions", "extra", "className", "colStyle"]);
-
-  var _React$useContext2 = react__WEBPACK_IMPORTED_MODULE_2__.useContext(_index__WEBPACK_IMPORTED_MODULE_5__.ListContext),
-      grid = _React$useContext2.grid,
-      itemLayout = _React$useContext2.itemLayout;
-
-  var _React$useContext3 = react__WEBPACK_IMPORTED_MODULE_2__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_4__.ConfigContext),
-      getPrefixCls = _React$useContext3.getPrefixCls;
-
-  var isItemContainsTextNodeAndNotSingular = function isItemContainsTextNodeAndNotSingular() {
-    var result;
-    react__WEBPACK_IMPORTED_MODULE_2__.Children.forEach(children, function (element) {
-      if (typeof element === 'string') {
-        result = true;
-      }
-    });
-    return result && react__WEBPACK_IMPORTED_MODULE_2__.Children.count(children) > 1;
-  };
-
-  var isFlexMode = function isFlexMode() {
-    if (itemLayout === 'vertical') {
-      return !!extra;
-    }
-
-    return !isItemContainsTextNodeAndNotSingular();
-  };
-
-  var prefixCls = getPrefixCls('list', customizePrefixCls);
-  var actionsContent = actions && actions.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("ul", {
-    className: "".concat(prefixCls, "-item-action"),
-    key: "actions"
-  }, actions.map(function (action, i) {
-    return (
-      /*#__PURE__*/
-      // eslint-disable-next-line react/no-array-index-key
-      react__WEBPACK_IMPORTED_MODULE_2__.createElement("li", {
-        key: "".concat(prefixCls, "-item-action-").concat(i)
-      }, action, i !== actions.length - 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("em", {
-        className: "".concat(prefixCls, "-item-action-split")
-      }))
-    );
-  }));
-  var Element = grid ? 'div' : 'li';
-  var itemChildren = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Element, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, others, {
-    // `li` element `onCopy` prop args is not same as `div`
-    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("".concat(prefixCls, "-item"), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, "".concat(prefixCls, "-item-no-flex"), !isFlexMode()), className)
-  }), itemLayout === 'vertical' && extra ? [/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-item-main"),
-    key: "content"
-  }, children, actionsContent), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-item-extra"),
-    key: "extra"
-  }, extra)] : [children, actionsContent, (0,_util_reactNode__WEBPACK_IMPORTED_MODULE_6__.cloneElement)(extra, {
-    key: 'extra'
-  })]);
-  return grid ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_grid__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    flex: 1,
-    style: colStyle
-  }, itemChildren) : itemChildren;
-};
-
-Item.Meta = Meta;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Item);
-
-/***/ }),
-
-/***/ "./node_modules/antd/es/list/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/antd/es/list/index.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ListContext": () => (/* binding */ ListContext),
-/* harmony export */   "ListConsumer": () => (/* binding */ ListConsumer),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _spin__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../spin */ "./node_modules/antd/es/spin/index.js");
-/* harmony import */ var _grid_hooks_useBreakpoint__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../grid/hooks/useBreakpoint */ "./node_modules/antd/es/grid/hooks/useBreakpoint.js");
-/* harmony import */ var _util_responsiveObserve__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../_util/responsiveObserve */ "./node_modules/antd/es/_util/responsiveObserve.js");
-/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
-/* harmony import */ var _pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pagination */ "./node_modules/antd/es/pagination/index.js");
-/* harmony import */ var _grid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../grid */ "./node_modules/antd/es/grid/row.js");
-/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Item */ "./node_modules/antd/es/list/Item.js");
-
-
-
-
-
-
-var __rest = undefined && undefined.__rest || function (s, e) {
-  var t = {};
-
-  for (var p in s) {
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-  }
-
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
-  }
-  return t;
-};
-
-
-
-
-
-
-
-
-
-
-var ListContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createContext({});
-var ListConsumer = ListContext.Consumer;
-
-function List(_a) {
-  var _classNames;
-
-  var _a$pagination = _a.pagination,
-      pagination = _a$pagination === void 0 ? false : _a$pagination,
-      customizePrefixCls = _a.prefixCls,
-      _a$bordered = _a.bordered,
-      bordered = _a$bordered === void 0 ? false : _a$bordered,
-      _a$split = _a.split,
-      split = _a$split === void 0 ? true : _a$split,
-      className = _a.className,
-      children = _a.children,
-      itemLayout = _a.itemLayout,
-      loadMore = _a.loadMore,
-      grid = _a.grid,
-      _a$dataSource = _a.dataSource,
-      dataSource = _a$dataSource === void 0 ? [] : _a$dataSource,
-      size = _a.size,
-      header = _a.header,
-      footer = _a.footer,
-      _a$loading = _a.loading,
-      loading = _a$loading === void 0 ? false : _a$loading,
-      rowKey = _a.rowKey,
-      renderItem = _a.renderItem,
-      locale = _a.locale,
-      rest = __rest(_a, ["pagination", "prefixCls", "bordered", "split", "className", "children", "itemLayout", "loadMore", "grid", "dataSource", "size", "header", "footer", "loading", "rowKey", "renderItem", "locale"]);
-
-  var paginationObj = pagination && (0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__["default"])(pagination) === 'object' ? pagination : {};
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_5__.useState(paginationObj.defaultCurrent || 1),
-      _React$useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState, 2),
-      paginationCurrent = _React$useState2[0],
-      setPaginationCurrent = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_5__.useState(paginationObj.defaultPageSize || 10),
-      _React$useState4 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState3, 2),
-      paginationSize = _React$useState4[0],
-      setPaginationSize = _React$useState4[1];
-
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_5__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_7__.ConfigContext),
-      getPrefixCls = _React$useContext.getPrefixCls,
-      renderEmpty = _React$useContext.renderEmpty,
-      direction = _React$useContext.direction;
-
-  var defaultPaginationProps = {
-    current: 1,
-    total: 0
-  };
-  var listItemsKeys = {};
-
-  var triggerPaginationEvent = function triggerPaginationEvent(eventName) {
-    return function (page, pageSize) {
-      setPaginationCurrent(page);
-      setPaginationSize(pageSize);
-
-      if (pagination && pagination[eventName]) {
-        pagination[eventName](page, pageSize);
-      }
-    };
-  };
-
-  var onPaginationChange = triggerPaginationEvent('onChange');
-  var onPaginationShowSizeChange = triggerPaginationEvent('onShowSizeChange');
-
-  var renderInnerItem = function renderInnerItem(item, index) {
-    if (!renderItem) return null;
-    var key;
-
-    if (typeof rowKey === 'function') {
-      key = rowKey(item);
-    } else if (rowKey) {
-      key = item[rowKey];
-    } else {
-      key = item.key;
-    }
-
-    if (!key) {
-      key = "list-item-".concat(index);
-    }
-
-    listItemsKeys[index] = key;
-    return renderItem(item, index);
-  };
-
-  var isSomethingAfterLastItem = function isSomethingAfterLastItem() {
-    return !!(loadMore || pagination || footer);
-  };
-
-  var renderEmptyFunc = function renderEmptyFunc(prefixCls, renderEmptyHandler) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-      className: "".concat(prefixCls, "-empty-text")
-    }, locale && locale.emptyText || renderEmptyHandler('List'));
-  };
-
-  var prefixCls = getPrefixCls('list', customizePrefixCls);
-  var loadingProp = loading;
-
-  if (typeof loadingProp === 'boolean') {
-    loadingProp = {
-      spinning: loadingProp
-    };
-  }
-
-  var isLoading = loadingProp && loadingProp.spinning; // large => lg
-  // small => sm
-
-  var sizeCls = '';
-
-  switch (size) {
-    case 'large':
-      sizeCls = 'lg';
-      break;
-
-    case 'small':
-      sizeCls = 'sm';
-      break;
-
-    default:
-      break;
-  }
-
-  var classString = classnames__WEBPACK_IMPORTED_MODULE_6___default()(prefixCls, (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-vertical"), itemLayout === 'vertical'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-").concat(sizeCls), sizeCls), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-split"), split), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-bordered"), bordered), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-loading"), isLoading), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-grid"), !!grid), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-something-after-last-item"), isSomethingAfterLastItem()), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-
-  var paginationProps = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, defaultPaginationProps), {
-    total: dataSource.length,
-    current: paginationCurrent,
-    pageSize: paginationSize
-  }), pagination || {});
-
-  var largestPage = Math.ceil(paginationProps.total / paginationProps.pageSize);
-
-  if (paginationProps.current > largestPage) {
-    paginationProps.current = largestPage;
-  }
-
-  var paginationContent = pagination ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-    className: "".concat(prefixCls, "-pagination")
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_pagination__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, paginationProps, {
-    onChange: onPaginationChange,
-    onShowSizeChange: onPaginationShowSizeChange
-  }))) : null;
-
-  var splitDataSource = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(dataSource);
-
-  if (pagination) {
-    if (dataSource.length > (paginationProps.current - 1) * paginationProps.pageSize) {
-      splitDataSource = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(dataSource).splice((paginationProps.current - 1) * paginationProps.pageSize, paginationProps.pageSize);
-    }
-  }
-
-  var screens = (0,_grid_hooks_useBreakpoint__WEBPACK_IMPORTED_MODULE_9__["default"])();
-  var currentBreakpoint = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
-    for (var i = 0; i < _util_responsiveObserve__WEBPACK_IMPORTED_MODULE_10__.responsiveArray.length; i += 1) {
-      var breakpoint = _util_responsiveObserve__WEBPACK_IMPORTED_MODULE_10__.responsiveArray[i];
-
-      if (screens[breakpoint]) {
-        return breakpoint;
-      }
-    }
-
-    return undefined;
-  }, [screens]);
-  var colStyle = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
-    if (!grid) {
-      return undefined;
-    }
-
-    var columnCount = currentBreakpoint && grid[currentBreakpoint] ? grid[currentBreakpoint] : grid.column;
-
-    if (columnCount) {
-      return {
-        width: "".concat(100 / columnCount, "%"),
-        maxWidth: "".concat(100 / columnCount, "%")
-      };
-    }
-  }, [grid === null || grid === void 0 ? void 0 : grid.column, currentBreakpoint]);
-  var childrenContent = isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-    style: {
-      minHeight: 53
-    }
-  });
-
-  if (splitDataSource.length > 0) {
-    var items = splitDataSource.map(function (item, index) {
-      return renderInnerItem(item, index);
-    });
-    var childrenList = react__WEBPACK_IMPORTED_MODULE_5__.Children.map(items, function (child, index) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-        key: listItemsKeys[index],
-        style: colStyle
-      }, child);
-    });
-    childrenContent = grid ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_grid__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      gutter: grid.gutter
-    }, childrenList) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("ul", {
-      className: "".concat(prefixCls, "-items")
-    }, items);
-  } else if (!children && !isLoading) {
-    childrenContent = renderEmptyFunc(prefixCls, renderEmpty);
-  }
-
-  var paginationPosition = paginationProps.position || 'bottom';
-  var contextValue = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
-    return {
-      grid: grid,
-      itemLayout: itemLayout
-    };
-  }, [JSON.stringify(grid), itemLayout]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(ListContext.Provider, {
-    value: contextValue
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
-    className: classString
-  }, rest), (paginationPosition === 'top' || paginationPosition === 'both') && paginationContent, header && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-    className: "".concat(prefixCls, "-header")
-  }, header), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_spin__WEBPACK_IMPORTED_MODULE_12__["default"], loadingProp, childrenContent, children), footer && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
-    className: "".concat(prefixCls, "-footer")
-  }, footer), loadMore || (paginationPosition === 'bottom' || paginationPosition === 'both') && paginationContent));
-}
-
-List.Item = _Item__WEBPACK_IMPORTED_MODULE_13__["default"];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (List);
-
-/***/ }),
-
 /***/ "./node_modules/antd/es/locale/en_US.js":
 /*!**********************************************!*\
   !*** ./node_modules/antd/es/locale/en_US.js ***!
@@ -6665,236 +6061,6 @@ function getIcons(_ref) {
     removeIcon: mergedRemoveIcon
   };
 }
-
-/***/ }),
-
-/***/ "./node_modules/antd/es/slider/SliderTooltip.js":
-/*!******************************************************!*\
-  !*** ./node_modules/antd/es/slider/SliderTooltip.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_util_es_ref__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rc-util/es/ref */ "./node_modules/rc-util/es/ref.js");
-/* harmony import */ var rc_util_es_raf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rc-util/es/raf */ "./node_modules/rc-util/es/raf.js");
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../tooltip */ "./node_modules/antd/es/tooltip/index.js");
-
-
-
-
-
-
-var SliderTooltip = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (props, ref) {
-  var visible = props.visible;
-  var innerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  var rafRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-
-  function cancelKeepAlign() {
-    rc_util_es_raf__WEBPACK_IMPORTED_MODULE_3__["default"].cancel(rafRef.current);
-    rafRef.current = null;
-  }
-
-  function keepAlign() {
-    rafRef.current = (0,rc_util_es_raf__WEBPACK_IMPORTED_MODULE_3__["default"])(function () {
-      var _a;
-
-      (_a = innerRef.current) === null || _a === void 0 ? void 0 : _a.forcePopupAlign();
-      rafRef.current = null;
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    if (visible) {
-      keepAlign();
-    } else {
-      cancelKeepAlign();
-    }
-
-    return cancelKeepAlign;
-  }, [visible, props.title]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_tooltip__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: (0,rc_util_es_ref__WEBPACK_IMPORTED_MODULE_2__.composeRef)(innerRef, ref)
-  }, props));
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SliderTooltip);
-
-/***/ }),
-
-/***/ "./node_modules/antd/es/slider/index.js":
-/*!**********************************************!*\
-  !*** ./node_modules/antd/es/slider/index.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rc-slider */ "./node_modules/rc-slider/es/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _SliderTooltip__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SliderTooltip */ "./node_modules/antd/es/slider/SliderTooltip.js");
-/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
-
-
-
-
-
-var __rest = undefined && undefined.__rest || function (s, e) {
-  var t = {};
-
-  for (var p in s) {
-    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-  }
-
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
-  }
-  return t;
-};
-
-
-
-
-
-
-var Slider = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (props, ref) {
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_4__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_7__.ConfigContext),
-      getPrefixCls = _React$useContext.getPrefixCls,
-      direction = _React$useContext.direction,
-      getPopupContainer = _React$useContext.getPopupContainer;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_4__.useState({}),
-      _React$useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState, 2),
-      visibles = _React$useState2[0],
-      setVisibles = _React$useState2[1];
-
-  var toggleTooltipVisible = function toggleTooltipVisible(index, visible) {
-    setVisibles(function (prev) {
-      return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, prev), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, index, visible));
-    });
-  };
-
-  var getTooltipPlacement = function getTooltipPlacement(tooltipPlacement, vertical) {
-    if (tooltipPlacement) {
-      return tooltipPlacement;
-    }
-
-    if (!vertical) {
-      return 'top';
-    }
-
-    return direction === 'rtl' ? 'left' : 'right';
-  };
-
-  var handleWithTooltip = function handleWithTooltip(_a) {
-    var tooltipPrefixCls = _a.tooltipPrefixCls,
-        prefixCls = _a.prefixCls,
-        _b = _a.info,
-        value = _b.value,
-        dragging = _b.dragging,
-        index = _b.index,
-        restProps = __rest(_b, ["value", "dragging", "index"]);
-
-    var tipFormatter = props.tipFormatter,
-        tooltipVisible = props.tooltipVisible,
-        tooltipPlacement = props.tooltipPlacement,
-        getTooltipPopupContainer = props.getTooltipPopupContainer,
-        vertical = props.vertical;
-    var isTipFormatter = tipFormatter ? visibles[index] || dragging : false;
-    var visible = tooltipVisible || tooltipVisible === undefined && isTipFormatter;
-    var rootPrefixCls = getPrefixCls();
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_SliderTooltip__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      prefixCls: tooltipPrefixCls,
-      title: tipFormatter ? tipFormatter(value) : '',
-      visible: visible,
-      placement: getTooltipPlacement(tooltipPlacement, vertical),
-      transitionName: "".concat(rootPrefixCls, "-zoom-down"),
-      key: index,
-      overlayClassName: "".concat(prefixCls, "-tooltip"),
-      getPopupContainer: getTooltipPopupContainer || getPopupContainer
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(rc_slider__WEBPACK_IMPORTED_MODULE_5__.Handle, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, restProps, {
-      value: value,
-      onMouseEnter: function onMouseEnter() {
-        return toggleTooltipVisible(index, true);
-      },
-      onMouseLeave: function onMouseLeave() {
-        return toggleTooltipVisible(index, false);
-      }
-    })));
-  };
-
-  var customizePrefixCls = props.prefixCls,
-      customizeTooltipPrefixCls = props.tooltipPrefixCls,
-      range = props.range,
-      className = props.className,
-      restProps = __rest(props, ["prefixCls", "tooltipPrefixCls", "range", "className"]);
-
-  var prefixCls = getPrefixCls('slider', customizePrefixCls);
-  var tooltipPrefixCls = getPrefixCls('tooltip', customizeTooltipPrefixCls);
-  var cls = classnames__WEBPACK_IMPORTED_MODULE_6___default()(className, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, "".concat(prefixCls, "-rtl"), direction === 'rtl')); // make reverse default on rtl direction
-
-  if (direction === 'rtl' && !restProps.vertical) {
-    restProps.reverse = !restProps.reverse;
-  } // extrack draggableTrack from range={{ ... }}
-
-
-  var draggableTrack;
-
-  if ((0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__["default"])(range) === 'object') {
-    draggableTrack = range.draggableTrack;
-  }
-
-  if (range) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(rc_slider__WEBPACK_IMPORTED_MODULE_5__.Range, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, restProps, {
-      step: restProps.step,
-      draggableTrack: draggableTrack,
-      className: cls,
-      ref: ref,
-      handle: function handle(info) {
-        return handleWithTooltip({
-          tooltipPrefixCls: tooltipPrefixCls,
-          prefixCls: prefixCls,
-          info: info
-        });
-      },
-      prefixCls: prefixCls
-    }));
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(rc_slider__WEBPACK_IMPORTED_MODULE_5__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, restProps, {
-    step: restProps.step,
-    className: cls,
-    ref: ref,
-    handle: function handle(info) {
-      return handleWithTooltip({
-        tooltipPrefixCls: tooltipPrefixCls,
-        prefixCls: prefixCls,
-        info: info
-      });
-    },
-    prefixCls: prefixCls
-  }));
-});
-Slider.displayName = 'Slider';
-Slider.defaultProps = {
-  tipFormatter: function tipFormatter(value) {
-    return typeof value === 'number' ? value.toString() : '';
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Slider);
 
 /***/ }),
 
@@ -10479,181 +9645,45 @@ var BackToProjectsLink = function BackToProjectsLink() {
 
 /***/ }),
 
-/***/ "./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js":
-/*!********************************************************************************!*\
-  !*** ./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js ***!
-  \********************************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js":
+/*!*****************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AddPumpsToProjectsDrawer": () => (/* binding */ AddPumpsToProjectsDrawer)
+/* harmony export */   "AddedPumpsTable": () => (/* binding */ AddedPumpsTable)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
-  var pumpInfo = _ref.pumpInfo,
-      visible = _ref.visible,
-      setVisible = _ref.setVisible;
-
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__.useInputRules)(),
-      rules = _useInputRules.rules;
-
-  var projects = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props.projects;
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_8__.useStyles)(),
-      fullWidth = _useStyles.fullWidth;
-
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__.useTransRoutes)();
-
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_13__["default"].useForm(),
-      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
-      form = _Form$useForm2[0];
-
-  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__.useHttp)(),
-      postRequest = _useHttp.postRequest;
-
-  var clearModal = function clearModal() {
-    form.resetFields();
-    setVisible(false);
-  };
-
-  var modalItems = [{
-    values: {
-      rules: [rules.required],
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose'),
-      name: 'project_ids'
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__.MultipleSelection, {
-      options: projects,
-      placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose')
-    })
-  }, (pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.pumpable_type) !== 'double_pump' && {
-    values: {
-      rules: [rules.required],
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.pumps_count'),
-      name: 'pumps_count'
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__.InputNum, {
-      style: fullWidth,
-      max: 5,
-      min: 1
-    })
-  }].filter(Boolean);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.title'),
-    visible: visible,
-    onClose: clearModal,
-    width: 350,
-    closable: false,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
-      form: form,
-      layout: "vertical",
-      items: modalItems
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__.PrimaryButton, {
-      onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var body;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return form.validateFields();
-
-              case 2:
-                body = _context.sent;
-                postRequest(tRoute('pumps.add_to_projects', pumpInfo.id), body).then(function (res) {
-                  clearModal();
-                })["catch"](function (reason) {});
-
-              case 4:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      })),
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.ok')
-    })]
-  });
-};
-
-/***/ }),
-
-/***/ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js":
-/*!************************************************************************!*\
-  !*** ./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PumpPropsDrawer": () => (/* binding */ PumpPropsDrawer)
-/* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/list/index.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FilePdfOutlined.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _AddPumpToProjectsDrawer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AddPumpToProjectsDrawer */ "./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/LineChartOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FilePdfOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js");
+/* harmony import */ var _resources_js_src_Shared_EditableCell__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/EditableCell */ "./resources/js/src/Shared/EditableCell.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit */ "./resources/js/src/Shared/Resource/Table/Actions/Edit.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/Save */ "./resources/js/src/Shared/Resource/Table/Actions/Save.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10677,334 +9707,169 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
-  var addToProjects = _ref.addToProjects,
-      title = _ref.title,
-      visible = _ref.visible,
-      setVisible = _ref.setVisible,
-      pumpInfo = _ref.pumpInfo,
-      _ref$needCurve = _ref.needCurve,
-      needCurve = _ref$needCurve === void 0 ? false : _ref$needCurve;
 
-  var _img = function _img(_ref2) {
-    var src = _ref2.src;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__.JustifiedRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-          style: {
-            margin: "0 auto",
-            maxWidth: 600
-          },
-          alt: "./media/no_image.jpg",
-          src: src
-        })
-      })
-    });
-  };
+var AddedPumpsTable = function AddedPumpsTable(_ref) {
+  var addedStations = _ref.addedStations,
+      setStationToShow = _ref.setStationToShow,
+      loading = _ref.loading,
+      setAddedStations = _ref.setAddedStations;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      editingKey = _useState2[0],
+      setEditingKey = _useState2[1];
 
   var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_9__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (pumpInfo) {
-      form.setFieldsValue(pumpInfo);
-      setVisible(true);
+  var inputProps = function inputProps(record) {
+    return {
+      onBlur: saveRowHandler(record),
+      onPressEnter: saveRowHandler(record)
+    };
+  };
+
+  var columns = [{
+    title: "Дата создания",
+    dataIndex: 'created_at' // render: (_, record) => record.created_at.toLocaleString()
+
+  }, {
+    title: "Наименование",
+    dataIndex: 'name'
+  }, {
+    title: "Себестоимость",
+    dataIndex: 'cost_price'
+  }, {
+    title: "Наценка, %",
+    dataIndex: "extra_percentage",
+    editable: true,
+    input: function input(record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
+        precision: 2,
+        min: 0
+      }, inputProps(record)));
     }
-  }, [pumpInfo]);
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__.useStyles)(),
-      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      addToProjectsVisible = _useState2[0],
-      setAddToProjectsVisible = _useState2[1];
-
-  var items = [{
-    values: {
-      name: 'article_num_main',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_main'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_main,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, // {
-  //     values: {
-  //         name: 'article_num_reserve',
-  //         label: Lang.get('pages.pumps.data.article_num_reserve'),
-  //         initialValue: pumpInfo?.article_num_reserve,
-  //         className: reducedAntFormItemClassName,
-  //     }, input: <Input
-  //         bordered={false}
-  //         readOnly
-  //     />
-  // },
-  {
-    values: {
-      name: 'article_num_archive',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.article_num_archive'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article_num_archive,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
   }, {
-    values: {
-      name: 'is_discontinued',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.is_discontinued'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.is_discontinued,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
+    title: "Наценка, сумма",
+    dataIndex: "extra_sum",
+    editable: true,
+    input: function input(record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
+        precision: 2,
+        min: 0
+      }, inputProps(record)));
+    }
   }, {
-    values: {
-      name: 'weight',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.weight'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight.toLocaleString(),
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
+    title: "Цена в КП",
+    dataIndex: 'final_price'
   }, {
-    values: {
-      name: 'rated_power',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_power'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_power.toLocaleString(),
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
+    title: "Комментарий",
+    dataIndex: 'comment',
+    editable: true,
+    input: function input(record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].TextArea, _objectSpread({
+        autoSize: true
+      }, inputProps(record)));
+    }
   }, {
-    values: {
-      name: 'rated_current',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.rated_current'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.rated_current.toLocaleString(),
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'connection_type',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.connection_type'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection_type,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'fluid_temp_min',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.fluid_temp_min'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.fluid_temp_min,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'fluid_temp_max',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.fluid_temp_max'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.fluid_temp_max,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'ptp_length',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.ptp_length'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.ptp_length,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'dn_suction',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_suction'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_suction,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'dn_pressure',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_pressure'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_pressure,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'category',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.category'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.category,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'connection',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.connection'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'types',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.types'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.types,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].TextArea, {
-      autoSize: true,
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'applications',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.applications'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.applications,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].TextArea, {
-      autoSize: true,
-      bordered: false,
-      readOnly: true
-    })
-  }, {
-    values: {
-      name: 'description',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.description'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.description,
-      className: reducedAntFormItemClassName
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].TextArea, {
-      autoSize: true,
-      bordered: false,
-      readOnly: true
-    })
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    width: needCurve ? 800 : 650,
-    placement: "right",
-    title: title ? pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.full_name : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.graphic.info'),
-    visible: visible,
-    onClose: function onClose() {
-      setVisible(false);
-    },
-    afterVisibleChange: function afterVisibleChange(visible) {
-      if (visible && needCurve) document.getElementById('for-graphic').innerHTML = pumpInfo.svg;
-    },
-    extra: addToProjects && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__.PrimaryButton, {
-        onClick: function onClick() {
-          setAddToProjectsVisible(true);
-        },
-        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.add_to_projects.button')
-      })
-    }),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      type: "card",
-      defaultActiveKey: "curve",
-      children: [needCurve && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.curves'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          id: "for-graphic"
-        })
-      }, "curve"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.props'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
-          form: form,
-          layout: "horizontal",
-          labelSpan: {
-            xs: 6
+    key: 'actions',
+    width: '1%',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_2__.TableActionsContainer, {
+        children: [isEditing(record) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_6__.Save, {
+          clickHandler: saveRowHandler(record)
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_5__.Edit, {
+          clickHandler: editRowHandler(record)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+          clickHandler: function clickHandler() {
+            return setStationToShow(record);
           },
-          items: items
-        })
-      }, "props"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.model_picture'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_img, {
-          src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.pump
-        })
-      }, "model_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.sizes_picture'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_img, {
-          src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.sizes
-        })
-      }, "size_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.electric_diagram'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_img, {
-          src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.electric_diagram
-        })
-      }, "electric_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.exploded_view'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_img, {
-          src: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.images.cross_sectional_drawing
-        })
-      }, "expl_pic"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TabPane, {
-        tab: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.pump_info.files'),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
-          size: "large",
-          itemLayout: "horizontal",
-          dataSource: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.files,
-          renderItem: function renderItem(file) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].Item, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].Item.Meta, {
-                avatar: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_15__["default"], {}),
-                title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
-                  download: true,
-                  href: file.link,
-                  children: file.name
-                })
-              })
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {}),
+          title: "\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0433\u0440\u0430\u0444\u0438\u043A"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+          clickHandler: function clickHandler() {},
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {}),
+          title: "\u0421\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0422\u041A\u041F"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+          clickHandler: function clickHandler() {
+            var stations = addedStations;
+            var index = stations.findIndex(function (p) {
+              return p.key !== record.key;
             });
-          }
-        })
-      }, "files")]
-    }), addToProjects && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AddPumpToProjectsDrawer__WEBPACK_IMPORTED_MODULE_6__.AddPumpsToProjectsDrawer, {
-      pumpInfo: pumpInfo,
-      visible: addToProjectsVisible,
-      setVisible: setAddToProjectsVisible
-    })]
+            stations.splice(index, 1);
+            setAddedStations(_toConsumableArray(stations));
+          },
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_13__["default"], {}),
+          title: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C"
+        })]
+      });
+    }
+  }];
+
+  var _columns = columns.map(function (col) {
+    return !col.editable ? col : _objectSpread(_objectSpread({}, col), {}, {
+      onCell: function onCell(record) {
+        return {
+          record: record,
+          dataIndex: col.dataIndex,
+          title: col.title,
+          editing: isEditing(record),
+          input: col.input
+        };
+      }
+    });
+  });
+
+  var isEditing = function isEditing(record) {
+    return record.key === editingKey;
+  };
+
+  var editRowHandler = function editRowHandler(record) {
+    return function () {
+      form.setFieldsValue(_objectSpread({}, record));
+      setEditingKey(record.key);
+    };
+  };
+
+  var saveRowHandler = function saveRowHandler(record) {
+    return function () {
+      var updated = form.getFieldsValue(true);
+      var final_price_percentage = updated.cost_price + updated.cost_price * updated.extra_percentage / 100;
+      var final_price_sum = updated.cost_price + updated.extra_sum;
+
+      if (final_price_percentage >= final_price_sum) {
+        updated.final_price = final_price_percentage;
+        updated.extra_sum = 0;
+      } else {
+        updated.final_price = final_price_sum;
+        updated.extra_percentage = 0;
+      }
+
+      var stations = addedStations;
+      var index = stations.findIndex(function (p) {
+        return p.key === record.key;
+      });
+      stations.splice(index, 1, _objectSpread(_objectSpread({}, stations[index]), updated));
+      setAddedStations(_toConsumableArray(stations));
+      setEditingKey('');
+    };
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    form: form,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_1__.TTable, {
+      columns: _columns,
+      dataSource: addedStations,
+      loading: loading,
+      components: {
+        body: {
+          cell: _resources_js_src_Shared_EditableCell__WEBPACK_IMPORTED_MODULE_3__.EditableCell
+        }
+      },
+      rowClassName: "editable-row",
+      size: "small"
+    })
   });
 };
 
@@ -11066,556 +9931,6 @@ var DashboardCard = function DashboardCard(_ref) {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js":
-/*!*****************************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js ***!
-  \*****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ExportAtOnceSelectionDrawer": () => (/* binding */ ExportAtOnceSelectionDrawer)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var downloadjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! downloadjs */ "./node_modules/downloadjs/download.js");
-/* harmony import */ var downloadjs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(downloadjs__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-var ExportAtOnceSelectionDrawer = function ExportAtOnceSelectionDrawer(_ref) {
-  var stationToShow = _ref.stationToShow,
-      visible = _ref.visible,
-      setVisible = _ref.setVisible,
-      pumpableType = _ref.pumpableType;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      loading = _useState2[0],
-      setLoading = _useState2[1];
-
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)();
-
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_8__["default"].useForm(),
-      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
-      form = _Form$useForm2[0];
-
-  var setBody = function setBody(body) {
-    switch (body.pumpable_type) {
-      case "single_pump":
-        body = _objectSpread(_objectSpread({}, body), {}, {
-          reserve_pumps_count: (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count) - (stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.main_pumps_count),
-          pumps_count: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pumps_count
-        });
-        break;
-
-      case "double_pump":
-        body = _objectSpread(_objectSpread({}, body), {}, {
-          dp_work_scheme_id: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.dp_work_scheme_id
-        });
-        break;
-    }
-
-    return body;
-  };
-
-  var exportHandler = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var body;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              setLoading(true);
-              _context.t0 = _objectSpread;
-              _context.t1 = _objectSpread;
-              _context.t2 = {};
-              _context.next = 6;
-              return form.validateFields();
-
-            case 6:
-              _context.t3 = _context.sent;
-              _context.t4 = (0, _context.t1)(_context.t2, _context.t3);
-              _context.t5 = {};
-              _context.t6 = {
-                selected_pump_name: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-                pump_id: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.pump_id,
-                flow: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.flow,
-                head: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.head,
-                fluid_temperature: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.fluid_temperature,
-                pumpable_type: pumpableType()
-              };
-              body = (0, _context.t0)(_context.t4, _context.t5, _context.t6);
-              body = setBody(body);
-              axios.post(tRoute('selections.export.at_once'), body, {
-                responseType: 'blob'
-              }).then(function (res) {
-                setLoading(false);
-                var content = res.headers['content-type'];
-                downloadjs__WEBPACK_IMPORTED_MODULE_5___default()(res.data, stationToShow.name + ".pdf", content);
-              })["catch"](function (reason) {
-                setLoading(false);
-                antd__WEBPACK_IMPORTED_MODULE_9__["default"].error("Error downloading. Please contact the administrator", 7);
-              });
-
-            case 13:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function exportHandler() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-
-  var items = [{
-    values: {
-      name: 'print_pump_image',
-      // label: 'Print pump image',
-      valuePropName: "checked",
-      initialValue: true // className: reducedAntFormItemClassName,
-
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.pump_image')
-    })
-  }, {
-    values: {
-      name: 'print_pump_sizes_image',
-      // label: 'Print pump sizes image',
-      valuePropName: "checked",
-      initialValue: true // className: reducedAntFormItemClassName,
-
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.sizes_image')
-    })
-  }, {
-    values: {
-      name: 'print_pump_electric_diagram_image',
-      // label: 'Print pump electric diagram',
-      valuePropName: "checked",
-      initialValue: true // className: reducedAntFormItemClassName,
-
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.electric_diagram')
-    })
-  }, {
-    values: {
-      name: 'print_pump_cross_sectional_drawing_image',
-      // label: 'Print pump cross sectional drawing',
-      valuePropName: "checked",
-      initialValue: true // className: reducedAntFormItemClassName,
-
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.print.exploded_view')
-    })
-  }, {
-    values: {},
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__.PrimaryButton, {
-      loading: loading,
-      onClick: exportHandler,
-      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.button')
-    })
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    width: 300,
-    placement: "right",
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_6__["default"].get('pages.selections.single_pump.export.title'),
-    visible: visible,
-    closable: false,
-    onClose: function onClose() {
-      setVisible(false);
-      form.resetFields();
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_2__.ItemsForm, {
-      form: form,
-      items: items
-    })
-  });
-};
-
-/***/ }),
-
-/***/ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js":
-/*!***************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FiltersDrawer": () => (/* binding */ FiltersDrawer)
-/* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-var ConditionSelectionFormItem = function ConditionSelectionFormItem(_ref) {
-  var options = _ref.options,
-      _ref$initialValue = _ref.initialValue,
-      initialValue = _ref$initialValue === void 0 ? null : _ref$initialValue,
-      name = _ref.name,
-      disabled = _ref.disabled;
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
-      fullWidth = _useStyles.fullWidth;
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-    name: name,
-    initialValue: initialValue,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
-      style: fullWidth,
-      placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.condition'),
-      options: options,
-      disabled: disabled || false
-    })
-  });
-};
-
-var ConditionLimitCheckboxFormItem = function ConditionLimitCheckboxFormItem(_ref2) {
-  var name = _ref2.name,
-      initialValue = _ref2.initialValue,
-      children = _ref2.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-    className: "ant-form-item-reduced",
-    name: name,
-    valuePropName: "checked",
-    initialValue: initialValue || false,
-    children: children
-  });
-};
-
-var LimitRow = function LimitRow(_ref3) {
-  var children = _ref3.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    gutter: [10, 0],
-    children: children
-  });
-};
-
-var LimitCol = function LimitCol(_ref4) {
-  var children = _ref4.children;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    xs: 12,
-    children: children
-  });
-};
-
-var FiltersDrawer = function FiltersDrawer(_ref5) {
-  var form = _ref5.form,
-      setUseAdditionalFilters = _ref5.setUseAdditionalFilters,
-      selection = _ref5.selection,
-      selection_props = _ref5.selection_props,
-      visible = _ref5.visible,
-      setVisible = _ref5.setVisible;
-  var dns = selection_props.dns,
-      limit_conditions = selection_props.limit_conditions,
-      mains_connections = selection_props.mains_connections,
-      connection_types = selection_props.connection_types; // .data
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({
-    power: (selection === null || selection === void 0 ? void 0 : selection.data.power_limit_checked) || false,
-    ptpLength: (selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_checked) || false,
-    dnSuction: (selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_checked) || false,
-    dnPressure: (selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_checked) || false
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      limitChecks = _useState2[0],
-      setLimitChecks = _useState2[1];
-
-  var _useStyles2 = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_4__.useStyles)(),
-      fullWidth = _useStyles2.fullWidth,
-      marginBottomTen = _useStyles2.marginBottomTen,
-      margin = _useStyles2.margin,
-      reducedAntFormItemClassName = _useStyles2.reducedAntFormItemClassName,
-      color = _useStyles2.color;
-
-  var nextBelowStyle = _objectSpread(_objectSpread({}, fullWidth), marginBottomTen);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    width: 600,
-    placement: "right",
-    visible: visible,
-    closable: false,
-    onClose: function onClose() {
-      setVisible(false);
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      layout: "vertical",
-      form: form,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        gutter: [10, 10],
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
-            name: "connection_type_ids",
-            className: reducedAntFormItemClassName,
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.connection_types,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
-              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.connection_type'),
-              style: nextBelowStyle,
-              options: connection_types
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-            label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
-            name: "mains_connection_ids",
-            className: reducedAntFormItemClassName,
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.mains_connections,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_1__.MultipleSelection, {
-              placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.phase'),
-              style: nextBelowStyle,
-              options: mains_connections.map(function (connection) {
-                return _objectSpread({
-                  customValue: connection.full_value
-                }, connection);
-              })
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
-            name: "power_limit_checked",
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              checked: limitChecks.power,
-              onChange: function onChange(e) {
-                setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
-                  power: e.target.checked
-                }));
-              },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power_limit')
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
-                options: limit_conditions,
-                name: "power_limit_condition_id",
-                disabled: !limitChecks.power,
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_condition_id
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-                name: "power_limit_value",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.power_limit_value,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, {
-                  disabled: !limitChecks.power,
-                  style: fullWidth,
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.power')
-                })
-              })
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
-            name: "ptp_length_limit_checked",
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              checked: limitChecks.ptpLength,
-              onChange: function onChange(e) {
-                setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
-                  ptpLength: e.target.checked
-                }));
-              },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length_limit')
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
-                options: limit_conditions,
-                name: "ptp_length_limit_condition_id",
-                disabled: !limitChecks.ptpLength,
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_condition_id
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-                name: "ptp_length_limit_value",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.ptp_length_limit_value,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, {
-                  disabled: !limitChecks.ptpLength,
-                  style: fullWidth,
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.ptp_length')
-                })
-              })
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
-            name: "dn_suction_limit_checked",
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              checked: limitChecks.dnSuction,
-              onChange: function onChange(e) {
-                setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
-                  dnSuction: e.target.checked
-                }));
-              },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input_limit')
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_condition_id,
-                options: limit_conditions,
-                name: "dn_suction_limit_condition_id",
-                disabled: !limitChecks.dnSuction
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-                name: "dn_suction_limit_id",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_suction_limit_id,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_input'),
-                  options: dns,
-                  disabled: !limitChecks.dnSuction,
-                  style: fullWidth
-                })
-              })
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-          span: 12,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionLimitCheckboxFormItem, {
-            name: "dn_pressure_limit_checked",
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_checked,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
-              checked: limitChecks.dnPressure,
-              onChange: function onChange(e) {
-                setLimitChecks(_objectSpread(_objectSpread({}, limitChecks), {}, {
-                  dnPressure: e.target.checked
-                }));
-              },
-              children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output_limit')
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(LimitRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(ConditionSelectionFormItem, {
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_condition_id,
-                options: limit_conditions,
-                name: "dn_pressure_limit_condition_id",
-                disabled: !limitChecks.dnPressure
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(LimitCol, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
-                name: "dn_pressure_limit_id",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.data.dn_pressure_limit_id,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_2__.Selection, {
-                  placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.dn_output'),
-                  options: dns,
-                  disabled: !limitChecks.dnPressure,
-                  style: fullWidth
-                })
-              })
-            })]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_5__.BoxFlexEnd, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, {
-          onClick: function onClick() {
-            setUseAdditionalFilters(true);
-            setVisible(false);
-          },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.additional_filters.apply')
-        })
-      })]
-    })
-  });
-};
-
-/***/ }),
-
 /***/ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js":
 /*!********************************************************************************!*\
   !*** ./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js ***!
@@ -11628,10 +9943,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SelectedPumpsTable": () => (/* binding */ SelectedPumpsTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/PlusOutlined.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
 
 
 
@@ -11641,121 +9972,84 @@ __webpack_require__.r(__webpack_exports__);
 var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
   var selectedPumps = _ref.selectedPumps,
       setStationToShow = _ref.setStationToShow,
-      loading = _ref.loading;
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
-      locales = _usePage$props.locales,
-      auth = _usePage$props.auth;
+      loading = _ref.loading,
+      addStationHandler = _ref.addStationHandler,
+      _ref$dependencies = _ref.dependencies,
+      dependencies = _ref$dependencies === void 0 ? [] : _ref$dependencies;
+  var locales = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.locales;
   var columns = [{
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.name'),
-    dataIndex: 'name',
-    key: 'name',
-    width: '15%'
+    title: "Наименование",
+    dataIndex: 'name'
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.part_num'),
-    dataIndex: 'article_num',
-    key: 'article_num',
-    width: 110
+    title: "Артикул насоса",
+    dataIndex: 'pump_article'
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.retail_price') + ", " + auth.currency,
-    dataIndex: 'retail_price',
-    key: 'retail_price',
+    title: "Артикул системы управления",
+    dataIndex: 'control_system_article'
+  }, {
+    title: "Цена станции",
+    dataIndex: 'cost_price',
     render: function render(_, record) {
-      return record.retail_price.toLocaleString();
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        overlayStyle: {
+          whiteSpace: 'pre-line'
+        },
+        placement: "topRight",
+        title: record.cost_structure,
+        children: record.cost_price.toLocaleString()
+      });
     },
     sorter: function sorter(a, b) {
-      return a.retail_price - b.retail_price;
-    },
-    width: 135
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.discounted_price') + ", " + auth.currency,
-    dataIndex: 'discounted_price',
-    key: 'discounted_price',
-    render: function render(_, record) {
-      return record.discounted_price.toLocaleString();
-    },
-    sorter: function sorter(a, b) {
-      return a.discounted_price - b.discounted_price;
-    },
-    width: 140
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_retail_price') + ", " + auth.currency,
-    dataIndex: 'retail_price_total',
-    key: 'retail_price_total',
-    render: function render(_, record) {
-      return record.retail_price_total.toLocaleString();
-    },
-    sorter: function sorter(a, b) {
-      return a.retail_price_total - b.retail_price_total;
-    },
-    width: 140
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_discounted_price') + ", " + auth.currency,
-    dataIndex: 'discounted_price_total',
-    key: 'discounted_price_total',
-    render: function render(_, record) {
-      return record.discounted_price_total.toLocaleString();
-    },
-    sorter: function sorter(a, b) {
-      return a.discounted_price_total - b.discounted_price_total;
-    },
-    defaultSortOrder: 'ascend',
-    width: 170
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_input'),
-    dataIndex: 'dn_suction',
-    key: 'dn_suction',
-    width: 120
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.dn_output'),
-    dataIndex: 'dn_pressure',
-    key: 'dn_pressure',
-    width: 120
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.power'),
-    dataIndex: 'rated_power',
-    render: function render(_, record) {
-      return record.rated_power.toLocaleString();
-    },
-    key: 'rated_power',
-    sorter: function sorter(a, b) {
-      return a.rated_power - b.rated_power;
-    },
-    width: 80
-  }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.total_power'),
-    dataIndex: 'power_total',
-    render: function render(_, record) {
-      return record.power_total.toLocaleString();
-    },
-    key: 'power_total',
-    sorter: function sorter(a, b) {
-      return a.power_total - b.power_total;
+      return a.cost_price - b.cost_price;
     }
   }, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__["default"].get('pages.selections.single_pump.table.ptp_length'),
-    dataIndex: 'ptp_length',
-    key: 'ptp_length',
+    title: "Р, кВт",
+    dataIndex: 'power',
+    render: function render(_, record) {
+      return record.power.toLocaleString();
+    },
     sorter: function sorter(a, b) {
-      return a.ptp_length - b.ptp_length;
+      return a.power - b.power;
+    }
+  }, {
+    title: "Р итого, кВт",
+    dataIndex: 'total_power',
+    render: function render(_, record) {
+      return record.total_power.toLocaleString();
+    },
+    sorter: function sorter(a, b) {
+      return a.total_power - b.total_power;
+    }
+  }, {
+    key: 'action',
+    width: '1%',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_3__.TableActionsContainer, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          placement: "topRight",
+          title: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            onClick: addStationHandler(record),
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+          })
+        })
+      });
     }
   }];
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_3__.TTable, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_2__.TTable, {
       columns: columns,
       dataSource: selectedPumps,
       loading: loading,
       clickHandler: setStationToShow,
       clickRecord: true,
       pagination: {
-        defaultPageSize: 500,
+        defaultPageSize: 20,
         pageSizeOptions: [10, 20, 50, 100, 500, 1000]
-      },
-      scroll: {
-        x: 1550,
-        y: "48vh"
-      }
+      } // scroll={{y: "40vh"}}
+
     });
-  }, [selectedPumps, locales, loading]);
+  }, [selectedPumps, locales, loading].concat(_toConsumableArray(dependencies)));
 };
 
 /***/ }),
@@ -11772,28 +10066,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Dashboard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/result/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/result/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
-/* harmony import */ var _Components_DashboardCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/DashboardCard */ "./Modules/Selection/Resources/assets/js/Components/DashboardCard.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../Project/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Components_DashboardCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/DashboardCard */ "./Modules/Selection/Resources/assets/js/Components/DashboardCard.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../Project/Resources/assets/js/Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
@@ -11810,62 +10110,47 @@ function Dashboard() {
   // HOOKS
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
       project_id = _usePage$props.project_id,
-      selection_types = _usePage$props.selection_types;
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_4__.useTransRoutes)();
-
-  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_5__.usePermissions)(),
-      has = _usePermissions.has,
-      filterPermissionsArray = _usePermissions.filterPermissionsArray; // CONSTS
-
-
-  var span = function span() {
-    if (selection_types.length === 1) {
-      return 16;
-    }
-
-    if (selection_types.length === 2) return 11;
-    return 8;
-  };
-
-  var _cards = filterPermissionsArray(selection_types.map(function (type) {
-    return has('selection_create') && {
-      title: type.name,
-      src: type.img,
-      onClick: function onClick() {
-        var route = 'projects.selections.create';
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(tRoute(route, project_id) + '?pumpable_type=' + type.pumpable_type);
-      }
-    };
-  }));
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_7__.IndexContainer, {
-    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.subtitle'),
-    extra: project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Project_Resources_assets_js_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_8__.BackToProjectsLink, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_9__.BackLink, {
-      href: tRoute('projects.show', project_id),
-      title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.back.to_project')
+      selection_types = _usePage$props.selection_types,
+      station_types = _usePage$props.station_types;
+  console.log(selection_types, station_types);
+  var cards = selection_types.reduce(function (arr1, selection_type) {
+    return [].concat(_toConsumableArray(arr1), _toConsumableArray(station_types.reduce(function (arr2, station_type) {
+      return [].concat(_toConsumableArray(arr2), [{
+        title: station_type.description + ', ' + selection_type.description,
+        onClick: function onClick() {
+          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('selections.create', [project_id, station_type.key, selection_type.key]));
+        }
+      }]);
+    }, [])));
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
+    title: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043F \u043F\u043E\u0434\u0431\u043E\u0440\u0430",
+    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_6__.BackLink, {
+      href: route('projects.show', project_id),
+      title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443"
     }),
-    children: [_cards.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    children: [cards.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
       justify: "space-around",
       gutter: [48, 16],
-      children: _cards.map(function (card) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: cards.map(function (card) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
           lg: 11,
-          xl: span(),
-          children: /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_DashboardCard__WEBPACK_IMPORTED_MODULE_6__.DashboardCard, _objectSpread(_objectSpread({}, card), {}, {
+          xl: 8,
+          children: /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_DashboardCard__WEBPACK_IMPORTED_MODULE_3__.DashboardCard, _objectSpread(_objectSpread({}, card), {}, {
             key: card.title
           }))
         }, card.title);
       })
-    }), _cards.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }), cards.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
       status: "404",
-      title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.404.title'),
-      subTitle: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.404.subtitle'),
-      extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      title: "\u0418\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0443 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043D\u0438 \u043A \u043E\u0434\u043D\u043E\u043C\u0443 \u0442\u0438\u043F\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u0430",
+      subTitle: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u043E\u043C",
+      extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
         type: "primary",
         onClick: function onClick() {
-          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(tRoute('projects.index'));
+          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('projects.index'));
         },
-        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.selections.dashboard.404.back')
+        children: "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
       })
     })]
   });
@@ -11873,63 +10158,55 @@ function Dashboard() {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Pages/Selection.js":
-/*!******************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/Selection.js ***!
-  \******************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js":
+/*!*****************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Selection": () => (/* binding */ Selection)
+/* harmony export */   "default": () => (/* binding */ SingleAuto)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/notification/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tree/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/slider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
-/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
-/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
-/* harmony import */ var _Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Components/FiltersDrawer */ "./Modules/Selection/Resources/assets/js/Components/FiltersDrawer.js");
-/* harmony import */ var _Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Components/ExportAtOnceSelectionDrawer */ "./Modules/Selection/Resources/assets/js/Components/ExportAtOnceSelectionDrawer.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
-/* harmony import */ var antd_es_form_Form__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd/es/form/Form */ "./node_modules/antd/es/form/hooks/useForm.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_pumpable_type_hook__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/pumpable_type.hook */ "./resources/js/src/Hooks/pumpable_type.hook.js");
-/* harmony import */ var _Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer */ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
+/* harmony import */ var _Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/SelectedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/SelectedPumpsTable.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -11965,194 +10242,101 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var BackToProjectLink = function BackToProjectLink(_ref) {
+  var project_id = _ref.project_id;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
+    title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+    href: route('projects.show', project_id)
+  });
+};
 
+var BackToSelectionsDashboardLink = function BackToSelectionsDashboardLink(_ref2) {
+  var project_id = _ref2.project_id;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
+    title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+    href: route('selections.dashboard', project_id)
+  });
+};
 
+function SingleAuto(_ref3) {
+  var _ref3$title = _ref3.title,
+      title = _ref3$title === void 0 ? "Hello" : _ref3$title;
+  var rememberedForm = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('selection_form'); // HOOKS
 
-
-
-
-
-
-
-
-
-var Selection = function Selection(_ref) {
-  var _selection$data$custo, _selection$data;
-
-  var pageTitle = _ref.pageTitle,
-      widths = _ref.widths;
-  // HOOKS
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_15__.usePage)().props,
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props,
       selection = _usePage$props.selection,
       project_id = _usePage$props.project_id,
       selection_props = _usePage$props.selection_props;
 
-  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_16__.useCheck)(),
-      isArrayEmpty = _useCheck.isArrayEmpty;
-
-  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_17__.useHttp)(),
-      postRequest = _useHttp.postRequest,
-      loading = _useHttp.loading;
-
-  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_18__.usePermissions)(),
-      has = _usePermissions.has;
-
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_20__.useTransRoutes)();
-
-  var _useForm = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_26__["default"])(),
-      _useForm2 = _slicedToArray(_useForm, 1),
-      fullSelectionForm = _useForm2[0];
-
-  var _useForm3 = (0,antd_es_form_Form__WEBPACK_IMPORTED_MODULE_26__["default"])(),
-      _useForm4 = _slicedToArray(_useForm3, 1),
-      additionalFiltersForm = _useForm4[0];
-
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_21__.useStyles)(),
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__.useStyles)(),
       fullWidth = _useStyles.fullWidth,
-      marginBottomTen = _useStyles.marginBottomTen,
-      margin = _useStyles.margin,
       reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName,
-      color = _useStyles.color;
+      margin = _useStyles.margin;
 
-  var pumpableType = (0,_resources_js_src_Hooks_pumpable_type_hook__WEBPACK_IMPORTED_MODULE_22__.usePumpableType)(); // console.log(selection_props)
-  // STATE
+  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__.useHttp)(),
+      loading = _useHttp.loading,
+      postRequest = _useHttp.postRequest; // STATE
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.brands_with_series_with_pumps),
       _useState2 = _slicedToArray(_useState, 2),
-      showBrandsList = _useState2[0],
-      setShowBrandsList = _useState2[1];
+      brandsToShow = _useState2[0],
+      setBrandsToShow = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      addLoading = _useState4[0],
-      setAddLoading = _useState4[1]; // const [checkedAll, setCheckedAll] = useState(false)
-  // const [indeterminate, setIndeteminate] = useState(true)
+      seriesToShow = _useState4[0],
+      setSeriesToShow = _useState4[1];
 
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      hideIcons = _useState6[0],
-      setHideIcons = _useState6[1];
+      pumpsToShow = _useState6[0],
+      setPumpsToShow = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_brand_ids) || []),
       _useState8 = _slicedToArray(_useState7, 2),
-      pumpInfoVisible = _useState8[0],
-      setPumpInfoVisible = _useState8[1];
+      brandsValue = _useState8[0],
+      setBrandsValue = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(hideIcons),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_series_ids) || []),
       _useState10 = _slicedToArray(_useState9, 2),
-      prevHideIcons = _useState10[0],
-      setPrevHideIcons = _useState10[1];
+      seriesValue = _useState10[0],
+      setSeriesValue = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState12 = _slicedToArray(_useState11, 2),
-      updated = _useState12[0],
-      setUpdated = _useState12[1];
+      selectedPumps = _useState12[0],
+      setSelectedPumps = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.use_additional_filters) || false),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('added_stations')),
       _useState14 = _slicedToArray(_useState13, 2),
-      useAdditionalFilters = _useState14[0],
-      setUseAdditionalFilters = _useState14[1];
+      addedStations = _useState14[0],
+      setAddedStations = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? selection !== null && selection !== void 0 && selection.data.range_id ? (selection === null || selection === void 0 ? void 0 : selection.data.range_id) !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id : false : false),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState16 = _slicedToArray(_useState15, 2),
-      rangeDisabled = _useState16[0],
-      setRangeDisabled = _useState16[1];
+      stationToShow = _useState16[0],
+      setStationToShow = _useState16[1];
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState18 = _slicedToArray(_useState17, 2),
-      filtersDrawerVisible = _useState18[0],
-      setFiltersDrawerVisible = _useState18[1];
+      chosenSelectedPumps = _useState18[0],
+      setChosenSelectedPumps = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
       _useState20 = _slicedToArray(_useState19, 2),
-      exportDrawerVisible = _useState20[0],
-      setExportDrawerVisible = _useState20[1];
+      addedStationKey = _useState20[0],
+      setAddedStationKey = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState22 = _slicedToArray(_useState21, 2),
-      reload = _useState22[0],
-      setReload = _useState22[1];
+      exportDrawerVisible = _useState22[0],
+      setExportDrawerVisible = _useState22[1]; // CONSTS
 
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState24 = _slicedToArray(_useState23, 2),
-      brandsSeriesList = _useState24[0],
-      setBrandsSeriesList = _useState24[1];
 
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState26 = _slicedToArray(_useState25, 2),
-      brandsSeriesTree = _useState26[0],
-      setBrandsSeriesTree = _useState26[1];
-
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState28 = _slicedToArray(_useState27, 2),
-      selectedPumps = _useState28[0],
-      setSelectedPumps = _useState28[1];
-
-  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_brands.filter(function (brandId) {
-    return selection_props.brands_with_series.findIndex(function (bws) {
-      return bws.id === brandId;
-    }) !== -1;
-  })) || selection_props.defaults.brands),
-      _useState30 = _slicedToArray(_useState29, 2),
-      brandsValue = _useState30[0],
-      setBrandsValue = _useState30[1];
-
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_series) || []),
-      _useState32 = _slicedToArray(_useState31, 2),
-      brandsSeriesListValues = _useState32[0],
-      setBrandsSeriesListValues = _useState32[1];
-
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.power_adjustments) || selection_props.defaults.power_adjustments),
-      _useState34 = _slicedToArray(_useState33, 2),
-      powerAdjustmentValue = _useState34[0],
-      setPowerAdjustmentValue = _useState34[1];
-
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_types) || []),
-      _useState36 = _slicedToArray(_useState35, 2),
-      typesValue = _useState36[0],
-      setTypesValue = _useState36[1];
-
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.pump_applications) || []),
-      _useState38 = _slicedToArray(_useState37, 2),
-      applicationsValue = _useState38[0],
-      setApplicationsValue = _useState38[1];
-
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
-      _useState40 = _slicedToArray(_useState39, 2),
-      chosenSelectedPumps = _useState40[0],
-      setChosenSelectedPumps = _useState40[1];
-
-  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState42 = _slicedToArray(_useState41, 2),
-      pumpInfo = _useState42[0],
-      setPumpInfo = _useState42[1];
-
-  var filtersDrawerProps = {
-    selection: selection,
-    selection_props: selection_props,
-    setUseAdditionalFilters: setUseAdditionalFilters,
-    form: additionalFiltersForm,
-    visible: filtersDrawerVisible,
-    setVisible: setFiltersDrawerVisible
-  };
-
-  var _useState43 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
-      _useState44 = _slicedToArray(_useState43, 2),
-      stationToShow = _useState44[0],
-      setStationToShow = _useState44[1];
-
-  var _useState45 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.data.fluid_temperature) || null),
-      _useState46 = _slicedToArray(_useState45, 2),
-      temperatureValue = _useState46[0],
-      setTemperatureValue = _useState46[1];
-
-  var _useState47 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(-100),
-      _useState48 = _slicedToArray(_useState47, 2),
-      prevTemperatureValue = _useState48[0],
-      setPrevTemperatureValue = _useState48[1];
-
-  var debouncedTemperature = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_19__.useDebounce)(temperatureValue, 500); // CONSTS
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_16__["default"].useForm(),
+      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+      selectionForm = _Form$useForm2[0];
 
   var mainPumpsCountCheckboxesOptions = [1, 2, 3, 4, 5].map(function (value) {
     return {
@@ -12160,990 +10344,385 @@ var Selection = function Selection(_ref) {
       label: value
     };
   });
-  var fieldsDisabled = isArrayEmpty(brandsValue);
-  var fullSelectionFormName = "full-selection-form"; // CALLBACKS
-
-  var filteredbrands_with_series = function filteredbrands_with_series() {
-    return selection_props.brands_with_series.filter(function (brand) {
-      return brandsValue.indexOf(brand.id) !== -1;
-    });
+  var labels = {
+    flow: "Расход, м³/ч",
+    head: "Напор, м",
+    deviation: "Запас/допуск, %",
+    mainPumpsCounts: "Количество рабочих насосов",
+    reservePumpsCount: "Количество резервных насосов",
+    controlSystemTypes: "Системы управления",
+    brands: "Бренды",
+    series: "Серии",
+    collectors: "Коллекторы",
+    select: "Подобрать",
+    comment: "Комментарий"
   };
 
-  var checkValueIncludesSeriesParams = function checkValueIncludesSeriesParams(value, params) {
-    return value.some(function (_value) {
-      return !params.map(function (param) {
-        return param.id;
-      }).includes(_value);
-    });
-  };
-
-  var seriesIcon = function seriesIcon(src) {
-    return src == null || src === "" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {}) // : <img src={selection_props.media_path + src} width={60}/>
-    : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("img", {
-      src: src,
-      width: 60
-    });
-  };
-
-  var checkHideIcons = function checkHideIcons() {
-    return prevHideIcons === hideIcons;
-  };
-
-  var hasTemperature = function hasTemperature(series) {
-    return debouncedTemperature == null || series.temps_min.length > 0 && series.temps_min[0] <= debouncedTemperature && series.temps_max.length > 0 && series.temps_max[1] >= debouncedTemperature;
-  };
-
-  var seriesColorStyle = function seriesColorStyle(hasTemp, series) {
-    return color(hasTemp ? debouncedTemperature == null || debouncedTemperature >= series.temps_min[1] && debouncedTemperature <= series.temps_max[0] ? 'black' : 'orange' : 'red');
-  }; // HANDLERS
-  // TEMPERATURE CHANGE HANDLER
-
-
-  var temperatureChangeHandler = function temperatureChangeHandler() {
-    return function (value) {
-      setTemperatureValue(value);
-    };
-  }; // PRODUCERS SERIES LIST VALUES CHECKED HANDLER
-
-
-  var brandsSeriesListValuesCheckedHandler = function brandsSeriesListValuesCheckedHandler(values) {
-    values.sort();
-    var checked = values.filter(function (value) {
-      return !brandsSeriesListValues.includes(value) && typeof value === "number";
-    });
-    filteredbrands_with_series().forEach(function (brand) {
-      brand.series.forEach(function (series) {
-        var index = checked.findIndex(function (ch) {
-          return series.id === ch;
-        });
-
-        if (index !== -1) {
-          var array = [];
-
-          if (checkValueIncludesSeriesParams(typesValue, series.types)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.types'));
-          }
-
-          if (selection_props.applications && checkValueIncludesSeriesParams(applicationsValue, series.applications)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.applications'));
-          }
-
-          if (!powerAdjustmentValue.includes(series.power_adjustment.id)) {
-            array.push(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.power_adjustment'));
-          }
-
-          if (array.length > 0) {
-            antd__WEBPACK_IMPORTED_MODULE_27__["default"].info({
-              message: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.attention'),
-              description: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.1') + " " + series.name + " " + _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.notification.description.2') + " " + array.join(', '),
-              placement: 'topLeft',
-              duration: 5
-            });
-          }
-        }
-      });
-    });
-    setBrandsSeriesListValues(values);
-  }; // SAVE HANDLER
-
-
-  var addSelectionToProjectClickHandler = function addSelectionToProjectClickHandler(method) {
-    return /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var body;
+  var showPumpInfo = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(event) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              // yaCounter86716585.reachGoal('add-selection-to-project')
-              setAddLoading(true);
-              setReload(false);
-              _context.t0 = _objectSpread;
-              _context.t1 = _objectSpread;
-              _context.t2 = _objectSpread;
-              _context.t3 = {};
-              _context.next = 8;
-              return fullSelectionForm.validateFields();
-
-            case 8:
-              _context.t4 = _context.sent;
-              _context.t5 = (0, _context.t2)(_context.t3, _context.t4);
-              _context.next = 12;
-              return additionalFiltersForm.validateFields();
-
-            case 12:
-              _context.t6 = _context.sent;
-              _context.t7 = (0, _context.t1)(_context.t5, _context.t6);
-              _context.t8 = {};
-              _context.t9 = {
-                use_additional_filters: useAdditionalFilters,
-                pump_id: stationToShow.pump_id,
-                pumps_count: stationToShow.pumps_count || undefined,
-                selected_pump_name: stationToShow.name,
-                pump_series_ids: brandsSeriesListValues,
-                pumpable_type: pumpableType(),
-                project_id: project_id
-              };
-              body = (0, _context.t0)(_context.t7, _context.t8, _context.t9);
-              // prepareRequestBody(body)
-              _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia[method](method === 'put' ? tRoute('selections.update', selection.data.id) : tRoute('projects.selections.store', project_id), body, {
-                preserveState: true,
-                preserveScroll: true,
-                onFinish: function onFinish() {
-                  setAddLoading(false);
-                  setReload(true);
-                }
-              });
-
-            case 18:
             case "end":
               return _context.stop();
           }
         }
       }, _callee);
     }));
-  }; // MAKE SELECTION HANDLER
+
+    return function showPumpInfo(_x) {
+      return _ref4.apply(this, arguments);
+    };
+  }(); // HANDLERS
 
 
   var makeSelectionHandler = /*#__PURE__*/function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var body, data;
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var body, selected_pumps;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              if (!isArrayEmpty(brandsSeriesListValues)) {
-                _context2.next = 3;
-                break;
-              }
-
-              antd__WEBPACK_IMPORTED_MODULE_28__["default"].warning(_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('messages.selections.no_series_selected'));
-              return _context2.abrupt("return");
-
-            case 3:
               setStationToShow(null);
-              document.getElementById('for-graphic').innerHTML = "";
-
-              if (!updated) {
-                setUpdated(true);
-              }
-
+              if (!selection) setAddedStations([]);
               _context2.t0 = _objectSpread;
               _context2.t1 = _objectSpread;
-              _context2.t2 = _objectSpread;
-              _context2.t3 = {};
-              _context2.next = 12;
-              return fullSelectionForm.validateFields();
+              _context2.t2 = {};
+              _context2.next = 7;
+              return selectionForm.validateFields();
 
-            case 12:
-              _context2.t4 = _context2.sent;
-              _context2.t5 = (0, _context2.t2)(_context2.t3, _context2.t4);
-              _context2.next = 16;
-              return additionalFiltersForm.validateFields();
-
-            case 16:
-              _context2.t6 = _context2.sent;
-              _context2.t7 = (0, _context2.t1)(_context2.t5, _context2.t6);
-              _context2.t8 = {};
-              _context2.t9 = {
-                use_additional_filters: useAdditionalFilters,
-                series_ids: brandsSeriesListValues.filter(function (si) {
-                  return brandsSeriesList.findIndex(function (el) {
-                    return el.value === si;
-                  }) !== -1;
-                }),
-                pumpable_type: pumpableType()
+            case 7:
+              _context2.t3 = _context2.sent;
+              _context2.t4 = (0, _context2.t1)(_context2.t2, _context2.t3);
+              _context2.t5 = {};
+              _context2.t6 = {
+                station_type: 'Water',
+                // fixme
+                selection_type: 'Auto'
               };
-              body = (0, _context2.t0)(_context2.t7, _context2.t8, _context2.t9);
-              _context2.prev = 21;
-              _context2.next = 24;
-              return postRequest(tRoute('selections.select'), body, true);
+              body = (0, _context2.t0)(_context2.t4, _context2.t5, _context2.t6);
+              _context2.prev = 12;
+              _context2.next = 15;
+              return postRequest(route('selections.select'), body, true);
 
-            case 24:
-              data = _context2.sent;
-              setSelectedPumps(data.selected_pumps);
-              _context2.next = 30;
+            case 15:
+              selected_pumps = _context2.sent.selected_pumps;
+              setSelectedPumps(selected_pumps);
+              _context2.next = 22;
               break;
 
-            case 28:
-              _context2.prev = 28;
-              _context2.t10 = _context2["catch"](21);
+            case 19:
+              _context2.prev = 19;
+              _context2.t7 = _context2["catch"](12);
+              console.log(_context2.t7);
 
-            case 30:
+            case 22:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[21, 28]]);
+      }, _callee2, null, [[12, 19]]);
     }));
 
     return function makeSelectionHandler() {
-      return _ref3.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
-  }(); // USE EFFECTS
-  // CHECK PRODUCERS SERIES LIST AND TREE CHANGE
+  }();
+
+  var addStationHandler = function addStationHandler(record) {
+    return function () {
+      var stations = addedStations;
+      stations.push(_objectSpread(_objectSpread({}, record), {}, {
+        key: addedStationKey,
+        extra_percentage: 0,
+        extra_sum: 0,
+        final_price: record.cost_price,
+        comment: ""
+      }));
+      setAddedStations(_toConsumableArray(stations));
+      setAddedStationKey(addedStationKey + 1);
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.remember(selectionForm.getFieldsValue(true), "selection_form");
+    };
+  }; // EFFECTS
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var _brandsSeriesList = [];
-    var _brandsSeriesTree = [];
-
-    if (brandsValue.length > 0) {
-      filteredbrands_with_series().forEach(function (brand) {
-        var children = [];
-        brand.series.forEach(function (series) {
-          var hasTemp = hasTemperature(series);
-          var colorStyle = seriesColorStyle(hasTemp, series);
-
-          _brandsSeriesList.push({
-            label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: brand.name + " " + series.name
-              })]
-            }),
-            value: series.id,
-            disabled: !hasTemp
-          });
-
-          children.push({
-            title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-              children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                  marginLeft: hideIcons ? 0 : 5
-                }),
-                children: series.name
-              })]
-            }),
-            key: series.id,
-            disabled: !hasTemp
-          });
-        });
-
-        _brandsSeriesTree.push({
-          title: brand.name,
-          key: brand.name,
-          children: children
-        });
-      });
-    }
-
-    setBrandsSeriesList(_brandsSeriesList);
-    setBrandsSeriesTree(_brandsSeriesTree);
-  }, [brandsValue, hideIcons]); // FILTER BRANDS WITH SERIES
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (checkHideIcons()) {
-      if (!isArrayEmpty(brandsSeriesList)) {
-        if (reload) {
-          var _producersSeriesListValues = [];
-          var _producersSeriesList = [];
-          var _producersSeriesTree = [];
-          var temperatureWasChanged = debouncedTemperature !== prevTemperatureValue;
-          var hasTypes = typesValue.length <= 0;
-          var hasApplications = (applicationsValue === null || applicationsValue === void 0 ? void 0 : applicationsValue.length) <= 0 || false;
-          var haspower_adjustments = powerAdjustmentValue <= 0;
-          filteredbrands_with_series().forEach(function (brand) {
-            var children = [];
-            brand.series.forEach(function (series) {
-              var brandsSeries = brand.name + " " + series.name;
-              var hasType = hasTypes;
-              var hasApplication = hasApplications;
-              var hasPowerAdjustment = haspower_adjustments;
-              var hasTemp = hasTemperature(series);
-
-              if (!hasType) {
-                if (typesValue.every(function (typeValue) {
-                  return series.types.map(function (type) {
-                    return type.id;
-                  }).includes(typeValue);
-                })) {
-                  hasType = true;
-                }
-              }
-
-              if (!hasApplication) {
-                if (applicationsValue.every(function (applicationValue) {
-                  return series.applications.map(function (application) {
-                    return application.id;
-                  }).includes(applicationValue);
-                })) {
-                  hasApplication = true;
-                }
-              }
-
-              if (!hasPowerAdjustment) {
-                var _series$power_adjustm;
-
-                if (powerAdjustmentValue.includes((_series$power_adjustm = series.power_adjustment) === null || _series$power_adjustm === void 0 ? void 0 : _series$power_adjustm.id)) {
-                  hasPowerAdjustment = true;
-                }
-              } // checkedBrandsSeriesListValues - checked by user
-
-
-              if (hasType && hasPowerAdjustment && hasTemp && hasApplication) {
-                _producersSeriesListValues.push(series.id);
-              }
-
-              if (temperatureWasChanged) {
-                var colorStyle = seriesColorStyle(hasTemp, series);
-
-                _producersSeriesList.push({
-                  label: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: brandsSeries
-                    })]
-                  }),
-                  value: series.id,
-                  disabled: !hasTemp
-                });
-
-                children.push({
-                  title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-                    children: [!hideIcons && seriesIcon(series.image), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                      style: _objectSpread(_objectSpread({}, colorStyle), {}, {
-                        marginLeft: hideIcons ? 0 : 5
-                      }),
-                      children: series.name
-                    })]
-                  }),
-                  key: series.id,
-                  disabled: !hasTemp
-                });
-              }
-            });
-
-            if (temperatureWasChanged) {
-              _producersSeriesTree.push({
-                title: brand.name,
-                key: brand.name,
-                children: children
-              });
-            }
-          });
-
-          if (temperatureWasChanged) {
-            setBrandsSeriesList(_producersSeriesList);
-            setBrandsSeriesTree(_producersSeriesTree);
-            setPrevTemperatureValue(debouncedTemperature);
-          } // what checkboxes are checked
-
-
-          setBrandsSeriesListValues(_producersSeriesListValues);
-        } else {
-          setReload(true);
-        }
-      }
-    } else {
-      setPrevHideIcons(hideIcons);
-    }
-  }, [typesValue, applicationsValue, powerAdjustmentValue, debouncedTemperature, brandsSeriesList]); // CHECK CHANGE SELECTION
-
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.remember(addedStations, 'added_stations');
+  }, [addedStations]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (stationToShow) {
       var _chosenSelectedPumps$;
 
-      if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.key]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.svg) === undefined) {
+      if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.num]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.curves) === undefined) {
         try {
           axios.request({
-            url: tRoute('selections.curves'),
+            url: route('pump_stations.curves'),
             method: 'POST',
             data: {
               pump_id: stationToShow.pump_id,
               head: stationToShow.head,
               flow: stationToShow.flow,
-              dp_work_scheme_id: stationToShow.dp_work_scheme_id || undefined,
-              pumps_count: stationToShow.pumps_count || undefined,
-              main_pumps_count: stationToShow.main_pumps_count || undefined,
-              pumpable_type: pumpableType()
+              reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
+              main_pumps_count: stationToShow.main_pumps_count || undefined
             }
           }).then(function (res) {
-            document.getElementById('for-graphic').innerHTML = res.data;
-            chosenSelectedPumps[stationToShow.key] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.key]), {}, {
-              svg: res.data
+            document.getElementById('curves').innerHTML = res.data.curves;
+            chosenSelectedPumps[stationToShow.num] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.num]), {}, {
+              curves: res.data.curves
             });
             setChosenSelectedPumps(chosenSelectedPumps);
           });
         } catch (e) {}
       } else {
-        document.getElementById('for-graphic').innerHTML = chosenSelectedPumps[stationToShow.key].svg;
+        document.getElementById('curves').innerHTML = chosenSelectedPumps[stationToShow.num].curves;
       }
     } else {
       setChosenSelectedPumps({});
     }
   }, [stationToShow]);
-
-  var showPumpInfo = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(event) {
-      var _chosenSelectedPumps$2;
-
-      var data;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              event.preventDefault();
-
-              if (!(((_chosenSelectedPumps$2 = chosenSelectedPumps[stationToShow.key]) === null || _chosenSelectedPumps$2 === void 0 ? void 0 : _chosenSelectedPumps$2.pump_info) === undefined)) {
-                _context3.next = 9;
-                break;
-              }
-
-              _context3.next = 4;
-              return postRequest(tRoute('pumps.show', stationToShow.pump_id), {
-                pumpable_type: pumpableType(),
-                need_curves: false
-              });
-
-            case 4:
-              data = _context3.sent;
-              setPumpInfo(data);
-              chosenSelectedPumps[stationToShow.key] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.key]), {}, {
-                pump_info: data
-              });
-              _context3.next = 10;
-              break;
-
-            case 9:
-              if (pumpInfo.id === stationToShow.pump_id) {
-                setPumpInfoVisible(true);
-              } else {
-                setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info);
-              }
-
-            case 10:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3);
-    }));
-
-    return function showPumpInfo(_x) {
-      return _ref4.apply(this, arguments);
-    };
-  }(); // IF ROUTE IS 'selections.show'
-
-
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (selection) {
-      setStationToShow(selection === null || selection === void 0 ? void 0 : selection.data.to_show);
-    }
-  }, [selection]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
-      title: selection ? selection.data.selected_pump_name : pageTitle,
-      extra: selection ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_project'),
-        href: tRoute('projects.show', project_id)
-      }) : project_id === "-1" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_selections_dashboard'),
-        href: tRoute('selections.dashboard', project_id)
-      }) : [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_selections_dashboard'),
-        href: tRoute('selections.dashboard', project_id)
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_5__.BackLink, {
-        title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.back.to_project'),
-        href: tRoute('projects.show', project_id)
-      })],
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-        justify: "space-around",
-        gutter: [4, 16],
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-          xxl: 3,
-          xl: hideIcons ? 3 : 4,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-              xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"], {
-                checked: showBrandsList,
-                onChange: function onChange(e) {
-                  setShowBrandsList(e.target.checked);
-                },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                  style: {
-                    marginLeft: hideIcons ? 0 : 5
-                  },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.grouping')
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-              xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"], {
-                checked: hideIcons,
-                onChange: function onChange(e) {
-                  setHideIcons(e.target.checked);
-                },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                  style: {
-                    marginLeft: hideIcons ? 0 : 5
-                  },
-                  children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.hide_icons')
-                })
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
-            style: margin.all("5px 0 5px")
-          }), showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("div", {
-            style: {
-              overflow: "auto",
-              maxHeight: "70vh"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_33__["default"], {
-              defaultExpandAll: true,
-              checkable: true,
-              treeData: brandsSeriesTree,
-              checkedKeys: brandsSeriesListValues,
-              onCheck: brandsSeriesListValuesCheckedHandler
-            })
-          }), !showBrandsList && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("div", {
-            style: {
-              overflow: "auto",
-              maxHeight: "70vh"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"].Group, {
-              className: "series-checkboxes",
-              options: brandsSeriesList,
-              value: brandsSeriesListValues,
-              onChange: brandsSeriesListValuesCheckedHandler
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-          xxl: 21,
-          xl: hideIcons ? 21 : 20,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"], {
-            name: fullSelectionFormName,
-            form: fullSelectionForm,
-            layout: "vertical",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-              gutter: 10,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                xs: widths.brands,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "pump_brand_ids",
-                  initialValue: brandsValue,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.brands'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.brands'),
-                    style: fullWidth,
-                    options: selection_props.brands_with_series,
-                    onChange: function onChange(values) {
-                      setBrandsValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.fluid_temp'),
-                  name: "fluid_temperature",
-                  initialValue: temperatureValue,
-                  style: margin.bottom(10),
-                  tooltip: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.temp_tooltip.red')
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("span", {
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.temp_tooltip.orange')
-                    })]
-                  }),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
-                    disabled: fieldsDisabled,
-                    style: fullWidth,
-                    min: -50,
-                    max: 200,
-                    onChange: temperatureChangeHandler(),
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.fluid_temp')
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                xs: widths.types,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  className: reducedAntFormItemClassName,
-                  name: "pump_type_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.label'),
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_types,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.types.label'),
-                    disabled: fieldsDisabled,
-                    style: fullWidth,
-                    options: selection_props.types,
-                    onChange: function onChange(values) {
-                      setTypesValue(values);
-                    }
-                  })
-                })
-              }), widths.applications && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                xs: widths.applications,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  className: reducedAntFormItemClassName,
-                  name: "pump_application_ids",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.label'),
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.pump_applications,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.applications.label'),
-                    disabled: fieldsDisabled,
-                    style: fullWidth,
-                    options: selection_props.applications,
-                    onChange: function onChange(values) {
-                      setApplicationsValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                xs: 3,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.power_adjustments'),
-                  name: "power_adjustment_ids",
-                  initialValue: powerAdjustmentValue,
-                  style: marginBottomTen,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.power_adjustments'),
-                    disabled: fieldsDisabled,
-                    style: _objectSpread(_objectSpread({}, fullWidth), {}, {
-                      marginTop: 0
-                    }),
-                    options: selection_props.power_adjustments,
-                    onChange: function onChange(values) {
-                      setPowerAdjustmentValue(values);
-                    }
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: 24,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_32__["default"], {
-                  style: margin.all("10px 0 10px")
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.consumption'),
-                  name: "flow",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.flow,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.consumption'),
-                    style: fullWidth,
-                    min: 0,
-                    max: 10000,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.pressure'),
-                  name: "head",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.head,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.pressure'),
-                    style: fullWidth,
-                    min: 0,
-                    max: 10000,
-                    precision: 1
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: 2,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation'),
-                  name: "deviation",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.deviation,
-                  className: reducedAntFormItemClassName,
-                  tooltip: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation_tooltip'),
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_24__.InputNum, {
-                    placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.deviation'),
-                    style: fullWidth,
-                    min: -50,
-                    max: 50,
-                    precision: 1
-                  })
-                })
-              }), widths.main_pumps_count && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.main_pumps_count,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_6__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.main_pumps_count'),
-                  name: "main_pumps_counts",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.data.main_pumps_counts,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"].Group, {
-                    options: mainPumpsCountCheckboxesOptions
-                  })
-                })
-              }), widths.reserve_pumps_count && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.reserve_pumps_count,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  required: true,
-                  name: "reserve_pumps_count",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.backup_pumps_count'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.reserve_pumps_count) || 0,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
-                    value: 0,
-                    children: [0, 1, 2, 3, 4].map(function (value) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
-                        value: value,
-                        children: value
-                      }, 'bp' + value);
-                    })
-                  })
-                })
-              }), widths.work_scheme && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.work_scheme,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  required: true,
-                  name: "dp_work_scheme_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.double_pump.work_scheme'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.dp_work_scheme_id) || selection_props.work_schemes[0].id,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
-                    children: selection_props.work_schemes.map(function (scheme) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
-                        value: scheme.id,
-                        children: scheme.name
-                      }, 'ws' + scheme.id);
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.range,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  required: true,
-                  name: "range_id",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.label'),
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.data.range_id) || selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id,
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"].Group, {
-                    onChange: function onChange(e) {
-                      setRangeDisabled(e.target.value !== selection_props.selection_ranges[selection_props.selection_ranges.length - 1].id);
-                    },
-                    children: selection_props.selection_ranges.map(function (range) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_35__["default"], {
-                        value: range.id,
-                        children: range.name
-                      }, 'bp' + range.name);
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.range_slider,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                  required: true,
-                  name: "custom_range",
-                  label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.range.custom.label'),
-                  initialValue: (_selection$data$custo = selection === null || selection === void 0 ? void 0 : (_selection$data = selection.data) === null || _selection$data === void 0 ? void 0 : _selection$data.custom_range) !== null && _selection$data$custo !== void 0 ? _selection$data$custo : [0, 100],
-                  className: reducedAntFormItemClassName,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_36__["default"], {
-                    range: true,
-                    disabled: rangeDisabled,
-                    tipFormatter: function tipFormatter(value) {
-                      return "".concat(value, "%");
-                    } // defaultValue={selection?.data.custom_range || [0, 100]}
+    if (brandsValue) {
+      var _ref6;
 
+      setSeriesToShow((_ref6 = []).concat.apply(_ref6, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+        return brandsValue.includes(brand.id);
+      }).map(function (brand) {
+        return brand.series;
+      }))));
+    }
+  }, [brandsValue]); // RENDER
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
+    title: selection ? selection.selected_pump_name : title,
+    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(BackToProjectLink, {
+      project_id: project_id
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(BackToSelectionsDashboardLink, {
+      project_id: project_id
+    })],
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      gutter: [16, 16],
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        xs: 16,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          form: selectionForm,
+          name: "selection-form",
+          layout: "vertical",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
+            gutter: [16, 16],
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 4,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                label: labels.flow,
+                name: "flow",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.flow) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.flow),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                  placeholder: labels.flow,
+                  style: fullWidth,
+                  min: 0,
+                  max: 10000,
+                  precision: 2,
+                  disabled: !!selection
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 4,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                label: labels.head,
+                name: "head",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.head) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.head),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                  placeholder: labels.head,
+                  style: fullWidth,
+                  min: 0,
+                  max: 10000,
+                  precision: 2,
+                  disabled: !!selection
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 4,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+                className: reducedAntFormItemClassName,
+                label: labels.deviation,
+                name: "deviation",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.deviation) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.deviation),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                  placeholder: labels.deviation,
+                  style: fullWidth,
+                  min: -50,
+                  max: 50,
+                  precision: 2
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 6,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                label: labels.mainPumpsCounts,
+                name: "main_pumps_counts",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.main_pumps_counts) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.main_pumps_counts),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
+                  options: mainPumpsCountCheckboxesOptions
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 6,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+                className: reducedAntFormItemClassName,
+                required: true,
+                name: "reserve_pumps_count",
+                label: labels.reservePumpsCount,
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.reserve_pumps_count) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.reserve_pumps_count) || 0,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Group, {
+                  value: 0,
+                  children: [0, 1, 2, 3, 4].map(function (value) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                      value: value,
+                      children: value
+                    }, 'rp_' + value);
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                span: widths.buttons,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-                  gutter: [10, 0],
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                    span: 24,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_31__["default"], {
-                      checked: useAdditionalFilters,
-                      onClick: function onClick(e) {
-                        setUseAdditionalFilters(e.target.checked);
-                      },
-                      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.additional_filters.checkbox')
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                    span: 12,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                      className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
-                        style: fullWidth,
-                        onClick: function onClick() {
-                          setFiltersDrawerVisible(true);
-                        },
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.additional_filters.button')
-                      })
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-                    span: 12,
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_34__["default"].Item, {
-                      className: reducedAntFormItemClassName,
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-                        style: fullWidth,
-                        onClick: makeSelectionHandler // htmlType="submit"
-                        ,
-                        disabled: brandsValue.length === 0,
-                        loading: loading,
-                        children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.select')
-                      })
-                    })
-                  })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 5,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                name: "control_system_type_ids",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.control_system_type_ids) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.control_system_type_ids),
+                label: labels.controlSystemTypes,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                  placeholder: labels.controlSystemTypes,
+                  style: fullWidth,
+                  options: selection_props.control_system_types
                 })
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-            gutter: [10, 10],
-            style: {
-              display: "flex",
-              alignItems: 'stretch',
-              marginTop: 16
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-              xs: 15,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 5,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                name: "pump_brand_ids",
+                initialValue: brandsValue,
+                label: labels.brands,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                  placeholder: labels.brands,
+                  style: fullWidth,
+                  options: brandsToShow,
+                  onChange: function onChange(values) {
+                    setBrandsValue(values);
+                  }
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 6,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                name: "pump_series_ids",
+                initialValue: seriesValue,
+                label: labels.series,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                  disabled: brandsValue.length === 0,
+                  placeholder: labels.series,
+                  style: fullWidth,
+                  options: seriesToShow,
+                  onChange: function onChange(values) {
+                    setSeriesValue(values);
+                  }
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 5,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                className: reducedAntFormItemClassName,
+                name: "collectors",
+                initialValue: (selection === null || selection === void 0 ? void 0 : selection.collectors) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.collectors),
+                label: labels.collectors,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                  placeholder: labels.collectors,
+                  style: fullWidth,
+                  options: selection_props.collectors
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 3,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+                className: reducedAntFormItemClassName,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+                  style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
+                  onClick: makeSelectionHandler,
+                  loading: loading,
+                  children: labels.select
+                })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+              xs: 24,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
                 className: "table-rounded-card",
                 type: "inner",
-                title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.table.title'),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
+                title: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
                   setStationToShow: setStationToShow,
-                  loading: loading
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
-              xs: 9,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-                className: 'flex-rounded-card' // style={{height: "100%"}}
-                ,
-                type: "inner",
-                title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-                extra: stationToShow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
-                  children: [has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("a", {
-                    onClick: function onClick(e) {
-                      e.preventDefault();
-                      setExportDrawerVisible(true);
-                    },
-                    children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.graphic.export')
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)("a", {
-                    onClick: showPumpInfo,
-                    children: [_resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.graphic.info'), ">>"]
-                  })]
-                }),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)("div", {
-                  id: "for-graphic"
+                  loading: loading,
+                  addStationHandler: addStationHandler,
+                  dependencies: [addedStations, addedStationKey]
                 })
               })
             })]
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
-      style: margin.top(16),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_37__["default"], {
-        size: 8,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
-          onClick: function onClick() {
-            _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(tRoute(project_id !== '-1' ? 'projects.show' : 'projects.index', project_id));
-          },
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.exit')
-        }), project_id !== "-1" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.Fragment, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-            disabled: !stationToShow || !updated,
-            onClick: addSelectionToProjectClickHandler('post'),
-            loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.add')
-          }), selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-            disabled: !stationToShow || !updated,
-            onClick: addSelectionToProjectClickHandler('put'),
-            loading: addLoading,
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_4__["default"].get('pages.selections.single_pump.update')
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_23__.PumpPropsDrawer, {
-      visible: pumpInfoVisible,
-      setVisible: setPumpInfoVisible,
-      pumpInfo: pumpInfo
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Components_FiltersDrawer__WEBPACK_IMPORTED_MODULE_13__.FiltersDrawer, _objectSpread({}, filtersDrawerProps)), stationToShow && has('selection_export') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_25__.jsx)(_Components_ExportAtOnceSelectionDrawer__WEBPACK_IMPORTED_MODULE_14__.ExportAtOnceSelectionDrawer, {
-      visible: exportDrawerVisible,
-      setVisible: setExportDrawerVisible,
-      stationToShow: stationToShow,
-      pumpableType: pumpableType
-    })]
-  });
-};
-
-/***/ }),
-
-/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js":
-/*!******************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ DoublePump)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Selection */ "./Modules/Selection/Resources/assets/js/Pages/Selection.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function DoublePump() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Selection__WEBPACK_IMPORTED_MODULE_1__.Selection, {
-    pageTitle: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.selections.double_pump.title_new'),
-    widths: {
-      brands: 5,
-      types: 13,
-      work_scheme: 5,
-      range: 3,
-      range_slider: 4,
-      buttons: 6
-    }
-  });
-}
-
-/***/ }),
-
-/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js":
-/*!******************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SinglePump)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Selection */ "./Modules/Selection/Resources/assets/js/Pages/Selection.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function SinglePump() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Selection__WEBPACK_IMPORTED_MODULE_1__.Selection, {
-    pageTitle: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.selections.single_pump.title_new'),
-    widths: {
-      brands: 4,
-      types: 7,
-      applications: 7,
-      main_pumps_count: 4,
-      reserve_pumps_count: 4,
-      range: 3,
-      range_slider: 3,
-      buttons: 4
-    }
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        xs: 8,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
+          className: "flex-rounded-card",
+          type: "inner",
+          title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name // extra={stationToShow && <Space>
+          //     <a onClick={e => {
+          //         e.preventDefault()
+          //         setExportDrawerVisible(true)
+          //     }}>{Lang.get('pages.selections.single_pump.graphic.export')}</a>}
+          //     <a onClick={showPumpInfo}>
+          //         {Lang.get('pages.selections.single_pump.graphic.info')}>>
+          //     </a>
+          // </Space>}
+          ,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+            id: "curves"
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        xs: 24,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
+          className: "table-rounded-card",
+          type: "inner",
+          title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_13__.AddedPumpsTable, {
+            addedStations: addedStations,
+            loading: loading,
+            setStationToShow: setStationToShow,
+            setAddedStations: setAddedStations
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+        xs: 24,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          form: selectionForm,
+          layout: "vertical",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+            name: "comment",
+            label: labels.comment,
+            className: reducedAntFormItemClassName,
+            initialValue: (selection === null || selection === void 0 ? void 0 : selection.comment) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.comment),
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].TextArea, {
+              autoSize: true,
+              placeholder: labels.comment
+            })
+          })
+        })
+      })]
+    })
   });
 }
 
@@ -13161,74 +10740,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dashboard */ "./Modules/Selection/Resources/assets/js/Pages/Dashboard.js");
-/* harmony import */ var _Pages_Selections_SinglePump__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Selections/SinglePump */ "./Modules/Selection/Resources/assets/js/Pages/Selections/SinglePump.js");
-/* harmony import */ var _Pages_Selections_DoublePump__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Selections/DoublePump */ "./Modules/Selection/Resources/assets/js/Pages/Selections/DoublePump.js");
-
+/* harmony import */ var _Pages_Selections_WaterAuto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Selections/WaterAuto */ "./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
-  SinglePump: _Pages_Selections_SinglePump__WEBPACK_IMPORTED_MODULE_1__["default"],
-  DoublePump: _Pages_Selections_DoublePump__WEBPACK_IMPORTED_MODULE_2__["default"]
+  WaterAuto: _Pages_Selections_WaterAuto__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
-
-/***/ }),
-
-/***/ "./resources/js/src/Hooks/debounce.hook.js":
-/*!*************************************************!*\
-  !*** ./resources/js/src/Hooks/debounce.hook.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useDebounce": () => (/* binding */ useDebounce)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-var useDebounce = function useDebounce(value, delay) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
-      _useState2 = _slicedToArray(_useState, 2),
-      debouncedValue = _useState2[0],
-      setDebouncedValue = _useState2[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // Выставить debouncedValue равным value (переданное значение)
-    // после заданной задержки
-    var handler = setTimeout(function () {
-      setDebouncedValue(value);
-    }, delay); // Вернуть функцию очистки, которая будет вызываться каждый раз, когда ...
-    // ... useEffect вызван снова. useEffect будет вызван снова, только если ...
-    // ... value будет изменено (смотри ниже массив зависимостей).
-    // Так мы избегаем изменений debouncedValue, если значение value ...
-    // ... поменялось в рамках интервала задержки.
-    // Таймаут очищается и стартует снова.
-    // Что бы сложить это воедино: если пользователь печатает что-то внутри ...
-    // ... нашего приложения в поле поиска, мы не хотим, чтобы debouncedValue...
-    // ... не менялось до тех пор, пока он не прекратит печатать дольше, чем 500ms.
-
-    return function () {
-      clearTimeout(handler);
-    };
-  }, // Вызывается снова, только если значение изменится
-  // мы так же можем добавить переменную "delay" в массива зависимостей ...
-  // ... если вы собираетесь менять ее динамически.
-  [value]);
-  return debouncedValue;
-};
 
 /***/ }),
 
@@ -13294,29 +10812,30 @@ var useHttp = function useHttp() {
               headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
               auth = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
               setLoading(true);
-              _context.prev = 5;
-              _context.next = 8;
+              console.log(body);
+              _context.prev = 6;
+              _context.next = 9;
               return axios.request({
                 url: url,
                 method: method,
                 data: body
               });
 
-            case 8:
+            case 9:
               response = _context.sent;
               data = response.data;
-              _context.next = 16;
+              _context.next = 17;
               break;
 
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](5);
+            case 13:
+              _context.prev = 13;
+              _context.t0 = _context["catch"](6);
               setLoading(false);
               throw new Error(_context.t0);
 
-            case 16:
+            case 17:
               if (!(response.status === 419)) {
-                _context.next = 20;
+                _context.next = 21;
                 break;
               }
 
@@ -13324,9 +10843,9 @@ var useHttp = function useHttp() {
               antd__WEBPACK_IMPORTED_MODULE_2__["default"].info('Your session may be expired. Reload the page');
               throw new Error();
 
-            case 20:
+            case 21:
               if (!(response.statusText !== "OK")) {
-                _context.next = 24;
+                _context.next = 25;
                 break;
               }
 
@@ -13338,7 +10857,7 @@ var useHttp = function useHttp() {
 
               throw new Error();
 
-            case 24:
+            case 25:
               for (_key in data) {
                 if (antd__WEBPACK_IMPORTED_MODULE_2__["default"].hasOwnProperty(_key)) {
                   antd__WEBPACK_IMPORTED_MODULE_2__["default"][_key](data[_key]);
@@ -13348,12 +10867,12 @@ var useHttp = function useHttp() {
               setLoading(false);
               return _context.abrupt("return", data);
 
-            case 27:
+            case 28:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[5, 12]]);
+      }, _callee, null, [[6, 13]]);
     }));
 
     return function request(_x) {
@@ -13553,15 +11072,6 @@ var useInputRules = function useInputRules() {
       password: [required],
       itn: [itn],
       phone: [required, phone],
-      city: function city(citiesToShow) {
-        return [required, {
-          validator: function validator(_, cityId) {
-            return citiesToShow.some(function (cityToShow) {
-              return cityToShow.id === cityId;
-            }) ? Promise.resolve() : Promise.reject(new Error(_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('validation.custom.city.correct')));
-          }
-        }];
-      },
       required: required,
       number: number,
       max: max
@@ -13571,26 +11081,53 @@ var useInputRules = function useInputRules() {
 
 /***/ }),
 
-/***/ "./resources/js/src/Hooks/pumpable_type.hook.js":
-/*!******************************************************!*\
-  !*** ./resources/js/src/Hooks/pumpable_type.hook.js ***!
-  \******************************************************/
+/***/ "./resources/js/src/Hooks/routes.hook.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/Hooks/routes.hook.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "usePumpableType": () => (/* binding */ usePumpableType)
+/* harmony export */   "useTransRoutes": () => (/* binding */ useTransRoutes)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-var usePumpableType = function usePumpableType() {
-  var pumpableType = function pumpableType() {
-    return new URLSearchParams(window.location.search).get('pumpable_type');
+var useTransRoutes = function useTransRoutes() {
+  var locales = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.locales;
+
+  var tRoute = function tRoute(name) {
+    for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      params[_key - 1] = arguments[_key];
+    }
+
+    var splitUrl = route.apply(void 0, [name].concat(params)).split("/");
+    var locale = splitUrl[3]; // locale from url
+
+    splitUrl.splice(3, locales !== null && locales !== void 0 && locales.supported.includes(locale) ? 1 : 0);
+
+    if ((locales === null || locales === void 0 ? void 0 : locales["default"]) !== (locales === null || locales === void 0 ? void 0 : locales.current)) {
+      splitUrl.splice(3, 0, locales === null || locales === void 0 ? void 0 : locales.current);
+    }
+
+    return splitUrl.join('/');
   };
 
-  return pumpableType;
-};
+  return tRoute;
+}; // export default function tRoute (name, ...params) {
+//     const {locales} = usePage().props
+//
+//     const splitUrl = route(name, ...params).split("/")
+//     const locale = splitUrl[3] // locale from url
+//
+//     splitUrl.splice(3, locales.supported.includes(locale) ? 1 : 0)
+//     if (locales.default !== locales.current) {
+//         splitUrl.splice(3, 0, locales.current)
+//     }
+//
+//     return splitUrl.join('/')
+// }
 
 /***/ }),
 
@@ -13686,52 +11223,6 @@ var BoxFlexCenter = function BoxFlexCenter(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/src/Shared/Box/BoxFlexEnd.js":
-/*!***************************************************!*\
-  !*** ./resources/js/src/Shared/Box/BoxFlexEnd.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BoxFlexEnd": () => (/* binding */ BoxFlexEnd)
-/* harmony export */ });
-/* harmony import */ var _BoxFlex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
-/* harmony import */ var _Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["children", "style"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var BoxFlexEnd = function BoxFlexEnd(_ref) {
-  var children = _ref.children,
-      style = _ref.style,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  var _useStyles = (0,_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__.useStyles)(),
-      justifyContentFlexEnd = _useStyles.justifyContentFlexEnd;
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_BoxFlex__WEBPACK_IMPORTED_MODULE_0__.BoxFlex, _objectSpread(_objectSpread({
-    style: _objectSpread(_objectSpread({}, justifyContentFlexEnd), style)
-  }, rest), {}, {
-    children: children
-  }));
-};
-
-/***/ }),
-
 /***/ "./resources/js/src/Shared/Buttons/PrimaryButton.js":
 /*!**********************************************************!*\
   !*** ./resources/js/src/Shared/Buttons/PrimaryButton.js ***!
@@ -13760,51 +11251,6 @@ var PrimaryButton = function PrimaryButton(props) {
     type: "primary"
   }, props), {}, {
     children: props.children
-  }));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/Buttons/SecondaryButton.js":
-/*!************************************************************!*\
-  !*** ./resources/js/src/Shared/Buttons/SecondaryButton.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SecondaryButton": () => (/* binding */ SecondaryButton)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["type", "children"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var SecondaryButton = function SecondaryButton(_ref) {
-  var _ref$type = _ref.type,
-      type = _ref$type === void 0 ? 'primary' : _ref$type,
-      children = _ref.children,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
-    danger: true,
-    type: type
-  }, rest), {}, {
-    children: children
   }));
 };
 
@@ -13894,6 +11340,57 @@ var RoundedCard = function RoundedCard(_ref) {
     className: "rounded-card " + className
   }, rest), {}, {
     children: children
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/EditableCell.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/Shared/EditableCell.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EditableCell": () => (/* binding */ EditableCell)
+/* harmony export */ });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["editing", "dataIndex", "title", "record", "index", "children", "input"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var EditableCell = function EditableCell(_ref) {
+  var editing = _ref.editing,
+      dataIndex = _ref.dataIndex,
+      title = _ref.title,
+      record = _ref.record,
+      index = _ref.index,
+      children = _ref.children,
+      input = _ref.input,
+      restProps = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", _objectSpread(_objectSpread({}, restProps), {}, {
+    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
+      name: dataIndex,
+      style: {
+        margin: 0
+      } // rules={dataIndex !== 'comment' && [rules.required]}
+      ,
+      children: input(record)
+    }) : children
   }));
 };
 
@@ -14030,144 +11527,17 @@ var Selection = function Selection(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
     options: _toConsumableArray(options.map(function (option) {
       return {
-        label: option.customValue || option.name || option.value,
-        value: option.id
+        label: option.customValue || option.name || option.value || option,
+        value: option.id || option.value || option.name || option
       };
     })),
+    allowClear: true,
+    showSearch: true,
     filterOption: function filterOption(input, option) {
       return option.label.toString().toLowerCase().includes(input.toLowerCase());
     },
     placeholder: placeholder || ""
   }, rest));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/ItemsForm.js":
-/*!**********************************************!*\
-  !*** ./resources/js/src/Shared/ItemsForm.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ItemsForm": () => (/* binding */ ItemsForm)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["form", "withRow", "layout", "items", "labelSpan", "onFinish"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-var ItemsForm = function ItemsForm(_ref) {
-  var form = _ref.form,
-      _ref$withRow = _ref.withRow,
-      withRow = _ref$withRow === void 0 ? false : _ref$withRow,
-      _ref$layout = _ref.layout,
-      layout = _ref$layout === void 0 ? "horizontal" : _ref$layout,
-      items = _ref.items,
-      _ref$labelSpan = _ref.labelSpan,
-      labelSpan = _ref$labelSpan === void 0 ? 5 : _ref$labelSpan,
-      onFinish = _ref.onFinish,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  var formItem = function formItem(item) {
-    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_2__["default"].Item, _objectSpread(_objectSpread({}, item.values), {}, {
-      key: item.values.name
-    }), item.input);
-  };
-
-  var formItems = function formItems() {
-    return items.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [withRow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          span: item.span || 3,
-          children: formItem(item)
-        }), !withRow && formItem(item)]
-      });
-    });
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
-    onFinish: onFinish,
-    form: form,
-    layout: layout,
-    labelCol: labelSpan
-  }, rest), {}, {
-    children: items.map(function (item) {
-      var _item$values;
-
-      return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_2__["default"].Item, _objectSpread(_objectSpread({}, item.values), {}, {
-        key: (_item$values = item.values) === null || _item$values === void 0 ? void 0 : _item$values.name
-      }), item.input);
-    })
-  }));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/JustifiedRow.js":
-/*!*************************************************!*\
-  !*** ./resources/js/src/Shared/JustifiedRow.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "JustifiedRow": () => (/* binding */ JustifiedRow)
-/* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["children", "gutter"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var JustifiedRow = function JustifiedRow(_ref) {
-  var children = _ref.children,
-      _ref$gutter = _ref.gutter,
-      gutter = _ref$gutter === void 0 ? [0, 0] : _ref$gutter,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
-    style: {
-      minHeight: "85vh"
-    },
-    justify: "space-around",
-    align: "middle",
-    gutter: gutter
-  }, rest), {}, {
-    children: children
-  }));
 };
 
 /***/ }),
@@ -14395,6 +11765,158 @@ var IndexContainer = function IndexContainer(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/Edit.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/Edit.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Edit": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/EditOutlined.js");
+/* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _TableAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var Edit = function Edit(_ref) {
+  var clickHandler = _ref.clickHandler;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_TableAction__WEBPACK_IMPORTED_MODULE_2__.TableAction, {
+    clickHandler: clickHandler,
+    title: "\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/Save.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/Save.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Save": () => (/* binding */ Save)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/SaveOutlined.js");
+/* harmony import */ var _TableAction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Save = function Save(_ref) {
+  var clickHandler = _ref.clickHandler;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_TableAction__WEBPACK_IMPORTED_MODULE_1__.TableAction, {
+    clickHandler: clickHandler,
+    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {}),
+    title: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/TableAction.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TableAction": () => (/* binding */ TableAction)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var TableAction = function TableAction(_ref) {
+  var title = _ref.title,
+      clickHandler = _ref.clickHandler,
+      icon = _ref.icon;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    placement: "topRight",
+    title: title,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      onClick: clickHandler,
+      icon: icon
+    })
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TableActionsContainer": () => (/* binding */ TableActionsContainer)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Containers_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Containers/ActionsContainer */ "./resources/js/src/Shared/Resource/Containers/ActionsContainer.js");
+/* harmony import */ var _Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/dropdown/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/MoreOutlined.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var TableActionsContainer = function TableActionsContainer(_ref) {
+  var children = _ref.children;
+
+  if (!Array.isArray(children) || children.length < 5) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Containers_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__.ActionsContainer, {
+      actions: children,
+      size: "small"
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    trigger: ['click'],
+    arrow: true,
+    placement: "topRight",
+    overlay: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_2__.RoundedCard, {
+      style: {
+        padding: 10
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Containers_ActionsContainer__WEBPACK_IMPORTED_MODULE_1__.ActionsContainer, {
+        actions: children,
+        size: "small"
+      })
+    }),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+    })
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/src/Shared/Resource/Table/TTable.js":
 /*!**********************************************************!*\
   !*** ./resources/js/src/Shared/Resource/Table/TTable.js ***!
@@ -14466,7 +11988,7 @@ var TTable = function TTable(_ref) {
     columns: _columns,
     dataSource: dataSource === null || dataSource === void 0 ? void 0 : dataSource.map(function (item) {
       return _objectSpread({
-        key: item.id
+        key: item.id || item.key
       }, item);
     }),
     rowClassName: rowClassName,
@@ -14480,6 +12002,2063 @@ var TTable = function TTable(_ref) {
       };
     }
   }, rest));
+};
+
+/***/ }),
+
+/***/ "./resources/js/translation/lang.js":
+/*!******************************************!*\
+  !*** ./resources/js/translation/lang.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lang.js */ "./node_modules/lang.js/src/lang.js");
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lang_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./translations */ "./resources/js/translation/translations.js");
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_translations__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var Lang = new (lang_js__WEBPACK_IMPORTED_MODULE_0___default())({
+  messages: (_translations__WEBPACK_IMPORTED_MODULE_1___default()),
+  locale: 'ru',
+  fallback: 'ru'
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Lang);
+
+/***/ }),
+
+/***/ "./resources/js/translation/translations.js":
+/*!**************************************************!*\
+  !*** ./resources/js/translation/translations.js ***!
+  \**************************************************/
+/***/ ((module) => {
+
+module.exports = {
+  "en.auth": {
+    "failed": "These credentials do not match our records.",
+    "password": "The provided password is incorrect.",
+    "throttle": "Too many login attempts. Please try again in :seconds seconds."
+  },
+  "en.flash": {
+    "email_verification": {
+      "sent_again": "Link to the email confirmation was sent again",
+      "verified": "Email has been successfully confirmed"
+    },
+    "price_lists": {
+      "imported": "Price lists were imported successfully"
+    },
+    "projects": {
+      "created": "Project was created successfully",
+      "deleted": "Project was deleted successfully",
+      "updated": "Project was updated successfully"
+    },
+    "pump_series": {
+      "imported": "Pump series were imported successfully"
+    },
+    "pumps": {
+      "imported": "Pumps were imported successfully"
+    },
+    "selections": {
+      "added": "Selection was successfully added to project",
+      "deleted": "Selection was deleted successfully",
+      "pumps_not_found": "No pumps were found for the specified parameters"
+    },
+    "users": {
+      "password_changed": "Password was changed successfully",
+      "updated": "User info was updated successfully"
+    }
+  },
+  "en.graphic": {
+    "axis": {
+      "flow": "Volume flow, m\xB3/h",
+      "head": "Delivery head, m"
+    },
+    "legend": {
+      "flow": "Flow",
+      "head": "Head",
+      "intersection_point": "Intersection point",
+      "working_point": "Working point"
+    }
+  },
+  "en.messages": {
+    "function_development": "The function is under development",
+    "selections": {
+      "no_series_selected": "No series selected",
+      "notification": {
+        "attention": "Attention!",
+        "description": {
+          "applications": "applications",
+          "power_adjustment": "power adjustment",
+          "types": "types",
+          "1": "Selected series",
+          "2": "does not match to selected filter params:"
+        }
+      }
+    },
+    "service_development": "The service is under development"
+  },
+  "en.pages": {
+    "change_locale": "Change locale",
+    "dashboard": {
+      "marketplace": "Marketplace",
+      "pumps": "Pumps",
+      "select": "Selection of pumping stations",
+      "title": "Dashboard"
+    },
+    "email_verification": {
+      "logout": "Logout",
+      "send_again": "Send email again",
+      "text1": "Before you get started, could you please confirm your email address, by clicking on the link that we just sent you by email?",
+      "text2": "If you have not received an email, we will be happy to send you another one. Also, just in case, check the \"Spam\" folder",
+      "thanks": "Thank you for registering"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "Login",
+      "not_registered": "Not registered yet?",
+      "password": "Password",
+      "welcome": "Welcome!"
+    },
+    "profile": {
+      "discounts": {
+        "discount": "Discount, %",
+        "name": "Name",
+        "tab": "Producer's discounts"
+      },
+      "index": {
+        "cards": {
+          "password": "Change password",
+          "user_info": "Update user info"
+        },
+        "change_password": "Change password",
+        "city": "City",
+        "country": "Country",
+        "currency": {
+          "label": "Currency",
+          "tooltip": "Currency affects on ..."
+        },
+        "current_password": "Current password",
+        "email": "E-mail",
+        "first_name": "First name",
+        "itn": "Individual taxpayer number",
+        "last_name": "Last name",
+        "main_business": "Main business",
+        "middle_name": "Middle name",
+        "new_password": "New password",
+        "new_password_confirmation": "Confirm new password",
+        "organization_name": "Name of the organization",
+        "phone": "Phone",
+        "postcode": "Postcode",
+        "save_changes": "Save changes",
+        "tab": "User info"
+      },
+      "title": "Profile"
+    },
+    "projects": {
+      "back": "Back to projects",
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create project"
+      },
+      "edit": {
+        "button": "Update project",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update project"
+      },
+      "export": {
+        "button": "Export",
+        "choose_selections": "Choose selection to export",
+        "m": "m",
+        "m3h": "m\xB3/h",
+        "print": {
+          "electric_diagram": "Print pump electric diagram",
+          "exploded_view": "Print pump exploded view",
+          "personal_price": "Print personal price",
+          "pump_image": "Print pump image",
+          "pump_info": "Print pump info",
+          "retail_price": "Print retail price",
+          "sizes_image": "Print pump sizes"
+        },
+        "title": "Export project"
+      },
+      "index": {
+        "button": "Create project",
+        "clone": {
+          "button": "Clone",
+          "save_as": "Save as",
+          "title": "Clone project"
+        },
+        "restore": {
+          "button": "Restore",
+          "title": "Restore project?"
+        },
+        "search": {
+          "placeholder": "Search projects by name"
+        },
+        "selection": "Hydraulic selection without saving",
+        "table": {
+          "count": "Selections count",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the project?",
+          "name": "Name"
+        }
+      },
+      "show": {
+        "label": "Name",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore selection?"
+        },
+        "save_button": "Save changes",
+        "selection": "Hydraulic selection",
+        "table": {
+          "consumption": "Volume flow, m\xB3/h",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the selection?",
+          "part_num": "Article number",
+          "power": "P\u2081, kW",
+          "pressure": "Delivery head, m",
+          "price": "Discounted price",
+          "selected_pump": "Product name",
+          "total_power": "P total, kW",
+          "total_price": "Total discounted price"
+        }
+      },
+      "statistics": {
+        "title": "Projects statistics"
+      },
+      "title": "Projects"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create brand"
+      },
+      "edit": {
+        "button": "Update brand",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update brand"
+      },
+      "index": {
+        "button": "Create brand",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore brand?"
+        },
+        "table": {
+          "delete": "Are you sure you want to delete the brand?",
+          "name": "Name"
+        },
+        "title": "Brands"
+      }
+    },
+    "pump_series": {
+      "back": "Back to series",
+      "create": {
+        "button": "Create",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Create series"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Edit series"
+      },
+      "errors_title": "Import errors:",
+      "index": {
+        "button": "Create series",
+        "create": "Create",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore series?"
+        },
+        "table": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "delete": "Are you sure you want to delete the series?",
+          "is_discontinued": "Is active",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Brands and series",
+        "upload": "Upload series",
+        "upload_images": {
+          "images": {
+            "icons": "Icons",
+            "title": "Images (max 300, .jpg, .jpeg, .png)"
+          },
+          "title": "Upload images"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "Add to projects",
+        "choose": "Choose projects where to add the pump",
+        "ok": "Add",
+        "pumps_count": "Pumps count",
+        "title": "Add pump to projects"
+      },
+      "back": "Back to pumps",
+      "consumption": "Volume flow, m\xB3/h",
+      "data": {
+        "applications": "Applications",
+        "article_num_archive": "Archive article number",
+        "article_num_main": "Main article number",
+        "article_num_reserve": "Reserve article number",
+        "brand": "Brand",
+        "category": "Category",
+        "connection": "Mains connection",
+        "connection_type": "Connection",
+        "currency": "Currency",
+        "description": "Description",
+        "dn_pressure": "Pressure side DN",
+        "dn_suction": "Suction side DN",
+        "fluid_temp_max": "Max. fluid temp, \xB0C",
+        "fluid_temp_min": "Min. fluid temp, \xB0C",
+        "is_discontinued": "Active",
+        "name": "Name",
+        "power_adjustment": "El. power adjustment",
+        "price": "Price",
+        "ptp_length": "Port-to-port length, mm",
+        "rated_current": "Rated current, A",
+        "rated_power": "P, kW",
+        "series": "Series",
+        "types": "Types",
+        "weight": "Weight, kg"
+      },
+      "errors_title": "Import errors:",
+      "hydraulic_perf": "Hydraulic performance",
+      "pressure": "Delivery head, m",
+      "props": "Properties",
+      "search": {
+        "button": "Search",
+        "placeholder": "Search pumps by article nums and name"
+      },
+      "tabs": {
+        "double": "Double pumps",
+        "single": "Single pumps"
+      },
+      "title": "Pumps",
+      "upload": "Upload pumps",
+      "upload_price_lists": "Upload price lists",
+      "upload_tech_info": {
+        "files": {
+          "files": "Files",
+          "title": "Files (max 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "Cross sectional drawings images",
+          "pump_electric_diagrams": "Electrical diagram images",
+          "pump_sizes": "Pump sizes images",
+          "pumps": "Pumps images",
+          "title": "Images (max 300, .jpg, .jpeg, .png)"
+        },
+        "title": "Upload tech-info"
+      }
+    },
+    "register": {
+      "already_registered": "Already registered?",
+      "city": "City",
+      "country": "Country",
+      "email": "E-mail",
+      "first_name": "First name",
+      "itn": "Individual taxpayer number",
+      "last_name": "Last name",
+      "main_business": "Main business",
+      "middle_name": "Middle name",
+      "organization_name": "Name of the organization",
+      "password": "Password",
+      "password_confirmation": "Confirm your password",
+      "phone": "Phone",
+      "please_register": "Please register",
+      "postcode": "Postcode",
+      "register": "Register"
+    },
+    "selections": {
+      "back": {
+        "to_project": "Back to project",
+        "to_selections_dashboard": "Back to selections dashboard"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "Back to project",
+          "to_projects": "Back to projects"
+        },
+        "double_analogy": "Double pump selection by analogy",
+        "double_prefs": "Double pump selection by preferences",
+        "fire_station_analogy": "Fire extinguishing pumping station selection by analogy",
+        "fire_station_prefs": "Fire extinguishing pumping station selection by preferences",
+        "preferences": {
+          "pump": {
+            "borehole": "Borehole pump selection",
+            "double": "Double pump selection",
+            "drainage": "Drainage pump selection",
+            "single": "Single pump selection"
+          },
+          "station": {
+            "fire": "Fire extinguishing pumping station selection",
+            "water": "Water supply pumping station selection"
+          }
+        },
+        "single_analogy": "Single pump selection by analogy",
+        "single_prefs": "Single pump selection by preferences",
+        "subtitle": "Choose selection type",
+        "title": "Hydraulic selections",
+        "water_station_analogy": "Watter supply pumping station selection by analogy",
+        "water_station_prefs": "Watter supply pumping station selection by preferences",
+        "404": {
+          "back": "Back to projects",
+          "subtitle": "Please contact the administrator",
+          "title": "Sorry, you don't have access to any of selection types"
+        }
+      },
+      "double_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "title_new": "Double pump selection by preferences",
+        "title_show": "Viewing the double pump selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection",
+        "work_scheme": "Work scheme"
+      },
+      "single_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "applications": {
+          "label": "Applications",
+          "tooltip": "The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)"
+        },
+        "backup_pumps_count": "Reserve pumps count",
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "main_pumps_count": "Main pumps count",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "curves": "Curve(s)",
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "temp_tooltip": {
+          "orange": "Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected",
+          "red": "Red - the series isn't suitable for the selected temperature"
+        },
+        "title_new": "Single pump selection by preferences",
+        "title_show": "Viewing the selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "created_at": "Created at",
+          "reset": "Reset",
+          "search": "Project or client organization name",
+          "selections_count": "Amount of selections",
+          "total_selections_price": "Total selections price"
+        },
+        "full_title": "Statistics by projects",
+        "table": {
+          "city": "City",
+          "comment": "Comment",
+          "country": "Country",
+          "created_at": "Created at",
+          "delivery_status": "Delivery status",
+          "name": "Name",
+          "retail_price": "Retail price",
+          "selections_count": "Selections count",
+          "status": "Status",
+          "user_business": "Client business",
+          "user_full_name": "Client full name",
+          "user_organization_name": "Client organization name"
+        },
+        "title": "By projects"
+      },
+      "title": "Statistics",
+      "users": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "last_login_at": "Last activity date",
+          "projects_count": "Amount of projects",
+          "reset": "Reset",
+          "search": "Full name or organization name",
+          "total_projects_price": "Total projects price"
+        },
+        "full_title": "Statistics by users",
+        "table": {
+          "avg_projects_price": "Average projects price",
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "full_name": "Full name",
+          "last_login_at": "Last logged in at",
+          "organization_name": "Organization name",
+          "projects_count": "Amount of projects",
+          "total_projects_price": "Total projects price"
+        },
+        "title": "By users"
+      }
+    },
+    "users": {
+      "back": "Back to users",
+      "create": {
+        "button": "Create",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "email_verified": "Email confirmed",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "password": "Password",
+          "password_confirmation": "Confirm your password",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Create user"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Edit user"
+      },
+      "index": {
+        "button": "New user",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore user?"
+        },
+        "search": {
+          "placeholder": "Search by full name and organization "
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "Analytics"
+          },
+          "discounts": {
+            "tab": "Producer's discounts"
+          },
+          "projects": {
+            "tab": "Projects"
+          }
+        },
+        "table": {
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "created_at": "Created at",
+          "email": "E-mail",
+          "full_name": "Full name",
+          "is_active": "Is active",
+          "organization_name": "Name of the organization",
+          "phone": "Phone"
+        }
+      },
+      "title": "Users"
+    }
+  },
+  "en.pagination": {
+    "next": "Next &raquo;",
+    "previous": "&laquo; Previous"
+  },
+  "en.passwords": {
+    "reset": "Your password has been reset!",
+    "sent": "We have emailed your password reset link!",
+    "throttled": "Please wait before retrying.",
+    "token": "This password reset token is invalid.",
+    "user": "We can't find a user with that email address."
+  },
+  "en.tooltips": {
+    "clone": "Clone",
+    "delete": "Delete",
+    "detail": "Detail",
+    "edit": "Edit",
+    "export": "Export",
+    "popconfirm": {
+      "no": "No",
+      "yes": "Yes"
+    },
+    "print": "Print",
+    "save": "Save",
+    "statistics": "Statistics",
+    "view": "View"
+  },
+  "en.validation": {
+    "accepted": "The :attribute must be accepted.",
+    "accepted_if": "The :attribute must be accepted when :other is :value.",
+    "active_url": "The :attribute is not a valid URL.",
+    "after": "The :attribute must be a date after :date.",
+    "after_or_equal": "The :attribute must be a date after or equal to :date.",
+    "alpha": "The :attribute must only contain letters.",
+    "alpha_dash": "The :attribute must only contain letters, numbers, dashes and underscores.",
+    "alpha_num": "The :attribute must only contain letters and numbers.",
+    "array": "The :attribute must be an array.",
+    "attributes": {
+      "address": "Address",
+      "age": "Age",
+      "available": "Available",
+      "city": "City",
+      "content": "Content",
+      "country": "Country",
+      "date": "Date",
+      "day": "Day",
+      "description": "Description",
+      "email": "e-mail",
+      "excerpt": "Excerpt",
+      "first_name": "First name",
+      "gender": "Gender",
+      "hour": "Hour",
+      "import": {
+        "price_lists": {
+          "article_num_main": "Main article number",
+          "country": "Country",
+          "currency": "Currency",
+          "price": "Price"
+        },
+        "pump_series": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "icon": "Icon image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El power adjustment",
+          "types": "Types"
+        },
+        "pumps": {
+          "applications": "Applications",
+          "article_num_archive": "Archive article number",
+          "article_num_main": "Main article number",
+          "article_num_reserve": "Reserve article number",
+          "brand": "Brand",
+          "category": "Category",
+          "connection_type": "Connection type",
+          "currency": "Currency",
+          "description": "Description",
+          "dn_pressure": "Pressure side DN",
+          "dn_suction": "Suction side DN",
+          "dp_peak_performance": "Peak hydraulic performance",
+          "dp_standby_performance": "Standby hydraulic performance",
+          "fluid_temp_max": "Min. fluid temp",
+          "fluid_temp_min": "Max. fluid temp",
+          "is_discontinued": "Is discontinued",
+          "mains_connection": "Mains connection",
+          "name": "Name",
+          "power_adjustment": "El. power adjustment",
+          "price": "Price",
+          "ptp_length": "Port-to-port length",
+          "pump_cross_sectional_drawing_image": "Pump cross sectional drawing image",
+          "pump_electric_diagram_image": "Pump electric diagram image",
+          "pump_files": "Pump files",
+          "pump_image": "Pump image",
+          "pump_sizes_image": "Pump sizes image",
+          "rated_current": "Rated current",
+          "rated_power": "Rated power",
+          "series": "Series",
+          "sp_performance": "Hydraulic performance",
+          "types": "Types",
+          "weight": "Weight"
+        }
+      },
+      "itn": "ITN",
+      "last_name": "Last name",
+      "middle_name": "Middle name",
+      "minute": "Minute",
+      "mobile": "Mobile",
+      "month": "Month",
+      "name": "Name",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "phone": "Phone",
+      "price_lists": "Price lists",
+      "pumps": "Pumps",
+      "second": "Second",
+      "sex": "Sex",
+      "size": "Size",
+      "time": "Time",
+      "title": "Title",
+      "username": "Username",
+      "year": "Year"
+    },
+    "before": "The :attribute must be a date before :date.",
+    "before_or_equal": "The :attribute must be a date before or equal to :date.",
+    "between": {
+      "array": "The :attribute must have between :min and :max items.",
+      "file": "The :attribute must be between :min and :max kilobytes.",
+      "numeric": "The :attribute must be between :min and :max.",
+      "string": "The :attribute must be between :min and :max characters."
+    },
+    "boolean": "The :attribute field must be true or false.",
+    "confirmed": "The :attribute confirmation does not match.",
+    "current_password": "The password is incorrect.",
+    "custom": {
+      "city": {
+        "correct": "Choose a correct city for area"
+      }
+    },
+    "date": "The :attribute is not a valid date.",
+    "date_equals": "The :attribute must be a date equal to :date.",
+    "date_format": "The :attribute does not match the format :format.",
+    "different": "The :attribute and :other must be different.",
+    "digits": "The :attribute must be :digits digits.",
+    "digits_between": "The :attribute must be between :min and :max digits.",
+    "dimensions": "The :attribute has invalid image dimensions.",
+    "distinct": "The :attribute field has a duplicate value.",
+    "email": "The :attribute must be a valid email address.",
+    "ends_with": "The :attribute must end with one of the following: :values.",
+    "exists": "The selected :attribute is invalid.",
+    "file": "The :attribute must be a file.",
+    "filled": "The :attribute field must have a value.",
+    "gt": {
+      "array": "The :attribute must have more than :value items.",
+      "file": "The :attribute must be greater than :value kilobytes.",
+      "numeric": "The :attribute must be greater than :value.",
+      "string": "The :attribute must be greater than :value characters."
+    },
+    "gte": {
+      "array": "The :attribute must have :value items or more.",
+      "file": "The :attribute must be greater than or equal :value kilobytes.",
+      "numeric": "The :attribute must be greater than or equal :value.",
+      "string": "The :attribute must be greater than or equal :value characters."
+    },
+    "image": "The :attribute must be an image.",
+    "import": {
+      "exception": ":attribute weren't fully uploaded. Reload the page and try again",
+      "in_array": "The :attribute is invalid. Not found in database",
+      "in_array_complex": "The :attribute is invalid. Follow ids dont exist in database",
+      "sheet_name": {
+        "brand": "Brand in list name doesn't exist",
+        "series": "Series in list name doesn't exist"
+      }
+    },
+    "in": "The selected :attribute is invalid.",
+    "in_array": "The :attribute field does not exist in :other.",
+    "integer": "The :attribute must be an integer.",
+    "ip": "The :attribute must be a valid IP address.",
+    "ipv4": "The :attribute must be a valid IPv4 address.",
+    "ipv6": "The :attribute must be a valid IPv6 address.",
+    "json": "The :attribute must be a valid JSON string.",
+    "lt": {
+      "array": "The :attribute must have less than :value items.",
+      "file": "The :attribute must be less than :value kilobytes.",
+      "numeric": "The :attribute must be less than :value.",
+      "string": "The :attribute must be less than :value characters."
+    },
+    "lte": {
+      "array": "The :attribute must not have more than :value items.",
+      "file": "The :attribute must be less than or equal :value kilobytes.",
+      "numeric": "The :attribute must be less than or equal :value.",
+      "string": "The :attribute must be less than or equal :value characters."
+    },
+    "max": {
+      "array": "The :attribute must not have more than :max items.",
+      "file": "The :attribute must not be greater than :max kilobytes.",
+      "numeric": "The :attribute must not be greater than :max.",
+      "string": "The :attribute must not be greater than :max characters."
+    },
+    "mimes": "The :attribute must be a file of type: :values.",
+    "mimetypes": "The :attribute must be a file of type: :values.",
+    "min": {
+      "array": "The :attribute must have at least :min items.",
+      "file": "The :attribute must be at least :min kilobytes.",
+      "numeric": "The :attribute must be at least :min.",
+      "string": "The :attribute must be at least :min characters."
+    },
+    "multiple_of": "The :attribute must be a multiple of :value.",
+    "not_in": "The selected :attribute is invalid.",
+    "not_regex": "The :attribute format is invalid.",
+    "numeric": "The :attribute must be a number.",
+    "password": "The password is incorrect.",
+    "present": "The :attribute field must be present.",
+    "prohibited": "The :attribute field is prohibited.",
+    "prohibited_if": "The :attribute field is prohibited when :other is :value.",
+    "prohibited_unless": "The :attribute field is prohibited unless :other is in :values.",
+    "regex": "The :attribute format is invalid.",
+    "required": "The :attribute field is required.",
+    "required_if": "The :attribute field is required when :other is :value.",
+    "required_unless": "The :attribute field is required unless :other is in :values.",
+    "required_with": "The :attribute field is required when :values is present.",
+    "required_with_all": "The :attribute field is required when :values are present.",
+    "required_without": "The :attribute field is required when :values is not present.",
+    "required_without_all": "The :attribute field is required when none of :values are present.",
+    "same": "The :attribute and :other must match.",
+    "size": {
+      "array": "The :attribute must contain :size items.",
+      "file": "The :attribute must be :size kilobytes.",
+      "numeric": "The :attribute must be :size.",
+      "string": "The :attribute must be :size characters."
+    },
+    "starts_with": "The :attribute must start with one of the following: :values.",
+    "string": "The :attribute must be a string.",
+    "timezone": "The :attribute must be a valid timezone.",
+    "unique": "The :attribute has already been taken.",
+    "uploaded": "The :attribute failed to upload.",
+    "url": "The :attribute must be a valid URL.",
+    "uuid": "The :attribute must be a valid UUID."
+  },
+  "ru.auth": {
+    "failed": "\u041D\u0435\u0432\u0435\u0440\u043D\u043E\u0435 \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "throttle": "\u0421\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u043F\u043E\u043F\u044B\u0442\u043E\u043A \u0432\u0445\u043E\u0434\u0430. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437 \u0447\u0435\u0440\u0435\u0437 :seconds \u0441\u0435\u043A\u0443\u043D\u0434."
+  },
+  "ru.flash": {
+    "email_verification": {
+      "sent_again": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 Email \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E ",
+      "verified": "Email \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D"
+    },
+    "price_lists": {
+      "imported": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "projects": {
+      "created": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0441\u043E\u0437\u0434\u0430\u043D",
+      "deleted": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "updated": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"
+    },
+    "pump_series": {
+      "imported": "\u0421\u0435\u0440\u0438\u0438 \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "pumps": {
+      "imported": "\u041D\u0430\u0441\u043E\u0441\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "selections": {
+      "added": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+      "deleted": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "pumps_not_found": "\u041F\u043E \u0437\u0430\u0434\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E"
+    },
+    "users": {
+      "password_changed": "\u041F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0438\u0437\u043C\u0435\u043D\u0435\u043D",
+      "updated": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435 \u0431\u044B\u043B\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430"
+    }
+  },
+  "ru.graphic": {
+    "axis": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "head": "\u041D\u0430\u043F\u043E\u0440, \u043C"
+    },
+    "legend": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434",
+      "head": "\u041D\u0430\u043F\u043E\u0440",
+      "intersection_point": "\u0422\u043E\u0447\u043A\u0430 \u043F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u044F",
+      "working_point": "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u0442\u043E\u0447\u043A\u0430"
+    }
+  },
+  "ru.messages": {
+    "function_development": "\u0424\u0443\u043D\u043A\u0446\u0438\u044F \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435",
+    "selections": {
+      "no_series_selected": "\u041D\u0435 \u0432\u044B\u0431\u0440\u0430\u043D\u0430 \u043D\u0438 \u043E\u0434\u043D\u0430 \u0441\u0435\u0440\u0438\u044F",
+      "notification": {
+        "attention": "\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435",
+        "description": {
+          "applications": "\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "power_adjustment": "\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0442\u0438\u043F\u044B",
+          "1": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u0430\u044F \u0441\u0435\u0440\u0438\u044F",
+          "2": "\u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u0444\u0438\u043B\u044C\u0442\u0440\u0430:"
+        }
+      }
+    },
+    "service_development": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435"
+  },
+  "ru.pages": {
+    "change_locale": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A",
+    "dashboard": {
+      "marketplace": "\u041C\u0430\u0440\u043A\u0435\u0442\u043F\u043B\u0435\u0439\u0441",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "select": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A",
+      "title": "\u0414\u0430\u0448\u0431\u043E\u0440\u0434"
+    },
+    "email_verification": {
+      "logout": "\u0412\u044B\u0439\u0442\u0438",
+      "send_again": "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0441\u0441\u044B\u043B\u043A\u0443 \u0435\u0449\u0435 \u0440\u0430\u0437",
+      "text1": "\u041F\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043C \u043F\u0440\u0438\u0441\u0442\u0443\u043F\u0438\u0442\u044C \u043A \u0440\u0430\u0431\u043E\u0442\u0435, \u043D\u0435 \u043C\u043E\u0433\u043B\u0438 \u0431\u044B \u0432\u044B \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C \u0441\u0432\u043E\u0439 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B, \u043F\u0435\u0440\u0435\u0439\u0434\u044F \u043F\u043E \u0441\u0441\u044B\u043B\u043A\u0435, \u043A\u043E\u0442\u043E\u0440\u0443\u044E \u043C\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u043B\u0438 \u0432\u0430\u043C \u043F\u043E \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u0435?",
+      "text2": "\u0415\u0441\u043B\u0438 \u0432\u044B \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0435 \u043F\u0438\u0441\u044C\u043C\u043E, \u043C\u044B \u0441 \u0440\u0430\u0434\u043E\u0441\u0442\u044C\u044E \u0432\u044B\u0448\u043B\u0435\u043C \u0432\u0430\u043C \u0434\u0440\u0443\u0433\u043E\u0435. \u0422\u0430\u043A\u0436\u0435 \u043D\u0430 \u0432\u0441\u044F\u043A\u0438\u0439 \u0441\u043B\u0443\u0447\u0430\u0439 \u043F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u0430\u043F\u043A\u0443 \"\u0421\u043F\u0430\u043C\"",
+      "thanks": "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0447\u0442\u043E \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043B\u0438\u0441\u044C"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "\u0412\u043E\u0439\u0442\u0438",
+      "not_registered": "\u0415\u0449\u0451 \u043D\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "welcome": "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C!"
+    },
+    "profile": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "discounts": {
+        "discount": "\u0421\u043A\u0438\u0434\u043A\u0430, %",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+      },
+      "index": {
+        "cards": {
+          "password": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+          "user_info": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435"
+        },
+        "change_password": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+        "city": "\u0413\u043E\u0440\u043E\u0434",
+        "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+        "currency": {
+          "label": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "tooltip": "\u0412\u0430\u043B\u044E\u0442\u0430 \u0432\u043B\u0438\u044F\u0435\u0442 \u043D\u0430 ..."
+        },
+        "current_password": "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "email": "E-mail",
+        "first_name": "\u0418\u043C\u044F",
+        "itn": "\u0418\u041D\u041D",
+        "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+        "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+        "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+        "new_password": "\u041D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "new_password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+        "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+        "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+        "save_changes": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "tab": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F"
+      },
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "title": "\u041F\u0440\u043E\u0444\u0438\u043B\u044C"
+    },
+    "projects": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "export": {
+        "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+        "choose_selections": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0431\u043E\u0440\u044B \u0434\u043B\u044F \u044D\u043A\u0441\u043F\u043E\u0440\u0442\u0430",
+        "m": "\u043C",
+        "m3h": "\u043C\xB3/\u0447",
+        "print": {
+          "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+          "personal_price": "\u0412\u044B\u0432\u043E\u0434 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_info": "\u0412\u044B\u0432\u043E\u0434 \u0442\u0435\u0445-\u0438\u043D\u0444\u043E",
+          "retail_price": "\u0412\u044B\u0432\u043E\u0434 \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+        },
+        "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u0440\u043E\u0435\u043A\u0442\u0430"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+        "clone": {
+          "button": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+          "save_as": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u0430\u043A",
+          "title": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+        },
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432 \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E"
+        },
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F",
+        "table": {
+          "count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        }
+      },
+      "show": {
+        "label": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?"
+        },
+        "save_button": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "table": {
+          "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P\u2081, \u043A\u0412",
+          "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+          "price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "selected_pump": "\u041E\u0431\u043E\u0437\u043D. \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439"
+        }
+      },
+      "title": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?"
+        },
+        "table": {
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B"
+      }
+    },
+    "pump_series": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u0435\u0440\u0438\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "is_discontinued": "\u0421\u043D\u044F\u0442\u0430 \u0441 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E",
+        "create": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?"
+        },
+        "table": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?",
+          "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B \u0438 \u0441\u0435\u0440\u0438\u0438",
+        "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u0438",
+        "upload_images": {
+          "images": {
+            "icons": "\u0418\u043A\u043E\u043D\u043A\u0438",
+            "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441 300, .jpg, .jpeg, .png)"
+          },
+          "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B",
+        "choose": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B, \u0432 \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441",
+        "ok": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C",
+        "pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "title": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441 \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B"
+      },
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "data": {
+        "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "article_num_archive": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0430\u0440\u0445\u0438\u0432\u043D\u044B\u0439",
+        "article_num_main": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439",
+        "article_num_reserve": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439",
+        "brand": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C",
+        "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+        "connection": "\u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+        "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+        "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "price": "\u0426\u0435\u043D\u0430",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+        "rated_current": "\u0422\u043E\u043A, A",
+        "rated_power": "P, \u043A\u0412",
+        "series": "\u0421\u0435\u0440\u0438\u044F",
+        "types": "\u0422\u0438\u043F\u044B",
+        "weight": "\u041C\u0430\u0441\u0441\u0430, \u043A\u0433"
+      },
+      "errors_title": "\u041E\u0448\u0438\u0431\u043A\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438:",
+      "hydraulic_perf": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+      "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "search": {
+        "button": "\u041F\u043E\u0438\u0441\u043A",
+        "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043F\u043E \u0430\u0440\u0442\u0438\u043A\u0443\u043B\u0430\u043C\u0438 \u0438 \u0438\u043C\u0435\u043D\u0438"
+      },
+      "tabs": {
+        "double": "\u0421\u0434\u0432\u043E\u0435\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+        "single": "\u041E\u0434\u0438\u043D\u0430\u0440\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B"
+      },
+      "title": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u044B",
+      "upload_price_lists": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "upload_tech_info": {
+        "files": {
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "title": "\u0424\u0430\u0439\u043B\u044B (\u043C\u0430\u043A\u0441. 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "\u0412\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagrams": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0441\u0445\u0435\u043C\u044B \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "pump_sizes": "\u0421\u0445\u0435\u043C\u044B \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432",
+          "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+          "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441. 300, .jpg, .jpeg, .png)"
+        },
+        "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0442\u0435\u0445-\u0438\u043D\u0444\u043E"
+      }
+    },
+    "register": {
+      "already_registered": "\u0423\u0436\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "email": "E-mail",
+      "first_name": "\u0418\u043C\u044F",
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+      "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+      "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+      "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+      "please_register": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C",
+      "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+      "register": "\u0417\u0430\u0440\u0433\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
+    },
+    "selections": {
+      "back": {
+        "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "to_selections_dashboard": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+          "to_projects": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+        },
+        "double_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "double_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "fire_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "fire_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "preferences": {
+          "pump": {
+            "borehole": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u043A\u0432\u0430\u0436\u0438\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "double": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "drainage": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0434\u0440\u0435\u043D\u0430\u0436\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "single": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430"
+          },
+          "station": {
+            "fire": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F",
+            "water": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F"
+          }
+        },
+        "single_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "single_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "subtitle": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043F \u043F\u043E\u0434\u0431\u043E\u0440\u0430",
+        "title": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "water_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "water_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "404": {
+          "back": "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+          "subtitle": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u043E\u043C",
+          "title": "\u0418\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0443 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043D\u0438 \u043A \u043E\u0434\u043D\u043E\u043C\u0443 \u0442\u0438\u043F\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        }
+      },
+      "double_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439"
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440",
+        "work_scheme": "\u0421\u0445\u0435\u043C\u0430 \u0440\u0430\u0431\u043E\u0442\u044B"
+      },
+      "single_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "applications": {
+          "label": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0439! (\u043D\u0430\u0441\u043E\u0441\u0430\u043C \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0440\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u043C \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F)\n"
+        },
+        "backup_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "main_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0441\u043D\u043E\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "curves": "\u041A\u0440\u0438\u0432\u0430\u044F(\u044B\u0435)",
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432."
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "temp_tooltip": {
+          "orange": "\u041E\u0440\u0430\u043D\u0436\u0435\u0432\u044B\u0439 - \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0430\u0441\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u0432 \u0441\u0435\u0440\u0438\u0438 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443, \u0438 \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u043D\u0438 \u0431\u0443\u0434\u0443\u0442 \u043F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u044B",
+          "red": "\u041A\u0440\u0430\u0441\u043D\u044B\u0439 - \u0441\u0435\u0440\u0438\u044F \u043D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u0438\u043B\u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "total_selections_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u043A\u0430 \u043F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+        "table": {
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "comment": "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delivery_status": "\u0421\u0442\u0430\u0442\u0443\u0441 \u043F\u043E\u0441\u0442\u0430\u0432\u043A\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "status": "\u0421\u0442\u0430\u0442\u0443\u0441",
+          "user_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "user_full_name": "\u0424\u0418\u041E \u043A\u043B\u0438\u0435\u043D\u0442\u0430",
+          "user_organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438 \u043A\u043B\u0438\u0435\u043D\u0442\u0430"
+        },
+        "title": "\u041F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+      },
+      "title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+      "users": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u0424\u0418\u041E \u0438\u043B\u0438 \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430 \u043F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+        "table": {
+          "avg_projects_price": "\u0421\u0440\u0435\u0434\u043D\u044F\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "full_name": "\u0424\u0418\u041E",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0430\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "title": "\u041F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C"
+      }
+    },
+    "users": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "email_verified": "E-mail \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+          "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0424\u0418\u041E \u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438"
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "\u0410\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          },
+          "discounts": {
+            "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+          },
+          "projects": {
+            "tab": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          }
+        },
+        "table": {
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "email": "E-mail",
+          "full_name": "\u0424\u0418\u041E",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
+        }
+      },
+      "title": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438"
+    }
+  },
+  "ru.pagination": {
+    "next": "\u0412\u043F\u0435\u0440\u0451\u0434 &raquo;",
+    "previous": "&laquo; \u041D\u0430\u0437\u0430\u0434"
+  },
+  "ru.passwords": {
+    "reset": "\u0412\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0441\u0431\u0440\u043E\u0448\u0435\u043D!",
+    "sent": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u0441\u0431\u0440\u043E\u0441 \u043F\u0430\u0440\u043E\u043B\u044F \u0431\u044B\u043B\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430!",
+    "throttled": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u0434\u043E\u0436\u0434\u0438\u0442\u0435 \u043F\u0435\u0440\u0435\u0434 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0439 \u043F\u043E\u043F\u044B\u0442\u043A\u043E\u0439.",
+    "token": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u043A\u043E\u0434 \u0441\u0431\u0440\u043E\u0441\u0430 \u043F\u0430\u0440\u043E\u043B\u044F.",
+    "user": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043D\u0430\u0439\u0442\u0438 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441 \u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C."
+  },
+  "ru.tooltips": {
+    "clone": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+    "delete": "\u0423\u0434\u0430\u043B\u0438\u0442\u044C",
+    "detail": "\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435",
+    "edit": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C",
+    "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+    "popconfirm": {
+      "no": "\u041D\u0435\u0442",
+      "yes": "\u0414\u0430"
+    },
+    "print": "\u041F\u0435\u0447\u0430\u0442\u044C",
+    "save": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
+    "statistics": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+    "view": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
+  },
+  "ru.validation": {
+    "accepted": "\u0412\u044B \u0434\u043E\u043B\u0436\u043D\u044B \u043F\u0440\u0438\u043D\u044F\u0442\u044C :attribute.",
+    "active_url": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432\u043E\u043C.",
+    "attributes": {
+      "address": "\u0410\u0434\u0440\u0435\u0441",
+      "age": "\u0412\u043E\u0437\u0440\u0430\u0441\u0442",
+      "available": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u043E",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "content": "\u041A\u043E\u043D\u0442\u0435\u043D\u0442",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "date": "\u0414\u0430\u0442\u0430",
+      "day": "\u0414\u0435\u043D\u044C",
+      "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+      "email": "e-mail",
+      "excerpt": "\u0412\u044B\u0434\u0435\u0440\u0436\u043A\u0430",
+      "first_name": "\u0418\u043C\u044F",
+      "gender": "\u041F\u043E\u043B",
+      "hour": "\u0427\u0430\u0441",
+      "import": {
+        "price_lists": {
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "price": "\u0426\u0435\u043D\u0430"
+        },
+        "pump_series": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "icon": "\u0418\u043A\u043E\u043D\u043A\u0430",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0442\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "pumps": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "article_num_archive": "\u0410\u0440\u0445\u0438\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_reserve": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+          "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dp_peak_performance": "\u041F\u0438\u043A\u043E\u0432\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "dp_standby_performance": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "mains_connection": "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A \u0441\u0435\u0442\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u042D\u043B.\u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438",
+          "price": "\u0426\u0435\u043D\u0430",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+          "pump_cross_sectional_drawing_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0432\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagram_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0441\u0445\u0435\u043C\u044B",
+          "pump_files": "\u0424\u0430\u0439\u043B\u044B",
+          "pump_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_sizes_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "rated_current": "\u041D\u043E\u043C\u0438\u043D\u0430\u043B\u044C\u043D\u044B\u0439 \u0442\u043E\u043A",
+          "rated_power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C",
+          "series": "\u0421\u0435\u0440\u0438\u044F",
+          "sp_performance": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "types": "\u0422\u0438\u043F\u044B",
+          "weight": "\u041C\u0430\u0441\u0441\u0430"
+        }
+      },
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "minute": "\u041C\u0438\u043D\u0443\u0442\u0430",
+      "mobile": "\u041C\u043E\u0431. \u043D\u043E\u043C\u0435\u0440",
+      "month": "\u041C\u0435\u0441\u044F\u0446",
+      "name": "\u0418\u043C\u044F",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u0430\u0440\u043E\u043B\u044F",
+      "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+      "price_lists": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "second": "\u0421\u0435\u043A\u0443\u043D\u0434\u0430",
+      "sex": "\u041F\u043E\u043B",
+      "size": "\u0420\u0430\u0437\u043C\u0435\u0440",
+      "time": "\u0412\u0440\u0435\u043C\u044F",
+      "title": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+      "username": "\u041D\u0438\u043A\u043D\u0435\u0439\u043C",
+      "year": "\u0413\u043E\u0434"
+    },
+    "before": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "city": {
+        "correct": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0438\u0439 \u0433\u043E\u0440\u043E\u0434 \u0438\u0437 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0439 \u043E\u0431\u043B\u0430\u0441\u0442\u0438"
+      }
+    },
+    "date": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u043E\u0439 \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u041F\u043E\u043B\u044F :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0440\u0430\u0437\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F.",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F.",
+    "distinct": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ends_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043C.",
+    "import": {
+      "exception": ":attribute \u0431\u044B\u043B\u0438 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B \u043D\u0435 \u0434\u043E \u043A\u043E\u043D\u0446\u0430. \u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0438 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0441\u043D\u043E\u0432\u0430",
+      "in_array": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u041D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "in_array_complex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "sheet_name": {
+        "brand": "\u0411\u0440\u0435\u043D\u0434 \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D",
+        "series": "\u0421\u0435\u0440\u0438\u044F \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u0430"
+      }
+    },
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u044B\u043C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "ip": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IP-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv4": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv4-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv6": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv6-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "json": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043F\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C.",
+    "regex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439 :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "timezone": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u0447\u0430\u0441\u043E\u0432\u044B\u043C \u043F\u043E\u044F\u0441\u043E\u043C.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043F\u043E\u043B\u044F :attribute \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u043C UUID."
+  },
+  "ru.validation-inline": {
+    "accepted": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043F\u0440\u0438\u043D\u044F\u0442\u043E.",
+    "active_url": "\u041D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432.",
+    "before": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "attribute-name": {
+        "rule-name": "custom-message"
+      }
+    },
+    "date": "\u041D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043E\u0442\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F \u043E\u0442 :other",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B.",
+    "distinct": "\u041F\u043E\u043B\u0435 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0439 \u0430\u0434\u0440\u0435\u0441 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C.",
+    "ends_with": "\u0414\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u0421\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435.",
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u043E\u0435 \u0447\u0438\u0441\u043B\u043E.",
+    "ip": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IP-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv4": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv4-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv6": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv6-\u0430\u0434\u0440\u0435\u0441.",
+    "json": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C.",
+    "regex": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C \u0441 :other.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u0430.",
+    "timezone": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u043F\u043E\u044F\u0441.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 UUID."
+  }
 };
 
 /***/ }),
@@ -14501,173 +14080,699 @@ function t(t){return"object"==typeof t&&null!=t&&1===t.nodeType}function e(t,e){
 
 /***/ }),
 
-/***/ "./node_modules/downloadjs/download.js":
-/*!*********************************************!*\
-  !*** ./node_modules/downloadjs/download.js ***!
-  \*********************************************/
+/***/ "./node_modules/lang.js/src/lang.js":
+/*!******************************************!*\
+  !*** ./node_modules/lang.js/src/lang.js ***!
+  \******************************************/
 /***/ (function(module, exports) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//download.js v4.2, by dandavis; 2008-2016. [MIT] see http://danml.com/download.html for testing/usage
-// v1 landed a FF+Chrome compat way of downloading strings to local un-named files, upgraded to use a hidden frame and optional mime
-// v2 added named files via a[download], msSaveBlob, IE (10+) support, and window.URL support for larger+faster saves than dataURLs
-// v3 added dataURL and Blob Input, bind-toggle arity, and legacy dataURL fallback was improved with force-download mime and base64 support. 3.1 improved safari handling.
-// v4 adds AMD/UMD, commonJS, and plain browser support
-// v4.1 adds url download capability via solo URL argument (same domain/CORS only)
-// v4.2 adds semantic variable names, long (over 2MB) dataURL support, and hidden by default temp anchors
-// https://github.com/rndme/download
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ *  Lang.js for Laravel localization in JavaScript.
+ *
+ *  @version 1.1.12
+ *  @license MIT https://github.com/rmariuzzo/Lang.js/blob/master/LICENSE
+ *  @site    https://github.com/rmariuzzo/Lang.js
+ *  @author  Rubens Mariuzzo <rubens@mariuzzo.com>
+ */
 
-(function (root, factory) {
-	if (true) {
-		// AMD. Register as an anonymous module.
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+(function(root, factory) {
+    'use strict';
+
+    if (true) {
+        // AMD support.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {}
-}(this, function () {
+    } else {}
 
-	return function download(data, strFileName, strMimeType) {
+}(this, function() {
+    'use strict';
 
-		var self = window, // this script is only for browsers anyway...
-			defaultMime = "application/octet-stream", // this default mime also triggers iframe downloads
-			mimeType = strMimeType || defaultMime,
-			payload = data,
-			url = !strFileName && !strMimeType && payload,
-			anchor = document.createElement("a"),
-			toString = function(a){return String(a);},
-			myBlob = (self.Blob || self.MozBlob || self.WebKitBlob || toString),
-			fileName = strFileName || "download",
-			blob,
-			reader;
-			myBlob= myBlob.call ? myBlob.bind(self) : Blob ;
+    function inferLocale() {
+        if (typeof document !== 'undefined' && document.documentElement) {
+            return document.documentElement.lang;
+        }
+    };
 
-		if(String(this)==="true"){ //reverse arguments, allowing download.bind(true, "text/xml", "export.xml") to act as a callback
-			payload=[payload, mimeType];
-			mimeType=payload[0];
-			payload=payload[1];
-		}
+    function convertNumber(str) {
+        if (str === '-Inf') {
+            return -Infinity;
+        } else if (str === '+Inf' || str === 'Inf' || str === '*') {
+            return Infinity;
+        }
+        return parseInt(str, 10);
+    }
+
+    // Derived from: https://github.com/symfony/translation/blob/460390765eb7bb9338a4a323b8a4e815a47541ba/Interval.php
+    var intervalRegexp = /^({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])$/;
+    var anyIntervalRegexp = /({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])/;
+
+    // Default options //
+
+    var defaults = {
+        locale: 'en'/** The default locale if not set. */
+    };
+
+    // Constructor //
+
+    var Lang = function(options) {
+        options = options || {};
+        this.locale = options.locale || inferLocale() || defaults.locale;
+        this.fallback = options.fallback;
+        this.messages = options.messages;
+    };
+
+    // Methods //
+
+    /**
+     * Set messages source.
+     *
+     * @param messages {object} The messages source.
+     *
+     * @return void
+     */
+    Lang.prototype.setMessages = function(messages) {
+        this.messages = messages;
+    };
+
+    /**
+     * Get the current locale.
+     *
+     * @return {string} The current locale.
+     */
+    Lang.prototype.getLocale = function() {
+        return this.locale || this.fallback;
+    };
+
+    /**
+     * Set the current locale.
+     *
+     * @param locale {string} The locale to set.
+     *
+     * @return void
+     */
+    Lang.prototype.setLocale = function(locale) {
+        this.locale = locale;
+    };
+
+    /**
+     * Get the fallback locale being used.
+     *
+     * @return void
+     */
+    Lang.prototype.getFallback = function() {
+        return this.fallback;
+    };
+
+    /**
+     * Set the fallback locale being used.
+     *
+     * @param fallback {string} The fallback locale.
+     *
+     * @return void
+     */
+    Lang.prototype.setFallback = function(fallback) {
+        this.fallback = fallback;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {boolean} true if the given key is defined on the messages source, otherwise false.
+     */
+    Lang.prototype.has = function(key, locale) {
+        if (typeof key !== 'string' || !this.messages) {
+            return false;
+        }
+
+        return this._getMessage(key, locale) !== null;
+    };
+
+    /**
+     * Get a translation message.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.get = function(key, replacements, locale) {
+        if (!this.has(key, locale)) {
+            return key;
+        }
+
+        var message = this._getMessage(key, locale);
+        if (message === null) {
+            return key;
+        }
+
+        if (replacements) {
+            message = this._applyReplacements(message, replacements);
+        }
+
+        return message;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.trans = function(key, replacements) {
+        return this.get(key, replacements);
+    };
+
+    /**
+     * Gets the plural or singular form of the message specified based on an integer value.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.choice = function(key, number, replacements, locale) {
+        // Set default values for parameters replace and locale
+        replacements = typeof replacements !== 'undefined'
+            ? replacements
+            : {};
+
+        // The count must be replaced if found in the message
+        replacements.count = number;
+
+        // Message to get the plural or singular
+        var message = this.get(key, replacements, locale);
+
+        // Check if message is not null or undefined
+        if (message === null || message === undefined) {
+            return message;
+        }
+
+        // Separate the plural from the singular, if any
+        var messageParts = message.split('|');
+
+        // Get the explicit rules, If any
+        var explicitRules = [];
+
+        for (var i = 0; i < messageParts.length; i++) {
+            messageParts[i] = messageParts[i].trim();
+
+            if (anyIntervalRegexp.test(messageParts[i])) {
+                var messageSpaceSplit = messageParts[i].split(/\s/);
+                explicitRules.push(messageSpaceSplit.shift());
+                messageParts[i] = messageSpaceSplit.join(' ');
+            }
+        }
+
+        // Check if there's only one message
+        if (messageParts.length === 1) {
+            // Nothing to do here
+            return message;
+        }
+
+        // Check the explicit rules
+        for (var j = 0; j < explicitRules.length; j++) {
+            if (this._testInterval(number, explicitRules[j])) {
+                return messageParts[j];
+            }
+        }
+
+        locale = locale || this._getLocale(key);
+        var pluralForm = this._getPluralForm(number, locale);
+
+        return messageParts[pluralForm];
+    };
+
+    /**
+     * This method act as an alias to choice() method.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.transChoice = function(key, count, replacements) {
+        return this.choice(key, count, replacements);
+    };
+
+    /**
+     * Parse a message key into components.
+     *
+     * @param key {string} The message key to parse.
+     * @param key {string} The message locale to parse
+     * @return {object} A key object with source and entries properties.
+     */
+    Lang.prototype._parseKey = function(key, locale) {
+        if (typeof key !== 'string' || typeof locale !== 'string') {
+            return null;
+        }
+
+        var segments = key.split('.');
+        var source = segments[0].replace(/\//g, '.');
+
+        return {
+            source: locale + '.' + source,
+            sourceFallback: this.getFallback() + '.' + source,
+            entries: segments.slice(1)
+        };
+    };
+
+    /**
+     * Returns a translation message. Use `Lang.get()` method instead, this methods assumes the key exists.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {string} The translation message for the given key.
+     */
+    Lang.prototype._getMessage = function(key, locale) {
+        locale = locale || this.getLocale();
+        
+        key = this._parseKey(key, locale);
+
+        // Ensure message source exists.
+        if (this.messages[key.source] === undefined && this.messages[key.sourceFallback] === undefined) {
+            return null;
+        }
+
+        // Get message from default locale.
+        var message = this.messages[key.source];
+        var entries = key.entries.slice();
+        var subKey = entries.join('.');
+        message = message !== undefined ? this._getValueInKey(message, subKey) : undefined;
 
 
-		if(url && url.length< 2048){ // if no filename and no mime, assume a url was passed as the only argument
-			fileName = url.split("/").pop().split("?")[0];
-			anchor.href = url; // assign href prop to temp anchor
-		  	if(anchor.href.indexOf(url) !== -1){ // if the browser determines that it's a potentially valid url path:
-        		var ajax=new XMLHttpRequest();
-        		ajax.open( "GET", url, true);
-        		ajax.responseType = 'blob';
-        		ajax.onload= function(e){
-				  download(e.target.response, fileName, defaultMime);
-				};
-        		setTimeout(function(){ ajax.send();}, 0); // allows setting custom ajax headers using the return:
-			    return ajax;
-			} // end if valid url?
-		} // end if url?
+        // Get message from fallback locale.
+        if (typeof message !== 'string' && this.messages[key.sourceFallback]) {
+            message = this.messages[key.sourceFallback];
+            entries = key.entries.slice();
+            subKey = '';
+            while (entries.length && message !== undefined) {
+                var subKey = !subKey ? entries.shift() : subKey.concat('.', entries.shift());
+                if (message[subKey]) {
+                    message = message[subKey]
+                    subKey = '';
+                }
+            }
+        }
 
+        if (typeof message !== 'string') {
+            return null;
+        }
 
-		//go ahead and download dataURLs right away
-		if(/^data:([\w+-]+\/[\w+.-]+)?[,;]/.test(payload)){
+        return message;
+    };
 
-			if(payload.length > (1024*1024*1.999) && myBlob !== toString ){
-				payload=dataUrlToBlob(payload);
-				mimeType=payload.type || defaultMime;
-			}else{
-				return navigator.msSaveBlob ?  // IE10 can't do a[download], only Blobs:
-					navigator.msSaveBlob(dataUrlToBlob(payload), fileName) :
-					saver(payload) ; // everyone else can save dataURLs un-processed
-			}
+    Lang.prototype._getValueInKey = function(obj, str) {
+        // If the full key exists just return the value
+        if (typeof obj[str] === 'string') {
+            return obj[str]
+        }
 
-		}else{//not data url, is it a string with special needs?
-			if(/([\x80-\xff])/.test(payload)){
-				var i=0, tempUiArr= new Uint8Array(payload.length), mx=tempUiArr.length;
-				for(i;i<mx;++i) tempUiArr[i]= payload.charCodeAt(i);
-			 	payload=new myBlob([tempUiArr], {type: mimeType});
-			}
-		}
-		blob = payload instanceof myBlob ?
-			payload :
-			new myBlob([payload], {type: mimeType}) ;
+        str = str.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        str = str.replace(/^\./, '');           // strip a leading dot
 
+        var parts = str.split('.');
 
-		function dataUrlToBlob(strUrl) {
-			var parts= strUrl.split(/[:;,]/),
-			type= parts[1],
-			decoder= parts[2] == "base64" ? atob : decodeURIComponent,
-			binData= decoder( parts.pop() ),
-			mx= binData.length,
-			i= 0,
-			uiArr= new Uint8Array(mx);
+        for (var i = 0, n = parts.length; i < n; ++i) {
+            var currentKey = parts.slice(0, i + 1).join('.');
+            var restOfTheKey = parts.slice(i + 1, parts.length).join('.')
+            
+            if (obj[currentKey]) {
+                return this._getValueInKey(obj[currentKey], restOfTheKey)
+            }
+        }
 
-			for(i;i<mx;++i) uiArr[i]= binData.charCodeAt(i);
+        return obj;
+    };
 
-			return new myBlob([uiArr], {type: type});
-		 }
+    /**
+     * Return the locale to be used between default and fallback.
+     * @param {String} key
+     * @return {String}
+     */
+    Lang.prototype._getLocale = function(key) {
+        key = this._parseKey(key, this.locale)
+        if (this.messages[key.source]) {
+            return this.locale;
+        }
+        if (this.messages[key.sourceFallback]) {
+            return this.fallback;
+        }
+        return null;
+    };
 
-		function saver(url, winMode){
+    /**
+     * Find a message in a translation tree using both dotted keys and regular ones
+     *
+     * @param pathSegments {array} An array of path segments such as ['family', 'father']
+     * @param tree {object} The translation tree
+     */
+    Lang.prototype._findMessageInTree = function(pathSegments, tree) {
+        while (pathSegments.length && tree !== undefined) {
+            var dottedKey = pathSegments.join('.');
+            if (tree[dottedKey]) {
+                tree = tree[dottedKey];
+                break;
+            }
 
-			if ('download' in anchor) { //html5 A[download]
-				anchor.href = url;
-				anchor.setAttribute("download", fileName);
-				anchor.className = "download-js-link";
-				anchor.innerHTML = "downloading...";
-				anchor.style.display = "none";
-				document.body.appendChild(anchor);
-				setTimeout(function() {
-					anchor.click();
-					document.body.removeChild(anchor);
-					if(winMode===true){setTimeout(function(){ self.URL.revokeObjectURL(anchor.href);}, 250 );}
-				}, 66);
-				return true;
-			}
+            tree = tree[pathSegments.shift()]
+        }
 
-			// handle non-a[download] safari as best we can:
-			if(/(Version)\/(\d+)\.(\d+)(?:\.(\d+))?.*Safari\//.test(navigator.userAgent)) {
-				if(/^data:/.test(url))	url="data:"+url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
-				if(!window.open(url)){ // popup blocked, offer direct download:
-					if(confirm("Displaying New Document\n\nUse Save As... to download, then click back to return to this page.")){ location.href=url; }
-				}
-				return true;
-			}
+        return tree;
+    };
 
-			//do iframe dataURL download (old ch+FF):
-			var f = document.createElement("iframe");
-			document.body.appendChild(f);
+    /**
+     * Sort replacement keys by length in descending order.
+     *
+     * @param a {string} Replacement key
+     * @param b {string} Sibling replacement key
+     * @return {number}
+     * @private
+     */
+    Lang.prototype._sortReplacementKeys = function(a, b) {
+        return b.length - a.length;
+    };
 
-			if(!winMode && /^data:/.test(url)){ // force a mime that will download:
-				url="data:"+url.replace(/^data:([\w\/\-\+]+)/, defaultMime);
-			}
-			f.src=url;
-			setTimeout(function(){ document.body.removeChild(f); }, 333);
+    /**
+     * Apply replacements to a string message containing placeholders.
+     *
+     * @param message {string} The text message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The string message with replacements applied.
+     */
+    Lang.prototype._applyReplacements = function(message, replacements) {
+        var keys = Object.keys(replacements).sort(this._sortReplacementKeys);
 
-		}//end saver
+        keys.forEach(function(replace) {
+            message = message.replace(new RegExp(':' + replace, 'gi'), function (match) {
+                var value = replacements[replace];
 
+                // Capitalize all characters.
+                var allCaps = match === match.toUpperCase();
+                if (allCaps) {
+                    return value.toUpperCase();
+                }
 
+                // Capitalize first letter.
+                var firstCap = match === match.replace(/\w/i, function(letter) {
+                    return letter.toUpperCase();
+                });
+                if (firstCap) {
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                }
 
+                return value;
+            })
+        });
+        return message;
+    };
 
-		if (navigator.msSaveBlob) { // IE10+ : (has Blob, but not a[download] or URL)
-			return navigator.msSaveBlob(blob, fileName);
-		}
+    /**
+     * Checks if the given `count` is within the interval defined by the {string} `interval`
+     *
+     * @param  count     {int}    The amount of items.
+     * @param  interval  {string} The interval to be compared with the count.
+     * @return {boolean}          Returns true if count is within interval; false otherwise.
+     */
+    Lang.prototype._testInterval = function(count, interval) {
+        /**
+         * From the Symfony\Component\Translation\Interval Docs
+         *
+         * Tests if a given number belongs to a given math interval.
+         *
+         * An interval can represent a finite set of numbers:
+         *
+         *  {1,2,3,4}
+         *
+         * An interval can represent numbers between two numbers:
+         *
+         *  [1, +Inf]
+         *  ]-1,2[
+         *
+         * The left delimiter can be [ (inclusive) or ] (exclusive).
+         * The right delimiter can be [ (exclusive) or ] (inclusive).
+         * Beside numbers, you can use -Inf and +Inf for the infinite.
+         */
 
-		if(self.URL){ // simple fast and modern way using Blob and URL:
-			saver(self.URL.createObjectURL(blob), true);
-		}else{
-			// handle non-Blob()+non-URL browsers:
-			if(typeof blob === "string" || blob.constructor===toString ){
-				try{
-					return saver( "data:" +  mimeType   + ";base64,"  +  self.btoa(blob)  );
-				}catch(y){
-					return saver( "data:" +  mimeType   + "," + encodeURIComponent(blob)  );
-				}
-			}
+        if (typeof interval !== 'string') {
+            throw 'Invalid interval: should be a string.';
+        }
 
-			// Blob but not URL support:
-			reader=new FileReader();
-			reader.onload=function(e){
-				saver(this.result);
-			};
-			reader.readAsDataURL(blob);
-		}
-		return true;
-	}; /* end download() */
+        interval = interval.trim();
+
+        var matches = interval.match(intervalRegexp);
+        if (!matches) {
+            throw 'Invalid interval: ' + interval;
+        }
+
+        if (matches[2]) {
+            var items = matches[2].split(',');
+            for (var i = 0; i < items.length; i++) {
+                if (parseInt(items[i], 10) === count) {
+                    return true;
+                }
+            }
+        } else {
+            // Remove falsy values.
+            matches = matches.filter(function(match) {
+                return !!match;
+            });
+
+            var leftDelimiter = matches[1];
+            var leftNumber = convertNumber(matches[2]);
+            if (leftNumber === Infinity) {
+                leftNumber = -Infinity;
+            }
+            var rightNumber = convertNumber(matches[3]);
+            var rightDelimiter = matches[4];
+
+            return (leftDelimiter === '[' ? count >= leftNumber : count > leftNumber)
+                && (rightDelimiter === ']' ? count <= rightNumber : count < rightNumber);
+        }
+
+        return false;
+    };
+
+    /**
+     * Returns the plural position to use for the given locale and number.
+     *
+     * The plural rules are derived from code of the Zend Framework (2010-09-25),
+     * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
+     * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+     *
+     * @param {Number} count
+     * @param {String} locale
+     * @return {Number}
+     */
+    Lang.prototype._getPluralForm = function(count, locale) {
+        switch (locale) {
+            case 'az':
+            case 'bo':
+            case 'dz':
+            case 'id':
+            case 'ja':
+            case 'jv':
+            case 'ka':
+            case 'km':
+            case 'kn':
+            case 'ko':
+            case 'ms':
+            case 'th':
+            case 'tr':
+            case 'vi':
+            case 'zh':
+                return 0;
+
+            case 'af':
+            case 'bn':
+            case 'bg':
+            case 'ca':
+            case 'da':
+            case 'de':
+            case 'el':
+            case 'en':
+            case 'eo':
+            case 'es':
+            case 'et':
+            case 'eu':
+            case 'fa':
+            case 'fi':
+            case 'fo':
+            case 'fur':
+            case 'fy':
+            case 'gl':
+            case 'gu':
+            case 'ha':
+            case 'he':
+            case 'hu':
+            case 'is':
+            case 'it':
+            case 'ku':
+            case 'lb':
+            case 'ml':
+            case 'mn':
+            case 'mr':
+            case 'nah':
+            case 'nb':
+            case 'ne':
+            case 'nl':
+            case 'nn':
+            case 'no':
+            case 'om':
+            case 'or':
+            case 'pa':
+            case 'pap':
+            case 'ps':
+            case 'pt':
+            case 'so':
+            case 'sq':
+            case 'sv':
+            case 'sw':
+            case 'ta':
+            case 'te':
+            case 'tk':
+            case 'ur':
+            case 'zu':
+                return (count == 1)
+                    ? 0
+                    : 1;
+
+            case 'am':
+            case 'bh':
+            case 'fil':
+            case 'fr':
+            case 'gun':
+            case 'hi':
+            case 'hy':
+            case 'ln':
+            case 'mg':
+            case 'nso':
+            case 'xbr':
+            case 'ti':
+            case 'wa':
+                return ((count === 0) || (count === 1))
+                    ? 0
+                    : 1;
+
+            case 'be':
+            case 'bs':
+            case 'hr':
+            case 'ru':
+            case 'sr':
+            case 'uk':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'cs':
+            case 'sk':
+                return (count == 1)
+                    ? 0
+                    : (((count >= 2) && (count <= 4))
+                        ? 1
+                        : 2);
+
+            case 'ga':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : 2);
+
+            case 'lt':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'sl':
+                return (count % 100 == 1)
+                    ? 0
+                    : ((count % 100 == 2)
+                        ? 1
+                        : (((count % 100 == 3) || (count % 100 == 4))
+                            ? 2
+                            : 3));
+
+            case 'mk':
+                return (count % 10 == 1)
+                    ? 0
+                    : 1;
+
+            case 'mt':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 1) && (count % 100 < 11)))
+                        ? 1
+                        : (((count % 100 > 10) && (count % 100 < 20))
+                            ? 2
+                            : 3));
+
+            case 'lv':
+                return (count === 0)
+                    ? 0
+                    : (((count % 10 == 1) && (count % 100 != 11))
+                        ? 1
+                        : 2);
+
+            case 'pl':
+                return (count == 1)
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 12) || (count % 100 > 14)))
+                        ? 1
+                        : 2);
+
+            case 'cy':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : (((count == 8) || (count == 11))
+                            ? 2
+                            : 3));
+
+            case 'ro':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 0) && (count % 100 < 20)))
+                        ? 1
+                        : 2);
+
+            case 'ar':
+                return (count === 0)
+                    ? 0
+                    : ((count == 1)
+                        ? 1
+                        : ((count == 2)
+                            ? 2
+                            : (((count % 100 >= 3) && (count % 100 <= 10))
+                                ? 3
+                                : (((count % 100 >= 11) && (count % 100 <= 99))
+                                    ? 4
+                                    : 5))));
+
+            default:
+                return 0;
+        }
+    };
+
+    return Lang;
+
 }));
 
 
@@ -15269,941 +15374,6 @@ Checkbox.defaultProps = {
   onKeyUp: function onKeyUp() {}
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkbox);
-
-/***/ }),
-
-/***/ "./node_modules/rc-drawer/es/DrawerChild.js":
-/*!**************************************************!*\
-  !*** ./node_modules/rc-drawer/es/DrawerChild.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var rc_util_es_getScrollBarSize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rc-util/es/getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
-/* harmony import */ var rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rc-util/es/KeyCode */ "./node_modules/rc-util/es/KeyCode.js");
-/* harmony import */ var rc_util_es_omit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! rc-util/es/omit */ "./node_modules/rc-util/es/omit.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils */ "./node_modules/rc-drawer/es/utils.js");
-
-
-
-
-
-
-
-
-
-var _excluded = ["className", "children", "style", "width", "height", "defaultOpen", "open", "prefixCls", "placement", "level", "levelMove", "ease", "duration", "getContainer", "handler", "onChange", "afterVisibleChange", "showMask", "maskClosable", "maskStyle", "onClose", "onHandleClick", "keyboard", "getOpenCount", "scrollLocker", "contentWrapperStyle"];
-
-
-
-
-
-
-var currentDrawer = {};
-
-var DrawerChild = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(DrawerChild, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_8__["default"])(DrawerChild);
-
-  function DrawerChild(props) {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, DrawerChild);
-
-    _this = _super.call(this, props);
-    _this.levelDom = void 0;
-    _this.dom = void 0;
-    _this.contentWrapper = void 0;
-    _this.contentDom = void 0;
-    _this.maskDom = void 0;
-    _this.handlerDom = void 0;
-    _this.drawerId = void 0;
-    _this.timeout = void 0;
-    _this.passive = void 0;
-    _this.startPos = void 0;
-
-    _this.domFocus = function () {
-      if (_this.dom) {
-        _this.dom.focus();
-      }
-    };
-
-    _this.removeStartHandler = function (e) {
-      if (e.touches.length > 1) {
-        // need clear the startPos when another touch event happens
-        _this.startPos = null;
-        return;
-      }
-
-      _this.startPos = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      };
-    };
-
-    _this.removeMoveHandler = function (e) {
-      // the startPos may be null or undefined
-      if (e.changedTouches.length > 1 || !_this.startPos) {
-        return;
-      }
-
-      var currentTarget = e.currentTarget;
-      var differX = e.changedTouches[0].clientX - _this.startPos.x;
-      var differY = e.changedTouches[0].clientY - _this.startPos.y;
-
-      if ((currentTarget === _this.maskDom || currentTarget === _this.handlerDom || currentTarget === _this.contentDom && (0,_utils__WEBPACK_IMPORTED_MODULE_14__.getTouchParentScroll)(currentTarget, e.target, differX, differY)) && e.cancelable) {
-        e.preventDefault();
-      }
-    };
-
-    _this.transitionEnd = function (e) {
-      var dom = e.target;
-      (0,_utils__WEBPACK_IMPORTED_MODULE_14__.removeEventListener)(dom, _utils__WEBPACK_IMPORTED_MODULE_14__.transitionEnd, _this.transitionEnd);
-      dom.style.transition = '';
-    };
-
-    _this.onKeyDown = function (e) {
-      if (e.keyCode === rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_12__["default"].ESC) {
-        var onClose = _this.props.onClose;
-        e.stopPropagation();
-
-        if (onClose) {
-          onClose(e);
-        }
-      }
-    };
-
-    _this.onWrapperTransitionEnd = function (e) {
-      var _this$props = _this.props,
-          open = _this$props.open,
-          afterVisibleChange = _this$props.afterVisibleChange;
-
-      if (e.target === _this.contentWrapper && e.propertyName.match(/transform$/)) {
-        _this.dom.style.transition = '';
-
-        if (!open && _this.getCurrentDrawerSome()) {
-          document.body.style.overflowX = '';
-
-          if (_this.maskDom) {
-            _this.maskDom.style.left = '';
-            _this.maskDom.style.width = '';
-          }
-        }
-
-        if (afterVisibleChange) {
-          afterVisibleChange(!!open);
-        }
-      }
-    };
-
-    _this.openLevelTransition = function () {
-      var _this$props2 = _this.props,
-          open = _this$props2.open,
-          width = _this$props2.width,
-          height = _this$props2.height;
-
-      var _this$getHorizontalBo = _this.getHorizontalBoolAndPlacementName(),
-          isHorizontal = _this$getHorizontalBo.isHorizontal,
-          placementName = _this$getHorizontalBo.placementName;
-
-      var contentValue = _this.contentDom ? _this.contentDom.getBoundingClientRect()[isHorizontal ? 'width' : 'height'] : 0;
-      var value = (isHorizontal ? width : height) || contentValue;
-
-      _this.setLevelAndScrolling(open, placementName, value);
-    };
-
-    _this.setLevelTransform = function (open, placementName, value, right) {
-      var _this$props3 = _this.props,
-          placement = _this$props3.placement,
-          levelMove = _this$props3.levelMove,
-          duration = _this$props3.duration,
-          ease = _this$props3.ease,
-          showMask = _this$props3.showMask; // router 切换时可能会导至页面失去滚动条，所以需要时时获取。
-
-      _this.levelDom.forEach(function (dom) {
-        dom.style.transition = "transform ".concat(duration, " ").concat(ease);
-        (0,_utils__WEBPACK_IMPORTED_MODULE_14__.addEventListener)(dom, _utils__WEBPACK_IMPORTED_MODULE_14__.transitionEnd, _this.transitionEnd);
-        var levelValue = open ? value : 0;
-
-        if (levelMove) {
-          var $levelMove = (0,_utils__WEBPACK_IMPORTED_MODULE_14__.transformArguments)(levelMove, {
-            target: dom,
-            open: open
-          });
-          levelValue = open ? $levelMove[0] : $levelMove[1] || 0;
-        }
-
-        var $value = typeof levelValue === 'number' ? "".concat(levelValue, "px") : levelValue;
-        var placementPos = placement === 'left' || placement === 'top' ? $value : "-".concat($value);
-        placementPos = showMask && placement === 'right' && right ? "calc(".concat(placementPos, " + ").concat(right, "px)") : placementPos;
-        dom.style.transform = levelValue ? "".concat(placementName, "(").concat(placementPos, ")") : '';
-      });
-    };
-
-    _this.setLevelAndScrolling = function (open, placementName, value) {
-      var onChange = _this.props.onChange;
-
-      if (!_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
-        var right = document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) && window.innerWidth > document.body.offsetWidth ? (0,rc_util_es_getScrollBarSize__WEBPACK_IMPORTED_MODULE_11__["default"])(true) : 0;
-
-        _this.setLevelTransform(open, placementName, value, right);
-
-        _this.toggleScrollingToDrawerAndBody(right);
-      }
-
-      if (onChange) {
-        onChange(open);
-      }
-    };
-
-    _this.toggleScrollingToDrawerAndBody = function (right) {
-      var _this$props4 = _this.props,
-          getContainer = _this$props4.getContainer,
-          showMask = _this$props4.showMask,
-          open = _this$props4.open;
-      var container = getContainer && getContainer(); // 处理 body 滚动
-
-      if (container && container.parentNode === document.body && showMask) {
-        var eventArray = ['touchstart'];
-        var domArray = [document.body, _this.maskDom, _this.handlerDom, _this.contentDom];
-
-        if (open && document.body.style.overflow !== 'hidden') {
-          if (right) {
-            _this.addScrollingEffect(right);
-          }
-
-          document.body.style.touchAction = 'none'; // 手机禁滚
-
-          domArray.forEach(function (item, i) {
-            if (!item) {
-              return;
-            }
-
-            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.addEventListener)(item, eventArray[i] || 'touchmove', i ? _this.removeMoveHandler : _this.removeStartHandler, _this.passive);
-          });
-        } else if (_this.getCurrentDrawerSome()) {
-          document.body.style.touchAction = '';
-
-          if (right) {
-            _this.remScrollingEffect(right);
-          } // 恢复事件
-
-
-          domArray.forEach(function (item, i) {
-            if (!item) {
-              return;
-            }
-
-            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.removeEventListener)(item, eventArray[i] || 'touchmove', i ? _this.removeMoveHandler : _this.removeStartHandler, _this.passive);
-          });
-        }
-      }
-    };
-
-    _this.addScrollingEffect = function (right) {
-      var _this$props5 = _this.props,
-          placement = _this$props5.placement,
-          duration = _this$props5.duration,
-          ease = _this$props5.ease;
-      var widthTransition = "width ".concat(duration, " ").concat(ease);
-      var transformTransition = "transform ".concat(duration, " ").concat(ease);
-      _this.dom.style.transition = 'none';
-
-      switch (placement) {
-        case 'right':
-          _this.dom.style.transform = "translateX(-".concat(right, "px)");
-          break;
-
-        case 'top':
-        case 'bottom':
-          _this.dom.style.width = "calc(100% - ".concat(right, "px)");
-          _this.dom.style.transform = 'translateZ(0)';
-          break;
-
-        default:
-          break;
-      }
-
-      clearTimeout(_this.timeout);
-      _this.timeout = setTimeout(function () {
-        if (_this.dom) {
-          _this.dom.style.transition = "".concat(transformTransition, ",").concat(widthTransition);
-          _this.dom.style.width = '';
-          _this.dom.style.transform = '';
-        }
-      });
-    };
-
-    _this.remScrollingEffect = function (right) {
-      var _this$props6 = _this.props,
-          placement = _this$props6.placement,
-          duration = _this$props6.duration,
-          ease = _this$props6.ease;
-
-      if (_utils__WEBPACK_IMPORTED_MODULE_14__.transitionStr) {
-        document.body.style.overflowX = 'hidden';
-      }
-
-      _this.dom.style.transition = 'none';
-      var heightTransition;
-      var widthTransition = "width ".concat(duration, " ").concat(ease);
-      var transformTransition = "transform ".concat(duration, " ").concat(ease);
-
-      switch (placement) {
-        case 'left':
-          {
-            _this.dom.style.width = '100%';
-            widthTransition = "width 0s ".concat(ease, " ").concat(duration);
-            break;
-          }
-
-        case 'right':
-          {
-            _this.dom.style.transform = "translateX(".concat(right, "px)");
-            _this.dom.style.width = '100%';
-            widthTransition = "width 0s ".concat(ease, " ").concat(duration);
-
-            if (_this.maskDom) {
-              _this.maskDom.style.left = "-".concat(right, "px");
-              _this.maskDom.style.width = "calc(100% + ".concat(right, "px)");
-            }
-
-            break;
-          }
-
-        case 'top':
-        case 'bottom':
-          {
-            _this.dom.style.width = "calc(100% + ".concat(right, "px)");
-            _this.dom.style.height = '100%';
-            _this.dom.style.transform = 'translateZ(0)';
-            heightTransition = "height 0s ".concat(ease, " ").concat(duration);
-            break;
-          }
-
-        default:
-          break;
-      }
-
-      clearTimeout(_this.timeout);
-      _this.timeout = setTimeout(function () {
-        if (_this.dom) {
-          _this.dom.style.transition = "".concat(transformTransition, ",").concat(heightTransition ? "".concat(heightTransition, ",") : '').concat(widthTransition);
-          _this.dom.style.transform = '';
-          _this.dom.style.width = '';
-          _this.dom.style.height = '';
-        }
-      });
-    };
-
-    _this.getCurrentDrawerSome = function () {
-      return !Object.keys(currentDrawer).some(function (key) {
-        return currentDrawer[key];
-      });
-    };
-
-    _this.getLevelDom = function (_ref) {
-      var level = _ref.level,
-          getContainer = _ref.getContainer;
-
-      if (_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
-        return;
-      }
-
-      var container = getContainer && getContainer();
-      var parent = container ? container.parentNode : null;
-      _this.levelDom = [];
-
-      if (level === 'all') {
-        var children = parent ? Array.prototype.slice.call(parent.children) : [];
-        children.forEach(function (child) {
-          if (child.nodeName !== 'SCRIPT' && child.nodeName !== 'STYLE' && child.nodeName !== 'LINK' && child !== container) {
-            _this.levelDom.push(child);
-          }
-        });
-      } else if (level) {
-        (0,_utils__WEBPACK_IMPORTED_MODULE_14__.dataToArray)(level).forEach(function (key) {
-          document.querySelectorAll(key).forEach(function (item) {
-            _this.levelDom.push(item);
-          });
-        });
-      }
-    };
-
-    _this.getHorizontalBoolAndPlacementName = function () {
-      var placement = _this.props.placement;
-      var isHorizontal = placement === 'left' || placement === 'right';
-      var placementName = "translate".concat(isHorizontal ? 'X' : 'Y');
-      return {
-        isHorizontal: isHorizontal,
-        placementName: placementName
-      };
-    };
-
-    _this.state = {
-      _self: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this)
-    };
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(DrawerChild, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      if (!_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
-        var passiveSupported = false;
-
-        try {
-          window.addEventListener('test', null, Object.defineProperty({}, 'passive', {
-            get: function get() {
-              passiveSupported = true;
-              return null;
-            }
-          }));
-        } catch (err) {}
-
-        this.passive = passiveSupported ? {
-          passive: false
-        } : false;
-      }
-
-      var _this$props7 = this.props,
-          open = _this$props7.open,
-          getContainer = _this$props7.getContainer,
-          showMask = _this$props7.showMask,
-          autoFocus = _this$props7.autoFocus;
-      var container = getContainer && getContainer();
-      this.drawerId = "drawer_id_".concat(Number((Date.now() + Math.random()).toString().replace('.', Math.round(Math.random() * 9).toString())).toString(16));
-      this.getLevelDom(this.props);
-
-      if (open) {
-        if (container && container.parentNode === document.body) {
-          currentDrawer[this.drawerId] = open;
-        } // 默认打开状态时推出 level;
-
-
-        this.openLevelTransition();
-        this.forceUpdate(function () {
-          if (autoFocus) {
-            _this2.domFocus();
-          }
-        });
-
-        if (showMask) {
-          var _this$props$scrollLoc;
-
-          (_this$props$scrollLoc = this.props.scrollLocker) === null || _this$props$scrollLoc === void 0 ? void 0 : _this$props$scrollLoc.lock();
-        }
-      }
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      var _this$props8 = this.props,
-          open = _this$props8.open,
-          getContainer = _this$props8.getContainer,
-          scrollLocker = _this$props8.scrollLocker,
-          showMask = _this$props8.showMask,
-          autoFocus = _this$props8.autoFocus;
-      var container = getContainer && getContainer();
-
-      if (open !== prevProps.open) {
-        if (container && container.parentNode === document.body) {
-          currentDrawer[this.drawerId] = !!open;
-        }
-
-        this.openLevelTransition();
-
-        if (open) {
-          if (autoFocus) {
-            this.domFocus();
-          }
-
-          if (showMask) {
-            scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.lock();
-          }
-        } else {
-          scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.unLock();
-        }
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      var _this$props9 = this.props,
-          open = _this$props9.open,
-          scrollLocker = _this$props9.scrollLocker;
-      delete currentDrawer[this.drawerId];
-
-      if (open) {
-        this.setLevelTransform(false);
-        document.body.style.touchAction = '';
-      }
-
-      scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.unLock();
-    }
-  }, {
-    key: "render",
-    value: // tslint:disable-next-line:member-ordering
-    function render() {
-      var _classnames,
-          _this3 = this;
-
-      var _this$props10 = this.props,
-          className = _this$props10.className,
-          children = _this$props10.children,
-          style = _this$props10.style,
-          width = _this$props10.width,
-          height = _this$props10.height,
-          defaultOpen = _this$props10.defaultOpen,
-          $open = _this$props10.open,
-          prefixCls = _this$props10.prefixCls,
-          placement = _this$props10.placement,
-          level = _this$props10.level,
-          levelMove = _this$props10.levelMove,
-          ease = _this$props10.ease,
-          duration = _this$props10.duration,
-          getContainer = _this$props10.getContainer,
-          handler = _this$props10.handler,
-          onChange = _this$props10.onChange,
-          afterVisibleChange = _this$props10.afterVisibleChange,
-          showMask = _this$props10.showMask,
-          maskClosable = _this$props10.maskClosable,
-          maskStyle = _this$props10.maskStyle,
-          onClose = _this$props10.onClose,
-          onHandleClick = _this$props10.onHandleClick,
-          keyboard = _this$props10.keyboard,
-          getOpenCount = _this$props10.getOpenCount,
-          scrollLocker = _this$props10.scrollLocker,
-          contentWrapperStyle = _this$props10.contentWrapperStyle,
-          props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__["default"])(_this$props10, _excluded); // 首次渲染都将是关闭状态。
-
-
-      var open = this.dom ? $open : false;
-      var wrapperClassName = classnames__WEBPACK_IMPORTED_MODULE_10___default()(prefixCls, (_classnames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, "".concat(prefixCls, "-").concat(placement), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, "".concat(prefixCls, "-open"), open), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, className || '', !!className), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, 'no-mask', !showMask), _classnames));
-
-      var _this$getHorizontalBo2 = this.getHorizontalBoolAndPlacementName(),
-          placementName = _this$getHorizontalBo2.placementName; // 百分比与像素动画不同步，第一次打用后全用像素动画。
-      // const defaultValue = !this.contentDom || !level ? '100%' : `${value}px`;
-
-
-      var placementPos = placement === 'left' || placement === 'top' ? '-100%' : '100%';
-      var transform = open ? '' : "".concat(placementName, "(").concat(placementPos, ")");
-      var handlerChildren = handler && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.cloneElement(handler, {
-        onClick: function onClick(e) {
-          if (handler.props.onClick) {
-            handler.props.onClick();
-          }
-
-          if (onHandleClick) {
-            onHandleClick(e);
-          }
-        },
-        ref: function ref(c) {
-          _this3.handlerDom = c;
-        }
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,rc_util_es_omit__WEBPACK_IMPORTED_MODULE_13__["default"])(props, ['switchScrollingEffect', 'autoFocus']), {
-        tabIndex: -1,
-        className: wrapperClassName,
-        style: style,
-        ref: function ref(c) {
-          _this3.dom = c;
-        },
-        onKeyDown: open && keyboard ? this.onKeyDown : undefined,
-        onTransitionEnd: this.onWrapperTransitionEnd
-      }), showMask && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
-        className: "".concat(prefixCls, "-mask"),
-        onClick: maskClosable ? onClose : undefined,
-        style: maskStyle,
-        ref: function ref(c) {
-          _this3.maskDom = c;
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
-        className: "".concat(prefixCls, "-content-wrapper"),
-        style: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({
-          transform: transform,
-          msTransform: transform,
-          width: (0,_utils__WEBPACK_IMPORTED_MODULE_14__.isNumeric)(width) ? "".concat(width, "px") : width,
-          height: (0,_utils__WEBPACK_IMPORTED_MODULE_14__.isNumeric)(height) ? "".concat(height, "px") : height
-        }, contentWrapperStyle),
-        ref: function ref(c) {
-          _this3.contentWrapper = c;
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
-        className: "".concat(prefixCls, "-content"),
-        ref: function ref(c) {
-          _this3.contentDom = c;
-        }
-      }, children), handlerChildren));
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(props, _ref2) {
-      var prevProps = _ref2.prevProps,
-          _self = _ref2._self;
-      var nextState = {
-        prevProps: props
-      };
-
-      if (prevProps !== undefined) {
-        var placement = props.placement,
-            level = props.level;
-
-        if (placement !== prevProps.placement) {
-          // test 的 bug, 有动画过场，删除 dom
-          _self.contentDom = null;
-        }
-
-        if (level !== prevProps.level) {
-          _self.getLevelDom(props);
-        }
-      }
-
-      return nextState;
-    }
-  }]);
-
-  return DrawerChild;
-}(react__WEBPACK_IMPORTED_MODULE_9__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerChild);
-
-/***/ }),
-
-/***/ "./node_modules/rc-drawer/es/DrawerWrapper.js":
-/*!****************************************************!*\
-  !*** ./node_modules/rc-drawer/es/DrawerWrapper.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var rc_util_es_PortalWrapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rc-util/es/PortalWrapper */ "./node_modules/rc-util/es/PortalWrapper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _DrawerChild__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DrawerChild */ "./node_modules/rc-drawer/es/DrawerChild.js");
-
-
-
-
-
-
-var _excluded = ["defaultOpen", "getContainer", "wrapperClassName", "forceRender", "handler"],
-    _excluded2 = ["visible", "afterClose"];
-
-
-
-
-var DrawerWrapper = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(DrawerWrapper, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__["default"])(DrawerWrapper);
-
-  function DrawerWrapper(props) {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, DrawerWrapper);
-
-    _this = _super.call(this, props);
-    _this.dom = void 0;
-
-    _this.onHandleClick = function (e) {
-      var _this$props = _this.props,
-          onHandleClick = _this$props.onHandleClick,
-          $open = _this$props.open;
-
-      if (onHandleClick) {
-        onHandleClick(e);
-      }
-
-      if (typeof $open === 'undefined') {
-        var open = _this.state.open;
-
-        _this.setState({
-          open: !open
-        });
-      }
-    };
-
-    _this.onClose = function (e) {
-      var _this$props2 = _this.props,
-          onClose = _this$props2.onClose,
-          open = _this$props2.open;
-
-      if (onClose) {
-        onClose(e);
-      }
-
-      if (typeof open === 'undefined') {
-        _this.setState({
-          open: false
-        });
-      }
-    };
-
-    var _open = typeof props.open !== 'undefined' ? props.open : !!props.defaultOpen;
-
-    _this.state = {
-      open: _open
-    };
-
-    if ('onMaskClick' in props) {
-      console.warn('`onMaskClick` are removed, please use `onClose` instead.');
-    }
-
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(DrawerWrapper, [{
-    key: "render",
-    value: // tslint:disable-next-line:member-ordering
-    function render() {
-      var _this2 = this;
-
-      var _this$props3 = this.props,
-          defaultOpen = _this$props3.defaultOpen,
-          getContainer = _this$props3.getContainer,
-          wrapperClassName = _this$props3.wrapperClassName,
-          forceRender = _this$props3.forceRender,
-          handler = _this$props3.handler,
-          props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props3, _excluded);
-
-      var open = this.state.open; // 渲染在当前 dom 里；
-
-      if (!getContainer) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
-          className: wrapperClassName,
-          ref: function ref(c) {
-            _this2.dom = c;
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement(_DrawerChild__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-          open: open,
-          handler: handler,
-          getContainer: function getContainer() {
-            return _this2.dom;
-          },
-          onClose: this.onClose,
-          onHandleClick: this.onHandleClick
-        })));
-      } // 如果有 handler 为内置强制渲染；
-
-
-      var $forceRender = !!handler || forceRender;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement(rc_util_es_PortalWrapper__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        visible: open,
-        forceRender: $forceRender,
-        getContainer: getContainer,
-        wrapperClassName: wrapperClassName
-      }, function (_ref) {
-        var visible = _ref.visible,
-            afterClose = _ref.afterClose,
-            rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, _excluded2);
-
-        return (
-          /*#__PURE__*/
-          // react 15，componentWillUnmount 时 Portal 返回 afterClose, visible.
-          react__WEBPACK_IMPORTED_MODULE_7__.createElement(_DrawerChild__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, rest, {
-            open: visible !== undefined ? visible : open,
-            afterVisibleChange: afterClose !== undefined ? afterClose : props.afterVisibleChange,
-            handler: handler,
-            onClose: _this2.onClose,
-            onHandleClick: _this2.onHandleClick
-          }))
-        );
-      });
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(props, _ref2) {
-      var prevProps = _ref2.prevProps;
-      var newState = {
-        prevProps: props
-      };
-
-      if (typeof prevProps !== 'undefined' && props.open !== prevProps.open) {
-        newState.open = props.open;
-      }
-
-      return newState;
-    }
-  }]);
-
-  return DrawerWrapper;
-}(react__WEBPACK_IMPORTED_MODULE_7__.Component);
-
-DrawerWrapper.defaultProps = {
-  prefixCls: 'drawer',
-  placement: 'left',
-  getContainer: 'body',
-  defaultOpen: false,
-  level: 'all',
-  duration: '.3s',
-  ease: 'cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-  onChange: function onChange() {},
-  afterVisibleChange: function afterVisibleChange() {},
-  handler: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
-    className: "drawer-handle"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("i", {
-    className: "drawer-handle-icon"
-  })),
-  showMask: true,
-  maskClosable: true,
-  maskStyle: {},
-  wrapperClassName: '',
-  className: '',
-  keyboard: true,
-  forceRender: false,
-  autoFocus: true
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerWrapper);
-
-/***/ }),
-
-/***/ "./node_modules/rc-drawer/es/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/rc-drawer/es/index.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _DrawerWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DrawerWrapper */ "./node_modules/rc-drawer/es/DrawerWrapper.js");
-// export this package's api
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DrawerWrapper__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
-/***/ }),
-
-/***/ "./node_modules/rc-drawer/es/utils.js":
-/*!********************************************!*\
-  !*** ./node_modules/rc-drawer/es/utils.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dataToArray": () => (/* binding */ dataToArray),
-/* harmony export */   "transitionStr": () => (/* binding */ transitionStr),
-/* harmony export */   "transitionEnd": () => (/* binding */ transitionEnd),
-/* harmony export */   "addEventListener": () => (/* binding */ addEventListener),
-/* harmony export */   "removeEventListener": () => (/* binding */ removeEventListener),
-/* harmony export */   "transformArguments": () => (/* binding */ transformArguments),
-/* harmony export */   "isNumeric": () => (/* binding */ isNumeric),
-/* harmony export */   "windowIsUndefined": () => (/* binding */ windowIsUndefined),
-/* harmony export */   "getTouchParentScroll": () => (/* binding */ getTouchParentScroll)
-/* harmony export */ });
-function dataToArray(vars) {
-  if (Array.isArray(vars)) {
-    return vars;
-  }
-
-  return [vars];
-}
-var transitionEndObject = {
-  transition: 'transitionend',
-  WebkitTransition: 'webkitTransitionEnd',
-  MozTransition: 'transitionend',
-  OTransition: 'oTransitionEnd otransitionend'
-};
-var transitionStr = Object.keys(transitionEndObject).filter(function (key) {
-  if (typeof document === 'undefined') {
-    return false;
-  }
-
-  var html = document.getElementsByTagName('html')[0];
-  return key in (html ? html.style : {});
-})[0];
-var transitionEnd = transitionEndObject[transitionStr];
-function addEventListener(target, eventType, callback, options) {
-  if (target.addEventListener) {
-    target.addEventListener(eventType, callback, options);
-  } else if (target.attachEvent) {
-    // tslint:disable-line
-    target.attachEvent("on".concat(eventType), callback); // tslint:disable-line
-  }
-}
-function removeEventListener(target, eventType, callback, options) {
-  if (target.removeEventListener) {
-    target.removeEventListener(eventType, callback, options);
-  } else if (target.attachEvent) {
-    // tslint:disable-line
-    target.detachEvent("on".concat(eventType), callback); // tslint:disable-line
-  }
-}
-function transformArguments(arg, cb) {
-  var result = typeof arg === 'function' ? arg(cb) : arg;
-
-  if (Array.isArray(result)) {
-    if (result.length === 2) {
-      return result;
-    }
-
-    return [result[0], result[1]];
-  }
-
-  return [result];
-}
-var isNumeric = function isNumeric(value) {
-  return !isNaN(parseFloat(value)) && isFinite(value);
-};
-var windowIsUndefined = !(typeof window !== 'undefined' && window.document && window.document.createElement);
-var getTouchParentScroll = function getTouchParentScroll(root, currentTarget, differX, differY) {
-  if (!currentTarget || currentTarget === document || currentTarget instanceof Document) {
-    return false;
-  } // root 为 drawer-content 设定了 overflow, 判断为 root 的 parent 时结束滚动；
-
-
-  if (currentTarget === root.parentNode) {
-    return true;
-  }
-
-  var isY = Math.max(Math.abs(differX), Math.abs(differY)) === Math.abs(differY);
-  var isX = Math.max(Math.abs(differX), Math.abs(differY)) === Math.abs(differX);
-  var scrollY = currentTarget.scrollHeight - currentTarget.clientHeight;
-  var scrollX = currentTarget.scrollWidth - currentTarget.clientWidth;
-  var style = document.defaultView.getComputedStyle(currentTarget);
-  var overflowY = style.overflowY === 'auto' || style.overflowY === 'scroll';
-  var overflowX = style.overflowX === 'auto' || style.overflowX === 'scroll';
-  var y = scrollY && overflowY;
-  var x = scrollX && overflowX;
-
-  if (isY && (!y || y && (currentTarget.scrollTop >= scrollY && differY < 0 || currentTarget.scrollTop <= 0 && differY > 0)) || isX && (!x || x && (currentTarget.scrollLeft >= scrollX && differX < 0 || currentTarget.scrollLeft <= 0 && differX > 0))) {
-    return getTouchParentScroll(root, currentTarget.parentNode, differX, differY);
-  }
-
-  return false;
-};
 
 /***/ }),
 
@@ -21892,2287 +21062,6 @@ function warningProps(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (warningProps);
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/Handle.js":
-/*!*********************************************!*\
-  !*** ./node_modules/rc-slider/es/Handle.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Handle)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! rc-util/es/Dom/addEventListener */ "./node_modules/rc-util/es/Dom/addEventListener.js");
-
-
-
-
-
-
-
-
-var _excluded = ["prefixCls", "vertical", "reverse", "offset", "style", "disabled", "min", "max", "value", "tabIndex", "ariaLabel", "ariaLabelledBy", "ariaValueTextFormatter"];
-
-
-
-
-var Handle = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Handle, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_7__["default"])(Handle);
-
-  function Handle() {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Handle);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-    _this.state = {
-      clickFocused: false
-    };
-    _this.onMouseUpListener = void 0;
-    _this.handle = void 0;
-
-    _this.setHandleRef = function (node) {
-      _this.handle = node;
-    };
-
-    _this.handleMouseUp = function () {
-      if (document.activeElement === _this.handle) {
-        _this.setClickFocus(true);
-      }
-    };
-
-    _this.handleMouseDown = function (e) {
-      // avoid selecting text during drag
-      // https://github.com/ant-design/ant-design/issues/25010
-      e.preventDefault(); // fix https://github.com/ant-design/ant-design/issues/15324
-
-      _this.focus();
-    };
-
-    _this.handleBlur = function () {
-      _this.setClickFocus(false);
-    };
-
-    _this.handleKeyDown = function () {
-      _this.setClickFocus(false);
-    };
-
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Handle, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // mouseup won't trigger if mouse moved out of handle,
-      // so we listen on document here.
-      this.onMouseUpListener = (0,rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_10__["default"])(document, 'mouseup', this.handleMouseUp);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.onMouseUpListener) {
-        this.onMouseUpListener.remove();
-      }
-    }
-  }, {
-    key: "setClickFocus",
-    value: function setClickFocus(focused) {
-      this.setState({
-        clickFocused: focused
-      });
-    }
-  }, {
-    key: "clickFocus",
-    value: function clickFocus() {
-      this.setClickFocus(true);
-      this.focus();
-    }
-  }, {
-    key: "focus",
-    value: function focus() {
-      this.handle.focus();
-    }
-  }, {
-    key: "blur",
-    value: function blur() {
-      this.handle.blur();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _ref, _ref2;
-
-      var _this$props = this.props,
-          prefixCls = _this$props.prefixCls,
-          vertical = _this$props.vertical,
-          reverse = _this$props.reverse,
-          offset = _this$props.offset,
-          style = _this$props.style,
-          disabled = _this$props.disabled,
-          min = _this$props.min,
-          max = _this$props.max,
-          value = _this$props.value,
-          tabIndex = _this$props.tabIndex,
-          ariaLabel = _this$props.ariaLabel,
-          ariaLabelledBy = _this$props.ariaLabelledBy,
-          ariaValueTextFormatter = _this$props.ariaValueTextFormatter,
-          restProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__["default"])(_this$props, _excluded);
-
-      var className = classnames__WEBPACK_IMPORTED_MODULE_9___default()(this.props.className, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])({}, "".concat(prefixCls, "-handle-click-focused"), this.state.clickFocused));
-      var positionStyle = vertical ? (_ref = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, reverse ? 'top' : 'bottom', "".concat(offset, "%")), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, reverse ? 'bottom' : 'top', 'auto'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, "transform", reverse ? null : "translateY(+50%)"), _ref) : (_ref2 = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, reverse ? 'right' : 'left', "".concat(offset, "%")), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, reverse ? 'left' : 'right', 'auto'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref2, "transform", "translateX(".concat(reverse ? '+' : '-', "50%)")), _ref2);
-
-      var elStyle = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, style), positionStyle);
-
-      var mergedTabIndex = tabIndex || 0;
-
-      if (disabled || tabIndex === null) {
-        mergedTabIndex = null;
-      }
-
-      var ariaValueText;
-
-      if (ariaValueTextFormatter) {
-        ariaValueText = ariaValueTextFormatter(value);
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-        ref: this.setHandleRef,
-        tabIndex: mergedTabIndex
-      }, restProps, {
-        className: className,
-        style: elStyle,
-        onBlur: this.handleBlur,
-        onKeyDown: this.handleKeyDown,
-        onMouseDown: this.handleMouseDown // aria attribute
-        ,
-        role: "slider",
-        "aria-valuemin": min,
-        "aria-valuemax": max,
-        "aria-valuenow": value,
-        "aria-disabled": !!disabled,
-        "aria-label": ariaLabel,
-        "aria-labelledby": ariaLabelledBy,
-        "aria-valuetext": ariaValueText
-      }));
-    }
-  }]);
-
-  return Handle;
-}(react__WEBPACK_IMPORTED_MODULE_8__.Component);
-
-
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/Range.js":
-/*!********************************************!*\
-  !*** ./node_modules/rc-slider/es/Range.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _common_Track__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/Track */ "./node_modules/rc-slider/es/common/Track.js");
-/* harmony import */ var _common_createSlider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./common/createSlider */ "./node_modules/rc-slider/es/common/createSlider.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils */ "./node_modules/rc-slider/es/utils.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _trimAlignValue = function trimAlignValue(_ref) {
-  var value = _ref.value,
-      handle = _ref.handle,
-      bounds = _ref.bounds,
-      props = _ref.props;
-  var allowCross = props.allowCross,
-      pushable = props.pushable;
-  var thershold = Number(pushable);
-  var valInRange = _utils__WEBPACK_IMPORTED_MODULE_11__.ensureValueInRange(value, props);
-  var valNotConflict = valInRange;
-
-  if (!allowCross && handle != null && bounds !== undefined) {
-    if (handle > 0 && valInRange <= bounds[handle - 1] + thershold) {
-      valNotConflict = bounds[handle - 1] + thershold;
-    }
-
-    if (handle < bounds.length - 1 && valInRange >= bounds[handle + 1] - thershold) {
-      valNotConflict = bounds[handle + 1] - thershold;
-    }
-  }
-
-  return _utils__WEBPACK_IMPORTED_MODULE_11__.ensureValuePrecision(valNotConflict, props);
-};
-
-var Range = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Range, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_6__["default"])(Range);
-
-  function Range(props) {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Range);
-
-    _this = _super.call(this, props);
-    _this.startValue = void 0;
-    _this.startPosition = void 0;
-    _this.prevMovedHandleIndex = void 0;
-    _this.internalPointsCache = void 0;
-    _this.handlesRefs = void 0;
-    _this.dragTrack = void 0;
-
-    _this.positionGetValue = function (position) {
-      var bounds = _this.getValue();
-
-      var value = _this.calcValueByPos(position);
-
-      var closestBound = _this.getClosestBound(value);
-
-      var index = _this.getBoundNeedMoving(value, closestBound);
-
-      var prevValue = bounds[index];
-      if (value === prevValue) return null;
-
-      var nextBounds = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(bounds);
-
-      nextBounds[index] = value;
-      return nextBounds;
-    };
-
-    _this.onEnd = function (force) {
-      var handle = _this.state.handle;
-
-      _this.removeDocumentEvents();
-
-      if (!handle) {
-        _this.dragTrack = false;
-      }
-
-      if (handle !== null || force) {
-        _this.props.onAfterChange(_this.getValue());
-      }
-
-      _this.setState({
-        handle: null
-      });
-    };
-
-    var count = props.count,
-        min = props.min,
-        max = props.max;
-    var initialValue = Array.apply(void 0, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(Array(count + 1))).map(function () {
-      return min;
-    });
-    var defaultValue = 'defaultValue' in props ? props.defaultValue : initialValue;
-
-    var _value = props.value !== undefined ? props.value : defaultValue;
-
-    var _bounds = _value.map(function (v, i) {
-      return _trimAlignValue({
-        value: v,
-        handle: i,
-        props: props
-      });
-    });
-
-    var recent = _bounds[0] === max ? 0 : _bounds.length - 1;
-    _this.state = {
-      handle: null,
-      recent: recent,
-      bounds: _bounds
-    };
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(Range, [{
-    key: "calcValueByPos",
-    value:
-    /**
-     * [Legacy] Used for inherit other component.
-     * It's a bad code style which should be refactor.
-     */
-
-    /* eslint-disable @typescript-eslint/no-unused-vars, class-methods-use-this */
-    function calcValueByPos(value) {
-      return 0;
-    }
-  }, {
-    key: "getSliderLength",
-    value: function getSliderLength() {
-      return 0;
-    }
-  }, {
-    key: "calcOffset",
-    value: function calcOffset(value) {
-      return 0;
-    }
-  }, {
-    key: "saveHandle",
-    value: function saveHandle(index, h) {}
-  }, {
-    key: "removeDocumentEvents",
-    value: function removeDocumentEvents() {}
-    /* eslint-enable */
-
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          onChange = _this$props.onChange,
-          value = _this$props.value,
-          min = _this$props.min,
-          max = _this$props.max;
-
-      if (!('min' in this.props || 'max' in this.props)) {
-        return;
-      }
-
-      if (min === prevProps.min && max === prevProps.max) {
-        return;
-      }
-
-      var currentValue = value || prevState.bounds;
-
-      if (currentValue.some(function (v) {
-        return _utils__WEBPACK_IMPORTED_MODULE_11__.isValueOutOfRange(v, _this2.props);
-      })) {
-        var newValues = currentValue.map(function (v) {
-          return _utils__WEBPACK_IMPORTED_MODULE_11__.ensureValueInRange(v, _this2.props);
-        });
-        onChange(newValues);
-      }
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(state) {
-      var props = this.props;
-      var isNotControlled = !('value' in props);
-
-      if (isNotControlled) {
-        this.setState(state);
-      } else {
-        var controlledState = {};
-        ['handle', 'recent'].forEach(function (item) {
-          if (state[item] !== undefined) {
-            controlledState[item] = state[item];
-          }
-        });
-
-        if (Object.keys(controlledState).length) {
-          this.setState(controlledState);
-        }
-      }
-
-      var data = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, this.state), state);
-
-      var changedValue = data.bounds;
-      props.onChange(changedValue);
-    }
-  }, {
-    key: "onStart",
-    value: function onStart(position) {
-      var props = this.props,
-          state = this.state;
-      var bounds = this.getValue();
-      props.onBeforeChange(bounds);
-      var value = this.calcValueByPos(position);
-      this.startValue = value;
-      this.startPosition = position;
-      var closestBound = this.getClosestBound(value);
-      this.prevMovedHandleIndex = this.getBoundNeedMoving(value, closestBound);
-      this.setState({
-        handle: this.prevMovedHandleIndex,
-        recent: this.prevMovedHandleIndex
-      });
-      var prevValue = bounds[this.prevMovedHandleIndex];
-      if (value === prevValue) return;
-
-      var nextBounds = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(state.bounds);
-
-      nextBounds[this.prevMovedHandleIndex] = value;
-      this.onChange({
-        bounds: nextBounds
-      });
-    }
-  }, {
-    key: "onMove",
-    value: function onMove(e, position, dragTrack, startBounds) {
-      _utils__WEBPACK_IMPORTED_MODULE_11__.pauseEvent(e);
-      var state = this.state,
-          props = this.props;
-      var maxValue = props.max || 100;
-      var minValue = props.min || 0;
-
-      if (dragTrack) {
-        var pos = props.vertical ? -position : position;
-        pos = props.reverse ? -pos : pos;
-        var max = maxValue - Math.max.apply(Math, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(startBounds));
-        var min = minValue - Math.min.apply(Math, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(startBounds));
-        var ratio = Math.min(Math.max(pos / (this.getSliderLength() / (maxValue - minValue)), min), max);
-        var nextBounds = startBounds.map(function (v) {
-          return Math.floor(Math.max(Math.min(v + ratio, maxValue), minValue));
-        });
-
-        if (state.bounds.map(function (c, i) {
-          return c === nextBounds[i];
-        }).some(function (c) {
-          return !c;
-        })) {
-          this.onChange({
-            bounds: nextBounds
-          });
-        }
-
-        return;
-      }
-
-      var value = this.calcValueByPos(position);
-      var oldValue = state.bounds[state.handle];
-      if (value === oldValue) return;
-      this.moveTo(value);
-    }
-  }, {
-    key: "onKeyboard",
-    value: function onKeyboard(e) {
-      var _this$props2 = this.props,
-          reverse = _this$props2.reverse,
-          vertical = _this$props2.vertical;
-      var valueMutator = _utils__WEBPACK_IMPORTED_MODULE_11__.getKeyboardValueMutator(e, vertical, reverse);
-
-      if (valueMutator) {
-        _utils__WEBPACK_IMPORTED_MODULE_11__.pauseEvent(e);
-        var state = this.state,
-            props = this.props;
-        var bounds = state.bounds,
-            handle = state.handle;
-        var oldValue = bounds[handle === null ? state.recent : handle];
-        var mutatedValue = valueMutator(oldValue, props);
-
-        var value = _trimAlignValue({
-          value: mutatedValue,
-          handle: handle,
-          bounds: state.bounds,
-          props: props
-        });
-
-        if (value === oldValue) return;
-        var isFromKeyboardEvent = true;
-        this.moveTo(value, isFromKeyboardEvent);
-      }
-    }
-  }, {
-    key: "getValue",
-    value: function getValue() {
-      return this.state.bounds;
-    }
-  }, {
-    key: "getClosestBound",
-    value: function getClosestBound(value) {
-      var bounds = this.state.bounds;
-      var closestBound = 0;
-
-      for (var i = 1; i < bounds.length - 1; i += 1) {
-        if (value >= bounds[i]) {
-          closestBound = i;
-        }
-      }
-
-      if (Math.abs(bounds[closestBound + 1] - value) < Math.abs(bounds[closestBound] - value)) {
-        closestBound += 1;
-      }
-
-      return closestBound;
-    }
-  }, {
-    key: "getBoundNeedMoving",
-    value: function getBoundNeedMoving(value, closestBound) {
-      var _this$state = this.state,
-          bounds = _this$state.bounds,
-          recent = _this$state.recent;
-      var boundNeedMoving = closestBound;
-      var isAtTheSamePoint = bounds[closestBound + 1] === bounds[closestBound];
-
-      if (isAtTheSamePoint && bounds[recent] === bounds[closestBound]) {
-        boundNeedMoving = recent;
-      }
-
-      if (isAtTheSamePoint && value !== bounds[closestBound + 1]) {
-        boundNeedMoving = value < bounds[closestBound + 1] ? closestBound : closestBound + 1;
-      }
-
-      return boundNeedMoving;
-    }
-  }, {
-    key: "getLowerBound",
-    value: function getLowerBound() {
-      return this.state.bounds[0];
-    }
-  }, {
-    key: "getUpperBound",
-    value: function getUpperBound() {
-      var bounds = this.state.bounds;
-      return bounds[bounds.length - 1];
-    }
-    /**
-     * Returns an array of possible slider points, taking into account both
-     * `marks` and `step`. The result is cached.
-     */
-
-  }, {
-    key: "getPoints",
-    value: function getPoints() {
-      var _this$props3 = this.props,
-          marks = _this$props3.marks,
-          step = _this$props3.step,
-          min = _this$props3.min,
-          max = _this$props3.max;
-      var cache = this.internalPointsCache;
-
-      if (!cache || cache.marks !== marks || cache.step !== step) {
-        var pointsObject = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, marks);
-
-        if (step !== null) {
-          for (var point = min; point <= max; point += step) {
-            pointsObject[point] = point;
-          }
-        }
-
-        var points = Object.keys(pointsObject).map(parseFloat);
-        points.sort(function (a, b) {
-          return a - b;
-        });
-        this.internalPointsCache = {
-          marks: marks,
-          step: step,
-          points: points
-        };
-      }
-
-      return this.internalPointsCache.points;
-    }
-  }, {
-    key: "moveTo",
-    value: function moveTo(value, isFromKeyboardEvent) {
-      var _this3 = this;
-
-      var state = this.state,
-          props = this.props;
-
-      var nextBounds = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__["default"])(state.bounds);
-
-      var handle = state.handle === null ? state.recent : state.handle;
-      nextBounds[handle] = value;
-      var nextHandle = handle;
-
-      if (props.pushable !== false) {
-        this.pushSurroundingHandles(nextBounds, nextHandle);
-      } else if (props.allowCross) {
-        nextBounds.sort(function (a, b) {
-          return a - b;
-        });
-        nextHandle = nextBounds.indexOf(value);
-      }
-
-      this.onChange({
-        recent: nextHandle,
-        handle: nextHandle,
-        bounds: nextBounds
-      });
-
-      if (isFromKeyboardEvent) {
-        // known problem: because setState is async,
-        // so trigger focus will invoke handler's onEnd and another handler's onStart too early,
-        // cause onBeforeChange and onAfterChange receive wrong value.
-        // here use setState callback to hack，but not elegant
-        this.props.onAfterChange(nextBounds);
-        this.setState({}, function () {
-          _this3.handlesRefs[nextHandle].focus();
-        });
-        this.onEnd();
-      }
-    }
-  }, {
-    key: "pushSurroundingHandles",
-    value: function pushSurroundingHandles(bounds, handle) {
-      var value = bounds[handle];
-      var pushable = this.props.pushable;
-      var threshold = Number(pushable);
-      var direction = 0;
-
-      if (bounds[handle + 1] - value < threshold) {
-        direction = +1; // push to right
-      }
-
-      if (value - bounds[handle - 1] < threshold) {
-        direction = -1; // push to left
-      }
-
-      if (direction === 0) {
-        return;
-      }
-
-      var nextHandle = handle + direction;
-      var diffToNext = direction * (bounds[nextHandle] - value);
-
-      if (!this.pushHandle(bounds, nextHandle, direction, threshold - diffToNext)) {
-        // revert to original value if pushing is impossible
-        // eslint-disable-next-line no-param-reassign
-        bounds[handle] = bounds[nextHandle] - direction * threshold;
-      }
-    }
-  }, {
-    key: "pushHandle",
-    value: function pushHandle(bounds, handle, direction, amount) {
-      var originalValue = bounds[handle];
-      var currentValue = bounds[handle];
-
-      while (direction * (currentValue - originalValue) < amount) {
-        if (!this.pushHandleOnePoint(bounds, handle, direction)) {
-          // can't push handle enough to create the needed `amount` gap, so we
-          // revert its position to the original value
-          // eslint-disable-next-line no-param-reassign
-          bounds[handle] = originalValue;
-          return false;
-        }
-
-        currentValue = bounds[handle];
-      } // the handle was pushed enough to create the needed `amount` gap
-
-
-      return true;
-    }
-  }, {
-    key: "pushHandleOnePoint",
-    value: function pushHandleOnePoint(bounds, handle, direction) {
-      var points = this.getPoints();
-      var pointIndex = points.indexOf(bounds[handle]);
-      var nextPointIndex = pointIndex + direction;
-
-      if (nextPointIndex >= points.length || nextPointIndex < 0) {
-        // reached the minimum or maximum available point, can't push anymore
-        return false;
-      }
-
-      var nextHandle = handle + direction;
-      var nextValue = points[nextPointIndex];
-      var pushable = this.props.pushable;
-      var threshold = Number(pushable);
-      var diffToNext = direction * (bounds[nextHandle] - nextValue);
-
-      if (!this.pushHandle(bounds, nextHandle, direction, threshold - diffToNext)) {
-        // couldn't push next handle, so we won't push this one either
-        return false;
-      } // push the handle
-      // eslint-disable-next-line no-param-reassign
-
-
-      bounds[handle] = nextValue;
-      return true;
-    }
-  }, {
-    key: "trimAlignValue",
-    value: function trimAlignValue(value) {
-      var _this$state2 = this.state,
-          handle = _this$state2.handle,
-          bounds = _this$state2.bounds;
-      return _trimAlignValue({
-        value: value,
-        handle: handle,
-        bounds: bounds,
-        props: this.props
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this4 = this;
-
-      var _this$state3 = this.state,
-          handle = _this$state3.handle,
-          bounds = _this$state3.bounds;
-      var _this$props4 = this.props,
-          prefixCls = _this$props4.prefixCls,
-          vertical = _this$props4.vertical,
-          included = _this$props4.included,
-          disabled = _this$props4.disabled,
-          min = _this$props4.min,
-          max = _this$props4.max,
-          reverse = _this$props4.reverse,
-          handleGenerator = _this$props4.handle,
-          trackStyle = _this$props4.trackStyle,
-          handleStyle = _this$props4.handleStyle,
-          tabIndex = _this$props4.tabIndex,
-          ariaLabelGroupForHandles = _this$props4.ariaLabelGroupForHandles,
-          ariaLabelledByGroupForHandles = _this$props4.ariaLabelledByGroupForHandles,
-          ariaValueTextFormatterGroupForHandles = _this$props4.ariaValueTextFormatterGroupForHandles;
-      var offsets = bounds.map(function (v) {
-        return _this4.calcOffset(v);
-      });
-      var handleClassName = "".concat(prefixCls, "-handle");
-      var handles = bounds.map(function (v, i) {
-        var _classNames;
-
-        var mergedTabIndex = tabIndex[i] || 0;
-
-        if (disabled || tabIndex[i] === null) {
-          mergedTabIndex = null;
-        }
-
-        var dragging = handle === i;
-        return handleGenerator({
-          className: classnames__WEBPACK_IMPORTED_MODULE_8___default()((_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, handleClassName, true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, "".concat(handleClassName, "-").concat(i + 1), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, "".concat(handleClassName, "-dragging"), dragging), _classNames)),
-          prefixCls: prefixCls,
-          vertical: vertical,
-          dragging: dragging,
-          offset: offsets[i],
-          value: v,
-          index: i,
-          tabIndex: mergedTabIndex,
-          min: min,
-          max: max,
-          reverse: reverse,
-          disabled: disabled,
-          style: handleStyle[i],
-          ref: function ref(h) {
-            return _this4.saveHandle(i, h);
-          },
-          ariaLabel: ariaLabelGroupForHandles[i],
-          ariaLabelledBy: ariaLabelledByGroupForHandles[i],
-          ariaValueTextFormatter: ariaValueTextFormatterGroupForHandles[i]
-        });
-      });
-      var tracks = bounds.slice(0, -1).map(function (_, index) {
-        var _classNames2;
-
-        var i = index + 1;
-        var trackClassName = classnames__WEBPACK_IMPORTED_MODULE_8___default()((_classNames2 = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames2, "".concat(prefixCls, "-track"), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames2, "".concat(prefixCls, "-track-").concat(i), true), _classNames2));
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement(_common_Track__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          className: trackClassName,
-          vertical: vertical,
-          reverse: reverse,
-          included: included,
-          offset: offsets[i - 1],
-          length: offsets[i] - offsets[i - 1],
-          style: trackStyle[index],
-          key: i
-        });
-      });
-      return {
-        tracks: tracks,
-        handles: handles
-      };
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(props, state) {
-      if (!('value' in props || 'min' in props || 'max' in props)) {
-        return null;
-      }
-
-      var value = props.value || state.bounds;
-      var nextBounds = value.map(function (v, i) {
-        return _trimAlignValue({
-          value: v,
-          handle: i,
-          bounds: state.bounds,
-          props: props
-        });
-      });
-
-      if (state.bounds.length === nextBounds.length) {
-        if (nextBounds.every(function (v, i) {
-          return v === state.bounds[i];
-        })) {
-          return null;
-        }
-      } else {
-        nextBounds = value.map(function (v, i) {
-          return _trimAlignValue({
-            value: v,
-            handle: i,
-            props: props
-          });
-        });
-      }
-
-      return (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state), {}, {
-        bounds: nextBounds
-      });
-    }
-  }]);
-
-  return Range;
-}(react__WEBPACK_IMPORTED_MODULE_7__.Component);
-
-Range.displayName = 'Range';
-Range.defaultProps = {
-  count: 1,
-  allowCross: true,
-  pushable: false,
-  draggableTrack: false,
-  tabIndex: [],
-  ariaLabelGroupForHandles: [],
-  ariaLabelledByGroupForHandles: [],
-  ariaValueTextFormatterGroupForHandles: []
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_common_createSlider__WEBPACK_IMPORTED_MODULE_10__["default"])(Range));
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/Slider.js":
-/*!*********************************************!*\
-  !*** ./node_modules/rc-slider/es/Slider.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_util_es_warning__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rc-util/es/warning */ "./node_modules/rc-util/es/warning.js");
-/* harmony import */ var _common_Track__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./common/Track */ "./node_modules/rc-slider/es/common/Track.js");
-/* harmony import */ var _common_createSlider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./common/createSlider */ "./node_modules/rc-slider/es/common/createSlider.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils */ "./node_modules/rc-slider/es/utils.js");
-
-
-
-
-
-
-
-
-
-
-
-var Slider = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(Slider, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_4__["default"])(Slider);
-
-  /* eslint-enable */
-  function Slider(props) {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Slider);
-
-    _this = _super.call(this, props);
-
-    _this.positionGetValue = function (position) {
-      return [];
-    };
-
-    _this.startValue = void 0;
-    _this.startPosition = void 0;
-    _this.prevMovedHandleIndex = void 0;
-
-    _this.onEnd = function (force) {
-      var dragging = _this.state.dragging;
-
-      _this.removeDocumentEvents();
-
-      if (dragging || force) {
-        _this.props.onAfterChange(_this.getValue());
-      }
-
-      _this.setState({
-        dragging: false
-      });
-    };
-
-    var defaultValue = props.defaultValue !== undefined ? props.defaultValue : props.min;
-    var value = props.value !== undefined ? props.value : defaultValue;
-    _this.state = {
-      value: _this.trimAlignValue(value),
-      dragging: false
-    };
-    (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_6__["default"])(!('minimumTrackStyle' in props), 'minimumTrackStyle will be deprecated, please use trackStyle instead.');
-    (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_6__["default"])(!('maximumTrackStyle' in props), 'maximumTrackStyle will be deprecated, please use railStyle instead.');
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Slider, [{
-    key: "calcValueByPos",
-    value:
-    /**
-     * [Legacy] Used for inherit other component.
-     * It's a bad code style which should be refactor.
-     */
-
-    /* eslint-disable @typescript-eslint/no-unused-vars, class-methods-use-this */
-    function calcValueByPos(value) {
-      return 0;
-    }
-  }, {
-    key: "calcOffset",
-    value: function calcOffset(value) {
-      return 0;
-    }
-  }, {
-    key: "saveHandle",
-    value: function saveHandle(index, h) {}
-  }, {
-    key: "removeDocumentEvents",
-    value: function removeDocumentEvents() {}
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var _this$props = this.props,
-          min = _this$props.min,
-          max = _this$props.max,
-          value = _this$props.value,
-          onChange = _this$props.onChange;
-
-      if (!('min' in this.props || 'max' in this.props)) {
-        return;
-      }
-
-      var theValue = value !== undefined ? value : prevState.value;
-      var nextValue = this.trimAlignValue(theValue, this.props);
-
-      if (nextValue === prevState.value) {
-        return;
-      } // eslint-disable-next-line
-
-
-      this.setState({
-        value: nextValue
-      });
-
-      if (!(min === prevProps.min && max === prevProps.max) && _utils__WEBPACK_IMPORTED_MODULE_9__.isValueOutOfRange(theValue, this.props)) {
-        onChange(nextValue);
-      }
-    }
-  }, {
-    key: "onChange",
-    value: function onChange(state) {
-      var props = this.props;
-      var isNotControlled = !('value' in props);
-      var nextState = state.value > this.props.max ? (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state), {}, {
-        value: this.props.max
-      }) : state;
-
-      if (isNotControlled) {
-        this.setState(nextState);
-      }
-
-      var changedValue = nextState.value;
-      props.onChange(changedValue);
-    }
-  }, {
-    key: "onStart",
-    value: function onStart(position) {
-      this.setState({
-        dragging: true
-      });
-      var props = this.props;
-      var prevValue = this.getValue();
-      props.onBeforeChange(prevValue);
-      var value = this.calcValueByPos(position);
-      this.startValue = value;
-      this.startPosition = position;
-      if (value === prevValue) return;
-      this.prevMovedHandleIndex = 0;
-      this.onChange({
-        value: value
-      });
-    }
-  }, {
-    key: "onMove",
-    value: function onMove(e, position) {
-      _utils__WEBPACK_IMPORTED_MODULE_9__.pauseEvent(e);
-      var oldValue = this.state.value;
-      var value = this.calcValueByPos(position);
-      if (value === oldValue) return;
-      this.onChange({
-        value: value
-      });
-    }
-  }, {
-    key: "onKeyboard",
-    value: function onKeyboard(e) {
-      var _this$props2 = this.props,
-          reverse = _this$props2.reverse,
-          vertical = _this$props2.vertical;
-      var valueMutator = _utils__WEBPACK_IMPORTED_MODULE_9__.getKeyboardValueMutator(e, vertical, reverse);
-
-      if (valueMutator) {
-        _utils__WEBPACK_IMPORTED_MODULE_9__.pauseEvent(e);
-        var state = this.state;
-        var oldValue = state.value;
-        var mutatedValue = valueMutator(oldValue, this.props);
-        var value = this.trimAlignValue(mutatedValue);
-        if (value === oldValue) return;
-        this.onChange({
-          value: value
-        });
-        this.props.onAfterChange(value);
-        this.onEnd();
-      }
-    }
-  }, {
-    key: "getValue",
-    value: function getValue() {
-      return this.state.value;
-    }
-  }, {
-    key: "getLowerBound",
-    value: function getLowerBound() {
-      var minPoint = this.props.startPoint || this.props.min;
-      return this.state.value > minPoint ? minPoint : this.state.value;
-    }
-  }, {
-    key: "getUpperBound",
-    value: function getUpperBound() {
-      if (this.state.value < this.props.startPoint) {
-        return this.props.startPoint;
-      }
-
-      return this.state.value;
-    }
-  }, {
-    key: "trimAlignValue",
-    value: function trimAlignValue(v) {
-      var nextProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-      if (v === null) {
-        return null;
-      }
-
-      var mergedProps = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.props), nextProps);
-
-      var val = _utils__WEBPACK_IMPORTED_MODULE_9__.ensureValueInRange(v, mergedProps);
-      return _utils__WEBPACK_IMPORTED_MODULE_9__.ensureValuePrecision(val, mergedProps);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props3 = this.props,
-          prefixCls = _this$props3.prefixCls,
-          vertical = _this$props3.vertical,
-          included = _this$props3.included,
-          disabled = _this$props3.disabled,
-          minimumTrackStyle = _this$props3.minimumTrackStyle,
-          trackStyle = _this$props3.trackStyle,
-          handleStyle = _this$props3.handleStyle,
-          tabIndex = _this$props3.tabIndex,
-          ariaLabelForHandle = _this$props3.ariaLabelForHandle,
-          ariaLabelledByForHandle = _this$props3.ariaLabelledByForHandle,
-          ariaValueTextFormatterForHandle = _this$props3.ariaValueTextFormatterForHandle,
-          min = _this$props3.min,
-          max = _this$props3.max,
-          startPoint = _this$props3.startPoint,
-          reverse = _this$props3.reverse,
-          handleGenerator = _this$props3.handle;
-      var _this$state = this.state,
-          value = _this$state.value,
-          dragging = _this$state.dragging;
-      var offset = this.calcOffset(value);
-      var handle = handleGenerator({
-        className: "".concat(prefixCls, "-handle"),
-        prefixCls: prefixCls,
-        vertical: vertical,
-        offset: offset,
-        value: value,
-        dragging: dragging,
-        disabled: disabled,
-        min: min,
-        max: max,
-        reverse: reverse,
-        index: 0,
-        tabIndex: tabIndex,
-        ariaLabel: ariaLabelForHandle,
-        ariaLabelledBy: ariaLabelledByForHandle,
-        ariaValueTextFormatter: ariaValueTextFormatterForHandle,
-        style: handleStyle[0] || handleStyle,
-        ref: function ref(h) {
-          return _this2.saveHandle(0, h);
-        }
-      });
-      var trackOffset = startPoint !== undefined ? this.calcOffset(startPoint) : 0;
-      var mergedTrackStyle = trackStyle[0] || trackStyle;
-      var track = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_common_Track__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        className: "".concat(prefixCls, "-track"),
-        vertical: vertical,
-        included: included,
-        offset: trackOffset,
-        reverse: reverse,
-        length: offset - trackOffset,
-        style: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, minimumTrackStyle), mergedTrackStyle)
-      });
-      return {
-        tracks: track,
-        handles: handle
-      };
-    }
-  }]);
-
-  return Slider;
-}(react__WEBPACK_IMPORTED_MODULE_5__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_common_createSlider__WEBPACK_IMPORTED_MODULE_8__["default"])(Slider));
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/common/Marks.js":
-/*!***************************************************!*\
-  !*** ./node_modules/rc-slider/es/common/Marks.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
-
-
-
-var Marks = function Marks(_ref) {
-  var className = _ref.className,
-      vertical = _ref.vertical,
-      reverse = _ref.reverse,
-      marks = _ref.marks,
-      included = _ref.included,
-      upperBound = _ref.upperBound,
-      lowerBound = _ref.lowerBound,
-      max = _ref.max,
-      min = _ref.min,
-      onClickLabel = _ref.onClickLabel;
-  var marksKeys = Object.keys(marks);
-  var range = max - min;
-  var elements = marksKeys.map(parseFloat).sort(function (a, b) {
-    return a - b;
-  }).map(function (point) {
-    var _classNames;
-
-    var markPoint = marks[point];
-    var markPointIsObject = (0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__["default"])(markPoint) === 'object' && ! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(markPoint);
-    var markLabel = markPointIsObject ? markPoint.label : markPoint;
-
-    if (!markLabel && markLabel !== 0) {
-      return null;
-    }
-
-    var isActive = !included && point === upperBound || included && point <= upperBound && point >= lowerBound;
-    var markClassName = classnames__WEBPACK_IMPORTED_MODULE_4___default()((_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(className, "-text"), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(className, "-text-active"), isActive), _classNames));
-
-    var bottomStyle = (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({
-      marginBottom: '-50%'
-    }, reverse ? 'top' : 'bottom', "".concat((point - min) / range * 100, "%"));
-
-    var leftStyle = (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({
-      transform: "translateX(".concat(reverse ? "50%" : "-50%", ")"),
-      msTransform: "translateX(".concat(reverse ? "50%" : "-50%", ")")
-    }, reverse ? 'right' : 'left', "".concat((point - min) / range * 100, "%"));
-
-    var style = vertical ? bottomStyle : leftStyle;
-    var markStyle = markPointIsObject ? (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, style), markPoint.style) : style;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
-      className: markClassName,
-      style: markStyle,
-      key: point,
-      onMouseDown: function onMouseDown(e) {
-        return onClickLabel(e, point);
-      },
-      onTouchStart: function onTouchStart(e) {
-        return onClickLabel(e, point);
-      }
-    }, markLabel);
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-    className: className
-  }, elements);
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Marks);
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/common/SliderTooltip.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/rc-slider/es/common/SliderTooltip.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_tooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rc-tooltip */ "./node_modules/rc-tooltip/es/index.js");
-/* harmony import */ var rc_util_es_ref__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rc-util/es/ref */ "./node_modules/rc-util/es/ref.js");
-/* harmony import */ var rc_util_es_raf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-util/es/raf */ "./node_modules/rc-util/es/raf.js");
-
-
-
-
-
-var SliderTooltip = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(function (props, ref) {
-  var visible = props.visible,
-      overlay = props.overlay;
-  var innerRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
-  var tooltipRef = (0,rc_util_es_ref__WEBPACK_IMPORTED_MODULE_3__.composeRef)(ref, innerRef);
-  var rafRef = react__WEBPACK_IMPORTED_MODULE_1__.useRef(null);
-
-  function cancelKeepAlign() {
-    rc_util_es_raf__WEBPACK_IMPORTED_MODULE_4__["default"].cancel(rafRef.current);
-  }
-
-  function keepAlign() {
-    rafRef.current = (0,rc_util_es_raf__WEBPACK_IMPORTED_MODULE_4__["default"])(function () {
-      var _innerRef$current;
-
-      (_innerRef$current = innerRef.current) === null || _innerRef$current === void 0 ? void 0 : _innerRef$current.forcePopupAlign();
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    if (visible) {
-      keepAlign();
-    } else {
-      cancelKeepAlign();
-    }
-
-    return cancelKeepAlign;
-  }, [visible, overlay]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(rc_tooltip__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: tooltipRef
-  }, props));
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SliderTooltip);
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/common/Steps.js":
-/*!***************************************************!*\
-  !*** ./node_modules/rc-slider/es/common/Steps.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var rc_util_es_warning__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-util/es/warning */ "./node_modules/rc-util/es/warning.js");
-
-
-
-
-
-
-var calcPoints = function calcPoints(vertical, marks, dots, step, min, max) {
-  (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_4__["default"])(dots ? step > 0 : true, '`Slider[step]` should be a positive number in order to make Slider[dots] work.');
-  var points = Object.keys(marks).map(parseFloat).sort(function (a, b) {
-    return a - b;
-  });
-
-  if (dots && step) {
-    for (var i = min; i <= max; i += step) {
-      if (points.indexOf(i) === -1) {
-        points.push(i);
-      }
-    }
-  }
-
-  return points;
-};
-
-var Steps = function Steps(_ref) {
-  var prefixCls = _ref.prefixCls,
-      vertical = _ref.vertical,
-      reverse = _ref.reverse,
-      marks = _ref.marks,
-      dots = _ref.dots,
-      step = _ref.step,
-      included = _ref.included,
-      lowerBound = _ref.lowerBound,
-      upperBound = _ref.upperBound,
-      max = _ref.max,
-      min = _ref.min,
-      dotStyle = _ref.dotStyle,
-      activeDotStyle = _ref.activeDotStyle;
-  var range = max - min;
-  var elements = calcPoints(vertical, marks, dots, step, min, max).map(function (point) {
-    var _classNames;
-
-    var offset = "".concat(Math.abs(point - min) / range * 100, "%");
-    var isActived = !included && point === upperBound || included && point <= upperBound && point >= lowerBound;
-    var style = vertical ? (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, dotStyle), {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, reverse ? 'top' : 'bottom', offset)) : (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, dotStyle), {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, reverse ? 'right' : 'left', offset));
-
-    if (isActived) {
-      style = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, style), activeDotStyle);
-    }
-
-    var pointClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()((_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, "".concat(prefixCls, "-dot"), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, "".concat(prefixCls, "-dot-active"), isActived), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_classNames, "".concat(prefixCls, "-dot-reverse"), reverse), _classNames));
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
-      className: pointClassName,
-      style: style,
-      key: point
-    });
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: "".concat(prefixCls, "-step")
-  }, elements);
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Steps);
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/common/Track.js":
-/*!***************************************************!*\
-  !*** ./node_modules/rc-slider/es/common/Track.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-
-
-
-var Track = function Track(props) {
-  var _ref, _ref2;
-
-  var className = props.className,
-      included = props.included,
-      vertical = props.vertical,
-      style = props.style;
-  var length = props.length,
-      offset = props.offset,
-      reverse = props.reverse;
-
-  if (length < 0) {
-    reverse = !reverse;
-    length = Math.abs(length);
-    offset = 100 - offset;
-  }
-
-  var positonStyle = vertical ? (_ref = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, reverse ? 'top' : 'bottom', "".concat(offset, "%")), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, reverse ? 'bottom' : 'top', 'auto'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, "height", "".concat(length, "%")), _ref) : (_ref2 = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, reverse ? 'right' : 'left', "".concat(offset, "%")), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, reverse ? 'left' : 'right', 'auto'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, "width", "".concat(length, "%")), _ref2);
-
-  var elStyle = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, style), positonStyle);
-
-  return included ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    className: className,
-    style: elStyle
-  }) : null;
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Track);
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/common/createSlider.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/rc-slider/es/common/createSlider.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createSlider)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_get__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/esm/get */ "./node_modules/@babel/runtime/helpers/esm/get.js");
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rc-util/es/Dom/addEventListener */ "./node_modules/rc-util/es/Dom/addEventListener.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var rc_util_es_warning__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! rc-util/es/warning */ "./node_modules/rc-util/es/warning.js");
-/* harmony import */ var _Steps__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Steps */ "./node_modules/rc-slider/es/common/Steps.js");
-/* harmony import */ var _Marks__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Marks */ "./node_modules/rc-slider/es/common/Marks.js");
-/* harmony import */ var _Handle__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../Handle */ "./node_modules/rc-slider/es/Handle.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../utils */ "./node_modules/rc-slider/es/utils.js");
-
-
-
-
-
-
-
-
-
-
-
-var _excluded = ["index"];
-
-
-
-
-
-
-
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-function noop() {}
-
-function createSlider(Component) {
-  var _class, _temp;
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return _temp = _class = /*#__PURE__*/function (_Component) {
-    (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_9__["default"])(ComponentEnhancer, _Component);
-
-    var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_10__["default"])(ComponentEnhancer);
-
-    function ComponentEnhancer(props) {
-      var _this;
-
-      (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__["default"])(this, ComponentEnhancer);
-
-      _this = _super.call(this, props);
-      _this.handlesRefs = void 0;
-      _this.sliderRef = void 0;
-      _this.document = void 0;
-      _this.dragOffset = void 0;
-      _this.prevMovedHandleIndex = void 0;
-      _this.onTouchMoveListener = void 0;
-      _this.onTouchUpListener = void 0;
-      _this.onMouseMoveListener = void 0;
-      _this.onMouseUpListener = void 0;
-      _this.dragTrack = void 0;
-      _this.startBounds = void 0;
-
-      _this.onDown = function (e, position) {
-        var p = position;
-        var _this$props = _this.props,
-            draggableTrack = _this$props.draggableTrack,
-            isVertical = _this$props.vertical;
-        var bounds = _this.state.bounds;
-        var value = draggableTrack && _this.positionGetValue ? _this.positionGetValue(p) || [] : [];
-        var inPoint = _utils__WEBPACK_IMPORTED_MODULE_18__.isEventFromHandle(e, _this.handlesRefs);
-        _this.dragTrack = draggableTrack && bounds.length >= 2 && !inPoint && !value.map(function (n, i) {
-          var v = !i ? n >= bounds[i] : true;
-          return i === value.length - 1 ? n <= bounds[i] : v;
-        }).some(function (c) {
-          return !c;
-        });
-
-        if (_this.dragTrack) {
-          _this.dragOffset = p;
-          _this.startBounds = (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__["default"])(bounds);
-        } else {
-          if (!inPoint) {
-            _this.dragOffset = 0;
-          } else {
-            var handlePosition = _utils__WEBPACK_IMPORTED_MODULE_18__.getHandleCenterPosition(isVertical, e.target);
-            _this.dragOffset = p - handlePosition;
-            p = handlePosition;
-          }
-
-          _this.onStart(p);
-        }
-      };
-
-      _this.onMouseDown = function (e) {
-        if (e.button !== 0) {
-          return;
-        }
-
-        _this.removeDocumentEvents();
-
-        var isVertical = _this.props.vertical;
-        var position = _utils__WEBPACK_IMPORTED_MODULE_18__.getMousePosition(isVertical, e);
-
-        _this.onDown(e, position);
-
-        _this.addDocumentMouseEvents();
-      };
-
-      _this.onTouchStart = function (e) {
-        if (_utils__WEBPACK_IMPORTED_MODULE_18__.isNotTouchEvent(e)) return;
-        var isVertical = _this.props.vertical;
-        var position = _utils__WEBPACK_IMPORTED_MODULE_18__.getTouchPosition(isVertical, e);
-
-        _this.onDown(e, position);
-
-        _this.addDocumentTouchEvents();
-
-        _utils__WEBPACK_IMPORTED_MODULE_18__.pauseEvent(e);
-      };
-
-      _this.onFocus = function (e) {
-        var _this$props2 = _this.props,
-            onFocus = _this$props2.onFocus,
-            vertical = _this$props2.vertical;
-
-        if (_utils__WEBPACK_IMPORTED_MODULE_18__.isEventFromHandle(e, _this.handlesRefs) && !_this.dragTrack) {
-          var handlePosition = _utils__WEBPACK_IMPORTED_MODULE_18__.getHandleCenterPosition(vertical, e.target);
-          _this.dragOffset = 0;
-
-          _this.onStart(handlePosition);
-
-          _utils__WEBPACK_IMPORTED_MODULE_18__.pauseEvent(e);
-
-          if (onFocus) {
-            onFocus(e);
-          }
-        }
-      };
-
-      _this.onBlur = function (e) {
-        var onBlur = _this.props.onBlur;
-
-        if (!_this.dragTrack) {
-          _this.onEnd();
-        }
-
-        if (onBlur) {
-          onBlur(e);
-        }
-      };
-
-      _this.onMouseUp = function () {
-        if (_this.handlesRefs[_this.prevMovedHandleIndex]) {
-          _this.handlesRefs[_this.prevMovedHandleIndex].clickFocus();
-        }
-      };
-
-      _this.onMouseMove = function (e) {
-        if (!_this.sliderRef) {
-          _this.onEnd();
-
-          return;
-        }
-
-        var position = _utils__WEBPACK_IMPORTED_MODULE_18__.getMousePosition(_this.props.vertical, e);
-
-        _this.onMove(e, position - _this.dragOffset, _this.dragTrack, _this.startBounds);
-      };
-
-      _this.onTouchMove = function (e) {
-        if (_utils__WEBPACK_IMPORTED_MODULE_18__.isNotTouchEvent(e) || !_this.sliderRef) {
-          _this.onEnd();
-
-          return;
-        }
-
-        var position = _utils__WEBPACK_IMPORTED_MODULE_18__.getTouchPosition(_this.props.vertical, e);
-
-        _this.onMove(e, position - _this.dragOffset, _this.dragTrack, _this.startBounds);
-      };
-
-      _this.onKeyDown = function (e) {
-        if (_this.sliderRef && _utils__WEBPACK_IMPORTED_MODULE_18__.isEventFromHandle(e, _this.handlesRefs)) {
-          _this.onKeyboard(e);
-        }
-      };
-
-      _this.onClickMarkLabel = function (e, value) {
-        e.stopPropagation();
-
-        _this.onChange({
-          value: value
-        }); // eslint-disable-next-line react/no-unused-state
-
-
-        _this.setState({
-          value: value
-        }, function () {
-          return _this.onEnd(true);
-        });
-      };
-
-      _this.saveSlider = function (slider) {
-        _this.sliderRef = slider;
-      };
-
-      var step = props.step,
-          max = props.max,
-          min = props.min;
-      var isPointDiffEven = isFinite(max - min) ? (max - min) % step === 0 : true; // eslint-disable-line
-
-      (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_14__["default"])(step && Math.floor(step) === step ? isPointDiffEven : true, "Slider[max] - Slider[min] (".concat(max - min, ") should be a multiple of Slider[step] (").concat(step, ")"));
-      _this.handlesRefs = {};
-      return _this;
-    }
-
-    (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(ComponentEnhancer, [{
-      key: "componentDidMount",
-      value: function componentDidMount() {
-        // Snapshot testing cannot handle refs, so be sure to null-check this.
-        this.document = this.sliderRef && this.sliderRef.ownerDocument;
-        var _this$props3 = this.props,
-            autoFocus = _this$props3.autoFocus,
-            disabled = _this$props3.disabled;
-
-        if (autoFocus && !disabled) {
-          this.focus();
-        }
-      }
-    }, {
-      key: "componentWillUnmount",
-      value: function componentWillUnmount() {
-        if ((0,_babel_runtime_helpers_esm_get__WEBPACK_IMPORTED_MODULE_7__["default"])((0,_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_8__["default"])(ComponentEnhancer.prototype), "componentWillUnmount", this)) (0,_babel_runtime_helpers_esm_get__WEBPACK_IMPORTED_MODULE_7__["default"])((0,_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_8__["default"])(ComponentEnhancer.prototype), "componentWillUnmount", this).call(this);
-        this.removeDocumentEvents();
-      }
-    }, {
-      key: "getSliderStart",
-      value: function getSliderStart() {
-        var slider = this.sliderRef;
-        var _this$props4 = this.props,
-            vertical = _this$props4.vertical,
-            reverse = _this$props4.reverse;
-        var rect = slider.getBoundingClientRect();
-
-        if (vertical) {
-          return reverse ? rect.bottom : rect.top;
-        }
-
-        return window.pageXOffset + (reverse ? rect.right : rect.left);
-      }
-    }, {
-      key: "getSliderLength",
-      value: function getSliderLength() {
-        var slider = this.sliderRef;
-
-        if (!slider) {
-          return 0;
-        }
-
-        var coords = slider.getBoundingClientRect();
-        return this.props.vertical ? coords.height : coords.width;
-      }
-    }, {
-      key: "addDocumentTouchEvents",
-      value: function addDocumentTouchEvents() {
-        // just work for Chrome iOS Safari and Android Browser
-        this.onTouchMoveListener = (0,rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_12__["default"])(this.document, 'touchmove', this.onTouchMove);
-        this.onTouchUpListener = (0,rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_12__["default"])(this.document, 'touchend', this.onEnd);
-      }
-    }, {
-      key: "addDocumentMouseEvents",
-      value: function addDocumentMouseEvents() {
-        this.onMouseMoveListener = (0,rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_12__["default"])(this.document, 'mousemove', this.onMouseMove);
-        this.onMouseUpListener = (0,rc_util_es_Dom_addEventListener__WEBPACK_IMPORTED_MODULE_12__["default"])(this.document, 'mouseup', this.onEnd);
-      }
-    }, {
-      key: "removeDocumentEvents",
-      value: function removeDocumentEvents() {
-        /* eslint-disable @typescript-eslint/no-unused-expressions */
-        this.onTouchMoveListener && this.onTouchMoveListener.remove();
-        this.onTouchUpListener && this.onTouchUpListener.remove();
-        this.onMouseMoveListener && this.onMouseMoveListener.remove();
-        this.onMouseUpListener && this.onMouseUpListener.remove();
-        /* eslint-enable no-unused-expressions */
-      }
-    }, {
-      key: "focus",
-      value: function focus() {
-        var _this$handlesRefs$;
-
-        if (this.props.disabled) {
-          return;
-        }
-
-        (_this$handlesRefs$ = this.handlesRefs[0]) === null || _this$handlesRefs$ === void 0 ? void 0 : _this$handlesRefs$.focus();
-      }
-    }, {
-      key: "blur",
-      value: function blur() {
-        var _this2 = this;
-
-        if (this.props.disabled) {
-          return;
-        }
-
-        Object.keys(this.handlesRefs).forEach(function (key) {
-          var _this2$handlesRefs$ke, _this2$handlesRefs$ke2;
-
-          (_this2$handlesRefs$ke = _this2.handlesRefs[key]) === null || _this2$handlesRefs$ke === void 0 ? void 0 : (_this2$handlesRefs$ke2 = _this2$handlesRefs$ke.blur) === null || _this2$handlesRefs$ke2 === void 0 ? void 0 : _this2$handlesRefs$ke2.call(_this2$handlesRefs$ke);
-        });
-      }
-    }, {
-      key: "calcValue",
-      value: function calcValue(offset) {
-        var _this$props5 = this.props,
-            vertical = _this$props5.vertical,
-            min = _this$props5.min,
-            max = _this$props5.max;
-        var ratio = Math.abs(Math.max(offset, 0) / this.getSliderLength());
-        var value = vertical ? (1 - ratio) * (max - min) + min : ratio * (max - min) + min;
-        return value;
-      }
-    }, {
-      key: "calcValueByPos",
-      value: function calcValueByPos(position) {
-        var sign = this.props.reverse ? -1 : +1;
-        var pixelOffset = sign * (position - this.getSliderStart());
-        var nextValue = this.trimAlignValue(this.calcValue(pixelOffset));
-        return nextValue;
-      }
-    }, {
-      key: "calcOffset",
-      value: function calcOffset(value) {
-        var _this$props6 = this.props,
-            min = _this$props6.min,
-            max = _this$props6.max;
-        var ratio = (value - min) / (max - min);
-        return Math.max(0, ratio * 100);
-      }
-    }, {
-      key: "saveHandle",
-      value: function saveHandle(index, handle) {
-        this.handlesRefs[index] = handle;
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        var _classNames;
-
-        var _this$props7 = this.props,
-            prefixCls = _this$props7.prefixCls,
-            className = _this$props7.className,
-            marks = _this$props7.marks,
-            dots = _this$props7.dots,
-            step = _this$props7.step,
-            included = _this$props7.included,
-            disabled = _this$props7.disabled,
-            vertical = _this$props7.vertical,
-            reverse = _this$props7.reverse,
-            min = _this$props7.min,
-            max = _this$props7.max,
-            children = _this$props7.children,
-            maximumTrackStyle = _this$props7.maximumTrackStyle,
-            style = _this$props7.style,
-            railStyle = _this$props7.railStyle,
-            dotStyle = _this$props7.dotStyle,
-            activeDotStyle = _this$props7.activeDotStyle;
-
-        var _get$call = (0,_babel_runtime_helpers_esm_get__WEBPACK_IMPORTED_MODULE_7__["default"])((0,_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_8__["default"])(ComponentEnhancer.prototype), "render", this).call(this),
-            tracks = _get$call.tracks,
-            handles = _get$call.handles;
-
-        var sliderClassName = classnames__WEBPACK_IMPORTED_MODULE_13___default()(prefixCls, (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_classNames, "".concat(prefixCls, "-with-marks"), Object.keys(marks).length), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_classNames, "".concat(prefixCls, "-disabled"), disabled), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_classNames, "".concat(prefixCls, "-vertical"), vertical), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_classNames, className, className), _classNames));
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11__.createElement("div", {
-          ref: this.saveSlider,
-          className: sliderClassName,
-          onTouchStart: disabled ? noop : this.onTouchStart,
-          onMouseDown: disabled ? noop : this.onMouseDown,
-          onMouseUp: disabled ? noop : this.onMouseUp,
-          onKeyDown: disabled ? noop : this.onKeyDown,
-          onFocus: disabled ? noop : this.onFocus,
-          onBlur: disabled ? noop : this.onBlur,
-          style: style
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11__.createElement("div", {
-          className: "".concat(prefixCls, "-rail"),
-          style: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__["default"])({}, maximumTrackStyle), railStyle)
-        }), tracks, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11__.createElement(_Steps__WEBPACK_IMPORTED_MODULE_15__["default"], {
-          prefixCls: prefixCls,
-          vertical: vertical,
-          reverse: reverse,
-          marks: marks,
-          dots: dots,
-          step: step,
-          included: included,
-          lowerBound: this.getLowerBound(),
-          upperBound: this.getUpperBound(),
-          max: max,
-          min: min,
-          dotStyle: dotStyle,
-          activeDotStyle: activeDotStyle
-        }), handles, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11__.createElement(_Marks__WEBPACK_IMPORTED_MODULE_16__["default"], {
-          className: "".concat(prefixCls, "-mark"),
-          onClickLabel: disabled ? noop : this.onClickMarkLabel,
-          vertical: vertical,
-          marks: marks,
-          included: included,
-          lowerBound: this.getLowerBound(),
-          upperBound: this.getUpperBound(),
-          max: max,
-          min: min,
-          reverse: reverse
-        }), children);
-      }
-    }]);
-
-    return ComponentEnhancer;
-  }(Component), _class.displayName = "ComponentEnhancer(".concat(Component.displayName, ")"), _class.defaultProps = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_2__["default"])({}, Component.defaultProps), {}, {
-    prefixCls: 'rc-slider',
-    className: '',
-    min: 0,
-    max: 100,
-    step: 1,
-    marks: {},
-    handle: function handle(props) {
-      var index = props.index,
-          restProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, _excluded);
-
-      delete restProps.dragging;
-
-      if (restProps.value === null) {
-        return null;
-      }
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11__.createElement(_Handle__WEBPACK_IMPORTED_MODULE_17__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, restProps, {
-        key: index
-      }));
-    },
-    onBeforeChange: noop,
-    onChange: noop,
-    onAfterChange: noop,
-    included: true,
-    disabled: false,
-    dots: false,
-    vertical: false,
-    reverse: false,
-    trackStyle: [{}],
-    handleStyle: [{}],
-    railStyle: {},
-    dotStyle: {},
-    activeDotStyle: {}
-  }), _temp;
-}
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/createSliderWithTooltip.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/rc-slider/es/createSliderWithTooltip.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ createSliderWithTooltip)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
-/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _common_SliderTooltip__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/SliderTooltip */ "./node_modules/rc-slider/es/common/SliderTooltip.js");
-/* harmony import */ var _Handle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Handle */ "./node_modules/rc-slider/es/Handle.js");
-
-
-
-
-
-
-
-
-var _excluded = ["value", "dragging", "index", "disabled"],
-    _excluded2 = ["prefixCls", "overlay", "placement", "visible"];
-
-
-
-function createSliderWithTooltip(Component) {
-  var _class, _temp;
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return _temp = _class = /*#__PURE__*/function (_React$Component) {
-    (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(ComponentWrapper, _React$Component);
-
-    var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_7__["default"])(ComponentWrapper);
-
-    function ComponentWrapper() {
-      var _this;
-
-      (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, ComponentWrapper);
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      _this = _super.call.apply(_super, [this].concat(args));
-      _this.state = {
-        visibles: {}
-      };
-
-      _this.handleTooltipVisibleChange = function (index, visible) {
-        _this.setState(function (prevState) {
-          return {
-            visibles: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__["default"])({}, prevState.visibles), {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])({}, index, visible))
-          };
-        });
-      };
-
-      _this.handleWithTooltip = function (_ref) {
-        var value = _ref.value,
-            dragging = _ref.dragging,
-            index = _ref.index,
-            disabled = _ref.disabled,
-            restProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, _excluded);
-
-        var _this$props = _this.props,
-            tipFormatter = _this$props.tipFormatter,
-            tipProps = _this$props.tipProps,
-            handleStyle = _this$props.handleStyle,
-            getTooltipContainer = _this$props.getTooltipContainer;
-
-        var _tipProps$prefixCls = tipProps.prefixCls,
-            prefixCls = _tipProps$prefixCls === void 0 ? 'rc-slider-tooltip' : _tipProps$prefixCls,
-            _tipProps$overlay = tipProps.overlay,
-            overlay = _tipProps$overlay === void 0 ? tipFormatter(value) : _tipProps$overlay,
-            _tipProps$placement = tipProps.placement,
-            placement = _tipProps$placement === void 0 ? 'top' : _tipProps$placement,
-            _tipProps$visible = tipProps.visible,
-            visible = _tipProps$visible === void 0 ? false : _tipProps$visible,
-            restTooltipProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(tipProps, _excluded2);
-
-        var handleStyleWithIndex;
-
-        if (Array.isArray(handleStyle)) {
-          handleStyleWithIndex = handleStyle[index] || handleStyle[0];
-        } else {
-          handleStyleWithIndex = handleStyle;
-        }
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8__.createElement(_common_SliderTooltip__WEBPACK_IMPORTED_MODULE_9__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, restTooltipProps, {
-          getTooltipContainer: getTooltipContainer,
-          prefixCls: prefixCls,
-          overlay: overlay,
-          placement: placement,
-          visible: !disabled && (_this.state.visibles[index] || dragging) || visible,
-          key: index
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8__.createElement(_Handle__WEBPACK_IMPORTED_MODULE_10__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, restProps, {
-          style: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_3__["default"])({}, handleStyleWithIndex),
-          value: value,
-          onMouseEnter: function onMouseEnter() {
-            return _this.handleTooltipVisibleChange(index, true);
-          },
-          onMouseLeave: function onMouseLeave() {
-            return _this.handleTooltipVisibleChange(index, false);
-          }
-        })));
-      };
-
-      return _this;
-    }
-
-    (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(ComponentWrapper, [{
-      key: "render",
-      value: function render() {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.props, {
-          handle: this.handleWithTooltip
-        }));
-      }
-    }]);
-
-    return ComponentWrapper;
-  }(react__WEBPACK_IMPORTED_MODULE_8__.Component), _class.defaultProps = {
-    tipFormatter: function tipFormatter(value) {
-      return value;
-    },
-    handleStyle: [{}],
-    tipProps: {},
-    getTooltipContainer: function getTooltipContainer(node) {
-      return node.parentNode;
-    }
-  }, _temp;
-}
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/rc-slider/es/index.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "Range": () => (/* reexport safe */ _Range__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "Handle": () => (/* reexport safe */ _Handle__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   "createSliderWithTooltip": () => (/* reexport safe */ _createSliderWithTooltip__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   "SliderTooltip": () => (/* reexport safe */ _common_SliderTooltip__WEBPACK_IMPORTED_MODULE_4__["default"])
-/* harmony export */ });
-/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ "./node_modules/rc-slider/es/Slider.js");
-/* harmony import */ var _Range__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Range */ "./node_modules/rc-slider/es/Range.js");
-/* harmony import */ var _Handle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Handle */ "./node_modules/rc-slider/es/Handle.js");
-/* harmony import */ var _createSliderWithTooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./createSliderWithTooltip */ "./node_modules/rc-slider/es/createSliderWithTooltip.js");
-/* harmony import */ var _common_SliderTooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/SliderTooltip */ "./node_modules/rc-slider/es/common/SliderTooltip.js");
-
-
-
-
-
-var InternalSlider = _Slider__WEBPACK_IMPORTED_MODULE_0__["default"];
-InternalSlider.Range = _Range__WEBPACK_IMPORTED_MODULE_1__["default"];
-InternalSlider.Handle = _Handle__WEBPACK_IMPORTED_MODULE_2__["default"];
-InternalSlider.createSliderWithTooltip = _createSliderWithTooltip__WEBPACK_IMPORTED_MODULE_3__["default"];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InternalSlider);
-
-
-/***/ }),
-
-/***/ "./node_modules/rc-slider/es/utils.js":
-/*!********************************************!*\
-  !*** ./node_modules/rc-slider/es/utils.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isEventFromHandle": () => (/* binding */ isEventFromHandle),
-/* harmony export */   "isValueOutOfRange": () => (/* binding */ isValueOutOfRange),
-/* harmony export */   "isNotTouchEvent": () => (/* binding */ isNotTouchEvent),
-/* harmony export */   "getClosestPoint": () => (/* binding */ getClosestPoint),
-/* harmony export */   "getPrecision": () => (/* binding */ getPrecision),
-/* harmony export */   "getMousePosition": () => (/* binding */ getMousePosition),
-/* harmony export */   "getTouchPosition": () => (/* binding */ getTouchPosition),
-/* harmony export */   "getHandleCenterPosition": () => (/* binding */ getHandleCenterPosition),
-/* harmony export */   "ensureValueInRange": () => (/* binding */ ensureValueInRange),
-/* harmony export */   "ensureValuePrecision": () => (/* binding */ ensureValuePrecision),
-/* harmony export */   "pauseEvent": () => (/* binding */ pauseEvent),
-/* harmony export */   "calculateNextValue": () => (/* binding */ calculateNextValue),
-/* harmony export */   "getKeyboardValueMutator": () => (/* binding */ getKeyboardValueMutator)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rc-util/es/KeyCode */ "./node_modules/rc-util/es/KeyCode.js");
-
-
-
-function isEventFromHandle(e, handles) {
-  try {
-    return Object.keys(handles).some(function (key) {
-      return e.target === (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.findDOMNode)(handles[key]);
-    });
-  } catch (error) {
-    return false;
-  }
-}
-function isValueOutOfRange(value, _ref) {
-  var min = _ref.min,
-      max = _ref.max;
-  return value < min || value > max;
-}
-function isNotTouchEvent(e) {
-  return e.touches.length > 1 || e.type.toLowerCase() === 'touchend' && e.touches.length > 0;
-}
-function getClosestPoint(val, _ref2) {
-  var marks = _ref2.marks,
-      step = _ref2.step,
-      min = _ref2.min,
-      max = _ref2.max;
-  var points = Object.keys(marks).map(parseFloat);
-
-  if (step !== null) {
-    var baseNum = Math.pow(10, getPrecision(step));
-    var maxSteps = Math.floor((max * baseNum - min * baseNum) / (step * baseNum));
-    var steps = Math.min((val - min) / step, maxSteps);
-    var closestStep = Math.round(steps) * step + min;
-    points.push(closestStep);
-  }
-
-  var diffs = points.map(function (point) {
-    return Math.abs(val - point);
-  });
-  return points[diffs.indexOf(Math.min.apply(Math, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(diffs)))];
-}
-function getPrecision(step) {
-  var stepString = step.toString();
-  var precision = 0;
-
-  if (stepString.indexOf('.') >= 0) {
-    precision = stepString.length - stepString.indexOf('.') - 1;
-  }
-
-  return precision;
-}
-function getMousePosition(vertical, e) {
-  return vertical ? e.clientY : e.pageX;
-}
-function getTouchPosition(vertical, e) {
-  return vertical ? e.touches[0].clientY : e.touches[0].pageX;
-}
-function getHandleCenterPosition(vertical, handle) {
-  var coords = handle.getBoundingClientRect();
-  return vertical ? coords.top + coords.height * 0.5 : window.pageXOffset + coords.left + coords.width * 0.5;
-}
-function ensureValueInRange(val, _ref3) {
-  var max = _ref3.max,
-      min = _ref3.min;
-
-  if (val <= min) {
-    return min;
-  }
-
-  if (val >= max) {
-    return max;
-  }
-
-  return val;
-}
-function ensureValuePrecision(val, props) {
-  var step = props.step;
-  var closestPoint = isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0; // eslint-disable-line
-
-  return step === null ? closestPoint : parseFloat(closestPoint.toFixed(getPrecision(step)));
-}
-function pauseEvent(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
-function calculateNextValue(func, value, props) {
-  var operations = {
-    increase: function increase(a, b) {
-      return a + b;
-    },
-    decrease: function decrease(a, b) {
-      return a - b;
-    }
-  };
-  var indexToGet = operations[func](Object.keys(props.marks).indexOf(JSON.stringify(value)), 1);
-  var keyToGet = Object.keys(props.marks)[indexToGet];
-
-  if (props.step) {
-    return operations[func](value, props.step);
-  }
-
-  if (!!Object.keys(props.marks).length && !!props.marks[keyToGet]) {
-    return props.marks[keyToGet];
-  }
-
-  return value;
-}
-function getKeyboardValueMutator(e, vertical, reverse) {
-  var increase = 'increase';
-  var decrease = 'decrease';
-  var method = increase;
-
-  switch (e.keyCode) {
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].UP:
-      method = vertical && reverse ? decrease : increase;
-      break;
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].RIGHT:
-      method = !vertical && reverse ? decrease : increase;
-      break;
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].DOWN:
-      method = vertical && reverse ? increase : decrease;
-      break;
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].LEFT:
-      method = !vertical && reverse ? increase : decrease;
-      break;
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].END:
-      return function (value, props) {
-        return props.max;
-      };
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].HOME:
-      return function (value, props) {
-        return props.min;
-      };
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].PAGE_UP:
-      return function (value, props) {
-        return value + props.step * 2;
-      };
-
-    case rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_2__["default"].PAGE_DOWN:
-      return function (value, props) {
-        return value - props.step * 2;
-      };
-
-    default:
-      return undefined;
-  }
-
-  return function (value, props) {
-    return calculateNextValue(method, value, props);
-  };
-}
 
 /***/ }),
 
@@ -32822,439 +29711,6 @@ function getOffset(node) {
 
 /***/ }),
 
-/***/ "./node_modules/rc-util/es/Dom/scrollLocker.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/rc-util/es/Dom/scrollLocker.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ScrollLocker)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _getScrollBarSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
-/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../setStyle */ "./node_modules/rc-util/es/setStyle.js");
-
-
-
-
-var locks = [];
-var scrollingEffectClassName = 'ant-scrolling-effect';
-var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
-var uuid = 0; // https://github.com/ant-design/ant-design/issues/19340
-// https://github.com/ant-design/ant-design/issues/19332
-
-var cacheStyle = new Map();
-
-var ScrollLocker = function ScrollLocker(_options) {
-  var _this = this;
-
-  (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ScrollLocker);
-
-  this.lockTarget = void 0;
-  this.options = void 0;
-
-  this.getContainer = function () {
-    var _this$options;
-
-    return (_this$options = _this.options) === null || _this$options === void 0 ? void 0 : _this$options.container;
-  };
-
-  this.reLock = function (options) {
-    var findLock = locks.find(function (_ref) {
-      var target = _ref.target;
-      return target === _this.lockTarget;
-    });
-
-    if (findLock) {
-      _this.unLock();
-    }
-
-    _this.options = options;
-
-    if (findLock) {
-      findLock.options = options;
-
-      _this.lock();
-    }
-  };
-
-  this.lock = function () {
-    var _this$options3;
-
-    // If lockTarget exist return
-    if (locks.some(function (_ref2) {
-      var target = _ref2.target;
-      return target === _this.lockTarget;
-    })) {
-      return;
-    } // If same container effect, return
-
-
-    if (locks.some(function (_ref3) {
-      var _this$options2;
-
-      var options = _ref3.options;
-      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options2 = _this.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.container);
-    })) {
-      locks = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(locks), [{
-        target: _this.lockTarget,
-        options: _this.options
-      }]);
-      return;
-    }
-
-    var scrollBarSize = 0;
-    var container = ((_this$options3 = _this.options) === null || _this$options3 === void 0 ? void 0 : _this$options3.container) || document.body;
-
-    if (container === document.body && window.innerWidth - document.documentElement.clientWidth > 0 || container.scrollHeight > container.clientHeight) {
-      scrollBarSize = (0,_getScrollBarSize__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    }
-
-    var containerClassName = container.className;
-
-    if (locks.filter(function (_ref4) {
-      var _this$options4;
-
-      var options = _ref4.options;
-      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options4 = _this.options) === null || _this$options4 === void 0 ? void 0 : _this$options4.container);
-    }).length === 0) {
-      cacheStyle.set(container, (0,_setStyle__WEBPACK_IMPORTED_MODULE_3__["default"])({
-        width: scrollBarSize !== 0 ? "calc(100% - ".concat(scrollBarSize, "px)") : undefined,
-        overflow: 'hidden',
-        overflowX: 'hidden',
-        overflowY: 'hidden'
-      }, {
-        element: container
-      }));
-    } // https://github.com/ant-design/ant-design/issues/19729
-
-
-    if (!scrollingEffectClassNameReg.test(containerClassName)) {
-      var addClassName = "".concat(containerClassName, " ").concat(scrollingEffectClassName);
-      container.className = addClassName.trim();
-    }
-
-    locks = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(locks), [{
-      target: _this.lockTarget,
-      options: _this.options
-    }]);
-  };
-
-  this.unLock = function () {
-    var _this$options5;
-
-    var findLock = locks.find(function (_ref5) {
-      var target = _ref5.target;
-      return target === _this.lockTarget;
-    });
-    locks = locks.filter(function (_ref6) {
-      var target = _ref6.target;
-      return target !== _this.lockTarget;
-    });
-
-    if (!findLock || locks.some(function (_ref7) {
-      var _findLock$options;
-
-      var options = _ref7.options;
-      return (options === null || options === void 0 ? void 0 : options.container) === ((_findLock$options = findLock.options) === null || _findLock$options === void 0 ? void 0 : _findLock$options.container);
-    })) {
-      return;
-    } // Remove Effect
-
-
-    var container = ((_this$options5 = _this.options) === null || _this$options5 === void 0 ? void 0 : _this$options5.container) || document.body;
-    var containerClassName = container.className;
-    if (!scrollingEffectClassNameReg.test(containerClassName)) return;
-    (0,_setStyle__WEBPACK_IMPORTED_MODULE_3__["default"])(cacheStyle.get(container), {
-      element: container
-    });
-    cacheStyle.delete(container);
-    container.className = container.className.replace(scrollingEffectClassNameReg, '').trim();
-  };
-
-  // eslint-disable-next-line no-plusplus
-  this.lockTarget = uuid++;
-  this.options = _options;
-};
-
-
-
-/***/ }),
-
-/***/ "./node_modules/rc-util/es/PortalWrapper.js":
-/*!**************************************************!*\
-  !*** ./node_modules/rc-util/es/PortalWrapper.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getOpenCount": () => (/* binding */ getOpenCount),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _raf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./raf */ "./node_modules/rc-util/es/raf.js");
-/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Portal */ "./node_modules/rc-util/es/Portal.js");
-/* harmony import */ var _Dom_canUseDom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Dom/canUseDom */ "./node_modules/rc-util/es/Dom/canUseDom.js");
-/* harmony import */ var _switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./switchScrollingEffect */ "./node_modules/rc-util/es/switchScrollingEffect.js");
-/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./setStyle */ "./node_modules/rc-util/es/setStyle.js");
-/* harmony import */ var _Dom_scrollLocker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dom/scrollLocker */ "./node_modules/rc-util/es/Dom/scrollLocker.js");
-
-
-
-
-
-
-/* eslint-disable no-underscore-dangle,react/require-default-props */
-
-
-
-
-
-
-
-var openCount = 0;
-var supportDom = (0,_Dom_canUseDom__WEBPACK_IMPORTED_MODULE_8__["default"])();
-/** @private Test usage only */
-
-function getOpenCount() {
-  return  false ? 0 : 0;
-} // https://github.com/ant-design/ant-design/issues/19340
-// https://github.com/ant-design/ant-design/issues/19332
-
-var cacheOverflow = {};
-
-var getParent = function getParent(getContainer) {
-  if (!supportDom) {
-    return null;
-  }
-
-  if (getContainer) {
-    if (typeof getContainer === 'string') {
-      return document.querySelectorAll(getContainer)[0];
-    }
-
-    if (typeof getContainer === 'function') {
-      return getContainer();
-    }
-
-    if ((0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__["default"])(getContainer) === 'object' && getContainer instanceof window.HTMLElement) {
-      return getContainer;
-    }
-  }
-
-  return document.body;
-};
-
-var PortalWrapper = /*#__PURE__*/function (_React$Component) {
-  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(PortalWrapper, _React$Component);
-
-  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_3__["default"])(PortalWrapper);
-
-  function PortalWrapper(props) {
-    var _this;
-
-    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, PortalWrapper);
-
-    _this = _super.call(this, props);
-    _this.container = void 0;
-    _this.componentRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createRef();
-    _this.rafId = void 0;
-    _this.scrollLocker = void 0;
-    _this.renderComponent = void 0;
-
-    _this.updateScrollLocker = function (prevProps) {
-      var _ref = prevProps || {},
-          prevVisible = _ref.visible;
-
-      var _this$props = _this.props,
-          getContainer = _this$props.getContainer,
-          visible = _this$props.visible;
-
-      if (visible && visible !== prevVisible && supportDom && getParent(getContainer) !== _this.scrollLocker.getContainer()) {
-        _this.scrollLocker.reLock({
-          container: getParent(getContainer)
-        });
-      }
-    };
-
-    _this.updateOpenCount = function (prevProps) {
-      var _ref2 = prevProps || {},
-          prevVisible = _ref2.visible,
-          prevGetContainer = _ref2.getContainer;
-
-      var _this$props2 = _this.props,
-          visible = _this$props2.visible,
-          getContainer = _this$props2.getContainer; // Update count
-
-      if (visible !== prevVisible && supportDom && getParent(getContainer) === document.body) {
-        if (visible && !prevVisible) {
-          openCount += 1;
-        } else if (prevProps) {
-          openCount -= 1;
-        }
-      } // Clean up container if needed
-
-
-      var getContainerIsFunc = typeof getContainer === 'function' && typeof prevGetContainer === 'function';
-
-      if (getContainerIsFunc ? getContainer.toString() !== prevGetContainer.toString() : getContainer !== prevGetContainer) {
-        _this.removeCurrentContainer();
-      }
-    };
-
-    _this.attachToParent = function () {
-      var force = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-
-      if (force || _this.container && !_this.container.parentNode) {
-        var parent = getParent(_this.props.getContainer);
-
-        if (parent) {
-          parent.appendChild(_this.container);
-          return true;
-        }
-
-        return false;
-      }
-
-      return true;
-    };
-
-    _this.getContainer = function () {
-      if (!supportDom) {
-        return null;
-      }
-
-      if (!_this.container) {
-        _this.container = document.createElement('div');
-
-        _this.attachToParent(true);
-      }
-
-      _this.setWrapperClassName();
-
-      return _this.container;
-    };
-
-    _this.setWrapperClassName = function () {
-      var wrapperClassName = _this.props.wrapperClassName;
-
-      if (_this.container && wrapperClassName && wrapperClassName !== _this.container.className) {
-        _this.container.className = wrapperClassName;
-      }
-    };
-
-    _this.removeCurrentContainer = function () {
-      var _this$container, _this$container$paren;
-
-      // Portal will remove from `parentNode`.
-      // Let's handle this again to avoid refactor issue.
-      (_this$container = _this.container) === null || _this$container === void 0 ? void 0 : (_this$container$paren = _this$container.parentNode) === null || _this$container$paren === void 0 ? void 0 : _this$container$paren.removeChild(_this.container);
-    };
-
-    _this.switchScrollingEffect = function () {
-      if (openCount === 1 && !Object.keys(cacheOverflow).length) {
-        (0,_switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__["default"])(); // Must be set after switchScrollingEffect
-
-        cacheOverflow = (0,_setStyle__WEBPACK_IMPORTED_MODULE_10__["default"])({
-          overflow: 'hidden',
-          overflowX: 'hidden',
-          overflowY: 'hidden'
-        });
-      } else if (!openCount) {
-        (0,_setStyle__WEBPACK_IMPORTED_MODULE_10__["default"])(cacheOverflow);
-        cacheOverflow = {};
-        (0,_switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__["default"])(true);
-      }
-    };
-
-    _this.scrollLocker = new _Dom_scrollLocker__WEBPACK_IMPORTED_MODULE_11__["default"]({
-      container: getParent(props.getContainer)
-    });
-    return _this;
-  }
-
-  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(PortalWrapper, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.updateOpenCount();
-
-      if (!this.attachToParent()) {
-        this.rafId = (0,_raf__WEBPACK_IMPORTED_MODULE_6__["default"])(function () {
-          _this2.forceUpdate();
-        });
-      }
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      this.updateOpenCount(prevProps);
-      this.updateScrollLocker(prevProps);
-      this.setWrapperClassName();
-      this.attachToParent();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      var _this$props3 = this.props,
-          visible = _this$props3.visible,
-          getContainer = _this$props3.getContainer;
-
-      if (supportDom && getParent(getContainer) === document.body) {
-        // 离开时不会 render， 导到离开时数值不变，改用 func 。。
-        openCount = visible && openCount ? openCount - 1 : openCount;
-      }
-
-      this.removeCurrentContainer();
-      _raf__WEBPACK_IMPORTED_MODULE_6__["default"].cancel(this.rafId);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props4 = this.props,
-          children = _this$props4.children,
-          forceRender = _this$props4.forceRender,
-          visible = _this$props4.visible;
-      var portal = null;
-      var childProps = {
-        getOpenCount: function getOpenCount() {
-          return openCount;
-        },
-        getContainer: this.getContainer,
-        switchScrollingEffect: this.switchScrollingEffect,
-        scrollLocker: this.scrollLocker
-      };
-
-      if (forceRender || visible || this.componentRef.current) {
-        portal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Portal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          getContainer: this.getContainer,
-          ref: this.componentRef
-        }, children(childProps));
-      }
-
-      return portal;
-    }
-  }]);
-
-  return PortalWrapper;
-}(react__WEBPACK_IMPORTED_MODULE_5__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PortalWrapper);
-
-/***/ }),
-
 /***/ "./node_modules/rc-util/es/getScrollBarSize.js":
 /*!*****************************************************!*\
   !*** ./node_modules/rc-util/es/getScrollBarSize.js ***!
@@ -33389,104 +29845,6 @@ function pickAttrs(props) {
   });
   return attrs;
 }
-
-/***/ }),
-
-/***/ "./node_modules/rc-util/es/setStyle.js":
-/*!*********************************************!*\
-  !*** ./node_modules/rc-util/es/setStyle.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/**
- * Easy to set element style, return previous style
- * IE browser compatible(IE browser doesn't merge overflow style, need to set it separately)
- * https://github.com/ant-design/ant-design/issues/19393
- *
- */
-function setStyle(style) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  if (!style) {
-    return {};
-  }
-
-  var _options$element = options.element,
-      element = _options$element === void 0 ? document.body : _options$element;
-  var oldStyle = {};
-  var styleKeys = Object.keys(style); // IE browser compatible
-
-  styleKeys.forEach(function (key) {
-    oldStyle[key] = element.style[key];
-  });
-  styleKeys.forEach(function (key) {
-    element.style[key] = style[key];
-  });
-  return oldStyle;
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (setStyle);
-
-/***/ }),
-
-/***/ "./node_modules/rc-util/es/switchScrollingEffect.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/rc-util/es/switchScrollingEffect.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _getScrollBarSize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
-/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setStyle */ "./node_modules/rc-util/es/setStyle.js");
-
-
-
-function isBodyOverflowing() {
-  return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) && window.innerWidth > document.body.offsetWidth;
-}
-
-var cacheStyle = {};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (close) {
-  if (!isBodyOverflowing() && !close) {
-    return;
-  } // https://github.com/ant-design/ant-design/issues/19729
-
-
-  var scrollingEffectClassName = 'ant-scrolling-effect';
-  var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
-  var bodyClassName = document.body.className;
-
-  if (close) {
-    if (!scrollingEffectClassNameReg.test(bodyClassName)) return;
-    (0,_setStyle__WEBPACK_IMPORTED_MODULE_1__["default"])(cacheStyle);
-    cacheStyle = {};
-    document.body.className = bodyClassName.replace(scrollingEffectClassNameReg, '').trim();
-    return;
-  }
-
-  var scrollBarSize = (0,_getScrollBarSize__WEBPACK_IMPORTED_MODULE_0__["default"])();
-
-  if (scrollBarSize) {
-    cacheStyle = (0,_setStyle__WEBPACK_IMPORTED_MODULE_1__["default"])({
-      position: 'relative',
-      width: "calc(100% - ".concat(scrollBarSize, "px)")
-    });
-
-    if (!scrollingEffectClassNameReg.test(bodyClassName)) {
-      var addClassName = "".concat(bodyClassName, " ").concat(scrollingEffectClassName);
-      document.body.className = addClassName.trim();
-    }
-  }
-});
 
 /***/ }),
 
@@ -35031,65 +31389,6 @@ function scrollIntoView(target, options) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scrollIntoView);
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/get.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/get.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _get)
-/* harmony export */ });
-/* harmony import */ var _superPropBase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./superPropBase.js */ "./node_modules/@babel/runtime/helpers/esm/superPropBase.js");
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    _get = Reflect.get;
-  } else {
-    _get = function _get(target, property, receiver) {
-      var base = (0,_superPropBase_js__WEBPACK_IMPORTED_MODULE_0__["default"])(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-
-      return desc.value;
-    };
-  }
-
-  return _get(target, property, receiver || target);
-}
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/superPropBase.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/superPropBase.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _superPropBase)
-/* harmony export */ });
-/* harmony import */ var _getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = (0,_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object);
-    if (object === null) break;
-  }
-
-  return object;
-}
 
 /***/ })
 

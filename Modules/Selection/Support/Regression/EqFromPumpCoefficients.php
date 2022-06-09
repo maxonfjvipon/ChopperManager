@@ -7,24 +7,16 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Modules\Pump\Entities\PumpCoefficients;
 
 /**
- * Equation from {@PumpCoefficients}
+ * Equation from {@see PumpCoefficients}
  */
 final class EqFromPumpCoefficients implements Equation
 {
     use CanCalcPolynomialEquation;
 
     /**
-     * @var PumpCoefficients $coefficients
-     */
-    private PumpCoefficients $coefficients;
-
-    /**
      * @param PumpCoefficients $coefficients
      */
-    public function __construct(PumpCoefficients $coefficients)
-    {
-        $this->coefficients = $coefficients;
-    }
+    public function __construct(private PumpCoefficients $coefficients) {}
 
     /**
      * @inheritDoc

@@ -12,16 +12,10 @@ use Modules\User\Entities\User;
 final class ProjectsToShow implements Arrayable
 {
     /**
-     * @var Authenticatable|User $user
+     * @param User|Authenticatable $user
      */
-    private User|Authenticatable $user;
-
-    /**
-     * @param User|Authenticatable $usr
-     */
-    public function __construct(User|Authenticatable $usr)
+    public function __construct(private User|Authenticatable $user)
     {
-        $this->user = $usr;
     }
 
     /**

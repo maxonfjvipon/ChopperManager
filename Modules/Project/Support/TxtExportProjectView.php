@@ -14,24 +14,12 @@ use Modules\Project\Entities\Project;
 final class TxtExportProjectView implements Text
 {
     /**
-     * @var Project $project
-     */
-    private Project $project;
-
-    /**
-     * @var Request $request
-     */
-    private Request $request;
-
-    /**
      * Ctor.
      * @param Project $project
      * @param Request $request
      */
-    public function __construct(Project $project, Request $request)
+    public function __construct(private Project $project, private Request $request)
     {
-        $this->project = $project;
-        $this->request = $request;
     }
 
     /**
@@ -40,7 +28,7 @@ final class TxtExportProjectView implements Text
     public function asString(): string
     {
         return (new TxtView('project::project_export', [
-            'project' => $this->project->readyForExport($this->request),
+            'project' => $this->project->readyForExport($this->request->selection_ids),
             'request' => $this->request
         ]))->asString();
     }

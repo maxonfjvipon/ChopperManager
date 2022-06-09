@@ -6,18 +6,18 @@ use Inertia\Testing\AssertableInertia;
 use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectDeliveryStatus;
 use Modules\Project\Entities\ProjectStatus;
-use Modules\Project\Http\Endpoints\ProjectsCloneEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsCreateEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsDestroyEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsEditEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsExportEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsIndexEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsRestoreEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsShowEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsStatisticsEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsStoreEndpoint;
-use Modules\Project\Http\Endpoints\ProjectsUpdateEndpoint;
-use Modules\Project\Takes\TkUpdatedProject;
+use Modules\Project\Http\Endpoints\EpCloneProject;
+use Modules\Project\Http\Endpoints\EpCreateProject;
+use Modules\Project\Http\Endpoints\EpDestroyProject;
+use Modules\Project\Http\Endpoints\EpEditProject;
+use Modules\Project\Http\Endpoints\EpExportProject;
+use Modules\Project\Http\Endpoints\EpProjects;
+use Modules\Project\Http\Endpoints\EpRestoreProject;
+use Modules\Project\Http\Endpoints\EpShowProject;
+use Modules\Project\Http\Endpoints\EpProjectsStatistics;
+use Modules\Project\Http\Endpoints\EpStoreProject;
+use Modules\Project\Http\Endpoints\EpUpdateProject;
+use Modules\Project\Takes\TkUpdateProject;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Business;
@@ -29,7 +29,7 @@ class ProjectsEndpointsTest extends TestCase
 {
     /**
      * @return void
-     * @see ProjectsIndexEndpoint
+     * @see EpProjects
      * @author Max Trunnikov
      */
     public function test_projects_index_endpoint()
@@ -63,7 +63,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsIndexEndpoint
+     * @see EpProjects
      * @author Max Trunnikov
      */
     public function test_if_user_can_see_only_his_projects()
@@ -91,7 +91,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsCreateEndpoint
+     * @see EpCreateProject
      * @author Max Trunnikov
      */
     public function test_projects_create_endpoint()
@@ -105,7 +105,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsShowEndpoint
+     * @see EpShowProject
      * @author Max Trunnikov
      */
     public function test_projects_show_endpoint()
@@ -139,7 +139,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsEditEndpoint
+     * @see EpEditProject
      * @author Max Trunnikov
      */
     public function test_projects_edit_endpoint()
@@ -155,12 +155,13 @@ class ProjectsEndpointsTest extends TestCase
                         ->where('name', $project->name)
                     )
                 )
-            )->assertStatus(200);
+            )->assertStatus(200)
+        ;
     }
 
     /**
      * @return void
-     * @see ProjectsStoreEndpoint
+     * @see EpStoreProject
      * @author Max Trunnikov
      */
     public function test_projects_store_endpoint()
@@ -183,7 +184,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsUpdateEndpoint
+     * @see EpUpdateProject
      * @author Max Trunnikov
      */
     public function test_projects_update_endpoint()
@@ -219,7 +220,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsDestroyEndpoint
+     * @see EpDestroyProject
      * @author Max Trunnikov
      */
     public function test_projects_destroy_endpoint()
@@ -238,7 +239,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsCloneEndpoint
+     * @see EpCloneProject
      * @author Max Trunnikov
      */
     public function test_projects_clone_endpoint()
@@ -263,7 +264,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsRestoreEndpoint
+     * @see EpRestoreProject
      * @author Max Trunnikov
      */
     public function test_projects_restore_endpoint()
@@ -281,7 +282,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsExportEndpoint
+     * @see EpExportProject
      * @autho Max Trunnikov
      */
     public function test_export_projects_endpoint()
@@ -330,7 +331,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsShowEndpoint
+     * @see EpShowProject
      * @author Max Trunnikov
      */
     public function test_if_user_cannot_see_other_user_project()
@@ -347,7 +348,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsDestroyEndpoint
+     * @see EpDestroyProject
      * @author Max Trunnikov
      */
     public function test_if_user_cannot_delete_other_user_project()
@@ -363,7 +364,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsRestoreEndpoint
+     * @see EpRestoreProject
      * @author Max Trunnikov
      */
     public function test_if_user_cannot_restore_other_user_project()
@@ -376,7 +377,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsStatisticsEndpoint
+     * @see EpProjectsStatistics
      * @author Max Trunnikov
      */
     public function test_if_client_cannot_see_projects_statistics()
@@ -388,7 +389,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsUpdateEndpoint
+     * @see EpUpdateProject
      * @author Max Trunnikov
      */
     public function test_if_project_will_be_deleted_if_status_changed()
@@ -412,8 +413,8 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see TkUpdatedProject
-     * @see ProjectsUpdateEndpoint
+     * @see TkUpdateProject
+     * @see EpUpdateProject
      * @author Max Trunnikov
      */
     public function test_if_project_will_be_restored_if_status_changed()
@@ -437,7 +438,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see ProjectsStatisticsEndpoint
+     * @see EpProjectsStatistics
      * @author Max Trunnikov
      */
     public function test_projects_statistics_endpoint()

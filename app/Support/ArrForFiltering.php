@@ -15,17 +15,11 @@ use Tests\Unit\ArrForFilteringTest;
 final class ArrForFiltering implements Arrayable
 {
     /**
-     * @var array|Arrayable $data ;
-     */
-    private Arrayable|array $data;
-
-    /**
      * Ctor.
      * @param array|Arrayable $data
      */
-    public function __construct(array|Arrayable $data)
+    public function __construct(private array|Arrayable $data)
     {
-        $this->data = $data;
     }
 
     /**

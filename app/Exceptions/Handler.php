@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -39,25 +41,14 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e)
+    /**
+     * @param $request
+     * @param Throwable $e
+     * @return \Illuminate\Http\Response|JsonResponse|Response
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e): \Illuminate\Http\Response|JsonResponse|Response
     {
-        $response = parent::render($request, $e);
-//        $currentTenant = $this->getTenantModel()::current();
-//
-//        // TODO: fix for production
-//        if (!app()->environment(['production']) && in_array($response->status(), [500, 503, 404, 403])) {
-//            return Inertia::render('Project::Error', [
-//                'status' => $response->status(),
-//                'title' => $currentTenant->name ?? "Pump Manager"
-//            ])
-//                ->toResponse($request)
-//                ->setStatusCode($response->status());
-//        } else if ($response->status() === 419) {
-//            return back()->with([
-//                'message' => 'The page expired, please try again.',
-//            ]);
-//        }
-
-        return $response;
+        return parent::render($request, $e);
     }
 }

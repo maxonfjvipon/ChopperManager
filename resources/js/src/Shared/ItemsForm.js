@@ -30,7 +30,7 @@ export const ItemsForm = ({
 
 
     return (
-        <Form onFinish={onFinish} form={form} layout={layout} labelCol={labelSpan}{...rest}>
+        <Form onFinish={onFinish} form={form} layout={layout} labelCol={labelSpan} {...rest}>
             {items.map(item => (
                 <Form.Item {...item.values} key={item.values?.name}>
                     {item.input}

@@ -6,10 +6,12 @@ export const Selection = ({placeholder, defaultValue, options, ...rest}) => {
         <Select
             options={[...options.map(option => {
                 return {
-                    label: option.customValue || option.name || option.value,
-                    value: option.id
+                    label: option.customValue || option.name || option.value || option,
+                    value: option.id || option.value || option.name || option
                 }
             })]}
+            allowClear
+            showSearch
             filterOption={(input, option) => {
                 return option.label.toString().toLowerCase().includes(input.toLowerCase())
             }}

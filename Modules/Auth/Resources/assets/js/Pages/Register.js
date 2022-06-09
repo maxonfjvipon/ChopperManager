@@ -1,97 +1,80 @@
-import {Col, Input, Typography} from "antd";
-import {Link, usePage} from "@inertiajs/inertia-react";
-import React from "react";
 import {Inertia} from "@inertiajs/inertia";
-import Lang from "../../../../../../resources/js/translation/lang";
+import {Col, Input} from "antd";
+import React from "react";
+import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {useInputRules} from "../../../../../../resources/js/src/Hooks/input-rules.hook";
-import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {JustifiedRow} from "../../../../../../resources/js/src/Shared/JustifiedRow";
 import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/RoundedCard";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {GuestLayout} from "../../../../../../resources/js/src/Shared/Layout/GuestLayout";
 import {Selection} from "../../../../../../resources/js/src/Shared/Inputs/Selection";
-import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
-
+import {Link, usePage} from "@inertiajs/inertia-react";
 
 const Register = () => {
+
     // HOOKS
     const {textAlignCenter, fullWidth, margin} = useStyles()
     const {rules} = useInputRules()
-    const {businesses, countries} = usePage().props
-    const tRoute = useTransRoutes()
+    const {areas} = usePage().props
 
     // CONSTS
     const formName = 'register-form'
     const items = [
         {
             values: {
-                name: 'organization_name',
-                label: Lang.get('pages.register.organization_name'),
-                rules: [rules.required]
-            }, input: <Input/>
-        },
-        {
-            values: {
-                name: 'business_id',
-                label: Lang.get('pages.register.main_business'),
-                rules: [rules.required]
-            },
-            input: <Selection options={businesses}/>
-        },
-        {
-            values: {name: 'itn', label: Lang.get('pages.register.itn'), rules: rules.itn},
-            input: <Input/>
-        },
-        {
-            values: {name: 'phone', label: Lang.get('pages.register.phone'), rules: rules.phone},
-            input: <Input/>,
-        },
-        {
-            values: {
-                name: 'country_id',
-                label: Lang.get('pages.register.country'),
-                rules: [rules.required]
-            },
-            input: <Selection options={countries}/>
-        },
-        {
-            values: {name: 'city', label: Lang.get('pages.register.city'), rules: [rules.required]},
-            input: <Input/>
-        },
-        {
-            values: {name: 'postcode', label: Lang.get('pages.register.postcode')}, input: <Input/>
-        },
-        {
-            values: {
                 name: 'first_name',
-                label: Lang.get('pages.register.first_name'),
+                label: "Имя",
                 rules: [rules.required, rules.max(255)]
             }, input: <Input/>
         },
         {
             values: {
                 name: 'middle_name',
-                label: Lang.get('pages.register.middle_name'),
+                label: "Фамилия",
                 rules: [rules.required, rules.max(255)]
             }, input: <Input/>
         },
         {
             values: {
                 name: 'last_name',
-                label: Lang.get('pages.register.last_name'),
+                label: "Отчество",
                 rules: [rules.max(255)]
             },
             input: <Input/>
         },
         {
-            values: {name: 'email', label: Lang.get('pages.register.email'), rules: rules.email},
+            values: {
+                name: 'organization_name',
+                label: "Наименование организации",
+                rules: [rules.max(255)]
+            },
+            input: <Input/>
+        },
+        {
+            values: {name: 'itn', label: "ИНН", rules: rules.itn},
+            input: <Input/>
+        },
+        {
+            values: {name: 'phone', label: "Телефон", rules: rules.phone},
+            input: <Input/>,
+        },
+        {
+            values: {
+                name: 'area_id',
+                label: "Область",
+                rules: [rules.required]
+            },
+            input: <Selection options={areas}/>
+        },
+        {
+            values: {name: 'email', label: "Email", rules: rules.email},
             input: <Input/>
         },
         {
             values: {
                 name: 'password',
-                label: Lang.get('pages.register.password'),
+                label: "Пароль",
                 rules: rules.password
             },
             input: <Input.Password/>
@@ -99,7 +82,7 @@ const Register = () => {
         {
             values: {
                 name: 'password_confirmation',
-                label: Lang.get('pages.register.password_confirmation'),
+                label: "Повторите пароль",
                 rules: rules.password
             },
             input: <Input.Password/>
@@ -109,7 +92,7 @@ const Register = () => {
     // HANDLERS
     const registerHandler = body => {
         // console.log(tRoute('register.attempt'))
-        Inertia.post(tRoute('register.attempt'), body)
+        Inertia.post(route('register.attempt'), body)
     }
 
     // RENDER
@@ -119,7 +102,7 @@ const Register = () => {
                 <RoundedCard
                     title={
                         <div style={textAlignCenter}>
-                            {Lang.get('pages.register.please_register')}
+                            Пожалуйста зарегистрируйтесь
                         </div>
                     }
                 >
@@ -132,13 +115,13 @@ const Register = () => {
                 </RoundedCard>
                 <div style={margin.top(16)}>
                     <PrimaryButton style={fullWidth} htmlType="submit" form={formName}>
-                        {Lang.get('pages.register.register')}
+                        Зарегистрироваться
                     </PrimaryButton>
                 </div>
                 <div style={margin.top(16)}>
                     <div style={textAlignCenter}>
-                        <Link href={tRoute('login')}>
-                            {Lang.get('pages.register.already_registered')}
+                        <Link href={route('login')}>
+                            Уже зарегистрированы?
                         </Link>
                     </div>
                 </div>

@@ -2,7 +2,8 @@
 
 namespace App\Support\Rates;
 
-use Modules\Project\Entities\Currency;
+
+use App\Models\Enums\Currency;
 
 /**
  * Rates.
@@ -10,10 +11,10 @@ use Modules\Project\Entities\Currency;
 interface Rates
 {
     /**
-     * @param Currency $currency
+     * @param Currency|int $currency
      * @return bool
      */
-    public function hasTheSameBaseAs(Currency $currency): bool;
+    public function hasTheSameBaseAs(Currency|int $currency): bool;
 
     /**
      * @param string $code

@@ -1,4 +1,3 @@
-"use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["Modules_Auth_Resources_assets_js_app_js"],{
 
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/EyeInvisibleOutlined.js":
@@ -7,6 +6,7 @@
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -24,6 +24,7 @@ var EyeInvisibleOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 6
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -41,6 +42,7 @@ var EyeOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896
   \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -58,6 +60,7 @@ var PlusOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 89
   \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -75,6 +78,7 @@ var QuestionCircleOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -92,6 +96,7 @@ var SearchOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 
   \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -125,6 +130,7 @@ EyeInvisibleOutlined.displayName = 'EyeInvisibleOutlined';
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -158,6 +164,7 @@ EyeOutlined.displayName = 'EyeOutlined';
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -191,6 +198,7 @@ PlusOutlined.displayName = 'PlusOutlined';
   \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -224,6 +232,7 @@ QuestionCircleOutlined.displayName = 'QuestionCircleOutlined';
   \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -257,6 +266,7 @@ SearchOutlined.displayName = 'SearchOutlined';
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "responsiveArray": () => (/* binding */ responsiveArray),
@@ -341,6 +351,7 @@ var responsiveObserve = {
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -398,6 +409,7 @@ var Grid = function Grid(_a) {
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -467,6 +479,7 @@ var Meta = function Meta(props) {
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -679,6 +692,7 @@ Card.Meta = _Meta__WEBPACK_IMPORTED_MODULE_11__["default"];
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -695,6 +709,7 @@ __webpack_require__.r(__webpack_exports__);
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ErrorList)
@@ -804,6 +819,7 @@ function ErrorList(_ref) {
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useForm": () => (/* reexport safe */ _hooks_useForm__WEBPACK_IMPORTED_MODULE_9__["default"]),
@@ -959,6 +975,7 @@ var Form = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(InternalFo
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1315,6 +1332,7 @@ function FormItem(props) {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1421,6 +1439,7 @@ var FormItemInput = function FormItemInput(props) {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1564,6 +1583,7 @@ var FormItemLabel = function FormItemLabel(_ref) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1636,6 +1656,7 @@ var FormList = function FormList(_a) {
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FormContext": () => (/* binding */ FormContext),
@@ -1671,6 +1692,7 @@ var FormItemPrefixContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.crea
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useDebounce)
@@ -1704,6 +1726,7 @@ function useDebounce(value) {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useForm)
@@ -1777,6 +1800,7 @@ function useForm(form) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useFrameState)
@@ -1837,6 +1861,7 @@ function useFrameState(defaultValue) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useItemRef)
@@ -1879,6 +1904,7 @@ function useItemRef() {
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1917,6 +1943,7 @@ Form.create = function () {
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "toArray": () => (/* binding */ toArray),
@@ -1951,6 +1978,7 @@ function getFieldId(namePath, formName) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1968,6 +1996,7 @@ var RowContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContex
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2098,6 +2127,7 @@ Col.displayName = 'Col';
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2256,6 +2286,7 @@ Row.displayName = 'Row';
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2302,6 +2333,7 @@ var Group = function Group(props) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2435,6 +2467,7 @@ Password.displayName = 'Password';
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2594,6 +2627,7 @@ Search.displayName = 'Search';
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2622,6 +2656,7 @@ _Input__WEBPACK_IMPORTED_MODULE_0__["default"].Password = _Password__WEBPACK_IMP
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2638,6 +2673,7 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2784,6 +2820,7 @@ Select.OptGroup = rc_select__WEBPACK_IMPORTED_MODULE_5__.OptGroup;
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getIcons)
@@ -2880,6 +2917,7 @@ function getIcons(_ref) {
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2985,27 +3023,24 @@ Tabs.TabPane = rc_tabs__WEBPACK_IMPORTED_MODULE_3__.TabPane;
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Layout/GuestLayout */ "./resources/js/src/Shared/Layout/GuestLayout.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
+/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Layout/GuestLayout */ "./resources/js/src/Shared/Layout/GuestLayout.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -3022,74 +3057,71 @@ __webpack_require__.r(__webpack_exports__);
 
 var Login = function Login() {
   // HOOKS
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_11__.useStyles)(),
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__.useStyles)(),
       textAlignCenter = _useStyles.textAlignCenter,
       fullWidth = _useStyles.fullWidth,
       margin = _useStyles.margin;
 
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_4__.useInputRules)(),
-      rules = _useInputRules.rules;
+  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_3__.useInputRules)(),
+      rules = _useInputRules.rules; // CONST
 
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__.useTransRoutes)();
-  var has_registration = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props.has_registration; // CONST
 
   var formName = 'login-form';
   var items = [{
     values: {
       name: 'email',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.login.email'),
+      label: "Email",
       rules: rules.email
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
   }, {
     values: {
       name: 'password',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.login.password'),
+      label: 'Пароль',
       rules: rules.password
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
   }]; // HANDLERS
 
   var loginHandler = function loginHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post(tRoute('login.attempt'), body);
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post(route('login.attempt'), body);
   }; // RENDER
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_6__.JustifiedRow, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__.JustifiedRow, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
       xs: 17,
       sm: 13,
       md: 11,
       lg: 9,
       xl: 7,
       xxl: 5,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_7__.RoundedCard, {
-        title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_5__.RoundedCard, {
+        title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           style: textAlignCenter,
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.login.welcome')
+          children: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0443\u0439\u0442\u0435\u0441\u044C!"
         }),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__.ItemsForm, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__.ItemsForm, {
           layout: "vertical",
-          labelSpan: 7,
           items: items,
           name: formName,
           onFinish: loginHandler
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         style: margin.top(16),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, {
           style: fullWidth,
           htmlType: "submit",
           form: formName,
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.login.login')
+          children: "\u0412\u043E\u0439\u0442\u0438"
         })
-      }), has_registration && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         style: margin.top(16),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           style: textAlignCenter,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-            href: tRoute('register'),
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.login.not_registered')
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_9__.Link, {
+            href: route('register'),
+            children: "\u0415\u0449\u0435 \u043D\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?"
           })
         })
       })]
@@ -3098,7 +3130,7 @@ var Login = function Login() {
 };
 
 Login.layout = function (page) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_10__.GuestLayout, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_8__.GuestLayout, {
     children: page
   });
 };
@@ -3113,28 +3145,25 @@ Login.layout = function (page) {
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
-/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
-/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var _resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Layout/GuestLayout */ "./resources/js/src/Shared/Layout/GuestLayout.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
+/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
+/* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Layout/GuestLayout */ "./resources/js/src/Shared/Layout/GuestLayout.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -3152,136 +3181,111 @@ __webpack_require__.r(__webpack_exports__);
 
 var Register = function Register() {
   // HOOKS
-  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_12__.useStyles)(),
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__.useStyles)(),
       textAlignCenter = _useStyles.textAlignCenter,
       fullWidth = _useStyles.fullWidth,
       margin = _useStyles.margin;
 
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_4__.useInputRules)(),
+  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_3__.useInputRules)(),
       rules = _useInputRules.rules;
 
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props,
-      businesses = _usePage$props.businesses,
-      countries = _usePage$props.countries;
-  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_5__.useTransRoutes)(); // CONSTS
+  var areas = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_10__.usePage)().props.areas; // CONSTS
 
   var formName = 'register-form';
   var items = [{
     values: {
-      name: 'organization_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.organization_name'),
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-  }, {
-    values: {
-      name: 'business_id',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.main_business'),
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__.Selection, {
-      options: businesses
-    })
-  }, {
-    values: {
-      name: 'itn',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.itn'),
-      rules: rules.itn
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-  }, {
-    values: {
-      name: 'phone',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.phone'),
-      rules: rules.phone
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-  }, {
-    values: {
-      name: 'country_id',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.country'),
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_11__.Selection, {
-      options: countries
-    })
-  }, {
-    values: {
-      name: 'city',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.city'),
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-  }, {
-    values: {
-      name: 'postcode',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.postcode')
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-  }, {
-    values: {
       name: 'first_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.first_name'),
+      label: "Имя",
       rules: [rules.required, rules.max(255)]
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
   }, {
     values: {
       name: 'middle_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.middle_name'),
+      label: "Фамилия",
       rules: [rules.required, rules.max(255)]
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
   }, {
     values: {
       name: 'last_name',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.last_name'),
+      label: "Отчество",
       rules: [rules.max(255)]
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+  }, {
+    values: {
+      name: 'organization_name',
+      label: "Наименование организации",
+      rules: [rules.max(255)]
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+  }, {
+    values: {
+      name: 'itn',
+      label: "ИНН",
+      rules: rules.itn
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+  }, {
+    values: {
+      name: 'phone',
+      label: "Телефон",
+      rules: rules.phone
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+  }, {
+    values: {
+      name: 'area_id',
+      label: "Область",
+      rules: [rules.required]
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+      options: areas
+    })
   }, {
     values: {
       name: 'email',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.email'),
+      label: "Email",
       rules: rules.email
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
   }, {
     values: {
       name: 'password',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.password'),
+      label: "Пароль",
       rules: rules.password
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"].Password, {})
   }, {
     values: {
       name: 'password_confirmation',
-      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.password_confirmation'),
+      label: "Повторите пароль",
       rules: rules.password
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"].Password, {})
   }]; // HANDLERS
 
   var registerHandler = function registerHandler(body) {
     // console.log(tRoute('register.attempt'))
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post(tRoute('register.attempt'), body);
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post(route('register.attempt'), body);
   }; // RENDER
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_6__.JustifiedRow, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_15__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__.JustifiedRow, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
       xs: 22,
       sm: 20,
       md: 18,
       lg: 16,
       xl: 11,
       xxl: 9,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_7__.RoundedCard, {
-        title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_5__.RoundedCard, {
+        title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
           style: textAlignCenter,
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.please_register')
+          children: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C"
         }),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__.ItemsForm, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__.ItemsForm, {
           labelSpan: {
             xxl: 8,
             xl: 10,
@@ -3293,21 +3297,21 @@ var Register = function Register() {
           name: formName,
           onFinish: registerHandler
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
         style: margin.top(16),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, {
           style: fullWidth,
           htmlType: "submit",
           form: formName,
-          children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.register')
+          children: "\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
         style: margin.top(16),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
           style: textAlignCenter,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
-            href: tRoute('login'),
-            children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_3__["default"].get('pages.register.already_registered')
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_10__.Link, {
+            href: route('login'),
+            children: "\u0423\u0436\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?"
           })
         })
       })]
@@ -3316,7 +3320,7 @@ var Register = function Register() {
 };
 
 Register.layout = function (page) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_10__.GuestLayout, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Layout_GuestLayout__WEBPACK_IMPORTED_MODULE_8__.GuestLayout, {
     children: page
   });
 };
@@ -3331,6 +3335,7 @@ Register.layout = function (page) {
   \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -3427,6 +3432,7 @@ VerifyEmail.layout = function (page) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -3451,6 +3457,7 @@ __webpack_require__.r(__webpack_exports__);
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useInputRules": () => (/* binding */ useInputRules)
@@ -3506,15 +3513,6 @@ var useInputRules = function useInputRules() {
       password: [required],
       itn: [itn],
       phone: [required, phone],
-      city: function city(citiesToShow) {
-        return [required, {
-          validator: function validator(_, cityId) {
-            return citiesToShow.some(function (cityToShow) {
-              return cityToShow.id === cityId;
-            }) ? Promise.resolve() : Promise.reject(new Error(_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('validation.custom.city.correct')));
-          }
-        }];
-      },
       required: required,
       number: number,
       max: max
@@ -3524,93 +3522,53 @@ var useInputRules = function useInputRules() {
 
 /***/ }),
 
-/***/ "./resources/js/src/Shared/Box/BoxFlex.js":
-/*!************************************************!*\
-  !*** ./resources/js/src/Shared/Box/BoxFlex.js ***!
-  \************************************************/
+/***/ "./resources/js/src/Hooks/routes.hook.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/Hooks/routes.hook.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BoxFlex": () => (/* binding */ BoxFlex)
+/* harmony export */   "useTransRoutes": () => (/* binding */ useTransRoutes)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["children", "style"];
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+var useTransRoutes = function useTransRoutes() {
+  var locales = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.locales;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+  var tRoute = function tRoute(name) {
+    for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      params[_key - 1] = arguments[_key];
+    }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+    var splitUrl = route.apply(void 0, [name].concat(params)).split("/");
+    var locale = splitUrl[3]; // locale from url
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+    splitUrl.splice(3, locales !== null && locales !== void 0 && locales.supported.includes(locale) ? 1 : 0);
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+    if ((locales === null || locales === void 0 ? void 0 : locales["default"]) !== (locales === null || locales === void 0 ? void 0 : locales.current)) {
+      splitUrl.splice(3, 0, locales === null || locales === void 0 ? void 0 : locales.current);
+    }
 
+    return splitUrl.join('/');
+  };
 
-
-
-var BoxFlex = function BoxFlex(_ref) {
-  var children = _ref.children,
-      style = _ref.style,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  var _useStyles = (0,_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__.useStyles)(),
-      displayFlex = _useStyles.displayFlex;
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", _objectSpread(_objectSpread({
-    style: _objectSpread(_objectSpread({}, displayFlex), style)
-  }, rest), {}, {
-    children: children
-  }));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/Box/BoxFlexSpaceBetween.js":
-/*!************************************************************!*\
-  !*** ./resources/js/src/Shared/Box/BoxFlexSpaceBetween.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BoxFlexSpaceBetween": () => (/* binding */ BoxFlexSpaceBetween)
-/* harmony export */ });
-/* harmony import */ var _BoxFlex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
-/* harmony import */ var _Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["children", "style"];
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-var BoxFlexSpaceBetween = function BoxFlexSpaceBetween(_ref) {
-  var children = _ref.children,
-      style = _ref.style,
-      rest = _objectWithoutProperties(_ref, _excluded);
-
-  var _useStyles = (0,_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__.useStyles)(),
-      justifyContentSpaceBetween = _useStyles.justifyContentSpaceBetween;
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_BoxFlex__WEBPACK_IMPORTED_MODULE_0__.BoxFlex, _objectSpread(_objectSpread({
-    style: _objectSpread(_objectSpread({}, justifyContentSpaceBetween), style)
-  }, rest), {}, {
-    children: children
-  }));
-};
+  return tRoute;
+}; // export default function tRoute (name, ...params) {
+//     const {locales} = usePage().props
+//
+//     const splitUrl = route(name, ...params).split("/")
+//     const locale = splitUrl[3] // locale from url
+//
+//     splitUrl.splice(3, locales.supported.includes(locale) ? 1 : 0)
+//     if (locales.default !== locales.current) {
+//         splitUrl.splice(3, 0, locales.current)
+//     }
+//
+//     return splitUrl.join('/')
+// }
 
 /***/ }),
 
@@ -3620,6 +3578,7 @@ var BoxFlexSpaceBetween = function BoxFlexSpaceBetween(_ref) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PrimaryButton": () => (/* binding */ PrimaryButton)
@@ -3652,6 +3611,7 @@ var PrimaryButton = function PrimaryButton(props) {
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RoundedCard": () => (/* binding */ RoundedCard)
@@ -3692,6 +3652,7 @@ var RoundedCard = function RoundedCard(_ref) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Selection": () => (/* binding */ Selection)
@@ -3735,10 +3696,12 @@ var Selection = function Selection(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
     options: _toConsumableArray(options.map(function (option) {
       return {
-        label: option.customValue || option.name || option.value,
-        value: option.id
+        label: option.customValue || option.name || option.value || option,
+        value: option.id || option.value || option.name || option
       };
     })),
+    allowClear: true,
+    showSearch: true,
     filterOption: function filterOption(input, option) {
       return option.label.toString().toLowerCase().includes(input.toLowerCase());
     },
@@ -3754,6 +3717,7 @@ var Selection = function Selection(_ref) {
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ItemsForm": () => (/* binding */ ItemsForm)
@@ -3833,6 +3797,7 @@ var ItemsForm = function ItemsForm(_ref) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "JustifiedRow": () => (/* binding */ JustifiedRow)
@@ -3881,25 +3846,20 @@ var JustifiedRow = function JustifiedRow(_ref) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GuestLayout": () => (/* binding */ GuestLayout)
 /* harmony export */ });
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd/es/layout/layout */ "./node_modules/antd/es/layout/layout.js");
+/* harmony import */ var antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd/es/layout/layout */ "./node_modules/antd/es/layout/layout.js");
 /* harmony import */ var _MessagesLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessagesLayout */ "./resources/js/src/Shared/Layout/MessagesLayout.js");
 /* harmony import */ var _Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Footer */ "./resources/js/src/Shared/Footer.js");
-/* harmony import */ var _Box_BoxFlexSpaceBetween__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Box/BoxFlexSpaceBetween */ "./resources/js/src/Shared/Box/BoxFlexSpaceBetween.js");
-/* harmony import */ var _Components_LocaleDropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Components/LocaleDropdown */ "./resources/js/src/Shared/Layout/Components/LocaleDropdown.js");
-/* harmony import */ var _Components_AppTitle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Components/AppTitle */ "./resources/js/src/Shared/Layout/Components/AppTitle.js");
-/* harmony import */ var _LocaleLayout__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LocaleLayout */ "./resources/js/src/Shared/Layout/LocaleLayout.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
+/* harmony import */ var _Components_AppTitle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/AppTitle */ "./resources/js/src/Shared/Layout/Components/AppTitle.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -3911,33 +3871,2084 @@ __webpack_require__.r(__webpack_exports__);
 
 var GuestLayout = function GuestLayout(_ref) {
   var children = _ref.children;
-  var Content = antd__WEBPACK_IMPORTED_MODULE_9__["default"].Content;
+  var Content = antd__WEBPACK_IMPORTED_MODULE_6__["default"].Content;
 
   var _useStyles = (0,_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__.useStyles)(),
       backgroundColorWhite = _useStyles.backgroundColorWhite,
       padding = _useStyles.padding,
       minHeight = _useStyles.minHeight;
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MessagesLayout__WEBPACK_IMPORTED_MODULE_1__.MessagesLayout, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_LocaleLayout__WEBPACK_IMPORTED_MODULE_7__.LocaleLayout, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        style: minHeight('100vh'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_10__.Header, {
-          style: padding.all("0 16px 0"),
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Box_BoxFlexSpaceBetween__WEBPACK_IMPORTED_MODULE_4__.BoxFlexSpaceBetween, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_AppTitle__WEBPACK_IMPORTED_MODULE_6__.AppTitle, {})
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_LocaleDropdown__WEBPACK_IMPORTED_MODULE_5__.LocaleDropdown, {})
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(Content, {
-          style: backgroundColorWhite,
-          children: children
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {})]
-      })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_MessagesLayout__WEBPACK_IMPORTED_MODULE_1__.MessagesLayout, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      style: minHeight('100vh'),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd_es_layout_layout__WEBPACK_IMPORTED_MODULE_7__.Header, {
+        style: padding.all("0 16px 0"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_AppTitle__WEBPACK_IMPORTED_MODULE_4__.AppTitle, {})
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Content, {
+        style: backgroundColorWhite,
+        children: children
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_3__.Footer, {})]
     })
   });
+};
+
+/***/ }),
+
+/***/ "./resources/js/translation/lang.js":
+/*!******************************************!*\
+  !*** ./resources/js/translation/lang.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lang.js */ "./node_modules/lang.js/src/lang.js");
+/* harmony import */ var lang_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lang_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./translations */ "./resources/js/translation/translations.js");
+/* harmony import */ var _translations__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_translations__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var Lang = new (lang_js__WEBPACK_IMPORTED_MODULE_0___default())({
+  messages: (_translations__WEBPACK_IMPORTED_MODULE_1___default()),
+  locale: 'ru',
+  fallback: 'ru'
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Lang);
+
+/***/ }),
+
+/***/ "./resources/js/translation/translations.js":
+/*!**************************************************!*\
+  !*** ./resources/js/translation/translations.js ***!
+  \**************************************************/
+/***/ ((module) => {
+
+module.exports = {
+  "en.auth": {
+    "failed": "These credentials do not match our records.",
+    "password": "The provided password is incorrect.",
+    "throttle": "Too many login attempts. Please try again in :seconds seconds."
+  },
+  "en.flash": {
+    "email_verification": {
+      "sent_again": "Link to the email confirmation was sent again",
+      "verified": "Email has been successfully confirmed"
+    },
+    "price_lists": {
+      "imported": "Price lists were imported successfully"
+    },
+    "projects": {
+      "created": "Project was created successfully",
+      "deleted": "Project was deleted successfully",
+      "updated": "Project was updated successfully"
+    },
+    "pump_series": {
+      "imported": "Pump series were imported successfully"
+    },
+    "pumps": {
+      "imported": "Pumps were imported successfully"
+    },
+    "selections": {
+      "added": "Selection was successfully added to project",
+      "deleted": "Selection was deleted successfully",
+      "pumps_not_found": "No pumps were found for the specified parameters"
+    },
+    "users": {
+      "password_changed": "Password was changed successfully",
+      "updated": "User info was updated successfully"
+    }
+  },
+  "en.graphic": {
+    "axis": {
+      "flow": "Volume flow, m\xB3/h",
+      "head": "Delivery head, m"
+    },
+    "legend": {
+      "flow": "Flow",
+      "head": "Head",
+      "intersection_point": "Intersection point",
+      "working_point": "Working point"
+    }
+  },
+  "en.messages": {
+    "function_development": "The function is under development",
+    "selections": {
+      "no_series_selected": "No series selected",
+      "notification": {
+        "attention": "Attention!",
+        "description": {
+          "applications": "applications",
+          "power_adjustment": "power adjustment",
+          "types": "types",
+          "1": "Selected series",
+          "2": "does not match to selected filter params:"
+        }
+      }
+    },
+    "service_development": "The service is under development"
+  },
+  "en.pages": {
+    "change_locale": "Change locale",
+    "dashboard": {
+      "marketplace": "Marketplace",
+      "pumps": "Pumps",
+      "select": "Selection of pumping stations",
+      "title": "Dashboard"
+    },
+    "email_verification": {
+      "logout": "Logout",
+      "send_again": "Send email again",
+      "text1": "Before you get started, could you please confirm your email address, by clicking on the link that we just sent you by email?",
+      "text2": "If you have not received an email, we will be happy to send you another one. Also, just in case, check the \"Spam\" folder",
+      "thanks": "Thank you for registering"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "Login",
+      "not_registered": "Not registered yet?",
+      "password": "Password",
+      "welcome": "Welcome!"
+    },
+    "profile": {
+      "discounts": {
+        "discount": "Discount, %",
+        "name": "Name",
+        "tab": "Producer's discounts"
+      },
+      "index": {
+        "cards": {
+          "password": "Change password",
+          "user_info": "Update user info"
+        },
+        "change_password": "Change password",
+        "city": "City",
+        "country": "Country",
+        "currency": {
+          "label": "Currency",
+          "tooltip": "Currency affects on ..."
+        },
+        "current_password": "Current password",
+        "email": "E-mail",
+        "first_name": "First name",
+        "itn": "Individual taxpayer number",
+        "last_name": "Last name",
+        "main_business": "Main business",
+        "middle_name": "Middle name",
+        "new_password": "New password",
+        "new_password_confirmation": "Confirm new password",
+        "organization_name": "Name of the organization",
+        "phone": "Phone",
+        "postcode": "Postcode",
+        "save_changes": "Save changes",
+        "tab": "User info"
+      },
+      "title": "Profile"
+    },
+    "projects": {
+      "back": "Back to projects",
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create project"
+      },
+      "edit": {
+        "button": "Update project",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update project"
+      },
+      "export": {
+        "button": "Export",
+        "choose_selections": "Choose selection to export",
+        "m": "m",
+        "m3h": "m\xB3/h",
+        "print": {
+          "electric_diagram": "Print pump electric diagram",
+          "exploded_view": "Print pump exploded view",
+          "personal_price": "Print personal price",
+          "pump_image": "Print pump image",
+          "pump_info": "Print pump info",
+          "retail_price": "Print retail price",
+          "sizes_image": "Print pump sizes"
+        },
+        "title": "Export project"
+      },
+      "index": {
+        "button": "Create project",
+        "clone": {
+          "button": "Clone",
+          "save_as": "Save as",
+          "title": "Clone project"
+        },
+        "restore": {
+          "button": "Restore",
+          "title": "Restore project?"
+        },
+        "search": {
+          "placeholder": "Search projects by name"
+        },
+        "selection": "Hydraulic selection without saving",
+        "table": {
+          "count": "Selections count",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the project?",
+          "name": "Name"
+        }
+      },
+      "show": {
+        "label": "Name",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore selection?"
+        },
+        "save_button": "Save changes",
+        "selection": "Hydraulic selection",
+        "table": {
+          "consumption": "Volume flow, m\xB3/h",
+          "created_at": "Created at",
+          "delete": "Are you sure you want to delete the selection?",
+          "part_num": "Article number",
+          "power": "P\u2081, kW",
+          "pressure": "Delivery head, m",
+          "price": "Discounted price",
+          "selected_pump": "Product name",
+          "total_power": "P total, kW",
+          "total_price": "Total discounted price"
+        }
+      },
+      "statistics": {
+        "title": "Projects statistics"
+      },
+      "title": "Projects"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "Create",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Create brand"
+      },
+      "edit": {
+        "button": "Update brand",
+        "form": {
+          "name": "Name"
+        },
+        "title": "Update brand"
+      },
+      "index": {
+        "button": "Create brand",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore brand?"
+        },
+        "table": {
+          "delete": "Are you sure you want to delete the brand?",
+          "name": "Name"
+        },
+        "title": "Brands"
+      }
+    },
+    "pump_series": {
+      "back": "Back to series",
+      "create": {
+        "button": "Create",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Create series"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "image_path": "Path to image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Edit series"
+      },
+      "errors_title": "Import errors:",
+      "index": {
+        "button": "Create series",
+        "create": "Create",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore series?"
+        },
+        "table": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "delete": "Are you sure you want to delete the series?",
+          "is_discontinued": "Is active",
+          "name": "Name",
+          "power_adjustment": "El.power adjustment",
+          "types": "Types"
+        },
+        "title": "Brands and series",
+        "upload": "Upload series",
+        "upload_images": {
+          "images": {
+            "icons": "Icons",
+            "title": "Images (max 300, .jpg, .jpeg, .png)"
+          },
+          "title": "Upload images"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "Add to projects",
+        "choose": "Choose projects where to add the pump",
+        "ok": "Add",
+        "pumps_count": "Pumps count",
+        "title": "Add pump to projects"
+      },
+      "back": "Back to pumps",
+      "consumption": "Volume flow, m\xB3/h",
+      "data": {
+        "applications": "Applications",
+        "article_num_archive": "Archive article number",
+        "article_num_main": "Main article number",
+        "article_num_reserve": "Reserve article number",
+        "brand": "Brand",
+        "category": "Category",
+        "connection": "Mains connection",
+        "connection_type": "Connection",
+        "currency": "Currency",
+        "description": "Description",
+        "dn_pressure": "Pressure side DN",
+        "dn_suction": "Suction side DN",
+        "fluid_temp_max": "Max. fluid temp, \xB0C",
+        "fluid_temp_min": "Min. fluid temp, \xB0C",
+        "is_discontinued": "Active",
+        "name": "Name",
+        "power_adjustment": "El. power adjustment",
+        "price": "Price",
+        "ptp_length": "Port-to-port length, mm",
+        "rated_current": "Rated current, A",
+        "rated_power": "P, kW",
+        "series": "Series",
+        "types": "Types",
+        "weight": "Weight, kg"
+      },
+      "errors_title": "Import errors:",
+      "hydraulic_perf": "Hydraulic performance",
+      "pressure": "Delivery head, m",
+      "props": "Properties",
+      "search": {
+        "button": "Search",
+        "placeholder": "Search pumps by article nums and name"
+      },
+      "tabs": {
+        "double": "Double pumps",
+        "single": "Single pumps"
+      },
+      "title": "Pumps",
+      "upload": "Upload pumps",
+      "upload_price_lists": "Upload price lists",
+      "upload_tech_info": {
+        "files": {
+          "files": "Files",
+          "title": "Files (max 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "Cross sectional drawings images",
+          "pump_electric_diagrams": "Electrical diagram images",
+          "pump_sizes": "Pump sizes images",
+          "pumps": "Pumps images",
+          "title": "Images (max 300, .jpg, .jpeg, .png)"
+        },
+        "title": "Upload tech-info"
+      }
+    },
+    "register": {
+      "already_registered": "Already registered?",
+      "city": "City",
+      "country": "Country",
+      "email": "E-mail",
+      "first_name": "First name",
+      "itn": "Individual taxpayer number",
+      "last_name": "Last name",
+      "main_business": "Main business",
+      "middle_name": "Middle name",
+      "organization_name": "Name of the organization",
+      "password": "Password",
+      "password_confirmation": "Confirm your password",
+      "phone": "Phone",
+      "please_register": "Please register",
+      "postcode": "Postcode",
+      "register": "Register"
+    },
+    "selections": {
+      "back": {
+        "to_project": "Back to project",
+        "to_selections_dashboard": "Back to selections dashboard"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "Back to project",
+          "to_projects": "Back to projects"
+        },
+        "double_analogy": "Double pump selection by analogy",
+        "double_prefs": "Double pump selection by preferences",
+        "fire_station_analogy": "Fire extinguishing pumping station selection by analogy",
+        "fire_station_prefs": "Fire extinguishing pumping station selection by preferences",
+        "preferences": {
+          "pump": {
+            "borehole": "Borehole pump selection",
+            "double": "Double pump selection",
+            "drainage": "Drainage pump selection",
+            "single": "Single pump selection"
+          },
+          "station": {
+            "fire": "Fire extinguishing pumping station selection",
+            "water": "Water supply pumping station selection"
+          }
+        },
+        "single_analogy": "Single pump selection by analogy",
+        "single_prefs": "Single pump selection by preferences",
+        "subtitle": "Choose selection type",
+        "title": "Hydraulic selections",
+        "water_station_analogy": "Watter supply pumping station selection by analogy",
+        "water_station_prefs": "Watter supply pumping station selection by preferences",
+        "404": {
+          "back": "Back to projects",
+          "subtitle": "Please contact the administrator",
+          "title": "Sorry, you don't have access to any of selection types"
+        }
+      },
+      "double_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "title_new": "Double pump selection by preferences",
+        "title_show": "Viewing the double pump selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection",
+        "work_scheme": "Work scheme"
+      },
+      "single_pump": {
+        "add": "Add to project",
+        "additional_filters": {
+          "apply": "Apply",
+          "button": "More filters",
+          "checkbox": "Use additional filters",
+          "title": "Additional filters"
+        },
+        "applications": {
+          "label": "Applications",
+          "tooltip": "The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)"
+        },
+        "backup_pumps_count": "Reserve pumps count",
+        "brands": "Brands",
+        "condition": "Condition",
+        "connection_type": "Connection type",
+        "consumption": "Volume flow, m\xB3/h",
+        "deviation": "Head reserve, %",
+        "deviation_tooltip": "Positive value - reserve, negative - deviation",
+        "dn_input": "Suction side DN",
+        "dn_input_limit": "Limiting the suction side DN",
+        "dn_output": "Pressure side DN",
+        "dn_output_limit": "Limiting the pressure side DN",
+        "exit": "Exit",
+        "export": {
+          "button": "Export",
+          "print": {
+            "electric_diagram": "Print pump electric diagram",
+            "exploded_view": "Print pump exploded view",
+            "pump_image": "Print pump image",
+            "sizes_image": "Print pump sizes"
+          },
+          "title": "Export selection"
+        },
+        "fluid_temp": "Fluid temperature, \xB0C",
+        "graphic": {
+          "export": "Export",
+          "info": "Pump info"
+        },
+        "grouping": "Grouping by brands",
+        "hide_icons": "Hide icons",
+        "main_pumps_count": "Main pumps count",
+        "phase": "Mains connection",
+        "power": "Power, kW",
+        "power_adjustments": "Power adjustments",
+        "power_limit": "Limiting the pump power",
+        "pressure": "Delivery head, m",
+        "ptp_length": "Port-to-port length",
+        "ptp_length_limit": "Limiting the port-to-port length",
+        "pump_info": {
+          "curves": "Curve(s)",
+          "electric_diagram": "Electric diagram",
+          "exploded_view": "Exploded view",
+          "files": "Files",
+          "model_picture": "Model picture",
+          "props": "Product properties",
+          "sizes_picture": "Sizes"
+        },
+        "range": {
+          "custom": {
+            "label": "Custom range",
+            "value": "Custom"
+          },
+          "label": "Range"
+        },
+        "select": "Select",
+        "selected_pump": "Selected pump: ",
+        "table": {
+          "discounted_price": "Discounted price",
+          "dn_input": "Suction side DN",
+          "dn_output": "Pressure side DN",
+          "name": "Name",
+          "part_num": "Article number",
+          "power": "P, kW",
+          "ptp_length": "Port-to-port length, mm",
+          "retail_price": "Retail price",
+          "title": "Selected pumps",
+          "total_discounted_price": "Total discounted price",
+          "total_power": "P total, kW",
+          "total_retail_price": "Total retail price"
+        },
+        "temp_tooltip": {
+          "orange": "Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected",
+          "red": "Red - the series isn't suitable for the selected temperature"
+        },
+        "title_new": "Single pump selection by preferences",
+        "title_show": "Viewing the selection",
+        "types": {
+          "label": "Types",
+          "tooltip": "The presence of all the selected types for the series is checked!"
+        },
+        "update": "Update selection"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "created_at": "Created at",
+          "reset": "Reset",
+          "search": "Project or client organization name",
+          "selections_count": "Amount of selections",
+          "total_selections_price": "Total selections price"
+        },
+        "full_title": "Statistics by projects",
+        "table": {
+          "city": "City",
+          "comment": "Comment",
+          "country": "Country",
+          "created_at": "Created at",
+          "delivery_status": "Delivery status",
+          "name": "Name",
+          "retail_price": "Retail price",
+          "selections_count": "Selections count",
+          "status": "Status",
+          "user_business": "Client business",
+          "user_full_name": "Client full name",
+          "user_organization_name": "Client organization name"
+        },
+        "title": "By projects"
+      },
+      "title": "Statistics",
+      "users": {
+        "filters": {
+          "apply": "Apply",
+          "condition": "Condition",
+          "last_login_at": "Last activity date",
+          "projects_count": "Amount of projects",
+          "reset": "Reset",
+          "search": "Full name or organization name",
+          "total_projects_price": "Total projects price"
+        },
+        "full_title": "Statistics by users",
+        "table": {
+          "avg_projects_price": "Average projects price",
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "full_name": "Full name",
+          "last_login_at": "Last logged in at",
+          "organization_name": "Organization name",
+          "projects_count": "Amount of projects",
+          "total_projects_price": "Total projects price"
+        },
+        "title": "By users"
+      }
+    },
+    "users": {
+      "back": "Back to users",
+      "create": {
+        "button": "Create",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "email_verified": "Email confirmed",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "password": "Password",
+          "password_confirmation": "Confirm your password",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Create user"
+      },
+      "edit": {
+        "button": "Update",
+        "form": {
+          "available_selection_types": "Available selection types",
+          "available_series": "Available series",
+          "city": "City",
+          "country": "Country",
+          "email": "E-mail",
+          "first_name": "First name",
+          "is_active": "Is active",
+          "itn": "Individual taxpayer number",
+          "last_name": "Last name",
+          "main_business": "Main business",
+          "middle_name": "Middle name",
+          "organization_name": "Name of the organization",
+          "phone": "Phone",
+          "postcode": "Postcode"
+        },
+        "title": "Edit user"
+      },
+      "index": {
+        "button": "New user",
+        "restore": {
+          "button": "Restore",
+          "title": "Restore user?"
+        },
+        "search": {
+          "placeholder": "Search by full name and organization "
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "Analytics"
+          },
+          "discounts": {
+            "tab": "Producer's discounts"
+          },
+          "projects": {
+            "tab": "Projects"
+          }
+        },
+        "table": {
+          "business": "Main business",
+          "city": "City",
+          "country": "Country",
+          "created_at": "Created at",
+          "email": "E-mail",
+          "full_name": "Full name",
+          "is_active": "Is active",
+          "organization_name": "Name of the organization",
+          "phone": "Phone"
+        }
+      },
+      "title": "Users"
+    }
+  },
+  "en.pagination": {
+    "next": "Next &raquo;",
+    "previous": "&laquo; Previous"
+  },
+  "en.passwords": {
+    "reset": "Your password has been reset!",
+    "sent": "We have emailed your password reset link!",
+    "throttled": "Please wait before retrying.",
+    "token": "This password reset token is invalid.",
+    "user": "We can't find a user with that email address."
+  },
+  "en.tooltips": {
+    "clone": "Clone",
+    "delete": "Delete",
+    "detail": "Detail",
+    "edit": "Edit",
+    "export": "Export",
+    "popconfirm": {
+      "no": "No",
+      "yes": "Yes"
+    },
+    "print": "Print",
+    "save": "Save",
+    "statistics": "Statistics",
+    "view": "View"
+  },
+  "en.validation": {
+    "accepted": "The :attribute must be accepted.",
+    "accepted_if": "The :attribute must be accepted when :other is :value.",
+    "active_url": "The :attribute is not a valid URL.",
+    "after": "The :attribute must be a date after :date.",
+    "after_or_equal": "The :attribute must be a date after or equal to :date.",
+    "alpha": "The :attribute must only contain letters.",
+    "alpha_dash": "The :attribute must only contain letters, numbers, dashes and underscores.",
+    "alpha_num": "The :attribute must only contain letters and numbers.",
+    "array": "The :attribute must be an array.",
+    "attributes": {
+      "address": "Address",
+      "age": "Age",
+      "available": "Available",
+      "city": "City",
+      "content": "Content",
+      "country": "Country",
+      "date": "Date",
+      "day": "Day",
+      "description": "Description",
+      "email": "e-mail",
+      "excerpt": "Excerpt",
+      "first_name": "First name",
+      "gender": "Gender",
+      "hour": "Hour",
+      "import": {
+        "price_lists": {
+          "article_num_main": "Main article number",
+          "country": "Country",
+          "currency": "Currency",
+          "price": "Price"
+        },
+        "pump_series": {
+          "applications": "Applications",
+          "brand": "Brand",
+          "category": "Category",
+          "icon": "Icon image",
+          "is_discontinued": "Is discontinued",
+          "name": "Name",
+          "power_adjustment": "El power adjustment",
+          "types": "Types"
+        },
+        "pumps": {
+          "applications": "Applications",
+          "article_num_archive": "Archive article number",
+          "article_num_main": "Main article number",
+          "article_num_reserve": "Reserve article number",
+          "brand": "Brand",
+          "category": "Category",
+          "connection_type": "Connection type",
+          "currency": "Currency",
+          "description": "Description",
+          "dn_pressure": "Pressure side DN",
+          "dn_suction": "Suction side DN",
+          "dp_peak_performance": "Peak hydraulic performance",
+          "dp_standby_performance": "Standby hydraulic performance",
+          "fluid_temp_max": "Min. fluid temp",
+          "fluid_temp_min": "Max. fluid temp",
+          "is_discontinued": "Is discontinued",
+          "mains_connection": "Mains connection",
+          "name": "Name",
+          "power_adjustment": "El. power adjustment",
+          "price": "Price",
+          "ptp_length": "Port-to-port length",
+          "pump_cross_sectional_drawing_image": "Pump cross sectional drawing image",
+          "pump_electric_diagram_image": "Pump electric diagram image",
+          "pump_files": "Pump files",
+          "pump_image": "Pump image",
+          "pump_sizes_image": "Pump sizes image",
+          "rated_current": "Rated current",
+          "rated_power": "Rated power",
+          "series": "Series",
+          "sp_performance": "Hydraulic performance",
+          "types": "Types",
+          "weight": "Weight"
+        }
+      },
+      "itn": "ITN",
+      "last_name": "Last name",
+      "middle_name": "Middle name",
+      "minute": "Minute",
+      "mobile": "Mobile",
+      "month": "Month",
+      "name": "Name",
+      "password": "Password",
+      "password_confirmation": "Password confirmation",
+      "phone": "Phone",
+      "price_lists": "Price lists",
+      "pumps": "Pumps",
+      "second": "Second",
+      "sex": "Sex",
+      "size": "Size",
+      "time": "Time",
+      "title": "Title",
+      "username": "Username",
+      "year": "Year"
+    },
+    "before": "The :attribute must be a date before :date.",
+    "before_or_equal": "The :attribute must be a date before or equal to :date.",
+    "between": {
+      "array": "The :attribute must have between :min and :max items.",
+      "file": "The :attribute must be between :min and :max kilobytes.",
+      "numeric": "The :attribute must be between :min and :max.",
+      "string": "The :attribute must be between :min and :max characters."
+    },
+    "boolean": "The :attribute field must be true or false.",
+    "confirmed": "The :attribute confirmation does not match.",
+    "current_password": "The password is incorrect.",
+    "custom": {
+      "city": {
+        "correct": "Choose a correct city for area"
+      }
+    },
+    "date": "The :attribute is not a valid date.",
+    "date_equals": "The :attribute must be a date equal to :date.",
+    "date_format": "The :attribute does not match the format :format.",
+    "different": "The :attribute and :other must be different.",
+    "digits": "The :attribute must be :digits digits.",
+    "digits_between": "The :attribute must be between :min and :max digits.",
+    "dimensions": "The :attribute has invalid image dimensions.",
+    "distinct": "The :attribute field has a duplicate value.",
+    "email": "The :attribute must be a valid email address.",
+    "ends_with": "The :attribute must end with one of the following: :values.",
+    "exists": "The selected :attribute is invalid.",
+    "file": "The :attribute must be a file.",
+    "filled": "The :attribute field must have a value.",
+    "gt": {
+      "array": "The :attribute must have more than :value items.",
+      "file": "The :attribute must be greater than :value kilobytes.",
+      "numeric": "The :attribute must be greater than :value.",
+      "string": "The :attribute must be greater than :value characters."
+    },
+    "gte": {
+      "array": "The :attribute must have :value items or more.",
+      "file": "The :attribute must be greater than or equal :value kilobytes.",
+      "numeric": "The :attribute must be greater than or equal :value.",
+      "string": "The :attribute must be greater than or equal :value characters."
+    },
+    "image": "The :attribute must be an image.",
+    "import": {
+      "exception": ":attribute weren't fully uploaded. Reload the page and try again",
+      "in_array": "The :attribute is invalid. Not found in database",
+      "in_array_complex": "The :attribute is invalid. Follow ids dont exist in database",
+      "sheet_name": {
+        "brand": "Brand in list name doesn't exist",
+        "series": "Series in list name doesn't exist"
+      }
+    },
+    "in": "The selected :attribute is invalid.",
+    "in_array": "The :attribute field does not exist in :other.",
+    "integer": "The :attribute must be an integer.",
+    "ip": "The :attribute must be a valid IP address.",
+    "ipv4": "The :attribute must be a valid IPv4 address.",
+    "ipv6": "The :attribute must be a valid IPv6 address.",
+    "json": "The :attribute must be a valid JSON string.",
+    "lt": {
+      "array": "The :attribute must have less than :value items.",
+      "file": "The :attribute must be less than :value kilobytes.",
+      "numeric": "The :attribute must be less than :value.",
+      "string": "The :attribute must be less than :value characters."
+    },
+    "lte": {
+      "array": "The :attribute must not have more than :value items.",
+      "file": "The :attribute must be less than or equal :value kilobytes.",
+      "numeric": "The :attribute must be less than or equal :value.",
+      "string": "The :attribute must be less than or equal :value characters."
+    },
+    "max": {
+      "array": "The :attribute must not have more than :max items.",
+      "file": "The :attribute must not be greater than :max kilobytes.",
+      "numeric": "The :attribute must not be greater than :max.",
+      "string": "The :attribute must not be greater than :max characters."
+    },
+    "mimes": "The :attribute must be a file of type: :values.",
+    "mimetypes": "The :attribute must be a file of type: :values.",
+    "min": {
+      "array": "The :attribute must have at least :min items.",
+      "file": "The :attribute must be at least :min kilobytes.",
+      "numeric": "The :attribute must be at least :min.",
+      "string": "The :attribute must be at least :min characters."
+    },
+    "multiple_of": "The :attribute must be a multiple of :value.",
+    "not_in": "The selected :attribute is invalid.",
+    "not_regex": "The :attribute format is invalid.",
+    "numeric": "The :attribute must be a number.",
+    "password": "The password is incorrect.",
+    "present": "The :attribute field must be present.",
+    "prohibited": "The :attribute field is prohibited.",
+    "prohibited_if": "The :attribute field is prohibited when :other is :value.",
+    "prohibited_unless": "The :attribute field is prohibited unless :other is in :values.",
+    "regex": "The :attribute format is invalid.",
+    "required": "The :attribute field is required.",
+    "required_if": "The :attribute field is required when :other is :value.",
+    "required_unless": "The :attribute field is required unless :other is in :values.",
+    "required_with": "The :attribute field is required when :values is present.",
+    "required_with_all": "The :attribute field is required when :values are present.",
+    "required_without": "The :attribute field is required when :values is not present.",
+    "required_without_all": "The :attribute field is required when none of :values are present.",
+    "same": "The :attribute and :other must match.",
+    "size": {
+      "array": "The :attribute must contain :size items.",
+      "file": "The :attribute must be :size kilobytes.",
+      "numeric": "The :attribute must be :size.",
+      "string": "The :attribute must be :size characters."
+    },
+    "starts_with": "The :attribute must start with one of the following: :values.",
+    "string": "The :attribute must be a string.",
+    "timezone": "The :attribute must be a valid timezone.",
+    "unique": "The :attribute has already been taken.",
+    "uploaded": "The :attribute failed to upload.",
+    "url": "The :attribute must be a valid URL.",
+    "uuid": "The :attribute must be a valid UUID."
+  },
+  "ru.auth": {
+    "failed": "\u041D\u0435\u0432\u0435\u0440\u043D\u043E\u0435 \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "throttle": "\u0421\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u043D\u043E\u0433\u043E \u043F\u043E\u043F\u044B\u0442\u043E\u043A \u0432\u0445\u043E\u0434\u0430. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437 \u0447\u0435\u0440\u0435\u0437 :seconds \u0441\u0435\u043A\u0443\u043D\u0434."
+  },
+  "ru.flash": {
+    "email_verification": {
+      "sent_again": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 Email \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E ",
+      "verified": "Email \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D"
+    },
+    "price_lists": {
+      "imported": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "projects": {
+      "created": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0441\u043E\u0437\u0434\u0430\u043D",
+      "deleted": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "updated": "\u041F\u0440\u043E\u0435\u043A\u0442 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"
+    },
+    "pump_series": {
+      "imported": "\u0421\u0435\u0440\u0438\u0438 \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "pumps": {
+      "imported": "\u041D\u0430\u0441\u043E\u0441\u044B \u0431\u044B\u043B\u0438 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B"
+    },
+    "selections": {
+      "added": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+      "deleted": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0443\u0434\u0430\u043B\u0435\u043D",
+      "pumps_not_found": "\u041F\u043E \u0437\u0430\u0434\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E"
+    },
+    "users": {
+      "password_changed": "\u041F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0438\u0437\u043C\u0435\u043D\u0435\u043D",
+      "updated": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435 \u0431\u044B\u043B\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430"
+    }
+  },
+  "ru.graphic": {
+    "axis": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "head": "\u041D\u0430\u043F\u043E\u0440, \u043C"
+    },
+    "legend": {
+      "flow": "\u0420\u0430\u0441\u0445\u043E\u0434",
+      "head": "\u041D\u0430\u043F\u043E\u0440",
+      "intersection_point": "\u0422\u043E\u0447\u043A\u0430 \u043F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u044F",
+      "working_point": "\u0420\u0430\u0431\u043E\u0447\u0430\u044F \u0442\u043E\u0447\u043A\u0430"
+    }
+  },
+  "ru.messages": {
+    "function_development": "\u0424\u0443\u043D\u043A\u0446\u0438\u044F \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435",
+    "selections": {
+      "no_series_selected": "\u041D\u0435 \u0432\u044B\u0431\u0440\u0430\u043D\u0430 \u043D\u0438 \u043E\u0434\u043D\u0430 \u0441\u0435\u0440\u0438\u044F",
+      "notification": {
+        "attention": "\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435",
+        "description": {
+          "applications": "\u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "power_adjustment": "\u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0442\u0438\u043F\u044B",
+          "1": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u0430\u044F \u0441\u0435\u0440\u0438\u044F",
+          "2": "\u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u043C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C \u0444\u0438\u043B\u044C\u0442\u0440\u0430:"
+        }
+      }
+    },
+    "service_development": "\u0421\u0435\u0440\u0432\u0438\u0441 \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u043A\u0435"
+  },
+  "ru.pages": {
+    "change_locale": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A",
+    "dashboard": {
+      "marketplace": "\u041C\u0430\u0440\u043A\u0435\u0442\u043F\u043B\u0435\u0439\u0441",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "select": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A",
+      "title": "\u0414\u0430\u0448\u0431\u043E\u0440\u0434"
+    },
+    "email_verification": {
+      "logout": "\u0412\u044B\u0439\u0442\u0438",
+      "send_again": "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0441\u0441\u044B\u043B\u043A\u0443 \u0435\u0449\u0435 \u0440\u0430\u0437",
+      "text1": "\u041F\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043C \u043F\u0440\u0438\u0441\u0442\u0443\u043F\u0438\u0442\u044C \u043A \u0440\u0430\u0431\u043E\u0442\u0435, \u043D\u0435 \u043C\u043E\u0433\u043B\u0438 \u0431\u044B \u0432\u044B \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C \u0441\u0432\u043E\u0439 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B, \u043F\u0435\u0440\u0435\u0439\u0434\u044F \u043F\u043E \u0441\u0441\u044B\u043B\u043A\u0435, \u043A\u043E\u0442\u043E\u0440\u0443\u044E \u043C\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0442\u043E \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u043B\u0438 \u0432\u0430\u043C \u043F\u043E \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u0435?",
+      "text2": "\u0415\u0441\u043B\u0438 \u0432\u044B \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0435 \u043F\u0438\u0441\u044C\u043C\u043E, \u043C\u044B \u0441 \u0440\u0430\u0434\u043E\u0441\u0442\u044C\u044E \u0432\u044B\u0448\u043B\u0435\u043C \u0432\u0430\u043C \u0434\u0440\u0443\u0433\u043E\u0435. \u0422\u0430\u043A\u0436\u0435 \u043D\u0430 \u0432\u0441\u044F\u043A\u0438\u0439 \u0441\u043B\u0443\u0447\u0430\u0439 \u043F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u0430\u043F\u043A\u0443 \"\u0421\u043F\u0430\u043C\"",
+      "thanks": "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0447\u0442\u043E \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043B\u0438\u0441\u044C"
+    },
+    "login": {
+      "email": "E-mail",
+      "login": "\u0412\u043E\u0439\u0442\u0438",
+      "not_registered": "\u0415\u0449\u0451 \u043D\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "welcome": "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C!"
+    },
+    "profile": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "discounts": {
+        "discount": "\u0421\u043A\u0438\u0434\u043A\u0430, %",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+      },
+      "index": {
+        "cards": {
+          "password": "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+          "user_info": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435"
+        },
+        "change_password": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C",
+        "city": "\u0413\u043E\u0440\u043E\u0434",
+        "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+        "currency": {
+          "label": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "tooltip": "\u0412\u0430\u043B\u044E\u0442\u0430 \u0432\u043B\u0438\u044F\u0435\u0442 \u043D\u0430 ..."
+        },
+        "current_password": "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "email": "E-mail",
+        "first_name": "\u0418\u043C\u044F",
+        "itn": "\u0418\u041D\u041D",
+        "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+        "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+        "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+        "new_password": "\u041D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "new_password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043D\u043E\u0432\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C",
+        "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+        "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+        "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+        "save_changes": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "tab": "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F"
+      },
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "title": "\u041F\u0440\u043E\u0444\u0438\u043B\u044C"
+    },
+    "projects": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+      },
+      "export": {
+        "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+        "choose_selections": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0431\u043E\u0440\u044B \u0434\u043B\u044F \u044D\u043A\u0441\u043F\u043E\u0440\u0442\u0430",
+        "m": "\u043C",
+        "m3h": "\u043C\xB3/\u0447",
+        "print": {
+          "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+          "personal_price": "\u0412\u044B\u0432\u043E\u0434 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_info": "\u0412\u044B\u0432\u043E\u0434 \u0442\u0435\u0445-\u0438\u043D\u0444\u043E",
+          "retail_price": "\u0412\u044B\u0432\u043E\u0434 \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u043E\u0439 \u0446\u0435\u043D\u044B",
+          "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+        },
+        "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u0440\u043E\u0435\u043A\u0442\u0430"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
+        "clone": {
+          "button": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+          "save_as": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u0430\u043A",
+          "title": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442"
+        },
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432 \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E"
+        },
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F",
+        "table": {
+          "count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        }
+      },
+      "show": {
+        "label": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?"
+        },
+        "save_button": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "selection": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "table": {
+          "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P\u2081, \u043A\u0412",
+          "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+          "price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "selected_pump": "\u041E\u0431\u043E\u0437\u043D. \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439"
+        }
+      },
+      "title": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B"
+    },
+    "pump_brands": {
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0431\u0440\u0435\u043D\u0434",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?"
+        },
+        "table": {
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0431\u0440\u0435\u043D\u0434?",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B"
+      }
+    },
+    "pump_series": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0441\u0435\u0440\u0438\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "image_path": "\u041F\u0443\u0442\u044C \u043A \u0438\u043A\u043E\u043D\u043A\u0435",
+          "is_discontinued": "\u0421\u043D\u044F\u0442\u0430 \u0441 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0435\u0440\u0438\u044E",
+        "create": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?"
+        },
+        "table": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "delete": "\u0412\u044B \u0442\u043E\u0447\u043D\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u044E?",
+          "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "title": "\u0411\u0440\u0435\u043D\u0434\u044B \u0438 \u0441\u0435\u0440\u0438\u0438",
+        "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0441\u0435\u0440\u0438\u0438",
+        "upload_images": {
+          "images": {
+            "icons": "\u0418\u043A\u043E\u043D\u043A\u0438",
+            "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441 300, .jpg, .jpeg, .png)"
+          },
+          "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F"
+        }
+      }
+    },
+    "pumps": {
+      "add_to_projects": {
+        "button": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B",
+        "choose": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B, \u0432 \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441",
+        "ok": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C",
+        "pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "title": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441 \u0432 \u043F\u0440\u043E\u0435\u043A\u0442\u044B"
+      },
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043D\u0430\u0441\u043E\u0441\u0430\u043C",
+      "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+      "data": {
+        "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+        "article_num_archive": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0430\u0440\u0445\u0438\u0432\u043D\u044B\u0439",
+        "article_num_main": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439",
+        "article_num_reserve": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439",
+        "brand": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u044C",
+        "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+        "connection": "\u0421\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+        "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+        "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A, \xB0C",
+        "is_discontinued": "\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
+        "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "price": "\u0426\u0435\u043D\u0430",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+        "rated_current": "\u0422\u043E\u043A, A",
+        "rated_power": "P, \u043A\u0412",
+        "series": "\u0421\u0435\u0440\u0438\u044F",
+        "types": "\u0422\u0438\u043F\u044B",
+        "weight": "\u041C\u0430\u0441\u0441\u0430, \u043A\u0433"
+      },
+      "errors_title": "\u041E\u0448\u0438\u0431\u043A\u0438 \u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438:",
+      "hydraulic_perf": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+      "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+      "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430",
+      "search": {
+        "button": "\u041F\u043E\u0438\u0441\u043A",
+        "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u043F\u043E \u0430\u0440\u0442\u0438\u043A\u0443\u043B\u0430\u043C\u0438 \u0438 \u0438\u043C\u0435\u043D\u0438"
+      },
+      "tabs": {
+        "double": "\u0421\u0434\u0432\u043E\u0435\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+        "single": "\u041E\u0434\u0438\u043D\u0430\u0440\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B"
+      },
+      "title": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "upload": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u044B",
+      "upload_price_lists": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "upload_tech_info": {
+        "files": {
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "title": "\u0424\u0430\u0439\u043B\u044B (\u043C\u0430\u043A\u0441. 300, .pdf)"
+        },
+        "images": {
+          "pump_cross_sectional_drawings": "\u0412\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagrams": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0441\u0445\u0435\u043C\u044B \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+          "pump_sizes": "\u0421\u0445\u0435\u043C\u044B \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432",
+          "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+          "title": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F (\u043C\u0430\u043A\u0441. 300, .jpg, .jpeg, .png)"
+        },
+        "title": "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0442\u0435\u0445-\u0438\u043D\u0444\u043E"
+      }
+    },
+    "register": {
+      "already_registered": "\u0423\u0436\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u044B?",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "email": "E-mail",
+      "first_name": "\u0418\u043C\u044F",
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+      "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+      "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+      "phone": "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D",
+      "please_register": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044C",
+      "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441",
+      "register": "\u0417\u0430\u0440\u0433\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
+    },
+    "selections": {
+      "back": {
+        "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "to_selections_dashboard": "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+      },
+      "dashboard": {
+        "back": {
+          "to_project": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+          "to_projects": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+        },
+        "double_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "double_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "fire_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "fire_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "preferences": {
+          "pump": {
+            "borehole": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u043A\u0432\u0430\u0436\u0438\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "double": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "drainage": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0434\u0440\u0435\u043D\u0430\u0436\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+            "single": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430"
+          },
+          "station": {
+            "fire": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F",
+            "water": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F"
+          }
+        },
+        "single_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "single_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u043C\u0435\u0442\u0440\u0430\u043C",
+        "subtitle": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0438\u043F \u043F\u043E\u0434\u0431\u043E\u0440\u0430",
+        "title": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
+        "water_station_analogy": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u0430\u043D\u0430\u043B\u043E\u0433\u0443",
+        "water_station_prefs": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u0432\u043E\u0434\u043E\u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0438\u044F \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "404": {
+          "back": "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+          "subtitle": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430 \u0441\u0432\u044F\u0436\u0438\u0442\u0435\u0441\u044C \u0441 \u0430\u0434\u043C\u0438\u043D\u0438\u0441\u0442\u0440\u0430\u0442\u043E\u0440\u043E\u043C",
+          "title": "\u0418\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0443 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 \u043D\u0438 \u043A \u043E\u0434\u043D\u043E\u043C\u0443 \u0442\u0438\u043F\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        }
+      },
+      "double_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439"
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u0441\u0434\u0432\u043E\u0435\u043D\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440",
+        "work_scheme": "\u0421\u0445\u0435\u043C\u0430 \u0440\u0430\u0431\u043E\u0442\u044B"
+      },
+      "single_pump": {
+        "add": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
+        "additional_filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "button": "\u0414\u043E\u043F.\u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "checkbox": "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0434\u043E\u043F. \u0444\u0438\u043B\u044C\u0442\u0440\u044B",
+          "title": "\u0414\u043E\u043F\u043E\u043B\u044C\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0435 \u0444\u0438\u043B\u044C\u0442\u0440\u044B"
+        },
+        "applications": {
+          "label": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u0439! (\u043D\u0430\u0441\u043E\u0441\u0430\u043C \u043D\u0430\u0437\u043D\u0430\u0447\u0435\u043D\u044B \u0442\u043E\u043B\u044C\u043A\u043E \u0440\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u043C \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F)\n"
+        },
+        "backup_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "brands": "\u0411\u0440\u0435\u043D\u0434\u044B",
+        "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+        "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+        "consumption": "\u0420\u0430\u0441\u0445\u043E\u0434, \u043C\xB3/\u0447",
+        "deviation": "\u0417\u0430\u043F\u0430\u0441 \u043D\u0430\u043F\u043E\u0440\u0430, %",
+        "deviation_tooltip": "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 - \u0437\u0430\u043F\u0430\u0441, \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u043E\u0435 - \u0434\u043E\u043F\u0443\u0441\u043A",
+        "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_input_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+        "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "dn_output_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+        "exit": "\u0412\u044B\u0439\u0442\u0438",
+        "export": {
+          "button": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "print": {
+            "electric_diagram": "\u0412\u044B\u0432\u043E\u0434 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F",
+            "exploded_view": "\u0412\u044B\u0432\u043E\u0434 \u0432\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u0438",
+            "pump_image": "\u0412\u044B\u0432\u043E\u0434 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F \u043D\u0430\u0441\u043E\u0441\u0430",
+            "sizes_image": "\u0412\u044B\u0432\u043E\u0434 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432"
+          },
+          "title": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043F\u043E\u0434\u0431\u043E\u0440\u0430"
+        },
+        "fluid_temp": "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u0436\u0438\u0434\u043A\u043E\u0441\u0442\u0438, \xB0C",
+        "graphic": {
+          "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+          "info": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430"
+        },
+        "grouping": "\u0413\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u043E \u0431\u0440\u0435\u043D\u0434\u0430\u043C",
+        "hide_icons": "\u0421\u043A\u0440\u044B\u0442\u044C \u0438\u043A\u043E\u043D\u043A\u0438",
+        "main_pumps_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u0441\u043D\u043E\u0432\u043D\u044B\u0445 \u043D\u0430\u0441\u043E\u0441\u043E\u0432",
+        "phase": "\u0424\u0430\u0437\u0430",
+        "power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C, \u043A\u0412",
+        "power_adjustments": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+        "power_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438 \u043D\u0430\u0441\u043E\u0441\u0430",
+        "pressure": "\u041D\u0430\u043F\u043E\u0440, \u043C",
+        "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+        "ptp_length_limit": "\u041E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u043E\u043D\u0442\u0430\u0436\u043D\u043E\u0439 \u0434\u043B\u0438\u043D\u044B",
+        "pump_info": {
+          "curves": "\u041A\u0440\u0438\u0432\u0430\u044F(\u044B\u0435)",
+          "electric_diagram": "\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0441\u0445\u0435\u043C\u0430",
+          "exploded_view": "\u0412\u0437\u0440\u044B\u0432 \u043C\u043E\u0434\u0435\u043B\u044C",
+          "files": "\u0424\u0430\u0439\u043B\u044B",
+          "model_picture": "\u041C\u043E\u0434\u0435\u043B\u044C",
+          "props": "\u0421\u0432\u043E\u0439\u0441\u0442\u0432\u0430 \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430",
+          "sizes_picture": "\u0420\u0430\u0437\u043C\u0435\u0440\u044B"
+        },
+        "range": {
+          "custom": {
+            "label": "\u041F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u044B\u0439 \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D",
+            "value": "\u041F\u0440\u043E\u0438\u0437\u0432."
+          },
+          "label": "\u0414\u0438\u0430\u043F\u0430\u0437\u043E\u043D"
+        },
+        "select": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C",
+        "selected_pump": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u043D\u0430\u0441\u043E\u0441: ",
+        "table": {
+          "discounted_price": "\u0426\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "dn_input": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dn_output": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "part_num": "\u0410\u0440\u0442\u0438\u043A\u0443\u043B",
+          "power": "P, \u043A\u0412",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430, \u043C\u043C",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430",
+          "title": "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u043D\u0430\u0441\u043E\u0441\u044B",
+          "total_discounted_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0446\u0435\u043D\u0430 \u0441\u043E \u0441\u043A\u0438\u0434\u043A\u043E\u0439",
+          "total_power": "P \u0438\u0442\u043E\u0433\u043E, \u043A\u0412",
+          "total_retail_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0440\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0446\u0435\u043D\u0430"
+        },
+        "temp_tooltip": {
+          "orange": "\u041E\u0440\u0430\u043D\u0436\u0435\u0432\u044B\u0439 - \u0442\u043E\u043B\u044C\u043A\u043E \u0447\u0430\u0441\u0442\u044C \u043D\u0430\u0441\u043E\u0441\u043E\u0432 \u0432 \u0441\u0435\u0440\u0438\u0438 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443, \u0438 \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u043D\u0438 \u0431\u0443\u0434\u0443\u0442 \u043F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u044B",
+          "red": "\u041A\u0440\u0430\u0441\u043D\u044B\u0439 - \u0441\u0435\u0440\u0438\u044F \u043D\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u043F\u043E\u0434 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u0443\u044E \u0442\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0443"
+        },
+        "title_new": "\u041F\u043E\u0434\u0431\u043E\u0440 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430 \u043F\u043E \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430\u043C",
+        "title_show": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u043F\u043E\u0434\u0431\u043E\u0440\u0430 \u043E\u0434\u0438\u043D\u0430\u0440\u043D\u043E\u0433\u043E \u043D\u0430\u0441\u043E\u0441\u0430",
+        "types": {
+          "label": "\u0422\u0438\u043F\u044B",
+          "tooltip": "\u0414\u043B\u044F \u0441\u0435\u0440\u0438\u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u0432\u0441\u0435\u0445 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0445 \u0442\u0438\u043F\u043E\u0432!"
+        },
+        "update": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440"
+      }
+    },
+    "statistics": {
+      "projects": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u0438\u043B\u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "total_selections_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u043A\u0430 \u043F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C",
+        "table": {
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "comment": "\u041A\u043E\u043C\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0439",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "delivery_status": "\u0421\u0442\u0430\u0442\u0443\u0441 \u043F\u043E\u0441\u0442\u0430\u0432\u043A\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "retail_price": "\u0420\u043E\u0437\u043D\u0438\u0447\u043D\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C",
+          "selections_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "status": "\u0421\u0442\u0430\u0442\u0443\u0441",
+          "user_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "user_full_name": "\u0424\u0418\u041E \u043A\u043B\u0438\u0435\u043D\u0442\u0430",
+          "user_organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438 \u043A\u043B\u0438\u0435\u043D\u0442\u0430"
+        },
+        "title": "\u041F\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u0430\u043C"
+      },
+      "title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+      "users": {
+        "filters": {
+          "apply": "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C",
+          "condition": "\u0423\u0441\u043B\u043E\u0432\u0438\u0435",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "reset": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C",
+          "search": "\u0424\u0418\u041E \u0438\u043B\u0438 \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "full_title": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430 \u043F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+        "table": {
+          "avg_projects_price": "\u0421\u0440\u0435\u0434\u043D\u044F\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "full_name": "\u0424\u0418\u041E",
+          "last_login_at": "\u0414\u0430\u0442\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u0438",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0430\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "projects_count": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432",
+          "total_projects_price": "\u0418\u0442\u043E\u0433\u043E\u0432\u0430\u044F \u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442\u043E\u0432"
+        },
+        "title": "\u041F\u043E \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C"
+      }
+    },
+    "users": {
+      "back": "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C",
+      "create": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "email_verified": "E-mail \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+          "password_confirmation": "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "edit": {
+        "button": "\u041E\u0431\u043D\u043E\u0432\u0438\u0442\u044C",
+        "form": {
+          "available_selection_types": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0442\u0438\u043F\u044B \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
+          "available_series": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0435\u0440\u0438\u0438",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "email": "E-mail",
+          "first_name": "\u0418\u043C\u044F",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u0435\u043D",
+          "itn": "\u0418\u041D\u041D",
+          "last_name": "\u041E\u0442\u0447\u0435\u0441\u0442\u0432\u043E",
+          "main_business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "middle_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+          "postcode": "\u0418\u043D\u0434\u0435\u043A\u0441"
+        },
+        "title": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+      },
+      "index": {
+        "button": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
+        "restore": {
+          "button": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C",
+          "title": "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F?"
+        },
+        "search": {
+          "placeholder": "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u0424\u0418\u041E \u0438 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438"
+        },
+        "statistics": {
+          "analytics": {
+            "tab": "\u0410\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          },
+          "discounts": {
+            "tab": "\u0421\u043A\u0438\u0434\u043A\u0438 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0435\u043B\u0435\u0439"
+          },
+          "projects": {
+            "tab": "\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F"
+          }
+        },
+        "table": {
+          "business": "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u0434\u0435\u044F\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C",
+          "city": "\u0413\u043E\u0440\u043E\u0434",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "created_at": "\u0414\u0430\u0442\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F",
+          "email": "E-mail",
+          "full_name": "\u0424\u0418\u041E",
+          "is_active": "\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439",
+          "organization_name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435 \u043E\u0440\u0433\u0430\u043D\u0438\u0437\u0430\u0446\u0438\u0438",
+          "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
+        }
+      },
+      "title": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0438"
+    }
+  },
+  "ru.pagination": {
+    "next": "\u0412\u043F\u0435\u0440\u0451\u0434 &raquo;",
+    "previous": "&laquo; \u041D\u0430\u0437\u0430\u0434"
+  },
+  "ru.passwords": {
+    "reset": "\u0412\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C \u0431\u044B\u043B \u0441\u0431\u0440\u043E\u0448\u0435\u043D!",
+    "sent": "\u0421\u0441\u044B\u043B\u043A\u0430 \u043D\u0430 \u0441\u0431\u0440\u043E\u0441 \u043F\u0430\u0440\u043E\u043B\u044F \u0431\u044B\u043B\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430!",
+    "throttled": "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u0434\u043E\u0436\u0434\u0438\u0442\u0435 \u043F\u0435\u0440\u0435\u0434 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u043E\u0439 \u043F\u043E\u043F\u044B\u0442\u043A\u043E\u0439.",
+    "token": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u043A\u043E\u0434 \u0441\u0431\u0440\u043E\u0441\u0430 \u043F\u0430\u0440\u043E\u043B\u044F.",
+    "user": "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043D\u0430\u0439\u0442\u0438 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441 \u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C."
+  },
+  "ru.tooltips": {
+    "clone": "\u041A\u043B\u043E\u043D\u0438\u0440\u043E\u0432\u0430\u0442\u044C",
+    "delete": "\u0423\u0434\u0430\u043B\u0438\u0442\u044C",
+    "detail": "\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435",
+    "edit": "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C",
+    "export": "\u042D\u043A\u0441\u043F\u043E\u0440\u0442",
+    "popconfirm": {
+      "no": "\u041D\u0435\u0442",
+      "yes": "\u0414\u0430"
+    },
+    "print": "\u041F\u0435\u0447\u0430\u0442\u044C",
+    "save": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C",
+    "statistics": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430",
+    "view": "\u041F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
+  },
+  "ru.validation": {
+    "accepted": "\u0412\u044B \u0434\u043E\u043B\u0436\u043D\u044B \u043F\u0440\u0438\u043D\u044F\u0442\u044C :attribute.",
+    "active_url": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u041F\u043E\u043B\u0435 :attribute \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432\u043E\u043C.",
+    "attributes": {
+      "address": "\u0410\u0434\u0440\u0435\u0441",
+      "age": "\u0412\u043E\u0437\u0440\u0430\u0441\u0442",
+      "available": "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u043E",
+      "city": "\u0413\u043E\u0440\u043E\u0434",
+      "content": "\u041A\u043E\u043D\u0442\u0435\u043D\u0442",
+      "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+      "date": "\u0414\u0430\u0442\u0430",
+      "day": "\u0414\u0435\u043D\u044C",
+      "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+      "email": "e-mail",
+      "excerpt": "\u0412\u044B\u0434\u0435\u0440\u0436\u043A\u0430",
+      "first_name": "\u0418\u043C\u044F",
+      "gender": "\u041F\u043E\u043B",
+      "hour": "\u0427\u0430\u0441",
+      "import": {
+        "price_lists": {
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "country": "\u0421\u0442\u0440\u0430\u043D\u0430",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "price": "\u0426\u0435\u043D\u0430"
+        },
+        "pump_series": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "icon": "\u0418\u043A\u043E\u043D\u043A\u0430",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0442\u0435",
+          "power_adjustment": "\u0412\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u043E\u0435 \u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435",
+          "types": "\u0422\u0438\u043F\u044B"
+        },
+        "pumps": {
+          "applications": "\u041F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F",
+          "article_num_archive": "\u0410\u0440\u0445\u0438\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_main": "\u041E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "article_num_reserve": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u044B\u0439 \u0430\u0440\u0442\u0438\u043A\u0443\u043B",
+          "brand": "\u0411\u0440\u0435\u043D\u0434",
+          "category": "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044F",
+          "connection_type": "\u0422\u0438\u043F \u0441\u043E\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u044F",
+          "currency": "\u0412\u0430\u043B\u044E\u0442\u0430",
+          "description": "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+          "dn_pressure": "\u0414\u0423 \u0432\u044B\u0445\u043E\u0434\u0430",
+          "dn_suction": "\u0414\u0423 \u0432\u0445\u043E\u0434\u0430",
+          "dp_peak_performance": "\u041F\u0438\u043A\u043E\u0432\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "dp_standby_performance": "\u0420\u0435\u0437\u0435\u0440\u0432\u043D\u0430\u044F \u0433\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "fluid_temp_max": "\u041C\u0430\u043A\u0441.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "fluid_temp_min": "\u041C\u0438\u043D.\u0442\u0435\u043C\u043F.\u0436\u0438\u0434\u043A.",
+          "is_discontinued": "\"\u041D\u0435 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0438\u0442\u0441\u044F\"",
+          "mains_connection": "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A \u0441\u0435\u0442\u0438",
+          "name": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+          "power_adjustment": "\u042D\u043B.\u0440\u0435\u0433\u0443\u043B\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438",
+          "price": "\u0426\u0435\u043D\u0430",
+          "ptp_length": "\u041C\u043E\u043D\u0442\u0430\u0436\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430",
+          "pump_cross_sectional_drawing_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0432\u0437\u0440\u044B\u0432-\u043C\u043E\u0434\u0435\u043B\u0438",
+          "pump_electric_diagram_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0441\u0445\u0435\u043C\u044B",
+          "pump_files": "\u0424\u0430\u0439\u043B\u044B",
+          "pump_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "pump_sizes_image": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432 \u043D\u0430\u0441\u043E\u0441\u0430",
+          "rated_current": "\u041D\u043E\u043C\u0438\u043D\u0430\u043B\u044C\u043D\u044B\u0439 \u0442\u043E\u043A",
+          "rated_power": "\u041C\u043E\u0449\u043D\u043E\u0441\u0442\u044C",
+          "series": "\u0421\u0435\u0440\u0438\u044F",
+          "sp_performance": "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0430",
+          "types": "\u0422\u0438\u043F\u044B",
+          "weight": "\u041C\u0430\u0441\u0441\u0430"
+        }
+      },
+      "itn": "\u0418\u041D\u041D",
+      "last_name": "\u0424\u0430\u043C\u0438\u043B\u0438\u044F",
+      "minute": "\u041C\u0438\u043D\u0443\u0442\u0430",
+      "mobile": "\u041C\u043E\u0431. \u043D\u043E\u043C\u0435\u0440",
+      "month": "\u041C\u0435\u0441\u044F\u0446",
+      "name": "\u0418\u043C\u044F",
+      "password": "\u041F\u0430\u0440\u043E\u043B\u044C",
+      "password_confirmation": "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435 \u043F\u0430\u0440\u043E\u043B\u044F",
+      "phone": "\u0422\u0435\u043B\u0435\u0444\u043E\u043D",
+      "price_lists": "\u041F\u0440\u0430\u0439\u0441-\u043B\u0438\u0441\u0442\u044B",
+      "pumps": "\u041D\u0430\u0441\u043E\u0441\u044B",
+      "second": "\u0421\u0435\u043A\u0443\u043D\u0434\u0430",
+      "sex": "\u041F\u043E\u043B",
+      "size": "\u0420\u0430\u0437\u043C\u0435\u0440",
+      "time": "\u0412\u0440\u0435\u043C\u044F",
+      "title": "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435",
+      "username": "\u041D\u0438\u043A\u043D\u0435\u0439\u043C",
+      "year": "\u0413\u043E\u0434"
+    },
+    "before": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0412 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u0430 \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "city": {
+        "correct": "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\u0449\u0438\u0439 \u0433\u043E\u0440\u043E\u0434 \u0438\u0437 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0439 \u043E\u0431\u043B\u0430\u0441\u0442\u0438"
+      }
+    },
+    "date": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0430\u0442\u043E\u0439 \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u041F\u043E\u043B\u044F :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0440\u0430\u0437\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F.",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F.",
+    "distinct": "\u041F\u043E\u043B\u0435 :attribute \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u043C \u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ends_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435\u043C.",
+    "import": {
+      "exception": ":attribute \u0431\u044B\u043B\u0438 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u044B \u043D\u0435 \u0434\u043E \u043A\u043E\u043D\u0446\u0430. \u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0438 \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0441\u043D\u043E\u0432\u0430",
+      "in_array": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u041D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "in_array_complex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435. \u0418\u0434\u0435\u043D\u0442\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0442 \u0432 \u0431\u0430\u0437\u0435 \u0434\u0430\u043D\u043D\u044B\u0445",
+      "sheet_name": {
+        "brand": "\u0411\u0440\u0435\u043D\u0434 \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D",
+        "series": "\u0421\u0435\u0440\u0438\u044F \u0432 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0438 \u043B\u0438\u0441\u0442\u0430 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u0430"
+      }
+    },
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u044B\u043C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "ip": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IP-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv4": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv4-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "ipv6": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C IPv6-\u0430\u0434\u0440\u0435\u0441\u043E\u043C.",
+    "json": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u0434\u043B\u044F :attribute \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E\u043C.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043F\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C.",
+    "regex": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041F\u043E\u043B\u0435 :attribute \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439 :attribute \u0438 :other \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0432 \u043F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "timezone": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u0447\u0430\u0441\u043E\u0432\u044B\u043C \u043F\u043E\u044F\u0441\u043E\u043C.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043F\u043E\u043B\u044F :attribute \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043F\u043E\u043B\u044F :attribute \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041F\u043E\u043B\u0435 :attribute \u0438\u043C\u0435\u0435\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u041F\u043E\u043B\u0435 :attribute \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u043C UUID."
+  },
+  "ru.validation-inline": {
+    "accepted": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043F\u0440\u0438\u043D\u044F\u0442\u043E.",
+    "active_url": "\u041D\u0435\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 URL.",
+    "after": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :date.",
+    "after_or_equal": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "alpha": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B.",
+    "alpha_dash": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B, \u0446\u0438\u0444\u0440\u044B, \u0434\u0435\u0444\u0438\u0441 \u0438 \u043D\u0438\u0436\u043D\u0435\u0435 \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u043D\u0438\u0435.",
+    "alpha_num": "\u0417\u0434\u0435\u0441\u044C \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0431\u0443\u043A\u0432\u044B \u0438 \u0446\u0438\u0444\u0440\u044B.",
+    "array": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0430\u0441\u0441\u0438\u0432.",
+    "before": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 :date.",
+    "before_or_equal": "\u0414\u0430\u0442\u0430 \u0437\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u043D\u044C\u0448\u0435 \u0438\u043B\u0438 \u0440\u0430\u0432\u043D\u044F\u0442\u044C\u0441\u044F :date.",
+    "between": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max."
+    },
+    "boolean": "\u041F\u043E\u043B\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0438\u043C\u0435\u0442\u044C \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043B\u043E\u0433\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u0442\u0438\u043F\u0430.",
+    "confirmed": "\u041D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0435\u0442 \u0441 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435\u043C.",
+    "custom": {
+      "attribute-name": {
+        "rule-name": "custom-message"
+      }
+    },
+    "date": "\u041D\u0435 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0434\u0430\u0442\u043E\u0439.",
+    "date_equals": "\u0414\u0430\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u043E\u0439 :date.",
+    "date_format": "\u041D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0444\u043E\u0440\u043C\u0430\u0442\u0443 :format.",
+    "different": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043E\u0442\u043B\u0438\u0447\u0430\u0442\u044C\u0441\u044F \u043E\u0442 :other",
+    "digits": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C :digits.",
+    "digits_between": "\u0414\u043B\u0438\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u043C\u0435\u0436\u0434\u0443 :min \u0438 :max.",
+    "dimensions": "\u0418\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0438\u043C\u0435\u0435\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B.",
+    "distinct": "\u041F\u043E\u043B\u0435 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u044F\u044E\u0449\u0435\u0435\u0441\u044F \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435.",
+    "email": "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u044B\u0439 \u0430\u0434\u0440\u0435\u0441 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C.",
+    "ends_with": "\u0414\u043E\u043B\u0436\u043D\u043E \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0442\u044C\u0441\u044F \u043E\u0434\u043D\u0438\u043C \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "exists": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u043E.",
+    "file": "\u0421\u043E\u0434\u0435\u0440\u0436\u0438\u043C\u043E\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B\u043E\u043C.",
+    "filled": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "gt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :value."
+    },
+    "gte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u0431\u043E\u043B\u044C\u0448\u0435."
+    },
+    "image": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435.",
+    "in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "in_array": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 :other.",
+    "integer": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u043E\u0435 \u0447\u0438\u0441\u043B\u043E.",
+    "ip": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IP-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv4": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv4-\u0430\u0434\u0440\u0435\u0441.",
+    "ipv6": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 IPv6-\u0430\u0434\u0440\u0435\u0441.",
+    "json": "\u0414\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C JSON \u0441\u0442\u0440\u043E\u043A\u043E\u0439.",
+    "lt": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435 :value."
+    },
+    "lte": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C :value \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430) \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C :value \u0438\u043B\u0438 \u043C\u0435\u043D\u044C\u0448\u0435."
+    },
+    "max": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 :max.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u043D\u0435 \u043C\u043E\u0436\u0435\u0442 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0442\u044C :max."
+    },
+    "mimes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "mimetypes": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0444\u0430\u0439\u043B \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0442\u0438\u043F\u043E\u0432: :values.",
+    "min": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043D\u0435 \u043C\u0435\u043D\u044C\u0448\u0435 :min."
+    },
+    "multiple_of": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043A\u0440\u0430\u0442\u043D\u044B\u043C :value",
+    "not_in": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u043E.",
+    "not_regex": "\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 \u043E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439.",
+    "numeric": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0447\u0438\u0441\u043B\u043E.",
+    "password": "\u041D\u0435\u0432\u0435\u0440\u043D\u044B\u0439 \u043F\u0430\u0440\u043E\u043B\u044C.",
+    "present": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C.",
+    "regex": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442.",
+    "required": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F.",
+    "required_if": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u0440\u0430\u0432\u043D\u043E :value.",
+    "required_unless": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :other \u043D\u0435 \u0440\u0430\u0432\u043D\u043E :values.",
+    "required_with": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_with_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "required_without_all": "\u041E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F, \u043A\u043E\u0433\u0434\u0430 \u043D\u0438 \u043E\u0434\u043D\u043E \u0438\u0437 :values \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E.",
+    "same": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u0442\u044C \u0441 :other.",
+    "size": {
+      "array": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "file": "\u0420\u0430\u0437\u043C\u0435\u0440 \u0444\u0430\u0439\u043B\u0430 \u0434\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u0435\u043D :size \u041A\u0438\u043B\u043E\u0431\u0430\u0439\u0442(\u0430).",
+      "numeric": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size.",
+      "string": "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432 \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0440\u0430\u0432\u043D\u044B\u043C :size."
+    },
+    "starts_with": "\u0417\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0434\u043E\u043B\u0436\u043D\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C\u0441\u044F \u0438\u0437 \u043E\u0434\u043D\u043E\u0433\u043E \u0438\u0437 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0439: :values",
+    "string": "\u0417\u0434\u0435\u0441\u044C \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C \u0441\u0442\u0440\u043E\u043A\u0430.",
+    "timezone": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u043F\u043E\u044F\u0441.",
+    "unique": "\u0422\u0430\u043A\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.",
+    "uploaded": "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C.",
+    "url": "\u041E\u0448\u0438\u0431\u043E\u0447\u043D\u044B\u0439 \u0444\u043E\u0440\u043C\u0430\u0442 URL.",
+    "uuid": "\u0414\u043E\u043B\u0436\u0435\u043D \u0431\u044B\u0442\u044C \u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 UUID."
+  }
 };
 
 /***/ }),
@@ -3948,6 +5959,7 @@ var GuestLayout = function GuestLayout(_ref) {
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
@@ -3958,12 +5970,711 @@ function t(t){return"object"==typeof t&&null!=t&&1===t.nodeType}function e(t,e){
 
 /***/ }),
 
+/***/ "./node_modules/lang.js/src/lang.js":
+/*!******************************************!*\
+  !*** ./node_modules/lang.js/src/lang.js ***!
+  \******************************************/
+/***/ (function(module, exports) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ *  Lang.js for Laravel localization in JavaScript.
+ *
+ *  @version 1.1.12
+ *  @license MIT https://github.com/rmariuzzo/Lang.js/blob/master/LICENSE
+ *  @site    https://github.com/rmariuzzo/Lang.js
+ *  @author  Rubens Mariuzzo <rubens@mariuzzo.com>
+ */
+
+(function(root, factory) {
+    'use strict';
+
+    if (true) {
+        // AMD support.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+		__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+		(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else {}
+
+}(this, function() {
+    'use strict';
+
+    function inferLocale() {
+        if (typeof document !== 'undefined' && document.documentElement) {
+            return document.documentElement.lang;
+        }
+    };
+
+    function convertNumber(str) {
+        if (str === '-Inf') {
+            return -Infinity;
+        } else if (str === '+Inf' || str === 'Inf' || str === '*') {
+            return Infinity;
+        }
+        return parseInt(str, 10);
+    }
+
+    // Derived from: https://github.com/symfony/translation/blob/460390765eb7bb9338a4a323b8a4e815a47541ba/Interval.php
+    var intervalRegexp = /^({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])$/;
+    var anyIntervalRegexp = /({\s*(\-?\d+(\.\d+)?[\s*,\s*\-?\d+(\.\d+)?]*)\s*})|([\[\]])\s*(-Inf|\*|\-?\d+(\.\d+)?)\s*,\s*(\+?Inf|\*|\-?\d+(\.\d+)?)\s*([\[\]])/;
+
+    // Default options //
+
+    var defaults = {
+        locale: 'en'/** The default locale if not set. */
+    };
+
+    // Constructor //
+
+    var Lang = function(options) {
+        options = options || {};
+        this.locale = options.locale || inferLocale() || defaults.locale;
+        this.fallback = options.fallback;
+        this.messages = options.messages;
+    };
+
+    // Methods //
+
+    /**
+     * Set messages source.
+     *
+     * @param messages {object} The messages source.
+     *
+     * @return void
+     */
+    Lang.prototype.setMessages = function(messages) {
+        this.messages = messages;
+    };
+
+    /**
+     * Get the current locale.
+     *
+     * @return {string} The current locale.
+     */
+    Lang.prototype.getLocale = function() {
+        return this.locale || this.fallback;
+    };
+
+    /**
+     * Set the current locale.
+     *
+     * @param locale {string} The locale to set.
+     *
+     * @return void
+     */
+    Lang.prototype.setLocale = function(locale) {
+        this.locale = locale;
+    };
+
+    /**
+     * Get the fallback locale being used.
+     *
+     * @return void
+     */
+    Lang.prototype.getFallback = function() {
+        return this.fallback;
+    };
+
+    /**
+     * Set the fallback locale being used.
+     *
+     * @param fallback {string} The fallback locale.
+     *
+     * @return void
+     */
+    Lang.prototype.setFallback = function(fallback) {
+        this.fallback = fallback;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {boolean} true if the given key is defined on the messages source, otherwise false.
+     */
+    Lang.prototype.has = function(key, locale) {
+        if (typeof key !== 'string' || !this.messages) {
+            return false;
+        }
+
+        return this._getMessage(key, locale) !== null;
+    };
+
+    /**
+     * Get a translation message.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.get = function(key, replacements, locale) {
+        if (!this.has(key, locale)) {
+            return key;
+        }
+
+        var message = this._getMessage(key, locale);
+        if (message === null) {
+            return key;
+        }
+
+        if (replacements) {
+            message = this._applyReplacements(message, replacements);
+        }
+
+        return message;
+    };
+
+    /**
+     * This method act as an alias to get() method.
+     *
+     * @param key {string} The key of the message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message, if not found the given key.
+     */
+    Lang.prototype.trans = function(key, replacements) {
+        return this.get(key, replacements);
+    };
+
+    /**
+     * Gets the plural or singular form of the message specified based on an integer value.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     * @param locale {string} The locale to use, if not passed use the default locale.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.choice = function(key, number, replacements, locale) {
+        // Set default values for parameters replace and locale
+        replacements = typeof replacements !== 'undefined'
+            ? replacements
+            : {};
+
+        // The count must be replaced if found in the message
+        replacements.count = number;
+
+        // Message to get the plural or singular
+        var message = this.get(key, replacements, locale);
+
+        // Check if message is not null or undefined
+        if (message === null || message === undefined) {
+            return message;
+        }
+
+        // Separate the plural from the singular, if any
+        var messageParts = message.split('|');
+
+        // Get the explicit rules, If any
+        var explicitRules = [];
+
+        for (var i = 0; i < messageParts.length; i++) {
+            messageParts[i] = messageParts[i].trim();
+
+            if (anyIntervalRegexp.test(messageParts[i])) {
+                var messageSpaceSplit = messageParts[i].split(/\s/);
+                explicitRules.push(messageSpaceSplit.shift());
+                messageParts[i] = messageSpaceSplit.join(' ');
+            }
+        }
+
+        // Check if there's only one message
+        if (messageParts.length === 1) {
+            // Nothing to do here
+            return message;
+        }
+
+        // Check the explicit rules
+        for (var j = 0; j < explicitRules.length; j++) {
+            if (this._testInterval(number, explicitRules[j])) {
+                return messageParts[j];
+            }
+        }
+
+        locale = locale || this._getLocale(key);
+        var pluralForm = this._getPluralForm(number, locale);
+
+        return messageParts[pluralForm];
+    };
+
+    /**
+     * This method act as an alias to choice() method.
+     *
+     * @param key {string} The key of the message.
+     * @param count {number} The number of elements.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The translation message according to an integer value.
+     */
+    Lang.prototype.transChoice = function(key, count, replacements) {
+        return this.choice(key, count, replacements);
+    };
+
+    /**
+     * Parse a message key into components.
+     *
+     * @param key {string} The message key to parse.
+     * @param key {string} The message locale to parse
+     * @return {object} A key object with source and entries properties.
+     */
+    Lang.prototype._parseKey = function(key, locale) {
+        if (typeof key !== 'string' || typeof locale !== 'string') {
+            return null;
+        }
+
+        var segments = key.split('.');
+        var source = segments[0].replace(/\//g, '.');
+
+        return {
+            source: locale + '.' + source,
+            sourceFallback: this.getFallback() + '.' + source,
+            entries: segments.slice(1)
+        };
+    };
+
+    /**
+     * Returns a translation message. Use `Lang.get()` method instead, this methods assumes the key exists.
+     *
+     * @param key {string} The key of the message.
+     * @param locale {string} The locale of the message
+     *
+     * @return {string} The translation message for the given key.
+     */
+    Lang.prototype._getMessage = function(key, locale) {
+        locale = locale || this.getLocale();
+        
+        key = this._parseKey(key, locale);
+
+        // Ensure message source exists.
+        if (this.messages[key.source] === undefined && this.messages[key.sourceFallback] === undefined) {
+            return null;
+        }
+
+        // Get message from default locale.
+        var message = this.messages[key.source];
+        var entries = key.entries.slice();
+        var subKey = entries.join('.');
+        message = message !== undefined ? this._getValueInKey(message, subKey) : undefined;
+
+
+        // Get message from fallback locale.
+        if (typeof message !== 'string' && this.messages[key.sourceFallback]) {
+            message = this.messages[key.sourceFallback];
+            entries = key.entries.slice();
+            subKey = '';
+            while (entries.length && message !== undefined) {
+                var subKey = !subKey ? entries.shift() : subKey.concat('.', entries.shift());
+                if (message[subKey]) {
+                    message = message[subKey]
+                    subKey = '';
+                }
+            }
+        }
+
+        if (typeof message !== 'string') {
+            return null;
+        }
+
+        return message;
+    };
+
+    Lang.prototype._getValueInKey = function(obj, str) {
+        // If the full key exists just return the value
+        if (typeof obj[str] === 'string') {
+            return obj[str]
+        }
+
+        str = str.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        str = str.replace(/^\./, '');           // strip a leading dot
+
+        var parts = str.split('.');
+
+        for (var i = 0, n = parts.length; i < n; ++i) {
+            var currentKey = parts.slice(0, i + 1).join('.');
+            var restOfTheKey = parts.slice(i + 1, parts.length).join('.')
+            
+            if (obj[currentKey]) {
+                return this._getValueInKey(obj[currentKey], restOfTheKey)
+            }
+        }
+
+        return obj;
+    };
+
+    /**
+     * Return the locale to be used between default and fallback.
+     * @param {String} key
+     * @return {String}
+     */
+    Lang.prototype._getLocale = function(key) {
+        key = this._parseKey(key, this.locale)
+        if (this.messages[key.source]) {
+            return this.locale;
+        }
+        if (this.messages[key.sourceFallback]) {
+            return this.fallback;
+        }
+        return null;
+    };
+
+    /**
+     * Find a message in a translation tree using both dotted keys and regular ones
+     *
+     * @param pathSegments {array} An array of path segments such as ['family', 'father']
+     * @param tree {object} The translation tree
+     */
+    Lang.prototype._findMessageInTree = function(pathSegments, tree) {
+        while (pathSegments.length && tree !== undefined) {
+            var dottedKey = pathSegments.join('.');
+            if (tree[dottedKey]) {
+                tree = tree[dottedKey];
+                break;
+            }
+
+            tree = tree[pathSegments.shift()]
+        }
+
+        return tree;
+    };
+
+    /**
+     * Sort replacement keys by length in descending order.
+     *
+     * @param a {string} Replacement key
+     * @param b {string} Sibling replacement key
+     * @return {number}
+     * @private
+     */
+    Lang.prototype._sortReplacementKeys = function(a, b) {
+        return b.length - a.length;
+    };
+
+    /**
+     * Apply replacements to a string message containing placeholders.
+     *
+     * @param message {string} The text message.
+     * @param replacements {object} The replacements to be done in the message.
+     *
+     * @return {string} The string message with replacements applied.
+     */
+    Lang.prototype._applyReplacements = function(message, replacements) {
+        var keys = Object.keys(replacements).sort(this._sortReplacementKeys);
+
+        keys.forEach(function(replace) {
+            message = message.replace(new RegExp(':' + replace, 'gi'), function (match) {
+                var value = replacements[replace];
+
+                // Capitalize all characters.
+                var allCaps = match === match.toUpperCase();
+                if (allCaps) {
+                    return value.toUpperCase();
+                }
+
+                // Capitalize first letter.
+                var firstCap = match === match.replace(/\w/i, function(letter) {
+                    return letter.toUpperCase();
+                });
+                if (firstCap) {
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                }
+
+                return value;
+            })
+        });
+        return message;
+    };
+
+    /**
+     * Checks if the given `count` is within the interval defined by the {string} `interval`
+     *
+     * @param  count     {int}    The amount of items.
+     * @param  interval  {string} The interval to be compared with the count.
+     * @return {boolean}          Returns true if count is within interval; false otherwise.
+     */
+    Lang.prototype._testInterval = function(count, interval) {
+        /**
+         * From the Symfony\Component\Translation\Interval Docs
+         *
+         * Tests if a given number belongs to a given math interval.
+         *
+         * An interval can represent a finite set of numbers:
+         *
+         *  {1,2,3,4}
+         *
+         * An interval can represent numbers between two numbers:
+         *
+         *  [1, +Inf]
+         *  ]-1,2[
+         *
+         * The left delimiter can be [ (inclusive) or ] (exclusive).
+         * The right delimiter can be [ (exclusive) or ] (inclusive).
+         * Beside numbers, you can use -Inf and +Inf for the infinite.
+         */
+
+        if (typeof interval !== 'string') {
+            throw 'Invalid interval: should be a string.';
+        }
+
+        interval = interval.trim();
+
+        var matches = interval.match(intervalRegexp);
+        if (!matches) {
+            throw 'Invalid interval: ' + interval;
+        }
+
+        if (matches[2]) {
+            var items = matches[2].split(',');
+            for (var i = 0; i < items.length; i++) {
+                if (parseInt(items[i], 10) === count) {
+                    return true;
+                }
+            }
+        } else {
+            // Remove falsy values.
+            matches = matches.filter(function(match) {
+                return !!match;
+            });
+
+            var leftDelimiter = matches[1];
+            var leftNumber = convertNumber(matches[2]);
+            if (leftNumber === Infinity) {
+                leftNumber = -Infinity;
+            }
+            var rightNumber = convertNumber(matches[3]);
+            var rightDelimiter = matches[4];
+
+            return (leftDelimiter === '[' ? count >= leftNumber : count > leftNumber)
+                && (rightDelimiter === ']' ? count <= rightNumber : count < rightNumber);
+        }
+
+        return false;
+    };
+
+    /**
+     * Returns the plural position to use for the given locale and number.
+     *
+     * The plural rules are derived from code of the Zend Framework (2010-09-25),
+     * which is subject to the new BSD license (http://framework.zend.com/license/new-bsd).
+     * Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+     *
+     * @param {Number} count
+     * @param {String} locale
+     * @return {Number}
+     */
+    Lang.prototype._getPluralForm = function(count, locale) {
+        switch (locale) {
+            case 'az':
+            case 'bo':
+            case 'dz':
+            case 'id':
+            case 'ja':
+            case 'jv':
+            case 'ka':
+            case 'km':
+            case 'kn':
+            case 'ko':
+            case 'ms':
+            case 'th':
+            case 'tr':
+            case 'vi':
+            case 'zh':
+                return 0;
+
+            case 'af':
+            case 'bn':
+            case 'bg':
+            case 'ca':
+            case 'da':
+            case 'de':
+            case 'el':
+            case 'en':
+            case 'eo':
+            case 'es':
+            case 'et':
+            case 'eu':
+            case 'fa':
+            case 'fi':
+            case 'fo':
+            case 'fur':
+            case 'fy':
+            case 'gl':
+            case 'gu':
+            case 'ha':
+            case 'he':
+            case 'hu':
+            case 'is':
+            case 'it':
+            case 'ku':
+            case 'lb':
+            case 'ml':
+            case 'mn':
+            case 'mr':
+            case 'nah':
+            case 'nb':
+            case 'ne':
+            case 'nl':
+            case 'nn':
+            case 'no':
+            case 'om':
+            case 'or':
+            case 'pa':
+            case 'pap':
+            case 'ps':
+            case 'pt':
+            case 'so':
+            case 'sq':
+            case 'sv':
+            case 'sw':
+            case 'ta':
+            case 'te':
+            case 'tk':
+            case 'ur':
+            case 'zu':
+                return (count == 1)
+                    ? 0
+                    : 1;
+
+            case 'am':
+            case 'bh':
+            case 'fil':
+            case 'fr':
+            case 'gun':
+            case 'hi':
+            case 'hy':
+            case 'ln':
+            case 'mg':
+            case 'nso':
+            case 'xbr':
+            case 'ti':
+            case 'wa':
+                return ((count === 0) || (count === 1))
+                    ? 0
+                    : 1;
+
+            case 'be':
+            case 'bs':
+            case 'hr':
+            case 'ru':
+            case 'sr':
+            case 'uk':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'cs':
+            case 'sk':
+                return (count == 1)
+                    ? 0
+                    : (((count >= 2) && (count <= 4))
+                        ? 1
+                        : 2);
+
+            case 'ga':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : 2);
+
+            case 'lt':
+                return ((count % 10 == 1) && (count % 100 != 11))
+                    ? 0
+                    : (((count % 10 >= 2) && ((count % 100 < 10) || (count % 100 >= 20)))
+                        ? 1
+                        : 2);
+
+            case 'sl':
+                return (count % 100 == 1)
+                    ? 0
+                    : ((count % 100 == 2)
+                        ? 1
+                        : (((count % 100 == 3) || (count % 100 == 4))
+                            ? 2
+                            : 3));
+
+            case 'mk':
+                return (count % 10 == 1)
+                    ? 0
+                    : 1;
+
+            case 'mt':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 1) && (count % 100 < 11)))
+                        ? 1
+                        : (((count % 100 > 10) && (count % 100 < 20))
+                            ? 2
+                            : 3));
+
+            case 'lv':
+                return (count === 0)
+                    ? 0
+                    : (((count % 10 == 1) && (count % 100 != 11))
+                        ? 1
+                        : 2);
+
+            case 'pl':
+                return (count == 1)
+                    ? 0
+                    : (((count % 10 >= 2) && (count % 10 <= 4) && ((count % 100 < 12) || (count % 100 > 14)))
+                        ? 1
+                        : 2);
+
+            case 'cy':
+                return (count == 1)
+                    ? 0
+                    : ((count == 2)
+                        ? 1
+                        : (((count == 8) || (count == 11))
+                            ? 2
+                            : 3));
+
+            case 'ro':
+                return (count == 1)
+                    ? 0
+                    : (((count === 0) || ((count % 100 > 0) && (count % 100 < 20)))
+                        ? 1
+                        : 2);
+
+            case 'ar':
+                return (count === 0)
+                    ? 0
+                    : ((count == 1)
+                        ? 1
+                        : ((count == 2)
+                            ? 2
+                            : (((count % 100 >= 3) && (count % 100 <= 10))
+                                ? 3
+                                : (((count % 100 >= 11) && (count % 100 <= 99))
+                                    ? 4
+                                    : 5))));
+
+            default:
+                return 0;
+        }
+    };
+
+    return Lang;
+
+}));
+
+
+/***/ }),
+
 /***/ "./node_modules/rc-select/es/OptGroup.js":
 /*!***********************************************!*\
   !*** ./node_modules/rc-select/es/OptGroup.js ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -3984,6 +6695,7 @@ OptGroup.isSelectOptGroup = true;
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4004,6 +6716,7 @@ Option.isSelectOption = true;
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4384,6 +7097,7 @@ RefOptionList.displayName = 'OptionList';
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4516,6 +7230,7 @@ Select.OptGroup = _OptGroup__WEBPACK_IMPORTED_MODULE_8__["default"];
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4664,6 +7379,7 @@ RefSelectTrigger.displayName = 'SelectTrigger';
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4786,6 +7502,7 @@ RefInput.displayName = 'Input';
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4994,6 +7711,7 @@ var SelectSelector = function SelectSelector(props) {
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5111,6 +7829,7 @@ var SingleSelector = function SingleSelector(props) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5307,6 +8026,7 @@ ForwardSelector.displayName = 'Selector';
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5365,6 +8085,7 @@ var TransBtn = function TransBtn(_ref) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ generateSelector)
@@ -6345,6 +9066,7 @@ function generateSelector(config) {
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useCacheDisplayValue)
@@ -6391,6 +9113,7 @@ function useCacheDisplayValue(values) {
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useCacheOptions)
@@ -6426,6 +9149,7 @@ function useCacheOptions(options) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useDelayReset)
@@ -6479,6 +9203,7 @@ function useDelayReset() {
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useLayoutEffect)
@@ -6511,6 +9236,7 @@ function useLayoutEffect(effect, deps) {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useLock)
@@ -6559,6 +9285,7 @@ function useLock() {
   \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useSelectTriggerControl)
@@ -6604,6 +9331,7 @@ function useSelectTriggerControl(elements, open, triggerOpen) {
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Option": () => (/* reexport safe */ _Option__WEBPACK_IMPORTED_MODULE_1__["default"]),
@@ -6627,6 +9355,7 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "INTERNAL_PROPS_MARK": () => (/* binding */ INTERNAL_PROPS_MARK)
@@ -6641,6 +9370,7 @@ var INTERNAL_PROPS_MARK = 'RC_SELECT_INTERNAL_PROPS_MARK';
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "toArray": () => (/* binding */ toArray),
@@ -6768,6 +9498,7 @@ function getUUID() {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "convertChildrenToData": () => (/* binding */ convertChildrenToData)
@@ -6833,6 +9564,7 @@ function convertChildrenToData(nodes) {
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "isPlatformMac": () => (/* binding */ isPlatformMac)
@@ -6850,6 +9582,7 @@ function isPlatformMac() {
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fillFieldNames": () => (/* binding */ fillFieldNames),
@@ -7173,6 +9906,7 @@ function fillOptionsWithMissingValue(options, value, optionLabelProp, labelInVal
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -7303,6 +10037,7 @@ function warningProps(props) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -7319,6 +10054,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -7360,6 +10096,7 @@ function AddButton(_ref, ref) {
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -7583,6 +10320,7 @@ function OperationNode(_ref, ref) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -7688,6 +10426,7 @@ function TabNode(_ref, ref) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -8236,6 +10975,7 @@ function TabNavList(props, ref) {
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TabPane)
@@ -8304,6 +11044,7 @@ function TabPane(_ref) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TabPanelList)
@@ -8359,6 +11100,7 @@ function TabPanelList(_ref) {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -8615,6 +11357,7 @@ ForwardTabs.TabPane = _TabPanelList_TabPane__WEBPACK_IMPORTED_MODULE_13__["defau
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useOffsets)
@@ -8669,6 +11412,7 @@ function useOffsets(tabs, tabSizes, holderScrollWidth) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useRaf),
@@ -8739,6 +11483,7 @@ function useRafState(defaultState) {
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useRefs)
@@ -8772,6 +11517,7 @@ function useRefs() {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useSyncState)
@@ -8809,6 +11555,7 @@ function useSyncState(defaultState, onChange) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useTouchMove)
@@ -8984,6 +11731,7 @@ function useTouchMove(ref, onOffset) {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useVisibleRange)
@@ -9066,6 +11814,7 @@ function useVisibleRange(tabOffsets, containerSize, tabContentNodeSize, addNodeS
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabPane": () => (/* reexport safe */ _TabPanelList_TabPane__WEBPACK_IMPORTED_MODULE_1__["default"]),
@@ -9086,6 +11835,7 @@ __webpack_require__.r(__webpack_exports__);
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ pickAttrs)
@@ -9146,6 +11896,7 @@ function pickAttrs(props) {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -9221,6 +11972,7 @@ Filler.displayName = 'Filler';
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Item": () => (/* binding */ Item)
@@ -9246,6 +11998,7 @@ function Item(_ref) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RawList": () => (/* binding */ RawList),
@@ -9634,6 +12387,7 @@ List.displayName = 'List';
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ScrollBar)
@@ -9927,6 +12681,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useChildren)
@@ -9959,6 +12714,7 @@ function useChildren(list, startIndex, endIndex, setNodeRef, renderFunc, _ref) {
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useDiffItem)
@@ -10011,6 +12767,7 @@ function useDiffItem(data, getKey, onDiff) {
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useFrameWheel)
@@ -10071,6 +12828,7 @@ function useFrameWheel(inVirtual, isScrollAtTop, isScrollAtBottom, onWheelDelta)
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useHeights)
@@ -10159,6 +12917,7 @@ function useHeights(getKey, onItemAdd, onItemRemove) {
   \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useMobileTouchMove)
@@ -10244,6 +13003,7 @@ function useMobileTouchMove(inVirtual, listRef, callback) {
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -10296,6 +13056,7 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useScrollTo)
@@ -10415,6 +13176,7 @@ function useScrollTo(containerRef, data, heights, itemHeight, getKey, collectHei
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -10431,6 +13193,7 @@ __webpack_require__.r(__webpack_exports__);
   \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -10475,6 +13238,7 @@ var CacheMap = /*#__PURE__*/function () {
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getIndexByStartLoc": () => (/* binding */ getIndexByStartLoc),
@@ -10579,6 +13343,7 @@ function findListDiffIndex(originList, targetList, getKey) {
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -10596,6 +13361,7 @@ var isFF = (typeof navigator === "undefined" ? "undefined" : _typeof(navigator))
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
