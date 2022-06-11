@@ -1,5 +1,3 @@
-# Pump Manager
+# BPE 2.0
 
-Intelligent pump selector
-
-[![pump-manager.ru](https://github.com/maxonfjvipon/pump-manager/actions/workflows/laravel.yml/badge.svg?branch=pump-manager.ru&event=workflow_run)](https://github.com/maxonfjvipon/pump-manager/actions/workflows/laravel.yml)
+Intelligent pump selector for BPE
