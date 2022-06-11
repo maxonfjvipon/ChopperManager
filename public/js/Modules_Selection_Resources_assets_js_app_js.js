@@ -9739,7 +9739,10 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     dataIndex: 'name'
   }, {
     title: "Себестоимость",
-    dataIndex: 'cost_price'
+    dataIndex: 'cost_price',
+    render: function render(_, record) {
+      return record.cost_price.toFixed(2).toLocaleString();
+    }
   }, {
     title: "Наценка, %",
     dataIndex: "extra_percentage",
@@ -9749,6 +9752,9 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
         precision: 2,
         min: 0
       }, inputProps(record)));
+    },
+    render: function render(_, record) {
+      return record.extra_percentage.toFixed(2).toLocaleString();
     }
   }, {
     title: "Наценка, сумма",
@@ -9759,10 +9765,16 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
         precision: 2,
         min: 0
       }, inputProps(record)));
+    },
+    render: function render(_, record) {
+      return record.extra_sum.toFixed(2).toLocaleString();
     }
   }, {
     title: "Цена в КП",
-    dataIndex: 'final_price'
+    dataIndex: 'final_price',
+    render: function render(_, record) {
+      return record.final_price.toFixed(2).toLocaleString();
+    }
   }, {
     title: "Комментарий",
     dataIndex: 'comment',
@@ -10453,10 +10465,10 @@ function WSAuto(_ref3) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              method = 'put';
-              _route = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.update', selection.id);
+              method = 'post';
+              _route = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.store', project_id);
 
-              if (!selection) {
+              if (selection) {
                 method = 'put';
                 _route = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.update', selection.id);
               }

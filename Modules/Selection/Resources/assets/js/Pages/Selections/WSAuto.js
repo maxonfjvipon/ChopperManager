@@ -111,10 +111,10 @@ export default function WSAuto({}) {
     }
 
     const saveAndCloseHandler = async () => {
-        let method = 'put'
-        let _route = route('selections.update', selection.id)
+        let method = 'post'
+        let _route = route('selections.store', project_id)
 
-        if (!selection) {
+        if (selection) {
             method = 'put'
             _route = route('selections.update', selection.id)
         }

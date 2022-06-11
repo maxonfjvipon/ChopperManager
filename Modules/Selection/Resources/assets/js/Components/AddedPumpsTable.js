@@ -27,23 +27,27 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
         },
         {
             title: "Себестоимость",
-            dataIndex: 'cost_price'
+            dataIndex: 'cost_price',
+            render: (_, record) => record.cost_price.toFixed(2).toLocaleString()
         },
         {
             title: "Наценка, %",
             dataIndex: "extra_percentage",
             editable: true,
-            input: record => <InputNum precision={2} min={0} {...inputProps(record)}/>
+            input: record => <InputNum precision={2} min={0} {...inputProps(record)}/>,
+            render: (_, record) => record.extra_percentage.toFixed(2).toLocaleString(),
         },
         {
             title: "Наценка, сумма",
             dataIndex: "extra_sum",
             editable: true,
-            input: record => <InputNum precision={2} min={0} {...inputProps(record)}/>
+            input: record => <InputNum precision={2} min={0} {...inputProps(record)}/>,
+            render: (_, record) => record.extra_sum.toFixed(2).toLocaleString()
         },
         {
             title: "Цена в КП",
             dataIndex: 'final_price',
+            render: (_, record) => record.final_price.toFixed(2).toLocaleString()
         },
         {
             title: "Комментарий",
