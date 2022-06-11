@@ -14,9 +14,17 @@ trait PumpStationRelationships
     /**
      * @return BelongsTo
      */
-    public function collector(): BelongsTo
+    public function input_collector(): BelongsTo
     {
-        return $this->belongsTo(Collector::class, 'collector_id');
+        return $this->belongsTo(Collector::class, 'input_collector_id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function output_collector(): BelongsTo
+    {
+        return $this->belongsTo(Collector::class, 'output_collector_id');
     }
 
     /**

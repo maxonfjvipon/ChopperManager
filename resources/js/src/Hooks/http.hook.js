@@ -7,7 +7,6 @@ export const useHttp = () => {
     const request = async (url, method = 'GET', body = null, headers = {}, auth = false) => {
         setLoading(true)
         let response, data
-        console.log(body)
         try {
             response = await axios.request({
                 url,

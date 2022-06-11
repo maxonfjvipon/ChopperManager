@@ -25,6 +25,7 @@ use Illuminate\Support\Collection;
  * @property string $pump_brand_ids
  * @property string $pump_series_ids
  * @property string $collectors
+ * @property string $comment
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at

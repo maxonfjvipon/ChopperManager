@@ -115,7 +115,6 @@ final class SelectedPumpsWSAuto implements Arrayable
                                                                         function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $rates) {
                                                                             return [
                                                                                 'key' => $key++,
-                                                                                'num' => $key,
                                                                                 'created_at' => date_format(now(), 'd.m.Y H:i'),
                                                                                 'name' => $name = (new TxtPumpStationName(
                                                                                     $controlSystem,

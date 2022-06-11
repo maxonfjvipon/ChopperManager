@@ -9795,7 +9795,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
           clickHandler: function clickHandler() {
             var stations = addedStations;
             var index = stations.findIndex(function (p) {
-              return p.key !== record.key;
+              return p.key === record.key;
             });
             stations.splice(index, 1);
             setAddedStations(_toConsumableArray(stations));
@@ -10198,13 +10198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ziggy-js/src/js */ "./node_modules/ziggy-js/src/js/index.js");
 /* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -10212,11 +10206,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -10229,6 +10229,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
 
 
@@ -10269,8 +10271,8 @@ var BackToSelectionsDashboardLink = function BackToSelectionsDashboardLink(_ref2
 };
 
 function WSAuto(_ref3) {
-  var _ref3$title = _ref3.title,
-      title = _ref3$title === void 0 ? "Hello" : _ref3$title;
+  _objectDestructuringEmpty(_ref3);
+
   var rememberedForm = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('selection_form'); // HOOKS
 
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props,
@@ -10288,8 +10290,9 @@ function WSAuto(_ref3) {
       postRequest = _useHttp.postRequest;
 
   var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_18__.useCheck)(),
-      isArrayEmpty = _useCheck.isArrayEmpty; // STATE
+      isArrayEmpty = _useCheck.isArrayEmpty;
 
+  console.log(selection); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.brands_with_series_with_pumps),
       _useState2 = _slicedToArray(_useState, 2),
@@ -10306,12 +10309,12 @@ function WSAuto(_ref3) {
       pumpsToShow = _useState6[0],
       setPumpsToShow = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_brand_ids) || []),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_brand_ids) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_brand_ids) || []),
       _useState8 = _slicedToArray(_useState7, 2),
       brandsValue = _useState8[0],
       setBrandsValue = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_series_ids) || []),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_series_ids) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.pump_series_ids) || []),
       _useState10 = _slicedToArray(_useState9, 2),
       seriesValue = _useState10[0],
       setSeriesValue = _useState10[1];
@@ -10336,7 +10339,9 @@ function WSAuto(_ref3) {
       chosenSelectedPumps = _useState18[0],
       setChosenSelectedPumps = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
+    return station.key;
+  }))) + 1 : 1),
       _useState20 = _slicedToArray(_useState19, 2),
       addedStationKey = _useState20[0],
       setAddedStationKey = _useState20[1];
@@ -10369,77 +10374,58 @@ function WSAuto(_ref3) {
     collectors: "Коллекторы",
     select: "Подобрать",
     comment: "Комментарий"
-  };
+  }; // HANDLERS
 
-  var showPumpInfo = /*#__PURE__*/function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(event) {
+  var makeSelectionHandler = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var body, selected_pumps;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function showPumpInfo(_x) {
-      return _ref4.apply(this, arguments);
-    };
-  }(); // HANDLERS
-
-
-  var makeSelectionHandler = /*#__PURE__*/function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var body, selected_pumps;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
               setStationToShow(null);
               if (!selection) setAddedStations([]);
-              _context2.t0 = _objectSpread;
-              _context2.t1 = _objectSpread;
-              _context2.t2 = {};
-              _context2.next = 7;
+              _context.t0 = _objectSpread;
+              _context.t1 = _objectSpread;
+              _context.t2 = {};
+              _context.next = 7;
               return selectionForm.validateFields();
 
             case 7:
-              _context2.t3 = _context2.sent;
-              _context2.t4 = (0, _context2.t1)(_context2.t2, _context2.t3);
-              _context2.t5 = {};
-              _context2.t6 = {
+              _context.t3 = _context.sent;
+              _context.t4 = (0, _context.t1)(_context.t2, _context.t3);
+              _context.t5 = {};
+              _context.t6 = {
                 station_type: 'WS',
                 // fixme
                 selection_type: 'Auto'
               };
-              body = (0, _context2.t0)(_context2.t4, _context2.t5, _context2.t6);
-              _context2.prev = 12;
-              _context2.next = 15;
+              body = (0, _context.t0)(_context.t4, _context.t5, _context.t6);
+              _context.prev = 12;
+              _context.next = 15;
               return postRequest((0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.select'), body, true);
 
             case 15:
-              selected_pumps = _context2.sent.selected_pumps;
+              selected_pumps = _context.sent.selected_pumps;
               setSelectedPumps(selected_pumps);
-              _context2.next = 22;
+              _context.next = 22;
               break;
 
             case 19:
-              _context2.prev = 19;
-              _context2.t7 = _context2["catch"](12);
-              console.log(_context2.t7);
+              _context.prev = 19;
+              _context.t7 = _context["catch"](12);
+              console.log(_context.t7);
 
             case 22:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[12, 19]]);
+      }, _callee, null, [[12, 19]]);
     }));
 
     return function makeSelectionHandler() {
-      return _ref5.apply(this, arguments);
+      return _ref4.apply(this, arguments);
     };
   }();
 
@@ -10457,7 +10443,74 @@ function WSAuto(_ref3) {
       setAddedStationKey(addedStationKey + 1);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.remember(selectionForm.getFieldsValue(true), "selection_form");
     };
-  }; // EFFECTS
+  };
+
+  var saveAndCloseHandler = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var method, _route;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              method = 'put';
+              _route = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.update', selection.id);
+
+              if (!selection) {
+                method = 'put';
+                _route = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.update', selection.id);
+              }
+
+              _context2.t0 = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia;
+              _context2.t1 = method;
+              _context2.t2 = _route;
+              _context2.t3 = _objectSpread;
+              _context2.t4 = _objectSpread;
+              _context2.t5 = {};
+              _context2.next = 11;
+              return selectionForm.validateFields();
+
+            case 11:
+              _context2.t6 = _context2.sent;
+              _context2.t7 = (0, _context2.t4)(_context2.t5, _context2.t6);
+              _context2.t8 = {};
+              _context2.t9 = {
+                station_type: 'WS',
+                selection_type: 'Auto',
+                added_stations: addedStations.map(function (station) {
+                  return {
+                    id: station.id || null,
+                    cost_price: station.cost_price,
+                    extra_percentage: station.extra_percentage,
+                    extra_sum: station.extra_sum,
+                    final_price: station.final_price,
+                    comment: station.comment,
+                    main_pumps_count: station.main_pumps_count,
+                    reserve_pumps_count: station.reserve_pumps_count,
+                    pump_id: station.pump_id,
+                    control_system_id: station.control_system_id,
+                    chassis_id: station.chassis_id,
+                    input_collector_id: station.input_collector_id,
+                    output_collector_id: station.output_collector_id
+                  };
+                })
+              };
+              _context2.t10 = (0, _context2.t3)(_context2.t7, _context2.t8, _context2.t9);
+
+              _context2.t0[_context2.t1].call(_context2.t0, _context2.t2, _context2.t10);
+
+            case 17:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function saveAndCloseHandler() {
+      return _ref5.apply(this, arguments);
+    };
+  }(); // EFFECTS
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -10465,33 +10518,23 @@ function WSAuto(_ref3) {
   }, [addedStations]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (stationToShow) {
-      var _chosenSelectedPumps$;
-
-      if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.num]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.curves) === undefined) {
-        try {
-          axios.request({
-            url: (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('pump_stations.curves'),
-            method: 'POST',
-            data: {
-              pump_id: stationToShow.pump_id,
-              head: stationToShow.head,
-              flow: stationToShow.flow,
-              reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
-              main_pumps_count: stationToShow.main_pumps_count || undefined
-            }
-          }).then(function (res) {
-            document.getElementById('curves').innerHTML = res.data.curves;
-            chosenSelectedPumps[stationToShow.num] = _objectSpread(_objectSpread({}, chosenSelectedPumps[stationToShow.num]), {}, {
-              curves: res.data.curves
-            });
-            setChosenSelectedPumps(chosenSelectedPumps);
-          });
-        } catch (e) {}
-      } else {
-        document.getElementById('curves').innerHTML = chosenSelectedPumps[stationToShow.num].curves;
+      try {
+        axios.request({
+          url: (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('pump_stations.curves'),
+          method: 'POST',
+          data: {
+            pump_id: stationToShow.pump_id,
+            head: stationToShow.head,
+            flow: stationToShow.flow,
+            reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
+            main_pumps_count: stationToShow.main_pumps_count || undefined
+          }
+        }).then(function (res) {
+          document.getElementById('curves').innerHTML = res.data.curves;
+        });
+      } catch (e) {
+        console.error(e);
       }
-    } else {
-      setChosenSelectedPumps({});
     }
   }, [stationToShow]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -10507,12 +10550,11 @@ function WSAuto(_ref3) {
   }, [brandsValue]); // RENDER
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
-    title: selection ? selection.selected_pump_name : title,
     extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToProjectLink, {
       project_id: project_id
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToSelectionsDashboardLink, {
+    }), !selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToSelectionsDashboardLink, {
       project_id: project_id
-    })],
+    })].filter(Boolean),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
       gutter: [16, 16],
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
@@ -10691,16 +10733,7 @@ function WSAuto(_ref3) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
           className: "flex-rounded-card",
           type: "inner",
-          title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name // extra={stationToShow && <Space>
-          //     <a onClick={e => {
-          //         e.preventDefault()
-          //         setExportDrawerVisible(true)
-          //     }}>{Lang.get('pages.selections.single_pump.graphic.export')}</a>}
-          //     <a onClick={showPumpInfo}>
-          //         {Lang.get('pages.selections.single_pump.graphic.info')}>>
-          //     </a>
-          // </Space>}
-          ,
+          title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("div", {
             id: "curves"
           })
@@ -10746,54 +10779,7 @@ function WSAuto(_ref3) {
               loading: loading,
               children: "\u0412\u044B\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-              onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-                  while (1) {
-                    switch (_context3.prev = _context3.next) {
-                      case 0:
-                        _context3.t0 = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia;
-                        _context3.t1 = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.store', project_id);
-                        _context3.t2 = _objectSpread;
-                        _context3.t3 = _objectSpread;
-                        _context3.t4 = {};
-                        _context3.next = 7;
-                        return selectionForm.validateFields();
-
-                      case 7:
-                        _context3.t5 = _context3.sent;
-                        _context3.t6 = (0, _context3.t3)(_context3.t4, _context3.t5);
-                        _context3.t7 = {};
-                        _context3.t8 = {
-                          station_type: 'WS',
-                          selection_type: 'Auto',
-                          added_stations: addedStations.map(function (station) {
-                            return {
-                              cost_price: station.cost_price,
-                              extra_percentage: station.extra_percentage,
-                              extra_sum: station.extra_sum,
-                              final_price: station.final_price,
-                              comment: station.comment,
-                              main_pumps_count: station.main_pumps_count,
-                              reserve_pumps_count: station.reserve_pumps_count,
-                              pump_id: station.pump_id,
-                              control_system_id: station.control_system_id,
-                              chassis_id: station.chassis_id,
-                              input_collector_id: station.input_collector_id,
-                              output_collector_id: station.output_collector_id
-                            };
-                          })
-                        };
-                        _context3.t9 = (0, _context3.t2)(_context3.t6, _context3.t7, _context3.t8);
-
-                        _context3.t0.post.call(_context3.t0, _context3.t1, _context3.t9);
-
-                      case 13:
-                      case "end":
-                        return _context3.stop();
-                    }
-                  }
-                }, _callee3);
-              })),
+              onClick: saveAndCloseHandler,
               loading: loading,
               disabled: isArrayEmpty(addedStations),
               children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0432\u044B\u0439\u0442\u0438"
@@ -10891,30 +10877,29 @@ var useHttp = function useHttp() {
               headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
               auth = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
               setLoading(true);
-              console.log(body);
-              _context.prev = 6;
-              _context.next = 9;
+              _context.prev = 5;
+              _context.next = 8;
               return axios.request({
                 url: url,
                 method: method,
                 data: body
               });
 
-            case 9:
+            case 8:
               response = _context.sent;
               data = response.data;
-              _context.next = 17;
+              _context.next = 16;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](6);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](5);
               setLoading(false);
               throw new Error(_context.t0);
 
-            case 17:
+            case 16:
               if (!(response.status === 419)) {
-                _context.next = 21;
+                _context.next = 20;
                 break;
               }
 
@@ -10922,9 +10907,9 @@ var useHttp = function useHttp() {
               antd__WEBPACK_IMPORTED_MODULE_2__["default"].info('Your session may be expired. Reload the page');
               throw new Error();
 
-            case 21:
+            case 20:
               if (!(response.statusText !== "OK")) {
-                _context.next = 25;
+                _context.next = 24;
                 break;
               }
 
@@ -10936,7 +10921,7 @@ var useHttp = function useHttp() {
 
               throw new Error();
 
-            case 25:
+            case 24:
               for (_key in data) {
                 if (antd__WEBPACK_IMPORTED_MODULE_2__["default"].hasOwnProperty(_key)) {
                   antd__WEBPACK_IMPORTED_MODULE_2__["default"][_key](data[_key]);
@@ -10946,12 +10931,12 @@ var useHttp = function useHttp() {
               setLoading(false);
               return _context.abrupt("return", data);
 
-            case 28:
+            case 27:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[6, 13]]);
+      }, _callee, null, [[5, 12]]);
     }));
 
     return function request(_x) {

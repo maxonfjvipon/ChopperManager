@@ -3,11 +3,10 @@
 namespace Modules\Selection\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Project\Takes\TkAuthorizeProject;
+use Modules\Selection\Actions\AcUpdateSelection;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\RqStoreSelection;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +25,7 @@ final class EpUpdateSelection extends Controller
     public function __invoke(RqStoreSelection $request, Selection $selection): Responsable|Response
     {
         return (new TkWithCallback(
-            fn() => $selection->update($request->validated()),
+            new AcUpdateSelection($request, $selection),
             new TkRedirectToRoute(
                 'projects.show',
                 $selection->project_id

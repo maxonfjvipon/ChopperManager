@@ -10242,30 +10242,29 @@ var useHttp = function useHttp() {
               headers = _args.length > 3 && _args[3] !== undefined ? _args[3] : {};
               auth = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
               setLoading(true);
-              console.log(body);
-              _context.prev = 6;
-              _context.next = 9;
+              _context.prev = 5;
+              _context.next = 8;
               return axios.request({
                 url: url,
                 method: method,
                 data: body
               });
 
-            case 9:
+            case 8:
               response = _context.sent;
               data = response.data;
-              _context.next = 17;
+              _context.next = 16;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](6);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](5);
               setLoading(false);
               throw new Error(_context.t0);
 
-            case 17:
+            case 16:
               if (!(response.status === 419)) {
-                _context.next = 21;
+                _context.next = 20;
                 break;
               }
 
@@ -10273,9 +10272,9 @@ var useHttp = function useHttp() {
               antd__WEBPACK_IMPORTED_MODULE_2__["default"].info('Your session may be expired. Reload the page');
               throw new Error();
 
-            case 21:
+            case 20:
               if (!(response.statusText !== "OK")) {
-                _context.next = 25;
+                _context.next = 24;
                 break;
               }
 
@@ -10287,7 +10286,7 @@ var useHttp = function useHttp() {
 
               throw new Error();
 
-            case 25:
+            case 24:
               for (_key in data) {
                 if (antd__WEBPACK_IMPORTED_MODULE_2__["default"].hasOwnProperty(_key)) {
                   antd__WEBPACK_IMPORTED_MODULE_2__["default"][_key](data[_key]);
@@ -10297,12 +10296,12 @@ var useHttp = function useHttp() {
               setLoading(false);
               return _context.abrupt("return", data);
 
-            case 28:
+            case 27:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[6, 13]]);
+      }, _callee, null, [[5, 12]]);
     }));
 
     return function request(_x) {

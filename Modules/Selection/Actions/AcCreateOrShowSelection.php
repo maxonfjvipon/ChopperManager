@@ -7,6 +7,7 @@ use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Pump\Entities\DN;
@@ -62,9 +63,10 @@ final class AcCreateOrShowSelection
             new ArrIf(
                 !!$selection,
                 new ArrFromCallback(
-                    fn() => [
-                        'selection' => new SelectionAsResource($selection)
-                    ]
+                    fn() => new ArrObject(
+                        'selection',
+                        new SelectionAsResource($selection)
+                    )
                 )
             )
         ))->asArray();

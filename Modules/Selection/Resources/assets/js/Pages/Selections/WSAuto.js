@@ -28,7 +28,7 @@ const BackToSelectionsDashboardLink = ({project_id}) => <BackLink
     href={route('selections.dashboard', project_id)}
 />
 
-export default function WSAuto({title = "Hello"}) {
+export default function WSAuto({}) {
     const rememberedForm = Inertia.restore('selection_form')
 
     // HOOKS
@@ -37,19 +37,24 @@ export default function WSAuto({title = "Hello"}) {
     const {loading, postRequest} = useHttp()
     const {isArrayEmpty} = useCheck()
 
+    console.log(selection)
+
     // STATE
     const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
     const [seriesToShow, setSeriesToShow] = useState([])
     const [pumpsToShow, setPumpsToShow] = useState([])
 
-    const [brandsValue, setBrandsValue] = useState(rememberedForm?.pump_brand_ids || [])
-    const [seriesValue, setSeriesValue] = useState(rememberedForm?.pump_series_ids || [])
+    const [brandsValue, setBrandsValue] = useState(selection?.pump_brand_ids || rememberedForm?.pump_brand_ids || [])
+    const [seriesValue, setSeriesValue] = useState(selection?.pump_series_ids || rememberedForm?.pump_series_ids || [])
     const [selectedPumps, setSelectedPumps] = useState([])
     const [addedStations, setAddedStations] = useState(selection?.pump_stations || Inertia.restore('added_stations'))
 
     const [stationToShow, setStationToShow] = useState(null)
     const [chosenSelectedPumps, setChosenSelectedPumps] = useState({})
-    const [addedStationKey, setAddedStationKey] = useState(1)
+    const [addedStationKey, setAddedStationKey] = useState(selection != null
+        ? Math.max(...selection.pump_stations.map(station => station.key)) + 1
+        : 1
+    )
 
     const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
 
@@ -70,27 +75,6 @@ export default function WSAuto({title = "Hello"}) {
         collectors: "Коллекторы",
         select: "Подобрать",
         comment: "Комментарий",
-    }
-
-    const showPumpInfo = async event => {
-        // event.preventDefault()
-        // if (chosenSelectedPumps[stationToShow.key]?.pump_info === undefined) {
-        //     const data = await postRequest(tRoute('pumps.show', stationToShow.pump_id), {
-        //         pumpable_type: pumpableType(),
-        //         need_curves: false,
-        //     })
-        //     setPumpInfo(data)
-        //     chosenSelectedPumps[stationToShow.key] = {
-        //         ...chosenSelectedPumps[stationToShow.key],
-        //         pump_info: data
-        //     }
-        // } else {
-        //     if (pumpInfo.id === stationToShow.pump_id) {
-        //         setPumpInfoVisible(true)
-        //     } else {
-        //         setPumpInfo(chosenSelectedPumps[stationToShow.key].pump_info)
-        //     }
-        // }
     }
 
     // HANDLERS
@@ -126,6 +110,38 @@ export default function WSAuto({title = "Hello"}) {
         Inertia.remember(selectionForm.getFieldsValue(true), "selection_form")
     }
 
+    const saveAndCloseHandler = async () => {
+        let method = 'put'
+        let _route = route('selections.update', selection.id)
+
+        if (!selection) {
+            method = 'put'
+            _route = route('selections.update', selection.id)
+        }
+
+        Inertia[method](_route, {
+            ...await selectionForm.validateFields(),
+            station_type: 'WS',
+            selection_type: 'Auto',
+            added_stations: addedStations.map(station => ({
+                id: station.id || null,
+                cost_price: station.cost_price,
+                extra_percentage: station.extra_percentage,
+                extra_sum: station.extra_sum,
+                final_price: station.final_price,
+                comment: station.comment,
+                main_pumps_count: station.main_pumps_count,
+                reserve_pumps_count: station.reserve_pumps_count,
+
+                pump_id: station.pump_id,
+                control_system_id: station.control_system_id,
+                chassis_id: station.chassis_id,
+                input_collector_id: station.input_collector_id,
+                output_collector_id: station.output_collector_id,
+            }))
+        })
+    }
+
     // EFFECTS
     useEffect(() => {
         Inertia.remember(addedStations, 'added_stations')
@@ -133,33 +149,23 @@ export default function WSAuto({title = "Hello"}) {
 
     useEffect(() => {
         if (stationToShow) {
-            if (chosenSelectedPumps[stationToShow.num]?.curves === undefined) {
-                try {
-                    axios.request({
-                        url: route('pump_stations.curves'),
-                        method: 'POST',
-                        data: {
-                            pump_id: stationToShow.pump_id,
-                            head: stationToShow.head,
-                            flow: stationToShow.flow,
-                            reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
-                            main_pumps_count: stationToShow.main_pumps_count || undefined,
-                        },
-                    }).then(res => {
-                        document.getElementById('curves').innerHTML = res.data.curves
-                        chosenSelectedPumps[stationToShow.num] = {
-                            ...chosenSelectedPumps[stationToShow.num],
-                            curves: res.data.curves,
-                        }
-                        setChosenSelectedPumps(chosenSelectedPumps)
-                    })
-                } catch (e) {
-                }
-            } else {
-                document.getElementById('curves').innerHTML = chosenSelectedPumps[stationToShow.num].curves
+            try {
+                axios.request({
+                    url: route('pump_stations.curves'),
+                    method: 'POST',
+                    data: {
+                        pump_id: stationToShow.pump_id,
+                        head: stationToShow.head,
+                        flow: stationToShow.flow,
+                        reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
+                        main_pumps_count: stationToShow.main_pumps_count || undefined,
+                    },
+                }).then(res => {
+                    document.getElementById('curves').innerHTML = res.data.curves
+                })
+            } catch (e) {
+                console.error(e)
             }
-        } else {
-            setChosenSelectedPumps({})
         }
     }, [stationToShow])
 
@@ -175,13 +181,10 @@ export default function WSAuto({title = "Hello"}) {
     // RENDER
     return (
         <IndexContainer
-            title={selection
-                ? selection.selected_pump_name
-                : title}
             extra={[
                 <BackToProjectLink project_id={project_id}/>,
-                <BackToSelectionsDashboardLink project_id={project_id}/>
-            ]}
+                !selection && <BackToSelectionsDashboardLink project_id={project_id}/>
+            ].filter(Boolean)}
         >
             <Row gutter={[16, 16]}>
                 <Col xs={16}>
@@ -374,15 +377,6 @@ export default function WSAuto({title = "Hello"}) {
                         className='flex-rounded-card'
                         type="inner"
                         title={stationToShow?.name}
-                        // extra={stationToShow && <Space>
-                        //     <a onClick={e => {
-                        //         e.preventDefault()
-                        //         setExportDrawerVisible(true)
-                        //     }}>{Lang.get('pages.selections.single_pump.graphic.export')}</a>}
-                        //     <a onClick={showPumpInfo}>
-                        //         {Lang.get('pages.selections.single_pump.graphic.info')}>>
-                        //     </a>
-                        // </Space>}
                     >
                         <div id="curves"/>
                     </RoundedCard>
@@ -417,34 +411,15 @@ export default function WSAuto({title = "Hello"}) {
                     <BoxFlexEnd>
                         <Space size={8}>
                             <SecondaryButton
-                                onClick={() => {Inertia.get(route('projects.show', project_id))}}
+                                onClick={() => {
+                                    Inertia.get(route('projects.show', project_id))
+                                }}
                                 loading={loading}
                             >
                                 Выйти без сохранения
                             </SecondaryButton>
                             <PrimaryButton
-                                onClick={async () => {
-                                    Inertia.post(route('selections.store', project_id), {
-                                        ...await selectionForm.validateFields(),
-                                        station_type: 'WS',
-                                        selection_type: 'Auto',
-                                        added_stations: addedStations.map(station => ({
-                                            cost_price: station.cost_price,
-                                            extra_percentage: station.extra_percentage,
-                                            extra_sum: station.extra_sum,
-                                            final_price: station.final_price,
-                                            comment: station.comment,
-                                            main_pumps_count: station.main_pumps_count,
-                                            reserve_pumps_count: station.reserve_pumps_count,
-
-                                            pump_id: station.pump_id,
-                                            control_system_id: station.control_system_id,
-                                            chassis_id: station.chassis_id,
-                                            input_collector_id: station.input_collector_id,
-                                            output_collector_id: station.output_collector_id,
-                                        }))
-                                    })
-                                }}
+                                onClick={saveAndCloseHandler}
                                 loading={loading}
                                 disabled={isArrayEmpty(addedStations)}
                             >

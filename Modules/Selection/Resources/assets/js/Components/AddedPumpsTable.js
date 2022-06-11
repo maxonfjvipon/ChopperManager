@@ -73,7 +73,7 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
                         <TableAction
                             clickHandler={() => {
                                 let stations = addedStations
-                                const index = stations.findIndex(p => p.key !== record.key)
+                                const index = stations.findIndex(p => p.key === record.key)
                                 stations.splice(index, 1)
                                 setAddedStations([...stations])
                             }}
