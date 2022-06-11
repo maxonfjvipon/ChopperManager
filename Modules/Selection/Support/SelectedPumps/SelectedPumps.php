@@ -44,9 +44,9 @@ final class SelectedPumps implements Arrayable
                 new LengthOf(
                     $selectedPumps = new ArrSticky(
                         match ($this->request->station_type) {
-                            StationType::getKey(StationType::Water) => match($this->request->selection_type) {
-                                SelectionType::getKey(SelectionType::Auto) => new SelectedPumpsWaterAuto($this->request, $dnMaterials),
-                                SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsWaterAuto($this->request, $dnMaterials)
+                            StationType::getKey(StationType::WS) => match($this->request->selection_type) {
+                                SelectionType::getKey(SelectionType::Auto) => new SelectedPumpsWSAuto($this->request, $dnMaterials),
+                                SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsWSAuto($this->request, $dnMaterials)
                             },
 //                            StationType::getKey(StationType::Fire) => match ($this->request->selection_type) {
 //

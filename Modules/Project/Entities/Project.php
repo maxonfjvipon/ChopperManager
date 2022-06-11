@@ -48,8 +48,8 @@ class Project extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'created_at' => 'datetime:d.m.Y',
-        'updated_at' => 'datetime:d.m.Y',
+        'created_at' => 'datetime:d.m.Y H:i',
+        'updated_at' => 'datetime:d.m.Y H:i',
         'status' => ProjectStatus::class
     ];
 

@@ -17,10 +17,11 @@ if (!function_exists('formatted_price')) {
 if (!function_exists('formatted_date')) {
     /**
      * @param Carbon $datetime
+     * @param string $format
      * @return string
      */
-    function formatted_date(Carbon $datetime): string
+    function formatted_date(Carbon $datetime, string $format = "d.m.Y H:i"): string
     {
-        return date_format($datetime, 'd.m.Y');
+        return date_format($datetime, $format);
     }
 }

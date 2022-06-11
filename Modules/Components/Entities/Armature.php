@@ -13,7 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use JetBrains\PhpStorm\Pure;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMappedKeyValue;
 use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
+use Modules\Components\Support\Armature\ArrArmatureCount;
 use Modules\Components\Support\Armature\Fire\ArmaFire;
 use Modules\Components\Support\Armature\Water\ArmaWater;
 use Modules\Pump\Entities\CollectorSwitch;
@@ -64,7 +66,7 @@ final class Armature extends Model
      * @param Pump $pump
      * @param int $stationType
      * @param int $pumpsCount
-     * @return float|int|false
+     * @return float|int|null
      * @throws Exception
      */
     public static function weight(Pump $pump, int $stationType, int $pumpsCount): float|int|null
@@ -77,12 +79,13 @@ final class Armature extends Model
      * @param int $stationType
      * @param int $pumpsCount
      * @param Rates $rates
+     * @param Collector|null $inputCollector
      * @return float|int|null
      * @throws Exception
      */
-    public static function price(Pump $pump, int $stationType, int $pumpsCount, Rates $rates): float|int|null
+    public static function price(Pump $pump, int $stationType, int $pumpsCount, Rates $rates, ?Collector $inputCollector): float|int|null
     {
-        return self::sumBy('price', $pump, $stationType, $pumpsCount, $rates);
+        return self::sumBy('price', $pump, $stationType, $pumpsCount, $rates, $inputCollector);
     }
 
     /**
@@ -91,21 +94,23 @@ final class Armature extends Model
      * @param int $stationType
      * @param int $pumpsCount
      * @param Rates|null $rates
+     * @param Collector|null $inputCollector
      * @return float|int|null
      * @throws Exception
      */
-    private static function sumBy(string $field, Pump $pump, int $stationType, int $pumpsCount, Rates $rates = null): float|int|null
+    private static function sumBy(string $field, Pump $pump, int $stationType, int $pumpsCount, Rates $rates = null, Collector $inputCollector = null): float|int|null
     {
         $bad = false;
         $sum = (new ArraySum(
             new ArrMapped(
-                self::armatureByStationType($pump, $stationType),
-                function (?self $armature) use (&$bad, $field, $rates) {
-                    if ($armature != null) {
-                        if ($rates) {
-                            return $armature->priceByRates($rates);
-                        }
-                        return $armature->{$field};
+                self::armatureByStationType($pump, $stationType, $pumpsCount, $inputCollector),
+                function (ArrArmatureCount $armatureCount) use (&$bad, $field, $rates) {
+                    $armatureCount = $armatureCount->asArray();
+                    if (($armature = $armatureCount['armature']) != null) {
+                        return (!!$rates
+                                ? $armature->priceByRates($rates)
+                                : $armature->{$field})
+                            * $armatureCount['count'];
                     } else {
                         $bad = true;
                         return 0;
@@ -113,19 +118,21 @@ final class Armature extends Model
                 }
             )
         ))->asNumber();
-        return $bad ? null : $sum * $pumpsCount;
+        return $bad ? null : $sum;
     }
 
     /**
      * @param Pump $pump
      * @param int $stationType
+     * @param $pumpsCount
+     * @param Collector|null $inputCollector
      * @return ArmaWater|ArmaFire
      */
-    #[Pure] private static function armatureByStationType(Pump $pump, int $stationType): ArmaWater|ArmaFire
+    #[Pure] private static function armatureByStationType(Pump $pump, int $stationType, $pumpsCount, ?Collector $inputCollector): ArmaWater|ArmaFire
     {
         return match ($stationType) {
-            StationType::Water => new ArmaWater($pump),
-            StationType::Fire => new ArmaFire($pump)
+            StationType::WS => new ArmaWater($pump, $pumpsCount),
+            StationType::AF => new ArmaFire($pump, $pumpsCount, $inputCollector)
         };
     }
 }

@@ -32,6 +32,7 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property float $weight
  * @property string $article
  * @property int $ptp_lenght
+ * @property string $name
  *
  * @property PumpSeries $series
  * @property Carbon $price_updated_at

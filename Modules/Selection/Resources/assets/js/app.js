@@ -1,7 +1,7 @@
 import Dashboard from "./Pages/Dashboard";
-import WaterAuto from "./Pages/Selections/WaterAuto";
+import WSAuto from "./Pages/Selections/WSAuto";
 
 export default {
     Dashboard,
-    WaterAuto
+    WSAuto
 }

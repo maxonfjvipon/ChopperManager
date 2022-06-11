@@ -5,6 +5,7 @@ namespace Modules\Project\Transformers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Selection\Entities\Selection;
 
 final class RcProjectToShow extends JsonResource
 {
@@ -19,7 +20,7 @@ final class RcProjectToShow extends JsonResource
     {
         return array_merge(
             $this->resource->asArray(),
-            ['selections' => []]
+            ['selections' => RcSelectionOfProject::collection($this->resource->selections)]
         );
     }
 }

@@ -10488,21 +10488,7 @@ var useNotifications = function useNotifications() {
         borderRadius: 5
       },
       duration: 5
-    }); // notification.open({
-    //     _message,
-    //     // message: <div style={{textAlign: 'center'}}>{message}</div>,
-    //     key: 'restore',
-    //     btn: <PrimaryButton onClick={() => {
-    //         Inertia.get(restoreRoute)
-    //         notification.close('restore')
-    //     }}>
-    //         {buttonLabel}
-    //     </PrimaryButton>,
-    //     style: {
-    //         borderRadius: 7,
-    //         width: width,
-    //     }
-    // })
+    });
   };
 
   return {

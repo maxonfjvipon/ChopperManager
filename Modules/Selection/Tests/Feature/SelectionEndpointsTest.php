@@ -46,8 +46,8 @@ use Modules\Selection\Http\Requests\SinglePump\RqSinglePumpSelectionCurves;
 use Modules\Selection\Http\Requests\SinglePump\RqExportSinglePumpSelectionAtOnce;
 use Modules\Selection\Http\Requests\SinglePump\RqMakeSinglePumpSelection;
 use Modules\Selection\Http\Requests\SinglePump\RqStoreSinglePumpSelection;
-use Modules\Selection\Transformers\SelectionResources\DoublePumpSelectionResource;
-use Modules\Selection\Transformers\SelectionResources\SinglePumpSelectionResource;
+use Modules\Selection\Transformers\SelectionResources\WaterHandleSelectionAsResource;
+use Modules\Selection\Transformers\SelectionResources\WaterAutoSelectionAsResource;
 use Modules\User\Entities\User;
 use Tests\TestCase;
 
@@ -159,7 +159,7 @@ class SelectionEndpointsTest extends TestCase
     /**
      * @return void
      * @see EpShowSelection
-     * @see SinglePumpSelectionResource
+     * @see WaterAutoSelectionAsResource
      * @author Max Trunnikov
      */
     public function test_show_single_pump_selection()
@@ -239,7 +239,7 @@ class SelectionEndpointsTest extends TestCase
     /**
      * @return void
      * @see EpShowSelection
-     * @see DoublePumpSelectionResource
+     * @see WaterHandleSelectionAsResource
      * @author Max Trunnikov
      */
     public function test_show_double_pump_selection()

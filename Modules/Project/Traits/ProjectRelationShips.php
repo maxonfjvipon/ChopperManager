@@ -3,6 +3,8 @@
 namespace Modules\Project\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\User;
 
 /**
@@ -42,8 +44,19 @@ trait ProjectRelationShips
         return $this->belongsTo(User::class, 'designer_id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function dealer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'dealer_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function selections(): HasMany
+    {
+        return $this->hasMany(Selection::class);
     }
 }

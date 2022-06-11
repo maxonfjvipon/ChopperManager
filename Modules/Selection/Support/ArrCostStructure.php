@@ -37,12 +37,19 @@ final class ArrCostStructure implements Arrayable
     {
         $pump = $this->components['pump'];
         return [
-            'pump' => $pump->priceByRates($this->rates),
+            'pump' => $pumpPrice = $pump->priceByRates($this->rates),
+            'pumps' => $pumpPrice * $this->pumpsCount,
             'control_system' => ($controlSystem = $this->components['control_system'])?->priceByRates($this->rates),
             'chassis' => $this->components['chassis']?->priceByRates($this->rates),
-            'input_collector' => $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_suction)?->priceByRates($this->rates),
+            'input_collector' => ($inputCollector = $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_suction))?->priceByRates($this->rates),
             'output_collector' => $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_pressure)?->priceByRates($this->rates),
-            'armature' => Armature::price($pump, StationType::getValue($this->request->station_type), $this->pumpsCount, $this->rates),
+            'armature' => Armature::price(
+                $pump,
+                StationType::getValue($this->request->station_type),
+                $this->pumpsCount,
+                $this->rates,
+                $inputCollector
+            ),
             'job' => AssemblyJob::allOrCached()
                 ->where('pumps_count', $this->pumpsCount)
                 ->where('pumps_weight', '>=', $pump->weight)

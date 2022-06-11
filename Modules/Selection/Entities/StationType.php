@@ -14,10 +14,10 @@ final class StationType extends Enum
     use EnumHelpers;
 
     #[Description("Водоснабжение")]
-    const Water = 1;
+    const WS = 1;
 
     #[Description("Пожаротушение")]
-    const Fire = 2;
+    const AF = 2;
 
     #[Description("ХВС+ВПВ")]
     const Combine = 3;

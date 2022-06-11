@@ -29,7 +29,7 @@ final class AcControlSystems extends AcComponents
             'control_systems',
             ArrayableOf::items(
                 self::stationTypeItems(
-                    StationType::fromValue(StationType::Water),
+                    StationType::fromValue(StationType::WS),
                     $controlSystems,
                     fn(ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,
@@ -43,7 +43,7 @@ final class AcControlSystems extends AcComponents
                     ]
                 ),
                 self::stationTypeItems(
-                    StationType::fromValue(StationType::Fire),
+                    StationType::fromValue(StationType::AF),
                     $controlSystems,
                     fn(ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,

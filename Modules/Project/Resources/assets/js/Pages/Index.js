@@ -32,6 +32,7 @@ export default function Index() {
             title: "Дата обновления",
             dataIndex: 'updated_at',
             sorter: (a, b) => compareDate(a.updated_at, b.updated_at),
+            defaultSortOrder: 'ascend',
         }, {
             title: "Наименование",
             dataIndex: 'name',

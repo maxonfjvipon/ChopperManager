@@ -22,7 +22,7 @@ class CreatePumpsTable extends Migration
             $table->id();
             $table->string('article')->unique();
             $table->string('name');
-            $table->float('price');
+            $table->float('price', 12);
             $table->timestamp('price_updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->float('power')->unsigned();
             $table->float('current')->unsigned();

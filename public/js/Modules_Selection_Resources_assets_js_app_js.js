@@ -10001,7 +10001,8 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     },
     sorter: function sorter(a, b) {
       return a.cost_price - b.cost_price;
-    }
+    },
+    defaultSortOrder: 'ascend'
   }, {
     title: "Р, кВт",
     dataIndex: 'power',
@@ -10024,7 +10025,7 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
     key: 'action',
     width: '1%',
     render: function render(_, record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_3__.TableActionsContainer, {
+      return !record.bad && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_3__.TableActionsContainer, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
           placement: "topRight",
           title: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C",
@@ -10118,7 +10119,7 @@ function Dashboard() {
       return [].concat(_toConsumableArray(arr2), [{
         title: station_type.description + ', ' + selection_type.description,
         onClick: function onClick() {
-          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('selections.create', [project_id, station_type.key, selection_type.key]));
+          _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('selections.create', [project_id]) + '?station_type=' + station_type.key + '&selection_type=' + selection_type.key);
         }
       }]);
     }, [])));
@@ -10158,16 +10159,16 @@ function Dashboard() {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js":
-/*!*****************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js ***!
-  \*****************************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Pages/Selections/WSAuto.js":
+/*!**************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Pages/Selections/WSAuto.js ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ SingleAuto)
+/* harmony export */   "default": () => (/* binding */ WSAuto)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -10175,12 +10176,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
@@ -10191,7 +10193,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Cards/RoundedCard */ "./resources/js/src/Shared/Cards/RoundedCard.js");
 /* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Box/BoxFlexEnd */ "./resources/js/src/Shared/Box/BoxFlexEnd.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
+/* harmony import */ var ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ziggy-js/src/js */ "./node_modules/ziggy-js/src/js/index.js");
+/* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10242,23 +10248,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
 var BackToProjectLink = function BackToProjectLink(_ref) {
   var project_id = _ref.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
-    href: route('projects.show', project_id)
+    href: (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('projects.show', project_id)
   });
 };
 
 var BackToSelectionsDashboardLink = function BackToSelectionsDashboardLink(_ref2) {
   var project_id = _ref2.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_2__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
-    href: route('selections.dashboard', project_id)
+    href: (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.dashboard', project_id)
   });
 };
 
-function SingleAuto(_ref3) {
+function WSAuto(_ref3) {
   var _ref3$title = _ref3.title,
       title = _ref3$title === void 0 ? "Hello" : _ref3$title;
   var rememberedForm = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('selection_form'); // HOOKS
@@ -10275,7 +10285,10 @@ function SingleAuto(_ref3) {
 
   var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__.useHttp)(),
       loading = _useHttp.loading,
-      postRequest = _useHttp.postRequest; // STATE
+      postRequest = _useHttp.postRequest;
+
+  var _useCheck = (0,_resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_18__.useCheck)(),
+      isArrayEmpty = _useCheck.isArrayEmpty; // STATE
 
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.brands_with_series_with_pumps),
@@ -10308,7 +10321,7 @@ function SingleAuto(_ref3) {
       selectedPumps = _useState12[0],
       setSelectedPumps = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(_inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('added_stations')),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_stations) || _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.restore('added_stations')),
       _useState14 = _slicedToArray(_useState13, 2),
       addedStations = _useState14[0],
       setAddedStations = _useState14[1];
@@ -10334,7 +10347,7 @@ function SingleAuto(_ref3) {
       setExportDrawerVisible = _useState22[1]; // CONSTS
 
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_16__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_20__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       selectionForm = _Form$useForm2[0];
 
@@ -10397,14 +10410,14 @@ function SingleAuto(_ref3) {
               _context2.t4 = (0, _context2.t1)(_context2.t2, _context2.t3);
               _context2.t5 = {};
               _context2.t6 = {
-                station_type: 'Water',
+                station_type: 'WS',
                 // fixme
                 selection_type: 'Auto'
               };
               body = (0, _context2.t0)(_context2.t4, _context2.t5, _context2.t6);
               _context2.prev = 12;
               _context2.next = 15;
-              return postRequest(route('selections.select'), body, true);
+              return postRequest((0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.select'), body, true);
 
             case 15:
               selected_pumps = _context2.sent.selected_pumps;
@@ -10457,7 +10470,7 @@ function SingleAuto(_ref3) {
       if (((_chosenSelectedPumps$ = chosenSelectedPumps[stationToShow.num]) === null || _chosenSelectedPumps$ === void 0 ? void 0 : _chosenSelectedPumps$.curves) === undefined) {
         try {
           axios.request({
-            url: route('pump_stations.curves'),
+            url: (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('pump_stations.curves'),
             method: 'POST',
             data: {
               pump_id: stationToShow.pump_id,
@@ -10493,31 +10506,31 @@ function SingleAuto(_ref3) {
     }
   }, [brandsValue]); // RENDER
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_4__.IndexContainer, {
     title: selection ? selection.selected_pump_name : title,
-    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(BackToProjectLink, {
+    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToProjectLink, {
       project_id: project_id
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(BackToSelectionsDashboardLink, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToSelectionsDashboardLink, {
       project_id: project_id
     })],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
       gutter: [16, 16],
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
         xs: 16,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
           form: selectionForm,
           name: "selection-form",
           layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_17__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
             gutter: [16, 16],
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 4,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.flow,
                 name: "flow",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.flow) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.flow),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
                   placeholder: labels.flow,
                   style: fullWidth,
                   min: 0,
@@ -10526,14 +10539,14 @@ function SingleAuto(_ref3) {
                   disabled: !!selection
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 4,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.head,
                 name: "head",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.head) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.head),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
                   placeholder: labels.head,
                   style: fullWidth,
                   min: 0,
@@ -10542,14 +10555,14 @@ function SingleAuto(_ref3) {
                   disabled: !!selection
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 4,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
                 className: reducedAntFormItemClassName,
                 label: labels.deviation,
                 name: "deviation",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.deviation) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.deviation),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_6__.InputNum, {
                   placeholder: labels.deviation,
                   style: fullWidth,
                   min: -50,
@@ -10557,56 +10570,56 @@ function SingleAuto(_ref3) {
                   precision: 2
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 6,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.mainPumpsCounts,
                 name: "main_pumps_counts",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.main_pumps_counts) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.main_pumps_counts),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_19__["default"].Group, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Group, {
                   options: mainPumpsCountCheckboxesOptions
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 6,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
                 className: reducedAntFormItemClassName,
                 required: true,
                 name: "reserve_pumps_count",
                 label: labels.reservePumpsCount,
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.reserve_pumps_count) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.reserve_pumps_count) || 0,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Group, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"].Group, {
                   value: 0,
                   children: [0, 1, 2, 3, 4].map(function (value) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                       value: value,
                       children: value
                     }, 'rp_' + value);
                   })
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 5,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "control_system_type_ids",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.control_system_type_ids) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.control_system_type_ids),
                 label: labels.controlSystemTypes,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
                   placeholder: labels.controlSystemTypes,
                   style: fullWidth,
                   options: selection_props.control_system_types
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 5,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_brand_ids",
                 initialValue: brandsValue,
                 label: labels.brands,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
                   placeholder: labels.brands,
                   style: fullWidth,
                   options: brandsToShow,
@@ -10615,14 +10628,14 @@ function SingleAuto(_ref3) {
                   }
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 6,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_series_ids",
                 initialValue: seriesValue,
                 label: labels.series,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
                   disabled: brandsValue.length === 0,
                   placeholder: labels.series,
                   style: fullWidth,
@@ -10632,37 +10645,37 @@ function SingleAuto(_ref3) {
                   }
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 5,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "collectors",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.collectors) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.collectors),
                 label: labels.collectors,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_8__.MultipleSelection, {
                   placeholder: labels.collectors,
                   style: fullWidth,
                   options: selection_props.collectors
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 3,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
                   style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
                   onClick: makeSelectionHandler,
                   loading: loading,
                   children: labels.select
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
               xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
                 className: "table-rounded-card",
                 type: "inner",
                 title: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
                   setStationToShow: setStationToShow,
                   loading: loading,
@@ -10673,9 +10686,9 @@ function SingleAuto(_ref3) {
             })]
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
         xs: 8,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
           className: "flex-rounded-card",
           type: "inner",
           title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name // extra={stationToShow && <Space>
@@ -10688,37 +10701,103 @@ function SingleAuto(_ref3) {
           //     </a>
           // </Space>}
           ,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("div", {
             id: "curves"
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
         xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_12__.RoundedCard, {
           className: "table-rounded-card",
           type: "inner",
           title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_13__.AddedPumpsTable, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_13__.AddedPumpsTable, {
             addedStations: addedStations,
             loading: loading,
             setStationToShow: setStationToShow,
             setAddedStations: setAddedStations
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
         xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
           form: selectionForm,
           layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
             name: "comment",
             label: labels.comment,
             className: reducedAntFormItemClassName,
             initialValue: (selection === null || selection === void 0 ? void 0 : selection.comment) || (rememberedForm === null || rememberedForm === void 0 ? void 0 : rememberedForm.comment),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].TextArea, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"].TextArea, {
               autoSize: true,
               placeholder: labels.comment
             })
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+        xs: 24,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_15__.BoxFlexEnd, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
+            size: 8,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_16__.SecondaryButton, {
+              onClick: function onClick() {
+                _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia.get((0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('projects.show', project_id));
+              },
+              loading: loading,
+              children: "\u0412\u044B\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+              onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        _context3.t0 = _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_14__.Inertia;
+                        _context3.t1 = (0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_17__["default"])('selections.store', project_id);
+                        _context3.t2 = _objectSpread;
+                        _context3.t3 = _objectSpread;
+                        _context3.t4 = {};
+                        _context3.next = 7;
+                        return selectionForm.validateFields();
+
+                      case 7:
+                        _context3.t5 = _context3.sent;
+                        _context3.t6 = (0, _context3.t3)(_context3.t4, _context3.t5);
+                        _context3.t7 = {};
+                        _context3.t8 = {
+                          station_type: 'WS',
+                          selection_type: 'Auto',
+                          added_stations: addedStations.map(function (station) {
+                            return {
+                              cost_price: station.cost_price,
+                              extra_percentage: station.extra_percentage,
+                              extra_sum: station.extra_sum,
+                              final_price: station.final_price,
+                              comment: station.comment,
+                              main_pumps_count: station.main_pumps_count,
+                              reserve_pumps_count: station.reserve_pumps_count,
+                              pump_id: station.pump_id,
+                              control_system_id: station.control_system_id,
+                              chassis_id: station.chassis_id,
+                              input_collector_id: station.input_collector_id,
+                              output_collector_id: station.output_collector_id
+                            };
+                          })
+                        };
+                        _context3.t9 = (0, _context3.t2)(_context3.t6, _context3.t7, _context3.t8);
+
+                        _context3.t0.post.call(_context3.t0, _context3.t1, _context3.t9);
+
+                      case 13:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              })),
+              loading: loading,
+              disabled: isArrayEmpty(addedStations),
+              children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0432\u044B\u0439\u0442\u0438"
+            })]
           })
         })
       })]
@@ -10740,12 +10819,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dashboard */ "./Modules/Selection/Resources/assets/js/Pages/Dashboard.js");
-/* harmony import */ var _Pages_Selections_WaterAuto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Selections/WaterAuto */ "./Modules/Selection/Resources/assets/js/Pages/Selections/WaterAuto.js");
+/* harmony import */ var _Pages_Selections_WSAuto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Selections/WSAuto */ "./Modules/Selection/Resources/assets/js/Pages/Selections/WSAuto.js");
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"],
-  WaterAuto: _Pages_Selections_WaterAuto__WEBPACK_IMPORTED_MODULE_1__["default"]
+  WSAuto: _Pages_Selections_WSAuto__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 /***/ }),
@@ -11223,6 +11302,52 @@ var BoxFlexCenter = function BoxFlexCenter(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/src/Shared/Box/BoxFlexEnd.js":
+/*!***************************************************!*\
+  !*** ./resources/js/src/Shared/Box/BoxFlexEnd.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BoxFlexEnd": () => (/* binding */ BoxFlexEnd)
+/* harmony export */ });
+/* harmony import */ var _BoxFlex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoxFlex */ "./resources/js/src/Shared/Box/BoxFlex.js");
+/* harmony import */ var _Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["children", "style"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var BoxFlexEnd = function BoxFlexEnd(_ref) {
+  var children = _ref.children,
+      style = _ref.style,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  var _useStyles = (0,_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_1__.useStyles)(),
+      justifyContentFlexEnd = _useStyles.justifyContentFlexEnd;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_BoxFlex__WEBPACK_IMPORTED_MODULE_0__.BoxFlex, _objectSpread(_objectSpread({
+    style: _objectSpread(_objectSpread({}, justifyContentFlexEnd), style)
+  }, rest), {}, {
+    children: children
+  }));
+};
+
+/***/ }),
+
 /***/ "./resources/js/src/Shared/Buttons/PrimaryButton.js":
 /*!**********************************************************!*\
   !*** ./resources/js/src/Shared/Buttons/PrimaryButton.js ***!
@@ -11251,6 +11376,51 @@ var PrimaryButton = function PrimaryButton(props) {
     type: "primary"
   }, props), {}, {
     children: props.children
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Buttons/SecondaryButton.js":
+/*!************************************************************!*\
+  !*** ./resources/js/src/Shared/Buttons/SecondaryButton.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SecondaryButton": () => (/* binding */ SecondaryButton)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["type", "children"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var SecondaryButton = function SecondaryButton(_ref) {
+  var _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'primary' : _ref$type,
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
+    danger: true,
+    type: type
+  }, rest), {}, {
+    children: children
   }));
 };
 
@@ -31389,6 +31559,437 @@ function scrollIntoView(target, options) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scrollIntoView);
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/Route.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/Route.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Route)
+/* harmony export */ });
+/**
+ * A Laravel route. This class represents one route and its configuration and metadata.
+ */
+class Route {
+    /**
+     * @param {String} name - Route name.
+     * @param {Object} definition - Route definition.
+     * @param {Object} config - Ziggy configuration.
+     */
+    constructor(name, definition, config) {
+        this.name = name;
+        this.definition = definition;
+        this.bindings = definition.bindings ?? {};
+        this.config = config;
+    }
+
+    /**
+     * Get a 'template' of the complete URL for this route.
+     *
+     * @example
+     * https://{team}.ziggy.dev/user/{user}
+     *
+     * @return {String} Route template.
+     */
+    get template() {
+        // If  we're building just a path there's no origin, otherwise: if this route has a
+        // domain configured we construct the origin with that, if not we use the app URL
+        const origin = !this.config.absolute ? '' : this.definition.domain
+            ? `${this.config.url.match(/^\w+:\/\//)[0]}${this.definition.domain}${this.config.port ? `:${this.config.port}` : ''}`
+            : this.config.url;
+
+        return `${origin}/${this.definition.uri}`.replace(/\/+$/, '');
+    }
+
+    /**
+     * Get an array of objects representing the parameters that this route accepts.
+     *
+     * @example
+     * [{ name: 'team', required: true }, { name: 'user', required: false }]
+     *
+     * @return {Array} Parameter segments.
+     */
+    get parameterSegments() {
+        return this.template.match(/{[^}?]+\??}/g)?.map((segment) => ({
+            name: segment.replace(/{|\??}/g, ''),
+            required: !/\?}$/.test(segment),
+        })) ?? [];
+    }
+
+    /**
+     * Get whether this route's template matches the given URL.
+     *
+     * @param {String} url - URL to check.
+     * @return {Boolean} Whether this route matches.
+     */
+    matchesUrl(url) {
+        if (!this.definition.methods.includes('GET')) return false;
+
+        // Transform the route's template into a regex that will match a hydrated URL,
+        // by replacing its parameter segments with matchers for parameter values
+        const pattern = this.template
+            .replace(/\/{[^}?]*\?}/g, '(\/[^/?]+)?')
+            // TODO: the above line with the leading slash is necessary to pick up completely optional *segments*,
+            // like in `/pages/{subPage?}`, so that those are handled first before the more permissive patterns
+            // below, but there's probably a way to do this in one shot
+            .replace(/{[^}?]*\?}/g, '([^/?]+)?')
+            .replace(/{[^}]+}/g, '[^/?]+')
+            .replace(/^\w+:\/\//, '');
+
+        return new RegExp(`^${pattern}$`).test(url.replace(/\/+$/, '').split('?').shift());
+    }
+
+    /**
+     * Hydrate and return a complete URL for this route with the given parameters.
+     *
+     * @param {Object} params
+     * @return {String}
+     */
+    compile(params) {
+        if (!this.parameterSegments.length) return this.template;
+
+        return this.template.replace(/{([^}?]+)\??}/g, (_, segment) => {
+            // If the parameter is missing but is not optional, throw an error
+            if ([null, undefined].includes(params[segment]) && this.parameterSegments.find(({ name }) => name === segment).required) {
+                throw new Error(`Ziggy error: '${segment}' parameter is required for route '${this.name}'.`)
+            }
+
+            return encodeURIComponent(params[segment] ?? '');
+        }).replace(/\/+$/, '');
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/Router.js":
+/*!************************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/Router.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Router)
+/* harmony export */ });
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Route */ "./node_modules/ziggy-js/src/js/Route.js");
+
+
+
+/**
+ * A collection of Laravel routes. This class constitutes Ziggy's main API.
+ */
+class Router extends String {
+    /**
+     * @param {String} name - Route name.
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @param {Boolean} absolute - Whether to include the URL origin.
+     * @param {Object} config - Ziggy configuration.
+     */
+    constructor(name, params, absolute = true, config) {
+        super();
+
+        this._config = config ?? (typeof Ziggy !== 'undefined' ? Ziggy : globalThis?.Ziggy);
+        this._config = { ...this._config, absolute };
+
+        if (name) {
+            if (!this._config.routes[name]) {
+                throw new Error(`Ziggy error: route '${name}' is not in the route list.`);
+            }
+
+            this._route = new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](name, this._config.routes[name], this._config);
+            this._params = this._parse(params);
+        }
+    }
+
+    /**
+     * Get the compiled URL string for the current route and parameters.
+     *
+     * @example
+     * // with 'posts.show' route 'posts/{post}'
+     * (new Router('posts.show', 1)).toString(); // 'https://ziggy.dev/posts/1'
+     *
+     * @return {String}
+     */
+    toString() {
+        // Get parameters that don't correspond to any route segments to append them to the query
+        const unhandled = Object.keys(this._params)
+            .filter((key) => !this._route.parameterSegments.some(({ name }) => name === key))
+            .filter((key) => key !== '_query')
+            .reduce((result, current) => ({ ...result, [current]: this._params[current] }), {});
+
+        return this._route.compile(this._params) + (0,qs__WEBPACK_IMPORTED_MODULE_0__.stringify)({ ...unhandled, ...this._params['_query'] }, {
+            addQueryPrefix: true,
+            arrayFormat: 'indices',
+            encodeValuesOnly: true,
+            skipNulls: true,
+            encoder: (value, encoder) => typeof value === 'boolean' ? Number(value) : encoder(value),
+        });
+    }
+
+    /**
+     * Get the name of the route matching the current window URL, or, given a route name
+     * and parameters, check if the current window URL and parameters match that route.
+     *
+     * @example
+     * // at URL https://ziggy.dev/posts/4 with 'posts.show' route 'posts/{post}'
+     * route().current(); // 'posts.show'
+     * route().current('posts.index'); // false
+     * route().current('posts.show'); // true
+     * route().current('posts.show', { post: 1 }); // false
+     * route().current('posts.show', { post: 4 }); // true
+     *
+     * @param {String} name - Route name to check.
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @return {(Boolean|String|undefined)}
+     */
+    current(name, params) {
+        const url = this._config.absolute
+            ? this._location().host + this._location().pathname
+            : this._location().pathname.replace(this._config.url.replace(/^\w*:\/\/[^/]+/, ''), '').replace(/^\/+/, '/');
+
+        // Find the first route that matches the current URL
+        const [current, route] = Object.entries(this._config.routes).find(
+            ([_, route]) => new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](name, route, this._config).matchesUrl(url)
+        ) || [undefined, undefined];
+
+        // If a name wasn't passed, return the name of the current route
+        if (!name) return current;
+
+        // Test the passed name against the current route, matching some
+        // basic wildcards, e.g. passing `events.*` matches `events.show`
+        const match = new RegExp(`^${name.replace(/\./g, '\\.').replace(/\*/g, '.*')}$`).test(current);
+
+        if ([null, undefined].includes(params) || !match) return match;
+
+        const routeObject = new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](current, route, this._config);
+
+        params = this._parse(params, routeObject);
+        const routeParams = this._dehydrate(route);
+
+        // If the current window URL has no route parameters, and the passed parameters are empty, return true
+        if (Object.values(params).every(p => !p) && !Object.values(routeParams).length) return true;
+
+        // Check that all passed parameters match their values in the current window URL
+        // Use weak equality because all values in the current window URL will be strings
+        return Object.entries(params).every(([key, value]) => routeParams[key] == value);
+    }
+
+    /**
+     * Get an object representing the current location (by default this will be
+     * the JavaScript `window` global if it's available).
+     *
+     * @return {Object}
+     */
+    _location() {
+        const { host = '', pathname = '', search = '' } = typeof window !== 'undefined' ? window.location : {};
+
+        return {
+            host: this._config.location?.host ?? host,
+            pathname: this._config.location?.pathname ?? pathname,
+            search: this._config.location?.search ?? search,
+        };
+    }
+
+    /**
+     * Get all parameter values from the current window URL.
+     *
+     * @example
+     * // at URL https://tighten.ziggy.dev/posts/4?lang=en with 'posts.show' route 'posts/{post}' and domain '{team}.ziggy.dev'
+     * route().params; // { team: 'tighten', post: 4, lang: 'en' }
+     *
+     * @return {Object}
+     */
+    get params() {
+        return this._dehydrate(this._config.routes[this.current()]);
+    }
+
+    /**
+     * Check whether the given route exists.
+     *
+     * @param {String} name
+     * @return {Boolean}
+     */
+    has(name) {
+        return Object.keys(this._config.routes).includes(name);
+    }
+
+    /**
+     * Parse Laravel-style route parameters of any type into a normalized object.
+     *
+     * @example
+     * // with route parameter names 'event' and 'venue'
+     * _parse(1); // { event: 1 }
+     * _parse({ event: 2, venue: 3 }); // { event: 2, venue: 3 }
+     * _parse(['Taylor', 'Matt']); // { event: 'Taylor', venue: 'Matt' }
+     * _parse([4, { uuid: 56789, name: 'Grand Canyon' }]); // { event: 4, venue: 56789 }
+     *
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @param {Route} route - Route instance.
+     * @return {Object} Normalized complete route parameters.
+     */
+    _parse(params = {}, route = this._route) {
+        // If `params` is a string or integer, wrap it in an array
+        params = ['string', 'number'].includes(typeof params) ? [params] : params;
+
+        // Separate segments with and without defaults, and fill in the default values
+        const segments = route.parameterSegments.filter(({ name }) => !this._config.defaults[name]);
+
+        if (Array.isArray(params)) {
+            // If the parameters are an array they have to be in order, so we can transform them into
+            // an object by keying them with the template segment names in the order they appear
+            params = params.reduce((result, current, i) => !!segments[i] ? ({ ...result, [segments[i].name]: current }) : ({ ...result, [current]: '' }), {});
+        } else if (
+            segments.length === 1
+            && !params[segments[0].name]
+            && (params.hasOwnProperty(Object.values(route.bindings)[0]) || params.hasOwnProperty('id'))
+        ) {
+            // If there is only one template segment and `params` is an object, that object is
+            // ambiguous—it could contain the parameter key and value, or it could be an object
+            // representing just the value (e.g. a model); we can inspect it to find out, and
+            // if it's just the parameter value, we can wrap it in an object with its key
+            params = { [segments[0].name]: params };
+        }
+
+        return {
+            ...this._defaults(route),
+            ...this._substituteBindings(params, route),
+        };
+    }
+
+    /**
+     * Populate default parameters for the given route.
+     *
+     * @example
+     * // with default parameters { locale: 'en', country: 'US' } and 'posts.show' route '{locale}/posts/{post}'
+     * defaults(...); // { locale: 'en' }
+     *
+     * @param {Route} route
+     * @return {Object} Default route parameters.
+     */
+    _defaults(route) {
+        return route.parameterSegments.filter(({ name }) => this._config.defaults[name])
+            .reduce((result, { name }, i) => ({ ...result, [name]: this._config.defaults[name] }), {});
+    }
+
+    /**
+     * Substitute Laravel route model bindings in the given parameters.
+     *
+     * @example
+     * _substituteBindings({ post: { id: 4, slug: 'hello-world', title: 'Hello, world!' } }, { bindings: { post: 'slug' } }); // { post: 'hello-world' }
+     *
+     * @param {Object} params - Route parameters.
+     * @param {Object} route - Route definition.
+     * @return {Object} Normalized route parameters.
+     */
+    _substituteBindings(params, { bindings, parameterSegments }) {
+        return Object.entries(params).reduce((result, [key, value]) => {
+            // If the value isn't an object, or if the key isn't a named route parameter,
+            // there's nothing to substitute so we return it as-is
+            if (!value || typeof value !== 'object' || Array.isArray(value) || !parameterSegments.some(({ name }) => name === key)) {
+                return { ...result, [key]: value };
+            }
+
+            if (!value.hasOwnProperty(bindings[key])) {
+                if (value.hasOwnProperty('id')) {
+                    // As a fallback, we still accept an 'id' key not explicitly registered as a binding
+                    bindings[key] = 'id';
+                } else {
+                    throw new Error(`Ziggy error: object passed as '${key}' parameter is missing route model binding key '${bindings[key]}'.`)
+                }
+            }
+
+            return { ...result, [key]: value[bindings[key]] };
+        }, {});
+    }
+
+    /**
+     * Get all parameters and their values from the current window URL, based on the given route definition.
+     *
+     * @example
+     * // at URL https://tighten.ziggy.dev/events/8/venues/chicago?zoom=true
+     * _dehydrate({ domain: '{team}.ziggy.dev', uri: 'events/{event}/venues/{venue?}' }); // { team: 'tighten', event: 8, venue: 'chicago', zoom: true }
+     *
+     * @param {Object} route - Route definition.
+     * @return {Object} Parameters.
+     */
+    _dehydrate(route) {
+        let pathname = this._location().pathname
+            // If this Laravel app is in a subdirectory, trim the subdirectory from the path
+            .replace(this._config.url.replace(/^\w*:\/\/[^/]+/, ''), '')
+            .replace(/^\/+/, '');
+
+        // Given part of a valid 'hydrated' URL containing all its parameter values,
+        // a route template, and a delimiter, extract the parameters as an object
+        // E.g. dehydrate('events/2/chicago', 'events/{event}/{venue}', '/'); // { event: 2, venue: 'chicago' }
+        const dehydrate = (hydrated, template = '', delimiter) => {
+            const [values, segments] = [hydrated, template].map(s => s.split(delimiter));
+
+            return segments.reduce((result, current, i) => {
+                // Only include template segments that are route parameters
+                // AND have a value present in the passed hydrated string
+                return /{[^}?]+\??}/.test(current) && values[i]
+                    ? {
+                        ...result,
+                        [current.replace(/.*{|\??}.*/g, '')]: values[i]
+                            .replace(current.match(/^[^{]*/g), '')
+                            .replace(current.match(/[^}]*$/g), ''),
+                    }
+                    : result;
+            }, {});
+        }
+
+        return {
+            ...dehydrate(this._location().host, route.domain, '.'), // Domain parameters
+            ...dehydrate(pathname, route.uri, '/'), // Path parameters
+            ...(0,qs__WEBPACK_IMPORTED_MODULE_0__.parse)(this._location().search?.replace(/^\?/, '')), // Query parameters
+        };
+    }
+
+    valueOf() {
+        return this.toString();
+    }
+
+    /**
+     * @deprecated since v1.0, use `has()` instead.
+     */
+    check(name) {
+        return this.has(name);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ route)
+/* harmony export */ });
+/* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Router */ "./node_modules/ziggy-js/src/js/Router.js");
+
+
+function route(name, params, absolute, config) {
+    const router = new _Router__WEBPACK_IMPORTED_MODULE_0__["default"](name, params, absolute, config);
+
+    return name ? router.toString() : router;
+}
+
 
 /***/ })
 

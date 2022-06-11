@@ -28,8 +28,8 @@ final class CollectorType extends Enum
     public static function getTypeByStationType(string $station_type): int
     {
         return match ($station_type) {
-            StationType::getKey(StationType::Water) => self::Common,
-            StationType::getKey(StationType::Fire) => self::Separated
+            StationType::getKey(StationType::WS) => self::Common,
+            StationType::getKey(StationType::AF) => self::Separated
         };
     }
 }

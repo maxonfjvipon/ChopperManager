@@ -21,27 +21,31 @@ class CreateSelectionsTable extends Migration
             $table->float('head')->unsigned();
             $table->string('main_pumps_counts');
             $table->integer('reserve_pumps_count')->unsigned();
-            $table->text('control_systems');
-            $table->text('series');
-            $table->text('collector_types');
+            $table->text('control_system_type_ids');
+            $table->text('pump_brand_ids');
+            $table->text('pump_series_ids');
+            $table->text('collectors');
+            $table->text('comment')->nullable();
 
             $table->integer('gate_valves_count')->unsigned()->nullable();
             $table->boolean('avr')->nullable();
             $table->boolean('kkv')->nullable();
             $table->boolean('on_street')->nullable();
-            $table->string('pump_article')->nullable();
             $table->float('jockey_pump_flow')->unsigned()->nullable();
             $table->float('jockey_pump_head')->unsigned()->nullable();
 
             $table->softDeletes();
 
             $table->unsignedTinyInteger('type');
+            $table->unsignedTinyInteger('station_type');
 
+            $table->bigInteger('pump_id')->unsigned()->nullable();
             $table->bigInteger('jockey_pump_id')->unsigned()->nullable();
             $table->bigInteger('project_id')->unsigned();
             $table->bigInteger('created_by')->unsigned();
 
             $table->foreign('jockey_pump_id')->references('id')->on('pumps')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('pump_id')->references('id')->on('pumps')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('project_id')->references('id')->on('projects')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
         });

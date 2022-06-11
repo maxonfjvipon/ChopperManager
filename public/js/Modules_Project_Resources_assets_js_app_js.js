@@ -11779,18 +11779,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/date.hook */ "./resources/js/src/Hooks/date.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -11813,18 +11801,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Show() {
-  // STATE
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      exportDrawerVisible = _useState2[0],
-      setExportDrawerVisible = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-      _useState4 = _slicedToArray(_useState3, 2),
-      exportableId = _useState4[0],
-      setExportableId = _useState4[1]; // HOOKS
-
-
+  // HOOKS
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props,
       project = _usePage$props.project,
       auth = _usePage$props.auth,
@@ -11937,7 +11914,8 @@ function Show() {
     sorter: function sorter(a, b) {
       return compareDate(a.updated_at, b.updated_at);
     },
-    defaultSortOrder: 'ascend'
+    defaultSortOrder: 'ascend' // fixme - doesn't work
+
   }, {
     title: "Тип станции",
     dataIndex: "station_type",
@@ -11965,8 +11943,6 @@ function Show() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_5__.TableActionsContainer, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_7__.View, {
           clickHandler: showSelectionHandler(record)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Export__WEBPACK_IMPORTED_MODULE_6__.Export, {
-          clickHandler: exportSelectionHandler(record.id)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Delete__WEBPACK_IMPORTED_MODULE_8__.Delete, {
           sureDeleteTitle: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u0431\u043E\u0440?",
           confirmHandler: deleteSelectionHandler(record.id)
@@ -11986,18 +11962,11 @@ function Show() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](route('selections.destroy', id));
       openRestoreNotification("Восстановить подбор?", route('selections.restore', id));
     };
-  };
-
-  var exportSelectionHandler = function exportSelectionHandler(id) {
-    return function () {
-      setExportableId(id);
-      setExportDrawerVisible(true);
-    };
   }; // RENDER
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_9__.ResourceContainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsxs)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_9__.ResourceContainer, {
       title: project.name,
       actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_resources_js_src_Shared_Resource_Actions_PrimaryAction__WEBPACK_IMPORTED_MODULE_10__.PrimaryAction, {
         label: "\u0413\u0438\u0434\u0440\u0430\u0432\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440",
@@ -12014,11 +11983,7 @@ function Show() {
         doubleClickHandler: showSelectionHandler,
         clickRecord: true
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_17__.jsx)(_Selection_Resources_assets_js_Components_ExportSelectionDrawer__WEBPACK_IMPORTED_MODULE_13__.ExportSelectionDrawer, {
-      selection_id: exportableId,
-      visible: exportDrawerVisible,
-      setVisible: setExportDrawerVisible
-    })]
+    })
   });
 }
 
@@ -12703,7 +12668,8 @@ function Index() {
     dataIndex: 'updated_at',
     sorter: function sorter(a, b) {
       return compareDate(a.updated_at, b.updated_at);
-    }
+    },
+    defaultSortOrder: 'ascend'
   }, {
     title: "Наименование",
     dataIndex: 'name',
@@ -13055,7 +13021,7 @@ var useDate = function useDate() {
   };
 
   var compareDate = function compareDate(date1, date2) {
-    var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DD.MM.YYYY';
+    var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DD.MM.YYYY hh:mm';
     return new Date(moment__WEBPACK_IMPORTED_MODULE_0___default()(date1, format).toDate()) - new Date(moment__WEBPACK_IMPORTED_MODULE_0___default()(date2, format).toDate());
   };
 
@@ -13181,21 +13147,7 @@ var useNotifications = function useNotifications() {
         borderRadius: 5
       },
       duration: 5
-    }); // notification.open({
-    //     _message,
-    //     // message: <div style={{textAlign: 'center'}}>{message}</div>,
-    //     key: 'restore',
-    //     btn: <PrimaryButton onClick={() => {
-    //         Inertia.get(restoreRoute)
-    //         notification.close('restore')
-    //     }}>
-    //         {buttonLabel}
-    //     </PrimaryButton>,
-    //     style: {
-    //         borderRadius: 7,
-    //         width: width,
-    //     }
-    // })
+    });
   };
 
   return {

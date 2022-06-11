@@ -7,19 +7,10 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
-use Modules\Selection\Http\Requests\RqPumpStationCurves;
-use Modules\Selection\Http\Requests\DoublePump\RqDoublePumpSelectionCurves;
-use Modules\Selection\Http\Requests\DoublePump\RqExportDoublePumpSelectionAtOnce;
-use Modules\Selection\Http\Requests\DoublePump\RqMakeDoublePumpSelection;
-use Modules\Selection\Http\Requests\DoublePump\RqStoreDoublePumpSelection;
-use Modules\Selection\Http\Requests\RqExportAtOnceSelection;
 use Modules\Selection\Http\Requests\RqMakeSelection;
-use Modules\Selection\Http\Requests\SinglePump\RqSinglePumpSelectionCurves;
-use Modules\Selection\Http\Requests\SinglePump\RqExportSinglePumpSelectionAtOnce;
-use Modules\Selection\Http\Requests\SinglePump\RqMakeSinglePumpSelection;
-use Modules\Selection\Http\Requests\SinglePump\RqStoreSinglePumpSelection;
 use Modules\Selection\Http\Requests\RqStoreSelection;
-use Modules\Selection\Http\Requests\WaterAuto\RqMakeWaterAutoSelection;
+use Modules\Selection\Http\Requests\Water\Auto\RqMakeWSAutoSelection;
+use Modules\Selection\Http\Requests\Water\Auto\RqStoreWSAutoSelection;
 
 class SelectionServiceProvider extends ServiceProvider
 {
@@ -131,33 +122,35 @@ class SelectionServiceProvider extends ServiceProvider
     {
         if (request()->selection_type && request()->station_type) {
             $binder = [
-                StationType::fromValue(StationType::Water)->key => [
+                StationType::fromValue(StationType::WS)->key => [
                     SelectionType::fromValue(SelectionType::Auto)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+                        'make' => RqMakeWSAutoSelection::class,
+                        'store' => RqStoreWSAutoSelection::class
                     ],
                     SelectionType::fromValue(SelectionType::Handle)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+//                        'make_selection' => RqMakeWaterAutoSelection::class,
                     ]
                 ],
-                StationType::fromValue(StationType::Fire)->key => [
+                StationType::fromValue(StationType::AF)->key => [
                     SelectionType::fromValue(SelectionType::Auto)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+//                        'make_selection' => RqMakeWaterAutoSelection::class,
 
                     ],
                     SelectionType::fromValue(SelectionType::Handle)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+//                        'make_selection' => RqMakeWaterAutoSelection::class,
                     ]
                 ],
                 StationType::fromValue(StationType::Combine)->key => [
                     SelectionType::fromValue(SelectionType::Auto)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+//                        'make_selection' => RqMakeWaterAutoSelection::class,
                     ],
                     SelectionType::fromValue(SelectionType::Handle)->key => [
-                        'make_selection' => RqMakeWaterAutoSelection::class,
+//                        'make_selection' => RqMakeWaterAutoSelection::class,
                     ]
                 ]
             ];
-            $this->app->bind(RqMakeSelection::class, $binder[request()->station_type][request()->selection_type]['make_selection']);
+            $this->app->bind(RqMakeSelection::class, $binder[request()->station_type][request()->selection_type]['make']);
+            $this->app->bind(RqStoreSelection::class, $binder[request()->station_type][request()->selection_type]['store']);
         }
 //        dd(request());
 

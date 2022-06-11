@@ -11936,7 +11936,7 @@ var useDate = function useDate() {
   };
 
   var compareDate = function compareDate(date1, date2) {
-    var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DD.MM.YYYY';
+    var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'DD.MM.YYYY hh:mm';
     return new Date(moment__WEBPACK_IMPORTED_MODULE_0___default()(date1, format).toDate()) - new Date(moment__WEBPACK_IMPORTED_MODULE_0___default()(date2, format).toDate());
   };
 

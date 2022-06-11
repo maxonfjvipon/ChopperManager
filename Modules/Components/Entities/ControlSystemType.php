@@ -11,6 +11,7 @@ use Modules\Selection\Entities\StationType;
  * Control system type.
  *
  * @property string $name
+ * @property StationType $station_type
  */
 final class ControlSystemType extends Model
 {

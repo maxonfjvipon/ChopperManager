@@ -20,7 +20,7 @@ class CreateControlSystemsTable extends Migration
             $table->string('article')->unique();
             $table->integer('pumps_count')->unsigned();
             $table->float('power')->unsigned();
-            $table->float('price')->unsigned();
+            $table->float('price', 12)->unsigned();
             $table->timestamp('price_updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->float('weight')->unsigned();
             $table->text('description')->nullable();

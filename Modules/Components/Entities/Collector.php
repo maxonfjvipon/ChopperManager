@@ -13,6 +13,9 @@ use Modules\Pump\Entities\DN;
 
 /**
  * Collector.
+ * @property int $dn_common
+ *
+ * @property CollectorMaterial $material
  */
 final class Collector extends Model
 {

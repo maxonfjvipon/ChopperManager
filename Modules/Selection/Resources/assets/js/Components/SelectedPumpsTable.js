@@ -29,6 +29,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
                     {record.cost_price.toLocaleString()}
                 </Tooltip>,
             sorter: (a, b) => a.cost_price - b.cost_price,
+            defaultSortOrder: 'ascend'
         },
         {
             title: "Р, кВт",
@@ -44,7 +45,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
         },
         {
             key: 'action', width: '1%', render: (_, record) => {
-                return (
+                return !record.bad && (
                     <TableActionsContainer>
                         <Tooltip placement="topRight" title="Добавить">
                             <Button

@@ -39,7 +39,6 @@ class PumpStation extends Model
     use PumpStationRelationships, PumpStationAttributes;
 
     protected $guarded = [];
-    public $timestamps = false;
 
     protected $casts = [
         'station_type' => StationType::class

@@ -18,7 +18,10 @@ export default function Dashboard() {
             ...arr2, {
                 title: station_type.description + ', ' + selection_type.description,
                 onClick: () => {
-                    Inertia.get(route('selections.create', [project_id, station_type.key, selection_type.key]))
+                    Inertia.get(route('selections.create', [project_id])
+                        + '?station_type=' + station_type.key
+                        + '&selection_type=' + selection_type.key
+                    )
                 }
             }
         ], [])

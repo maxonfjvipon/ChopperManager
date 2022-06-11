@@ -27,8 +27,9 @@ class TxtCostStructure implements Text
     {
         $structure = $this->structure->asArray();
         return "Насос: " . $structure['pump']
+            . "\nНасосы: " . $structure['pumps']
             . "\nСистема управления: " . $structure['control_system']
-            . "\nРама: " . $structure['control_system']
+            . "\nРама: " . $structure['chassis']
             . "\nАрматура: " . $structure['armature']
             . "\nВходной коллектор: " . $structure['input_collector']
             . "\nВыходной коллектор: " . $structure['output_collector']

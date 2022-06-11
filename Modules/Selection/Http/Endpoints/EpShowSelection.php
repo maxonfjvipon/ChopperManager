@@ -6,14 +6,11 @@ use App\Takes\TkInertia;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Support\Facades\Request;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Modules\Project\Takes\TkAuthorizeProject;
-use Modules\Pump\Http\Requests\RqPumpableType;
+use Modules\Selection\Actions\AcCreateOrShowSelection;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Support\TxtCreateSelectionComponent;
-use Modules\Selection\Transformers\SelectionPropsResource;
-use Modules\Selection\Transformers\SelectionResources\SelectionResource;
+use Modules\Selection\Transformers\SelectionResources\SelectionAsResource;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -23,21 +20,16 @@ use Symfony\Component\HttpFoundation\Response;
 final class EpShowSelection extends Controller
 {
     /**
-     * @param RqPumpableType $request
-     * @param int $selection_id
+     * @param Selection $selection
+     * @param AcCreateOrShowSelection $action
      * @return Responsable|Response
      * @throws Exception
      */
-    public function __invoke(Request $request, int $selection_id): Responsable|Response
+    public function __invoke(Selection $selection, AcCreateOrShowSelection $action): Responsable|Response
     {
-        $selection = Selection::withOrWithoutTrashed()->findOrFail($selection_id);
         return (new TkInertia(
-            new TxtCreateSelectionComponent(),
-            new ArrMerged(
-                ['project_id' => $selection->project_id],
-                new SelectionPropsResource(),
-                new SelectionResource($selection),
-            )
+            new TxtCreateSelectionComponent($selection->station_type->key, $selection->type->key),
+            $action($selection->project_id, $selection->station_type->key, $selection->type->key, $selection),
         ))->act();
     }
 }

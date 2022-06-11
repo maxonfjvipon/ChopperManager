@@ -18,10 +18,6 @@ import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 
 export default function Show() {
-    // STATE
-    const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
-    const [exportableId, setExportableId] = useState(0)
-
     // HOOKS
     const {project, auth, filter_data} = usePage().props
     const {filteredBoolArray} = usePermissions()
@@ -105,7 +101,7 @@ export default function Show() {
             title: "Дата обновления",
             dataIndex: 'updated_at',
             sorter: (a, b) => compareDate(a.updated_at, b.updated_at),
-            defaultSortOrder: 'ascend'
+            defaultSortOrder: 'ascend' // fixme - doesn't work
         },
         {
             title: "Тип станции",
@@ -132,7 +128,6 @@ export default function Show() {
                 return (
                     <TableActionsContainer>
                         <View clickHandler={showSelectionHandler(record)}/>
-                        <Export clickHandler={exportSelectionHandler(record.id)}/>
                         <Delete
                             sureDeleteTitle="Вы уверены, что хотите удалить подбор?"
                             confirmHandler={deleteSelectionHandler(record.id)}
@@ -154,11 +149,6 @@ export default function Show() {
             "Восстановить подбор?",
             route('selections.restore', id),
         )
-    }
-
-    const exportSelectionHandler = id => () => {
-        setExportableId(id)
-        setExportDrawerVisible(true)
     }
 
     // RENDER
@@ -184,7 +174,6 @@ export default function Show() {
                     clickRecord
                 />
             </ResourceContainer>
-            <ExportSelectionDrawer selection_id={exportableId} visible={exportDrawerVisible} setVisible={setExportDrawerVisible}/>
         </>
     )
 }
