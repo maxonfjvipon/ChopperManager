@@ -26,6 +26,7 @@ use Illuminate\Support\Collection;
  * @property string $pump_series_ids
  * @property string $collectors
  * @property string $comment
+ * @property int $pump_id
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -35,7 +36,7 @@ use Illuminate\Support\Collection;
  *
  * @method static self create(array $attributes)
  */
-class Selection extends Model
+final class Selection extends Model
 {
     use HasFactory, SoftDeletes, SoftCascadeTrait, WithOrWithoutTrashed;
 
@@ -55,5 +56,21 @@ class Selection extends Model
     public function pump_stations(): HasMany
     {
         return $this->hasMany(PumpStation::class, 'selection_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function pump_stations_to_show(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->pump_stations()
+            ->with([
+                'control_system' => fn($query) => $query->select('id', 'type_id'),
+                'control_system.type' => fn($query) => $query->select('id', 'name', 'station_type'),
+                'pump' => fn($query) => $query->select('id', 'name', 'series_id'),
+                'pump.series' => fn($query) => $query->select('id', 'name'),
+                'input_collector' => fn($query) => $query->select('id', 'dn_common', 'material')
+            ])
+            ->get();
     }
 }

@@ -13,6 +13,9 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property int $reserve_pumps_count
  * @property array<int> $control_system_type_ids
  * @property array<string> $collectors
+ * @property int $pump_id
+ * @property string $collector
+ * @property int $main_pumps_count
  */
 abstract class RqMakeSelection extends FormRequest
 {

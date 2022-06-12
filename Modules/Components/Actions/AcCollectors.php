@@ -45,7 +45,7 @@ final class AcCollectors extends AcComponents
                                     'id' => $collector->id,
                                     'article' => $collector->article,
                                     'dn_common' => $collector->dn_common,
-                                    'dn_pipes' => $collector->dn_pipess,
+                                    'dn_pipes' => $collector->dn_pipes,
                                     'pipes_count' => $collector->pipes_count,
                                     'length' => $collector->length,
                                     'pipes_length' => $collector->pipes_length,

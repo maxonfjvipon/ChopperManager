@@ -1,0 +1,81 @@
+<?php
+
+namespace Modules\Selection\Http\Requests\WS\Handle;
+
+use App\Rules\ArrayExistsInArray;
+use Exception;
+use Illuminate\Validation\Rules\In;
+use Modules\Components\Entities\ControlSystemType;
+use Modules\Pump\Entities\Pump;
+use Modules\PumpSeries\Entities\PumpBrand;
+use Modules\PumpSeries\Entities\PumpSeries;
+use Modules\Selection\Entities\SelectionType;
+use Modules\Selection\Entities\StationType;
+use Modules\Selection\Http\Requests\RqStoreSelection;
+use Modules\Selection\Rules\DnMaterialRegex;
+use Modules\Selection\Rules\DnsMaterialsArray;
+use Modules\Selection\Rules\PumpStationsArray;
+
+/**
+ * @property float $flow
+ * @property float $head
+ * @property int $main_pumps_count
+ * @property int $reserve_pumps_count
+ * @property array<int> $control_system_type_ids
+ * @property int $pump_brand_id
+ * @property int $pump_series_id
+ * @property string $collector
+ * @property string $comment
+ * @property int $pump_id
+ */
+final class RqStoreWSHandleSelection extends RqStoreSelection
+{
+    /**
+     * @return array
+     * @throws Exception
+     */
+    public function rules(): array
+    {
+        return array_merge(
+            parent::rules(),
+            [
+                'flow' => ['required', 'numeric', 'min:0'],
+                'head' => ['required', 'numeric', 'min:0'],
+
+                'main_pumps_count' => ['required', new In([1, 2, 3, 4, 5])],
+                'reserve_pumps_count' => ['required', new In([0, 1, 2, 3, 4])],
+
+                'control_system_type_ids' => ['required', 'array', new ArrayExistsInArray(ControlSystemType::allOrCached()->pluck('id')->all())],
+                'pump_brand_id' => ['required', new In(PumpBrand::pluck('id')->all())],
+                'pump_series_id' => ['required', new In(PumpSeries::pluck('id')->all())],
+                'pump_id' => ['required', new In(Pump::allOrCached()->pluck('id')->all())],
+                'collector' => ['required', new DnMaterialRegex()],
+
+                'added_stations' => ['required', 'array', new PumpStationsArray()],
+
+                'comment' => ['sometimes', 'nullable', 'string']
+            ]
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function selectionProps(): array
+    {
+        return [
+            'flow' => $this->flow,
+            'head' => $this->head,
+            'main_pumps_counts' => (string)$this->main_pumps_count,
+            'reserve_pumps_count' => $this->reserve_pumps_count,
+            'control_system_type_ids' => $this->imploded($this->control_system_type_ids),
+            'pump_brand_ids' => (string)$this->pump_brand_id,
+            'pump_series_ids' => (string)$this->pump_series_id,
+            'pump_id' => $this->pump_id,
+            'collectors' => $this->collector,
+            'type' => SelectionType::Handle,
+            'station_type' => StationType::WS,
+            'comment' => $this->comment
+        ];
+    }
+}

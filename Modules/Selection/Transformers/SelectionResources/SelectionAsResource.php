@@ -48,8 +48,8 @@ class SelectionAsResource implements Arrayable
     {
         return (match ($this->selection->station_type->value) {
             StationType::WS => match ($this->selection->type->value) {
-                SelectionType::Auto => new WaterAutoSelectionAsResource($this->selection),
-                SelectionType::Handle => new WaterHandleSelectionAsResource($this->selection),
+                SelectionType::Auto => new WSAutoSelectionAsResource($this->selection),
+                SelectionType::Handle => new WSHandleSelectionAsResource($this->selection),
             },
         })->asArray();
     }

@@ -22,7 +22,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
             dataIndex: 'control_system_article',
         },
         {
-            title: "Цена станции",
+            title: "Себестоимость, ₽",
             dataIndex: 'cost_price',
             render: (_, record) =>
                 <Tooltip overlayStyle={{ whiteSpace: 'pre-line' }} placement="topRight" title={record.cost_structure}>

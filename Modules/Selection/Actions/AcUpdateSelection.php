@@ -5,28 +5,38 @@ namespace Modules\Selection\Actions;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\RqStoreSelection;
 
+/**
+ * Update selection action.
+ */
 final class AcUpdateSelection
 {
+    /**
+     * Ctor.
+     * @param RqStoreSelection $request
+     * @param Selection $selection
+     */
     public function __construct(
         private RqStoreSelection $request,
-        private Selection $selection,
+        private Selection        $selection,
     )
     {
     }
 
+    /**
+     * @return void
+     */
     public function __invoke()
     {
-        $this->selection->update($this->request->selectionProps());
-        $toUpdate = array_filter(
-            $this->request->added_stations,
-            fn(array $station) => !!$station['id']
-        );
+        $this->selection->update($this->request->selectionProps());;
         $this->selection->pump_stations()
             ->whereNotIn(
                 'id',
                 array_map(
                     fn(array $station) => $station['id'],
-                    $toUpdate
+                    $toUpdate = array_filter(
+                        $this->request->added_stations,
+                        fn(array $station) => !!$station['id']
+                    )
                 )
             )
             ->delete();
@@ -34,7 +44,8 @@ final class AcUpdateSelection
             array_map(
                 fn(array $station) => [
                     ...$station,
-                    'selection_id' => $this->selection->id
+                    'selection_id' => $this->selection->id,
+                    'updated_at' => now()
                 ],
                 $toUpdate,
             ),

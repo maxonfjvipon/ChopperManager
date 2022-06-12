@@ -26,7 +26,7 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
             dataIndex: 'name',
         },
         {
-            title: "Себестоимость",
+            title: "Себестоимость, ₽",
             dataIndex: 'cost_price',
             render: (_, record) => record.cost_price.toFixed(2).toLocaleString()
         },
@@ -38,14 +38,14 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
             render: (_, record) => record.extra_percentage.toFixed(2).toLocaleString(),
         },
         {
-            title: "Наценка, сумма",
+            title: "Наценка, ₽",
             dataIndex: "extra_sum",
             editable: true,
             input: record => <InputNum precision={2} min={0} {...inputProps(record)}/>,
             render: (_, record) => record.extra_sum.toFixed(2).toLocaleString()
         },
         {
-            title: "Цена в КП",
+            title: "Цена в КП, ₽",
             dataIndex: 'final_price',
             render: (_, record) => record.final_price.toFixed(2).toLocaleString()
         },

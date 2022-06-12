@@ -14,6 +14,7 @@ use Modules\Pump\Entities\DN;
 /**
  * Collector.
  * @property int $dn_common
+ * @property int $dn_pipes
  *
  * @property CollectorMaterial $material
  */

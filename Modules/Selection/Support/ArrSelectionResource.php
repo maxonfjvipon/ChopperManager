@@ -5,8 +5,8 @@ namespace Modules\Selection\Support;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\Selection;
-use Modules\Selection\Transformers\SelectionResources\WaterHandleSelectionAsResource;
-use Modules\Selection\Transformers\SelectionResources\WaterAutoSelectionAsResource;
+use Modules\Selection\Transformers\SelectionResources\WSHandleSelectionAsResource;
+use Modules\Selection\Transformers\SelectionResources\WSAutoSelectionAsResource;
 
 /**
  * Selection resource as arrayable.
@@ -34,8 +34,8 @@ final class ArrSelectionResource implements Arrayable
     public function asArray(): array
     {
         return ['selection' => match ($this->selection->pump_type) {
-            Pump::$DOUBLE_PUMP => (new WaterHandleSelectionAsResource($this->selection)),
-            Pump::$SINGLE_PUMP => (new WaterAutoSelectionAsResource($this->selection))
+            Pump::$DOUBLE_PUMP => (new WSHandleSelectionAsResource($this->selection)),
+            Pump::$SINGLE_PUMP => (new WSAutoSelectionAsResource($this->selection))
         }];
     }
 }

@@ -7,10 +7,16 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
+use Modules\Selection\Http\Requests\AF\Auto\RqMakeAFAutoSelection;
+use Modules\Selection\Http\Requests\AF\Auto\RqStoreAFAutoSelection;
+use Modules\Selection\Http\Requests\AF\Handle\RqMakeAFHandleSelection;
+use Modules\Selection\Http\Requests\AF\Handle\RqStoreAFHandleSelection;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Http\Requests\RqStoreSelection;
-use Modules\Selection\Http\Requests\Water\Auto\RqMakeWSAutoSelection;
-use Modules\Selection\Http\Requests\Water\Auto\RqStoreWSAutoSelection;
+use Modules\Selection\Http\Requests\WS\Auto\RqMakeWSAutoSelection;
+use Modules\Selection\Http\Requests\WS\Auto\RqStoreWSAutoSelection;
+use Modules\Selection\Http\Requests\WS\Handle\RqMakeWSHandleSelection;
+use Modules\Selection\Http\Requests\WS\Handle\RqStoreWSHandleSelection;
 
 class SelectionServiceProvider extends ServiceProvider
 {
@@ -121,23 +127,27 @@ class SelectionServiceProvider extends ServiceProvider
     public function bindSelectionDependencies()
     {
         if (request()->selection_type && request()->station_type) {
+            $make = "make";
+            $store = "store";
             $binder = [
                 StationType::fromValue(StationType::WS)->key => [
                     SelectionType::fromValue(SelectionType::Auto)->key => [
-                        'make' => RqMakeWSAutoSelection::class,
-                        'store' => RqStoreWSAutoSelection::class
+                        $make => RqMakeWSAutoSelection::class,
+                        $store => RqStoreWSAutoSelection::class
                     ],
                     SelectionType::fromValue(SelectionType::Handle)->key => [
-//                        'make_selection' => RqMakeWaterAutoSelection::class,
+                        $make => RqMakeWSHandleSelection::class,
+                        $store => RqStoreWSHandleSelection::class,
                     ]
                 ],
                 StationType::fromValue(StationType::AF)->key => [
                     SelectionType::fromValue(SelectionType::Auto)->key => [
-//                        'make_selection' => RqMakeWaterAutoSelection::class,
-
+                        $make => RqMakeAFAutoSelection::class,
+                        $store => RqStoreAFAutoSelection::class,
                     ],
                     SelectionType::fromValue(SelectionType::Handle)->key => [
-//                        'make_selection' => RqMakeWaterAutoSelection::class,
+                        $make => RqMakeAFHandleSelection::class,
+                        $store => RqStoreAFHandleSelection::class
                     ]
                 ],
                 StationType::fromValue(StationType::Combine)->key => [
@@ -149,26 +159,8 @@ class SelectionServiceProvider extends ServiceProvider
                     ]
                 ]
             ];
-            $this->app->bind(RqMakeSelection::class, $binder[request()->station_type][request()->selection_type]['make']);
-            $this->app->bind(RqStoreSelection::class, $binder[request()->station_type][request()->selection_type]['store']);
+            $this->app->bind(RqMakeSelection::class, $binder[request()->station_type][request()->selection_type][$make]);
+            $this->app->bind(RqStoreSelection::class, $binder[request()->station_type][request()->selection_type][$store]);
         }
-//        dd(request());
-
-//        switch (request()->pumpable_type) {
-//            case Pump::$DOUBLE_PUMP:
-//                // REQUESTS
-//                $this->app->bind(RqMakeSelection::class, RqMakeDoublePumpSelection::class);
-//                $this->app->bind(RqSelectionCurves::class, RqDoublePumpSelectionCurves::class);
-//                $this->app->bind(RqExportAtOnceSelection::class, RqExportDoublePumpSelectionAtOnce::class);
-//                $this->app->bind(RqStoreSelection::class, RqStoreDoublePumpSelection::class);
-//                break;
-//            case Pump::$SINGLE_PUMP:
-//                // REQUESTS
-//                $this->app->bind(RqMakeSelection::class, RqMakeSinglePumpSelection::class);
-//                $this->app->bind(RqSelectionCurves::class, RqSinglePumpSelectionCurves::class);
-//                $this->app->bind(RqExportAtOnceSelection::class, RqExportSinglePumpSelectionAtOnce::class);
-//                $this->app->bind(RqStoreSelection::class, RqStoreSinglePumpSelection::class);
-//                break;
-//        }
     }
 }

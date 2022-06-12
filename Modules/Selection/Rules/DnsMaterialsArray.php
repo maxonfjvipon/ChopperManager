@@ -4,6 +4,7 @@ namespace Modules\Selection\Rules;
 
 use App\Rules\ArrayExistsInArray;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rules\In;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Pump\Entities\DN;
 

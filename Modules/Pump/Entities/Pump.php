@@ -38,6 +38,8 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property Carbon $price_updated_at
  * @property Collection<PumpCoefficients>|PumpCoefficients[] $coefficients
  * @property CollectorSwitch $collector_switch
+ *
+ * @method static Pump find(int $id)
  */
 class Pump extends Model
 {

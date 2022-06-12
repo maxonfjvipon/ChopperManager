@@ -33,7 +33,7 @@ use Modules\Selection\Traits\PumpStationRelationships;
  * @property Selection $selection
  * @property Pump $pump
  */
-class PumpStation extends Model
+final class PumpStation extends Model
 {
     use HasFactory, SoftDeletes, AxisStep;
     use PumpStationRelationships, PumpStationAttributes;
@@ -48,7 +48,7 @@ class PumpStation extends Model
      * @return $this
      * @throws Exception
      */
-    public function withCurves(): static
+    public function withCurves(): PumpStation
     {
         $this->{'curves'} = (new ArrMerged(
             [

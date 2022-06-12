@@ -13,8 +13,6 @@ abstract class RqStoreSelection extends RqDetermineSelection
 {
     private string $separator = ",";
 
-//    protected function prepareForValidation();
-
     #[Pure] protected function imploded($array): ?string
     {
         return $array ? implode($this->separator, $array) : null;

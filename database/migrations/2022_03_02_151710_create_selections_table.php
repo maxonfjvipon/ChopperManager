@@ -19,6 +19,7 @@ class CreateSelectionsTable extends Migration
             $table->timestamps();
             $table->float('flow')->unsigned();
             $table->float('head')->unsigned();
+            $table->float('deviation')->unsigned()->nullable();
             $table->string('main_pumps_counts');
             $table->integer('reserve_pumps_count')->unsigned();
             $table->text('control_system_type_ids');

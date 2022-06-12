@@ -10,9 +10,11 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Components\Entities\ControlSystemType;
+use Modules\Components\Entities\YesNo;
 use Modules\Pump\Entities\DN;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\Selection\Entities\Selection;
+use Modules\Selection\Entities\StationType;
 use Modules\Selection\Transformers\SelectionResources\SelectionAsResource;
 
 final class AcCreateOrShowSelection
@@ -37,7 +39,7 @@ final class AcCreateOrShowSelection
         return (new ArrMerged(
             [
                 'project_id' => $project_id,
-                'selection_props' => [
+                'selection_props' => array_merge([
                     'control_system_types' => array_values(
                         ControlSystemType::allOrCached()
                             ->where('station_type.key', $stationType)
@@ -57,8 +59,13 @@ final class AcCreateOrShowSelection
                             CollectorMaterial::getDescriptions()
                         ),
                         DN::values()
-                    ))
-                ]
+                    )),
+                ], $stationType === StationType::getKey(StationType::AF) ? [
+                    'yes_no' => YesNo::asArrayForSelect()
+                ] : []
+                ),
+                'selection_type' => $selectionType,
+                'station_type' => $stationType
             ],
             new ArrIf(
                 !!$selection,

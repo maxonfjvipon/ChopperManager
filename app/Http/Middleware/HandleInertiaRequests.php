@@ -10,6 +10,8 @@ use Inertia\Middleware;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
+use Modules\Selection\Entities\SelectionType;
+use Modules\Selection\Entities\StationType;
 use Spatie\Permission\Models\Permission;
 
 class HandleInertiaRequests extends Middleware
@@ -51,7 +53,6 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $filter = $this->permFilter($request);
         return array_merge(parent::share($request), [
             'title' => 'BPE Pump Master',
             'auth' => array_merge([
@@ -67,11 +68,17 @@ class HandleInertiaRequests extends Middleware
                     'error' => $request->session()->get('error'),
                     'errorBag' => $request->session()->get('errorBag'),
                 ];
-            }]);
-    }
-
-    private function permFilter(Request $request): string
-    {
-        return explode('/', Route::getCurrentRoute()->uri)[0];
+            }], $this->doesRequestContain($request, "selections")
+            ? [
+                'selection_types' => [
+                    SelectionType::fromValue(SelectionType::Auto)->key => SelectionType::fromValue(SelectionType::Auto)->key,
+                    SelectionType::fromValue(SelectionType::Handle)->key => SelectionType::fromValue(SelectionType::Handle)->key,
+                ],
+                'station_types' => [
+                    StationType::fromValue(StationType::WS)->key => StationType::fromValue(StationType::WS)->key,
+                    StationType::fromValue(StationType::AF)->key => StationType::fromValue(StationType::AF)->key
+                ],
+            ]
+            : []);
     }
 }
