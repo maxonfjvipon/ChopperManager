@@ -49,7 +49,7 @@ class CreatePumpStationsTable extends Migration
             $table->foreign('chassis_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
 
             $table->foreign('jockey_chassis_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('jockey_pump_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('jockey_pump_id')->references('id')->on('pumps')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
