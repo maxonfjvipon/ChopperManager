@@ -1,7 +1,7 @@
 <?php
 
 use App\Support\FormattedPrice;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use JetBrains\PhpStorm\Pure;
 
 if (!function_exists('formatted_price')) {

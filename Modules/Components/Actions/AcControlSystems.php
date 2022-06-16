@@ -35,7 +35,7 @@ final class AcControlSystems extends AcComponents
                         'weight' => $controlSystem->weight,
                         'price' => $controlSystem->price,
                         'currency' => $controlSystem->currency->key,
-                        'price_updated_at' => date_format($controlSystem->price_updated_at, 'd.m.Y'),
+                        'price_updated_at' => formatted_date($controlSystem->price_updated_at),
                         'description' => $controlSystem->description,
                     ]
                 ),
@@ -55,7 +55,7 @@ final class AcControlSystems extends AcComponents
                         'weight' => $controlSystem->weight,
                         'price' => $controlSystem->price,
                         'currency' => $controlSystem->currency->key,
-                        'price_updated_at' => date_format($controlSystem->price_updated_at, 'd.m.Y'),
+                        'price_updated_at' => formatted_date($controlSystem->price_updated_at),
                         'description' => $controlSystem->description
                     ]
                 )

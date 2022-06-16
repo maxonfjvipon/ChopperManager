@@ -80,12 +80,14 @@ final class ArrCostStructure implements Arrayable
                 new Conjunction(
                     new KeyExists('jockey_pump', $this->components),
                     new KeyExists('jockey_chassis', $this->components),
-                    !!$this->components['jockey_pump']
                 ),
-                fn() => [
-                    'jockey_pump' => $this->components['jockey_pump']->priceByRates($this->rates),
-                    'jockey_chassis' => $this->components['jockey_chassis']?->priceByRates($this->rates)
-                ]
+                fn() => new ArrIf(
+                    !!$this->components['jockey_pump'],
+                    fn() => [
+                        'jockey_pump' => $this->components['jockey_pump']->priceByRates($this->rates),
+                        'jockey_chassis' => $this->components['jockey_chassis']?->priceByRates($this->rates)
+                    ]
+                )
             )
         ))->asArray();
     }
