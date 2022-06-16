@@ -37,8 +37,8 @@ abstract class AcImport
                 $files[] = (new FastExcel())
                     ->withoutHeaders()
                     ->startRow(2)
-                    ->sheet(0)
-                    ->importSheets($file, function ($entity) use (&$errorBag) {
+                    ->sheet(1)
+                    ->import($file, function ($entity) use (&$errorBag) {
                         try {
                             validator()
                                 ->make($entity, $this->rules($entity), $this->messages(), $this->attributes())
@@ -54,10 +54,8 @@ abstract class AcImport
                         return $this->entityToImport($entity);
                     });
             }
-            foreach ($files as $fileSheets) {
-                foreach ($fileSheets as $sheet) {
-                    $this->import($sheet);
-                }
+            foreach ($files as $sheet) {
+                $this->import($sheet->toArray());
             }
             return Redirect::back()->with('success', 'Загрузка прошла успешно');
         } catch (Exception $exception) {
