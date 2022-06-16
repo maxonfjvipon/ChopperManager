@@ -4,7 +4,7 @@ namespace Modules\Selection\Transformers\SelectionResources;
 
 use Exception;
 
-final class WSHandleSelectionAsResource extends SelectionAsResource
+class WSHandleSelectionAsResource extends SelectionAsResource
 {
     /**
      * @return array

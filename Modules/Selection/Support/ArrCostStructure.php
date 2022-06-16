@@ -3,16 +3,13 @@
 namespace Modules\Selection\Support;
 
 use App\Support\Rates\Rates;
-use JetBrains\PhpStorm\ArrayShape;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Logical\Conjunction;
 use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
 use Modules\Components\Entities\Armature;
 use Modules\Components\Entities\AssemblyJob;
-use Modules\Components\Entities\ControlSystemType;
 use Modules\Components\Entities\FirePumpControlCabinet;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Http\Requests\RqMakeSelection;
@@ -44,7 +41,7 @@ final class ArrCostStructure implements Arrayable
     public function asArray(): array
     {
         $pump = $this->components['pump'];
-        return (new ArrMerged(
+        return ArrMerged::new(
             [
                 'pump' => $pumpPrice = $pump->priceByRates($this->rates),
                 'pumps' => $pumpPrice * $this->pumpsCount,
@@ -89,6 +86,6 @@ final class ArrCostStructure implements Arrayable
                     ]
                 )
             )
-        ))->asArray();
+        )->asArray();
     }
 }

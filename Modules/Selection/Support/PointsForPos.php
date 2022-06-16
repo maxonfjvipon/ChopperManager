@@ -22,9 +22,9 @@ final class PointsForPos implements Arrayable
      */
     public function asArray(): array
     {
-        return (new ArrMapped(
+        return ArrMapped::new(
             $this->origin,
             fn(array $point) => [$point[0] * $this->position, $point[1]]
-        ))->asArray();
+        )->asArray();
     }
 }

@@ -54,6 +54,7 @@ final class SelectedPumps implements Arrayable
                             },
                             StationType::getKey(StationType::AF) => match ($this->request->selection_type) {
                                 SelectionType::getKey(SelectionType::Auto) => new SelectedPumpsAFAuto($this->request, $dnMaterials),
+                                SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsAFHandle($this->request),
                             }
                         }
                     )

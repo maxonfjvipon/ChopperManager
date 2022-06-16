@@ -2,7 +2,10 @@
 
 namespace Modules\Selection\Http\Requests;
 
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\In;
+use Modules\Components\Entities\ControlSystemType;
 
 /**
  * @property array<int> $pump_series_ids
@@ -24,4 +27,16 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 abstract class RqMakeSelection extends FormRequest
 {
+    /**
+     * @throws Exception
+     */
+    public function rules(): array
+    {
+        return [
+            'flow' => ['required', 'numeric', 'min:0', 'not_in:0'],
+            'head' => ['required', 'numeric', 'min:0', 'not_in:0'],
+            'reserve_pumps_count' => ['required', 'numeric', new In([0, 1, 2, 3, 4])],
+            'control_system_type_ids' => ['required', 'array', new In(ControlSystemType::allOrCached()->pluck('id')->all())]
+        ];
+    }
 }

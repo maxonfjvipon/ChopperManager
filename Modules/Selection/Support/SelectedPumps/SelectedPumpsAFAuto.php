@@ -30,7 +30,7 @@ use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
 use Modules\Selection\Support\TxtCostStructure;
 use Modules\Selection\Support\TxtPumpStationName;
 
-class SelectedPumpsAFAuto implements Arrayable
+final class SelectedPumpsAFAuto implements Arrayable
 {
     /**
      * Ctor.
@@ -128,7 +128,7 @@ class SelectedPumpsAFAuto implements Arrayable
                                                                             $jockeyPump
                                                                         ))->asString(),
                                                                         'pump_article' => $pump->article,
-                                                                        'cost_price' => (new Rounded(
+                                                                        'cost_price' => Rounded::new(
                                                                             new PumpStationPrice(
                                                                                 $costStructure = new ArrSticky(
                                                                                     new ArrCostStructure(
@@ -147,7 +147,7 @@ class SelectedPumpsAFAuto implements Arrayable
                                                                                 )
                                                                             ),
                                                                             2
-                                                                        ))->asNumber(),
+                                                                        )->asNumber(),
                                                                         'cost_structure' => (new TxtCostStructure($costStructure))->asString(), // todo: jockey pump and chassis
                                                                         'power' => $pump->power,
                                                                         'total_power' => $pump->power * $pumpsCount,

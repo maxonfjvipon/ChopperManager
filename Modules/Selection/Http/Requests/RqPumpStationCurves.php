@@ -4,7 +4,6 @@ namespace Modules\Selection\Http\Requests;
 
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\In;
 use Modules\Pump\Entities\Pump;
 

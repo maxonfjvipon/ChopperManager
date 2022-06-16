@@ -2,7 +2,6 @@
 
 namespace Modules\Selection\Http\Requests;
 
-
 use BenSampo\Enum\Rules\EnumKey;
 use Illuminate\Foundation\Http\FormRequest;
 use Modules\Selection\Entities\SelectionType;

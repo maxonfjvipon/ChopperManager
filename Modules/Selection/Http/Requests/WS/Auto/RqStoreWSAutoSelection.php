@@ -3,14 +3,12 @@
 namespace Modules\Selection\Http\Requests\WS\Auto;
 
 use App\Rules\ArrayExistsInArray;
-use Modules\Components\Entities\ControlSystemType;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Http\Requests\RqStoreSelection;
 use Modules\Selection\Rules\DnsMaterialsArray;
-use Modules\Selection\Rules\PumpStationsArray;
 
 /**
  * @property float $flow

@@ -2,10 +2,8 @@
 
 namespace Modules\Selection\Http\Requests\WS\Handle;
 
-use App\Rules\ArrayExistsInArray;
 use Exception;
 use Illuminate\Validation\Rules\In;
-use Modules\Components\Entities\ControlSystemType;
 use Modules\Pump\Entities\Pump;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
@@ -13,8 +11,6 @@ use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Http\Requests\RqStoreSelection;
 use Modules\Selection\Rules\DnMaterialRegex;
-use Modules\Selection\Rules\DnsMaterialsArray;
-use Modules\Selection\Rules\PumpStationsArray;
 
 /**
  * @property float $flow
@@ -28,7 +24,7 @@ use Modules\Selection\Rules\PumpStationsArray;
  * @property string $comment
  * @property int $pump_id
  */
-final class RqStoreWSHandleSelection extends RqStoreSelection
+class RqStoreWSHandleSelection extends RqStoreSelection
 {
     /**
      * @return array

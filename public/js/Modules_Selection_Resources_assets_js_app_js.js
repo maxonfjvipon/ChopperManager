@@ -10312,7 +10312,29 @@ __webpack_require__.r(__webpack_exports__);
 function AFHandle() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_PumpStationSelection__WEBPACK_IMPORTED_MODULE_1__.PumpStationSelection, {
     title: "\u0420\u0443\u0447\u043D\u043E\u0439 \u043F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F",
-    widths: null
+    widths: {
+      flow: 6,
+      head: 6,
+      main_pumps_count: 6,
+      reserve_pumps_count: 6,
+      avr: 6,
+      gate_valves_count: 6,
+      kkv: 6,
+      on_street: 6,
+      control_systems: 8,
+      pump_brands: 4,
+      pump_series: 4,
+      pump: 4,
+      collectors: 4,
+      jockey: {
+        flow: 4,
+        head: 4,
+        brand: 4,
+        series: 4,
+        pump: 4
+      },
+      button: 4
+    }
   });
 }
 

@@ -42,7 +42,7 @@ class SelectionAsResource implements Arrayable
      */
     public function asArray(): array
     {
-        return (new ArrMerged(
+        return ArrMerged::new(
             [
                 'id' => $this->selection->id,
                 'flow' => $this->selection->flow,
@@ -57,9 +57,10 @@ class SelectionAsResource implements Arrayable
                     SelectionType::Handle => new WSHandleSelectionAsResource($this->selection),
                 },
                 StationType::AF => match ($this->selection->type->value) {
-                    SelectionType::Auto => new AFAutoSelectionAsResource($this->selection)
+                    SelectionType::Auto => new AFAutoSelectionAsResource($this->selection),
+                    SelectionType::Handle => new AFHandleSelectionAsResource($this->selection)
                 }
             }
-        ))->asArray();
+        )->asArray();
     }
 }
