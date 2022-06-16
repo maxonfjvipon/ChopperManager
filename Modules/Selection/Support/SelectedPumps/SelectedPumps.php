@@ -28,6 +28,7 @@ final class SelectedPumps implements Arrayable
      */
     public function asArray(): array
     {
+        ini_set('max_execution_time', '120');
         $dnMaterials = new ArrSticky(
             new ArrIf(
                 !!$this->request->collectors,

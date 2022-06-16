@@ -37,7 +37,6 @@ abstract class AcImport
                 $files[] = (new FastExcel())
                     ->withoutHeaders()
                     ->startRow(2)
-                    ->sheet(1)
                     ->import($file, function ($entity) use (&$errorBag) {
                         try {
                             validator()
