@@ -9,6 +9,9 @@ use Modules\Selection\Support\Regression\EqPolynomial;
 
 /**
  * @method static self create(array $attributes)
+ * @property float $k
+ * @property float $b
+ * @property float $c
  */
 final class PumpCoefficients extends Model
 {

@@ -3,17 +3,15 @@
 namespace Modules\Selection\Transformers\SelectionResources;
 
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrExploded;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Modules\Pump\Entities\Pump;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
+use Modules\Selection\Transformers\RcPumpStation;
 
 class SelectionAsResource implements Arrayable
 {
@@ -30,15 +28,13 @@ class SelectionAsResource implements Arrayable
      */
     protected function intsArrayFromString($string): array
     {
-        return (new ArrIf(
+        return ArrIf::new(
             !!$string,
-            new ArrFromCallback(
-                fn() => new ArrMapped(
-                    ArrExploded::byComma($string),
-                    'intval'
-                )
+            fn() => new ArrMapped(
+                ArrExploded::byComma($string),
+                'intval'
             )
-        ))->asArray();
+        )->asArray();
     }
 
     /**
@@ -46,11 +42,24 @@ class SelectionAsResource implements Arrayable
      */
     public function asArray(): array
     {
-        return (match ($this->selection->station_type->value) {
-            StationType::WS => match ($this->selection->type->value) {
-                SelectionType::Auto => new WSAutoSelectionAsResource($this->selection),
-                SelectionType::Handle => new WSHandleSelectionAsResource($this->selection),
-            },
-        })->asArray();
+        return (new ArrMerged(
+            [
+                'id' => $this->selection->id,
+                'flow' => $this->selection->flow,
+                'head' => $this->selection->head,
+                'control_system_type_ids' => $this->intsArrayFromString($this->selection->control_system_type_ids),
+                'comment' => $this->selection->comment,
+                'pump_stations' => RcPumpStation::collection($this->selection->pump_stations_to_show())
+            ],
+            match ($this->selection->station_type->value) {
+                StationType::WS => match ($this->selection->type->value) {
+                    SelectionType::Auto => new WSAutoSelectionAsResource($this->selection),
+                    SelectionType::Handle => new WSHandleSelectionAsResource($this->selection),
+                },
+                StationType::AF => match ($this->selection->type->value) {
+                    SelectionType::Auto => new AFAutoSelectionAsResource($this->selection)
+                }
+            }
+        ))->asArray();
     }
 }

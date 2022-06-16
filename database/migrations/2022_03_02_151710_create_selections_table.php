@@ -32,8 +32,8 @@ class CreateSelectionsTable extends Migration
             $table->boolean('avr')->nullable();
             $table->boolean('kkv')->nullable();
             $table->boolean('on_street')->nullable();
-            $table->float('jockey_pump_flow')->unsigned()->nullable();
-            $table->float('jockey_pump_head')->unsigned()->nullable();
+            $table->float('jockey_flow')->unsigned()->nullable();
+            $table->float('jockey_head')->unsigned()->nullable();
 
             $table->softDeletes();
 

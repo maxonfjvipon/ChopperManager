@@ -2,6 +2,8 @@
 
 namespace Modules\Selection\Support\Point;
 
+use JetBrains\PhpStorm\ArrayShape;
+
 /**
  * Simple point
  */
@@ -19,7 +21,7 @@ final class SimplePoint implements Point
     /**
      * @return array
      */
-    public function asArray(): array
+    #[ArrayShape(['x' => "float", 'y' => "float"])] public function asArray(): array
     {
         return [
             'x' => $this->x,

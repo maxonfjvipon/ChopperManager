@@ -31,46 +31,42 @@ final class SelectedPumps implements Arrayable
         $dnMaterials = new ArrSticky(
             new ArrIf(
                 !!$this->request->collectors,
-                new ArrFromCallback(
-                    fn() => new ArrMapped(
-                        $this->request->collectors,
-                        function (string $dnMaterial) {
-                            $exploded = explode(" ", $dnMaterial);
-                            return [
-                                'dn' => $exploded[0],
-                                'material' => $exploded[1]
-                            ];
-                        },
-                    )
-                ),
-            )
+                fn() => new ArrMapped(
+                    $this->request->collectors,
+                    function (string $dnMaterial) {
+                        $exploded = explode(" ", $dnMaterial);
+                        return [
+                            'dn' => $exploded[0],
+                            'material' => $exploded[1]
+                        ];
+                    },
+                )
+            ),
         );
         return (new ArrTernary(
             new EqualityOf(
                 new LengthOf(
                     $selectedPumps = new ArrSticky(
                         match ($this->request->station_type) {
-                            StationType::getKey(StationType::WS) => match($this->request->selection_type) {
+                            StationType::getKey(StationType::WS) => match ($this->request->selection_type) {
                                 SelectionType::getKey(SelectionType::Auto) => new SelectedPumpsWSAuto($this->request, $dnMaterials),
                                 SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsWSHandle($this->request)
                             },
-//                            StationType::getKey(StationType::Fire) => match ($this->request->selection_type) {
-//
-//                            }
+                            StationType::getKey(StationType::AF) => match ($this->request->selection_type) {
+                                SelectionType::getKey(SelectionType::Auto) => new SelectedPumpsAFAuto($this->request, $dnMaterials),
+                            }
                         }
                     )
                 ),
                 0),
             ['info' => __('flash.selections.pumps_not_found')],
-            new ArrFromCallback(
-                fn() => [
-                    'selected_pumps' => $selectedPumps->asArray(),
-                    'working_point' => [
-                        'x' => $this->request->flow,
-                        'y' => $this->request->head
-                    ]
+            fn() => [
+                'selected_pumps' => $selectedPumps->asArray(),
+                'working_point' => [
+                    'x' => $this->request->flow,
+                    'y' => $this->request->head
                 ]
-            )
+            ]
         ))->asArray();
     }
 }

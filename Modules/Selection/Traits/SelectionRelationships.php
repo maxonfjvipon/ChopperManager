@@ -3,9 +3,11 @@
 namespace Modules\Selection\Traits;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Project\Entities\Project;
-use Modules\Pump\Entities\DoublePumpWorkScheme;
 use Modules\Pump\Entities\Pump;
+use Modules\Pump\Traits\HasJockeyPump;
+use Modules\Selection\Entities\PumpStation;
 
 /**
  * Selection relationships
@@ -13,19 +15,21 @@ use Modules\Pump\Entities\Pump;
  */
 trait SelectionRelationships
 {
-    // RELATIONSHIPS
-    public function pump(): BelongsTo
+    use HasJockeyPump;
+
+    /**
+     * @return HasMany
+     */
+    public function pump_stations(): HasMany
     {
-        return $this->belongsTo(Pump::class, 'pump_id');
+        return $this->hasMany(PumpStation::class, 'selection_id', 'id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class, 'project_id');
-    }
-
-    public function dp_work_scheme(): BelongsTo
-    {
-        return $this->belongsTo(DoublePumpWorkScheme::class, 'dp_work_scheme_id');
     }
 }

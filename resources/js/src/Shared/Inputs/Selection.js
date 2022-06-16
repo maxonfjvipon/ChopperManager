@@ -4,7 +4,7 @@ import {Select} from "antd";
 export const Selection = ({placeholder, defaultValue, options, ...rest}) => {
     return (
         <Select
-            options={[...options.map(option => {
+            options={[...(options || []).map(option => {
                 return {
                     label: option.customValue || option.name || option.value || option,
                     value: option.id || option.value || option.name || option

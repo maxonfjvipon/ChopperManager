@@ -4,7 +4,6 @@ namespace Modules\Components\Actions;
 
 use JetBrains\PhpStorm\Pure;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 

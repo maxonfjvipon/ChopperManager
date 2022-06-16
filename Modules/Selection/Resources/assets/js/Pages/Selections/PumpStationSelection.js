@@ -4,11 +4,11 @@ import {IndexContainer} from "../../../../../../../resources/js/src/Shared/Resou
 import {BackLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
 import {
     Checkbox,
-    Col,
+    Col, Divider,
     Form, Input,
     Radio,
     Row,
-    Space,
+    Space, Tabs,
 } from "antd";
 import {RequiredFormItem} from "../../../../../../../resources/js/src/Shared/RequiredFormItem";
 import {MultipleSelection} from "../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
@@ -22,6 +22,7 @@ import {usePage} from "@inertiajs/inertia-react";
 import {useCheck} from "../../../../../../../resources/js/src/Hooks/check.hook";
 import {useHttp} from "../../../../../../../resources/js/src/Hooks/http.hook";
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
+import {useDebounce} from "../../../../../../../resources/js/src/Hooks/debounce.hook";
 import {InputNum} from "../../../../../../../resources/js/src/Shared/Inputs/InputNum";
 import {AddedPumpsTable} from "../../Components/AddedPumpsTable";
 
@@ -58,19 +59,32 @@ export const PumpStationSelection = ({title, widths}) => {
 
     const [brandValue, setBrandValue] = useState(selection?.pump_brand_id || null)
     const [oneSeriesValue, setOneSeriesValue] = useState(selection?.pump_series_id || null)
-    const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
+
+    const [jockeyBrandValue, setJockeyBrandValue] = useState(selection?.jockey_brand_id || null)
+    const [jockeySeriesValue, setJockeySeriesValue] = useState(selection?.jockey_series_id || null)
+
+    // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
     const [stationToShow, setStationToShow] = useState(null)
     const [addedStationKey, setAddedStationKey] = useState(selection != null
         ? Math.max(...selection.pump_stations.map(station => station.key)) + 1
         : 1
     )
+    const [flow, setFlow] = useState(selection?.flow || null)
+    const debouncedFlow = useDebounce(flow, 1000)
 
-    const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
+    // const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
     const [pumpsToShow, setPumpsToShow] = useState([])
     const [seriesToShow, setSeriesToShow] = useState([])
 
+    const [jockeyPumpsToShow, setJockeyPumpsToShow] = useState([])
+    const [jockeySeriesToShow, setJockeySeriesToShow] = useState([])
+
+    const [collectorsToShow, setCollectorsToShow] = useState(selection_props.collectors)
+
     const [updated, setUpdated] = useState(!selection)
     const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
+
+    // console.log(selection)
 
     // CONSTS
     const [selectionForm] = Form.useForm()
@@ -109,6 +123,9 @@ export const PumpStationSelection = ({title, widths}) => {
     // HANDLERS
     const makeSelectionHandler = async () => {
         setStationToShow(null)
+        document.getElementById('curves').innerHTML = ''
+        if (station_type === station_types.AF)
+            document.getElementById('jockey_curves').innerHTML = ''
         if (!selection)
             setAddedStations([])
         try {
@@ -170,6 +187,11 @@ export const PumpStationSelection = ({title, widths}) => {
                 chassis_id: station.chassis_id,
                 input_collector_id: station.input_collector_id,
                 output_collector_id: station.output_collector_id,
+
+                jockey_pump_id: station.jockey_pump_id,
+                jockey_chassis_id: station.jockey_chassis_id,
+                jockey_flow: station.jockey_flow,
+                jockey_head: station.jockey_head,
             }))
         })
     }
@@ -177,18 +199,31 @@ export const PumpStationSelection = ({title, widths}) => {
     useEffect(() => {
         if (stationToShow) {
             try {
+                let data = {
+                    pump_id: stationToShow.pump_id,
+                    head: stationToShow.head,
+                    flow: stationToShow.flow,
+                    reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
+                    main_pumps_count: stationToShow.main_pumps_count || undefined,
+                }
+                const hasJockey = !!stationToShow.jockey_pump_id
+                if (hasJockey) {
+                    data = {
+                        ...data,
+                        jockey_pump_id: stationToShow.jockey_pump_id,
+                        jockey_flow: stationToShow.jockey_flow,
+                        jockey_head: stationToShow.jockey_head,
+                    }
+                }
                 axios.request({
                     url: route('pump_stations.curves'),
                     method: 'POST',
-                    data: {
-                        pump_id: stationToShow.pump_id,
-                        head: stationToShow.head,
-                        flow: stationToShow.flow,
-                        reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
-                        main_pumps_count: stationToShow.main_pumps_count || undefined,
-                    },
+                    data,
                 }).then(res => {
                     document.getElementById('curves').innerHTML = res.data.curves
+                    if (hasJockey) {
+                        document.getElementById('jockey_curves').innerHTML = res.data.jockey_curves
+                    }
                 })
             } catch (e) {
                 console.error(e)
@@ -203,9 +238,33 @@ export const PumpStationSelection = ({title, widths}) => {
         })
     }
 
+
     useEffect(() => {
-        console.log('pumps', pumpsToShow, 'pump_value', pumpValue)
-    }, [pumpsToShow])
+        if (!!debouncedFlow) {
+            setCollectorsToShow(selection_props.collectors.map(dnMaterial => {
+                return {
+                    name: dnMaterial + " v=" + (debouncedFlow / 3600 / (3.14 * ((+dnMaterial.split(" ")[0] * 0.001) ** 2) / 4)).toFixed(2),
+                    value: dnMaterial
+                }
+            }))
+        } else {
+            setCollectorsToShow(selection_props.collectors)
+        }
+    }, [debouncedFlow])
+
+    useEffect(() => {
+        if (station_type === station_types.AF) {
+            const _jockeySeriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
+                .filter(brand => jockeyBrandValue === brand.id)
+                .map(brand => brand.series))
+            setJockeySeriesToShow(_jockeySeriesToShow)
+            const index = _jockeySeriesToShow.findIndex(series => jockeySeriesValue === series.id)
+            if (index === -1) {
+                setSelectionForm({jockey_series_id: null})
+                setJockeySeriesValue(null)
+            }
+        }
+    }, [jockeyBrandValue])
 
     useEffect(() => {
         if (selection_type === selection_types.Auto) { // AUTO
@@ -219,7 +278,6 @@ export const PumpStationSelection = ({title, widths}) => {
             setSelectionForm({pump_series_ids: currentSeries})
             // setSeriesValue(currentSeries)
         } else { // HANDLE
-            console.log('brand', brandValue)
             const _seriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
                 .filter(brand => brandValue === brand.id)
                 .map(brand => brand.series))
@@ -236,20 +294,42 @@ export const PumpStationSelection = ({title, widths}) => {
     }, [brandsValue, brandValue])
 
     useEffect(() => {
-        if (updated)
-            if (selection_type === selection_types.Handle) { // HANDLE ONLY
-                console.log('series', oneSeriesValue)
+        if (selection_type === selection_types.Handle) { // HANDLE ONLY
+            if (updated) {
                 const _pumpsToShow = [].concat(...seriesToShow
                     .filter(series => oneSeriesValue === series.id)
                     .map(series => series.pumps))
                 setPumpsToShow(_pumpsToShow)
-                const index = _pumpsToShow.findIndex(pump => pumpValue === pump.id)
+                const index = _pumpsToShow.findIndex(pump => selectionForm.getFieldValue('pump_id') === pump.id)
                 if (index === -1) {
                     setSelectionForm({pump_id: null})
-                    setPumpValue(null)
+                    // setPumpValue(null)
                 }
             }
+        }
     }, [oneSeriesValue, updated])
+
+    useEffect(() => {
+        if (station_type === station_types.AF) {
+            if (updated) {
+                // console.log('jockey series to show', jockeySeriesToShow)
+                // console.log('jockey brand', jockeyBrandValue)
+                const _jockeyPumpsToShow = [].concat(...jockeySeriesToShow
+                    .filter(series => jockeySeriesValue === series.id)
+                    .map(series => series.pumps))
+                setJockeyPumpsToShow(_jockeyPumpsToShow)
+                const index = _jockeyPumpsToShow.findIndex(pump => selectionForm.getFieldValue('jockey_pump_id') === pump.id)
+                if (index === -1) {
+                    setSelectionForm({jockey_pump_id: null})
+                    // setPumpValue(null)
+                }
+            }
+        }
+    }, [jockeySeriesValue, updated])
+
+    // useEffect(() => {
+    //     console.log('use effect jockey series to show', jockeySeriesToShow)
+    // }, [jockeySeriesToShow])
 
     // RENDER
     return (
@@ -282,7 +362,11 @@ export const PumpStationSelection = ({title, widths}) => {
                                         min={0}
                                         max={10000}
                                         precision={2}
-                                        disabled={!!selection}
+                                        // disabled={!!selection}
+                                        readOnly={!!selection}
+                                        onChange={value => {
+                                            setFlow(value)
+                                        }}
                                     />
                                 </RequiredFormItem>
                             </Col>
@@ -300,7 +384,8 @@ export const PumpStationSelection = ({title, widths}) => {
                                         min={0}
                                         max={10000}
                                         precision={2}
-                                        disabled={!!selection}
+                                        // disabled={!!selection}
+                                        readOnly={!!selection}
                                     />
                                 </RequiredFormItem>
                             </Col>
@@ -369,7 +454,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                         className={reducedAntFormItemClassName}
                                         name="avr"
                                         label={labels.AF.avr}
-                                        initialValue={selection?.avr || 1}
+                                        initialValue={Number(selection?.avr) || 1}
                                     >
                                         {yesNoRadioOptions}
                                     </RequiredFormItem>
@@ -396,7 +481,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                         className={reducedAntFormItemClassName}
                                         name="kkv"
                                         label={labels.AF.kkv}
-                                        initialValue={selection?.kkv || 1}
+                                        initialValue={Number(selection?.kkv) || 1}
                                     >
                                         {yesNoRadioOptions}
                                     </RequiredFormItem>
@@ -407,7 +492,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                         className={reducedAntFormItemClassName}
                                         name="on_street"
                                         label={labels.AF.onStreet}
-                                        initialValue={selection?.on_street || 0}
+                                        initialValue={Number(selection?.on_street) || 0}
                                     >
                                         {yesNoRadioOptions}
                                     </RequiredFormItem>
@@ -439,7 +524,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                     <MultipleSelection
                                         placeholder={labels.brands}
                                         style={fullWidth}
-                                        options={brandsToShow}
+                                        options={selection_props.brands_with_series_with_pumps}
                                         onChange={values => {
                                             setBrandsValue(values)
                                         }}
@@ -454,7 +539,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                     <Selection
                                         placeholder={labels.brand}
                                         style={fullWidth}
-                                        options={brandsToShow}
+                                        options={selection_props.brands_with_series_with_pumps}
                                         onChange={value => {
                                             setBrandValue(value)
                                         }}
@@ -501,7 +586,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                 <RequiredFormItem
                                     className={reducedAntFormItemClassName}
                                     name="pump_id"
-                                    initialValue={pumpValue}
+                                    initialValue={selection?.pump_id}
                                     label={labels.pump}
                                 >
                                     <Selection
@@ -509,41 +594,131 @@ export const PumpStationSelection = ({title, widths}) => {
                                         placeholder={labels.pump}
                                         style={fullWidth}
                                         options={pumpsToShow}
-                                        onChange={value => {
-                                            setPumpValue(value)
-                                        }}
+                                        // onChange={value => {
+                                        //     setPumpValue(value)
+                                        // }}
                                     />
                                 </RequiredFormItem>
                             </Col>}
                             {/* COLLECTORS */}
                             <Col xs={widths.collectors}>
                                 {selection_type === selection_types.Auto &&
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="collectors"
-                                    initialValue={selection?.collectors}
-                                    label={labels.collectors}
-                                >
-                                    <MultipleSelection
-                                        placeholder={labels.collectors}
-                                        style={fullWidth}
-                                        options={selection_props.collectors}
-                                    />
-                                </RequiredFormItem>}
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="collectors"
+                                        initialValue={selection?.collectors}
+                                        label={labels.collectors}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.collectors}
+                                            style={fullWidth}
+                                            options={collectorsToShow}
+                                        />
+                                    </RequiredFormItem>}
                                 {selection_type === selection_types.Handle &&
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="collector"
-                                    initialValue={selection?.collector}
-                                    label={labels.collector}
-                                >
-                                    <Selection
-                                        placeholder={labels.collector}
-                                        style={fullWidth}
-                                        options={selection_props.collectors}
-                                    />
-                                </RequiredFormItem>}
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="collector"
+                                        initialValue={selection?.collector}
+                                        label={labels.collector}
+                                    >
+                                        <Selection
+                                            placeholder={labels.collector}
+                                            style={fullWidth}
+                                            options={collectorsToShow}
+                                        />
+                                    </RequiredFormItem>}
                             </Col>
+                            {/* JOCKEY PUMP */}
+                            {station_type === station_types.AF && <>
+                                <Col span={24}>
+                                    <Divider orientation="left" style={{marginTop: -10, marginBottom: -10}}>
+                                        Жокей насос
+                                    </Divider>
+                                </Col>
+                                <Col xs={widths.jockey.flow}>
+                                    <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        label={labels.flow}
+                                        name='jockey_flow'
+                                        initialValue={selection?.jockey_flow}
+                                    >
+                                        <InputNum
+                                            placeholder={labels.flow}
+                                            style={fullWidth}
+                                            min={0}
+                                            max={10000}
+                                            precision={2}
+                                        />
+                                    </Form.Item>
+                                </Col>
+                                <Col xs={widths.jockey.head}>
+                                    <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        label={labels.head}
+                                        name='jockey_head'
+                                        initialValue={selection?.jockey_head}
+                                    >
+                                        <InputNum
+                                            placeholder={labels.head}
+                                            style={fullWidth}
+                                            min={0}
+                                            max={10000}
+                                            precision={2}
+                                        />
+                                    </Form.Item>
+                                </Col>
+                                <Col xs={widths.jockey.brand}>
+                                    <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        name="jockey_brand_id"
+                                        initialValue={jockeyBrandValue}
+                                        label={labels.brand}
+                                    >
+                                        <Selection
+                                            placeholder={labels.brand}
+                                            style={fullWidth}
+                                            options={selection_props.brands_with_series_with_pumps}
+                                            onChange={value => {
+                                                setJockeyBrandValue(value)
+                                            }}
+                                        />
+                                    </Form.Item>
+                                </Col>
+                                <Col xs={widths.jockey.series}>
+                                    <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        name="jockey_series_id"
+                                        initialValue={jockeySeriesValue}
+                                        label={labels.series}
+                                    >
+                                        <Selection
+                                            placeholder={labels.series}
+                                            style={fullWidth}
+                                            options={jockeySeriesToShow}
+                                            onChange={value => {
+                                                setJockeySeriesValue(value)
+                                            }}
+                                            disabled={!jockeyBrandValue}
+                                        />
+                                    </Form.Item>
+                                </Col>
+                                <Col xs={widths.jockey.pump}>
+                                    <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        name="jockey_pump_id"
+                                        initialValue={selection?.jockey_pump_id}
+                                        label={labels.pump}
+                                    >
+                                        <Selection
+                                            placeholder={labels.pump}
+                                            style={fullWidth}
+                                            options={jockeyPumpsToShow}
+                                            disabled={!jockeyBrandValue || !jockeySeriesValue}
+                                        />
+                                    </Form.Item>
+                                </Col>
+                            </>}
                             {/* SELECT BUTTON */}
                             <Col xs={widths.button}>
                                 <Form.Item className={reducedAntFormItemClassName}>
@@ -580,7 +755,25 @@ export const PumpStationSelection = ({title, widths}) => {
                         type="inner"
                         title={stationToShow?.name}
                     >
-                        <div id="curves"/>
+                        {station_type === station_types.WS
+                            ? <div id="curves"/>
+                            : <Tabs defaultActiveKey="curves">
+                                <Tabs.TabPane
+                                    forceRender={true}
+                                    key="curves"
+                                    tab="Основные ГХ"
+                                >
+                                    <div id="curves"/>
+                                </Tabs.TabPane>
+                                <Tabs.TabPane
+                                    forceRender={true}
+                                    key="jockey-curves"
+                                    tab="ГХ жокея"
+                                >
+                                    <div id="jockey_curves"/>
+                                </Tabs.TabPane>
+                            </Tabs>}
+
                     </RoundedCard>
                 </Col>
                 <Col xs={24}>

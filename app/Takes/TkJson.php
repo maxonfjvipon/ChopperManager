@@ -65,7 +65,6 @@ final class TkJson implements Take
             'boolean',
             'string',
             'array',
-            'callable' => fn(callable $callback) => call_user_func($callback),
             Closure::class => fn(Closure $closure) => call_user_func($closure),
             Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
             JsonResource::class => fn(JsonResource $resource) => $resource->toArray($request),

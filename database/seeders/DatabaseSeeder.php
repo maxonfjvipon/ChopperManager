@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Modules\Components\Entities\ControlSystemType;
+use Modules\Components\Entities\FirePumpControlCabinet;
 use Modules\Selection\Entities\StationType;
 use Modules\User\Entities\User;
 use Modules\User\Entities\UserRole;
@@ -110,17 +112,17 @@ class DatabaseSeeder extends Seeder
 
         /** Control system types */
         DB::insert("INSERT INTO `control_system_types` (`id`, `name`, `description`, `station_type`) VALUES
-            (1, 'DD', 'прямой пуск'," . StationType::AF . "),
-            (2, 'SD', 'пуск звезда-треугольник'," . StationType::AF . "),
-            (3, 'SS', 'плавный пуск'," . StationType::AF . "),
-            (4, 'VF', 'частотное управления двигателями основных и резервных насосов'," . StationType::AF . "),
-            (5, 'Comfort', null," . StationType::WS . "),
-            (6, 'Multi', null," . StationType::WS . "),
-            (7, 'Multi-E', null," . StationType::WS . "),
-            (8, 'Multi-EL', null," . StationType::WS . "),
-            (9, 'WS-AF', null," . StationType::WS . "),
-            (10, 'ШУПН', null, null),
-            (11, 'ШУПН с жокеем', null, null);");
+            (" . FirePumpControlCabinet::NoJockey . ", '" . FirePumpControlCabinet::getDescription(FirePumpControlCabinet::NoJockey) . "', null, null),
+            (" . FirePumpControlCabinet::WithJockey . ", '" . FirePumpControlCabinet::getDescription(FirePumpControlCabinet::WithJockey) . "', null, null),
+            (3, 'DD', 'прямой пуск'," . StationType::AF . "),
+            (4, 'SD', 'пуск звезда-треугольник'," . StationType::AF . "),
+            (5, 'SS', 'плавный пуск'," . StationType::AF . "),
+            (6, 'VF', 'частотное управления двигателями основных и резервных насосов'," . StationType::AF . "),
+            (7, 'Comfort', null," . StationType::WS . "),
+            (8, 'Multi', null," . StationType::WS . "),
+            (9, 'Multi-E', null," . StationType::WS . "),
+            (10, 'Multi-EL', null," . StationType::WS . "),
+            (11, 'WS-AF', null," . StationType::WS . ");");
 
 
         /** Users */

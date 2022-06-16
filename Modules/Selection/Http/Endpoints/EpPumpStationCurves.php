@@ -7,6 +7,8 @@ use App\Takes\TkAuthorize;
 use App\Takes\TkJson;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Modules\Selection\Entities\PumpStation;
 use Modules\Selection\Entities\Selection;
 use Modules\Selection\Http\Requests\RqPumpStationCurves;
@@ -27,9 +29,18 @@ final class EpPumpStationCurves extends Controller
     public function __invoke(RqPumpStationCurves $request): Responsable|Response
     {
         return (new TkJson(
-            new PumpStationCurves(
-                new PumpStation($request->validated())
-            )
+            new ArrMerged(
+                new PumpStationCurves(
+                    new PumpStation($request->mainStationProps()),
+                ),
+                new ArrIf(
+                    $request->hasJockey(),
+                    fn() => new PumpStationCurves(
+                        new PumpStation($request->jockeyPumpProps()),
+                        'jockey_curves'
+                    )
+                )
+            ),
         ))->act($request);
     }
 }

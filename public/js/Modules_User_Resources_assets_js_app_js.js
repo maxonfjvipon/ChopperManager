@@ -12670,7 +12670,7 @@ var Selection = function Selection(_ref) {
       rest = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
-    options: _toConsumableArray(options.map(function (option) {
+    options: _toConsumableArray((options || []).map(function (option) {
       return {
         label: option.customValue || option.name || option.value || option,
         value: option.id || option.value || option.name || option

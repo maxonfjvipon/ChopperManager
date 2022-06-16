@@ -4,11 +4,9 @@ namespace Modules\Selection\Support;
 
 use App\Support\TxtView;
 use Exception;
+use JetBrains\PhpStorm\ArrayShape;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\PumpStation;
-use Modules\Selection\Entities\Selection;
 use Modules\Selection\Traits\AxisStep;
 
 /**
@@ -21,8 +19,12 @@ final class PumpStationCurves implements Arrayable
     /**
      * Ctor.
      * @param PumpStation $pumpStation
+     * @param string $viewName
      */
-    public function __construct(private PumpStation $pumpStation)
+    public function __construct(
+        private PumpStation $pumpStation,
+        private string $viewName = "curves"
+    )
     {
     }
 
@@ -32,11 +34,11 @@ final class PumpStationCurves implements Arrayable
      */
     public function asArray(): array
     {
-        return ['curves' => (new TxtView(
+        return [$this->viewName => TxtView::new(
             "selection::pump_station_curves",
             $this->pumpStation
                 ->withCurves()
                 ->curves
-        ))->asString()];
+        )->asString()];
     }
 }

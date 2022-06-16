@@ -13,24 +13,22 @@ use Tests\Unit\TxtViewTest;
 final class TxtView implements Text
 {
     /**
-     * @var string $name
+     * @param string $name
+     * @param array $data
+     * @return TxtView
      */
-    private string $name;
-
-    /**
-     * @var array $data
-     */
-    private array $data;
+    public static function new(string $name, array $data = []): TxtView
+    {
+        return new self($name, $data);
+    }
 
     /**
      * Ctor.
      * @param string $name
      * @param array $data
      */
-    public function __construct(string $name, array $data = [])
+    public function __construct(private string $name, private array $data = [])
     {
-        $this->name = $name;
-        $this->data = $data;
     }
 
     /**

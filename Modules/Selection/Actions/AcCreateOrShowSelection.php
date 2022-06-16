@@ -69,11 +69,9 @@ final class AcCreateOrShowSelection
             ],
             new ArrIf(
                 !!$selection,
-                new ArrFromCallback(
-                    fn() => new ArrObject(
-                        'selection',
-                        new SelectionAsResource($selection)
-                    )
+                fn() => new ArrObject(
+                    'selection',
+                    new SelectionAsResource($selection)
                 )
             )
         ))->asArray();

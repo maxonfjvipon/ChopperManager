@@ -45,11 +45,16 @@ final class PumpStationsArray implements Rule
                 'main_pumps_count' => ['required', 'numeric', new In([1, 2, 3, 4, 5])],
                 'reserve_pumps_count' => ['required', 'numeric', new In([0, 1, 2, 3, 4])],
 
-                'pump_id' => ['required', new In(Pump::allOrCached()->pluck('id')->all())],
+                'pump_id' => ['required', new In($pumpIds = Pump::allOrCached()->pluck('id')->all())],
                 'control_system_id' => ['required', new In(ControlSystem::allOrCached()->pluck('id')->all())],
-                'chassis_id' => ['required', new In(Chassis::allOrCached()->pluck('id')->all())],
+                'chassis_id' => ['required', new In($chassisIds = Chassis::allOrCached()->pluck('id')->all())],
                 'input_collector_id' => ['required', new In(Collector::allOrCached()->pluck('id')->all())],
                 'output_collector_id' => ['required', new In(Collector::allOrCached()->pluck('id')->all())],
+
+                'jockey_pump_id' => ['sometimes', 'nullable', new In($pumpIds)],
+                'jockey_chassis_id' => ['sometimes', 'nullable', new In($chassisIds)],
+                'jockey_flow' => ['sometimes', 'nullable', 'numeric', 'min:0'],
+                'jockey_head' => ['sometimes', 'nullable', 'numeric', 'min:0'],
             ])->validate();
         }
         return true;
@@ -60,8 +65,7 @@ final class PumpStationsArray implements Rule
      *
      * @return string
      */
-    public
-    function message()
+    public function message(): string
     {
         return 'Pump station has the wrong format';
     }

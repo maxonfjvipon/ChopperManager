@@ -18,13 +18,14 @@ use Modules\Pump\Entities\Pump;
  * @property int $id
  * @property string $name
  * @property bool $is_discontinued
+ * @property int $brand_id
  *
  * @property PumpBrand $brand
  * @property Currency $currency
  *
  * @method static PumpSeries create(array $attributes)
  */
-class PumpSeries extends Model
+final class PumpSeries extends Model
 {
     use HasFactory, SoftDeletes, SoftCascadeTrait, CanBeDiscontinued;
 

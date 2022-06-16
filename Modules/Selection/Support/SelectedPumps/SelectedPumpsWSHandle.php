@@ -86,6 +86,7 @@ final class SelectedPumpsWSHandle implements Arrayable
                     ->where('power', '>=', $pump->power)
                     ->where('pumps_count', $pumpsCount)
                     ->where('type_id', $controlSystemTypeId)
+                    ->sortBy('power')
                     ->first()
             ),
             function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key, $rates) {

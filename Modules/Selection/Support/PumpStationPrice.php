@@ -2,15 +2,8 @@
 
 namespace Modules\Selection\Support;
 
-use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
-use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
-use Modules\Components\Entities\Armature;
-use Modules\Components\Entities\AssemblyJob;
-use Modules\Selection\Entities\StationType;
-use Modules\Selection\Http\Requests\RqMakeSelection;
-use TypeError;
 
 /**
  * Pump station price
@@ -20,9 +13,7 @@ final class PumpStationPrice implements Numerable
     /**
      * @param Arrayable $components
      */
-    public function __construct(
-        private Arrayable $components
-    )
+    public function __construct(private Arrayable $components)
     {
     }
 

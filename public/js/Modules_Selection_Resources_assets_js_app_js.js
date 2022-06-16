@@ -2223,6 +2223,79 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/antd/es/divider/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/antd/es/divider/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
+
+
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+
+
+
+
+var Divider = function Divider(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_config_provider__WEBPACK_IMPORTED_MODULE_4__.ConfigConsumer, null, function (_ref) {
+    var _classNames;
+
+    var getPrefixCls = _ref.getPrefixCls,
+        direction = _ref.direction;
+
+    var customizePrefixCls = props.prefixCls,
+        _props$type = props.type,
+        type = _props$type === void 0 ? 'horizontal' : _props$type,
+        _props$orientation = props.orientation,
+        orientation = _props$orientation === void 0 ? 'center' : _props$orientation,
+        className = props.className,
+        children = props.children,
+        dashed = props.dashed,
+        plain = props.plain,
+        restProps = __rest(props, ["prefixCls", "type", "orientation", "className", "children", "dashed", "plain"]);
+
+    var prefixCls = getPrefixCls('divider', customizePrefixCls);
+    var orientationPrefix = orientation.length > 0 ? "-".concat(orientation) : orientation;
+    var hasChildren = !!children;
+    var classString = classnames__WEBPACK_IMPORTED_MODULE_3___default()(prefixCls, "".concat(prefixCls, "-").concat(type), (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-with-text"), hasChildren), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-with-text").concat(orientationPrefix), hasChildren), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-dashed"), !!dashed), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-plain"), !!plain), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      className: classString
+    }, restProps, {
+      role: "separator"
+    }), children && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
+      className: "".concat(prefixCls, "-inner-text")
+    }, children));
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Divider);
+
+/***/ }),
+
 /***/ "./node_modules/antd/es/form/ErrorList.js":
 /*!************************************************!*\
   !*** ./node_modules/antd/es/form/ErrorList.js ***!
@@ -10191,7 +10264,29 @@ __webpack_require__.r(__webpack_exports__);
 function AFAuto() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_PumpStationSelection__WEBPACK_IMPORTED_MODULE_1__.PumpStationSelection, {
     title: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u0431\u043E\u0440 \u0441\u0442\u0430\u043D\u0446\u0438\u0438 \u043F\u043E\u0436\u0430\u0440\u043E\u0442\u0443\u0448\u0435\u043D\u0438\u044F",
-    widths: null
+    widths: {
+      flow: 4,
+      head: 4,
+      deviation: 4,
+      main_pumps_count: 6,
+      reserve_pumps_count: 6,
+      avr: 6,
+      gate_valves_count: 6,
+      kkv: 6,
+      on_street: 6,
+      control_systems: 6,
+      pump_brands: 6,
+      pump_series: 7,
+      collectors: 5,
+      jockey: {
+        flow: 4,
+        head: 4,
+        brand: 4,
+        series: 4,
+        pump: 4
+      },
+      button: 4
+    }
   });
 }
 
@@ -10240,13 +10335,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
@@ -10259,9 +10356,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_check_hook__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/check.hook */ "./resources/js/src/Hooks/check.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -10317,9 +10415,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var BackToProjectLink = function BackToProjectLink(_ref) {
   var project_id = _ref.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
     href: route('projects.show', project_id)
   });
@@ -10327,7 +10426,7 @@ var BackToProjectLink = function BackToProjectLink(_ref) {
 
 var BackToSelectionsDashboardLink = function BackToSelectionsDashboardLink(_ref2) {
   var project_id = _ref2.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
     href: route('selections.dashboard', project_id)
   });
@@ -10391,50 +10490,74 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
       oneSeriesValue = _useState12[0],
       setOneSeriesValue = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_id) || null),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_brand_id) || null),
       _useState14 = _slicedToArray(_useState13, 2),
-      pumpValue = _useState14[0],
-      setPumpValue = _useState14[1];
+      jockeyBrandValue = _useState14[0],
+      setJockeyBrandValue = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_series_id) || null),
       _useState16 = _slicedToArray(_useState15, 2),
-      stationToShow = _useState16[0],
-      setStationToShow = _useState16[1];
+      jockeySeriesValue = _useState16[0],
+      setJockeySeriesValue = _useState16[1]; // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
 
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState18 = _slicedToArray(_useState17, 2),
+      stationToShow = _useState18[0],
+      setStationToShow = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
     return station.key;
   }))) + 1 : 1),
-      _useState18 = _slicedToArray(_useState17, 2),
-      addedStationKey = _useState18[0],
-      setAddedStationKey = _useState18[1];
-
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.brands_with_series_with_pumps),
       _useState20 = _slicedToArray(_useState19, 2),
-      brandsToShow = _useState20[0],
-      setBrandsToShow = _useState20[1];
+      addedStationKey = _useState20[0],
+      setAddedStationKey = _useState20[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.flow) || null),
       _useState22 = _slicedToArray(_useState21, 2),
-      pumpsToShow = _useState22[0],
-      setPumpsToShow = _useState22[1];
+      flow = _useState22[0],
+      setFlow = _useState22[1];
+
+  var debouncedFlow = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__.useDebounce)(flow, 1000); // const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
 
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState24 = _slicedToArray(_useState23, 2),
-      seriesToShow = _useState24[0],
-      setSeriesToShow = _useState24[1];
+      pumpsToShow = _useState24[0],
+      setPumpsToShow = _useState24[1];
 
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState26 = _slicedToArray(_useState25, 2),
-      updated = _useState26[0],
-      setUpdated = _useState26[1];
+      seriesToShow = _useState26[0],
+      setSeriesToShow = _useState26[1];
 
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState28 = _slicedToArray(_useState27, 2),
-      exportDrawerVisible = _useState28[0],
-      setExportDrawerVisible = _useState28[1]; // CONSTS
+      jockeyPumpsToShow = _useState28[0],
+      setJockeyPumpsToShow = _useState28[1];
+
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState30 = _slicedToArray(_useState29, 2),
+      jockeySeriesToShow = _useState30[0],
+      setJockeySeriesToShow = _useState30[1];
+
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.collectors),
+      _useState32 = _slicedToArray(_useState31, 2),
+      collectorsToShow = _useState32[0],
+      setCollectorsToShow = _useState32[1];
+
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState34 = _slicedToArray(_useState33, 2),
+      updated = _useState34[0],
+      setUpdated = _useState34[1];
+
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState36 = _slicedToArray(_useState35, 2),
+      exportDrawerVisible = _useState36[0],
+      setExportDrawerVisible = _useState36[1]; // console.log(selection)
+  // CONSTS
 
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_20__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_21__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       selectionForm = _Form$useForm2[0];
 
@@ -10445,9 +10568,9 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
     };
   });
 
-  var yesNoRadioOptions = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Group, {
+  var yesNoRadioOptions = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
     children: (_selection_props$yes_ = selection_props.yes_no) === null || _selection_props$yes_ === void 0 ? void 0 : _selection_props$yes_.map(function (value) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
         value: value.id,
         children: value.name
       }, value.id + value.name);
@@ -10485,18 +10608,20 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
           switch (_context.prev = _context.next) {
             case 0:
               setStationToShow(null);
+              document.getElementById('curves').innerHTML = '';
+              if (station_type === station_types.AF) document.getElementById('jockey_curves').innerHTML = '';
               if (!selection) setAddedStations([]);
-              _context.prev = 2;
+              _context.prev = 4;
               _context.t0 = setSelectedPumps;
               _context.t1 = postRequest;
               _context.t2 = route('selections.select');
               _context.t3 = _objectSpread;
               _context.t4 = _objectSpread;
               _context.t5 = {};
-              _context.next = 11;
+              _context.next = 13;
               return selectionForm.validateFields();
 
-            case 11:
+            case 13:
               _context.t6 = _context.sent;
               _context.t7 = (0, _context.t4)(_context.t5, _context.t6);
               _context.t8 = {};
@@ -10505,26 +10630,26 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                 selection_type: selection_type
               };
               _context.t10 = (0, _context.t3)(_context.t7, _context.t8, _context.t9);
-              _context.next = 18;
+              _context.next = 20;
               return (0, _context.t1)(_context.t2, _context.t10, true);
 
-            case 18:
+            case 20:
               _context.t11 = _context.sent.selected_pumps;
               (0, _context.t0)(_context.t11);
-              _context.next = 25;
+              _context.next = 27;
               break;
 
-            case 22:
-              _context.prev = 22;
-              _context.t12 = _context["catch"](2);
+            case 24:
+              _context.prev = 24;
+              _context.t12 = _context["catch"](4);
               console.log(_context.t12);
 
-            case 25:
+            case 27:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 22]]);
+      }, _callee, null, [[4, 24]]);
     }));
 
     return function makeSelectionHandler() {
@@ -10593,7 +10718,11 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                     control_system_id: station.control_system_id,
                     chassis_id: station.chassis_id,
                     input_collector_id: station.input_collector_id,
-                    output_collector_id: station.output_collector_id
+                    output_collector_id: station.output_collector_id,
+                    jockey_pump_id: station.jockey_pump_id,
+                    jockey_chassis_id: station.jockey_chassis_id,
+                    jockey_flow: station.jockey_flow,
+                    jockey_head: station.jockey_head
                   };
                 })
               };
@@ -10617,18 +10746,33 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (stationToShow) {
       try {
+        var data = {
+          pump_id: stationToShow.pump_id,
+          head: stationToShow.head,
+          flow: stationToShow.flow,
+          reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
+          main_pumps_count: stationToShow.main_pumps_count || undefined
+        };
+        var hasJockey = !!stationToShow.jockey_pump_id;
+
+        if (hasJockey) {
+          data = _objectSpread(_objectSpread({}, data), {}, {
+            jockey_pump_id: stationToShow.jockey_pump_id,
+            jockey_flow: stationToShow.jockey_flow,
+            jockey_head: stationToShow.jockey_head
+          });
+        }
+
         axios.request({
           url: route('pump_stations.curves'),
           method: 'POST',
-          data: {
-            pump_id: stationToShow.pump_id,
-            head: stationToShow.head,
-            flow: stationToShow.flow,
-            reserve_pumps_count: stationToShow.reserve_pumps_count || 0,
-            main_pumps_count: stationToShow.main_pumps_count || undefined
-          }
+          data: data
         }).then(function (res) {
           document.getElementById('curves').innerHTML = res.data.curves;
+
+          if (hasJockey) {
+            document.getElementById('jockey_curves').innerHTML = res.data.jockey_curves;
+          }
         });
       } catch (e) {
         console.error(e);
@@ -10641,14 +10785,47 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log('pumps', pumpsToShow, 'pump_value', pumpValue);
-  }, [pumpsToShow]);
+    if (!!debouncedFlow) {
+      setCollectorsToShow(selection_props.collectors.map(function (dnMaterial) {
+        return {
+          name: dnMaterial + " v=" + (debouncedFlow / 3600 / (3.14 * Math.pow(+dnMaterial.split(" ")[0] * 0.001, 2) / 4)).toFixed(2),
+          value: dnMaterial
+        };
+      }));
+    } else {
+      setCollectorsToShow(selection_props.collectors);
+    }
+  }, [debouncedFlow]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (selection_type === selection_types.Auto) {
+    if (station_type === station_types.AF) {
       var _ref6;
 
+      var _jockeySeriesToShow = (_ref6 = []).concat.apply(_ref6, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+        return jockeyBrandValue === brand.id;
+      }).map(function (brand) {
+        return brand.series;
+      })));
+
+      setJockeySeriesToShow(_jockeySeriesToShow);
+
+      var index = _jockeySeriesToShow.findIndex(function (series) {
+        return jockeySeriesValue === series.id;
+      });
+
+      if (index === -1) {
+        setSelectionForm({
+          jockey_series_id: null
+        });
+        setJockeySeriesValue(null);
+      }
+    }
+  }, [jockeyBrandValue]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (selection_type === selection_types.Auto) {
+      var _ref7;
+
       // AUTO
-      var _seriesToShow = (_ref6 = []).concat.apply(_ref6, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+      var _seriesToShow = (_ref7 = []).concat.apply(_ref7, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
         return brandsValue === null || brandsValue === void 0 ? void 0 : brandsValue.includes(brand.id);
       }).map(function (brand) {
         return brand.series;
@@ -10666,12 +10843,10 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
         pump_series_ids: currentSeries
       }); // setSeriesValue(currentSeries)
     } else {
-      var _ref7;
+      var _ref8;
 
       // HANDLE
-      console.log('brand', brandValue);
-
-      var _seriesToShow2 = (_ref7 = []).concat.apply(_ref7, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+      var _seriesToShow2 = (_ref8 = []).concat.apply(_ref8, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
         return brandValue === brand.id;
       }).map(function (brand) {
         return brand.series;
@@ -10696,90 +10871,124 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
     }
   }, [brandsValue, brandValue]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (updated) if (selection_type === selection_types.Handle) {
-      var _ref8;
-
+    if (selection_type === selection_types.Handle) {
       // HANDLE ONLY
-      console.log('series', oneSeriesValue);
+      if (updated) {
+        var _ref9;
 
-      var _pumpsToShow = (_ref8 = []).concat.apply(_ref8, _toConsumableArray(seriesToShow.filter(function (series) {
-        return oneSeriesValue === series.id;
-      }).map(function (series) {
-        return series.pumps;
-      })));
+        var _pumpsToShow = (_ref9 = []).concat.apply(_ref9, _toConsumableArray(seriesToShow.filter(function (series) {
+          return oneSeriesValue === series.id;
+        }).map(function (series) {
+          return series.pumps;
+        })));
 
-      setPumpsToShow(_pumpsToShow);
+        setPumpsToShow(_pumpsToShow);
 
-      var index = _pumpsToShow.findIndex(function (pump) {
-        return pumpValue === pump.id;
-      });
-
-      if (index === -1) {
-        setSelectionForm({
-          pump_id: null
+        var index = _pumpsToShow.findIndex(function (pump) {
+          return selectionForm.getFieldValue('pump_id') === pump.id;
         });
-        setPumpValue(null);
+
+        if (index === -1) {
+          setSelectionForm({
+            pump_id: null
+          }); // setPumpValue(null)
+        }
       }
     }
-  }, [oneSeriesValue, updated]); // RENDER
+  }, [oneSeriesValue, updated]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (station_type === station_types.AF) {
+      if (updated) {
+        var _ref10;
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
+        // console.log('jockey series to show', jockeySeriesToShow)
+        // console.log('jockey brand', jockeyBrandValue)
+        var _jockeyPumpsToShow = (_ref10 = []).concat.apply(_ref10, _toConsumableArray(jockeySeriesToShow.filter(function (series) {
+          return jockeySeriesValue === series.id;
+        }).map(function (series) {
+          return series.pumps;
+        })));
+
+        setJockeyPumpsToShow(_jockeyPumpsToShow);
+
+        var index = _jockeyPumpsToShow.findIndex(function (pump) {
+          return selectionForm.getFieldValue('jockey_pump_id') === pump.id;
+        });
+
+        if (index === -1) {
+          setSelectionForm({
+            jockey_pump_id: null
+          }); // setPumpValue(null)
+        }
+      }
+    }
+  }, [jockeySeriesValue, updated]); // useEffect(() => {
+  //     console.log('use effect jockey series to show', jockeySeriesToShow)
+  // }, [jockeySeriesToShow])
+  // RENDER
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
     title: title,
-    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToProjectLink, {
+    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(BackToProjectLink, {
       project_id: project_id
-    }), !selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(BackToSelectionsDashboardLink, {
+    }), !selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(BackToSelectionsDashboardLink, {
       project_id: project_id
     })].filter(Boolean),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
       gutter: [16, 16],
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         xs: 16,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
           form: selectionForm,
           name: "selection-form",
           layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
             gutter: [16, 16],
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.flow,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.flow,
                 name: "flow",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.flow,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_17__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
                   placeholder: labels.flow,
                   style: fullWidth,
                   min: 0,
                   max: 10000,
-                  precision: 2,
-                  disabled: !!selection
+                  precision: 2 // disabled={!!selection}
+                  ,
+                  readOnly: !!selection,
+                  onChange: function onChange(value) {
+                    setFlow(value);
+                  }
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.head,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.head,
                 name: "head",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.head,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_17__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
                   placeholder: labels.head,
                   style: fullWidth,
                   min: 0,
                   max: 10000,
-                  precision: 2,
-                  disabled: !!selection
+                  precision: 2 // disabled={!!selection}
+                  ,
+                  readOnly: !!selection
                 })
               })
-            }), selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.deviation,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
                 className: reducedAntFormItemClassName,
                 label: labels.deviation,
                 name: "deviation",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.deviation,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_17__.InputNum, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
                   placeholder: labels.deviation,
                   style: fullWidth,
                   min: -50,
@@ -10787,144 +10996,144 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                   precision: 2
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.main_pumps_count,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.mainPumpsCount,
                 name: "main_pumps_counts",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.main_pumps_counts,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"].Group, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"].Group, {
                   options: mainPumpsCountCheckboxesOptions
                 })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 label: labels.mainPumpsCount,
                 name: "main_pumps_count",
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.main_pumps_count) || 1,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Group, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
                   value: 1,
                   children: [1, 2, 3, 4, 5].map(function (value) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       value: value,
                       children: value
                     }, 'mp_' + value);
                   })
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.reserve_pumps_count,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "reserve_pumps_count",
                 label: labels.reservePumpsCount,
                 initialValue: (selection === null || selection === void 0 ? void 0 : selection.reserve_pumps_count) || 0,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Group, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
                   value: 0,
                   children: [0, 1, 2, 3, 4].map(function (value) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       value: value,
                       children: value
                     }, 'rp_' + value);
                   })
                 })
               })
-            }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.avr,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   name: "avr",
                   label: labels.AF.avr,
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.avr) || 1,
+                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.avr) || 1,
                   children: yesNoRadioOptions
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.gate_valves_count,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   name: "gate_valves_count",
                   label: labels.AF.gatesValvesCount,
                   initialValue: (selection === null || selection === void 0 ? void 0 : selection.gate_valves_count) || 0,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Group, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
                     value: 0,
                     children: [0, 1, 2].map(function (value) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
                         value: value,
                         children: value
                       }, 'gvc_' + value);
                     })
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.kkv,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   name: "kkv",
                   label: labels.AF.kkv,
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.kkv) || 1,
+                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.kkv) || 1,
                   children: yesNoRadioOptions
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.on_street,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   name: "on_street",
                   label: labels.AF.onStreet,
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.on_street) || 0,
+                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.on_street) || 0,
                   children: yesNoRadioOptions
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.control_systems,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "control_system_type_ids",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.control_system_type_ids,
                 label: labels.controlSystemTypes,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
                   placeholder: labels.controlSystemTypes,
                   style: fullWidth,
                   options: selection_props.control_system_types
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.pump_brands,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_brand_ids",
                 initialValue: brandsValue,
                 label: labels.brands,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
                   placeholder: labels.brands,
                   style: fullWidth,
-                  options: brandsToShow,
+                  options: selection_props.brands_with_series_with_pumps,
                   onChange: function onChange(values) {
                     setBrandsValue(values);
                   }
                 })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_brand_id",
                 initialValue: brandValue,
                 label: labels.brand,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
                   placeholder: labels.brand,
                   style: fullWidth,
-                  options: brandsToShow,
+                  options: selection_props.brands_with_series_with_pumps,
                   onChange: function onChange(value) {
                     setBrandValue(value);
                   }
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.pump_series,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_series_ids",
                 initialValue: seriesValue,
                 label: labels.theSeries,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
                   disabled: brandsValue.length === 0,
                   placeholder: labels.theSeries,
                   style: fullWidth,
@@ -10933,12 +11142,12 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                     setSeriesValue(values);
                   }
                 })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_series_id",
                 initialValue: oneSeriesValue,
                 label: labels.series,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
                   disabled: !brandValue,
                   placeholder: labels.series,
                   style: fullWidth,
@@ -10948,64 +11157,153 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                   }
                 })
               })]
-            }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.pump,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "pump_id",
-                initialValue: pumpValue,
+                initialValue: selection === null || selection === void 0 ? void 0 : selection.pump_id,
                 label: labels.pump,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
                   disabled: !oneSeriesValue || !brandValue,
                   placeholder: labels.pump,
                   style: fullWidth,
-                  options: pumpsToShow,
-                  onChange: function onChange(value) {
-                    setPumpValue(value);
-                  }
+                  options: pumpsToShow // onChange={value => {
+                  //     setPumpValue(value)
+                  // }}
+
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.collectors,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "collectors",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.collectors,
                 label: labels.collectors,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
                   placeholder: labels.collectors,
                   style: fullWidth,
-                  options: selection_props.collectors
+                  options: collectorsToShow
                 })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                 className: reducedAntFormItemClassName,
                 name: "collector",
                 initialValue: selection === null || selection === void 0 ? void 0 : selection.collector,
                 label: labels.collector,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
                   placeholder: labels.collector,
                   style: fullWidth,
-                  options: selection_props.collectors
+                  options: collectorsToShow
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                span: 24,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
+                  orientation: "left",
+                  style: {
+                    marginTop: -10,
+                    marginBottom: -10
+                  },
+                  children: "\u0416\u043E\u043A\u0435\u0439 \u043D\u0430\u0441\u043E\u0441"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                xs: widths.jockey.flow,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  label: labels.flow,
+                  name: "jockey_flow",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_flow,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                    placeholder: labels.flow,
+                    style: fullWidth,
+                    min: 0,
+                    max: 10000,
+                    precision: 2
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                xs: widths.jockey.head,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  label: labels.head,
+                  name: "jockey_head",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_head,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                    placeholder: labels.head,
+                    style: fullWidth,
+                    min: 0,
+                    max: 10000,
+                    precision: 2
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                xs: widths.jockey.brand,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "jockey_brand_id",
+                  initialValue: jockeyBrandValue,
+                  label: labels.brand,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    placeholder: labels.brand,
+                    style: fullWidth,
+                    options: selection_props.brands_with_series_with_pumps,
+                    onChange: function onChange(value) {
+                      setJockeyBrandValue(value);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                xs: widths.jockey.series,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "jockey_series_id",
+                  initialValue: jockeySeriesValue,
+                  label: labels.series,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    placeholder: labels.series,
+                    style: fullWidth,
+                    options: jockeySeriesToShow,
+                    onChange: function onChange(value) {
+                      setJockeySeriesValue(value);
+                    },
+                    disabled: !jockeyBrandValue
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                xs: widths.jockey.pump,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "jockey_pump_id",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_pump_id,
+                  label: labels.pump,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    placeholder: labels.pump,
+                    style: fullWidth,
+                    options: jockeyPumpsToShow,
+                    disabled: !jockeyBrandValue || !jockeySeriesValue
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: widths.button,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
                 className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
                   style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
                   onClick: makeSelectionHandler,
                   loading: loading,
                   children: labels.select
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
               xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
                 className: "table-rounded-card",
                 type: "inner",
                 title: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
                   selectedPumps: selectedPumps,
                   setStationToShow: setStationToShow,
                   loading: loading,
@@ -11016,57 +11314,72 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
             })]
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         xs: 8,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
           className: "flex-rounded-card",
           type: "inner",
           title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("div", {
+          children: station_type === station_types.WS ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
             id: "curves"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+            defaultActiveKey: "curves",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"].TabPane, {
+              forceRender: true,
+              tab: "\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0413\u0425",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+                id: "curves"
+              })
+            }, "curves"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"].TabPane, {
+              forceRender: true,
+              tab: "\u0413\u0425 \u0436\u043E\u043A\u0435\u044F",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+                id: "jockey_curves"
+              })
+            }, "jockey-curves")]
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
           className: "table-rounded-card",
           type: "inner",
           title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_18__.AddedPumpsTable, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__.AddedPumpsTable, {
             addedStations: addedStations,
             loading: loading,
             setStationToShow: setStationToShow,
             setAddedStations: setAddedStations
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
           form: selectionForm,
           layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_20__["default"].Item, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
             name: "comment",
             label: labels.comment,
             className: reducedAntFormItemClassName,
             initialValue: selection === null || selection === void 0 ? void 0 : selection.comment,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"].TextArea, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].TextArea, {
               autoSize: true,
               placeholder: labels.comment
             })
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
         xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
             size: 8,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
               onClick: function onClick() {
                 _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('projects.show', project_id));
               },
               loading: loading,
               children: "\u0412\u044B\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
               onClick: saveAndCloseHandler,
               loading: loading,
               disabled: isArrayEmpty(addedStations),
@@ -11183,6 +11496,64 @@ __webpack_require__.r(__webpack_exports__);
   AFAuto: _Pages_Selections_AFAuto__WEBPACK_IMPORTED_MODULE_3__["default"],
   AFHandle: _Pages_Selections_AFHandle__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
+
+/***/ }),
+
+/***/ "./resources/js/src/Hooks/debounce.hook.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/Hooks/debounce.hook.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useDebounce": () => (/* binding */ useDebounce)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var useDebounce = function useDebounce(value, delay) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
+      _useState2 = _slicedToArray(_useState, 2),
+      debouncedValue = _useState2[0],
+      setDebouncedValue = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // Выставить debouncedValue равным value (переданное значение)
+    // после заданной задержки
+    var handler = setTimeout(function () {
+      setDebouncedValue(value);
+    }, delay); // Вернуть функцию очистки, которая будет вызываться каждый раз, когда ...
+    // ... useEffect вызван снова. useEffect будет вызван снова, только если ...
+    // ... value будет изменено (смотри ниже массив зависимостей).
+    // Так мы избегаем изменений debouncedValue, если значение value ...
+    // ... поменялось в рамках интервала задержки.
+    // Таймаут очищается и стартует снова.
+    // Что бы сложить это воедино: если пользователь печатает что-то внутри ...
+    // ... нашего приложения в поле поиска, мы не хотим, чтобы debouncedValue...
+    // ... не менялось до тех пор, пока он не прекратит печатать дольше, чем 500ms.
+
+    return function () {
+      clearTimeout(handler);
+    };
+  }, // Вызывается снова, только если значение изменится
+  // мы так же можем добавить переменную "delay" в массива зависимостей ...
+  // ... если вы собираетесь менять ее динамически.
+  [value]);
+  return debouncedValue;
+};
 
 /***/ }),
 
@@ -12051,7 +12422,7 @@ var Selection = function Selection(_ref) {
       rest = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
-    options: _toConsumableArray(options.map(function (option) {
+    options: _toConsumableArray((options || []).map(function (option) {
       return {
         label: option.customValue || option.name || option.value || option,
         value: option.id || option.value || option.name || option

@@ -3,9 +3,17 @@
 namespace Modules\Selection\Support;
 
 use App\Support\Rates\Rates;
+use JetBrains\PhpStorm\ArrayShape;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Logical\Conjunction;
+use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
 use Modules\Components\Entities\Armature;
 use Modules\Components\Entities\AssemblyJob;
+use Modules\Components\Entities\ControlSystemType;
+use Modules\Components\Entities\FirePumpControlCabinet;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 
@@ -23,9 +31,9 @@ final class ArrCostStructure implements Arrayable
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Rates $rates,
+        private Rates           $rates,
         private array           $components,
-        private int             $pumpsCount
+        private int             $pumpsCount,
     )
     {
     }
@@ -36,27 +44,49 @@ final class ArrCostStructure implements Arrayable
     public function asArray(): array
     {
         $pump = $this->components['pump'];
-        return [
-            'pump' => $pumpPrice = $pump->priceByRates($this->rates),
-            'pumps' => $pumpPrice * $this->pumpsCount,
-            'control_system' => ($controlSystem = $this->components['control_system'])?->priceByRates($this->rates),
-            'chassis' => $this->components['chassis']?->priceByRates($this->rates),
-            'input_collector' => ($inputCollector = $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_suction))?->priceByRates($this->rates),
-            'output_collector' => $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_pressure)?->priceByRates($this->rates),
-            'armature' => Armature::price(
-                $pump,
-                StationType::getValue($this->request->station_type),
-                $this->pumpsCount,
-                $this->rates,
-                $inputCollector
-            ),
-            'job' => AssemblyJob::allOrCached()
-                ->where('pumps_count', $this->pumpsCount)
-                ->where('pumps_weight', '>=', $pump->weight)
-                ->where('control_system_type_id', $controlSystem?->type_id)
-                ->sortBy('pumps_weight')
-                ->first()
-                ?->priceByRates($this->rates)
-        ];
+        return (new ArrMerged(
+            [
+                'pump' => $pumpPrice = $pump->priceByRates($this->rates),
+                'pumps' => $pumpPrice * $this->pumpsCount,
+                'control_system' => ($controlSystem = $this->components['control_system'])?->priceByRates($this->rates),
+                'chassis' => $this->components['chassis']?->priceByRates($this->rates),
+                'input_collector' => ($inputCollector = $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_suction))?->priceByRates($this->rates),
+                'output_collector' => $this->components['collectors']->firstWhere('dn_pipes', $pump->dn_pressure)?->priceByRates($this->rates),
+                'armature' => Armature::price(
+                    $pump,
+                    StationType::getValue($this->request->station_type),
+                    $this->pumpsCount,
+                    $this->rates,
+                    $inputCollector
+                ),
+                'job' => AssemblyJob::allOrCached()
+                    ->where('pumps_count', $this->pumpsCount)
+                    ->where('pumps_weight', '>=', $pump->weight)
+                    ->where('control_system_type_id',
+                        match ($this->request->station_type) {
+                            StationType::getKey(StationType::WS) => $controlSystem?->type_id,
+                            StationType::getKey(StationType::AF) => $controlSystem
+                                ? $controlSystem->has_jockey
+                                    ? FirePumpControlCabinet::WithJockey
+                                    : FirePumpControlCabinet::NoJockey
+                                : null
+                        }
+                    )
+                    ->sortBy('pumps_weight')
+                    ->first()
+                    ?->priceByRates($this->rates)
+            ],
+            new ArrIf(
+                new Conjunction(
+                    new KeyExists('jockey_pump', $this->components),
+                    new KeyExists('jockey_chassis', $this->components),
+                    !!$this->components['jockey_pump']
+                ),
+                fn() => [
+                    'jockey_pump' => $this->components['jockey_pump']->priceByRates($this->rates),
+                    'jockey_chassis' => $this->components['jockey_chassis']?->priceByRates($this->rates)
+                ]
+            )
+        ))->asArray();
     }
 }

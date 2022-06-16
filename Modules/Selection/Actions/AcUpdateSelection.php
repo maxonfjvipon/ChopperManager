@@ -27,6 +27,7 @@ final class AcUpdateSelection
      */
     public function __invoke()
     {
+        $this->selection->project->updateTimestamps();
         $this->selection->update($this->request->selectionProps());;
         $this->selection->pump_stations()
             ->whereNotIn(

@@ -36,12 +36,20 @@ class CreatePumpStationsTable extends Migration
             $table->bigInteger('selection_id')->unsigned();
             $table->bigInteger('chassis_id')->unsigned();
 
+            $table->bigInteger('jockey_pump_id')->unsigned()->nullable();
+            $table->bigInteger('jockey_chassis_id')->unsigned()->nullable();
+            $table->float('jockey_flow')->unsigned()->nullable();
+            $table->float('jockey_head')->unsigned()->nullable();
+
             $table->foreign('input_collector_id')->references('id')->on('collectors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('output_collector_id')->references('id')->on('collectors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('control_system_id')->references('id')->on('control_systems')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('pump_id')->references('id')->on('pumps')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('selection_id')->references('id')->on('selections')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('chassis_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
+
+            $table->foreign('jockey_chassis_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('jockey_pump_id')->references('id')->on('chassis')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

@@ -31,8 +31,9 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property float $power
  * @property float $weight
  * @property string $article
- * @property int $ptp_lenght
+ * @property int $ptp_length
  * @property string $name
+ * @property int $series_id
  *
  * @property PumpSeries $series
  * @property Carbon $price_updated_at
@@ -41,7 +42,7 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  *
  * @method static Pump find(int $id)
  */
-class Pump extends Model
+final class Pump extends Model
 {
     use HasFactory, SoftDeletes, BelongsToThrough;
     use PumpAttributes, Cached, HasPriceByRates;
