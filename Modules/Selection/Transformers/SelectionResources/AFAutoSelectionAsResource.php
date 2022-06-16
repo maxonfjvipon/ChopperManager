@@ -10,7 +10,11 @@ final class AFAutoSelectionAsResource extends WSAutoSelectionAsResource
     {
         return ArrMerged::new(
             parent::asArray(),
-            new AFSelectionAsResource($this->selection)
+            new AFSelectionAsResource($this->selection),
+            [
+                'jockey_brand_ids' => $this->intsArrayFromString($this->selection->jockey_brand_ids),
+                'jockey_series_ids' => $this->intsArrayFromString($this->selection->jockey_series_ids),
+            ]
         )->asArray();
     }
 }

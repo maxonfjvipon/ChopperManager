@@ -20,11 +20,13 @@ class CreateSelectionsTable extends Migration
             $table->float('flow')->unsigned();
             $table->float('head')->unsigned();
             $table->float('deviation')->unsigned()->nullable();
-            $table->string('main_pumps_counts');
+            $table->string('main_pumps_counts', 16);
             $table->integer('reserve_pumps_count')->unsigned();
-            $table->text('control_system_type_ids');
-            $table->text('pump_brand_ids');
-            $table->text('pump_series_ids');
+            $table->string('control_system_type_ids');
+            $table->string('pump_brand_ids');
+            $table->string('pump_series_ids', 512);
+            $table->string('jockey_brand_ids')->nullable();
+            $table->string('jockey_series_ids', 512)->nullable();
             $table->text('collectors');
             $table->text('comment')->nullable();
 

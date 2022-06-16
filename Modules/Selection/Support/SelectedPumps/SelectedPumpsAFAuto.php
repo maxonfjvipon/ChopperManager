@@ -6,9 +6,11 @@ use App\Support\Rates\RealRates;
 use App\Support\Rates\StickyRates;
 use Illuminate\Support\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSorted;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
 use Maxonfjvipon\Elegant_Elephant\Numerable\Rounded;
 use Modules\Components\Entities\Chassis;
@@ -21,6 +23,7 @@ use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrCostStructure;
+use Modules\Selection\Support\ArrPumpsForJockeySelecting;
 use Modules\Selection\Support\ArrPumpsForSelecting;
 use Modules\Selection\Support\Performance\PpQEnd;
 use Modules\Selection\Support\Performance\PpQStart;
@@ -53,8 +56,38 @@ final class SelectedPumpsAFAuto implements Arrayable
         $rates = new StickyRates(new RealRates());
         $jockeyPump = null;
         $jockeyChassis = null;
-        if ($isSprinkler = $this->request->jockey_flow && $this->request->jockey_head && $this->request->jockey_pump_id) {
-            $jockeyPump = Pump::find($this->request->jockey_pump_id);
+        if ($isSprinkler = $this->request->jockey_flow && $this->request->jockey_head && $this->request->jockey_series_ids) {
+            $jockeyPump = ArrSorted::new(
+                new ArrMapped(
+                    new ArrFiltered(
+                        new ArrPumpsForJockeySelecting($this->request->jockey_series_ids),
+                        function (Pump $pump) {
+                            $qEnd = (new PpQEnd($pump->performance(), 1))->asNumber();
+                            if ($this->request->jockey_flow < $qEnd) {
+                                $qStart = (new PpQStart($pump->performance(), 1))->asNumber();
+                                $intersectionPoint = new IntersectionPoint(
+                                    new EqFromPumpCoefficients(
+                                        $pump->coefficientsAt(1)
+                                    ),
+                                    $this->request->jockey_flow,
+                                    $this->request->jockey_head
+                                );
+                                return $this->request->jockey_flow >= $qStart
+                                    && $intersectionPoint->x() >= $qStart + ($qEnd - $qStart) * 0.2
+                                    && $intersectionPoint->x() <= $qEnd - ($qEnd - $qStart) * 0.2
+                                    && $intersectionPoint->y() >= $this->request->jockey_head;
+
+                            }
+                            return false;
+                        }
+                    ),
+                    fn(Pump $pump) => [
+                        'pump' => $pump,
+                        'cost' => $pump->priceByRates($rates)
+                    ]
+                ),
+                'cost'
+            )->asArray()[0]['pump'];
             $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
         }
         return ArrMerged::new(

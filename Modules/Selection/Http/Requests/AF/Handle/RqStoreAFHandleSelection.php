@@ -5,6 +5,9 @@ namespace Modules\Selection\Http\Requests\AF\Handle;
 use Modules\Selection\Http\Requests\WS\Handle\RqStoreWSHandleSelection;
 use Modules\Selection\Traits\AFSelectionRequestHelpers;
 
+/**
+ * @property-read int $jockey_pump_id
+ */
 final class RqStoreAFHandleSelection extends RqStoreWSHandleSelection
 {
     use AFSelectionRequestHelpers;
@@ -13,7 +16,7 @@ final class RqStoreAFHandleSelection extends RqStoreWSHandleSelection
     {
         return array_merge(
             parent::rules(),
-            $this->afSelectionRules()
+            $this->afSelectionRules(),
         );
     }
 

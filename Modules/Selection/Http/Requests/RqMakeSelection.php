@@ -24,6 +24,7 @@ use Modules\Components\Entities\ControlSystemType;
  * @property int $jockey_pump_id
  * @property float $jockey_head
  * @property float $jockey_flow
+ * @property array $jockey_series_ids
  */
 abstract class RqMakeSelection extends FormRequest
 {

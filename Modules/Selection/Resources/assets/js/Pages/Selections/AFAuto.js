@@ -21,9 +21,8 @@ export default function AFAuto() {
             jockey: {
                 flow: 4,
                 head: 4,
-                brand: 4,
-                series: 4,
-                pump: 4
+                brand: 6,
+                series: 6,
             },
             button: 4
         }}

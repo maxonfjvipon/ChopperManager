@@ -34,6 +34,8 @@ use Modules\Selection\Traits\SelectionRelationships;
  * @property float $jockey_flow
  * @property float $jockey_head
  * @property int $gate_valves_count
+ * @property string $jockey_brand_ids
+ * @property string $jockey_series_ids
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at

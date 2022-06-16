@@ -11,9 +11,10 @@ use Modules\Selection\Traits\AFSelectionRequestHelpers;
  * @property boolean $avr
  * @property boolean $kkv
  * @property boolean $on_street
- * @property int $jockey_pump_id
  * @property float $jockey_flow
  * @property float $jockey_head
+ * @property string $jockey_series_ids
+ * @property string $jockey_brand_ids
  */
 final class RqStoreAFAutoSelection extends RqStoreWSAutoSelection
 {
@@ -27,7 +28,7 @@ final class RqStoreAFAutoSelection extends RqStoreWSAutoSelection
     {
         return array_merge(
             parent::rules(),
-            $this->afSelectionRules()
+            $this->afSelectionRules(),
         );
     }
 

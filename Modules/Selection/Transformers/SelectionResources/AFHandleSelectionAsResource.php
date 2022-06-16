@@ -10,7 +10,12 @@ class AFHandleSelectionAsResource extends WSHandleSelectionAsResource
     {
         return ArrMerged::new(
             parent::asArray(),
-            new AFSelectionAsResource($this->selection)
+            new AFSelectionAsResource($this->selection),
+            [
+                'jockey_pump_id' => $this->selection->jockey_pump_id,
+                'jockey_brand_id' => $this->selection->jockey_pump?->series->brand_id,
+                'jockey_series_id' => $this->selection->jockey_pump?->series_id,
+            ]
         )->asArray();
     }
 }

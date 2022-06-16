@@ -10281,9 +10281,8 @@ function AFAuto() {
       jockey: {
         flow: 4,
         head: 4,
-        brand: 4,
-        series: 4,
-        pump: 4
+        brand: 6,
+        series: 6
       },
       button: 4
     }
@@ -10502,80 +10501,90 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
       addedStations = _useState8[0],
       setAddedStations = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_brand_id) || null),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_brand_ids) || []),
       _useState10 = _slicedToArray(_useState9, 2),
-      brandValue = _useState10[0],
-      setBrandValue = _useState10[1];
+      jockeyBrandsValue = _useState10[0],
+      setJockeyBrandsValue = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_series_id) || null),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_series_ids) || []),
       _useState12 = _slicedToArray(_useState11, 2),
-      oneSeriesValue = _useState12[0],
-      setOneSeriesValue = _useState12[1];
+      jockeySeriesValue = _useState12[0],
+      setJockeySeriesValue = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_brand_id) || null),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_brand_id) || null),
       _useState14 = _slicedToArray(_useState13, 2),
-      jockeyBrandValue = _useState14[0],
-      setJockeyBrandValue = _useState14[1];
+      brandValue = _useState14[0],
+      setBrandValue = _useState14[1];
 
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_series_id) || null),
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_series_id) || null),
       _useState16 = _slicedToArray(_useState15, 2),
-      jockeySeriesValue = _useState16[0],
-      setJockeySeriesValue = _useState16[1]; // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
+      oneSeriesValue = _useState16[0],
+      setOneSeriesValue = _useState16[1];
 
-
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_brand_id) || null),
       _useState18 = _slicedToArray(_useState17, 2),
-      stationToShow = _useState18[0],
-      setStationToShow = _useState18[1];
+      jockeyBrandValue = _useState18[0],
+      setJockeyBrandValue = _useState18[1];
 
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.jockey_series_id) || null),
+      _useState20 = _slicedToArray(_useState19, 2),
+      jockeyOneSeriesValue = _useState20[0],
+      setJockeyOneSeriesValue = _useState20[1]; // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
+
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState22 = _slicedToArray(_useState21, 2),
+      stationToShow = _useState22[0],
+      setStationToShow = _useState22[1];
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
     return station.key;
   }))) + 1 : 1),
-      _useState20 = _slicedToArray(_useState19, 2),
-      addedStationKey = _useState20[0],
-      setAddedStationKey = _useState20[1];
+      _useState24 = _slicedToArray(_useState23, 2),
+      addedStationKey = _useState24[0],
+      setAddedStationKey = _useState24[1];
 
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.flow) || null),
-      _useState22 = _slicedToArray(_useState21, 2),
-      flow = _useState22[0],
-      setFlow = _useState22[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.flow) || null),
+      _useState26 = _slicedToArray(_useState25, 2),
+      flow = _useState26[0],
+      setFlow = _useState26[1];
 
   var debouncedFlow = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__.useDebounce)(flow, 1000); // const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
 
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState24 = _slicedToArray(_useState23, 2),
-      pumpsToShow = _useState24[0],
-      setPumpsToShow = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState26 = _slicedToArray(_useState25, 2),
-      seriesToShow = _useState26[0],
-      setSeriesToShow = _useState26[1];
-
   var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState28 = _slicedToArray(_useState27, 2),
-      jockeyPumpsToShow = _useState28[0],
-      setJockeyPumpsToShow = _useState28[1];
+      pumpsToShow = _useState28[0],
+      setPumpsToShow = _useState28[1];
 
   var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState30 = _slicedToArray(_useState29, 2),
-      jockeySeriesToShow = _useState30[0],
-      setJockeySeriesToShow = _useState30[1];
+      seriesToShow = _useState30[0],
+      setSeriesToShow = _useState30[1];
 
-  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.collectors),
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState32 = _slicedToArray(_useState31, 2),
-      collectorsToShow = _useState32[0],
-      setCollectorsToShow = _useState32[1];
+      jockeyPumpsToShow = _useState32[0],
+      setJockeyPumpsToShow = _useState32[1];
 
-  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState34 = _slicedToArray(_useState33, 2),
-      updated = _useState34[0],
-      setUpdated = _useState34[1];
+      jockeySeriesToShow = _useState34[0],
+      setJockeySeriesToShow = _useState34[1];
 
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.collectors),
       _useState36 = _slicedToArray(_useState35, 2),
-      exportDrawerVisible = _useState36[0],
-      setExportDrawerVisible = _useState36[1]; // console.log(selection)
+      collectorsToShow = _useState36[0],
+      setCollectorsToShow = _useState36[1];
+
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+      _useState38 = _slicedToArray(_useState37, 2),
+      updated = _useState38[0],
+      setUpdated = _useState38[1];
+
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState40 = _slicedToArray(_useState39, 2),
+      exportDrawerVisible = _useState40[0],
+      setExportDrawerVisible = _useState40[1]; // console.log(selection)
   // CONSTS
 
 
@@ -10791,10 +10800,7 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
           data: data
         }).then(function (res) {
           document.getElementById('curves').innerHTML = res.data.curves;
-
-          if (hasJockey) {
-            document.getElementById('jockey_curves').innerHTML = res.data.jockey_curves;
-          }
+          document.getElementById('jockey_curves').innerHTML = hasJockey ? res.data.jockey_curves : "";
         });
       } catch (e) {
         console.error(e);
@@ -10820,34 +10826,56 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
   }, [debouncedFlow]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (station_type === station_types.AF) {
-      var _ref6;
+      if (selection_type === selection_types.Handle) {
+        var _ref6;
 
-      var _jockeySeriesToShow = (_ref6 = []).concat.apply(_ref6, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
-        return jockeyBrandValue === brand.id;
-      }).map(function (brand) {
-        return brand.series;
-      })));
+        var _jockeySeriesToShow = (_ref6 = []).concat.apply(_ref6, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+          return jockeyBrandValue === brand.id;
+        }).map(function (brand) {
+          return brand.series;
+        })));
 
-      setJockeySeriesToShow(_jockeySeriesToShow);
+        setJockeySeriesToShow(_jockeySeriesToShow);
 
-      var index = _jockeySeriesToShow.findIndex(function (series) {
-        return jockeySeriesValue === series.id;
-      });
-
-      if (index === -1) {
-        setSelectionForm({
-          jockey_series_id: null
+        var index = _jockeySeriesToShow.findIndex(function (series) {
+          return jockeyOneSeriesValue === series.id;
         });
-        setJockeySeriesValue(null);
+
+        if (index === -1) {
+          setSelectionForm({
+            jockey_series_id: null
+          });
+          setJockeyOneSeriesValue(null);
+        }
+      } else {
+        var _ref7;
+
+        var _jockeySeriesToShow2 = (_ref7 = []).concat.apply(_ref7, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+          return jockeyBrandsValue.includes(brand.id);
+        }).map(function (brand) {
+          return brand.series;
+        })));
+
+        setJockeySeriesToShow(_jockeySeriesToShow2);
+
+        var currentJockeySeries = _jockeySeriesToShow2.filter(function (series) {
+          return jockeySeriesValue.includes(series.id);
+        }).map(function (series) {
+          return series.id;
+        });
+
+        setSelectionForm({
+          jockey_series_ids: currentJockeySeries
+        });
       }
     }
-  }, [jockeyBrandValue]);
+  }, [jockeyBrandValue, jockeyBrandsValue]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (selection_type === selection_types.Auto) {
-      var _ref7;
+      var _ref8;
 
       // AUTO
-      var _seriesToShow = (_ref7 = []).concat.apply(_ref7, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+      var _seriesToShow = (_ref8 = []).concat.apply(_ref8, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
         return brandsValue === null || brandsValue === void 0 ? void 0 : brandsValue.includes(brand.id);
       }).map(function (brand) {
         return brand.series;
@@ -10863,12 +10891,12 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
 
       setSelectionForm({
         pump_series_ids: currentSeries
-      }); // setSeriesValue(currentSeries)
+      });
     } else {
-      var _ref8;
+      var _ref9;
 
       // HANDLE
-      var _seriesToShow2 = (_ref8 = []).concat.apply(_ref8, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
+      var _seriesToShow2 = (_ref9 = []).concat.apply(_ref9, _toConsumableArray(selection_props.brands_with_series_with_pumps.filter(function (brand) {
         return brandValue === brand.id;
       }).map(function (brand) {
         return brand.series;
@@ -10896,9 +10924,9 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
     if (selection_type === selection_types.Handle) {
       // HANDLE ONLY
       if (updated) {
-        var _ref9;
+        var _ref10;
 
-        var _pumpsToShow = (_ref9 = []).concat.apply(_ref9, _toConsumableArray(seriesToShow.filter(function (series) {
+        var _pumpsToShow = (_ref10 = []).concat.apply(_ref10, _toConsumableArray(seriesToShow.filter(function (series) {
           return oneSeriesValue === series.id;
         }).map(function (series) {
           return series.pumps;
@@ -10921,12 +10949,10 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (station_type === station_types.AF) {
       if (updated) {
-        var _ref10;
+        var _ref11;
 
-        // console.log('jockey series to show', jockeySeriesToShow)
-        // console.log('jockey brand', jockeyBrandValue)
-        var _jockeyPumpsToShow = (_ref10 = []).concat.apply(_ref10, _toConsumableArray(jockeySeriesToShow.filter(function (series) {
-          return jockeySeriesValue === series.id;
+        var _jockeyPumpsToShow = (_ref11 = []).concat.apply(_ref11, _toConsumableArray(jockeySeriesToShow.filter(function (series) {
+          return jockeyOneSeriesValue === series.id;
         }).map(function (series) {
           return series.pumps;
         })));
@@ -10940,14 +10966,11 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
         if (index === -1) {
           setSelectionForm({
             jockey_pump_id: null
-          }); // setPumpValue(null)
+          });
         }
       }
     }
-  }, [jockeySeriesValue, updated]); // useEffect(() => {
-  //     console.log('use effect jockey series to show', jockeySeriesToShow)
-  // }, [jockeySeriesToShow])
-  // RENDER
+  }, [jockeyOneSeriesValue, updated]); // RENDER
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
     title: title,
@@ -11260,40 +11283,67 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                     precision: 2
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.jockey.brand,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "jockey_brand_ids",
+                  initialValue: jockeyBrandsValue,
+                  label: labels.brand,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                    placeholder: labels.brands,
+                    style: fullWidth,
+                    options: selection_props.brands_with_series_with_pumps,
+                    onChange: function onChange(values) {
+                      setJockeyBrandsValue(values);
+                    }
+                  })
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "jockey_brand_id",
                   initialValue: jockeyBrandValue,
                   label: labels.brand,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                    placeholder: labels.brand,
+                    placeholder: labels.brands,
                     style: fullWidth,
                     options: selection_props.brands_with_series_with_pumps,
                     onChange: function onChange(value) {
                       setJockeyBrandValue(value);
                     }
                   })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.jockey.series,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  name: "jockey_series_ids",
+                  initialValue: jockeySeriesValue,
+                  label: labels.theSeries,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                    placeholder: labels.theSeries,
+                    style: fullWidth,
+                    options: jockeySeriesToShow,
+                    onChange: function onChange(values) {
+                      setJockeySeriesValue(values);
+                    },
+                    disabled: jockeyBrandsValue.length === 0
+                  })
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
                   className: reducedAntFormItemClassName,
                   name: "jockey_series_id",
-                  initialValue: jockeySeriesValue,
+                  initialValue: jockeyOneSeriesValue,
                   label: labels.series,
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
                     placeholder: labels.series,
                     style: fullWidth,
                     options: jockeySeriesToShow,
                     onChange: function onChange(value) {
-                      setJockeySeriesValue(value);
+                      setJockeyOneSeriesValue(value);
                     },
                     disabled: !jockeyBrandValue
                   })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+                })]
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
                 xs: widths.jockey.pump,
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
                   className: reducedAntFormItemClassName,
@@ -11304,7 +11354,7 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                     placeholder: labels.pump,
                     style: fullWidth,
                     options: jockeyPumpsToShow,
-                    disabled: !jockeyBrandValue || !jockeySeriesValue
+                    disabled: !jockeyBrandValue || !jockeyOneSeriesValue
                   })
                 })
               })]

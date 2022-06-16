@@ -57,11 +57,14 @@ export const PumpStationSelection = ({title, widths}) => {
     const [selectedPumps, setSelectedPumps] = useState([])
     const [addedStations, setAddedStations] = useState(selection?.pump_stations || [])
 
+    const [jockeyBrandsValue, setJockeyBrandsValue] = useState(selection?.jockey_brand_ids || [])
+    const [jockeySeriesValue, setJockeySeriesValue] = useState(selection?.jockey_series_ids || [])
+
     const [brandValue, setBrandValue] = useState(selection?.pump_brand_id || null)
     const [oneSeriesValue, setOneSeriesValue] = useState(selection?.pump_series_id || null)
 
     const [jockeyBrandValue, setJockeyBrandValue] = useState(selection?.jockey_brand_id || null)
-    const [jockeySeriesValue, setJockeySeriesValue] = useState(selection?.jockey_series_id || null)
+    const [jockeyOneSeriesValue, setJockeyOneSeriesValue] = useState(selection?.jockey_series_id || null)
 
     // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
     const [stationToShow, setStationToShow] = useState(null)
@@ -129,11 +132,6 @@ export const PumpStationSelection = ({title, widths}) => {
         if (!selection)
             setAddedStations([])
         try {
-            // console.log({
-            //     ...await selectionForm.validateFields(),
-            //     station_type,
-            //     selection_type,
-            // })
             setSelectedPumps((await postRequest(route('selections.select'), {
                 ...await selectionForm.validateFields(),
                 station_type,
@@ -221,9 +219,9 @@ export const PumpStationSelection = ({title, widths}) => {
                     data,
                 }).then(res => {
                     document.getElementById('curves').innerHTML = res.data.curves
-                    if (hasJockey) {
-                        document.getElementById('jockey_curves').innerHTML = res.data.jockey_curves
-                    }
+                    document.getElementById('jockey_curves').innerHTML = hasJockey
+                        ? res.data.jockey_curves
+                        : ""
                 })
             } catch (e) {
                 console.error(e)
@@ -254,17 +252,28 @@ export const PumpStationSelection = ({title, widths}) => {
 
     useEffect(() => {
         if (station_type === station_types.AF) {
-            const _jockeySeriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
-                .filter(brand => jockeyBrandValue === brand.id)
-                .map(brand => brand.series))
-            setJockeySeriesToShow(_jockeySeriesToShow)
-            const index = _jockeySeriesToShow.findIndex(series => jockeySeriesValue === series.id)
-            if (index === -1) {
-                setSelectionForm({jockey_series_id: null})
-                setJockeySeriesValue(null)
+            if (selection_type === selection_types.Handle) {
+                const _jockeySeriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
+                    .filter(brand => jockeyBrandValue === brand.id)
+                    .map(brand => brand.series))
+                setJockeySeriesToShow(_jockeySeriesToShow)
+                const index = _jockeySeriesToShow.findIndex(series => jockeyOneSeriesValue === series.id)
+                if (index === -1) {
+                    setSelectionForm({jockey_series_id: null})
+                    setJockeyOneSeriesValue(null)
+                }
+            } else {
+                const _jockeySeriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
+                    .filter(brand => jockeyBrandsValue.includes(brand.id))
+                    .map(brand => brand.series))
+                setJockeySeriesToShow(_jockeySeriesToShow)
+                const currentJockeySeries = _jockeySeriesToShow
+                    .filter(series => jockeySeriesValue.includes(series.id))
+                    .map(series => series.id)
+                setSelectionForm({jockey_series_ids: currentJockeySeries})
             }
         }
-    }, [jockeyBrandValue])
+    }, [jockeyBrandValue, jockeyBrandsValue])
 
     useEffect(() => {
         if (selection_type === selection_types.Auto) { // AUTO
@@ -276,7 +285,6 @@ export const PumpStationSelection = ({title, widths}) => {
                 .filter(series => seriesValue.includes(series.id))
                 .map(series => series.id)
             setSelectionForm({pump_series_ids: currentSeries})
-            // setSeriesValue(currentSeries)
         } else { // HANDLE
             const _seriesToShow = [].concat(...selection_props.brands_with_series_with_pumps
                 .filter(brand => brandValue === brand.id)
@@ -312,24 +320,17 @@ export const PumpStationSelection = ({title, widths}) => {
     useEffect(() => {
         if (station_type === station_types.AF) {
             if (updated) {
-                // console.log('jockey series to show', jockeySeriesToShow)
-                // console.log('jockey brand', jockeyBrandValue)
                 const _jockeyPumpsToShow = [].concat(...jockeySeriesToShow
-                    .filter(series => jockeySeriesValue === series.id)
+                    .filter(series => jockeyOneSeriesValue === series.id)
                     .map(series => series.pumps))
                 setJockeyPumpsToShow(_jockeyPumpsToShow)
                 const index = _jockeyPumpsToShow.findIndex(pump => selectionForm.getFieldValue('jockey_pump_id') === pump.id)
                 if (index === -1) {
                     setSelectionForm({jockey_pump_id: null})
-                    // setPumpValue(null)
                 }
             }
         }
-    }, [jockeySeriesValue, updated])
-
-    // useEffect(() => {
-    //     console.log('use effect jockey series to show', jockeySeriesToShow)
-    // }, [jockeySeriesToShow])
+    }, [jockeyOneSeriesValue, updated])
 
     // RENDER
     return (
@@ -603,31 +604,31 @@ export const PumpStationSelection = ({title, widths}) => {
                             {/* COLLECTORS */}
                             <Col xs={widths.collectors}>
                                 {selection_type === selection_types.Auto &&
-                                    <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="collectors"
-                                        initialValue={selection?.collectors}
-                                        label={labels.collectors}
-                                    >
-                                        <MultipleSelection
-                                            placeholder={labels.collectors}
-                                            style={fullWidth}
-                                            options={collectorsToShow}
-                                        />
-                                    </RequiredFormItem>}
+                                <RequiredFormItem
+                                    className={reducedAntFormItemClassName}
+                                    name="collectors"
+                                    initialValue={selection?.collectors}
+                                    label={labels.collectors}
+                                >
+                                    <MultipleSelection
+                                        placeholder={labels.collectors}
+                                        style={fullWidth}
+                                        options={collectorsToShow}
+                                    />
+                                </RequiredFormItem>}
                                 {selection_type === selection_types.Handle &&
-                                    <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="collector"
-                                        initialValue={selection?.collector}
-                                        label={labels.collector}
-                                    >
-                                        <Selection
-                                            placeholder={labels.collector}
-                                            style={fullWidth}
-                                            options={collectorsToShow}
-                                        />
-                                    </RequiredFormItem>}
+                                <RequiredFormItem
+                                    className={reducedAntFormItemClassName}
+                                    name="collector"
+                                    initialValue={selection?.collector}
+                                    label={labels.collector}
+                                >
+                                    <Selection
+                                        placeholder={labels.collector}
+                                        style={fullWidth}
+                                        options={collectorsToShow}
+                                    />
+                                </RequiredFormItem>}
                             </Col>
                             {/* JOCKEY PUMP */}
                             {station_type === station_types.AF && <>
@@ -669,27 +670,58 @@ export const PumpStationSelection = ({title, widths}) => {
                                     </Form.Item>
                                 </Col>
                                 <Col xs={widths.jockey.brand}>
-                                    <Form.Item
+                                    {selection_type === selection_types.Auto && <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        name="jockey_brand_ids"
+                                        initialValue={jockeyBrandsValue}
+                                        label={labels.brand}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.brands}
+                                            style={fullWidth}
+                                            options={selection_props.brands_with_series_with_pumps}
+                                            onChange={values => {
+                                                setJockeyBrandsValue(values)
+                                            }}
+                                        />
+                                    </Form.Item>}
+                                    {selection_type === selection_types.Handle && <Form.Item
                                         className={reducedAntFormItemClassName}
                                         name="jockey_brand_id"
                                         initialValue={jockeyBrandValue}
                                         label={labels.brand}
                                     >
                                         <Selection
-                                            placeholder={labels.brand}
+                                            placeholder={labels.brands}
                                             style={fullWidth}
                                             options={selection_props.brands_with_series_with_pumps}
                                             onChange={value => {
                                                 setJockeyBrandValue(value)
                                             }}
                                         />
-                                    </Form.Item>
+                                    </Form.Item>}
                                 </Col>
                                 <Col xs={widths.jockey.series}>
-                                    <Form.Item
+                                    {selection_type === selection_types.Auto && <Form.Item
+                                        className={reducedAntFormItemClassName}
+                                        name="jockey_series_ids"
+                                        initialValue={jockeySeriesValue}
+                                        label={labels.theSeries}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.theSeries}
+                                            style={fullWidth}
+                                            options={jockeySeriesToShow}
+                                            onChange={values => {
+                                                setJockeySeriesValue(values)
+                                            }}
+                                            disabled={jockeyBrandsValue.length === 0}
+                                        />
+                                    </Form.Item>}
+                                    {selection_type === selection_types.Handle && <Form.Item
                                         className={reducedAntFormItemClassName}
                                         name="jockey_series_id"
-                                        initialValue={jockeySeriesValue}
+                                        initialValue={jockeyOneSeriesValue}
                                         label={labels.series}
                                     >
                                         <Selection
@@ -697,13 +729,13 @@ export const PumpStationSelection = ({title, widths}) => {
                                             style={fullWidth}
                                             options={jockeySeriesToShow}
                                             onChange={value => {
-                                                setJockeySeriesValue(value)
+                                                setJockeyOneSeriesValue(value)
                                             }}
                                             disabled={!jockeyBrandValue}
                                         />
-                                    </Form.Item>
+                                    </Form.Item>}
                                 </Col>
-                                <Col xs={widths.jockey.pump}>
+                                {selection_type === selection_types.Handle && <Col xs={widths.jockey.pump}>
                                     <Form.Item
                                         className={reducedAntFormItemClassName}
                                         name="jockey_pump_id"
@@ -714,10 +746,10 @@ export const PumpStationSelection = ({title, widths}) => {
                                             placeholder={labels.pump}
                                             style={fullWidth}
                                             options={jockeyPumpsToShow}
-                                            disabled={!jockeyBrandValue || !jockeySeriesValue}
+                                            disabled={!jockeyBrandValue || !jockeyOneSeriesValue}
                                         />
                                     </Form.Item>
-                                </Col>
+                                </Col>}
                             </>}
                             {/* SELECT BUTTON */}
                             <Col xs={widths.button}>

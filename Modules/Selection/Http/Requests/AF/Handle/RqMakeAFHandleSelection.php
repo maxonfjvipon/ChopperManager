@@ -13,7 +13,7 @@ final class RqMakeAFHandleSelection extends RqMakeWSHandleSelection
     {
         return array_merge(
             parent::rules(),
-            $this->afSelectionRules()
+            $this->afSelectionRules(),
         );
     }
 }
