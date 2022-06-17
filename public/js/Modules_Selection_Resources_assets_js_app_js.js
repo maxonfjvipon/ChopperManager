@@ -2296,6 +2296,319 @@ var Divider = function Divider(props) {
 
 /***/ }),
 
+/***/ "./node_modules/antd/es/drawer/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/antd/es/drawer/index.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var rc_drawer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-drawer */ "./node_modules/rc-drawer/es/index.js");
+/* harmony import */ var _ant_design_icons_es_icons_CloseOutlined__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ant-design/icons/es/icons/CloseOutlined */ "./node_modules/@ant-design/icons/es/icons/CloseOutlined.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
+/* harmony import */ var _util_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../_util/type */ "./node_modules/antd/es/_util/type.js");
+/* harmony import */ var _util_hooks_useForceUpdate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../_util/hooks/useForceUpdate */ "./node_modules/antd/es/_util/hooks/useForceUpdate.js");
+
+
+
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+
+
+
+
+
+
+
+var DrawerContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createContext(null);
+var PlacementTypes = (0,_util_type__WEBPACK_IMPORTED_MODULE_6__.tuple)('top', 'right', 'bottom', 'left');
+var SizeTypes = (0,_util_type__WEBPACK_IMPORTED_MODULE_6__.tuple)('default', 'large');
+var defaultPushState = {
+  distance: 180
+};
+var Drawer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (_a, ref) {
+  var width = _a.width,
+      height = _a.height,
+      _a$size = _a.size,
+      size = _a$size === void 0 ? 'default' : _a$size,
+      _a$closable = _a.closable,
+      closable = _a$closable === void 0 ? true : _a$closable,
+      _a$placement = _a.placement,
+      placement = _a$placement === void 0 ? 'right' : _a$placement,
+      _a$maskClosable = _a.maskClosable,
+      maskClosable = _a$maskClosable === void 0 ? true : _a$maskClosable,
+      _a$mask = _a.mask,
+      mask = _a$mask === void 0 ? true : _a$mask,
+      _a$level = _a.level,
+      level = _a$level === void 0 ? null : _a$level,
+      _a$keyboard = _a.keyboard,
+      keyboard = _a$keyboard === void 0 ? true : _a$keyboard,
+      _a$push = _a.push,
+      _push = _a$push === void 0 ? defaultPushState : _a$push,
+      _a$closeIcon = _a.closeIcon,
+      closeIcon = _a$closeIcon === void 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_ant_design_icons_es_icons_CloseOutlined__WEBPACK_IMPORTED_MODULE_7__["default"], null) : _a$closeIcon,
+      bodyStyle = _a.bodyStyle,
+      drawerStyle = _a.drawerStyle,
+      prefixCls = _a.prefixCls,
+      className = _a.className,
+      direction = _a.direction,
+      visible = _a.visible,
+      children = _a.children,
+      zIndex = _a.zIndex,
+      destroyOnClose = _a.destroyOnClose,
+      style = _a.style,
+      title = _a.title,
+      headerStyle = _a.headerStyle,
+      onClose = _a.onClose,
+      footer = _a.footer,
+      footerStyle = _a.footerStyle,
+      extra = _a.extra,
+      rest = __rest(_a, ["width", "height", "size", "closable", "placement", "maskClosable", "mask", "level", "keyboard", "push", "closeIcon", "bodyStyle", "drawerStyle", "prefixCls", "className", "direction", "visible", "children", "zIndex", "destroyOnClose", "style", "title", "headerStyle", "onClose", "footer", "footerStyle", "extra"]);
+
+  var forceUpdate = (0,_util_hooks_useForceUpdate__WEBPACK_IMPORTED_MODULE_8__["default"])();
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_3__.useState(false),
+      _React$useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_2__["default"])(_React$useState, 2),
+      internalPush = _React$useState2[0],
+      setPush = _React$useState2[1];
+
+  var parentDrawer = react__WEBPACK_IMPORTED_MODULE_3__.useContext(DrawerContext);
+  var destroyClose = react__WEBPACK_IMPORTED_MODULE_3__.useRef(false);
+  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
+    // fix: delete drawer in child and re-render, no push started.
+    // <Drawer>{show && <Drawer />}</Drawer>
+    if (visible && parentDrawer) {
+      parentDrawer.push();
+    }
+
+    return function () {
+      if (parentDrawer) {
+        parentDrawer.pull(); // parentDrawer = null;
+      }
+    };
+  }, []);
+  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
+    if (parentDrawer) {
+      if (visible) {
+        parentDrawer.push();
+      } else {
+        parentDrawer.pull();
+      }
+    }
+  }, [visible]);
+  var operations = react__WEBPACK_IMPORTED_MODULE_3__.useMemo(function () {
+    return {
+      push: function push() {
+        if (_push) {
+          setPush(true);
+        }
+      },
+      pull: function pull() {
+        if (_push) {
+          setPush(false);
+        }
+      }
+    };
+  }, [_push]);
+  react__WEBPACK_IMPORTED_MODULE_3__.useImperativeHandle(ref, function () {
+    return operations;
+  }, [operations]);
+  var isDestroyOnClose = destroyOnClose && !visible;
+
+  var onDestroyTransitionEnd = function onDestroyTransitionEnd() {
+    if (!isDestroyOnClose) {
+      return;
+    }
+
+    if (!visible) {
+      destroyClose.current = true;
+      forceUpdate();
+    }
+  };
+
+  var getOffsetStyle = function getOffsetStyle() {
+    // https://github.com/ant-design/ant-design/issues/24287
+    if (!visible && !mask) {
+      return {};
+    }
+
+    var offsetStyle = {};
+
+    if (placement === 'left' || placement === 'right') {
+      var defaultWidth = size === 'large' ? 736 : 378;
+      offsetStyle.width = typeof width === 'undefined' ? defaultWidth : width;
+    } else {
+      var defaultHeight = size === 'large' ? 736 : 378;
+      offsetStyle.height = typeof height === 'undefined' ? defaultHeight : height;
+    }
+
+    return offsetStyle;
+  };
+
+  var getRcDrawerStyle = function getRcDrawerStyle() {
+    // get drawer push width or height
+    var getPushTransform = function getPushTransform(_placement) {
+      var distance;
+
+      if (typeof _push === 'boolean') {
+        distance = _push ? defaultPushState.distance : 0;
+      } else {
+        distance = _push.distance;
+      }
+
+      distance = parseFloat(String(distance || 0));
+
+      if (_placement === 'left' || _placement === 'right') {
+        return "translateX(".concat(_placement === 'left' ? distance : -distance, "px)");
+      }
+
+      if (_placement === 'top' || _placement === 'bottom') {
+        return "translateY(".concat(_placement === 'top' ? distance : -distance, "px)");
+      }
+    }; // 当无 mask 时，将 width 应用到外层容器上
+    // 解决 https://github.com/ant-design/ant-design/issues/12401 的问题
+
+
+    var offsetStyle = mask ? {} : getOffsetStyle();
+    return (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      zIndex: zIndex,
+      transform: internalPush ? getPushTransform(placement) : undefined
+    }, offsetStyle), style);
+  };
+
+  var closeIconNode = closable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
+    type: "button",
+    onClick: onClose,
+    "aria-label": "Close",
+    className: "".concat(prefixCls, "-close")
+  }, closeIcon);
+
+  function renderHeader() {
+    if (!title && !closable) {
+      return null;
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()("".concat(prefixCls, "-header"), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({}, "".concat(prefixCls, "-header-close-only"), closable && !title && !extra)),
+      style: headerStyle
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "".concat(prefixCls, "-header-title")
+    }, closeIconNode, title && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "".concat(prefixCls, "-title")
+    }, title)), extra && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "".concat(prefixCls, "-extra")
+    }, extra));
+  }
+
+  function renderFooter() {
+    if (!footer) {
+      return null;
+    }
+
+    var footerClassName = "".concat(prefixCls, "-footer");
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: footerClassName,
+      style: footerStyle
+    }, footer);
+  } // render drawer body dom
+
+
+  var renderBody = function renderBody() {
+    if (destroyClose.current && !visible) {
+      return null;
+    }
+
+    destroyClose.current = false;
+    var containerStyle = {};
+
+    if (isDestroyOnClose) {
+      // Increase the opacity transition, delete children after closing.
+      containerStyle.opacity = 0;
+      containerStyle.transition = 'opacity .3s';
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "".concat(prefixCls, "-wrapper-body"),
+      style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, containerStyle), drawerStyle),
+      onTransitionEnd: onDestroyTransitionEnd
+    }, renderHeader(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+      className: "".concat(prefixCls, "-body"),
+      style: bodyStyle
+    }, children), renderFooter());
+  };
+
+  var drawerClassName = classnames__WEBPACK_IMPORTED_MODULE_5___default()((0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    'no-mask': !mask
+  }, "".concat(prefixCls, "-rtl"), direction === 'rtl'), className);
+  var offsetStyle = mask ? getOffsetStyle() : {};
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(DrawerContext.Provider, {
+    value: operations
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(rc_drawer__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    handler: false
+  }, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    placement: placement,
+    prefixCls: prefixCls,
+    maskClosable: maskClosable,
+    level: level,
+    keyboard: keyboard,
+    children: children,
+    onClose: onClose
+  }, rest), offsetStyle, {
+    open: visible,
+    showMask: mask,
+    style: getRcDrawerStyle(),
+    className: drawerClassName
+  }), renderBody()));
+});
+Drawer.displayName = 'Drawer';
+var DrawerWrapper = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function (props, ref) {
+  var customizePrefixCls = props.prefixCls,
+      customizeGetContainer = props.getContainer;
+
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_3__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_9__.ConfigContext),
+      getPopupContainer = _React$useContext.getPopupContainer,
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var prefixCls = getPrefixCls('drawer', customizePrefixCls);
+  var getContainer = // 有可能为 false，所以不能直接判断
+  customizeGetContainer === undefined && getPopupContainer ? function () {
+    return getPopupContainer(document.body);
+  } : customizeGetContainer;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Drawer, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, {
+    ref: ref,
+    prefixCls: prefixCls,
+    getContainer: getContainer,
+    direction: direction
+  }));
+});
+DrawerWrapper.displayName = 'DrawerWrapper';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerWrapper);
+
+/***/ }),
+
 /***/ "./node_modules/antd/es/form/ErrorList.js":
 /*!************************************************!*\
   !*** ./node_modules/antd/es/form/ErrorList.js ***!
@@ -9718,6 +10031,415 @@ var BackToProjectsLink = function BackToProjectsLink() {
 
 /***/ }),
 
+/***/ "./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js":
+/*!********************************************************************************!*\
+  !*** ./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AddPumpsToProjectsDrawer": () => (/* binding */ AddPumpsToProjectsDrawer)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
+/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/routes.hook */ "./resources/js/src/Hooks/routes.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var AddPumpsToProjectsDrawer = function AddPumpsToProjectsDrawer(_ref) {
+  var pumpInfo = _ref.pumpInfo,
+      visible = _ref.visible,
+      setVisible = _ref.setVisible;
+
+  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__.useInputRules)(),
+      rules = _useInputRules.rules;
+
+  var projects = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_7__.usePage)().props.projects;
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_8__.useStyles)(),
+      fullWidth = _useStyles.fullWidth;
+
+  var tRoute = (0,_resources_js_src_Hooks_routes_hook__WEBPACK_IMPORTED_MODULE_9__.useTransRoutes)();
+
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_13__["default"].useForm(),
+      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+      form = _Form$useForm2[0];
+
+  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_10__.useHttp)(),
+      postRequest = _useHttp.postRequest;
+
+  var clearModal = function clearModal() {
+    form.resetFields();
+    setVisible(false);
+  };
+
+  var modalItems = [{
+    values: {
+      rules: [rules.required],
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose'),
+      name: 'project_ids'
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_5__.MultipleSelection, {
+      options: projects,
+      placeholder: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.choose')
+    })
+  }, (pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.pumpable_type) !== 'double_pump' && {
+    values: {
+      rules: [rules.required],
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.pumps_count'),
+      name: 'pumps_count'
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_11__.InputNum, {
+      style: fullWidth,
+      max: 5,
+      min: 1
+    })
+  }].filter(Boolean);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    title: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.title'),
+    visible: visible,
+    onClose: clearModal,
+    width: 350,
+    closable: false,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
+      form: form,
+      layout: "vertical",
+      items: modalItems
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_4__.PrimaryButton, {
+      onClick: /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var body;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return form.validateFields();
+
+              case 2:
+                body = _context.sent;
+                postRequest(tRoute('pumps.add_to_projects', pumpInfo.id), body).then(function (res) {
+                  clearModal();
+                })["catch"](function (reason) {});
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      })),
+      children: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_2__["default"].get('pages.pumps.add_to_projects.ok')
+    })]
+  });
+};
+
+/***/ }),
+
+/***/ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js":
+/*!************************************************************************!*\
+  !*** ./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PumpPropsDrawer": () => (/* binding */ PumpPropsDrawer)
+/* harmony export */ });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/drawer/index.js");
+/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_JustifiedRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/JustifiedRow */ "./resources/js/src/Shared/JustifiedRow.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
+/* harmony import */ var _AddPumpToProjectsDrawer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AddPumpToProjectsDrawer */ "./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
+  var visible = _ref.visible,
+      setVisible = _ref.setVisible,
+      pumpInfo = _ref.pumpInfo,
+      _ref$needCurve = _ref.needCurve,
+      needCurve = _ref$needCurve === void 0 ? false : _ref$needCurve;
+
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_8__["default"].useForm(),
+      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+      form = _Form$useForm2[0];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (pumpInfo) {
+      setVisible(true);
+    }
+  }, [pumpInfo]);
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_2__.useStyles)(),
+      reducedAntFormItemClassName = _useStyles.reducedAntFormItemClassName;
+
+  var items = [{
+    values: {
+      name: 'article',
+      label: "Артикул",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'is_discontinued',
+      label: "Действует",
+      initialValue: pumpInfo !== null && pumpInfo !== void 0 && pumpInfo.is_discontinued ? "Нет" : "Да" || 0,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'price',
+      label: "Цена",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.price.toLocaleString(),
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'currency',
+      label: "Валюта",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.currency,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'price_updated_at',
+      label: "Дата актуализации цены",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.price_updated_at,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'size',
+      label: "Размеры, мм",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.size,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'weight',
+      label: "Масса, кг",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight.toLocaleString(),
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'power',
+      label: "Мощность, кВт",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.power.toLocaleString(),
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'current',
+      label: "Ток, А",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.current.toLocaleString(),
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'connection_type',
+      label: "Тип соединения",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection_type,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'dn_suction',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_suction'),
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_suction,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'dn_pressure',
+      label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_pressure'),
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_pressure,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'collector_switch',
+      label: "Переход на коллектор",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.collector_switch,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'suction_height',
+      label: "Высота всаса, мм",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.suction_height,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'ptp_length',
+      label: "Монтажная длина",
+      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.ptp_length,
+      className: reducedAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      bordered: false,
+      readOnly: true
+    })
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    width: needCurve ? 800 : 650,
+    placement: "right",
+    title: "".concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.brand, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.series, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.name),
+    visible: visible,
+    onClose: function onClose() {
+      setVisible(false);
+      document.getElementById('pump_curves').innerHTML = "";
+    },
+    afterVisibleChange: function afterVisibleChange(visible) {
+      if (visible && needCurve) {
+        console.log(pumpInfo);
+        document.getElementById('pump_curves').innerHTML = pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.curves;
+      }
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
+      form: form,
+      layout: "horizontal",
+      labelSpan: {
+        xs: 6
+      },
+      items: items
+    }), needCurve && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      id: "pump_curves"
+    })]
+  });
+};
+
+/***/ }),
+
 /***/ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js":
 /*!*****************************************************************************!*\
   !*** ./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js ***!
@@ -10060,14 +10782,21 @@ var SelectedPumpsTable = function SelectedPumpsTable(_ref) {
       loading = _ref.loading,
       addStationHandler = _ref.addStationHandler,
       _ref$dependencies = _ref.dependencies,
-      dependencies = _ref$dependencies === void 0 ? [] : _ref$dependencies;
+      dependencies = _ref$dependencies === void 0 ? [] : _ref$dependencies,
+      clickPumpArticleHandler = _ref.clickPumpArticleHandler;
   var locales = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.locales;
   var columns = [{
     title: "Наименование",
     dataIndex: 'name'
   }, {
     title: "Артикул насоса",
-    dataIndex: 'pump_article'
+    dataIndex: 'pump_article',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+        onClick: clickPumpArticleHandler(record),
+        children: record.pump_article
+      });
+    }
   }, {
     title: "Артикул системы управления",
     dataIndex: 'control_system_article'
@@ -10356,15 +11085,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink */ "./resources/js/src/Shared/Resource/BackLinks/BackLink.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/radio/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/checkbox/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/space/index.js");
 /* harmony import */ var _resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/RequiredFormItem */ "./resources/js/src/Shared/RequiredFormItem.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
@@ -10380,7 +11109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
 /* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer */ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -10437,9 +11167,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var BackToProjectLink = function BackToProjectLink(_ref) {
   var project_id = _ref.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u043F\u0440\u043E\u0435\u043A\u0442\u0443",
     href: route('projects.show', project_id)
   });
@@ -10447,7 +11178,7 @@ var BackToProjectLink = function BackToProjectLink(_ref) {
 
 var BackToSelectionsDashboardLink = function BackToSelectionsDashboardLink(_ref2) {
   var project_id = _ref2.project_id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_BackLinks_BackLink__WEBPACK_IMPORTED_MODULE_4__.BackLink, {
     title: "\u041D\u0430\u0437\u0430\u0434 \u043A \u0434\u0430\u0448\u0431\u043E\u0440\u0434\u0443 \u043F\u043E\u0434\u0431\u043E\u0440\u043E\u0432",
     href: route('selections.dashboard', project_id)
   });
@@ -10537,58 +11268,63 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
       stationToShow = _useState22[0],
       setStationToShow = _useState22[1];
 
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState24 = _slicedToArray(_useState23, 2),
+      pumpInfo = _useState24[0],
+      setPumpInfo = _useState24[1];
+
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection != null ? Math.max.apply(Math, _toConsumableArray(selection.pump_stations.map(function (station) {
     return station.key;
   }))) + 1 : 1),
-      _useState24 = _slicedToArray(_useState23, 2),
-      addedStationKey = _useState24[0],
-      setAddedStationKey = _useState24[1];
-
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.flow) || null),
       _useState26 = _slicedToArray(_useState25, 2),
-      flow = _useState26[0],
-      setFlow = _useState26[1];
+      addedStationKey = _useState26[0],
+      setAddedStationKey = _useState26[1];
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.flow) || null),
+      _useState28 = _slicedToArray(_useState27, 2),
+      flow = _useState28[0],
+      setFlow = _useState28[1];
 
   var debouncedFlow = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__.useDebounce)(flow, 1000); // const [brandsToShow, setBrandsToShow] = useState(selection_props.brands_with_series_with_pumps)
 
-  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState28 = _slicedToArray(_useState27, 2),
-      pumpsToShow = _useState28[0],
-      setPumpsToShow = _useState28[1];
-
   var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState30 = _slicedToArray(_useState29, 2),
-      seriesToShow = _useState30[0],
-      setSeriesToShow = _useState30[1];
+      pumpsToShow = _useState30[0],
+      setPumpsToShow = _useState30[1];
 
   var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState32 = _slicedToArray(_useState31, 2),
-      jockeyPumpsToShow = _useState32[0],
-      setJockeyPumpsToShow = _useState32[1];
+      seriesToShow = _useState32[0],
+      setSeriesToShow = _useState32[1];
 
   var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState34 = _slicedToArray(_useState33, 2),
-      jockeySeriesToShow = _useState34[0],
-      setJockeySeriesToShow = _useState34[1];
+      jockeyPumpsToShow = _useState34[0],
+      setJockeyPumpsToShow = _useState34[1];
 
-  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.collectors),
+  var _useState35 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState36 = _slicedToArray(_useState35, 2),
-      collectorsToShow = _useState36[0],
-      setCollectorsToShow = _useState36[1];
+      jockeySeriesToShow = _useState36[0],
+      setJockeySeriesToShow = _useState36[1];
 
-  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
+  var _useState37 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection_props.collectors),
       _useState38 = _slicedToArray(_useState37, 2),
-      updated = _useState38[0],
-      setUpdated = _useState38[1];
+      collectorsToShow = _useState38[0],
+      setCollectorsToShow = _useState38[1];
 
-  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState39 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(!selection),
       _useState40 = _slicedToArray(_useState39, 2),
-      exportDrawerVisible = _useState40[0],
-      setExportDrawerVisible = _useState40[1]; // console.log(selection)
+      updated = _useState40[0],
+      setUpdated = _useState40[1];
+
+  var _useState41 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState42 = _slicedToArray(_useState41, 2),
+      pumpInfoVisible = _useState42[0],
+      setPumpInfoVisible = _useState42[1]; // console.log(selection)
   // CONSTS
 
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_21__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_22__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       selectionForm = _Form$useForm2[0];
 
@@ -10599,9 +11335,9 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
     };
   });
 
-  var yesNoRadioOptions = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
+  var yesNoRadioOptions = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Group, {
     children: (_selection_props$yes_ = selection_props.yes_no) === null || _selection_props$yes_ === void 0 ? void 0 : _selection_props$yes_.map(function (value) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
         value: value.id,
         children: value.name
       }, value.id + value.name);
@@ -10810,6 +11546,19 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
 
   var setSelectionForm = function setSelectionForm(value) {
     selectionForm.setFieldsValue(_objectSpread(_objectSpread({}, selectionForm), value));
+  }; // HANDLERS
+
+
+  var showPumpClickHandler = function showPumpClickHandler(record) {
+    return function (e) {
+      e.preventDefault();
+      postRequest(route('pumps.show', record.pump_id), {
+        need_curves: true,
+        need_info: true
+      }).then(function (data) {
+        setPumpInfo(data.pump);
+      });
+    };
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -10972,495 +11721,503 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
     }
   }, [jockeyOneSeriesValue, updated]); // RENDER
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
-    title: title,
-    extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(BackToProjectLink, {
-      project_id: project_id
-    }), !selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(BackToSelectionsDashboardLink, {
-      project_id: project_id
-    })].filter(Boolean),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
-      gutter: [16, 16],
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        xs: 16,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
-          form: selectionForm,
-          name: "selection-form",
-          layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
-            gutter: [16, 16],
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.flow,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                label: labels.flow,
-                name: "flow",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.flow,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
-                  placeholder: labels.flow,
-                  style: fullWidth,
-                  min: 0,
-                  max: 10000,
-                  precision: 2 // disabled={!!selection}
-                  ,
-                  readOnly: !!selection,
-                  onChange: function onChange(value) {
-                    setFlow(value);
-                  }
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.head,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                label: labels.head,
-                name: "head",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.head,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
-                  placeholder: labels.head,
-                  style: fullWidth,
-                  min: 0,
-                  max: 10000,
-                  precision: 2 // disabled={!!selection}
-                  ,
-                  readOnly: !!selection
-                })
-              })
-            }), selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.deviation,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
-                className: reducedAntFormItemClassName,
-                label: labels.deviation,
-                name: "deviation",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.deviation,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
-                  placeholder: labels.deviation,
-                  style: fullWidth,
-                  min: -50,
-                  max: 50,
-                  precision: 2
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.main_pumps_count,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                label: labels.mainPumpsCount,
-                name: "main_pumps_counts",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.main_pumps_counts,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"].Group, {
-                  options: mainPumpsCountCheckboxesOptions
-                })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                label: labels.mainPumpsCount,
-                name: "main_pumps_count",
-                initialValue: (selection === null || selection === void 0 ? void 0 : selection.main_pumps_count) || 1,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
-                  value: 1,
-                  children: [1, 2, 3, 4, 5].map(function (value) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
-                      value: value,
-                      children: value
-                    }, 'mp_' + value);
-                  })
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.reserve_pumps_count,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "reserve_pumps_count",
-                label: labels.reservePumpsCount,
-                initialValue: (selection === null || selection === void 0 ? void 0 : selection.reserve_pumps_count) || 0,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
-                  value: 0,
-                  children: [0, 1, 2, 3, 4].map(function (value) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
-                      value: value,
-                      children: value
-                    }, 'rp_' + value);
-                  })
-                })
-              })
-            }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.avr,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "avr",
-                  label: labels.AF.avr,
-                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.avr) || 1,
-                  children: yesNoRadioOptions
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.gate_valves_count,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "gate_valves_count",
-                  label: labels.AF.gatesValvesCount,
-                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.gate_valves_count) || 0,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Group, {
-                    value: 0,
-                    children: [0, 1, 2].map(function (value) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
-                        value: value,
-                        children: value
-                      }, 'gvc_' + value);
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.kkv,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "kkv",
-                  label: labels.AF.kkv,
-                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.kkv) || 1,
-                  children: yesNoRadioOptions
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.on_street,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                  className: reducedAntFormItemClassName,
-                  name: "on_street",
-                  label: labels.AF.onStreet,
-                  initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.on_street) || 0,
-                  children: yesNoRadioOptions
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.control_systems,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "control_system_type_ids",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.control_system_type_ids,
-                label: labels.controlSystemTypes,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
-                  placeholder: labels.controlSystemTypes,
-                  style: fullWidth,
-                  options: selection_props.control_system_types
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.pump_brands,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "pump_brand_ids",
-                initialValue: brandsValue,
-                label: labels.brands,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
-                  placeholder: labels.brands,
-                  style: fullWidth,
-                  options: selection_props.brands_with_series_with_pumps,
-                  onChange: function onChange(values) {
-                    setBrandsValue(values);
-                  }
-                })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "pump_brand_id",
-                initialValue: brandValue,
-                label: labels.brand,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                  placeholder: labels.brand,
-                  style: fullWidth,
-                  options: selection_props.brands_with_series_with_pumps,
-                  onChange: function onChange(value) {
-                    setBrandValue(value);
-                  }
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.pump_series,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "pump_series_ids",
-                initialValue: seriesValue,
-                label: labels.theSeries,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
-                  disabled: brandsValue.length === 0,
-                  placeholder: labels.theSeries,
-                  style: fullWidth,
-                  options: seriesToShow,
-                  onChange: function onChange(values) {
-                    setSeriesValue(values);
-                  }
-                })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "pump_series_id",
-                initialValue: oneSeriesValue,
-                label: labels.series,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                  disabled: !brandValue,
-                  placeholder: labels.series,
-                  style: fullWidth,
-                  options: seriesToShow,
-                  onChange: function onChange(value) {
-                    setOneSeriesValue(value);
-                  }
-                })
-              })]
-            }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.pump,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "pump_id",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.pump_id,
-                label: labels.pump,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                  disabled: !oneSeriesValue || !brandValue,
-                  placeholder: labels.pump,
-                  style: fullWidth,
-                  options: pumpsToShow // onChange={value => {
-                  //     setPumpValue(value)
-                  // }}
-
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.collectors,
-              children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "collectors",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.collectors,
-                label: labels.collectors,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
-                  placeholder: labels.collectors,
-                  style: fullWidth,
-                  options: collectorsToShow
-                })
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
-                className: reducedAntFormItemClassName,
-                name: "collector",
-                initialValue: selection === null || selection === void 0 ? void 0 : selection.collector,
-                label: labels.collector,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                  placeholder: labels.collector,
-                  style: fullWidth,
-                  options: collectorsToShow
-                })
-              })]
-            }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                span: 24,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"], {
-                  orientation: "left",
-                  style: {
-                    marginTop: -10,
-                    marginBottom: -10
-                  },
-                  children: "\u0416\u043E\u043A\u0435\u0439 \u043D\u0430\u0441\u043E\u0441"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.jockey.flow,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_3__.IndexContainer, {
+      title: title,
+      extra: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(BackToProjectLink, {
+        project_id: project_id
+      }), !selection && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(BackToSelectionsDashboardLink, {
+        project_id: project_id
+      })].filter(Boolean),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+        gutter: [16, 16],
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+          xs: 16,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+            form: selectionForm,
+            name: "selection-form",
+            layout: "vertical",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
+              gutter: [16, 16],
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.flow,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   label: labels.flow,
-                  name: "jockey_flow",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_flow,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                  name: "flow",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.flow,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
                     placeholder: labels.flow,
                     style: fullWidth,
                     min: 0,
                     max: 10000,
-                    precision: 2
+                    precision: 2 // disabled={!!selection}
+                    ,
+                    readOnly: !!selection,
+                    onChange: function onChange(value) {
+                      setFlow(value);
+                    }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.jockey.head,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.head,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
                   label: labels.head,
-                  name: "jockey_head",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_head,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                  name: "head",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.head,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
                     placeholder: labels.head,
                     style: fullWidth,
                     min: 0,
                     max: 10000,
+                    precision: 2 // disabled={!!selection}
+                    ,
+                    readOnly: !!selection
+                  })
+                })
+              }), selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.deviation,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  label: labels.deviation,
+                  name: "deviation",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.deviation,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                    placeholder: labels.deviation,
+                    style: fullWidth,
+                    min: -50,
+                    max: 50,
                     precision: 2
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.jockey.brand,
-                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.main_pumps_count,
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  name: "jockey_brand_ids",
-                  initialValue: jockeyBrandsValue,
-                  label: labels.brand,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                  label: labels.mainPumpsCount,
+                  name: "main_pumps_counts",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.main_pumps_counts,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_26__["default"].Group, {
+                    options: mainPumpsCountCheckboxesOptions
+                  })
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  label: labels.mainPumpsCount,
+                  name: "main_pumps_count",
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.main_pumps_count) || 1,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Group, {
+                    value: 1,
+                    children: [1, 2, 3, 4, 5].map(function (value) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+                        value: value,
+                        children: value
+                      }, 'mp_' + value);
+                    })
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.reserve_pumps_count,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "reserve_pumps_count",
+                  label: labels.reservePumpsCount,
+                  initialValue: (selection === null || selection === void 0 ? void 0 : selection.reserve_pumps_count) || 0,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Group, {
+                    value: 0,
+                    children: [0, 1, 2, 3, 4].map(function (value) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+                        value: value,
+                        children: value
+                      }, 'rp_' + value);
+                    })
+                  })
+                })
+              }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.avr,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                    className: reducedAntFormItemClassName,
+                    name: "avr",
+                    label: labels.AF.avr,
+                    initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.avr) || 1,
+                    children: yesNoRadioOptions
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.gate_valves_count,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                    className: reducedAntFormItemClassName,
+                    name: "gate_valves_count",
+                    label: labels.AF.gatesValvesCount,
+                    initialValue: (selection === null || selection === void 0 ? void 0 : selection.gate_valves_count) || 0,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"].Group, {
+                      value: 0,
+                      children: [0, 1, 2].map(function (value) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_23__["default"], {
+                          value: value,
+                          children: value
+                        }, 'gvc_' + value);
+                      })
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.kkv,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                    className: reducedAntFormItemClassName,
+                    name: "kkv",
+                    label: labels.AF.kkv,
+                    initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.kkv) || 1,
+                    children: yesNoRadioOptions
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.on_street,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                    className: reducedAntFormItemClassName,
+                    name: "on_street",
+                    label: labels.AF.onStreet,
+                    initialValue: Number(selection === null || selection === void 0 ? void 0 : selection.on_street) || 0,
+                    children: yesNoRadioOptions
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.control_systems,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "control_system_type_ids",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.control_system_type_ids,
+                  label: labels.controlSystemTypes,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                    placeholder: labels.controlSystemTypes,
+                    style: fullWidth,
+                    options: selection_props.control_system_types
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.pump_brands,
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "pump_brand_ids",
+                  initialValue: brandsValue,
+                  label: labels.brands,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
                     placeholder: labels.brands,
                     style: fullWidth,
                     options: selection_props.brands_with_series_with_pumps,
                     onChange: function onChange(values) {
-                      setJockeyBrandsValue(values);
+                      setBrandsValue(values);
                     }
                   })
-                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  name: "jockey_brand_id",
-                  initialValue: jockeyBrandValue,
+                  name: "pump_brand_id",
+                  initialValue: brandValue,
                   label: labels.brand,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-                    placeholder: labels.brands,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    placeholder: labels.brand,
                     style: fullWidth,
                     options: selection_props.brands_with_series_with_pumps,
                     onChange: function onChange(value) {
-                      setJockeyBrandValue(value);
+                      setBrandValue(value);
                     }
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.jockey.series,
-                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.pump_series,
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  name: "jockey_series_ids",
-                  initialValue: jockeySeriesValue,
+                  name: "pump_series_ids",
+                  initialValue: seriesValue,
                   label: labels.theSeries,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                    disabled: brandsValue.length === 0,
                     placeholder: labels.theSeries,
                     style: fullWidth,
-                    options: jockeySeriesToShow,
+                    options: seriesToShow,
                     onChange: function onChange(values) {
-                      setJockeySeriesValue(values);
-                    },
-                    disabled: jockeyBrandsValue.length === 0
+                      setSeriesValue(values);
+                    }
                   })
-                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  name: "jockey_series_id",
-                  initialValue: jockeyOneSeriesValue,
+                  name: "pump_series_id",
+                  initialValue: oneSeriesValue,
                   label: labels.series,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    disabled: !brandValue,
                     placeholder: labels.series,
                     style: fullWidth,
-                    options: jockeySeriesToShow,
+                    options: seriesToShow,
                     onChange: function onChange(value) {
-                      setJockeyOneSeriesValue(value);
-                    },
-                    disabled: !jockeyBrandValue
+                      setOneSeriesValue(value);
+                    }
                   })
                 })]
-              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-                xs: widths.jockey.pump,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+              }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.pump,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
                   className: reducedAntFormItemClassName,
-                  name: "jockey_pump_id",
-                  initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_pump_id,
+                  name: "pump_id",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.pump_id,
                   label: labels.pump,
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    disabled: !oneSeriesValue || !brandValue,
                     placeholder: labels.pump,
                     style: fullWidth,
-                    options: jockeyPumpsToShow,
-                    disabled: !jockeyBrandValue || !jockeyOneSeriesValue
+                    options: pumpsToShow // onChange={value => {
+                    //     setPumpValue(value)
+                    // }}
+
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.collectors,
+                children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "collectors",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.collectors,
+                  label: labels.collectors,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                    placeholder: labels.collectors,
+                    style: fullWidth,
+                    options: collectorsToShow
+                  })
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_RequiredFormItem__WEBPACK_IMPORTED_MODULE_5__.RequiredFormItem, {
+                  className: reducedAntFormItemClassName,
+                  name: "collector",
+                  initialValue: selection === null || selection === void 0 ? void 0 : selection.collector,
+                  label: labels.collector,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                    placeholder: labels.collector,
+                    style: fullWidth,
+                    options: collectorsToShow
+                  })
+                })]
+              }), station_type === station_types.AF && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  span: 24,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
+                    orientation: "left",
+                    style: {
+                      marginTop: -10,
+                      marginBottom: -10
+                    },
+                    children: "\u0416\u043E\u043A\u0435\u0439 \u043D\u0430\u0441\u043E\u0441"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.jockey.flow,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    label: labels.flow,
+                    name: "jockey_flow",
+                    initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_flow,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                      placeholder: labels.flow,
+                      style: fullWidth,
+                      min: 0,
+                      max: 10000,
+                      precision: 2
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.jockey.head,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    label: labels.head,
+                    name: "jockey_head",
+                    initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_head,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__.InputNum, {
+                      placeholder: labels.head,
+                      style: fullWidth,
+                      min: 0,
+                      max: 10000,
+                      precision: 2
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.jockey.brand,
+                  children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    name: "jockey_brand_ids",
+                    initialValue: jockeyBrandsValue,
+                    label: labels.brand,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                      placeholder: labels.brands,
+                      style: fullWidth,
+                      options: selection_props.brands_with_series_with_pumps,
+                      onChange: function onChange(values) {
+                        setJockeyBrandsValue(values);
+                      }
+                    })
+                  }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    name: "jockey_brand_id",
+                    initialValue: jockeyBrandValue,
+                    label: labels.brand,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                      placeholder: labels.brands,
+                      style: fullWidth,
+                      options: selection_props.brands_with_series_with_pumps,
+                      onChange: function onChange(value) {
+                        setJockeyBrandValue(value);
+                      }
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.jockey.series,
+                  children: [selection_type === selection_types.Auto && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    name: "jockey_series_ids",
+                    initialValue: jockeySeriesValue,
+                    label: labels.theSeries,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_6__.MultipleSelection, {
+                      placeholder: labels.theSeries,
+                      style: fullWidth,
+                      options: jockeySeriesToShow,
+                      onChange: function onChange(values) {
+                        setJockeySeriesValue(values);
+                      },
+                      disabled: jockeyBrandsValue.length === 0
+                    })
+                  }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    name: "jockey_series_id",
+                    initialValue: jockeyOneSeriesValue,
+                    label: labels.series,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                      placeholder: labels.series,
+                      style: fullWidth,
+                      options: jockeySeriesToShow,
+                      onChange: function onChange(value) {
+                        setJockeyOneSeriesValue(value);
+                      },
+                      disabled: !jockeyBrandValue
+                    })
+                  })]
+                }), selection_type === selection_types.Handle && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                  xs: widths.jockey.pump,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                    className: reducedAntFormItemClassName,
+                    name: "jockey_pump_id",
+                    initialValue: selection === null || selection === void 0 ? void 0 : selection.jockey_pump_id,
+                    label: labels.pump,
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
+                      placeholder: labels.pump,
+                      style: fullWidth,
+                      options: jockeyPumpsToShow,
+                      disabled: !jockeyBrandValue || !jockeyOneSeriesValue
+                    })
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: widths.button,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+                  className: reducedAntFormItemClassName,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+                    style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
+                    onClick: makeSelectionHandler,
+                    loading: loading,
+                    children: labels.select
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+                xs: 24,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+                  className: "table-rounded-card",
+                  type: "inner",
+                  title: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
+                    selectedPumps: selectedPumps,
+                    setStationToShow: setStationToShow,
+                    loading: loading,
+                    addStationHandler: addStationHandler,
+                    clickPumpArticleHandler: showPumpClickHandler,
+                    dependencies: [addedStations, addedStationKey]
                   })
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: widths.button,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
-                className: reducedAntFormItemClassName,
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-                  style: _objectSpread(_objectSpread({}, fullWidth), margin.top(20)),
-                  onClick: makeSelectionHandler,
-                  loading: loading,
-                  children: labels.select
-                })
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-              xs: 24,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-                className: "table-rounded-card",
-                type: "inner",
-                title: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_Components_SelectedPumpsTable__WEBPACK_IMPORTED_MODULE_11__.SelectedPumpsTable, {
-                  selectedPumps: selectedPumps,
-                  setStationToShow: setStationToShow,
-                  loading: loading,
-                  addStationHandler: addStationHandler,
-                  dependencies: [addedStations, addedStationKey]
-                })
-              })
-            })]
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        xs: 8,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-          className: "flex-rounded-card",
-          type: "inner",
-          title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
-          children: station_type === station_types.WS ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-            id: "curves"
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_27__["default"], {
-            defaultActiveKey: "curves",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"].TabPane, {
-              forceRender: true,
-              tab: "\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0413\u0425",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-                id: "curves"
-              })
-            }, "curves"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_27__["default"].TabPane, {
-              forceRender: true,
-              tab: "\u0413\u0425 \u0436\u043E\u043A\u0435\u044F",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-                id: "jockey_curves"
-              })
-            }, "jockey-curves")]
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
-          className: "table-rounded-card",
-          type: "inner",
-          title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__.AddedPumpsTable, {
-            addedStations: addedStations,
-            loading: loading,
-            setStationToShow: setStationToShow,
-            setAddedStations: setAddedStations
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
-          form: selectionForm,
-          layout: "vertical",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
-            name: "comment",
-            label: labels.comment,
-            className: reducedAntFormItemClassName,
-            initialValue: selection === null || selection === void 0 ? void 0 : selection.comment,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].TextArea, {
-              autoSize: true,
-              placeholder: labels.comment
             })
           })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_24__["default"], {
-        xs: 24,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_29__["default"], {
-            size: 8,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
-              onClick: function onClick() {
-                _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('projects.show', project_id));
-              },
-              loading: loading,
-              children: "\u0412\u044B\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
-              onClick: saveAndCloseHandler,
-              loading: loading,
-              disabled: isArrayEmpty(addedStations),
-              children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0432\u044B\u0439\u0442\u0438"
-            })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+          xs: 8,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+            className: "flex-rounded-card",
+            type: "inner",
+            title: stationToShow === null || stationToShow === void 0 ? void 0 : stationToShow.name,
+            children: station_type === station_types.WS ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("div", {
+              id: "curves"
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_28__["default"], {
+              defaultActiveKey: "curves",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].TabPane, {
+                forceRender: true,
+                tab: "\u041E\u0441\u043D\u043E\u0432\u043D\u044B\u0435 \u0413\u0425",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("div", {
+                  id: "curves"
+                })
+              }, "curves"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_28__["default"].TabPane, {
+                forceRender: true,
+                tab: "\u0413\u0425 \u0436\u043E\u043A\u0435\u044F",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("div", {
+                  id: "jockey_curves"
+                })
+              }, "jockey-curves")]
+            })
           })
-        })
-      })]
-    })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+          xs: 24,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Cards_RoundedCard__WEBPACK_IMPORTED_MODULE_10__.RoundedCard, {
+            className: "table-rounded-card",
+            type: "inner",
+            title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__.AddedPumpsTable, {
+              addedStations: addedStations,
+              loading: loading,
+              setStationToShow: setStationToShow,
+              setAddedStations: setAddedStations
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+          xs: 24,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
+            form: selectionForm,
+            layout: "vertical",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"].Item, {
+              name: "comment",
+              label: labels.comment,
+              className: reducedAntFormItemClassName,
+              initialValue: selection === null || selection === void 0 ? void 0 : selection.comment,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_29__["default"].TextArea, {
+                autoSize: true,
+                placeholder: labels.comment
+              })
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
+          xs: 24,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Box_BoxFlexEnd__WEBPACK_IMPORTED_MODULE_12__.BoxFlexEnd, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_30__["default"], {
+              size: 8,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_8__.SecondaryButton, {
+                onClick: function onClick() {
+                  _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('projects.show', project_id));
+                },
+                loading: loading,
+                children: "\u0412\u044B\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, {
+                onClick: saveAndCloseHandler,
+                loading: loading,
+                disabled: isArrayEmpty(addedStations),
+                children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0438 \u0432\u044B\u0439\u0442\u0438"
+              })]
+            })
+          })
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_20__.PumpPropsDrawer, {
+      needCurve: true,
+      pumpInfo: pumpInfo,
+      visible: pumpInfoVisible,
+      setVisible: setPumpInfoVisible
+    })]
   });
 };
 
@@ -12507,6 +13264,135 @@ var Selection = function Selection(_ref) {
     },
     placeholder: placeholder || ""
   }, rest));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/ItemsForm.js":
+/*!**********************************************!*\
+  !*** ./resources/js/src/Shared/ItemsForm.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ItemsForm": () => (/* binding */ ItemsForm)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["form", "withRow", "layout", "items", "labelSpan", "onFinish"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+var ItemsForm = function ItemsForm(_ref) {
+  var form = _ref.form,
+      _ref$withRow = _ref.withRow,
+      withRow = _ref$withRow === void 0 ? false : _ref$withRow,
+      _ref$layout = _ref.layout,
+      layout = _ref$layout === void 0 ? "horizontal" : _ref$layout,
+      items = _ref.items,
+      _ref$labelSpan = _ref.labelSpan,
+      labelSpan = _ref$labelSpan === void 0 ? 5 : _ref$labelSpan,
+      onFinish = _ref.onFinish,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  var formItem = function formItem(item) {
+    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_2__["default"].Item, _objectSpread(_objectSpread({}, item.values), {}, {
+      key: item.values.name
+    }), item.input);
+  };
+
+  var formItems = function formItems() {
+    return items.map(function (item) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+        children: [withRow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          span: item.span || 3,
+          children: formItem(item)
+        }), !withRow && formItem(item)]
+      });
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
+    onFinish: onFinish,
+    form: form,
+    layout: layout,
+    labelCol: labelSpan
+  }, rest), {}, {
+    children: items.map(function (item) {
+      var _item$values;
+
+      return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_2__["default"].Item, _objectSpread(_objectSpread({}, item.values), {}, {
+        key: (_item$values = item.values) === null || _item$values === void 0 ? void 0 : _item$values.name
+      }), item.input);
+    })
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/JustifiedRow.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/Shared/JustifiedRow.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "JustifiedRow": () => (/* binding */ JustifiedRow)
+/* harmony export */ });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["children", "gutter"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var JustifiedRow = function JustifiedRow(_ref) {
+  var children = _ref.children,
+      _ref$gutter = _ref.gutter,
+      gutter = _ref$gutter === void 0 ? [0, 0] : _ref$gutter,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
+    style: {
+      minHeight: "85vh"
+    },
+    justify: "space-around",
+    align: "middle",
+    gutter: gutter
+  }, rest), {}, {
+    children: children
+  }));
 };
 
 /***/ }),
@@ -16343,6 +17229,941 @@ Checkbox.defaultProps = {
   onKeyUp: function onKeyUp() {}
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkbox);
+
+/***/ }),
+
+/***/ "./node_modules/rc-drawer/es/DrawerChild.js":
+/*!**************************************************!*\
+  !*** ./node_modules/rc-drawer/es/DrawerChild.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var rc_util_es_getScrollBarSize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! rc-util/es/getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
+/* harmony import */ var rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! rc-util/es/KeyCode */ "./node_modules/rc-util/es/KeyCode.js");
+/* harmony import */ var rc_util_es_omit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! rc-util/es/omit */ "./node_modules/rc-util/es/omit.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils */ "./node_modules/rc-drawer/es/utils.js");
+
+
+
+
+
+
+
+
+
+var _excluded = ["className", "children", "style", "width", "height", "defaultOpen", "open", "prefixCls", "placement", "level", "levelMove", "ease", "duration", "getContainer", "handler", "onChange", "afterVisibleChange", "showMask", "maskClosable", "maskStyle", "onClose", "onHandleClick", "keyboard", "getOpenCount", "scrollLocker", "contentWrapperStyle"];
+
+
+
+
+
+
+var currentDrawer = {};
+
+var DrawerChild = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(DrawerChild, _React$Component);
+
+  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_8__["default"])(DrawerChild);
+
+  function DrawerChild(props) {
+    var _this;
+
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, DrawerChild);
+
+    _this = _super.call(this, props);
+    _this.levelDom = void 0;
+    _this.dom = void 0;
+    _this.contentWrapper = void 0;
+    _this.contentDom = void 0;
+    _this.maskDom = void 0;
+    _this.handlerDom = void 0;
+    _this.drawerId = void 0;
+    _this.timeout = void 0;
+    _this.passive = void 0;
+    _this.startPos = void 0;
+
+    _this.domFocus = function () {
+      if (_this.dom) {
+        _this.dom.focus();
+      }
+    };
+
+    _this.removeStartHandler = function (e) {
+      if (e.touches.length > 1) {
+        // need clear the startPos when another touch event happens
+        _this.startPos = null;
+        return;
+      }
+
+      _this.startPos = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    };
+
+    _this.removeMoveHandler = function (e) {
+      // the startPos may be null or undefined
+      if (e.changedTouches.length > 1 || !_this.startPos) {
+        return;
+      }
+
+      var currentTarget = e.currentTarget;
+      var differX = e.changedTouches[0].clientX - _this.startPos.x;
+      var differY = e.changedTouches[0].clientY - _this.startPos.y;
+
+      if ((currentTarget === _this.maskDom || currentTarget === _this.handlerDom || currentTarget === _this.contentDom && (0,_utils__WEBPACK_IMPORTED_MODULE_14__.getTouchParentScroll)(currentTarget, e.target, differX, differY)) && e.cancelable) {
+        e.preventDefault();
+      }
+    };
+
+    _this.transitionEnd = function (e) {
+      var dom = e.target;
+      (0,_utils__WEBPACK_IMPORTED_MODULE_14__.removeEventListener)(dom, _utils__WEBPACK_IMPORTED_MODULE_14__.transitionEnd, _this.transitionEnd);
+      dom.style.transition = '';
+    };
+
+    _this.onKeyDown = function (e) {
+      if (e.keyCode === rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_12__["default"].ESC) {
+        var onClose = _this.props.onClose;
+        e.stopPropagation();
+
+        if (onClose) {
+          onClose(e);
+        }
+      }
+    };
+
+    _this.onWrapperTransitionEnd = function (e) {
+      var _this$props = _this.props,
+          open = _this$props.open,
+          afterVisibleChange = _this$props.afterVisibleChange;
+
+      if (e.target === _this.contentWrapper && e.propertyName.match(/transform$/)) {
+        _this.dom.style.transition = '';
+
+        if (!open && _this.getCurrentDrawerSome()) {
+          document.body.style.overflowX = '';
+
+          if (_this.maskDom) {
+            _this.maskDom.style.left = '';
+            _this.maskDom.style.width = '';
+          }
+        }
+
+        if (afterVisibleChange) {
+          afterVisibleChange(!!open);
+        }
+      }
+    };
+
+    _this.openLevelTransition = function () {
+      var _this$props2 = _this.props,
+          open = _this$props2.open,
+          width = _this$props2.width,
+          height = _this$props2.height;
+
+      var _this$getHorizontalBo = _this.getHorizontalBoolAndPlacementName(),
+          isHorizontal = _this$getHorizontalBo.isHorizontal,
+          placementName = _this$getHorizontalBo.placementName;
+
+      var contentValue = _this.contentDom ? _this.contentDom.getBoundingClientRect()[isHorizontal ? 'width' : 'height'] : 0;
+      var value = (isHorizontal ? width : height) || contentValue;
+
+      _this.setLevelAndScrolling(open, placementName, value);
+    };
+
+    _this.setLevelTransform = function (open, placementName, value, right) {
+      var _this$props3 = _this.props,
+          placement = _this$props3.placement,
+          levelMove = _this$props3.levelMove,
+          duration = _this$props3.duration,
+          ease = _this$props3.ease,
+          showMask = _this$props3.showMask; // router 切换时可能会导至页面失去滚动条，所以需要时时获取。
+
+      _this.levelDom.forEach(function (dom) {
+        dom.style.transition = "transform ".concat(duration, " ").concat(ease);
+        (0,_utils__WEBPACK_IMPORTED_MODULE_14__.addEventListener)(dom, _utils__WEBPACK_IMPORTED_MODULE_14__.transitionEnd, _this.transitionEnd);
+        var levelValue = open ? value : 0;
+
+        if (levelMove) {
+          var $levelMove = (0,_utils__WEBPACK_IMPORTED_MODULE_14__.transformArguments)(levelMove, {
+            target: dom,
+            open: open
+          });
+          levelValue = open ? $levelMove[0] : $levelMove[1] || 0;
+        }
+
+        var $value = typeof levelValue === 'number' ? "".concat(levelValue, "px") : levelValue;
+        var placementPos = placement === 'left' || placement === 'top' ? $value : "-".concat($value);
+        placementPos = showMask && placement === 'right' && right ? "calc(".concat(placementPos, " + ").concat(right, "px)") : placementPos;
+        dom.style.transform = levelValue ? "".concat(placementName, "(").concat(placementPos, ")") : '';
+      });
+    };
+
+    _this.setLevelAndScrolling = function (open, placementName, value) {
+      var onChange = _this.props.onChange;
+
+      if (!_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
+        var right = document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) && window.innerWidth > document.body.offsetWidth ? (0,rc_util_es_getScrollBarSize__WEBPACK_IMPORTED_MODULE_11__["default"])(true) : 0;
+
+        _this.setLevelTransform(open, placementName, value, right);
+
+        _this.toggleScrollingToDrawerAndBody(right);
+      }
+
+      if (onChange) {
+        onChange(open);
+      }
+    };
+
+    _this.toggleScrollingToDrawerAndBody = function (right) {
+      var _this$props4 = _this.props,
+          getContainer = _this$props4.getContainer,
+          showMask = _this$props4.showMask,
+          open = _this$props4.open;
+      var container = getContainer && getContainer(); // 处理 body 滚动
+
+      if (container && container.parentNode === document.body && showMask) {
+        var eventArray = ['touchstart'];
+        var domArray = [document.body, _this.maskDom, _this.handlerDom, _this.contentDom];
+
+        if (open && document.body.style.overflow !== 'hidden') {
+          if (right) {
+            _this.addScrollingEffect(right);
+          }
+
+          document.body.style.touchAction = 'none'; // 手机禁滚
+
+          domArray.forEach(function (item, i) {
+            if (!item) {
+              return;
+            }
+
+            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.addEventListener)(item, eventArray[i] || 'touchmove', i ? _this.removeMoveHandler : _this.removeStartHandler, _this.passive);
+          });
+        } else if (_this.getCurrentDrawerSome()) {
+          document.body.style.touchAction = '';
+
+          if (right) {
+            _this.remScrollingEffect(right);
+          } // 恢复事件
+
+
+          domArray.forEach(function (item, i) {
+            if (!item) {
+              return;
+            }
+
+            (0,_utils__WEBPACK_IMPORTED_MODULE_14__.removeEventListener)(item, eventArray[i] || 'touchmove', i ? _this.removeMoveHandler : _this.removeStartHandler, _this.passive);
+          });
+        }
+      }
+    };
+
+    _this.addScrollingEffect = function (right) {
+      var _this$props5 = _this.props,
+          placement = _this$props5.placement,
+          duration = _this$props5.duration,
+          ease = _this$props5.ease;
+      var widthTransition = "width ".concat(duration, " ").concat(ease);
+      var transformTransition = "transform ".concat(duration, " ").concat(ease);
+      _this.dom.style.transition = 'none';
+
+      switch (placement) {
+        case 'right':
+          _this.dom.style.transform = "translateX(-".concat(right, "px)");
+          break;
+
+        case 'top':
+        case 'bottom':
+          _this.dom.style.width = "calc(100% - ".concat(right, "px)");
+          _this.dom.style.transform = 'translateZ(0)';
+          break;
+
+        default:
+          break;
+      }
+
+      clearTimeout(_this.timeout);
+      _this.timeout = setTimeout(function () {
+        if (_this.dom) {
+          _this.dom.style.transition = "".concat(transformTransition, ",").concat(widthTransition);
+          _this.dom.style.width = '';
+          _this.dom.style.transform = '';
+        }
+      });
+    };
+
+    _this.remScrollingEffect = function (right) {
+      var _this$props6 = _this.props,
+          placement = _this$props6.placement,
+          duration = _this$props6.duration,
+          ease = _this$props6.ease;
+
+      if (_utils__WEBPACK_IMPORTED_MODULE_14__.transitionStr) {
+        document.body.style.overflowX = 'hidden';
+      }
+
+      _this.dom.style.transition = 'none';
+      var heightTransition;
+      var widthTransition = "width ".concat(duration, " ").concat(ease);
+      var transformTransition = "transform ".concat(duration, " ").concat(ease);
+
+      switch (placement) {
+        case 'left':
+          {
+            _this.dom.style.width = '100%';
+            widthTransition = "width 0s ".concat(ease, " ").concat(duration);
+            break;
+          }
+
+        case 'right':
+          {
+            _this.dom.style.transform = "translateX(".concat(right, "px)");
+            _this.dom.style.width = '100%';
+            widthTransition = "width 0s ".concat(ease, " ").concat(duration);
+
+            if (_this.maskDom) {
+              _this.maskDom.style.left = "-".concat(right, "px");
+              _this.maskDom.style.width = "calc(100% + ".concat(right, "px)");
+            }
+
+            break;
+          }
+
+        case 'top':
+        case 'bottom':
+          {
+            _this.dom.style.width = "calc(100% + ".concat(right, "px)");
+            _this.dom.style.height = '100%';
+            _this.dom.style.transform = 'translateZ(0)';
+            heightTransition = "height 0s ".concat(ease, " ").concat(duration);
+            break;
+          }
+
+        default:
+          break;
+      }
+
+      clearTimeout(_this.timeout);
+      _this.timeout = setTimeout(function () {
+        if (_this.dom) {
+          _this.dom.style.transition = "".concat(transformTransition, ",").concat(heightTransition ? "".concat(heightTransition, ",") : '').concat(widthTransition);
+          _this.dom.style.transform = '';
+          _this.dom.style.width = '';
+          _this.dom.style.height = '';
+        }
+      });
+    };
+
+    _this.getCurrentDrawerSome = function () {
+      return !Object.keys(currentDrawer).some(function (key) {
+        return currentDrawer[key];
+      });
+    };
+
+    _this.getLevelDom = function (_ref) {
+      var level = _ref.level,
+          getContainer = _ref.getContainer;
+
+      if (_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
+        return;
+      }
+
+      var container = getContainer && getContainer();
+      var parent = container ? container.parentNode : null;
+      _this.levelDom = [];
+
+      if (level === 'all') {
+        var children = parent ? Array.prototype.slice.call(parent.children) : [];
+        children.forEach(function (child) {
+          if (child.nodeName !== 'SCRIPT' && child.nodeName !== 'STYLE' && child.nodeName !== 'LINK' && child !== container) {
+            _this.levelDom.push(child);
+          }
+        });
+      } else if (level) {
+        (0,_utils__WEBPACK_IMPORTED_MODULE_14__.dataToArray)(level).forEach(function (key) {
+          document.querySelectorAll(key).forEach(function (item) {
+            _this.levelDom.push(item);
+          });
+        });
+      }
+    };
+
+    _this.getHorizontalBoolAndPlacementName = function () {
+      var placement = _this.props.placement;
+      var isHorizontal = placement === 'left' || placement === 'right';
+      var placementName = "translate".concat(isHorizontal ? 'X' : 'Y');
+      return {
+        isHorizontal: isHorizontal,
+        placementName: placementName
+      };
+    };
+
+    _this.state = {
+      _self: (0,_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this)
+    };
+    return _this;
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(DrawerChild, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      if (!_utils__WEBPACK_IMPORTED_MODULE_14__.windowIsUndefined) {
+        var passiveSupported = false;
+
+        try {
+          window.addEventListener('test', null, Object.defineProperty({}, 'passive', {
+            get: function get() {
+              passiveSupported = true;
+              return null;
+            }
+          }));
+        } catch (err) {}
+
+        this.passive = passiveSupported ? {
+          passive: false
+        } : false;
+      }
+
+      var _this$props7 = this.props,
+          open = _this$props7.open,
+          getContainer = _this$props7.getContainer,
+          showMask = _this$props7.showMask,
+          autoFocus = _this$props7.autoFocus;
+      var container = getContainer && getContainer();
+      this.drawerId = "drawer_id_".concat(Number((Date.now() + Math.random()).toString().replace('.', Math.round(Math.random() * 9).toString())).toString(16));
+      this.getLevelDom(this.props);
+
+      if (open) {
+        if (container && container.parentNode === document.body) {
+          currentDrawer[this.drawerId] = open;
+        } // 默认打开状态时推出 level;
+
+
+        this.openLevelTransition();
+        this.forceUpdate(function () {
+          if (autoFocus) {
+            _this2.domFocus();
+          }
+        });
+
+        if (showMask) {
+          var _this$props$scrollLoc;
+
+          (_this$props$scrollLoc = this.props.scrollLocker) === null || _this$props$scrollLoc === void 0 ? void 0 : _this$props$scrollLoc.lock();
+        }
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this$props8 = this.props,
+          open = _this$props8.open,
+          getContainer = _this$props8.getContainer,
+          scrollLocker = _this$props8.scrollLocker,
+          showMask = _this$props8.showMask,
+          autoFocus = _this$props8.autoFocus;
+      var container = getContainer && getContainer();
+
+      if (open !== prevProps.open) {
+        if (container && container.parentNode === document.body) {
+          currentDrawer[this.drawerId] = !!open;
+        }
+
+        this.openLevelTransition();
+
+        if (open) {
+          if (autoFocus) {
+            this.domFocus();
+          }
+
+          if (showMask) {
+            scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.lock();
+          }
+        } else {
+          scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.unLock();
+        }
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var _this$props9 = this.props,
+          open = _this$props9.open,
+          scrollLocker = _this$props9.scrollLocker;
+      delete currentDrawer[this.drawerId];
+
+      if (open) {
+        this.setLevelTransform(false);
+        document.body.style.touchAction = '';
+      }
+
+      scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.unLock();
+    }
+  }, {
+    key: "render",
+    value: // tslint:disable-next-line:member-ordering
+    function render() {
+      var _classnames,
+          _this3 = this;
+
+      var _this$props10 = this.props,
+          className = _this$props10.className,
+          children = _this$props10.children,
+          style = _this$props10.style,
+          width = _this$props10.width,
+          height = _this$props10.height,
+          defaultOpen = _this$props10.defaultOpen,
+          $open = _this$props10.open,
+          prefixCls = _this$props10.prefixCls,
+          placement = _this$props10.placement,
+          level = _this$props10.level,
+          levelMove = _this$props10.levelMove,
+          ease = _this$props10.ease,
+          duration = _this$props10.duration,
+          getContainer = _this$props10.getContainer,
+          handler = _this$props10.handler,
+          onChange = _this$props10.onChange,
+          afterVisibleChange = _this$props10.afterVisibleChange,
+          showMask = _this$props10.showMask,
+          maskClosable = _this$props10.maskClosable,
+          maskStyle = _this$props10.maskStyle,
+          onClose = _this$props10.onClose,
+          onHandleClick = _this$props10.onHandleClick,
+          keyboard = _this$props10.keyboard,
+          getOpenCount = _this$props10.getOpenCount,
+          scrollLocker = _this$props10.scrollLocker,
+          contentWrapperStyle = _this$props10.contentWrapperStyle,
+          props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__["default"])(_this$props10, _excluded); // 首次渲染都将是关闭状态。
+
+
+      var open = this.dom ? $open : false;
+      var wrapperClassName = classnames__WEBPACK_IMPORTED_MODULE_10___default()(prefixCls, (_classnames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, "".concat(prefixCls, "-").concat(placement), true), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, "".concat(prefixCls, "-open"), open), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, className || '', !!className), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classnames, 'no-mask', !showMask), _classnames));
+
+      var _this$getHorizontalBo2 = this.getHorizontalBoolAndPlacementName(),
+          placementName = _this$getHorizontalBo2.placementName; // 百分比与像素动画不同步，第一次打用后全用像素动画。
+      // const defaultValue = !this.contentDom || !level ? '100%' : `${value}px`;
+
+
+      var placementPos = placement === 'left' || placement === 'top' ? '-100%' : '100%';
+      var transform = open ? '' : "".concat(placementName, "(").concat(placementPos, ")");
+      var handlerChildren = handler && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.cloneElement(handler, {
+        onClick: function onClick(e) {
+          if (handler.props.onClick) {
+            handler.props.onClick();
+          }
+
+          if (onHandleClick) {
+            onHandleClick(e);
+          }
+        },
+        ref: function ref(c) {
+          _this3.handlerDom = c;
+        }
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, (0,rc_util_es_omit__WEBPACK_IMPORTED_MODULE_13__["default"])(props, ['switchScrollingEffect', 'autoFocus']), {
+        tabIndex: -1,
+        className: wrapperClassName,
+        style: style,
+        ref: function ref(c) {
+          _this3.dom = c;
+        },
+        onKeyDown: open && keyboard ? this.onKeyDown : undefined,
+        onTransitionEnd: this.onWrapperTransitionEnd
+      }), showMask && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
+        className: "".concat(prefixCls, "-mask"),
+        onClick: maskClosable ? onClose : undefined,
+        style: maskStyle,
+        ref: function ref(c) {
+          _this3.maskDom = c;
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
+        className: "".concat(prefixCls, "-content-wrapper"),
+        style: (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({
+          transform: transform,
+          msTransform: transform,
+          width: (0,_utils__WEBPACK_IMPORTED_MODULE_14__.isNumeric)(width) ? "".concat(width, "px") : width,
+          height: (0,_utils__WEBPACK_IMPORTED_MODULE_14__.isNumeric)(height) ? "".concat(height, "px") : height
+        }, contentWrapperStyle),
+        ref: function ref(c) {
+          _this3.contentWrapper = c;
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9__.createElement("div", {
+        className: "".concat(prefixCls, "-content"),
+        ref: function ref(c) {
+          _this3.contentDom = c;
+        }
+      }, children), handlerChildren));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, _ref2) {
+      var prevProps = _ref2.prevProps,
+          _self = _ref2._self;
+      var nextState = {
+        prevProps: props
+      };
+
+      if (prevProps !== undefined) {
+        var placement = props.placement,
+            level = props.level;
+
+        if (placement !== prevProps.placement) {
+          // test 的 bug, 有动画过场，删除 dom
+          _self.contentDom = null;
+        }
+
+        if (level !== prevProps.level) {
+          _self.getLevelDom(props);
+        }
+      }
+
+      return nextState;
+    }
+  }]);
+
+  return DrawerChild;
+}(react__WEBPACK_IMPORTED_MODULE_9__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerChild);
+
+/***/ }),
+
+/***/ "./node_modules/rc-drawer/es/DrawerWrapper.js":
+/*!****************************************************!*\
+  !*** ./node_modules/rc-drawer/es/DrawerWrapper.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
+/* harmony import */ var rc_util_es_PortalWrapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rc-util/es/PortalWrapper */ "./node_modules/rc-util/es/PortalWrapper.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _DrawerChild__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./DrawerChild */ "./node_modules/rc-drawer/es/DrawerChild.js");
+
+
+
+
+
+
+var _excluded = ["defaultOpen", "getContainer", "wrapperClassName", "forceRender", "handler"],
+    _excluded2 = ["visible", "afterClose"];
+
+
+
+
+var DrawerWrapper = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(DrawerWrapper, _React$Component);
+
+  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_5__["default"])(DrawerWrapper);
+
+  function DrawerWrapper(props) {
+    var _this;
+
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, DrawerWrapper);
+
+    _this = _super.call(this, props);
+    _this.dom = void 0;
+
+    _this.onHandleClick = function (e) {
+      var _this$props = _this.props,
+          onHandleClick = _this$props.onHandleClick,
+          $open = _this$props.open;
+
+      if (onHandleClick) {
+        onHandleClick(e);
+      }
+
+      if (typeof $open === 'undefined') {
+        var open = _this.state.open;
+
+        _this.setState({
+          open: !open
+        });
+      }
+    };
+
+    _this.onClose = function (e) {
+      var _this$props2 = _this.props,
+          onClose = _this$props2.onClose,
+          open = _this$props2.open;
+
+      if (onClose) {
+        onClose(e);
+      }
+
+      if (typeof open === 'undefined') {
+        _this.setState({
+          open: false
+        });
+      }
+    };
+
+    var _open = typeof props.open !== 'undefined' ? props.open : !!props.defaultOpen;
+
+    _this.state = {
+      open: _open
+    };
+
+    if ('onMaskClick' in props) {
+      console.warn('`onMaskClick` are removed, please use `onClose` instead.');
+    }
+
+    return _this;
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(DrawerWrapper, [{
+    key: "render",
+    value: // tslint:disable-next-line:member-ordering
+    function render() {
+      var _this2 = this;
+
+      var _this$props3 = this.props,
+          defaultOpen = _this$props3.defaultOpen,
+          getContainer = _this$props3.getContainer,
+          wrapperClassName = _this$props3.wrapperClassName,
+          forceRender = _this$props3.forceRender,
+          handler = _this$props3.handler,
+          props = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props3, _excluded);
+
+      var open = this.state.open; // 渲染在当前 dom 里；
+
+      if (!getContainer) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
+          className: wrapperClassName,
+          ref: function ref(c) {
+            _this2.dom = c;
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement(_DrawerChild__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+          open: open,
+          handler: handler,
+          getContainer: function getContainer() {
+            return _this2.dom;
+          },
+          onClose: this.onClose,
+          onHandleClick: this.onHandleClick
+        })));
+      } // 如果有 handler 为内置强制渲染；
+
+
+      var $forceRender = !!handler || forceRender;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement(rc_util_es_PortalWrapper__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        visible: open,
+        forceRender: $forceRender,
+        getContainer: getContainer,
+        wrapperClassName: wrapperClassName
+      }, function (_ref) {
+        var visible = _ref.visible,
+            afterClose = _ref.afterClose,
+            rest = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, _excluded2);
+
+        return (
+          /*#__PURE__*/
+          // react 15，componentWillUnmount 时 Portal 返回 afterClose, visible.
+          react__WEBPACK_IMPORTED_MODULE_7__.createElement(_DrawerChild__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, rest, {
+            open: visible !== undefined ? visible : open,
+            afterVisibleChange: afterClose !== undefined ? afterClose : props.afterVisibleChange,
+            handler: handler,
+            onClose: _this2.onClose,
+            onHandleClick: _this2.onHandleClick
+          }))
+        );
+      });
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, _ref2) {
+      var prevProps = _ref2.prevProps;
+      var newState = {
+        prevProps: props
+      };
+
+      if (typeof prevProps !== 'undefined' && props.open !== prevProps.open) {
+        newState.open = props.open;
+      }
+
+      return newState;
+    }
+  }]);
+
+  return DrawerWrapper;
+}(react__WEBPACK_IMPORTED_MODULE_7__.Component);
+
+DrawerWrapper.defaultProps = {
+  prefixCls: 'drawer',
+  placement: 'left',
+  getContainer: 'body',
+  defaultOpen: false,
+  level: 'all',
+  duration: '.3s',
+  ease: 'cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+  onChange: function onChange() {},
+  afterVisibleChange: function afterVisibleChange() {},
+  handler: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
+    className: "drawer-handle"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("i", {
+    className: "drawer-handle-icon"
+  })),
+  showMask: true,
+  maskClosable: true,
+  maskStyle: {},
+  wrapperClassName: '',
+  className: '',
+  keyboard: true,
+  forceRender: false,
+  autoFocus: true
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DrawerWrapper);
+
+/***/ }),
+
+/***/ "./node_modules/rc-drawer/es/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/rc-drawer/es/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DrawerWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DrawerWrapper */ "./node_modules/rc-drawer/es/DrawerWrapper.js");
+// export this package's api
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_DrawerWrapper__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./node_modules/rc-drawer/es/utils.js":
+/*!********************************************!*\
+  !*** ./node_modules/rc-drawer/es/utils.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dataToArray": () => (/* binding */ dataToArray),
+/* harmony export */   "transitionStr": () => (/* binding */ transitionStr),
+/* harmony export */   "transitionEnd": () => (/* binding */ transitionEnd),
+/* harmony export */   "addEventListener": () => (/* binding */ addEventListener),
+/* harmony export */   "removeEventListener": () => (/* binding */ removeEventListener),
+/* harmony export */   "transformArguments": () => (/* binding */ transformArguments),
+/* harmony export */   "isNumeric": () => (/* binding */ isNumeric),
+/* harmony export */   "windowIsUndefined": () => (/* binding */ windowIsUndefined),
+/* harmony export */   "getTouchParentScroll": () => (/* binding */ getTouchParentScroll)
+/* harmony export */ });
+function dataToArray(vars) {
+  if (Array.isArray(vars)) {
+    return vars;
+  }
+
+  return [vars];
+}
+var transitionEndObject = {
+  transition: 'transitionend',
+  WebkitTransition: 'webkitTransitionEnd',
+  MozTransition: 'transitionend',
+  OTransition: 'oTransitionEnd otransitionend'
+};
+var transitionStr = Object.keys(transitionEndObject).filter(function (key) {
+  if (typeof document === 'undefined') {
+    return false;
+  }
+
+  var html = document.getElementsByTagName('html')[0];
+  return key in (html ? html.style : {});
+})[0];
+var transitionEnd = transitionEndObject[transitionStr];
+function addEventListener(target, eventType, callback, options) {
+  if (target.addEventListener) {
+    target.addEventListener(eventType, callback, options);
+  } else if (target.attachEvent) {
+    // tslint:disable-line
+    target.attachEvent("on".concat(eventType), callback); // tslint:disable-line
+  }
+}
+function removeEventListener(target, eventType, callback, options) {
+  if (target.removeEventListener) {
+    target.removeEventListener(eventType, callback, options);
+  } else if (target.attachEvent) {
+    // tslint:disable-line
+    target.detachEvent("on".concat(eventType), callback); // tslint:disable-line
+  }
+}
+function transformArguments(arg, cb) {
+  var result = typeof arg === 'function' ? arg(cb) : arg;
+
+  if (Array.isArray(result)) {
+    if (result.length === 2) {
+      return result;
+    }
+
+    return [result[0], result[1]];
+  }
+
+  return [result];
+}
+var isNumeric = function isNumeric(value) {
+  return !isNaN(parseFloat(value)) && isFinite(value);
+};
+var windowIsUndefined = !(typeof window !== 'undefined' && window.document && window.document.createElement);
+var getTouchParentScroll = function getTouchParentScroll(root, currentTarget, differX, differY) {
+  if (!currentTarget || currentTarget === document || currentTarget instanceof Document) {
+    return false;
+  } // root 为 drawer-content 设定了 overflow, 判断为 root 的 parent 时结束滚动；
+
+
+  if (currentTarget === root.parentNode) {
+    return true;
+  }
+
+  var isY = Math.max(Math.abs(differX), Math.abs(differY)) === Math.abs(differY);
+  var isX = Math.max(Math.abs(differX), Math.abs(differY)) === Math.abs(differX);
+  var scrollY = currentTarget.scrollHeight - currentTarget.clientHeight;
+  var scrollX = currentTarget.scrollWidth - currentTarget.clientWidth;
+  var style = document.defaultView.getComputedStyle(currentTarget);
+  var overflowY = style.overflowY === 'auto' || style.overflowY === 'scroll';
+  var overflowX = style.overflowX === 'auto' || style.overflowX === 'scroll';
+  var y = scrollY && overflowY;
+  var x = scrollX && overflowX;
+
+  if (isY && (!y || y && (currentTarget.scrollTop >= scrollY && differY < 0 || currentTarget.scrollTop <= 0 && differY > 0)) || isX && (!x || x && (currentTarget.scrollLeft >= scrollX && differX < 0 || currentTarget.scrollLeft <= 0 && differX > 0))) {
+    return getTouchParentScroll(root, currentTarget.parentNode, differX, differY);
+  }
+
+  return false;
+};
 
 /***/ }),
 
@@ -30680,6 +32501,439 @@ function getOffset(node) {
 
 /***/ }),
 
+/***/ "./node_modules/rc-util/es/Dom/scrollLocker.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/rc-util/es/Dom/scrollLocker.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ScrollLocker)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _getScrollBarSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
+/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../setStyle */ "./node_modules/rc-util/es/setStyle.js");
+
+
+
+
+var locks = [];
+var scrollingEffectClassName = 'ant-scrolling-effect';
+var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
+var uuid = 0; // https://github.com/ant-design/ant-design/issues/19340
+// https://github.com/ant-design/ant-design/issues/19332
+
+var cacheStyle = new Map();
+
+var ScrollLocker = function ScrollLocker(_options) {
+  var _this = this;
+
+  (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ScrollLocker);
+
+  this.lockTarget = void 0;
+  this.options = void 0;
+
+  this.getContainer = function () {
+    var _this$options;
+
+    return (_this$options = _this.options) === null || _this$options === void 0 ? void 0 : _this$options.container;
+  };
+
+  this.reLock = function (options) {
+    var findLock = locks.find(function (_ref) {
+      var target = _ref.target;
+      return target === _this.lockTarget;
+    });
+
+    if (findLock) {
+      _this.unLock();
+    }
+
+    _this.options = options;
+
+    if (findLock) {
+      findLock.options = options;
+
+      _this.lock();
+    }
+  };
+
+  this.lock = function () {
+    var _this$options3;
+
+    // If lockTarget exist return
+    if (locks.some(function (_ref2) {
+      var target = _ref2.target;
+      return target === _this.lockTarget;
+    })) {
+      return;
+    } // If same container effect, return
+
+
+    if (locks.some(function (_ref3) {
+      var _this$options2;
+
+      var options = _ref3.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options2 = _this.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.container);
+    })) {
+      locks = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(locks), [{
+        target: _this.lockTarget,
+        options: _this.options
+      }]);
+      return;
+    }
+
+    var scrollBarSize = 0;
+    var container = ((_this$options3 = _this.options) === null || _this$options3 === void 0 ? void 0 : _this$options3.container) || document.body;
+
+    if (container === document.body && window.innerWidth - document.documentElement.clientWidth > 0 || container.scrollHeight > container.clientHeight) {
+      scrollBarSize = (0,_getScrollBarSize__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    }
+
+    var containerClassName = container.className;
+
+    if (locks.filter(function (_ref4) {
+      var _this$options4;
+
+      var options = _ref4.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options4 = _this.options) === null || _this$options4 === void 0 ? void 0 : _this$options4.container);
+    }).length === 0) {
+      cacheStyle.set(container, (0,_setStyle__WEBPACK_IMPORTED_MODULE_3__["default"])({
+        width: scrollBarSize !== 0 ? "calc(100% - ".concat(scrollBarSize, "px)") : undefined,
+        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'hidden'
+      }, {
+        element: container
+      }));
+    } // https://github.com/ant-design/ant-design/issues/19729
+
+
+    if (!scrollingEffectClassNameReg.test(containerClassName)) {
+      var addClassName = "".concat(containerClassName, " ").concat(scrollingEffectClassName);
+      container.className = addClassName.trim();
+    }
+
+    locks = [].concat((0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(locks), [{
+      target: _this.lockTarget,
+      options: _this.options
+    }]);
+  };
+
+  this.unLock = function () {
+    var _this$options5;
+
+    var findLock = locks.find(function (_ref5) {
+      var target = _ref5.target;
+      return target === _this.lockTarget;
+    });
+    locks = locks.filter(function (_ref6) {
+      var target = _ref6.target;
+      return target !== _this.lockTarget;
+    });
+
+    if (!findLock || locks.some(function (_ref7) {
+      var _findLock$options;
+
+      var options = _ref7.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_findLock$options = findLock.options) === null || _findLock$options === void 0 ? void 0 : _findLock$options.container);
+    })) {
+      return;
+    } // Remove Effect
+
+
+    var container = ((_this$options5 = _this.options) === null || _this$options5 === void 0 ? void 0 : _this$options5.container) || document.body;
+    var containerClassName = container.className;
+    if (!scrollingEffectClassNameReg.test(containerClassName)) return;
+    (0,_setStyle__WEBPACK_IMPORTED_MODULE_3__["default"])(cacheStyle.get(container), {
+      element: container
+    });
+    cacheStyle.delete(container);
+    container.className = container.className.replace(scrollingEffectClassNameReg, '').trim();
+  };
+
+  // eslint-disable-next-line no-plusplus
+  this.lockTarget = uuid++;
+  this.options = _options;
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/rc-util/es/PortalWrapper.js":
+/*!**************************************************!*\
+  !*** ./node_modules/rc-util/es/PortalWrapper.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getOpenCount": () => (/* binding */ getOpenCount),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createSuper */ "./node_modules/@babel/runtime/helpers/esm/createSuper.js");
+/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _raf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./raf */ "./node_modules/rc-util/es/raf.js");
+/* harmony import */ var _Portal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Portal */ "./node_modules/rc-util/es/Portal.js");
+/* harmony import */ var _Dom_canUseDom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Dom/canUseDom */ "./node_modules/rc-util/es/Dom/canUseDom.js");
+/* harmony import */ var _switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./switchScrollingEffect */ "./node_modules/rc-util/es/switchScrollingEffect.js");
+/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./setStyle */ "./node_modules/rc-util/es/setStyle.js");
+/* harmony import */ var _Dom_scrollLocker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Dom/scrollLocker */ "./node_modules/rc-util/es/Dom/scrollLocker.js");
+
+
+
+
+
+
+/* eslint-disable no-underscore-dangle,react/require-default-props */
+
+
+
+
+
+
+
+var openCount = 0;
+var supportDom = (0,_Dom_canUseDom__WEBPACK_IMPORTED_MODULE_8__["default"])();
+/** @private Test usage only */
+
+function getOpenCount() {
+  return  false ? 0 : 0;
+} // https://github.com/ant-design/ant-design/issues/19340
+// https://github.com/ant-design/ant-design/issues/19332
+
+var cacheOverflow = {};
+
+var getParent = function getParent(getContainer) {
+  if (!supportDom) {
+    return null;
+  }
+
+  if (getContainer) {
+    if (typeof getContainer === 'string') {
+      return document.querySelectorAll(getContainer)[0];
+    }
+
+    if (typeof getContainer === 'function') {
+      return getContainer();
+    }
+
+    if ((0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_4__["default"])(getContainer) === 'object' && getContainer instanceof window.HTMLElement) {
+      return getContainer;
+    }
+  }
+
+  return document.body;
+};
+
+var PortalWrapper = /*#__PURE__*/function (_React$Component) {
+  (0,_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__["default"])(PortalWrapper, _React$Component);
+
+  var _super = (0,_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_3__["default"])(PortalWrapper);
+
+  function PortalWrapper(props) {
+    var _this;
+
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, PortalWrapper);
+
+    _this = _super.call(this, props);
+    _this.container = void 0;
+    _this.componentRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createRef();
+    _this.rafId = void 0;
+    _this.scrollLocker = void 0;
+    _this.renderComponent = void 0;
+
+    _this.updateScrollLocker = function (prevProps) {
+      var _ref = prevProps || {},
+          prevVisible = _ref.visible;
+
+      var _this$props = _this.props,
+          getContainer = _this$props.getContainer,
+          visible = _this$props.visible;
+
+      if (visible && visible !== prevVisible && supportDom && getParent(getContainer) !== _this.scrollLocker.getContainer()) {
+        _this.scrollLocker.reLock({
+          container: getParent(getContainer)
+        });
+      }
+    };
+
+    _this.updateOpenCount = function (prevProps) {
+      var _ref2 = prevProps || {},
+          prevVisible = _ref2.visible,
+          prevGetContainer = _ref2.getContainer;
+
+      var _this$props2 = _this.props,
+          visible = _this$props2.visible,
+          getContainer = _this$props2.getContainer; // Update count
+
+      if (visible !== prevVisible && supportDom && getParent(getContainer) === document.body) {
+        if (visible && !prevVisible) {
+          openCount += 1;
+        } else if (prevProps) {
+          openCount -= 1;
+        }
+      } // Clean up container if needed
+
+
+      var getContainerIsFunc = typeof getContainer === 'function' && typeof prevGetContainer === 'function';
+
+      if (getContainerIsFunc ? getContainer.toString() !== prevGetContainer.toString() : getContainer !== prevGetContainer) {
+        _this.removeCurrentContainer();
+      }
+    };
+
+    _this.attachToParent = function () {
+      var force = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      if (force || _this.container && !_this.container.parentNode) {
+        var parent = getParent(_this.props.getContainer);
+
+        if (parent) {
+          parent.appendChild(_this.container);
+          return true;
+        }
+
+        return false;
+      }
+
+      return true;
+    };
+
+    _this.getContainer = function () {
+      if (!supportDom) {
+        return null;
+      }
+
+      if (!_this.container) {
+        _this.container = document.createElement('div');
+
+        _this.attachToParent(true);
+      }
+
+      _this.setWrapperClassName();
+
+      return _this.container;
+    };
+
+    _this.setWrapperClassName = function () {
+      var wrapperClassName = _this.props.wrapperClassName;
+
+      if (_this.container && wrapperClassName && wrapperClassName !== _this.container.className) {
+        _this.container.className = wrapperClassName;
+      }
+    };
+
+    _this.removeCurrentContainer = function () {
+      var _this$container, _this$container$paren;
+
+      // Portal will remove from `parentNode`.
+      // Let's handle this again to avoid refactor issue.
+      (_this$container = _this.container) === null || _this$container === void 0 ? void 0 : (_this$container$paren = _this$container.parentNode) === null || _this$container$paren === void 0 ? void 0 : _this$container$paren.removeChild(_this.container);
+    };
+
+    _this.switchScrollingEffect = function () {
+      if (openCount === 1 && !Object.keys(cacheOverflow).length) {
+        (0,_switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__["default"])(); // Must be set after switchScrollingEffect
+
+        cacheOverflow = (0,_setStyle__WEBPACK_IMPORTED_MODULE_10__["default"])({
+          overflow: 'hidden',
+          overflowX: 'hidden',
+          overflowY: 'hidden'
+        });
+      } else if (!openCount) {
+        (0,_setStyle__WEBPACK_IMPORTED_MODULE_10__["default"])(cacheOverflow);
+        cacheOverflow = {};
+        (0,_switchScrollingEffect__WEBPACK_IMPORTED_MODULE_9__["default"])(true);
+      }
+    };
+
+    _this.scrollLocker = new _Dom_scrollLocker__WEBPACK_IMPORTED_MODULE_11__["default"]({
+      container: getParent(props.getContainer)
+    });
+    return _this;
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(PortalWrapper, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.updateOpenCount();
+
+      if (!this.attachToParent()) {
+        this.rafId = (0,_raf__WEBPACK_IMPORTED_MODULE_6__["default"])(function () {
+          _this2.forceUpdate();
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      this.updateOpenCount(prevProps);
+      this.updateScrollLocker(prevProps);
+      this.setWrapperClassName();
+      this.attachToParent();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var _this$props3 = this.props,
+          visible = _this$props3.visible,
+          getContainer = _this$props3.getContainer;
+
+      if (supportDom && getParent(getContainer) === document.body) {
+        // 离开时不会 render， 导到离开时数值不变，改用 func 。。
+        openCount = visible && openCount ? openCount - 1 : openCount;
+      }
+
+      this.removeCurrentContainer();
+      _raf__WEBPACK_IMPORTED_MODULE_6__["default"].cancel(this.rafId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props4 = this.props,
+          children = _this$props4.children,
+          forceRender = _this$props4.forceRender,
+          visible = _this$props4.visible;
+      var portal = null;
+      var childProps = {
+        getOpenCount: function getOpenCount() {
+          return openCount;
+        },
+        getContainer: this.getContainer,
+        switchScrollingEffect: this.switchScrollingEffect,
+        scrollLocker: this.scrollLocker
+      };
+
+      if (forceRender || visible || this.componentRef.current) {
+        portal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Portal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          getContainer: this.getContainer,
+          ref: this.componentRef
+        }, children(childProps));
+      }
+
+      return portal;
+    }
+  }]);
+
+  return PortalWrapper;
+}(react__WEBPACK_IMPORTED_MODULE_5__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PortalWrapper);
+
+/***/ }),
+
 /***/ "./node_modules/rc-util/es/getScrollBarSize.js":
 /*!*****************************************************!*\
   !*** ./node_modules/rc-util/es/getScrollBarSize.js ***!
@@ -30814,6 +33068,104 @@ function pickAttrs(props) {
   });
   return attrs;
 }
+
+/***/ }),
+
+/***/ "./node_modules/rc-util/es/setStyle.js":
+/*!*********************************************!*\
+  !*** ./node_modules/rc-util/es/setStyle.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * Easy to set element style, return previous style
+ * IE browser compatible(IE browser doesn't merge overflow style, need to set it separately)
+ * https://github.com/ant-design/ant-design/issues/19393
+ *
+ */
+function setStyle(style) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (!style) {
+    return {};
+  }
+
+  var _options$element = options.element,
+      element = _options$element === void 0 ? document.body : _options$element;
+  var oldStyle = {};
+  var styleKeys = Object.keys(style); // IE browser compatible
+
+  styleKeys.forEach(function (key) {
+    oldStyle[key] = element.style[key];
+  });
+  styleKeys.forEach(function (key) {
+    element.style[key] = style[key];
+  });
+  return oldStyle;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (setStyle);
+
+/***/ }),
+
+/***/ "./node_modules/rc-util/es/switchScrollingEffect.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/rc-util/es/switchScrollingEffect.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _getScrollBarSize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getScrollBarSize */ "./node_modules/rc-util/es/getScrollBarSize.js");
+/* harmony import */ var _setStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setStyle */ "./node_modules/rc-util/es/setStyle.js");
+
+
+
+function isBodyOverflowing() {
+  return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) && window.innerWidth > document.body.offsetWidth;
+}
+
+var cacheStyle = {};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (close) {
+  if (!isBodyOverflowing() && !close) {
+    return;
+  } // https://github.com/ant-design/ant-design/issues/19729
+
+
+  var scrollingEffectClassName = 'ant-scrolling-effect';
+  var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
+  var bodyClassName = document.body.className;
+
+  if (close) {
+    if (!scrollingEffectClassNameReg.test(bodyClassName)) return;
+    (0,_setStyle__WEBPACK_IMPORTED_MODULE_1__["default"])(cacheStyle);
+    cacheStyle = {};
+    document.body.className = bodyClassName.replace(scrollingEffectClassNameReg, '').trim();
+    return;
+  }
+
+  var scrollBarSize = (0,_getScrollBarSize__WEBPACK_IMPORTED_MODULE_0__["default"])();
+
+  if (scrollBarSize) {
+    cacheStyle = (0,_setStyle__WEBPACK_IMPORTED_MODULE_1__["default"])({
+      position: 'relative',
+      width: "calc(100% - ".concat(scrollBarSize, "px)")
+    });
+
+    if (!scrollingEffectClassNameReg.test(bodyClassName)) {
+      var addClassName = "".concat(bodyClassName, " ").concat(scrollingEffectClassName);
+      document.body.className = addClassName.trim();
+    }
+  }
+});
 
 /***/ }),
 

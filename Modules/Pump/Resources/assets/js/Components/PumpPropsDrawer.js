@@ -9,7 +9,6 @@ import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/P
 import {AddPumpsToProjectsDrawer} from "./AddPumpToProjectsDrawer";
 
 export const PumpPropsDrawer = ({
-                                    title,
                                     visible,
                                     setVisible,
                                     pumpInfo,
@@ -19,7 +18,6 @@ export const PumpPropsDrawer = ({
 
     useEffect(() => {
         if (pumpInfo) {
-            // form.setFieldsValue(pumpInfo)
             setVisible(true)
         }
     }, [pumpInfo])
@@ -198,16 +196,16 @@ export const PumpPropsDrawer = ({
         <Drawer
             width={needCurve ? 800 : 650}
             placement="right"
-            title={title ? (`${pumpInfo?.brand} ${pumpInfo?.series} ${pumpInfo?.name}`) : Lang.get('pages.selections.single_pump.graphic.info')}
+            title={`${pumpInfo?.brand} ${pumpInfo?.series} ${pumpInfo?.name}`}
             visible={visible}
             onClose={() => {
                 setVisible(false)
-                document.getElementById('curves').innerHTML = ""
+                document.getElementById('pump_curves').innerHTML = ""
             }}
             afterVisibleChange={visible => {
                 if (visible && needCurve) {
                     console.log(pumpInfo)
-                    document.getElementById('curves').innerHTML = pumpInfo?.curves
+                    document.getElementById('pump_curves').innerHTML = pumpInfo?.curves
                 }
             }}
         >
@@ -217,7 +215,7 @@ export const PumpPropsDrawer = ({
                 labelSpan={{xs: 6}}
                 items={items}
             />
-            {needCurve && <div id="curves"/>}
+            {needCurve && <div id="pump_curves"/>}
         </Drawer>
     )
 }

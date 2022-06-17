@@ -32,6 +32,7 @@ final class RqLoadPumps extends FormRequest
         if ($this->sortOrder) {
             $this->merge(['sortOrder' => $this->sortOrder === 'ascend' ? 'ASC' : "DESC"]);
         }
+        $this->merge(['need_info' => true]);
     }
 
     /**

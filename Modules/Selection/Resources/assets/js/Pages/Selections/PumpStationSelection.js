@@ -25,6 +25,7 @@ import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook
 import {useDebounce} from "../../../../../../../resources/js/src/Hooks/debounce.hook";
 import {InputNum} from "../../../../../../../resources/js/src/Shared/Inputs/InputNum";
 import {AddedPumpsTable} from "../../Components/AddedPumpsTable";
+import {PumpPropsDrawer} from "../../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer";
 
 const BackToProjectLink = ({project_id}) => <BackLink
     title="Назад к проекту"
@@ -68,6 +69,7 @@ export const PumpStationSelection = ({title, widths}) => {
 
     // const [pumpValue, setPumpValue] = useState(selection?.pump_id || null)
     const [stationToShow, setStationToShow] = useState(null)
+    const [pumpInfo, setPumpInfo] = useState(null)
     const [addedStationKey, setAddedStationKey] = useState(selection != null
         ? Math.max(...selection.pump_stations.map(station => station.key)) + 1
         : 1
@@ -85,7 +87,7 @@ export const PumpStationSelection = ({title, widths}) => {
     const [collectorsToShow, setCollectorsToShow] = useState(selection_props.collectors)
 
     const [updated, setUpdated] = useState(!selection)
-    const [exportDrawerVisible, setExportDrawerVisible] = useState(false)
+    const [pumpInfoVisible, setPumpInfoVisible] = useState(false)
 
     // console.log(selection)
 
@@ -236,6 +238,16 @@ export const PumpStationSelection = ({title, widths}) => {
         })
     }
 
+    // HANDLERS
+    const showPumpClickHandler = record => e => {
+        e.preventDefault()
+        postRequest(route('pumps.show', record.pump_id), {
+            need_curves: true,
+            need_info: true,
+        }).then(data => {
+            setPumpInfo(data.pump)
+        })
+    }
 
     useEffect(() => {
         if (!!debouncedFlow) {
@@ -334,315 +346,29 @@ export const PumpStationSelection = ({title, widths}) => {
 
     // RENDER
     return (
-        <IndexContainer
-            title={title}
-            extra={[
-                <BackToProjectLink project_id={project_id}/>,
-                !selection && <BackToSelectionsDashboardLink project_id={project_id}/>
-            ].filter(Boolean)}
-        >
-            <Row gutter={[16, 16]}>
-                <Col xs={16}>
-                    <Form
-                        form={selectionForm}
-                        name="selection-form"
-                        layout="vertical"
-                    >
-                        <Row gutter={[16, 16]}>
-                            {/* FLOW */}
-                            <Col xs={widths.flow}>
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    label={labels.flow}
-                                    name='flow'
-                                    initialValue={selection?.flow}
-                                >
-                                    <InputNum
-                                        placeholder={labels.flow}
-                                        style={fullWidth}
-                                        min={0}
-                                        max={10000}
-                                        precision={2}
-                                        // disabled={!!selection}
-                                        readOnly={!!selection}
-                                        onChange={value => {
-                                            setFlow(value)
-                                        }}
-                                    />
-                                </RequiredFormItem>
-                            </Col>
-                            {/* HEAD */}
-                            <Col xs={widths.head}>
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    label={labels.head}
-                                    name="head"
-                                    initialValue={selection?.head}
-                                >
-                                    <InputNum
-                                        placeholder={labels.head}
-                                        style={fullWidth}
-                                        min={0}
-                                        max={10000}
-                                        precision={2}
-                                        // disabled={!!selection}
-                                        readOnly={!!selection}
-                                    />
-                                </RequiredFormItem>
-                            </Col>
-                            {/* DEVIATION */}
-                            {selection_type === selection_types.Auto && <Col xs={widths.deviation}>
-                                <Form.Item
-                                    className={reducedAntFormItemClassName}
-                                    label={labels.deviation}
-                                    name="deviation"
-                                    initialValue={selection?.deviation}
-                                >
-                                    <InputNum
-                                        placeholder={labels.deviation}
-                                        style={fullWidth}
-                                        min={-50}
-                                        max={50}
-                                        precision={2}
-                                    />
-                                </Form.Item>
-                            </Col>}
-                            {/* MAIN PUMPS COUNT */}
-                            <Col xs={widths.main_pumps_count}>
-                                {selection_type === selection_types.Auto && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    label={labels.mainPumpsCount}
-                                    name="main_pumps_counts"
-                                    initialValue={selection?.main_pumps_counts}
-                                >
-                                    <Checkbox.Group options={mainPumpsCountCheckboxesOptions}/>
-                                </RequiredFormItem>}
-                                {selection_type === selection_types.Handle && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    label={labels.mainPumpsCount}
-                                    name="main_pumps_count"
-                                    initialValue={selection?.main_pumps_count || 1}
-                                >
-                                    <Radio.Group value={1}>
-                                        {[1, 2, 3, 4, 5].map(value => (
-                                            <Radio key={'mp_' + value}
-                                                   value={value}>{value}</Radio>
-                                        ))}
-                                    </Radio.Group>
-                                </RequiredFormItem>}
-                            </Col>
-                            {/* RESERVE PUMPS COUNT */}
-                            <Col xs={widths.reserve_pumps_count}>
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="reserve_pumps_count"
-                                    label={labels.reservePumpsCount}
-                                    initialValue={selection?.reserve_pumps_count || 0}
-                                >
-                                    <Radio.Group value={0}>
-                                        {[0, 1, 2, 3, 4].map(value => (
-                                            <Radio key={'rp_' + value}
-                                                   value={value}>{value}</Radio>
-                                        ))}
-                                    </Radio.Group>
-                                </RequiredFormItem>
-                            </Col>
-                            {/* AF OPTIONS */}
-                            {station_type === station_types.AF && <>
-                                {/* AVR */}
-                                <Col xs={widths.avr}>
+        <>
+            <IndexContainer
+                title={title}
+                extra={[
+                    <BackToProjectLink project_id={project_id}/>,
+                    !selection && <BackToSelectionsDashboardLink project_id={project_id}/>
+                ].filter(Boolean)}
+            >
+                <Row gutter={[16, 16]}>
+                    <Col xs={16}>
+                        <Form
+                            form={selectionForm}
+                            name="selection-form"
+                            layout="vertical"
+                        >
+                            <Row gutter={[16, 16]}>
+                                {/* FLOW */}
+                                <Col xs={widths.flow}>
                                     <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="avr"
-                                        label={labels.AF.avr}
-                                        initialValue={Number(selection?.avr) || 1}
-                                    >
-                                        {yesNoRadioOptions}
-                                    </RequiredFormItem>
-                                </Col>
-                                {/* GATES VALVES COUNT */}
-                                <Col xs={widths.gate_valves_count}>
-                                    <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="gate_valves_count"
-                                        label={labels.AF.gatesValvesCount}
-                                        initialValue={selection?.gate_valves_count || 0}
-                                    >
-                                        <Radio.Group value={0}>
-                                            {[0, 1, 2].map(value => (
-                                                <Radio key={'gvc_' + value}
-                                                       value={value}>{value}</Radio>
-                                            ))}
-                                        </Radio.Group>
-                                    </RequiredFormItem>
-                                </Col>
-                                {/* KKV */}
-                                <Col xs={widths.kkv}>
-                                    <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="kkv"
-                                        label={labels.AF.kkv}
-                                        initialValue={Number(selection?.kkv) || 1}
-                                    >
-                                        {yesNoRadioOptions}
-                                    </RequiredFormItem>
-                                </Col>
-                                {/* ON STREET */}
-                                <Col xs={widths.on_street}>
-                                    <RequiredFormItem
-                                        className={reducedAntFormItemClassName}
-                                        name="on_street"
-                                        label={labels.AF.onStreet}
-                                        initialValue={Number(selection?.on_street) || 0}
-                                    >
-                                        {yesNoRadioOptions}
-                                    </RequiredFormItem>
-                                </Col>
-                            </>}
-                            {/* CONTROL SYSTEMS */}
-                            <Col xs={widths.control_systems}>
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="control_system_type_ids"
-                                    initialValue={selection?.control_system_type_ids}
-                                    label={labels.controlSystemTypes}
-                                >
-                                    <MultipleSelection
-                                        placeholder={labels.controlSystemTypes}
-                                        style={fullWidth}
-                                        options={selection_props.control_system_types}
-                                    />
-                                </RequiredFormItem>
-                            </Col>
-                            {/* PUMP BRANDS */}
-                            <Col xs={widths.pump_brands}>
-                                {selection_type === selection_types.Auto && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="pump_brand_ids"
-                                    initialValue={brandsValue}
-                                    label={labels.brands}
-                                >
-                                    <MultipleSelection
-                                        placeholder={labels.brands}
-                                        style={fullWidth}
-                                        options={selection_props.brands_with_series_with_pumps}
-                                        onChange={values => {
-                                            setBrandsValue(values)
-                                        }}
-                                    />
-                                </RequiredFormItem>}
-                                {selection_type === selection_types.Handle && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="pump_brand_id"
-                                    initialValue={brandValue}
-                                    label={labels.brand}
-                                >
-                                    <Selection
-                                        placeholder={labels.brand}
-                                        style={fullWidth}
-                                        options={selection_props.brands_with_series_with_pumps}
-                                        onChange={value => {
-                                            setBrandValue(value)
-                                        }}
-                                    />
-                                </RequiredFormItem>}
-                            </Col>
-                            {/* PUMP SERIES */}
-                            <Col xs={widths.pump_series}>
-                                {selection_type === selection_types.Auto && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="pump_series_ids"
-                                    initialValue={seriesValue}
-                                    label={labels.theSeries}
-                                >
-                                    <MultipleSelection
-                                        disabled={brandsValue.length === 0}
-                                        placeholder={labels.theSeries}
-                                        style={fullWidth}
-                                        options={seriesToShow}
-                                        onChange={values => {
-                                            setSeriesValue(values)
-                                        }}
-                                    />
-                                </RequiredFormItem>}
-                                {selection_type === selection_types.Handle && <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="pump_series_id"
-                                    initialValue={oneSeriesValue}
-                                    label={labels.series}
-                                >
-                                    <Selection
-                                        disabled={!brandValue}
-                                        placeholder={labels.series}
-                                        style={fullWidth}
-                                        options={seriesToShow}
-                                        onChange={value => {
-                                            setOneSeriesValue(value)
-                                        }}
-                                    />
-                                </RequiredFormItem>}
-                            </Col>
-                            {/* PUMP */}
-                            {selection_type === selection_types.Handle && <Col xs={widths.pump}>
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="pump_id"
-                                    initialValue={selection?.pump_id}
-                                    label={labels.pump}
-                                >
-                                    <Selection
-                                        disabled={!oneSeriesValue || !brandValue}
-                                        placeholder={labels.pump}
-                                        style={fullWidth}
-                                        options={pumpsToShow}
-                                        // onChange={value => {
-                                        //     setPumpValue(value)
-                                        // }}
-                                    />
-                                </RequiredFormItem>
-                            </Col>}
-                            {/* COLLECTORS */}
-                            <Col xs={widths.collectors}>
-                                {selection_type === selection_types.Auto &&
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="collectors"
-                                    initialValue={selection?.collectors}
-                                    label={labels.collectors}
-                                >
-                                    <MultipleSelection
-                                        placeholder={labels.collectors}
-                                        style={fullWidth}
-                                        options={collectorsToShow}
-                                    />
-                                </RequiredFormItem>}
-                                {selection_type === selection_types.Handle &&
-                                <RequiredFormItem
-                                    className={reducedAntFormItemClassName}
-                                    name="collector"
-                                    initialValue={selection?.collector}
-                                    label={labels.collector}
-                                >
-                                    <Selection
-                                        placeholder={labels.collector}
-                                        style={fullWidth}
-                                        options={collectorsToShow}
-                                    />
-                                </RequiredFormItem>}
-                            </Col>
-                            {/* JOCKEY PUMP */}
-                            {station_type === station_types.AF && <>
-                                <Col span={24}>
-                                    <Divider orientation="left" style={{marginTop: -10, marginBottom: -10}}>
-                                        Жокей насос
-                                    </Divider>
-                                </Col>
-                                <Col xs={widths.jockey.flow}>
-                                    <Form.Item
                                         className={reducedAntFormItemClassName}
                                         label={labels.flow}
-                                        name='jockey_flow'
-                                        initialValue={selection?.jockey_flow}
+                                        name='flow'
+                                        initialValue={selection?.flow}
                                     >
                                         <InputNum
                                             placeholder={labels.flow}
@@ -650,15 +376,21 @@ export const PumpStationSelection = ({title, widths}) => {
                                             min={0}
                                             max={10000}
                                             precision={2}
+                                            // disabled={!!selection}
+                                            readOnly={!!selection}
+                                            onChange={value => {
+                                                setFlow(value)
+                                            }}
                                         />
-                                    </Form.Item>
+                                    </RequiredFormItem>
                                 </Col>
-                                <Col xs={widths.jockey.head}>
-                                    <Form.Item
+                                {/* HEAD */}
+                                <Col xs={widths.head}>
+                                    <RequiredFormItem
                                         className={reducedAntFormItemClassName}
                                         label={labels.head}
-                                        name='jockey_head'
-                                        initialValue={selection?.jockey_head}
+                                        name="head"
+                                        initialValue={selection?.head}
                                     >
                                         <InputNum
                                             placeholder={labels.head}
@@ -666,196 +398,485 @@ export const PumpStationSelection = ({title, widths}) => {
                                             min={0}
                                             max={10000}
                                             precision={2}
+                                            // disabled={!!selection}
+                                            readOnly={!!selection}
                                         />
-                                    </Form.Item>
+                                    </RequiredFormItem>
                                 </Col>
-                                <Col xs={widths.jockey.brand}>
-                                    {selection_type === selection_types.Auto && <Form.Item
-                                        className={reducedAntFormItemClassName}
-                                        name="jockey_brand_ids"
-                                        initialValue={jockeyBrandsValue}
-                                        label={labels.brand}
-                                    >
-                                        <MultipleSelection
-                                            placeholder={labels.brands}
-                                            style={fullWidth}
-                                            options={selection_props.brands_with_series_with_pumps}
-                                            onChange={values => {
-                                                setJockeyBrandsValue(values)
-                                            }}
-                                        />
-                                    </Form.Item>}
-                                    {selection_type === selection_types.Handle && <Form.Item
-                                        className={reducedAntFormItemClassName}
-                                        name="jockey_brand_id"
-                                        initialValue={jockeyBrandValue}
-                                        label={labels.brand}
-                                    >
-                                        <Selection
-                                            placeholder={labels.brands}
-                                            style={fullWidth}
-                                            options={selection_props.brands_with_series_with_pumps}
-                                            onChange={value => {
-                                                setJockeyBrandValue(value)
-                                            }}
-                                        />
-                                    </Form.Item>}
-                                </Col>
-                                <Col xs={widths.jockey.series}>
-                                    {selection_type === selection_types.Auto && <Form.Item
-                                        className={reducedAntFormItemClassName}
-                                        name="jockey_series_ids"
-                                        initialValue={jockeySeriesValue}
-                                        label={labels.theSeries}
-                                    >
-                                        <MultipleSelection
-                                            placeholder={labels.theSeries}
-                                            style={fullWidth}
-                                            options={jockeySeriesToShow}
-                                            onChange={values => {
-                                                setJockeySeriesValue(values)
-                                            }}
-                                            disabled={jockeyBrandsValue.length === 0}
-                                        />
-                                    </Form.Item>}
-                                    {selection_type === selection_types.Handle && <Form.Item
-                                        className={reducedAntFormItemClassName}
-                                        name="jockey_series_id"
-                                        initialValue={jockeyOneSeriesValue}
-                                        label={labels.series}
-                                    >
-                                        <Selection
-                                            placeholder={labels.series}
-                                            style={fullWidth}
-                                            options={jockeySeriesToShow}
-                                            onChange={value => {
-                                                setJockeyOneSeriesValue(value)
-                                            }}
-                                            disabled={!jockeyBrandValue}
-                                        />
-                                    </Form.Item>}
-                                </Col>
-                                {selection_type === selection_types.Handle && <Col xs={widths.jockey.pump}>
+                                {/* DEVIATION */}
+                                {selection_type === selection_types.Auto && <Col xs={widths.deviation}>
                                     <Form.Item
                                         className={reducedAntFormItemClassName}
-                                        name="jockey_pump_id"
-                                        initialValue={selection?.jockey_pump_id}
-                                        label={labels.pump}
+                                        label={labels.deviation}
+                                        name="deviation"
+                                        initialValue={selection?.deviation}
                                     >
-                                        <Selection
-                                            placeholder={labels.pump}
+                                        <InputNum
+                                            placeholder={labels.deviation}
                                             style={fullWidth}
-                                            options={jockeyPumpsToShow}
-                                            disabled={!jockeyBrandValue || !jockeyOneSeriesValue}
+                                            min={-50}
+                                            max={50}
+                                            precision={2}
                                         />
                                     </Form.Item>
                                 </Col>}
-                            </>}
-                            {/* SELECT BUTTON */}
-                            <Col xs={widths.button}>
-                                <Form.Item className={reducedAntFormItemClassName}>
-                                    <PrimaryButton
-                                        style={{...fullWidth, ...margin.top(20)}}
-                                        onClick={makeSelectionHandler}
-                                        loading={loading}
+                                {/* MAIN PUMPS COUNT */}
+                                <Col xs={widths.main_pumps_count}>
+                                    {selection_type === selection_types.Auto && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        label={labels.mainPumpsCount}
+                                        name="main_pumps_counts"
+                                        initialValue={selection?.main_pumps_counts}
                                     >
-                                        {labels.select}
-                                    </PrimaryButton>
-                                </Form.Item>
-                            </Col>
-                            <Col xs={24}>
-                                <RoundedCard
-                                    className="table-rounded-card"
-                                    type="inner"
-                                    title="Подобранные станции"
-                                >
-                                    <SelectedPumpsTable
-                                        selectedPumps={selectedPumps}
-                                        setStationToShow={setStationToShow}
-                                        loading={loading}
-                                        addStationHandler={addStationHandler}
-                                        dependencies={[addedStations, addedStationKey]}
-                                    />
-                                </RoundedCard>
-                            </Col>
-                        </Row>
-                    </Form>
-                </Col>
-                <Col xs={8}>
-                    <RoundedCard
-                        className='flex-rounded-card'
-                        type="inner"
-                        title={stationToShow?.name}
-                    >
-                        {station_type === station_types.WS
-                            ? <div id="curves"/>
-                            : <Tabs defaultActiveKey="curves">
-                                <Tabs.TabPane
-                                    forceRender={true}
-                                    key="curves"
-                                    tab="Основные ГХ"
-                                >
-                                    <div id="curves"/>
-                                </Tabs.TabPane>
-                                <Tabs.TabPane
-                                    forceRender={true}
-                                    key="jockey-curves"
-                                    tab="ГХ жокея"
-                                >
-                                    <div id="jockey_curves"/>
-                                </Tabs.TabPane>
-                            </Tabs>}
-
-                    </RoundedCard>
-                </Col>
-                <Col xs={24}>
-                    <RoundedCard
-                        className="table-rounded-card"
-                        type="inner"
-                        title="Добавленные станции"
-                    >
-                        <AddedPumpsTable
-                            addedStations={addedStations}
-                            loading={loading}
-                            setStationToShow={setStationToShow}
-                            setAddedStations={setAddedStations}
-                        />
-                    </RoundedCard>
-                </Col>
-                <Col xs={24}>
-                    <Form form={selectionForm} layout="vertical">
-                        <Form.Item
-                            name='comment'
-                            label={labels.comment}
-                            className={reducedAntFormItemClassName}
-                            initialValue={selection?.comment}
+                                        <Checkbox.Group options={mainPumpsCountCheckboxesOptions}/>
+                                    </RequiredFormItem>}
+                                    {selection_type === selection_types.Handle && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        label={labels.mainPumpsCount}
+                                        name="main_pumps_count"
+                                        initialValue={selection?.main_pumps_count || 1}
+                                    >
+                                        <Radio.Group value={1}>
+                                            {[1, 2, 3, 4, 5].map(value => (
+                                                <Radio key={'mp_' + value}
+                                                       value={value}>{value}</Radio>
+                                            ))}
+                                        </Radio.Group>
+                                    </RequiredFormItem>}
+                                </Col>
+                                {/* RESERVE PUMPS COUNT */}
+                                <Col xs={widths.reserve_pumps_count}>
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="reserve_pumps_count"
+                                        label={labels.reservePumpsCount}
+                                        initialValue={selection?.reserve_pumps_count || 0}
+                                    >
+                                        <Radio.Group value={0}>
+                                            {[0, 1, 2, 3, 4].map(value => (
+                                                <Radio key={'rp_' + value}
+                                                       value={value}>{value}</Radio>
+                                            ))}
+                                        </Radio.Group>
+                                    </RequiredFormItem>
+                                </Col>
+                                {/* AF OPTIONS */}
+                                {station_type === station_types.AF && <>
+                                    {/* AVR */}
+                                    <Col xs={widths.avr}>
+                                        <RequiredFormItem
+                                            className={reducedAntFormItemClassName}
+                                            name="avr"
+                                            label={labels.AF.avr}
+                                            initialValue={Number(selection?.avr) || 1}
+                                        >
+                                            {yesNoRadioOptions}
+                                        </RequiredFormItem>
+                                    </Col>
+                                    {/* GATES VALVES COUNT */}
+                                    <Col xs={widths.gate_valves_count}>
+                                        <RequiredFormItem
+                                            className={reducedAntFormItemClassName}
+                                            name="gate_valves_count"
+                                            label={labels.AF.gatesValvesCount}
+                                            initialValue={selection?.gate_valves_count || 0}
+                                        >
+                                            <Radio.Group value={0}>
+                                                {[0, 1, 2].map(value => (
+                                                    <Radio key={'gvc_' + value}
+                                                           value={value}>{value}</Radio>
+                                                ))}
+                                            </Radio.Group>
+                                        </RequiredFormItem>
+                                    </Col>
+                                    {/* KKV */}
+                                    <Col xs={widths.kkv}>
+                                        <RequiredFormItem
+                                            className={reducedAntFormItemClassName}
+                                            name="kkv"
+                                            label={labels.AF.kkv}
+                                            initialValue={Number(selection?.kkv) || 1}
+                                        >
+                                            {yesNoRadioOptions}
+                                        </RequiredFormItem>
+                                    </Col>
+                                    {/* ON STREET */}
+                                    <Col xs={widths.on_street}>
+                                        <RequiredFormItem
+                                            className={reducedAntFormItemClassName}
+                                            name="on_street"
+                                            label={labels.AF.onStreet}
+                                            initialValue={Number(selection?.on_street) || 0}
+                                        >
+                                            {yesNoRadioOptions}
+                                        </RequiredFormItem>
+                                    </Col>
+                                </>}
+                                {/* CONTROL SYSTEMS */}
+                                <Col xs={widths.control_systems}>
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="control_system_type_ids"
+                                        initialValue={selection?.control_system_type_ids}
+                                        label={labels.controlSystemTypes}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.controlSystemTypes}
+                                            style={fullWidth}
+                                            options={selection_props.control_system_types}
+                                        />
+                                    </RequiredFormItem>
+                                </Col>
+                                {/* PUMP BRANDS */}
+                                <Col xs={widths.pump_brands}>
+                                    {selection_type === selection_types.Auto && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="pump_brand_ids"
+                                        initialValue={brandsValue}
+                                        label={labels.brands}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.brands}
+                                            style={fullWidth}
+                                            options={selection_props.brands_with_series_with_pumps}
+                                            onChange={values => {
+                                                setBrandsValue(values)
+                                            }}
+                                        />
+                                    </RequiredFormItem>}
+                                    {selection_type === selection_types.Handle && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="pump_brand_id"
+                                        initialValue={brandValue}
+                                        label={labels.brand}
+                                    >
+                                        <Selection
+                                            placeholder={labels.brand}
+                                            style={fullWidth}
+                                            options={selection_props.brands_with_series_with_pumps}
+                                            onChange={value => {
+                                                setBrandValue(value)
+                                            }}
+                                        />
+                                    </RequiredFormItem>}
+                                </Col>
+                                {/* PUMP SERIES */}
+                                <Col xs={widths.pump_series}>
+                                    {selection_type === selection_types.Auto && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="pump_series_ids"
+                                        initialValue={seriesValue}
+                                        label={labels.theSeries}
+                                    >
+                                        <MultipleSelection
+                                            disabled={brandsValue.length === 0}
+                                            placeholder={labels.theSeries}
+                                            style={fullWidth}
+                                            options={seriesToShow}
+                                            onChange={values => {
+                                                setSeriesValue(values)
+                                            }}
+                                        />
+                                    </RequiredFormItem>}
+                                    {selection_type === selection_types.Handle && <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="pump_series_id"
+                                        initialValue={oneSeriesValue}
+                                        label={labels.series}
+                                    >
+                                        <Selection
+                                            disabled={!brandValue}
+                                            placeholder={labels.series}
+                                            style={fullWidth}
+                                            options={seriesToShow}
+                                            onChange={value => {
+                                                setOneSeriesValue(value)
+                                            }}
+                                        />
+                                    </RequiredFormItem>}
+                                </Col>
+                                {/* PUMP */}
+                                {selection_type === selection_types.Handle && <Col xs={widths.pump}>
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="pump_id"
+                                        initialValue={selection?.pump_id}
+                                        label={labels.pump}
+                                    >
+                                        <Selection
+                                            disabled={!oneSeriesValue || !brandValue}
+                                            placeholder={labels.pump}
+                                            style={fullWidth}
+                                            options={pumpsToShow}
+                                            // onChange={value => {
+                                            //     setPumpValue(value)
+                                            // }}
+                                        />
+                                    </RequiredFormItem>
+                                </Col>}
+                                {/* COLLECTORS */}
+                                <Col xs={widths.collectors}>
+                                    {selection_type === selection_types.Auto &&
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="collectors"
+                                        initialValue={selection?.collectors}
+                                        label={labels.collectors}
+                                    >
+                                        <MultipleSelection
+                                            placeholder={labels.collectors}
+                                            style={fullWidth}
+                                            options={collectorsToShow}
+                                        />
+                                    </RequiredFormItem>}
+                                    {selection_type === selection_types.Handle &&
+                                    <RequiredFormItem
+                                        className={reducedAntFormItemClassName}
+                                        name="collector"
+                                        initialValue={selection?.collector}
+                                        label={labels.collector}
+                                    >
+                                        <Selection
+                                            placeholder={labels.collector}
+                                            style={fullWidth}
+                                            options={collectorsToShow}
+                                        />
+                                    </RequiredFormItem>}
+                                </Col>
+                                {/* JOCKEY PUMP */}
+                                {station_type === station_types.AF && <>
+                                    <Col span={24}>
+                                        <Divider orientation="left" style={{marginTop: -10, marginBottom: -10}}>
+                                            Жокей насос
+                                        </Divider>
+                                    </Col>
+                                    <Col xs={widths.jockey.flow}>
+                                        <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            label={labels.flow}
+                                            name='jockey_flow'
+                                            initialValue={selection?.jockey_flow}
+                                        >
+                                            <InputNum
+                                                placeholder={labels.flow}
+                                                style={fullWidth}
+                                                min={0}
+                                                max={10000}
+                                                precision={2}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col xs={widths.jockey.head}>
+                                        <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            label={labels.head}
+                                            name='jockey_head'
+                                            initialValue={selection?.jockey_head}
+                                        >
+                                            <InputNum
+                                                placeholder={labels.head}
+                                                style={fullWidth}
+                                                min={0}
+                                                max={10000}
+                                                precision={2}
+                                            />
+                                        </Form.Item>
+                                    </Col>
+                                    <Col xs={widths.jockey.brand}>
+                                        {selection_type === selection_types.Auto && <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            name="jockey_brand_ids"
+                                            initialValue={jockeyBrandsValue}
+                                            label={labels.brand}
+                                        >
+                                            <MultipleSelection
+                                                placeholder={labels.brands}
+                                                style={fullWidth}
+                                                options={selection_props.brands_with_series_with_pumps}
+                                                onChange={values => {
+                                                    setJockeyBrandsValue(values)
+                                                }}
+                                            />
+                                        </Form.Item>}
+                                        {selection_type === selection_types.Handle && <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            name="jockey_brand_id"
+                                            initialValue={jockeyBrandValue}
+                                            label={labels.brand}
+                                        >
+                                            <Selection
+                                                placeholder={labels.brands}
+                                                style={fullWidth}
+                                                options={selection_props.brands_with_series_with_pumps}
+                                                onChange={value => {
+                                                    setJockeyBrandValue(value)
+                                                }}
+                                            />
+                                        </Form.Item>}
+                                    </Col>
+                                    <Col xs={widths.jockey.series}>
+                                        {selection_type === selection_types.Auto && <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            name="jockey_series_ids"
+                                            initialValue={jockeySeriesValue}
+                                            label={labels.theSeries}
+                                        >
+                                            <MultipleSelection
+                                                placeholder={labels.theSeries}
+                                                style={fullWidth}
+                                                options={jockeySeriesToShow}
+                                                onChange={values => {
+                                                    setJockeySeriesValue(values)
+                                                }}
+                                                disabled={jockeyBrandsValue.length === 0}
+                                            />
+                                        </Form.Item>}
+                                        {selection_type === selection_types.Handle && <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            name="jockey_series_id"
+                                            initialValue={jockeyOneSeriesValue}
+                                            label={labels.series}
+                                        >
+                                            <Selection
+                                                placeholder={labels.series}
+                                                style={fullWidth}
+                                                options={jockeySeriesToShow}
+                                                onChange={value => {
+                                                    setJockeyOneSeriesValue(value)
+                                                }}
+                                                disabled={!jockeyBrandValue}
+                                            />
+                                        </Form.Item>}
+                                    </Col>
+                                    {selection_type === selection_types.Handle && <Col xs={widths.jockey.pump}>
+                                        <Form.Item
+                                            className={reducedAntFormItemClassName}
+                                            name="jockey_pump_id"
+                                            initialValue={selection?.jockey_pump_id}
+                                            label={labels.pump}
+                                        >
+                                            <Selection
+                                                placeholder={labels.pump}
+                                                style={fullWidth}
+                                                options={jockeyPumpsToShow}
+                                                disabled={!jockeyBrandValue || !jockeyOneSeriesValue}
+                                            />
+                                        </Form.Item>
+                                    </Col>}
+                                </>}
+                                {/* SELECT BUTTON */}
+                                <Col xs={widths.button}>
+                                    <Form.Item className={reducedAntFormItemClassName}>
+                                        <PrimaryButton
+                                            style={{...fullWidth, ...margin.top(20)}}
+                                            onClick={makeSelectionHandler}
+                                            loading={loading}
+                                        >
+                                            {labels.select}
+                                        </PrimaryButton>
+                                    </Form.Item>
+                                </Col>
+                                <Col xs={24}>
+                                    <RoundedCard
+                                        className="table-rounded-card"
+                                        type="inner"
+                                        title="Подобранные станции"
+                                    >
+                                        <SelectedPumpsTable
+                                            selectedPumps={selectedPumps}
+                                            setStationToShow={setStationToShow}
+                                            loading={loading}
+                                            addStationHandler={addStationHandler}
+                                            clickPumpArticleHandler={showPumpClickHandler}
+                                            dependencies={[addedStations, addedStationKey]}
+                                        />
+                                    </RoundedCard>
+                                </Col>
+                            </Row>
+                        </Form>
+                    </Col>
+                    <Col xs={8}>
+                        <RoundedCard
+                            className='flex-rounded-card'
+                            type="inner"
+                            title={stationToShow?.name}
                         >
-                            <Input.TextArea autoSize placeholder={labels.comment}/>
-                        </Form.Item>
-                    </Form>
-                </Col>
-                <Col xs={24}>
-                    <BoxFlexEnd>
-                        <Space size={8}>
-                            <SecondaryButton
-                                onClick={() => {
-                                    Inertia.get(route('projects.show', project_id))
-                                }}
+                            {station_type === station_types.WS
+                                ? <div id="curves"/>
+                                : <Tabs defaultActiveKey="curves">
+                                    <Tabs.TabPane
+                                        forceRender={true}
+                                        key="curves"
+                                        tab="Основные ГХ"
+                                    >
+                                        <div id="curves"/>
+                                    </Tabs.TabPane>
+                                    <Tabs.TabPane
+                                        forceRender={true}
+                                        key="jockey-curves"
+                                        tab="ГХ жокея"
+                                    >
+                                        <div id="jockey_curves"/>
+                                    </Tabs.TabPane>
+                                </Tabs>}
+
+                        </RoundedCard>
+                    </Col>
+                    <Col xs={24}>
+                        <RoundedCard
+                            className="table-rounded-card"
+                            type="inner"
+                            title="Добавленные станции"
+                        >
+                            <AddedPumpsTable
+                                addedStations={addedStations}
                                 loading={loading}
+                                setStationToShow={setStationToShow}
+                                setAddedStations={setAddedStations}
+                            />
+                        </RoundedCard>
+                    </Col>
+                    <Col xs={24}>
+                        <Form form={selectionForm} layout="vertical">
+                            <Form.Item
+                                name='comment'
+                                label={labels.comment}
+                                className={reducedAntFormItemClassName}
+                                initialValue={selection?.comment}
                             >
-                                Выйти без сохранения
-                            </SecondaryButton>
-                            <PrimaryButton
-                                onClick={saveAndCloseHandler}
-                                loading={loading}
-                                disabled={isArrayEmpty(addedStations)}
-                            >
-                                Сохранить и выйти
-                            </PrimaryButton>
-                        </Space>
-                    </BoxFlexEnd>
-                </Col>
-            </Row>
-        </IndexContainer>
+                                <Input.TextArea autoSize placeholder={labels.comment}/>
+                            </Form.Item>
+                        </Form>
+                    </Col>
+                    <Col xs={24}>
+                        <BoxFlexEnd>
+                            <Space size={8}>
+                                <SecondaryButton
+                                    onClick={() => {
+                                        Inertia.get(route('projects.show', project_id))
+                                    }}
+                                    loading={loading}
+                                >
+                                    Выйти без сохранения
+                                </SecondaryButton>
+                                <PrimaryButton
+                                    onClick={saveAndCloseHandler}
+                                    loading={loading}
+                                    disabled={isArrayEmpty(addedStations)}
+                                >
+                                    Сохранить и выйти
+                                </PrimaryButton>
+                            </Space>
+                        </BoxFlexEnd>
+                    </Col>
+                </Row>
+            </IndexContainer>
+            <PumpPropsDrawer
+                needCurve
+                pumpInfo={pumpInfo}
+                visible={pumpInfoVisible}
+                setVisible={setPumpInfoVisible}
+            />
+        </>
     )
 }

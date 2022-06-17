@@ -9631,8 +9631,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
-  var title = _ref.title,
-      visible = _ref.visible,
+  var visible = _ref.visible,
       setVisible = _ref.setVisible,
       pumpInfo = _ref.pumpInfo,
       _ref$needCurve = _ref.needCurve,
@@ -9644,7 +9643,6 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (pumpInfo) {
-      // form.setFieldsValue(pumpInfo)
       setVisible(true);
     }
   }, [pumpInfo]);
@@ -9821,16 +9819,16 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
     width: needCurve ? 800 : 650,
     placement: "right",
-    title: title ? "".concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.brand, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.series, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.name) : _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.selections.single_pump.graphic.info'),
+    title: "".concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.brand, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.series, " ").concat(pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.name),
     visible: visible,
     onClose: function onClose() {
       setVisible(false);
-      document.getElementById('curves').innerHTML = "";
+      document.getElementById('pump_curves').innerHTML = "";
     },
     afterVisibleChange: function afterVisibleChange(visible) {
       if (visible && needCurve) {
         console.log(pumpInfo);
-        document.getElementById('curves').innerHTML = pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.curves;
+        document.getElementById('pump_curves').innerHTML = pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.curves;
       }
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_3__.ItemsForm, {
@@ -9841,7 +9839,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
       },
       items: items
     }), needCurve && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-      id: "curves"
+      id: "pump_curves"
     })]
   });
 };
@@ -10095,7 +10093,8 @@ function Index() {
   var showPumpClickHandler = function showPumpClickHandler(pump) {
     return function () {
       postRequest(route('pumps.show', pump.id), {
-        need_curves: true
+        need_curves: true,
+        need_info: false
       }).then(function (data) {
         setPumpInfo(_objectSpread(_objectSpread({}, pump), data.pump));
       });
@@ -10150,7 +10149,6 @@ function Index() {
         loading: loading
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_11__.PumpPropsDrawer, {
-      title: true,
       needCurve: true,
       pumpInfo: pumpInfo,
       visible: pumpInfoVisible,

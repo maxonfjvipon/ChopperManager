@@ -31,7 +31,7 @@ final class AcPumps
         }])->get(['id', 'name']);
         $series = array_merge(...$brandsWithSeries->map(fn(PumpBrand $brand) => $brand->series->all()));
         return [
-            "filter_data" => (new ArrMerged(
+            "filter_data" => ArrMerged::new(
                 new ArrForFilteringWithId([
                     'brands' => $brandsWithSeries->all(),
                     'series' => $series,
@@ -40,7 +40,7 @@ final class AcPumps
                     'collector_switches' => CollectorSwitch::asArrayForSelect()
                 ]),
                 new ArrForFiltering(['dns' => DN::values()])
-            ))->asArray(),
+            )->asArray(),
             'pumps_total' => Pump::allOrCached()->count(),
         ];
     }

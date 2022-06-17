@@ -14,7 +14,8 @@ final class RqShowPump extends FormRequest
     public function rules(): array
     {
         return [
-            'need_curves' => ['required', 'boolean']
+            'need_curves' => ['required', 'boolean'],
+            'need_info' => ['required', 'boolean']
         ];
     }
 }

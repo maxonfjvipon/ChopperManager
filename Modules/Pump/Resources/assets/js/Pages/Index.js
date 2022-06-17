@@ -188,6 +188,7 @@ export default function Index() {
     const showPumpClickHandler = pump => () => {
         postRequest(route('pumps.show', pump.id), {
             need_curves: true,
+            need_info: false,
         }).then(data => {
             setPumpInfo({
                 // ...pumps.find(_pump => pump.id === _pump.id),
@@ -237,7 +238,6 @@ export default function Index() {
                 />
             </IndexContainer>
             <PumpPropsDrawer
-                title
                 needCurve
                 pumpInfo={pumpInfo}
                 visible={pumpInfoVisible}

@@ -14,6 +14,7 @@ use Modules\Components\Entities\YesNo;
 use Modules\Pump\Entities\DN;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\Selection\Entities\Selection;
+use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Transformers\SelectionResources\SelectionAsResource;
 
@@ -45,12 +46,14 @@ final class AcCreateOrShowSelection
                             ->where('station_type.key', $stationType)
                             ->all()
                     ),
-                    'brands_with_series_with_pumps' => PumpBrand::with([
-                        'series' => $seriesCallback,
-                        'series.pumps' => function ($query) {
-                            $query->select('id', 'series_id', 'name');
-                        }
-                    ])
+                    'brands_with_series_with_pumps' => PumpBrand::with(
+                        array_merge([
+                            'series' => $seriesCallback,
+                        ], $selectionType === SelectionType::getKey(SelectionType::Handle)
+                            ? ['series.pumps' => function ($query) {
+                                $query->select('id', 'series_id', 'name');
+                            }] : [])
+                    )
                         ->whereHas('series', $seriesCallback)
                         ->get(),
                     'collectors' => array_merge(...array_map(

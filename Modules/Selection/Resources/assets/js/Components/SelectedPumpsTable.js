@@ -1,11 +1,18 @@
 import React, {useMemo, useState} from 'react'
-import {Button,  Tooltip} from "antd";
+import {Button, Tooltip} from "antd";
 import {usePage} from "@inertiajs/inertia-react";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {PlusOutlined} from "@ant-design/icons";
 
-export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, addStationHandler, dependencies = []}) => {
+export const SelectedPumpsTable = ({
+                                       selectedPumps,
+                                       setStationToShow,
+                                       loading,
+                                       addStationHandler,
+                                       dependencies = [],
+                                       clickPumpArticleHandler
+                                   }) => {
     const {locales} = usePage().props
 
     const columns = [
@@ -16,6 +23,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
         {
             title: "Артикул насоса",
             dataIndex: 'pump_article',
+            render: (_, record) => <a onClick={clickPumpArticleHandler(record)}>{record.pump_article}</a>
         },
         {
             title: "Артикул системы управления",
@@ -25,7 +33,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
             title: "Себестоимость, ₽",
             dataIndex: 'cost_price',
             render: (_, record) =>
-                <Tooltip overlayStyle={{ whiteSpace: 'pre-line' }} placement="topRight" title={record.cost_structure}>
+                <Tooltip overlayStyle={{whiteSpace: 'pre-line'}} placement="topRight" title={record.cost_structure}>
                     {record.cost_price.toLocaleString()}
                 </Tooltip>,
             sorter: (a, b) => a.cost_price - b.cost_price,
@@ -50,7 +58,7 @@ export const SelectedPumpsTable = ({selectedPumps, setStationToShow, loading, ad
                         <Tooltip placement="topRight" title="Добавить">
                             <Button
                                 onClick={addStationHandler(record)}
-                                icon={<PlusOutlined />}
+                                icon={<PlusOutlined/>}
                             />
                         </Tooltip>
                     </TableActionsContainer>

@@ -60,29 +60,30 @@ final class AcLoadPumps
                     ->orWhereRelation('series', fn($query) => $query->where('pump_series.name', 'like', "%$request->search%"));
             });
         return new ArrMerged(
-            ['pumps' => [
-                'total' => $pumps->count(),
-                'items' => RcPumpToShow::collection($pumps
-                    ->offset((array_key_exists('current', $request->pagination ?? [])
-                            ? $request->pagination['current'] - 1
-                            : 0)
-                        * ($request->pagination['pageSize'] ?? 10))
-                    ->limit($request->pagination['pageSize'] ?? 10)
-                    ->get()),
-            ]], new ArrIf(
+            [
+                'pumps' => [
+                    'total' => $pumps->count(),
+                    'items' => RcPumpToShow::collection($pumps
+                        ->offset((array_key_exists('current', $request->pagination ?? [])
+                                ? $request->pagination['current'] - 1
+                                : 0)
+                            * ($request->pagination['pageSize'] ?? 10))
+                        ->limit($request->pagination['pageSize'] ?? 10)
+                        ->get()),
+                ]
+            ],
+            new ArrIf(
                 !!$request->brand,
-                new ArrObject(
+                fn() => new ArrObject(
                     'filter_data',
-                    new ArrFromCallback(
-                        fn() => new ArrForFilteringWithId([
-                            'series' => array_merge(...PumpBrand::with(['series' => function ($query) {
-                                $query->select('id', 'name', 'brand_id');
-                            }])
-                                ->whereIn('id', $request->brand)
-                                ->get(['id', 'name'])
-                                ->map(fn(PumpBrand $brand) => $brand->series->all())),
-                        ])
-                    )
+                    new ArrForFilteringWithId([
+                        'series' => array_merge(...PumpBrand::with(['series' => function ($query) {
+                            $query->select('id', 'name', 'brand_id');
+                        }])
+                            ->whereIn('id', $request->brand)
+                            ->get(['id', 'name'])
+                            ->map(fn(PumpBrand $brand) => $brand->series->all())),
+                    ])
                 )
             )
         );
