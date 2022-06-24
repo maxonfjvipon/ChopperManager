@@ -26,9 +26,9 @@ class CreateUsersTable extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('organization_name')->nullable();
 
-            $table->timestamp('verified_at')->nullable();
-            $table->unsignedTinyInteger('client_role')->nullable();
-            $table->unsignedTinyInteger('role')->default(UserRole::Client);
+            $table->boolean('is_active')->default(true);
+
+            $table->unsignedTinyInteger('role')->default(UserRole::Dealer);
 
             $table->bigInteger('area_id')->unsigned();
 

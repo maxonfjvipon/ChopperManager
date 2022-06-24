@@ -10,6 +10,9 @@ use Modules\Components\Entities\AssemblyJob;
 use Modules\Components\Entities\CollectorType;
 use Modules\Components\Entities\ControlSystemType;
 
+/**
+ * Assembly jobs action.
+ */
 final class AcAssemblyJobs extends AcComponents
 {
     /**
@@ -20,9 +23,7 @@ final class AcAssemblyJobs extends AcComponents
     {
         $jobs = AssemblyJob::with('control_system_type')->get();
         parent::__construct(
-            new ArrForFiltering([
-                'pumps_counts' => [2, 3, 4, 5, 6],
-            ]),
+            new ArrForFiltering(['pumps_counts' => [2, 3, 4, 5, 6]]),
             'jobs',
             new ArrValues(
                 new ArrMapped(
@@ -31,26 +32,24 @@ final class AcAssemblyJobs extends AcComponents
                         'collector_type' => $collectorType->description . " коллектор",
                         'items' => array_values(
                             array_map(
-                                function (ControlSystemType $controlSystemType) use ($collectorType, $jobs) {
-                                    return [
-                                        'control_system_type' => $controlSystemType->name,
-                                        'items' => array_values(
-                                            array_map(
-                                                fn(AssemblyJob $job) => [
-                                                    'id' => $job->id,
-                                                    'pumps_count' => $job->pumps_count,
-                                                    'pumps_weight' => $job->pumps_weight,
-                                                    'price' => $job->price,
-                                                    'currency' => $job->currency->key,
-                                                    'price_updated_at' => $job->price_updated_at,
-                                                ],
-                                                $jobs->where('collector_type.value', $collectorType->value)
-                                                    ->where('control_system_type_id', $controlSystemType->id)
-                                                    ->all()
-                                            )
+                                fn(ControlSystemType $controlSystemType) => [
+                                    'control_system_type' => $controlSystemType->name,
+                                    'items' => array_values(
+                                        array_map(
+                                            fn(AssemblyJob $job) => [
+                                                'id' => $job->id,
+                                                'pumps_count' => $job->pumps_count,
+                                                'pumps_weight' => $job->pumps_weight,
+                                                'price' => $job->price,
+                                                'currency' => $job->currency->key,
+                                                'price_updated_at' => $job->price_updated_at,
+                                            ],
+                                            $jobs->where('collector_type.value', $collectorType->value)
+                                                ->where('control_system_type_id', $controlSystemType->id)
+                                                ->all()
                                         )
-                                    ];
-                                },
+                                    )
+                                ],
                                 $jobs->where('collector_type.value', $collectorType->value)
                                     ->map(fn(AssemblyJob $job) => $job->control_system_type)
                                     ->unique()

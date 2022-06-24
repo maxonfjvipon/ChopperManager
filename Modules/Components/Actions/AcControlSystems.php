@@ -4,18 +4,22 @@ namespace Modules\Components\Actions;
 
 use App\Support\ArrForFiltering;
 use Illuminate\Support\Collection;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Modules\Components\Entities\ControlSystem;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Components\Entities\YesNo;
 use Modules\Selection\Entities\MontageType;
 use Modules\Selection\Entities\StationType;
 
+/**
+ * Control systems action.
+ */
 final class AcControlSystems extends AcComponents
 {
+    /**
+     * Ctor.
+     */
     public function __construct()
     {
-        $controlSystems = ControlSystem::with('type')->get();
         parent::__construct(
             new ArrForFiltering([
                 'pumps_counts' => [2, 3, 4, 5, 6],
@@ -24,10 +28,10 @@ final class AcControlSystems extends AcComponents
                 'yes_no' => YesNo::getDescriptions(),
             ]),
             'control_systems',
-            ArrayableOf::items(
+            [
                 self::stationTypeItems(
                     StationType::fromValue(StationType::WS),
-                    $controlSystems,
+                    $controlSystems = ControlSystem::with('type')->get(),
                     fn(ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,
                         'power' => $controlSystem->power,
@@ -59,7 +63,7 @@ final class AcControlSystems extends AcComponents
                         'description' => $controlSystem->description
                     ]
                 )
-            )
+            ]
         );
     }
 

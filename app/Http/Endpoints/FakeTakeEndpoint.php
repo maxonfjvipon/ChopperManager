@@ -3,7 +3,7 @@
 namespace App\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Illuminate\Contracts\Support\Responsable;
 use Symfony\Component\HttpFoundation\Response;
 

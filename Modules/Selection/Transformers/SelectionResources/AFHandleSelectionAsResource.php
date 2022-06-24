@@ -2,20 +2,28 @@
 
 namespace Modules\Selection\Transformers\SelectionResources;
 
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Modules\Selection\Entities\Selection;
 
-class AFHandleSelectionAsResource extends WSHandleSelectionAsResource
+final class AFHandleSelectionAsResource extends ArrEnvelope
 {
-    public function asArray(): array
+    /**
+     * Ctor.
+     * @param Selection $selection
+     */
+    public function __construct(private Selection $selection)
     {
-        return ArrMerged::new(
-            parent::asArray(),
-            new AFSelectionAsResource($this->selection),
-            [
-                'jockey_pump_id' => $this->selection->jockey_pump_id,
-                'jockey_brand_id' => $this->selection->jockey_pump?->series->brand_id,
-                'jockey_series_id' => $this->selection->jockey_pump?->series_id,
-            ]
-        )->asArray();
+        parent::__construct(
+            new ArrMerged(
+                new WSHandleSelectionAsResource($this->selection),
+                new AFSelectionAsResource($this->selection),
+                [
+                    'jockey_pump_id' => $this->selection->jockey_pump_id,
+                    'jockey_brand_id' => $this->selection->jockey_pump?->series->brand_id,
+                    'jockey_series_id' => $this->selection->jockey_pump?->series_id,
+                ]
+            )
+        );
     }
 }

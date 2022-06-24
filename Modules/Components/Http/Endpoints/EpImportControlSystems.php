@@ -2,21 +2,25 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Http\Requests\RqUploadFiles;
 use Exception;
-use Illuminate\Http\RedirectResponse;
 use Modules\Components\Actions\Import\ControlSystems\AcImportControlSystems;
 
-final class EpImportControlSystems extends Controller
+/**
+ * Import control systems endpoint.
+ */
+final class EpImportControlSystems extends TakeEndpoint
 {
     /**
-     * @param RqUploadFiles $request
-     * @return RedirectResponse
+     * Ctor.
      * @throws Exception
      */
-    public function __invoke(RqUploadFiles $request): RedirectResponse
+    public function __construct(RqUploadFiles $request)
     {
-        return (new AcImportControlSystems($request->file('files')))->execute();
+        parent::__construct(
+            new AcImportControlSystems($request->files()),
+            $request
+        );
     }
 }

@@ -2,33 +2,30 @@
 
 namespace Modules\Project\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkRedirectBack;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Database\Eloquent\Model;
 use Modules\Project\Entities\Project;
 use Modules\Project\Http\Requests\RqUpdateProject;
 use Modules\Project\Takes\TkRedirectToProjectsIndex;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Update project endpoint.
  * @package Modules\Project\Takes
- * @see Project booted method
  */
-final class EpUpdateProject extends Controller
+final class EpUpdateProject extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUpdateProject $request
-     * @param Project $project
-     * @return Responsable|Response
      */
-    public function __invoke(RqUpdateProject $request, Project $project): Responsable|Response
+    public function __construct(RqUpdateProject $request)
     {
-        return (new TkWithCallback(
-            fn() => $project->update($request->projectProps()),
-            new TkRedirectToProjectsIndex()
-        ))->act($request);
+        parent::__construct(
+            new TkWithCallback(
+                fn() => Project::find($request->project)->update($request->projectProps()),
+                new TkRedirectToProjectsIndex()
+            ),
+            $request
+        );
     }
 }

@@ -7,7 +7,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use Modules\Project\Http\Middleware\AuthorizeProject;
 use Modules\Selection\Http\Middleware\DetermineSelection;
-use Modules\User\Http\Middleware\EnsureUserIsVerified;
+use Modules\User\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -82,7 +82,7 @@ final class Kernel extends HttpKernel
 
         'admin' => Administrate::class,
 
-        'verified' => EnsureUserIsVerified::class,
+        'active' => EnsureUserIsActive::class,
 
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

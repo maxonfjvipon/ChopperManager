@@ -21,13 +21,13 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string $middle_name
  * @property string $last_name
  * @property string $itn
+ * @property boolean $is_active
  *
- * @property ClientRole $client_role
  * @property UserRole $role
  *
  * @method static self create(array $attributes)
  */
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasArea, SoftDeletes;
     use UserRelationships, HasRelationships;
@@ -47,7 +47,9 @@ class User extends Authenticatable
         'last_name',
         'itn',
         'area_id',
-        'phone'
+        'phone',
+        'is_active',
+        'role',
     ];
 
     /**
@@ -67,14 +69,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'created_at' => 'datetime:d.m.Y',
-        'client_role' => ClientRole::class,
+        'is_active' => 'boolean',
         'role' => UserRole::class,
     ];
 
     /**
      * @return bool does user have super admin or admin role
      */
-    #[Pure] public function isAdmin(): bool
+    public function isAdmin(): bool
     {
         return $this->role->is(UserRole::Admin);
     }
@@ -85,11 +87,17 @@ class User extends Authenticatable
      */
     public static function allowNewSeriesToAdmins(PumpSeries $series)
     {
-        foreach (self::with(['available_series' => function ($query) {
-            $query->select('id');
-        }])->where('role', UserRole::Admin)->get(['id'])->all() as $user) {
+        foreach (self::with(['available_series' => fn($query) => $query->select('id')])
+                     ->where('role', UserRole::Admin)
+                     ->get(['id'])
+                     ->all() as $user) {
             UserPumpSeries::updateSeriesForUser(
-                array_merge($user->available_series->map(fn($series) => $series->id)->toArray(), [$series->id]),
+                array_merge(
+                    $user->available_series
+                        ->map(fn($series) => $series->id)
+                        ->toArray(),
+                    [$series->id]
+                ),
                 $user
             );
         }

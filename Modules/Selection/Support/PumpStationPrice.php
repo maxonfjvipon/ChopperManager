@@ -23,11 +23,14 @@ final class PumpStationPrice implements Numerable
     public function asNumber(): float|int
     {
         $sum = 0;
-        foreach ($this->components->asArray() as $component) {
-            if (is_null($component)) {
+        foreach ($this->components->asArray() as $component => $price) {
+            if ($component === 'pump') {
+                continue;
+            }
+            if (is_null($price)) {
                 return 999999999;
             }
-            $sum += $component;
+            $sum += $price;
         }
         return $sum;
     }

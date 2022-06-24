@@ -8,18 +8,19 @@ use App\Rules\NotEmptyStr;
 use BenSampo\Enum\Rules\EnumKey;
 use DB;
 use Exception;
-use Illuminate\Validation\Rules\In;
 use Modules\Components\Entities\Chassis;
 
+/**
+ * Import chassis action.
+ */
 final class AcImportChassis extends AcImport
 {
-
     /**
      * @param array $sheet
      * @return void
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         DB::table('chassis')->upsert($sheet, ['article']);
         Chassis::clearCache();

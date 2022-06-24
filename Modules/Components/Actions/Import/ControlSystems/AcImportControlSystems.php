@@ -11,6 +11,9 @@ use Illuminate\Validation\ValidationException;
 use Modules\Components\Entities\ControlSystem;
 use Modules\Components\Entities\ControlSystemType;
 
+/**
+ * Import control systems action.
+ */
 final class AcImportControlSystems extends AcImport
 {
     /**
@@ -44,7 +47,7 @@ final class AcImportControlSystems extends AcImport
      * @inheritDoc
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         DB::table('control_systems')->upsert($sheet, ['article']);
         ControlSystem::clearCache();

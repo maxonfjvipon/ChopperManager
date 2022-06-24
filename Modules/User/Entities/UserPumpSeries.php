@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Users pump series link
+ */
 final class UserPumpSeries extends Model
 {
     use HasFactory, HasCompositePrimaryKey;
@@ -18,7 +21,7 @@ final class UserPumpSeries extends Model
     protected $guarded = [];
 
     /**
-     * @param array $series_ids
+     * @param array<int> $series_ids
      * @param User $user
      * @return int
      */

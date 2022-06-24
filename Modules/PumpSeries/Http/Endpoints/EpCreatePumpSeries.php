@@ -2,28 +2,22 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpSeries\Support\PumpSeriesProps;
-use Modules\PumpSeries\Transformers\RcPumpSeriesProps;
-use Symfony\Component\HttpFoundation\Response;
+use Modules\PumpSeries\Actions\AcCreateOrEditPumpSeries;
 
 /**
  * Create pump series endpoint.
  */
-final class EpCreatePumpSeries extends Controller
+final class EpCreatePumpSeries extends TakeEndpoint
 {
     /**
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia(
-            "PumpSeries::Create",
-            new PumpSeriesProps()
-        ))->act();
+        parent::__construct(
+            new TkInertia("PumpSeries::Create", new AcCreateOrEditPumpSeries()),
+        );
     }
 }

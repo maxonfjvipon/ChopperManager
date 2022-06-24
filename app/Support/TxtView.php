@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Tests\Unit\TxtViewTest;
 
@@ -12,12 +14,14 @@ use Tests\Unit\TxtViewTest;
  */
 final class TxtView implements Text
 {
+    use ArrayableOverloaded;
+
     /**
      * @param string $name
-     * @param array $data
+     * @param Arrayable|array $data
      * @return TxtView
      */
-    public static function new(string $name, array $data = []): TxtView
+    public static function new(string $name, Arrayable|array $data = []): TxtView
     {
         return new self($name, $data);
     }
@@ -25,9 +29,9 @@ final class TxtView implements Text
     /**
      * Ctor.
      * @param string $name
-     * @param array $data
+     * @param Arrayable|array $data
      */
-    public function __construct(private string $name, private array $data = [])
+    public function __construct(private string $name, private Arrayable|array $data = [])
     {
     }
 
@@ -36,6 +40,6 @@ final class TxtView implements Text
      */
     public function asString(): string
     {
-        return view($this->name, $this->data)->render();
+        return view($this->name, $this->firstArrayableOverloaded($this->data))->render();
     }
 }

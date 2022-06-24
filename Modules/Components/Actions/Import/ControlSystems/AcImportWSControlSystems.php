@@ -9,13 +9,16 @@ use BenSampo\Enum\Rules\EnumKey;
 use Exception;
 use Illuminate\Validation\Rules\In;
 
+/**
+ * Import WS control systems action.
+ */
 final class AcImportWSControlSystems extends AcImport
 {
     /**
      * @inheritDoc
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         throw new Exception("This method should never be called");
     }

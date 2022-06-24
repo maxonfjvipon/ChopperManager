@@ -2,29 +2,28 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Http\Requests\RqUpdatePumpBrand;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Update pump brand endpoint.
  */
-final class EpUpdatePumpBrand extends Controller
+final class EpUpdatePumpBrand extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUpdatePumpBrand $request
-     * @param PumpBrand $pumpBrand
-     * @return Responsable|Response
      */
-    public function __invoke(RqUpdatePumpBrand $request, PumpBrand $pumpBrand): Responsable|Response
+    public function __construct(RqUpdatePumpBrand $request)
     {
-        return (new TkWithCallback(
-            fn() => $pumpBrand->update($request->validated()),
-            new TkRedirectToRoute('pump_series.index')
-        ))->act($request);
+        parent::__construct(
+            new TkWithCallback(
+                fn() => PumpBrand::find($request->pump_brand)->update($request->validated()),
+                new TkRedirectToRoute('pump_series.index')
+            )
+        );
     }
 }

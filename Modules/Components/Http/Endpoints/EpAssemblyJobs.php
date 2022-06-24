@@ -2,21 +2,25 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Components\Actions\AcAssemblyJobs;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpAssemblyJobs extends Controller
+/**
+ * Assembly jobs endpoint.
+ */
+final class EpAssemblyJobs extends TakeEndpoint
 {
     /**
-     * @param AcAssemblyJobs $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcAssemblyJobs $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia('Components::AssemblyJobs', $action()))->act();    }
+        parent::__construct(
+            new TkInertia(
+                'Components::AssemblyJobs',
+                new AcAssemblyJobs()
+            )
+        );
+    }
 }

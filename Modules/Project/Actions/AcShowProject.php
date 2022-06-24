@@ -2,34 +2,32 @@
 
 namespace Modules\Project\Actions;
 
+use App\Interfaces\RsAction;
 use App\Support\ArrForFiltering;
-use Exception;
-use JetBrains\PhpStorm\Pure;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Modules\Project\Entities\Project;
 use Modules\Project\Transformers\RcProjectToShow;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 
-final class AcShowProject
+final class AcShowProject extends ArrEnvelope
 {
     /**
+     * Ctor.
      * @param Project $project
-     * @return ArrMerged
-     * @throws Exception
      */
-    public function __invoke(Project $project): ArrMerged
+    public function __construct(Project $project)
     {
-        return new ArrMerged(
-            ['project' => new RcProjectToShow($project)],
-            new ArrObject(
-                "filter_data",
-                new ArrForFiltering([
+        parent::__construct(
+            new ArrayableOf([
+                'project' => new RcProjectToShow($project),
+                'filter_data' => new ArrForFiltering([
                     'station_types' => StationType::getDescriptions(),
                     'selection_types' => SelectionType::getDescriptions()
                 ])
-            )
+            ])
         );
     }
 }

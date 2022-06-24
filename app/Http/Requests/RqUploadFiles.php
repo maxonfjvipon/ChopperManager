@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 final class RqUploadFiles extends FormRequest
 {
@@ -26,5 +27,13 @@ final class RqUploadFiles extends FormRequest
         return [
             'files' => ['required', 'array']
         ];
+    }
+
+    /**
+     * @return array|UploadedFile|null
+     */
+    public function files(): array|UploadedFile|null
+    {
+        return $this->file('files');
     }
 }

@@ -2,13 +2,15 @@
 
 namespace App\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\RsAction;
+use App\Interfaces\Take;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +23,7 @@ use Tests\Unit\Takes\TkInertiaTest;
  */
 final class TkInertia implements Take
 {
-    use Overloadable;
+    use Overloadable, ArrayableOverloaded;
 
     /**
      * @var string|Text $component

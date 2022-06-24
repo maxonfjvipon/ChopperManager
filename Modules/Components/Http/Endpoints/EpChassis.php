@@ -2,22 +2,22 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Components\Actions\AcChassis;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpChassis extends Controller
+/**
+ * Chassis endpoint.
+ */
+final class EpChassis extends TakeEndpoint
 {
     /**
-     * @param AcChassis $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcChassis $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia('Components::Chassis', $action()))->act();
+        parent::__construct(
+            new TkInertia('Components::Chassis', new AcChassis())
+        );
     }
 }

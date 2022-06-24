@@ -3,7 +3,11 @@
 namespace Modules\Pump\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Interfaces\Take;
+use App\Takes\TkInertia;
 use Exception;
+use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 use Modules\Pump\Actions\AcPumps;
@@ -12,15 +16,15 @@ use Modules\Pump\Http\Requests\RqLoadPumps;
 /**
  * Pumps endpoint.
  */
-final class EpPumps extends Controller
+final class EpPumps extends TakeEndpoint
 {
     /**
-     * @param AcPumps $action
-     * @return Response|ResponseFactory
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcPumps $action): Response|ResponseFactory
+    public function __construct()
     {
-        return inertia("Pump::Index", $action());
+        parent::__construct(
+            new TkInertia("Pump::Index", new AcPumps())
+        );
     }
 }

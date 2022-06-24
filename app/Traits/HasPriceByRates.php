@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Enums\Currency;
-use App\Support\Rates\Rates;
+use App\Interfaces\Rates;
 
 trait HasPriceByRates
 {

@@ -2,29 +2,30 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Models\Enums\Country;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
 use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpSeries\Actions\AcEditPumpBrand;
+use Illuminate\Http\Request;
+use Modules\PumpSeries\Actions\AcCreateOrEditPumpBrand;
 use Modules\PumpSeries\Entities\PumpBrand;
-use Modules\PumpSeries\Transformers\RcPumpBrand;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Edit pump brand endpoint.
  */
-final class EpEditPumpBrand extends Controller
+final class EpEditPumpBrand extends TakeEndpoint
 {
     /**
-     * @param PumpBrand $pumpBrand
-     * @param AcEditPumpBrand $action
-     * @return Responsable|Response
+     * Ctor.
+     * @param Request $request
      * @throws Exception
      */
-    public function __invoke(PumpBrand $pumpBrand, AcEditPumpBrand $action): Responsable|Response
+    public function __construct(Request $request)
     {
-        return inertia("PumpSeries::PumpBrands/Edit", $action($pumpBrand));
+        parent::__construct(
+            new TkInertia(
+                'PumpSeries::PumpBrands/Edit',
+                new AcCreateOrEditPumpBrand(PumpBrand::find($request->pump_brand))
+            )
+        );
     }
 }

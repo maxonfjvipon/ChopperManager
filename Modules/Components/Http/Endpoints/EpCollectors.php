@@ -2,22 +2,22 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Components\Actions\AcCollectors;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpCollectors extends Controller
+/**
+ * Collectors endpoint.
+ */
+final class EpCollectors extends TakeEndpoint
 {
     /**
-     * @param AcCollectors $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcCollectors $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia('Components::Collectors', $action()))->act();
+        parent::__construct(
+            new TkInertia('Components::Collectors', new AcCollectors())
+        );
     }
 }

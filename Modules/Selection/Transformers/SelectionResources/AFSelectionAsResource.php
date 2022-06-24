@@ -2,10 +2,12 @@
 
 namespace Modules\Selection\Transformers\SelectionResources;
 
-use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Selection\Entities\Selection;
 
+/**
+ * AF selection as resource.
+ */
 final class AFSelectionAsResource implements Arrayable
 {
     /**

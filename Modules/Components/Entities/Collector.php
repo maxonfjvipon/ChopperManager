@@ -5,11 +5,15 @@ namespace Modules\Components\Entities;
 use App\Models\Enums\Currency;
 use App\Traits\Cached;
 use App\Traits\HasPriceByRates;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
+use Modules\Pump\Entities\Pump;
+use Modules\Selection\Http\Requests\RqMakeSelection;
 
 /**
  * Collector.
@@ -40,5 +44,34 @@ final class Collector extends Model
     protected static function getCacheKey(): string
     {
         return "collectors";
+    }
+
+    /**
+     * @param string $stationType
+     * @param Pump $pump
+     * @param int $pumpsCount
+     * @param array $dnMaterial
+     * @param int $minDn
+     * @return Collection|array
+     * @throws Exception
+     */
+    public static function forSelection(
+        string $stationType,
+        Pump $pump,
+        int $pumpsCount,
+        array $dnMaterial,
+        int $minDn,
+    ): Collection|array
+    {
+        return self::allOrCached()
+            ->where('dn_common', max($minDn, $dnMaterial['dn']))
+            ->whereIn('dn_pipes', [$pump->dn_suction, $pump->dn_pressure])
+            ->where('pipes_count', $pumpsCount)
+            ->where('material.value', CollectorMaterial::getValueByDescription($dnMaterial['material']))
+            ->where('connection_type.value', $pump->dn_suction <= 50
+                ? ConnectionType::Threaded
+                : ConnectionType::Flanged
+            )
+            ->where('type.value', CollectorType::getTypeByStationType($stationType));
     }
 }

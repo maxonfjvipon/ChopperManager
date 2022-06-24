@@ -2,6 +2,7 @@
 
 namespace App\Takes;
 
+use App\Interfaces\TakeRedirect;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

@@ -2,28 +2,28 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectBack;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Modules\PumpSeries\Entities\PumpSeries;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Restore pump series endpoint.
  */
-final class EpRestorePumpSeries extends Controller
+final class EpRestorePumpSeries extends TakeEndpoint
 {
     /**
-     * @param int $pumpSeriesId
-     * @return Responsable|Response
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(int $pumpSeriesId): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkWithCallback(
-            fn() => PumpSeries::withTrashed()->find($pumpSeriesId)->restore(),
-            new TkRedirectBack()
-        ))->act();
+        parent::__construct(
+            new TkWithCallback(
+                fn() => PumpSeries::withTrashed()->find($request->pump_series)->restore(),
+                new TkRedirectBack()
+            )
+        );
     }
 }

@@ -2,27 +2,28 @@
 
 namespace Modules\Selection\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Modules\Selection\Actions\AcSelectionsDashboard;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Selection dashboard endpoint.
+ * Selections dashboard endpoint.
  * @package Modules\Selection\Takes
  */
-final class EpSelectionsDashboard extends Controller
+final class EpSelectionsDashboard extends TakeEndpoint
 {
     /**
-     * @param int $project_id
-     * @param AcSelectionsDashboard $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(int $project_id, AcSelectionsDashboard $action): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkInertia("Selection::Dashboard", $action($project_id)))->act();
+        parent::__construct(
+            new TkInertia(
+                "Selection::Dashboard",
+                new AcSelectionsDashboard($request->project)
+            )
+        );
     }
 }

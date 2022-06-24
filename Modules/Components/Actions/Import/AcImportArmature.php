@@ -13,6 +13,9 @@ use Modules\Components\Entities\ArmatureType;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 
+/**
+ * Import armature action.
+ */
 final class AcImportArmature extends AcImport
 {
     /**

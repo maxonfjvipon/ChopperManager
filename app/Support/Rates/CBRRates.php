@@ -2,6 +2,7 @@
 
 namespace App\Support\Rates;
 
+use App\Interfaces\Rates;
 use App\Models\Enums\Currency;
 use Exception;
 use JetBrains\PhpStorm\Pure;

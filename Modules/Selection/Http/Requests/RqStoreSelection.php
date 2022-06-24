@@ -14,6 +14,7 @@ use Modules\Selection\Rules\PumpStationsArray;
  * @property int $reserve_pumps_count
  * @property string $comment
  * @property array<int> $control_system_type_ids
+ * @property string $selection
  */
 abstract class RqStoreSelection extends RqDetermineSelection
 {

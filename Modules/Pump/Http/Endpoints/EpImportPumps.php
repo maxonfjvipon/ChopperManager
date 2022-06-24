@@ -2,23 +2,21 @@
 
 namespace Modules\Pump\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Support\Responsable;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Http\Requests\RqUploadFiles;
 use Modules\Pump\Actions\AcImportPumps;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Import pumps endpoint.
  */
-final class EpImportPumps extends Controller
+final class EpImportPumps extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUploadFiles $request
-     * @return Responsable|Response
      */
-    public function __invoke(RqUploadFiles $request): Responsable|Response
+    public function __construct(RqUploadFiles $request)
     {
-        return (new AcImportPumps($request->file('files')))->execute();
+        parent::__construct(new AcImportPumps($request->files()), $request);
     }
 }

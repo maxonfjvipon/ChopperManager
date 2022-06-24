@@ -3,11 +3,12 @@
 namespace Modules\Auth\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
-use App\Takes\TkRedirectToRoute;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Modules\Auth\Http\Requests\RqLogin;
+use Modules\Project\Takes\TkRedirectToProjectsIndex;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,10 +19,6 @@ final class EpLoginAttempt extends Controller
 {
     use AuthenticatesUsers;
 
-    /**
-     * @param RqLogin $request
-     * @return Responsable|Response
-     */
     public function __invoke(RqLogin $request): Responsable|Response
     {
         return (new TkWithCallback(
@@ -29,8 +26,24 @@ final class EpLoginAttempt extends Controller
                 $request->authenticate();
                 $request->session()->regenerate();
             },
-            new TkRedirectToRoute('projects.index')
+            new TkRedirectToProjectsIndex()
         ))->act($request);
-
     }
+
+//    /**
+//     * Ctor.
+//     * @param RqLogin $request
+//     */
+//    public function __construct(private RqLogin $request)
+//    {
+//        parent::__construct(
+//            new TkWithCallback(
+//                function () {
+//                    $this->request->authenticate();
+//                    $this->request->session()->regenerate();
+//                },
+//                new TkRedirectToProjectsIndex()
+//            )
+//        );
+//    }
 }

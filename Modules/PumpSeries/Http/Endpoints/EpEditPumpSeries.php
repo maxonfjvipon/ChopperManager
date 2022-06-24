@@ -2,36 +2,28 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Illuminate\Http\Request;
+use Modules\PumpSeries\Actions\AcCreateOrEditPumpSeries;
 use Modules\PumpSeries\Entities\PumpSeries;
-use Modules\PumpSeries\Support\PumpSeriesAsResource;
-use Modules\PumpSeries\Support\PumpSeriesProps;
-use Modules\PumpSeries\Transformers\RcPumpSeries;
-use Modules\PumpSeries\Transformers\RcPumpSeriesProps;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Edit pump series endpoint.
  */
-final class EpEditPumpSeries extends Controller
+final class EpEditPumpSeries extends TakeEndpoint
 {
     /**
-     * @param PumpSeries $pumpSeries
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(PumpSeries $pumpSeries): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkInertia(
-            "PumpSeries::Edit",
-            new ArrMerged(
-                new PumpSeriesProps(),
-                new PumpSeriesAsResource($pumpSeries)
+        parent::__construct(
+            new TkInertia(
+                'PumpSeries::Edit',
+                new AcCreateOrEditPumpSeries(PumpSeries::find($request->pump_series))
             )
-        ))->act();
+        );
     }
 }

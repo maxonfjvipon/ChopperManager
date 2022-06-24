@@ -2,19 +2,24 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Http\Requests\RqUploadFiles;
-use Illuminate\Http\RedirectResponse;
 use Modules\Components\Actions\Import\AcImportArmature;
 
-final class EpImportArmature extends Controller
+/**
+ * Import armature endpoint.
+ */
+final class EpImportArmature extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUploadFiles $request
-     * @return RedirectResponse
      */
-    public function __invoke(RqUploadFiles $request): RedirectResponse
+    public function __construct(RqUploadFiles $request)
     {
-        return (new AcImportArmature($request->file('files')))->execute();
+        parent::__construct(
+            new AcImportArmature($request->files()),
+            $request
+        );
     }
 }

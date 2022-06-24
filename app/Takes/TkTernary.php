@@ -2,13 +2,10 @@
 
 namespace App\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Maxonfjvipon\Elegant_Elephant\Logical;
 use Maxonfjvipon\Elegant_Elephant\Logical\LogicalOverloadable;
-use Symfony\Component\HttpFoundation\Response;
 use Tests\Unit\Takes\TkTernaryTest;
 
 /**
@@ -16,47 +13,23 @@ use Tests\Unit\Takes\TkTernaryTest;
  * @package App\Takes
  * @see TkTernaryTest
  */
-final class TkTernary implements Take
+final class TkTernary extends TkEnvelope
 {
     use LogicalOverloadable;
-
-    /**
-     * @var bool|Logical $condition
-     */
-    private bool|Logical $condition;
-
-    /**
-     * @var Take $origin
-     */
-    private Take $origin;
-
-    /**
-     * @var Take $alt
-     */
-    private Take $alt;
 
     /**
      * Ctor wrap.
      * @param bool|Logical $cond
      * @param Take $first
      * @param Take $alt
-     */
-    public function __construct(bool|Logical $cond, Take $first, Take $alt)
-    {
-        $this->condition = $cond;
-        $this->origin = $first;
-        $this->alt = $alt;
-    }
-
-    /**
-     * @inheritDoc
      * @throws Exception
      */
-    public function act(Request $request = null): Responsable|Response
+    public function __construct(private bool|Logical $cond, private Take $first, private Take $alt)
     {
-        if ($this->firstLogicalOverloaded($this->condition)) {
-            return $this->origin->act($request);
-        }
-        return $this->alt->act($request);
+        parent::__construct(
+            $this->firstLogicalOverloaded($this->$this->cond)
+                ? $this->first
+                : $this->alt
+        );
     }
 }

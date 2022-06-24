@@ -2,7 +2,7 @@
 
 namespace Modules\Selection\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\Take;
 use App\Takes\TkTernary;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;

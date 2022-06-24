@@ -2,30 +2,29 @@
 
 namespace Modules\Selection\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkJson;
 use Exception;
-use Illuminate\Contracts\Support\Responsable;
+use Modules\Selection\Actions\AcMakeSelection;
 use Modules\Selection\Http\Requests\RqMakeSelection;
-use Modules\Selection\Support\SelectedPumps\SelectedPumps;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Make selection endpoint.
  */
-final class EpMakeSelection extends Controller
+final class EpMakeSelection extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqMakeSelection $request
-     * @return Responsable|Response
      * @throws Exception
      */
-    public function __invoke(RqMakeSelection $request): Responsable|Response
+    public function __construct(RqMakeSelection $request)
     {
-        return (new TkJson(
-            new SelectedPumps($request)
-        ))->act($request);
+        ini_set('max_execution_time', '300');
+        ini_set('memory_limit', '100M');
+        parent::__construct(
+            new TkJson(new AcMakeSelection($request))
+        );
     }
 }
 

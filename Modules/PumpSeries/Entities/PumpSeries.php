@@ -24,6 +24,7 @@ use Modules\Pump\Entities\Pump;
  * @property Currency $currency
  *
  * @method static PumpSeries create(array $attributes)
+ * @method static PumpSeries find(string|int $id)
  */
 final class PumpSeries extends Model
 {

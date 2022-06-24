@@ -4,16 +4,16 @@ namespace Modules\Components\Actions;
 
 use App\Support\ArrForFiltering;
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Modules\Components\Entities\Armature;
 use Modules\Components\Entities\ArmatureType;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 
+/**
+ * Armature action.
+ */
 final class AcArmature extends AcComponents
 {
     /**
@@ -42,8 +42,9 @@ final class AcArmature extends AcComponents
                         'weight' => $armature->weight,
                         'price' => $armature->price,
                         'currency' => $armature->currency->description,
-                        'price_updated_at' => date_format($armature->price_updated_at, 'd.m.Y')
-                    ])
+                        'price_updated_at' => formatted_date($armature->price_updated_at)
+                    ]
+                )
             )
         );
     }

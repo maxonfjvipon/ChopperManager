@@ -2,29 +2,28 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\PumpSeries\Http\Requests\RqUpdatePumpSeries;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Update pump series endpoint.
  */
-final class EpUpdatePumpSeries extends Controller
+final class EpUpdatePumpSeries extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUpdatePumpSeries $request
-     * @param PumpSeries $pumpSeries
-     * @return Responsable|Response
      */
-    public function __invoke(RqUpdatePumpSeries $request, PumpSeries $pumpSeries): Responsable|Response
+    public function __construct(RqUpdatePumpSeries $request)
     {
-        return (new TkWithCallback(
-            fn() => $pumpSeries->update($request->validated()),
-            new TkRedirectToRoute('pump_series.index')
-        ))->act($request);
+        parent::__construct(
+            new TkWithCallback(
+                fn() => PumpSeries::find($request->pump_series)->update($request->validated()),
+                new TkRedirectToRoute('pump_series.index')
+            )
+        );
     }
 }

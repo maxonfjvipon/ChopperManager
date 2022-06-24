@@ -134,7 +134,6 @@ class DatabaseSeeder extends Seeder
             'itn' => '00000000001',
             'area_id' => 6,
             'role' => UserRole::Admin,
-            'verified_at' => now()
         ]);
 
         $vp = User::create([
@@ -145,7 +144,6 @@ class DatabaseSeeder extends Seeder
             'itn' => '00000000002',
             'area_id' => 6,
             'role' => UserRole::Admin,
-            'verified_at' => now()
         ]);
     }
 }

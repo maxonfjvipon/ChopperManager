@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')->group(function () {
             Route::namespace($this->namespace)
-                ->middleware(['auth', 'verified'])
+                ->middleware(['auth', 'active'])
                 ->group($this->moduleName
                     ? module_path($this->moduleName, '/Routes/web.php')
                     : base_path('routes/web.php')

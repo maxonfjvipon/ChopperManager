@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $name
  *
  * @property Country $country
+ * @method static PumpBrand find(int|string $id)
+ * @method static PumpBrand create(array $attributes)
  */
 class PumpBrand extends Model
 {

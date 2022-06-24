@@ -10,6 +10,7 @@ use Modules\Selection\Entities\StationType;
 /**
  * @property string $station_type
  * @property string $selection_type
+ * @property string|int $project
  */
 class RqDetermineSelection extends FormRequest
 {

@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
@@ -50,7 +51,7 @@ final class PumpStation extends Model
      */
     public function withCurves(): PumpStation
     {
-        $this->{'curves'} = (new ArrMerged(
+        $this->{'curves'} = ArrMerged::new(
             [
                 'performance_lines' => $lines = (new PumpPerfLines($this->pump, $this->pumps_count))->asArray(),
                 'dx' => (($width = 550) - 100) / ($xMax = (new PpXMax($lines, $this->flow))->asNumber()),
@@ -95,7 +96,7 @@ final class PumpStation extends Model
                     }
                 )
             )
-        ))->asArray();
+        )->asArray();
         return $this;
     }
 }

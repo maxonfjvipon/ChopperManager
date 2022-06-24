@@ -2,32 +2,31 @@
 
 namespace Modules\Selection\Support\Performance;
 
-use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
 use Modules\Pump\Entities\Pump;
 
 /**
  * Pump performance lines
  */
-final class PumpPerfLines implements Arrayable
+final class PumpPerfLines extends ArrEnvelope
 {
     /**
      * Ctor.
      * @param Pump $pump
      * @param int $count
      */
-    public function __construct(private Pump $pump, private int $count = 1) {}
-
-    /**
-     * @return array
-     * @throws Exception
-     */
-    public function asArray(): array
+    public function __construct(private Pump $pump, private int $count = 1)
     {
-        $lines = [];
-        for ($i = 1; $i <= $this->count; ++$i) {
-            $lines[] = (new PumpPerfLine($this->pump, $i))->asArray();
-        }
-        return $lines;
+        parent::__construct(
+            ArrayableOf::items(
+                ...new ArrMapped(
+                    new ArrRange(1, $this->count),
+                    fn($num) => new PumpPerfLine($this->pump, $num)
+                )
+            )
+        );
     }
 }

@@ -9,15 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Area.
  *
+ * @property int $id
  * @property string $name
  */
-class Area extends Model
+final class Area extends Model
 {
     use HasFactory, Cached;
 
     public $timestamps = false;
     protected $guarded = [];
 
+    /**
+     * @return string
+     */
     protected static function getCacheKey(): string
     {
         return 'areas';

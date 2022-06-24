@@ -4,7 +4,6 @@ namespace Modules\Selection\Support;
 
 use App\Support\TxtView;
 use Maxonfjvipon\Elegant_Elephant\Text;
-use Modules\Pump\Entities\CurveType;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\Performance\PumpPerfLine;
 use Modules\Selection\Traits\AxisStep;

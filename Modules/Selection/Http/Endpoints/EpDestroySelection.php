@@ -2,30 +2,29 @@
 
 namespace Modules\Selection\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectBack;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
-use Modules\Project\Takes\TkAuthorizeProject;
+use Illuminate\Http\Request;
 use Modules\Selection\Entities\Selection;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Destroy selection endpoint.
  * @package Modules\Selection\Http\Endpoints
  */
-final class EpDestroySelection extends Controller
+final class EpDestroySelection extends TakeEndpoint
 {
     /**
-     * @param Selection $selection
-     * @return Responsable|Response
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(Selection $selection): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkWithCallback(
-            fn() => $selection->delete(),
-            new TkRedirectBack()
-        ))->act();
+        parent::__construct(
+            new TkWithCallback(
+                fn() => Selection::find($request->selection)->delete(),
+                new TkRedirectBack()
+            )
+        );
     }
 }

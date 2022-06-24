@@ -2,16 +2,19 @@
 
 namespace App\Actions;
 
+use App\Interfaces\Take;
 use Exception;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Import action
  */
-abstract class AcImport
+abstract class AcImport implements Take
 {
     private const MAX_EXECUTION_TIME = 180;
 
@@ -25,9 +28,10 @@ abstract class AcImport
     }
 
     /**
-     * @return RedirectResponse
+     * @param Request|null $request
+     * @return Responsable|Response
      */
-    public function execute(): RedirectResponse
+    public function act(Request $request = null): Responsable|Response
     {
         ini_set('max_execution_time', self::MAX_EXECUTION_TIME);
         $errorBag = [];
@@ -65,9 +69,9 @@ abstract class AcImport
 
     /**
      * @param array $sheet
-     * @return mixed
+     * @return void
      */
-    abstract protected function import(array $sheet);
+    abstract protected function import(array $sheet): void;
 
     /**
      * @param array $entity

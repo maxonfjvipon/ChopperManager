@@ -2,42 +2,34 @@
 
 namespace Modules\Components\Actions;
 
-use JetBrains\PhpStorm\Pure;
+use App\Interfaces\RsAction;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 
-/**
+/**i
  * Components action.
  */
-class AcComponents
+class AcComponents extends ArrEnvelope
 {
     /**
      * Ctor.
      *
-     * @param Arrayable $filterData
+     * @param array|Arrayable $filterData
      * @param string $componentsName
-     * @param Arrayable $components
+     * @param array|Arrayable $components
      */
     public function __construct(
-        private Arrayable $filterData,
-        private string          $componentsName,
-        private Arrayable $components
+        array|Arrayable $filterData,
+        string          $componentsName,
+        array|Arrayable $components
     )
     {
-    }
-
-    #[Pure] public function __invoke(): Arrayable
-    {
-        return new ArrMerged(
-            new ArrObject(
-                'filter_data',
-                $this->filterData,
-            ),
-            new ArrObject(
-                $this->componentsName,
-                $this->components,
-            )
+        parent::__construct(
+            new ArrayableOf([
+                'filter_data' => $filterData,
+                $componentsName => $components
+            ])
         );
     }
 }

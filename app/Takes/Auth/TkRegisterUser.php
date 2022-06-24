@@ -2,14 +2,14 @@
 
 namespace App\Takes\Auth;
 
-use App\Http\Requests\Auth\RegisterRequest;
-use App\Models\User;
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Modules\Auth\Http\Requests\RqRegister;
+use Modules\User\Entities\User;
 use Symfony\Component\HttpFoundation\Response;
 
 final class TkRegisterUser implements Take
@@ -26,7 +26,7 @@ final class TkRegisterUser implements Take
      * @inheritDoc
      * @throws Exception
      */
-    public function act(RegisterRequest|Request $request = null): Responsable|Response
+    public function act(RqRegister|Request $request = null): Responsable|Response
     {
         $user = User::create($request->userProps());
 

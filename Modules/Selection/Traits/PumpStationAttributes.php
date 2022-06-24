@@ -9,25 +9,25 @@ trait PumpStationAttributes
 {
 
     /**
-     * @return array|float|mixed
+     * @return float
      */
-    public function getHeadAttribute(): mixed
+    public function getHeadAttribute(): float
     {
         return $this->attributes['head'] ?? $this->selection->head;
     }
 
     /**
-     * @return array|float|mixed
+     * @return float
      */
-    public function getFlowAttribute(): mixed
+    public function getFlowAttribute(): float
     {
         return $this->attributes['flow'] ?? $this->selection->flow;
     }
 
     /**
-     * @return int|mixed
+     * @return int
      */
-    public function getPumpsCountAttribute()
+    public function getPumpsCountAttribute(): int
     {
         return $this->attributes['pumps_count'] ?? $this->main_pumps_count + $this->reserve_pumps_count;
     }

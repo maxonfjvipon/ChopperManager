@@ -2,22 +2,22 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Components\Actions\AcControlSystems;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpControlSystems extends Controller
+/**
+ * Control systems endpoint.
+ */
+final class EpControlSystems extends TakeEndpoint
 {
     /**
-     * @param AcControlSystems $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcControlSystems $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia('Components::ControlSystems', $action()))->act();
+        parent::__construct(
+            new TkInertia('Components::ControlSystems', new AcControlSystems())
+        );
     }
 }

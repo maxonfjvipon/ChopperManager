@@ -14,14 +14,16 @@ use Modules\Components\Entities\CollectorType;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 
+/**
+ * Import collectors action.
+ */
 final class AcImportCollectors extends AcImport
 {
-
     /**
      * @inheritDoc
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         DB::table('collectors')->upsert($sheet, ['article']);
         Collector::clearCache();

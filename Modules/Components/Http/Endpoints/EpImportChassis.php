@@ -2,19 +2,24 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Http\Requests\RqUploadFiles;
-use Illuminate\Http\RedirectResponse;
 use Modules\Components\Actions\Import\AcImportChassis;
 
-final class EpImportChassis extends Controller
+/**
+ * Import chassis endpoint.
+ */
+final class EpImportChassis extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUploadFiles $request
-     * @return RedirectResponse
      */
-    public function __invoke(RqUploadFiles $request): RedirectResponse
+    public function __construct(RqUploadFiles $request)
     {
-        return (new AcImportChassis($request->file('files')))->execute();
+        parent::__construct(
+            new AcImportChassis($request->files()),
+            $request
+        );
     }
 }

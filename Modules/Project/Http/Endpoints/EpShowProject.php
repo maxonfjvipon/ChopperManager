@@ -2,28 +2,30 @@
 
 namespace Modules\Project\Http\Endpoints;
 
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Modules\Project\Actions\AcShowProject;
 use Modules\Project\Entities\Project;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Show project endpoint.
  * @package Modules\Project\Takes
  */
-final class EpShowProject extends Controller
+final class EpShowProject extends TakeEndpoint
 {
     /**
-     * @param Project $project
-     * @param AcShowProject $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(Project $project, AcShowProject $action): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkInertia('Project::Show', $action($project)))->act();
+        parent::__construct(
+            new TkInertia(
+                'Project::Show',
+                new AcShowProject(Project::find($request->project))
+            ),
+            $request
+        );
     }
 }

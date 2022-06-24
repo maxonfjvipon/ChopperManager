@@ -23,7 +23,7 @@ final class RcArmature extends JsonResource
             'weight' => $this->weight,
             'price' => $this->price,
             'currency' => $this->currency->description,
-            'price_updated_at' => date_format($this->price_updated_at, 'd.m.Y')
+            'price_updated_at' => formatted_date($this->price_updated_at)
         ];
     }
 }

@@ -25,8 +25,8 @@ Route::middleware('guest')->group(function () {
     Route::post('login')->name('login.attempt')->uses(EpLoginAttempt::class);
 
     // REGISTER
-    Route::get('register')->name('register')->uses(EpRegister::class);
-    Route::post('register')->name('register.attempt')->uses(EpRegisterAttempt::class);
+//    Route::get('register')->name('register')->uses(EpRegister::class);
+//    Route::post('register')->name('register.attempt')->uses(EpRegisterAttempt::class);
 });
 
 // AUTHORIZED

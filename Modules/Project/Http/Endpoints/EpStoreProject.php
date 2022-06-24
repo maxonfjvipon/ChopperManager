@@ -3,8 +3,11 @@
 namespace Modules\Project\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Interfaces\Take;
 use App\Takes\TkWithCallback;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Project\Http\Requests\RqStoreProject;
 use Modules\Project\Takes\TkRedirectToProjectsIndex;
@@ -13,19 +16,21 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Store project endpoint.
  * @package Modules\Project\Takes
- * @see Project booted method
  */
-final class EpStoreProject extends Controller
+final class EpStoreProject extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqStoreProject $request
-     * @return Responsable|Response
      */
-    public function __invoke(RqStoreProject $request): Responsable|Response
+    public function __construct(RqStoreProject $request)
     {
-        return (new TkWithCallback(
-            fn() => Auth::user()->projects()->create($request->projectProps()),
-            new TkRedirectToProjectsIndex()
-        ))->act($request);
+        parent::__construct(
+            new TkWithCallback(
+                fn() => Auth::user()->projects()->create($request->projectProps()),
+                new TkRedirectToProjectsIndex()
+            ),
+            $request
+        );
     }
 }

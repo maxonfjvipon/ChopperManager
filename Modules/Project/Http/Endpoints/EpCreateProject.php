@@ -3,23 +3,30 @@
 namespace Modules\Project\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Interfaces\Take;
+use App\Takes\TkInertia;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Modules\Project\Actions\AcProjectData;
+use Modules\Project\Actions\AcEditOrCreateProject;
 use Symfony\Component\HttpFoundation\Response;
 
-final class EpCreateProject extends Controller
+/**
+ * Create project endpoint.
+ */
+final class EpCreateProject extends TakeEndpoint
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param AcProjectData $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcProjectData $action): Responsable|Response
+    public function __construct()
     {
-        return inertia("Project::Create", $action());
+        parent::__construct(
+            new TkInertia(
+                'Project::Create',
+                new AcEditOrCreateProject()
+            )
+        );
     }
 }

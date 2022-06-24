@@ -2,24 +2,26 @@
 
 namespace Modules\Project\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
 use Modules\Project\Actions\AcProjects;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpProjects extends Controller
+/**
+ * Projects endpoint.
+ */
+final class EpProjects extends TakeEndpoint
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param AcProjects $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcProjects $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia('Project::Index', $action()))->act();
+        parent::__construct(
+            new TkInertia(
+                'Project::Index',
+                new AcProjects()
+            )
+        );
     }
 }

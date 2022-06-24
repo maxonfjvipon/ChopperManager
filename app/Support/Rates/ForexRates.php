@@ -3,6 +3,7 @@
 namespace App\Support\Rates;
 
 use AmrShawky\LaravelCurrency\Facade\Currency as RateCurrency;
+use App\Interfaces\Rates;
 use App\Models\Enums\Currency;
 use Exception;
 use Illuminate\Support\Facades\Auth;

@@ -2,22 +2,19 @@
 
 namespace Modules\Auth\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpAwait extends Controller
+/**
+ * Await endpoint.
+ */
+final class EpAwait extends TakeEndpoint
 {
     /**
-     * Handle the incoming request.
-     *
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia("Auth::Await"))->act();
+        parent::__construct(new TkInertia("Auth::Await"));
     }
 }

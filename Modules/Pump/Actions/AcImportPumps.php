@@ -17,6 +17,9 @@ use Modules\Pump\Entities\PumpOrientation;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
 
+/**
+ * Import pumps action.
+ */
 final class AcImportPumps extends AcImport
 {
     /**

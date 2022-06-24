@@ -12,13 +12,16 @@ use Modules\Components\Entities\AssemblyJob;
 use Modules\Components\Entities\CollectorType;
 use Modules\Components\Entities\ControlSystemType;
 
+/**
+ * Import assembly jobs action.
+ */
 final class AcImportAssemblyJobs extends AcImport
 {
     /**
      * @inheritDoc
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         DB::table('assembly_jobs')->upsert($sheet, ['article']);
         AssemblyJob::clearCache();

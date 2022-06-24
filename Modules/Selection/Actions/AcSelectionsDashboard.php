@@ -2,37 +2,44 @@
 
 namespace Modules\Selection\Actions;
 
-use App\Support\ArrForFiltering;
 use BenSampo\Enum\Enum;
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 
-final class AcSelectionsDashboard
+/**
+ * Selections dashboard action.
+ */
+final class AcSelectionsDashboard extends ArrEnvelope
 {
-    public function __invoke(int $project_id): Arrayable
+    /**
+     * Ctor.
+     *
+     * @param int $project_id
+     */
+    public function __construct(int $project_id)
     {
-        return new ArrMerged(
-            ['project_id' => $project_id],
-            new ArrMapped(
-                [
-                    'selection_types' => SelectionType::getInstances(),
-                    'station_types' => StationType::getInstances()
-                ],
-                fn(array $enum) => array_values(
-                    array_map(
-                        fn(Enum $type) => [
-                            'description' => $type->description,
-                            'key' => $type->key
-                        ],
-                        $enum
+        parent::__construct(
+            new ArrMerged(
+                ['project_id' => $project_id],
+                new ArrMapped(
+                    [
+                        'selection_types' => SelectionType::getInstances(),
+                        'station_types' => StationType::getInstances()
+                    ],
+                    fn(array $enum) => array_values(
+                        array_map(
+                            fn(Enum $type) => [
+                                'description' => $type->description,
+                                'key' => $type->key
+                            ],
+                            $enum
+                        )
                     )
-                )
-            ),
+                ),
+            )
         );
     }
 }

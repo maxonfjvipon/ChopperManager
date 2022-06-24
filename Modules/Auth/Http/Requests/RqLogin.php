@@ -43,18 +43,16 @@ final class RqLogin extends FormRequest
      *
      * @throws ValidationException
      */
-    public function authenticate($guard = 'web', $loginBy = 'email')
+    public function authenticate(string $guard = 'web', string $loginBy = 'email')
     {
         $this->ensureIsNotRateLimited($loginBy);
-
-        if (! Auth::guard($guard)->attempt($this->only($loginBy, 'password'), $this->boolean('remember'))) {
+        if (!Auth::guard($guard)->attempt($this->only($loginBy, 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey($loginBy));
 
             throw ValidationException::withMessages([
                 $loginBy => __('auth.failed'),
             ]);
         }
-
         RateLimiter::clear($this->throttleKey($loginBy));
     }
 
@@ -68,7 +66,7 @@ final class RqLogin extends FormRequest
      */
     public function ensureIsNotRateLimited($loginBy)
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey($loginBy), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey($loginBy), 5)) {
             return;
         }
 
@@ -92,6 +90,6 @@ final class RqLogin extends FormRequest
      */
     public function throttleKey($loginBy): string
     {
-        return Str::lower($this->input($loginBy)).'|'.$this->ip();
+        return Str::lower($this->input($loginBy)) . '|' . $this->ip();
     }
 }

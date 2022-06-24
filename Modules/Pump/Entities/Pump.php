@@ -4,6 +4,7 @@ namespace App\Models;
 
 namespace Modules\Pump\Entities;
 
+use App\Models\Enums\Currency;
 use App\Traits\Cached;
 use App\Traits\HasPriceByRates;
 use Carbon\Carbon;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use JetBrains\PhpStorm\Pure;
 use Modules\Pump\Traits\PumpAttributes;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
@@ -34,11 +36,19 @@ use Znck\Eloquent\Traits\BelongsToThrough;
  * @property int $ptp_length
  * @property string $name
  * @property int $series_id
+ * @property int $suction_height
+ * @property float $price
+ * @property bool $is_discontinued_with_series
+ * @property string $size
+ * @property float $current
  *
  * @property PumpSeries $series
  * @property Carbon $price_updated_at
  * @property Collection<PumpCoefficients>|PumpCoefficients[] $coefficients
  * @property CollectorSwitch $collector_switch
+ * @property Currency $currency
+ * @property ConnectionType $connection_type
+ * @property PumpOrientation $orientation
  *
  * @method static Pump find(int $id)
  */
@@ -63,6 +73,14 @@ final class Pump extends Model
     protected static function getCacheKey(): string
     {
         return 'pumps';
+    }
+
+    /**
+     * @return bool
+     */
+    #[Pure] public function isHorizontal(): bool
+    {
+        return $this->orientation->is(PumpOrientation::Horizontal);
     }
 
     /**

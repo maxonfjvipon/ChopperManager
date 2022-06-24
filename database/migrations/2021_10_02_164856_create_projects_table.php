@@ -32,9 +32,9 @@ class CreateProjectsTable extends Migration
 
             $table->foreign('area_id')->references('id')->on('areas')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('created_by')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('installer_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('customer_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('designer_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('installer_id')->references('id')->on('contractors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('customer_id')->references('id')->on('contractors')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('designer_id')->references('id')->on('contractors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('dealer_id')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

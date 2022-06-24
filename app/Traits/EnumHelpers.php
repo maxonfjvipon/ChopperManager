@@ -26,13 +26,13 @@ trait EnumHelpers
      */
     public static function asArrayForSelect(): array
     {
-        return (new ArrMappedKeyValue(
+        return ArrMappedKeyValue::new(
             self::asSelectArray(),
             fn($value, $description) => [
                 'id' => $value,
                 'name' => $description
             ]
-        ))->asArray();
+        )->asArray();
     }
 
     /**

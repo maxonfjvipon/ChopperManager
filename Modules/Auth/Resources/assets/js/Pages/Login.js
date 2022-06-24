@@ -51,13 +51,13 @@ const Login = () => {
                         Войти
                     </PrimaryButton>
                 </div>
-                <div style={margin.top(16)}>
-                    <div style={textAlignCenter}>
-                        <Link href={route('register')}>
-                            Еще не зарегистрированы?
-                        </Link>
-                    </div>
-                </div>
+                {/*<div style={margin.top(16)}>*/}
+                {/*    <div style={textAlignCenter}>*/}
+                {/*        <Link href={route('register')}>*/}
+                {/*            Еще не зарегистрированы?*/}
+                {/*        </Link>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </Col>
         </JustifiedRow>
     )

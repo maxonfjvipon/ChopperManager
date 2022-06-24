@@ -5,7 +5,7 @@ namespace Modules\Selection\Tests\Unit;
 use Exception;
 use Illuminate\Http\Request;
 use Modules\Pump\Entities\Pump;
-use Modules\Selection\Support\TxtCreateSelectionComponent;
+use Modules\Selection\Support\TxtSelectionComponent;
 use Tests\TestCase;
 
 class TxtSelectionCreateComponentTest extends TestCase
@@ -19,12 +19,12 @@ class TxtSelectionCreateComponentTest extends TestCase
         $req->pumpable_type = Pump::$SINGLE_PUMP;
         $this->assertEquals(
             "Selection::SinglePump",
-            (new TxtCreateSelectionComponent($req))->asString()
+            (new TxtSelectionComponent($req))->asString()
         );
         $req->pumpable_type = Pump::$DOUBLE_PUMP;
         $this->assertEquals(
             "Selection::DoublePump",
-            (new TxtCreateSelectionComponent($req))->asString()
+            (new TxtSelectionComponent($req))->asString()
         );
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Project\Traits\ProjectRelationShips;
 use Modules\User\Entities\Area;
 use Modules\User\Entities\ClientRole;
@@ -41,7 +42,7 @@ use Spatie\Permission\Models\Permission;
  *
  * @method static self find(int $id)
  */
-class Project extends Model
+class Project extends Model implements Arrayable
 {
     use HasFactory, HasArea, SoftDeletes, ProjectRelationShips;
 
@@ -58,10 +59,7 @@ class Project extends Model
     {
         self::created(function (self $project) {
             if (!$project->user->isAdmin()) {
-                $project->update(match ($project->user->client_role->value) {
-                    ClientRole::Dealer => ['dealer_id' => $project->user->id],
-                    ClientRole::DesignInstitute => ['designer_id' => $project->user->id],
-                });
+                $project->update(['dealer_id' => $project->user->id]); // fixme
             }
         });
     }

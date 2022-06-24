@@ -49,6 +49,7 @@ use Modules\Selection\Traits\SelectionRelationships;
  * @property YesNo $on_street
  *
  * @method static self create(array $attributes)
+ * @method static self find(string|int $id)
  */
 final class Selection extends Model
 {

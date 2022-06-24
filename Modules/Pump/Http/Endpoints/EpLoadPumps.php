@@ -2,27 +2,21 @@
 
 namespace Modules\Pump\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkJson;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Pump\Actions\AcLoadPumps;
 use Modules\Pump\Http\Requests\RqLoadPumps;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Load pumps endpoint
  */
-final class EpLoadPumps extends Controller
+final class EpLoadPumps extends TakeEndpoint
 {
-    /**
-     * @param RqLoadPumps $request
-     * @param AcLoadPumps $action
-     * @return Responsable|Response
-     * @throws Exception
-     */
-    public function __invoke(RqLoadPumps $request, AcLoadPumps $action): Responsable|Response
+    public function __construct(RqLoadPumps $request)
     {
-        return (new TkJson($action($request)))->act();
+        parent::__construct(
+            new TkJson(new AcLoadPumps($request)),
+            $request
+        );
     }
 }

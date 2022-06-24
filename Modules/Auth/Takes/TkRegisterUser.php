@@ -2,7 +2,7 @@
 
 namespace Modules\Auth\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Support\Responsable;

@@ -2,27 +2,28 @@
 
 namespace Modules\PumpSeries\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
-use Modules\PumpSeries\Entities\PumpSeries;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+use Modules\PumpSeries\Entities\PumpBrand;
 
 /**
  * Destroy pump series endpoint.
  */
-final class EpDestroyPumpSeries extends Controller
+final class EpDestroyPumpSeries extends TakeEndpoint
 {
     /**
-     * @param PumpSeries $pumpSeries
-     * @return Responsable|Response
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(PumpSeries $pumpSeries): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkWithCallback(
-            fn() => $pumpSeries->delete(),
-            new TkRedirectToRoute('pump_series.index')
-        ))->act();
+        parent::__construct(
+            new TkWithCallback(
+                fn() => PumpBrand::find($request->pump_series)->delete(),
+                new TkRedirectToRoute('pump_series.index')
+            )
+        );
     }
 }

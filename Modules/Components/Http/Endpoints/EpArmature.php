@@ -2,23 +2,25 @@
 
 namespace Modules\Components\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Components\Actions\AcArmature;
-use Modules\Components\Actions\AcCollectors;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpArmature extends Controller
+/**
+ * Armature endpoint.
+ */
+final class EpArmature extends TakeEndpoint
 {
     /**
-     * @param AcArmature $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(AcArmature $action): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia("Components::Armature", $action()))->act();
+        parent::__construct(
+            new TkInertia(
+                "Components::Armature",
+                new AcArmature()
+            )
+        );
     }
 }

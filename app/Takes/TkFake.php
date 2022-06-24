@@ -2,7 +2,7 @@
 
 namespace App\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -2,7 +2,7 @@
 
 namespace Modules\Project\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\Take;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Modules\Project\Entities\Project;

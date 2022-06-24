@@ -10,14 +10,16 @@ use Exception;
 use Illuminate\Validation\Rules\In;
 use Modules\Selection\Entities\MontageType;
 
+/**
+ * Import AF control systems action.
+ */
 final class AcImportAFControlSystems extends AcImport
 {
-
     /**
      * @inheritDoc
      * @throws Exception
      */
-    protected function import(array $sheet)
+    protected function import(array $sheet): void
     {
         throw new Exception("This method should never be called");
     }

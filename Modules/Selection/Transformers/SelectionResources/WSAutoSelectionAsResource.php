@@ -3,9 +3,24 @@
 namespace Modules\Selection\Transformers\SelectionResources;
 
 use Exception;
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Modules\Selection\Entities\Selection;
 
-class WSAutoSelectionAsResource extends SelectionAsResource
+/**
+ * WS Auto selection as resource.
+ */
+final class WSAutoSelectionAsResource implements Arrayable
 {
+    use HasIdsArrayFromString;
+
+    /**
+     * Ctor.
+     * @param Selection $selection
+     */
+    public function __construct(protected Selection $selection)
+    {
+    }
+
     /**
      * @return array
      * @throws Exception
@@ -14,10 +29,10 @@ class WSAutoSelectionAsResource extends SelectionAsResource
     {
         return [
             'deviation' => $this->selection->deviation,
-            'main_pumps_counts' => $this->intsArrayFromString($this->selection->main_pumps_counts),
+            'main_pumps_counts' => $this->idsArrayFromString($this->selection->main_pumps_counts),
             'reserve_pumps_count' => $this->selection->reserve_pumps_count,
-            'pump_brand_ids' => $this->intsArrayFromString($this->selection->pump_brand_ids),
-            'pump_series_ids' => $this->intsArrayFromString($this->selection->pump_series_ids),
+            'pump_brand_ids' => $this->idsArrayFromString($this->selection->pump_brand_ids),
+            'pump_series_ids' => $this->idsArrayFromString($this->selection->pump_series_ids),
             'collectors' => explode(",", $this->selection->collectors),
         ];
     }

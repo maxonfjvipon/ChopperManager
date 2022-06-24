@@ -3,9 +3,22 @@
 namespace Modules\Selection\Transformers\SelectionResources;
 
 use Exception;
+use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Modules\Selection\Entities\Selection;
 
-class WSHandleSelectionAsResource extends SelectionAsResource
+/**
+ * WS handle selection as resource.
+ */
+final class WSHandleSelectionAsResource implements Arrayable
 {
+    /**
+     * Ctor.
+     * @param Selection $selection
+     */
+    public function __construct(private Selection $selection)
+    {
+    }
+
     /**
      * @return array
      * @throws Exception

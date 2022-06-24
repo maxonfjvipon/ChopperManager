@@ -22,13 +22,13 @@ final class PumpPerformanceAsPoints implements Arrayable
      */
     public function asArray(): array
     {
-        $perfAsArr = (new ArrMapped(
-            new ArrExploded(
+        $perfAsArr = array_map(
+            fn($value) => floatval($value),
+            explode(
                 " ",
                 $this->performance
             ),
-            fn($value) => floatval($value)
-        ))->asArray();
+        );
         $arr = [];
         for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
             $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];

@@ -2,27 +2,27 @@
 
 namespace Modules\Auth\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\Auth\TkRegisterUser;
 use App\Takes\TkRedirectToRoute;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\Auth\Http\Requests\RqRegister;
-use Symfony\Component\HttpFoundation\Response;
 
-final class EpRegisterAttempt extends Controller
+/**
+ * Register attempt endpoint.
+ */
+final class EpRegisterAttempt extends TakeEndpoint
 {
     /**
-     * Handle the incoming request.
-     *
+     * Ctor.
      * @param RqRegister $request
-     * @return Responsable|Response
-     * @throws Exception
      */
-    public function __invoke(RqRegister $request): Responsable|Response
+    public function __construct(RqRegister $request)
     {
-        return (new TkRegisterUser(
-            new TkRedirectToRoute('projects.index')
-        ))->act($request);
+        parent::__construct(
+            new TkRegisterUser(
+                new TkRedirectToRoute('projects.index'),
+            ),
+            $request
+        );
     }
 }

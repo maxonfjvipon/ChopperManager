@@ -2,13 +2,15 @@
 
 namespace App\Takes;
 
-use App\Takes\Take;
+use App\Interfaces\RsAction;
+use App\Interfaces\Take;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,38 +23,20 @@ use Tests\Unit\Takes\TkJsonTest;
  */
 final class TkJson implements Take
 {
-    use Overloadable;
-
-    /**
-     * @var string|array|callable|Arrayable|Text|JsonResource $data
-     */
-    private $data;
-
-    /**
-     * @var int $status
-     */
-    private int $status;
-
-    /**
-     * @var array
-     */
-    private array $headers;
+    use Overloadable, ArrayableOverloaded;
 
     /**
      * Ctor.
-     * @param string|array|callable|Arrayable|Text|JsonResource $data
+     * @param string|array|Closure|Arrayable|Text $data
      * @param int $status
      * @param array $headers
      */
     public function __construct(
-        string|array|callable|Arrayable|Text|JsonResource $data,
-        int                                               $status = 200,
-        array                                             $headers = []
+        private string|array|Closure|Arrayable|Text $data,
+        private int                                          $status = 200,
+        private array                                        $headers = []
     )
     {
-        $this->data = $data;
-        $this->status = $status;
-        $this->headers = $headers;
     }
 
     /**
@@ -67,7 +51,6 @@ final class TkJson implements Take
             'array',
             Closure::class => fn(Closure $closure) => call_user_func($closure),
             Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
-            JsonResource::class => fn(JsonResource $resource) => $resource->toArray($request),
             Text::class => fn(Text $txt) => $txt->asString()
         ]])[0], $this->status, $this->headers);
     }

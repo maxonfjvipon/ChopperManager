@@ -3,9 +3,13 @@
 namespace Modules\Project\Http\Endpoints;
 
 use App\Http\Controllers\Controller;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Interfaces\Take;
+use App\Takes\TkInertia;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
-use Modules\Project\Actions\AcProjectData;
+use Illuminate\Http\Request;
+use Modules\Project\Actions\AcEditOrCreateProject;
 use Modules\Project\Entities\Project;
 use Modules\Project\Transformers\RcProjectToEdit;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,19 +18,20 @@ use Symfony\Component\HttpFoundation\Response;
  * Edit project endpoint.
  * @package Modules\Project\Takes
  */
-final class EpEditProject extends Controller
+final class EpEditProject extends TakeEndpoint
 {
     /**
-     * @param Project $project
-     * @param AcProjectData $action
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
+     * @param Request $request
      */
-    public function __invoke(Project $project, AcProjectData $action): Responsable|Response
+    public function __construct(Request $request)
     {
-        return inertia(
-            "Project::Edit",
-            array_merge($action(), ['project' => new RcProjectToEdit($project)])
+        parent::__construct(
+            new TkInertia(
+                'Project::Edit',
+                new AcEditOrCreateProject(Project::find($request->project))
+            ),
+            $request
         );
     }
 }

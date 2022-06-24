@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Support\Performance;
 
+use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Numerable\MaxOf;
@@ -28,15 +29,16 @@ final class PpHMax implements Numerable
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function asNumber(): float|int
     {
-        return ($max = (new MaxOf(
+        return ($max = MaxOf::new(
                 $this->head,
                 ...new ArrMapped(
                     $this->performance->asArrayAt(1),
                     fn(array $point) => $point[1]
                 )
-            ))->asNumber()) + $max * 0.1;
+            )->asNumber()) + $max * 0.1;
     }
 }
