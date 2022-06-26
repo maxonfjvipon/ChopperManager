@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Takes;
+
+use Closure;
+use Exception;
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Ctor.
+ */
+final class TkFromCallback implements Take
+{
+    /**
+     * Ctor.
+     * @param Closure $callback
+     */
+    public function __construct(private Closure $callback)
+    {
+    }
+
+    /**
+     * @param Request|null $request
+     * @return Responsable|Response
+     * @throws Exception
+     */
+    public function act(Request $request = null): Responsable|Response
+    {
+        $take = call_user_func($this->callback);
+        if (!$take instanceof Take) {
+            throw new Exception("Callback must return an instance of Take");
+        }
+        return $take->act($request);
+    }
+}

@@ -11,7 +11,6 @@ use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use JetBrains\PhpStorm\Pure;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
 use Modules\Components\Support\Armature\ArrArmatureCount;

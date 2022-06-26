@@ -3,7 +3,6 @@
 namespace Modules\Components\Support\Armature\WS;
 
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
@@ -32,9 +31,9 @@ final class ArmaWS extends ArrEnvelope
                     return new ArrMapped(
                         match ($this->pump->collector_switch->value) {
                             CollectorSwitch::Trd => new ArWSTrd($armature, $this->pump),
-                            CollectorSwitch::OvlFln => new ArWSOvlFLn($armature, $this->pump),
-                            CollectorSwitch::Fln => new ArWSFLn($armature, $this->pump),
-                            CollectorSwitch::FlnToTrd => new ArWSFLnToTrd($armature, $this->pump)
+                            CollectorSwitch::OvlFln => new ArWSOvlFln($armature, $this->pump),
+                            CollectorSwitch::Fln => new ArWSFln($armature, $this->pump),
+                            CollectorSwitch::FlnToTrd => new ArWSFlnToTrd($armature, $this->pump)
                         },
                         fn(?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
                     );

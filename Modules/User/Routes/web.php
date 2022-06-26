@@ -14,7 +14,7 @@ use Modules\User\Http\Endpoints\Profile\EpUpdateDiscount;
 use Modules\User\Http\Endpoints\EpDetailUserStatistics;
 use Modules\User\Http\Endpoints\EpCreateUser;
 use Modules\User\Http\Endpoints\EpEditUser;
-use Modules\User\Http\Endpoints\EqUsers;
+use Modules\User\Http\Endpoints\EpUsers;
 use Modules\User\Http\Endpoints\EpUsersStatistics;
 use Modules\User\Http\Endpoints\EpStoreUser;
 use Modules\User\Http\Endpoints\EpUpdateUser;
@@ -28,25 +28,22 @@ Route::prefix('profile')->as('profile.')->group(function () {
 });
 
 // USERS
-Route::prefix('users')->as('users.')->group(function () {
-    Route::middleware(['can:user_create'])->group(function () {
+Route::prefix('users')
+    ->as('users.')
+    ->middleware('admin')
+    ->group(function () {
         Route::get('create')->name('create')->uses(EpCreateUser::class);
         Route::post('/')->name('store')->uses(EpStoreUser::class);
-    });
 
-    Route::middleware(['can:user_access'])->group(function () {
-        Route::get('/')->name('index')->uses(EqUsers::class);
-        Route::get('stats')->can('user_statistics')->name('statistics')->uses(EpUsersStatistics::class);
-    });
+        Route::get('/')->name('index')->uses(EpUsers::class);
+        Route::get('stats')->name('statistics')->uses(EpUsersStatistics::class);
 
-    Route::prefix("{user}")->group(function () {
-        Route::middleware(['can:user_edit'])->group(function () {
+        Route::prefix("{user}")->group(function () {
             Route::get('edit')->name('edit')->uses(EpEditUser::class);
             Route::put('/')->name('update')->uses(EpUpdateUser::class);
-        });
 
-        Route::post('stats/detail')->can('user_statistics')->name('statistics.detail')->uses(EpDetailUserStatistics::class);
+            Route::post('stats/detail')->name('statistics.detail')->uses(EpDetailUserStatistics::class);
+        });
     });
-});
 
 

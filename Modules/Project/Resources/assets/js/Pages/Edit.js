@@ -14,7 +14,7 @@ export default function Edit() {
     // HOOKS
     const {rules} = useInputRules()
     const {filteredBoolArray} = usePermissions()
-    const {project, areas, statuses, users, auth} = usePage().props
+    const {project, areas, statuses, users, auth, contractors} = usePage().props
 
     // CONSTS
     const formName = 'edit-project-form'
@@ -46,21 +46,21 @@ export default function Edit() {
                 name: 'customer_id',
                 label: "Заказчик",
                 initialValue: project.customer_id
-            }, input: <Selection options={users} placeholder="Заказчик"/>,
+            }, input: <Selection options={contractors} placeholder="Заказчик"/>,
         },
         auth.is_admin && {
             values: {
                 name: 'installer_id',
                 label: "Монтажник",
                 initialValue: project.installer_id
-            }, input: <Selection options={users} placeholder="Установщик"/>,
+            }, input: <Selection options={contractors} placeholder="Установщик"/>,
         },
         auth.is_admin && {
             values: {
                 name: 'designer_id',
                 label: "Проектировщик",
                 initialValue: project.designer_id
-            }, input: <Selection options={users} placeholder="Установщик"/>,
+            }, input: <Selection options={contractors} placeholder="Установщик"/>,
         },
         auth.is_admin && {
             values: {

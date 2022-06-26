@@ -6,7 +6,7 @@ import {
     DownOutlined,
     LogoutOutlined,
     ProfileOutlined, SnippetsOutlined,
-    UnorderedListOutlined, OrderedListOutlined,
+    UnorderedListOutlined, OrderedListOutlined, UserOutlined,
 } from "@ant-design/icons";
 import React from "react";
 import {useStyles} from "../../Hooks/styles.hook";
@@ -30,7 +30,11 @@ export const Header = () => {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},
             route: 'pumps.index',
             label: "Насосы"
-        },
+        }, auth.is_admin && {
+            itemProps: {key: 'users', icon: <UserOutlined/>},
+            route: 'users.index',
+            label: 'Пользователи'
+        }
     ])
 
     return (

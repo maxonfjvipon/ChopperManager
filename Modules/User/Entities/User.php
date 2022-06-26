@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use JetBrains\PhpStorm\Pure;
 use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\User\Traits\UserRelationships;
@@ -22,8 +24,14 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string $last_name
  * @property string $itn
  * @property boolean $is_active
+ * @property string $organization_name
+ * @property string $phone
+ * @property string $email
  *
  * @property UserRole $role
+ * @property Carbon $created_at
+ * @property Area $area
+ * @property array<Contractor>|Collection<Contractor> $contractors
  *
  * @method static self create(array $attributes)
  */
@@ -31,8 +39,6 @@ final class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasArea, SoftDeletes;
     use UserRelationships, HasRelationships;
-
-    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -68,7 +74,8 @@ final class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'created_at' => 'datetime:d.m.Y',
+        'created_at' => 'datetime:d.m.Y H:i',
+        'updated_at' => 'datetime:d.m.Y H:i',
         'is_active' => 'boolean',
         'role' => UserRole::class,
     ];

@@ -21,7 +21,7 @@ use Modules\User\Entities\UserAndSelectionType;
 use Modules\User\Http\Endpoints\EpDetailUserStatistics;
 use Modules\User\Http\Endpoints\EpCreateUser;
 use Modules\User\Http\Endpoints\EpEditUser;
-use Modules\User\Http\Endpoints\EqUsers;
+use Modules\User\Http\Endpoints\EpUsers;
 use Modules\User\Http\Endpoints\EpUsersStatistics;
 use Modules\User\Http\Endpoints\EpStoreUser;
 use Modules\User\Http\Endpoints\EpUpdateUser;
@@ -35,7 +35,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see EqUsers
+     * @see EpUsers
      * @see EpEditUser
      * @see EpCreateUser
      * @see EpUsersStatistics
@@ -60,7 +60,7 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see EqUsers
+     * @see EpUsers
      * @author Max Trunnikov
      */
     public function test_users_index_endpoint()

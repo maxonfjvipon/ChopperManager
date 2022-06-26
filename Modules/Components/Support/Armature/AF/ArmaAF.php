@@ -34,9 +34,9 @@ final class ArmaAF extends ArrEnvelope
                         new ArrMapped(
                             match ($this->pump->collector_switch->value) {
                                 CollectorSwitch::Trd => new ArAFTrd($armature, $this->pump),
-                                CollectorSwitch::OvlFln => new ArAFOvlFLn($armature, $this->pump),
-                                CollectorSwitch::Fln => new ArAFFLn($armature, $this->pump),
-                                CollectorSwitch::FlnToTrd => new ArAFFLnToTrd($armature, $this->pump)
+                                CollectorSwitch::OvlFln => new ArAFOvlFln($armature, $this->pump),
+                                CollectorSwitch::Fln => new ArAFFln($armature, $this->pump),
+                                CollectorSwitch::FlnToTrd => new ArAFFlnToTrd($armature, $this->pump)
                             },
                             fn(?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
                         ),

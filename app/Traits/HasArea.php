@@ -10,6 +10,9 @@ use Modules\User\Entities\Area;
  */
 trait HasArea
 {
+    /**
+     * @return BelongsTo
+     */
     public function area(): BelongsTo
     {
         return $this->belongsTo(Area::class, 'area_id');

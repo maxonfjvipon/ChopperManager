@@ -11063,7 +11063,8 @@ function Create() {
       areas = _usePage$props.areas,
       statuses = _usePage$props.statuses,
       users = _usePage$props.users,
-      auth = _usePage$props.auth;
+      auth = _usePage$props.auth,
+      contractors = _usePage$props.contractors;
 
   var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_9__.usePermissions)(),
       filteredBoolArray = _usePermissions.filteredBoolArray; // CONSTS
@@ -11105,7 +11106,7 @@ function Create() {
       label: "Заказчик"
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A"
     })
   }, auth.is_admin && {
@@ -11114,7 +11115,7 @@ function Create() {
       label: "Установщик"
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
     })
   }, auth.is_admin && {
@@ -11123,7 +11124,7 @@ function Create() {
       label: "Проектировщик"
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
     })
   }, auth.is_admin && {
@@ -11216,7 +11217,8 @@ function Edit() {
       areas = _usePage$props.areas,
       statuses = _usePage$props.statuses,
       users = _usePage$props.users,
-      auth = _usePage$props.auth; // CONSTS
+      auth = _usePage$props.auth,
+      contractors = _usePage$props.contractors; // CONSTS
 
   var formName = 'edit-project-form';
   var items = filteredBoolArray([{
@@ -11258,7 +11260,7 @@ function Edit() {
       initialValue: project.customer_id
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A"
     })
   }, auth.is_admin && {
@@ -11268,7 +11270,7 @@ function Edit() {
       initialValue: project.installer_id
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
     })
   }, auth.is_admin && {
@@ -11278,7 +11280,7 @@ function Edit() {
       initialValue: project.designer_id
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: users,
+      options: contractors,
       placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
     })
   }, auth.is_admin && {

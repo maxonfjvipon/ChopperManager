@@ -3,6 +3,7 @@
 namespace Modules\Project\Actions;
 
 use App\Interfaces\RsAction;
+use Auth;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
@@ -12,6 +13,7 @@ use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectStatus;
 use Modules\Project\Transformers\RcProjectToEdit;
 use Modules\User\Entities\Area;
+use Modules\User\Entities\Contractor;
 use Modules\User\Entities\User;
 
 /**
@@ -31,11 +33,22 @@ final class AcEditOrCreateProject extends ArrEnvelope
                 [
                     'areas' => Area::allOrCached(),
                     'statuses' => ProjectStatus::asArrayForSelect(),
-                    'users' => User::all()->map(fn(User $user) => [
-                        'id' => $user->id,
-                        'name' => $user->full_name
-                    ])
+                    'contractors' => Auth::user()
+                        ->contractors
+                        ->map(fn(Contractor $contractor) => [
+                            'id' => $contractor->id,
+                            'name' => $contractor->name
+                        ])
                 ],
+                new ArrIf(
+                    Auth::user()->isAdmin(),
+                    fn() => [
+                        'users' => User::all()->map(fn(User $user) => [
+                            'id' => $user->id,
+                            'name' => $user->full_name
+                        ])
+                    ]
+                ),
                 new ArrIf(
                     !!$project,
                     fn() => ['project' => new RcProjectToEdit($project)]

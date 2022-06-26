@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Contractor.
+ *
+ * @property int $id
+ * @property string $name
  */
 final class Contractor extends Model
 {

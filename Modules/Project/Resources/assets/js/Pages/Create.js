@@ -13,7 +13,7 @@ import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissio
 export default function Create() {
     // HOOKS
     const {rules} = useInputRules()
-    const {areas, statuses, users, auth} = usePage().props
+    const {areas, statuses, users, auth, contractors} = usePage().props
     const {filteredBoolArray} = usePermissions()
 
     // CONSTS
@@ -41,17 +41,17 @@ export default function Create() {
             values: {
                 name: 'customer_id',
                 label: "Заказчик",
-            }, input: <Selection options={users} placeholder="Заказчик"/>,
+            }, input: <Selection options={contractors} placeholder="Заказчик"/>,
         }, auth.is_admin && {
             values: {
                 name: 'installer_id',
                 label: "Установщик",
-            }, input: <Selection options={users} placeholder="Установщик"/>,
+            }, input: <Selection options={contractors} placeholder="Установщик"/>,
         }, auth.is_admin && {
             values: {
                 name: 'designer_id',
                 label: "Проектировщик",
-            }, input: <Selection options={users} placeholder="Установщик"/>,
+            }, input: <Selection options={contractors} placeholder="Установщик"/>,
         }, auth.is_admin && {
             values: {
                 name: 'dealer_id',

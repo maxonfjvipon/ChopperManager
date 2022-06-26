@@ -5,6 +5,7 @@ namespace Modules\Project\Traits;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Selection\Entities\Selection;
+use Modules\User\Entities\Contractor;
 use Modules\User\Entities\User;
 
 /**
@@ -25,7 +26,7 @@ trait ProjectRelationShips
      */
     public function installer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'installer_id');
+        return $this->belongsTo(Contractor::class, 'installer_id');
     }
 
     /**
@@ -33,7 +34,7 @@ trait ProjectRelationShips
      */
     public function customer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(Contractor::class, 'customer_id');
     }
 
     /**
@@ -41,7 +42,7 @@ trait ProjectRelationShips
      */
     public function designer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'designer_id');
+        return $this->belongsTo(Contractor::class, 'designer_id');
     }
 
     /**

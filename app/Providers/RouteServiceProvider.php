@@ -9,19 +9,13 @@ use JetBrains\PhpStorm\Pure;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * @var string|null $moduleName
-     */
-    private ?string $moduleName;
-
-    /**
      * Ctor.
      * @param $app
      * @param string|null $moduleName
      */
-    #[Pure] public function __construct($app, string $moduleName = null)
+    #[Pure] public function __construct($app, private ?string $moduleName = null)
     {
         parent::__construct($app);
-        $this->moduleName = $moduleName;
     }
 
     /**

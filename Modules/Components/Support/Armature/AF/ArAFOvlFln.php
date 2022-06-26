@@ -14,7 +14,7 @@ use Modules\Pump\Entities\Pump;
 /**
  * Armature fire for {@see CollectorSwitch::OvlFln}
  */
-final class ArAFOvlFLn extends ArrEnvelope
+final class ArAFOvlFln extends ArrEnvelope
 {
     /**
      * Ctor.

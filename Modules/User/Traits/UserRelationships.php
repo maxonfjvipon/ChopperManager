@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Project\Entities\Project;
 use Modules\PumpSeries\Entities\PumpSeries;
+use Modules\User\Entities\Contractor;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 
+/**
+ * User relationships.
+ */
 trait UserRelationships
 {
     /**
@@ -35,6 +39,14 @@ trait UserRelationships
     public function available_series(): BelongsToMany
     {
         return $this->belongsToMany(PumpSeries::class, 'users_pump_series', 'user_id', 'series_id');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function contractors(): BelongsToMany
+    {
+        return $this->belongsToMany(Contractor::class, 'users_contractors', 'user_id', 'contractor_id');
     }
 
 //    public function discounts(): HasMany

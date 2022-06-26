@@ -12,7 +12,7 @@ use Modules\Pump\Entities\Pump;
 /**
  * Armature water for {@see CollectorSwitch::Fln}
  */
-final class ArWSFLn implements Arrayable
+final class ArWSFln implements Arrayable
 {
     /**
      * @param Collection|array $armature

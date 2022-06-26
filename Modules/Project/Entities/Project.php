@@ -13,6 +13,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Project\Traits\ProjectRelationShips;
 use Modules\User\Entities\Area;
 use Modules\User\Entities\ClientRole;
+use Modules\User\Entities\Contractor;
 use Modules\User\Entities\User;
 use phpDocumentor\Reflection\Types\Array_;
 use Spatie\Permission\Models\Permission;
@@ -34,15 +35,15 @@ use Spatie\Permission\Models\Permission;
  *
  * @property ProjectStatus $status
  * @property User $user
- * @property User $installer
- * @property User $designer
- * @property User $customer
+ * @property Contractor $installer
+ * @property Contractor $designer
+ * @property Contractor $customer
  * @property User $dealer
  * @property Area $area
  *
  * @method static self find(int $id)
  */
-class Project extends Model implements Arrayable
+final class Project extends Model implements Arrayable
 {
     use HasFactory, HasArea, SoftDeletes, ProjectRelationShips;
 
@@ -84,9 +85,9 @@ class Project extends Model implements Arrayable
             'name' => $this->name,
             'area' => $this->area->name,
             'status' => $this->status->description,
-            'installer' => $this->installer?->full_name,
-            'designer' => $this->designer?->full_name,
-            'customer' => $this->customer?->full_name,
+            'installer' => $this->installer?->name,
+            'designer' => $this->designer?->name,
+            'customer' => $this->customer?->name,
             'dealer' => $this->dealer?->full_name,
             'created_at' => formatted_date($this->created_at),
             'updated_at' => formatted_date($this->updated_at),
@@ -116,7 +117,7 @@ class Project extends Model implements Arrayable
     {
         return $query->with([
             'installer' => ($callback = function ($query) {
-                $query->select('id', 'first_name', 'middle_name', 'last_name');
+                $query->select('id', 'name');
             }),
             'designer' => $callback,
             'customer' => $callback,
