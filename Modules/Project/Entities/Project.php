@@ -3,7 +3,6 @@
 namespace Modules\Project\Entities;
 
 use App\Traits\HasArea;
-use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,11 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Project\Traits\ProjectRelationShips;
 use Modules\User\Entities\Area;
-use Modules\User\Entities\ClientRole;
 use Modules\User\Entities\Contractor;
 use Modules\User\Entities\User;
-use phpDocumentor\Reflection\Types\Array_;
-use Spatie\Permission\Models\Permission;
 
 /**
  * Project.
@@ -116,12 +112,10 @@ final class Project extends Model implements Arrayable
     public function scopeWithAllPartners($query): mixed
     {
         return $query->with([
-            'installer' => ($callback = function ($query) {
-                $query->select('id', 'name');
-            }),
+            'installer' => ($callback = fn($query) => $query->select('id', 'name')),
             'designer' => $callback,
             'customer' => $callback,
-            'dealer' => $callback,
+            'dealer' => fn($query) => $query->select('id', 'first_name', 'middle_name', 'last_name'),
         ]);
     }
 }

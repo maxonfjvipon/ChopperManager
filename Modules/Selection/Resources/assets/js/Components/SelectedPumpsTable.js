@@ -74,7 +74,7 @@ export const SelectedPumpsTable = ({
             loading={loading}
             clickHandler={setStationToShow}
             clickRecord
-            pagination={{defaultPageSize: 20, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
+            pagination={{defaultPageSize: 10, pageSizeOptions: [10, 20, 50, 100, 500, 1000]}}
             // scroll={{y: "40vh"}}
         />
     ), [selectedPumps, locales, loading, ...dependencies])

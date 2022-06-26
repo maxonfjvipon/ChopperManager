@@ -2,6 +2,7 @@
 
 namespace App\Takes;
 
+use App\Interfaces\Take;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;

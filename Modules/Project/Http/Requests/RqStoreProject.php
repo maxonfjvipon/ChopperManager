@@ -21,9 +21,9 @@ class RqStoreProject extends FormRequest
             'area_id' => ['required', 'exists:areas,id'],
             'status' => ['required', new EnumValue(ProjectStatus::class)],
             'description' => ['sometimes', 'nullable', 'string'],
-            'installer_id' => ['sometimes', 'nullable', 'exists:users,id'],
-            'customer_id' => ['sometimes', 'nullable', 'exists:users,id'],
-            'designer_id' => ['sometimes', 'nullable', 'exists:users,id'],
+            'installer_id' => ['sometimes', 'nullable', 'exists:contractors,id'],
+            'customer_id' => ['sometimes', 'nullable', 'exists:contractors,id'],
+            'designer_id' => ['sometimes', 'nullable', 'exists:contractors,id'],
             'dealer_id' => ['sometimes', 'nullable', 'exists:users,id'],
         ];
     }
