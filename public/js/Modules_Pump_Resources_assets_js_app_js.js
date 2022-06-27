@@ -9827,7 +9827,6 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     },
     afterVisibleChange: function afterVisibleChange(visible) {
       if (visible && needCurve) {
-        console.log(pumpInfo);
         document.getElementById('pump_curves').innerHTML = pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.curves;
       }
     },

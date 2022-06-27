@@ -204,7 +204,6 @@ export const PumpPropsDrawer = ({
             }}
             afterVisibleChange={visible => {
                 if (visible && needCurve) {
-                    console.log(pumpInfo)
                     document.getElementById('pump_curves').innerHTML = pumpInfo?.curves
                 }
             }}

@@ -4,9 +4,11 @@ namespace Modules\Project\Http\Requests;
 
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Modules\Project\Entities\ProjectStatus;
 
+/**
+ * Store project request.
+ */
 class RqStoreProject extends FormRequest
 {
     /**
