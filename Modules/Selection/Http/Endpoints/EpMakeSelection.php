@@ -20,8 +20,8 @@ final class EpMakeSelection extends TakeEndpoint
      */
     public function __construct(RqMakeSelection $request)
     {
-        ini_set('max_execution_time', '300');
-        ini_set('memory_limit', '100M');
+        ini_set('max_execution_time', '500');
+        ini_set('memory_limit', '500M');
         parent::__construct(
             new TkJson(new AcMakeSelection($request))
         );
