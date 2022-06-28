@@ -2,10 +2,10 @@
 
 namespace Modules\Components\Actions;
 
-use App\Interfaces\RsAction;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 
 /**i
  * Components action.
@@ -26,10 +26,16 @@ class AcComponents extends ArrEnvelope
     )
     {
         parent::__construct(
-            new ArrayableOf([
-                'filter_data' => $filterData,
-                $componentsName => $components
-            ])
+            new ArrMerged(
+                new ArrObject(
+                    'filter_data',
+                    $filterData,
+                ),
+                new ArrObject(
+                    $componentsName,
+                    $components
+                )
+            )
         );
     }
 }

@@ -5,7 +5,6 @@ namespace Modules\Selection\Support\SelectedPumps;
 use App\Interfaces\Rates;
 use Illuminate\Support\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFlatten;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
@@ -43,8 +42,8 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
     {
         $key = 1;
         parent::__construct(
-            ArrayableOf::items(
-                ...new ArrFlatten(
+            new ArrMapped(
+                new ArrFlatten(
                     new ArrMapped(
                         new ArrPumpsForSelecting($this->request), // load pumps
                         function (Pump $pump) use (&$key) {
@@ -53,13 +52,13 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                                 $this->request->main_pumps_counts,
                                 function ($mainPumpsCount) use ($pump, $minDn, &$key) {
                                     $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
-                                    $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
                                     return new ArrIf(
                                         $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
-                                        function () use ($pump, $qEnd, $mainPumpsCount, $minDn, $pumpsCount, $chassis, &$key) {
+                                        function () use ($pump, $qEnd, $mainPumpsCount, $minDn, &$key) {
                                             return new ArrIf(
                                                 new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
-                                                function () use ($minDn, $pump, $pumpsCount, $mainPumpsCount, $chassis, &$key) {
+                                                function () use ($minDn, $pump, $mainPumpsCount, &$key) {
+                                                    $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
                                                     return new ArrMapped( // foreach by collectors
                                                         new ArrCollectorsForAutoSelection(
                                                             $this->request,
@@ -97,7 +96,8 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                         },
                     ),
                     3
-                )
+                ),
+                fn(Arrayable $arr) => $arr->asArray()
             )
         );
     }

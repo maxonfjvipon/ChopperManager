@@ -2,7 +2,6 @@
 
 namespace Modules\Selection\Support\Performance;
 
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
@@ -21,11 +20,12 @@ final class PumpPerfLines extends ArrEnvelope
     public function __construct(private Pump $pump, private int $count = 1)
     {
         parent::__construct(
-            ArrayableOf::items(
-                ...new ArrMapped(
+            new ArrMapped(
+                new ArrMapped(
                     new ArrRange(1, $this->count),
                     fn($num) => new PumpPerfLine($this->pump, $num)
-                )
+                ),
+                fn(PumpPerfLine $line) => $line->asArray()
             )
         );
     }

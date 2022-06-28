@@ -4,7 +4,6 @@ namespace Modules\Selection\Support\Performance;
 
 use Maxonfjvipon\Elegant_Elephant\Any\FirstOf;
 use Maxonfjvipon\Elegant_Elephant\Any\LastOf;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
@@ -39,8 +38,8 @@ final class PumpPerfLine extends ArrEnvelope
                     $eq = new EqFromPumpCoefficients(
                         $this->pump->coefficientsAt($this->position)
                     );
-                    return ArrayableOf::items(
-                        ...new ArrMerged(
+                    return new ArrMapped(
+                        new ArrMerged(
                             $lines = new ArrSticky(
                                 new ArrMapped(
                                     new ArrRange(
@@ -75,7 +74,8 @@ final class PumpPerfLine extends ArrEnvelope
                                 ),
                                 fn() => [new SimplePoint($xxLastAsNum, $eq->y($xxLastAsNum))]
                             )
-                        )
+                        ),
+                        fn(SimplePoint $point) => $point->asArray()
                     );
                 }
             )

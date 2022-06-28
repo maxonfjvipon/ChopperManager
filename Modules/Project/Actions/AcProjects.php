@@ -4,10 +4,11 @@ namespace Modules\Project\Actions;
 
 use App\Support\ArrForFiltering;
 use Illuminate\Support\Facades\Auth;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrTernary;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrUnique;
@@ -26,34 +27,38 @@ final class AcProjects extends ArrEnvelope
     {
         parent::__construct(
             new ArrFromCallback(
-                fn() => new ArrayableOf([
-                    'projects' => $projects = new ArrSticky(
-                        new ArrTernary(
-                            Auth::user()->isAdmin(),
-                            fn() => new ArrMapped(
-                                Project::with('area')
-                                    ->withAllPartners()
-                                    ->get()
-                                    ->all(),
-                                fn(Project $project) => $project->asArrayForAdmin()
-                            ),
-                            fn() => new ArrMapped(
-                                Auth::user()->projects()->with('area')->get()->all(),
-                                fn(Project $project) => $project->asArrayforClient()
+                fn() => new ArrMerged(
+                    new ArrObject(
+                        'projects',
+                        $projects = new ArrSticky(
+                            new ArrTernary(
+                                Auth::user()->isAdmin(),
+                                fn() => new ArrMapped(
+                                    Project::with('area')
+                                        ->withAllPartners()
+                                        ->get()
+                                        ->all(),
+                                    fn(Project $project) => $project->asArrayForAdmin()
+                                ),
+                                fn() => new ArrMapped(
+                                    Auth::user()->projects()->with('area')->get()->all(),
+                                    fn(Project $project) => $project->asArrayforClient()
+                                )
                             )
                         )
                     ),
-                    'filter_data' => new ArrForFiltering([
-                        'areas' => new ArrUnique(
-                            new ArrMapped(
-                                $projects,
-                                fn($project) => $project['area']
-                            )
-                        ),
-                        'statuses' => ProjectStatus::getDescriptions()
-                    ])
-
-                ])
+                    new ArrObject(
+                        'filter_data', new ArrForFiltering([
+                            'areas' => new ArrUnique(
+                                new ArrMapped(
+                                    $projects,
+                                    fn($project) => $project['area']
+                                )
+                            ),
+                            'statuses' => ProjectStatus::getDescriptions()
+                        ])
+                    )
+                )
             )
         );
     }

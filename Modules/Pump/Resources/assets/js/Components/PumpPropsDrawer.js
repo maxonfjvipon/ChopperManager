@@ -18,6 +18,10 @@ export const PumpPropsDrawer = ({
 
     useEffect(() => {
         if (pumpInfo) {
+            form.setFieldsValue({
+                ...pumpInfo,
+                is_discontinued: pumpInfo?.is_discontinued ? "Нет" : "Да",
+            })
             setVisible(true)
         }
     }, [pumpInfo])
@@ -29,7 +33,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'article',
                 label: "Артикул",
-                initialValue: pumpInfo?.article,
+                // initialValue: pumpInfo?.article,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -40,7 +44,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'is_discontinued',
                 label: "Действует",
-                initialValue: pumpInfo?.is_discontinued ? "Нет" : "Да" || "Нет",
+                // initialValue: pumpInfo?.is_discontinued ? "Нет" : "Да" || "Нет",
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -51,7 +55,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'price',
                 label: "Цена",
-                initialValue: pumpInfo?.price.toLocaleString(),
+                // initialValue: pumpInfo?.price.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -62,7 +66,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'currency',
                 label: "Валюта",
-                initialValue: pumpInfo?.currency,
+                // initialValue: pumpInfo?.currency,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -73,7 +77,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'price_updated_at',
                 label: "Дата актуализации цены",
-                initialValue: pumpInfo?.price_updated_at,
+                // initialValue: pumpInfo?.price_updated_at,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -84,7 +88,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'size',
                 label: "Размеры, мм",
-                initialValue: pumpInfo?.size,
+                // initialValue: pumpInfo?.size,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -95,7 +99,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'weight',
                 label: "Масса, кг",
-                initialValue: pumpInfo?.weight.toLocaleString(),
+                // initialValue: pumpInfo?.weight.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -106,7 +110,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'power',
                 label: "Мощность, кВт",
-                initialValue: pumpInfo?.power.toLocaleString(),
+                // initialValue: pumpInfo?.power.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -117,7 +121,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'current',
                 label: "Ток, А",
-                initialValue: pumpInfo?.current.toLocaleString(),
+                // initialValue: pumpInfo?.current.toLocaleString(),
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -128,7 +132,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'connection_type',
                 label: "Тип соединения",
-                initialValue: pumpInfo?.connection_type,
+                // initialValue: pumpInfo?.connection_type,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -139,7 +143,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'dn_suction',
                 label: Lang.get('pages.pumps.data.dn_suction'),
-                initialValue: pumpInfo?.dn_suction,
+                // initialValue: pumpInfo?.dn_suction,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -150,7 +154,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'dn_pressure',
                 label: Lang.get('pages.pumps.data.dn_pressure'),
-                initialValue: pumpInfo?.dn_pressure,
+                // initialValue: pumpInfo?.dn_pressure,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -161,7 +165,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'collector_switch',
                 label: "Переход на коллектор",
-                initialValue: pumpInfo?.collector_switch,
+                // initialValue: pumpInfo?.collector_switch,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -172,7 +176,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'suction_height',
                 label: "Высота всаса, мм",
-                initialValue: pumpInfo?.suction_height,
+                // initialValue: pumpInfo?.suction_height,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}
@@ -183,7 +187,7 @@ export const PumpPropsDrawer = ({
             values: {
                 name: 'ptp_length',
                 label: "Монтажная длина",
-                initialValue: pumpInfo?.ptp_length,
+                // initialValue: pumpInfo?.ptp_length,
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}

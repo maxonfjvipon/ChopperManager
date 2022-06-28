@@ -4,7 +4,6 @@ namespace Modules\Selection\Support\SelectedPumps;
 
 use App\Interfaces\Rates;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
@@ -23,12 +22,11 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
      * Ctor.
      * @param RqMakeSelection $request
      * @param Rates $rates
-     * @param Collection $controlSystems
+     * @throws Exception
      */
     public function __construct(
-        private RqMakeSelection                          $request,
-        private Rates                                    $rates,
-        private Collection $controlSystems
+        private RqMakeSelection $request,
+        private Rates           $rates
     )
     {
         parent::__construct(
@@ -64,7 +62,7 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                     }
                     return ArrayableOf::items(
                         ...new ArrMapped(
-                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
+                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler),
                             function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis) {
                                 return new ArrSelectedPump(
                                     $key,

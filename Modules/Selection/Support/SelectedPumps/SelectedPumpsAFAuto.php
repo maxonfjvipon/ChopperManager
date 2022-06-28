@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Support\Collection;
 use Maxonfjvipon\Elegant_Elephant\Any\FirstOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFlatten;
@@ -30,10 +29,7 @@ use Modules\Selection\Support\Performance\PpQEnd;
 use Modules\Selection\Support\Performance\PpQStart;
 use Modules\Selection\Support\Point\IntersectionPoint;
 use Modules\Selection\Support\PumpIsGoodToSelect;
-use Modules\Selection\Support\PumpStationPrice;
 use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
-use Modules\Selection\Support\TxtCostStructure;
-use Modules\Selection\Support\TxtPumpStationName;
 
 /**
  * Auto selected pumps for AF selection.
@@ -45,13 +41,12 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
      * @param RqMakeSelection $request
      * @param Arrayable $dnsMaterials
      * @param Rates $rates
-     * @param \Illuminate\Database\Eloquent\Collection $controlSystems
+     * @throws Exception
      */
     public function __construct(
-        private RqMakeSelection                          $request,
-        private Arrayable                                $dnsMaterials,
-        private Rates                                    $rates,
-        private \Illuminate\Database\Eloquent\Collection $controlSystems
+        private RqMakeSelection $request,
+        private Arrayable       $dnsMaterials,
+        private Rates           $rates,
     )
     {
         parent::__construct(
@@ -64,8 +59,8 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                         $jockeyPump = self::jockeyPump($this->request, $this->rates);
                         $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
                     }
-                    return ArrayableOf::items(
-                        ...new ArrFlatten(
+                    return new ArrMapped(
+                        new ArrFlatten(
                             new ArrMapped(
                                 new ArrPumpsForSelecting($this->request),
                                 function (Pump $pump) use (&$key, $isSprinkler, $jockeyPump, $jockeyChassis) {
@@ -91,7 +86,7 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                                                 ),
                                                                 function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
                                                                     return new ArrMapped(
-                                                                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
+                                                                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler),
                                                                         function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump) {
                                                                             return new ArrSelectedPump(
                                                                                 $key,
@@ -120,7 +115,8 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                 },
                             ),
                             3
-                        )
+                        ),
+                        fn(ArrSelectedPump $pump) => $pump->asArray()
                     );
                 }
             )

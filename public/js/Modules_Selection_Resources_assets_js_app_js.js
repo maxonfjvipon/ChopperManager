@@ -10201,6 +10201,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var _AddPumpToProjectsDrawer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AddPumpToProjectsDrawer */ "./Modules/Pump/Resources/assets/js/Components/AddPumpToProjectsDrawer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10237,6 +10243,9 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (pumpInfo) {
+      form.setFieldsValue(_objectSpread(_objectSpread({}, pumpInfo), {}, {
+        is_discontinued: pumpInfo !== null && pumpInfo !== void 0 && pumpInfo.is_discontinued ? "Нет" : "Да"
+      }));
       setVisible(true);
     }
   }, [pumpInfo]);
@@ -10248,7 +10257,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'article',
       label: "Артикул",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.article,
+      // initialValue: pumpInfo?.article,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10259,7 +10268,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'is_discontinued',
       label: "Действует",
-      initialValue: pumpInfo !== null && pumpInfo !== void 0 && pumpInfo.is_discontinued ? "Нет" : "Да" || 0,
+      // initialValue: pumpInfo?.is_discontinued ? "Нет" : "Да" || "Нет",
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10270,7 +10279,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'price',
       label: "Цена",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.price.toLocaleString(),
+      // initialValue: pumpInfo?.price.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10281,7 +10290,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'currency',
       label: "Валюта",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.currency,
+      // initialValue: pumpInfo?.currency,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10292,7 +10301,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'price_updated_at',
       label: "Дата актуализации цены",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.price_updated_at,
+      // initialValue: pumpInfo?.price_updated_at,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10303,7 +10312,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'size',
       label: "Размеры, мм",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.size,
+      // initialValue: pumpInfo?.size,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10314,7 +10323,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'weight',
       label: "Масса, кг",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.weight.toLocaleString(),
+      // initialValue: pumpInfo?.weight.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10325,7 +10334,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'power',
       label: "Мощность, кВт",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.power.toLocaleString(),
+      // initialValue: pumpInfo?.power.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10336,7 +10345,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'current',
       label: "Ток, А",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.current.toLocaleString(),
+      // initialValue: pumpInfo?.current.toLocaleString(),
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10347,7 +10356,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'connection_type',
       label: "Тип соединения",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.connection_type,
+      // initialValue: pumpInfo?.connection_type,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10358,7 +10367,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'dn_suction',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_suction'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_suction,
+      // initialValue: pumpInfo?.dn_suction,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10369,7 +10378,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'dn_pressure',
       label: _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_0__["default"].get('pages.pumps.data.dn_pressure'),
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.dn_pressure,
+      // initialValue: pumpInfo?.dn_pressure,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10380,7 +10389,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'collector_switch',
       label: "Переход на коллектор",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.collector_switch,
+      // initialValue: pumpInfo?.collector_switch,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10391,7 +10400,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'suction_height',
       label: "Высота всаса, мм",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.suction_height,
+      // initialValue: pumpInfo?.suction_height,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -10402,7 +10411,7 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
     values: {
       name: 'ptp_length',
       label: "Монтажная длина",
-      initialValue: pumpInfo === null || pumpInfo === void 0 ? void 0 : pumpInfo.ptp_length,
+      // initialValue: pumpInfo?.ptp_length,
       className: reducedAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {

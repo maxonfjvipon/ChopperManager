@@ -21,7 +21,7 @@ final class EpShowPump extends TakeEndpoint
     {
         parent::__construct(
             new TkJson(
-                new AcShowPump(Pump::find($request->pump),)
+                new AcShowPump(Pump::find($request->pump))
             ),
             $request
         );

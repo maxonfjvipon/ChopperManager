@@ -6,9 +6,9 @@ use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Selection\Support\TxtSinglePumpMainCurvesView;
 
 /**
@@ -49,9 +49,10 @@ final class RcPumpToShow extends JsonResource
             ),
             new ArrIf(
                 !!$request->need_curves,
-                fn() => new ArrayableOf([
-                    'curves' => new TxtSinglePumpMainCurvesView($this->resource)
-                ])
+                fn() => new ArrObject(
+                    'curves',
+                    new TxtSinglePumpMainCurvesView($this->resource)
+                )
             )
         )->asArray();
     }
