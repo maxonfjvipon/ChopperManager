@@ -2,7 +2,6 @@
 
 namespace Modules\Selection\Support\Performance;
 
-use Exception;
 use Maxonfjvipon\Elegant_Elephant\Any\FirstOf;
 use Maxonfjvipon\Elegant_Elephant\Any\LastOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
@@ -21,13 +20,17 @@ use Maxonfjvipon\Elegant_Elephant\Numerable\NumSticky;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\Point\SimplePoint;
 use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
-use Modules\Selection\Traits\CalcPerformanceLines;
 
 /**
  * Pump performance line
  */
 final class PumpPerfLine extends ArrEnvelope
 {
+    /**
+     * Ctor.
+     * @param Pump $pump
+     * @param int $position
+     */
     public function __construct(private Pump $pump, private int $position = 1)
     {
         parent::__construct(

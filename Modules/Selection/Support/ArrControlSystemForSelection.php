@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Support;
 
+use Illuminate\Database\Eloquent\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Modules\Components\Entities\ControlSystem;
@@ -20,18 +21,20 @@ final class ArrControlSystemForSelection extends ArrEnvelope
      * @param Pump $pump
      * @param int $pumpsCount
      * @param bool|null $isSprinkler
+     * @param Collection|null $controlSystems
      */
     public function __construct(
         RqMakeSelection $request,
         Pump            $pump,
         int             $pumpsCount,
-        ?bool           $isSprinkler = false
+        ?bool           $isSprinkler = false,
+        ?Collection     $controlSystems = null
     )
     {
         parent::__construct(
             new ArrMapped(
                 $request->control_system_type_ids,
-                fn(int $controlSystemTypeId) => ControlSystem::allOrCached()
+                fn(int $controlSystemTypeId) => ($controlSystems ?? ControlSystem::allOrCached())
                     ->where('power', '>=', $pump->power)
                     ->where('pumps_count', $pumpsCount)
                     ->where('type_id', $controlSystemTypeId)

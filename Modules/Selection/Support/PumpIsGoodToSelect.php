@@ -38,7 +38,12 @@ final class PumpIsGoodToSelect implements Logical
      */
     public function asBool(): bool
     {
-        $qStart = new NumSticky(new PpQStart($this->pump->performance(), $this->mainPumpsCount));
+        $qStart = new NumSticky(
+            new PpQStart(
+                $this->pump->performance(),
+                $this->mainPumpsCount
+            )
+        );
         $intersectionPoint = new IntersectionPoint(
             new EqFromPumpCoefficients(
                 $this->pump->coefficientsAt($this->mainPumpsCount)

@@ -45,49 +45,47 @@ final class AcCreateOrShowSelection extends ArrEnvelope
             new ArrFromCallback(
                 function () {
                     $series_ids = self::availableSeriesIds();
-                    return ArrayableOf::items(
-                        ...new ArrMerged(
-                            [
-                                'project_id' => $this->projectId,
-                                'selection_props' => new ArrMerged(
-                                    [
-                                        'control_system_types' => array_values(
-                                            ControlSystemType::allOrCached()
-                                                ->where('station_type.key', $this->stationType)
-                                                ->all()
-                                        ),
-                                        'brands_with_series_with_pumps' => PumpBrand::with(
-                                            array_merge([
-                                                'series' => ($seriesCallback = function ($query) use ($series_ids) {
-                                                    $query->whereIn('id', $series_ids);
-                                                }),
-                                            ], $this->selectionType === SelectionType::getKey(SelectionType::Handle)
-                                                ? ['series.pumps' => fn($query) => $query->select('id', 'series_id', 'name')]
-                                                : [])
-                                        )
-                                            ->whereHas('series', $seriesCallback)
-                                            ->get(),
-                                        'collectors' => array_merge(...array_map(
-                                            fn($dn) => array_map(
-                                                fn($material) => "$dn $material",
-                                                CollectorMaterial::getDescriptions()
-                                            ),
-                                            DN::values()
-                                        )),
-                                    ],
-                                    new ArrIf(
-                                        $this->stationType === StationType::getKey(StationType::AF),
-                                        fn() => ['yes_no' => YesNo::asArrayForSelect()]
+                    return new ArrMerged(
+                        [
+                            'project_id' => $this->projectId,
+                            'selection_props' => ArrMerged::new(
+                                [
+                                    'control_system_types' => array_values(
+                                        ControlSystemType::allOrCached()
+                                            ->where('station_type.key', $this->stationType)
+                                            ->all()
+                                    ),
+                                    'brands_with_series_with_pumps' => PumpBrand::with(
+                                        array_merge([
+                                            'series' => ($seriesCallback = function ($query) use ($series_ids) {
+                                                $query->whereIn('id', $series_ids);
+                                            }),
+                                        ], $this->selectionType === SelectionType::getKey(SelectionType::Handle)
+                                            ? ['series.pumps' => fn($query) => $query->select('id', 'series_id', 'name')]
+                                            : [])
                                     )
-                                ),
-                                'selection_type' => $this->selectionType,
-                                'station_type' => $this->stationType
-                            ],
-                            new ArrIf(
-                                !!$this->selection,
-                                fn() => ['selection' => new SelectionAsResource($this->selection)]
-                            ),
-                        )
+                                        ->whereHas('series', $seriesCallback)
+                                        ->get(),
+                                    'collectors' => array_merge(...array_map(
+                                        fn($dn) => array_map(
+                                            fn($material) => "$dn $material",
+                                            CollectorMaterial::getDescriptions()
+                                        ),
+                                        DN::values()
+                                    )),
+                                ],
+                                new ArrIf(
+                                    $this->stationType === StationType::getKey(StationType::AF),
+                                    fn() => ['yes_no' => YesNo::asArrayForSelect()]
+                                )
+                            )->asArray(),
+                            'selection_type' => $this->selectionType,
+                            'station_type' => $this->stationType
+                        ],
+                        new ArrIf(
+                            !!$this->selection,
+                            fn() => ['selection' => (new SelectionAsResource($this->selection))->asArray()]
+                        ),
                     );
                 }
             )

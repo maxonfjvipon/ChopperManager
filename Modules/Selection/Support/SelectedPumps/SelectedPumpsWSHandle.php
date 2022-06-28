@@ -4,6 +4,7 @@ namespace Modules\Selection\Support\SelectedPumps;
 
 use App\Interfaces\Rates;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
@@ -25,11 +26,12 @@ final class SelectedPumpsWSHandle extends ArrEnvelope
      * Ctor.
      * @param RqMakeSelection $request
      * @param Rates $rates
-     * @throws Exception
+     * @param Collection $controlSystems
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Rates           $rates
+        private Rates           $rates,
+        private Collection      $controlSystems
     )
     {
         parent::__construct(
@@ -37,14 +39,15 @@ final class SelectedPumpsWSHandle extends ArrEnvelope
                 function () {
                     $key = 1;
                     $chassis = Chassis::appropriateFor(
-                        $pump = Pump::find($this->request->pump_id)->load([
-                            'series',
-                            'series.brand',
-                            'coefficients' => fn($query) => $query->whereBetween(
-                                'position',
-                                [1, $this->request->main_pumps_count + $this->request->reserve_pumps_count]
-                            )
-                        ]),
+                        $pump = Pump::find($this->request->pump_id)
+                            ->load([
+                                'series',
+                                'series.brand',
+                                'coefficients' => fn($query) => $query->whereBetween(
+                                    'position',
+                                    [1, $this->request->main_pumps_count + $this->request->reserve_pumps_count]
+                                )
+                            ]),
                         $pumpsCount = $this->request->main_pumps_count + $this->request->reserve_pumps_count
                     );
                     $collectors = Collector::forSelection(
@@ -59,7 +62,7 @@ final class SelectedPumpsWSHandle extends ArrEnvelope
                     );
                     return ArrayableOf::items(
                         ...new ArrMapped(
-                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount),
+                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, false, $this->controlSystems),
                             function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key) {
                                 return new ArrSelectedPump(
                                     $key,

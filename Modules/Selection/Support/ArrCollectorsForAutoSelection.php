@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Support;
 
+use Illuminate\Database\Eloquent\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
@@ -28,7 +29,7 @@ final class ArrCollectorsForAutoSelection extends ArrEnvelope
         Arrayable       $dnsMaterials,
         Pump            $pump,
         int             $pumpsCount,
-        int             $minDn
+        int             $minDn,
     )
     {
         parent::__construct(

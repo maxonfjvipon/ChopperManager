@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Actions;
 
+use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
@@ -17,6 +18,7 @@ final class AcPumpStationCurves extends ArrEnvelope
     /**
      * Ctor.
      * @param RqPumpStationCurves $request
+     * @throws Exception
      */
     public function __construct(RqPumpStationCurves $request)
     {

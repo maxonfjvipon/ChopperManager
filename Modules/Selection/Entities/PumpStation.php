@@ -63,38 +63,36 @@ final class PumpStation extends Model
             ],
             new ArrIf(
                 !!$this->flow && !!$this->head,
-                new ArrFromCallback(
-                    function () {
-                        $intersectionPoint = new IntersectionPoint(
-                            new EqFromPumpCoefficients(
-                                $this->pump->coefficientsAt($this->main_pumps_count)
-                            ),
-                            $this->flow,
-                            $this->head
-                        );
-                        return new ArrMerged(
-                            new ArrObject(
-                                "system_performance",
-                                new SystemPerformance(
-                                    $this->flow,
-                                    $this->head,
-                                    max($intersectionPoint->y(), $this->head),
-                                    $intersectionPoint->x() < 20 ? 0.1 : 1
-                                )
-                            ),
-                            [
-                                'working_point' => [
-                                    'flow' => $this->flow,
-                                    'head' => $this->head,
-                                ],
-                                'intersection_point' => [
-                                    'flow' => $intersectionPoint->x(),
-                                    'head' => $intersectionPoint->y(),
-                                ]
+                function () {
+                    $intersectionPoint = new IntersectionPoint(
+                        new EqFromPumpCoefficients(
+                            $this->pump->coefficientsAt($this->main_pumps_count)
+                        ),
+                        $this->flow,
+                        $this->head
+                    );
+                    return new ArrMerged(
+                        new ArrObject(
+                            "system_performance",
+                            new SystemPerformance(
+                                $this->flow,
+                                $this->head,
+                                max($intersectionPoint->y(), $this->head),
+                                $intersectionPoint->x() < 20 ? 0.1 : 1
+                            )
+                        ),
+                        [
+                            'working_point' => [
+                                'flow' => $this->flow,
+                                'head' => $this->head,
+                            ],
+                            'intersection_point' => [
+                                'flow' => $intersectionPoint->x(),
+                                'head' => $intersectionPoint->y(),
                             ]
-                        );
-                    }
-                )
+                        ]
+                    );
+                }
             )
         )->asArray();
         return $this;

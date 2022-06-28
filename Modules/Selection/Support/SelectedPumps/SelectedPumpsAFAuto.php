@@ -5,6 +5,7 @@ namespace Modules\Selection\Support\SelectedPumps;
 use App\Interfaces\Rates;
 use Exception;
 use Illuminate\Support\Collection;
+use Maxonfjvipon\Elegant_Elephant\Any\FirstOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
@@ -14,10 +15,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSorted;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
-use Maxonfjvipon\Elegant_Elephant\Logical\StrContains;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumSticky;
-use Maxonfjvipon\Elegant_Elephant\Numerable\Rounded;
 use Modules\Components\Entities\Chassis;
 use Modules\Components\Entities\ControlSystem;
 use Modules\Pump\Entities\DN;
@@ -47,12 +45,13 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
      * @param RqMakeSelection $request
      * @param Arrayable $dnsMaterials
      * @param Rates $rates
-     * @throws Exception
+     * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
-        private RqMakeSelection $request,
-        private Arrayable       $dnsMaterials,
-        private Rates           $rates,
+        private RqMakeSelection                          $request,
+        private Arrayable                                $dnsMaterials,
+        private Rates                                    $rates,
+        private \Illuminate\Database\Eloquent\Collection $controlSystems
     )
     {
         parent::__construct(
@@ -92,7 +91,7 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                                                 ),
                                                                 function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
                                                                     return new ArrMapped(
-                                                                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler),
+                                                                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
                                                                         function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump) {
                                                                             return new ArrSelectedPump(
                                                                                 $key,
@@ -137,36 +136,38 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
      */
     private static function jockeyPump(RqMakeSelection $request, Rates $rates): Pump
     {
-        return ArrSorted::new(
-            new ArrMapped(
-                new ArrFiltered(
-                    new ArrPumpsForJockeySelecting($request->jockey_series_ids),
-                    function (Pump $pump) use ($request) {
-                        $qEnd = (new PpQEnd($pump->performance(), 1))->asNumber();
-                        if ($request->jockey_flow < $qEnd) {
-                            $qStart = (new PpQStart($pump->performance(), 1))->asNumber();
-                            $intersectionPoint = new IntersectionPoint(
-                                new EqFromPumpCoefficients(
-                                    $pump->coefficientsAt(1)
-                                ),
-                                $request->jockey_flow,
-                                $request->jockey_head
-                            );
-                            return $request->jockey_flow >= $qStart
-                                && $intersectionPoint->x() >= $qStart + ($qEnd - $qStart) * 0.2
-                                && $intersectionPoint->x() <= $qEnd - ($qEnd - $qStart) * 0.2
-                                && $intersectionPoint->y() >= $request->jockey_head;
+        return FirstOf::new(
+            new ArrSorted(
+                new ArrMapped(
+                    new ArrFiltered(
+                        new ArrPumpsForJockeySelecting($request->jockey_series_ids),
+                        function (Pump $pump) use ($request) {
+                            $qEnd = (new PpQEnd($pump->performance(), 1))->asNumber();
+                            if ($request->jockey_flow < $qEnd) {
+                                $qStart = (new PpQStart($pump->performance(), 1))->asNumber();
+                                $intersectionPoint = new IntersectionPoint(
+                                    new EqFromPumpCoefficients(
+                                        $pump->coefficientsAt(1)
+                                    ),
+                                    $request->jockey_flow,
+                                    $request->jockey_head
+                                );
+                                return $request->jockey_flow >= $qStart
+                                    && $intersectionPoint->x() >= $qStart + ($qEnd - $qStart) * 0.2
+                                    && $intersectionPoint->x() <= $qEnd - ($qEnd - $qStart) * 0.2
+                                    && $intersectionPoint->y() >= $request->jockey_head;
 
+                            }
+                            return false;
                         }
-                        return false;
-                    }
+                    ),
+                    fn(Pump $pump) => [
+                        'pump' => $pump,
+                        'cost' => $pump->priceByRates($rates)
+                    ]
                 ),
-                fn(Pump $pump) => [
-                    'pump' => $pump,
-                    'cost' => $pump->priceByRates($rates)
-                ]
-            ),
-            'cost'
-        )->asArray()[0]['pump'];
+                'cost'
+            )
+        )->asAny()['pump'];
     }
 }

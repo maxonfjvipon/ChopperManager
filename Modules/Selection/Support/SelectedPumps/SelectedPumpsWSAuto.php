@@ -32,11 +32,13 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
      * @param RqMakeSelection $request
      * @param Arrayable $dnsMaterials
      * @param Rates $rates
+     * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
-        private RqMakeSelection $request,
-        private Arrayable       $dnsMaterials,
-        private Rates           $rates
+        private RqMakeSelection                          $request,
+        private Arrayable                                $dnsMaterials,
+        private Rates                                    $rates,
+        private \Illuminate\Database\Eloquent\Collection $controlSystems
     )
     {
         $key = 1;
@@ -68,7 +70,7 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                                                         ),
                                                         function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key) {
                                                             return new ArrMapped(
-                                                                new ArrControlSystemForSelection($this->request, $pump, $pumpsCount),
+                                                                new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, false, $this->controlSystems),
                                                                 function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key) {
                                                                     return new ArrSelectedPump(
                                                                         $key,
