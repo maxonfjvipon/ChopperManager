@@ -62,7 +62,7 @@ final class ArrCostStructure extends ArrEnvelope
                             match ($this->request->station_type) {
                                 StationType::getKey(StationType::WS) => $controlSystem?->type_id,
                                 StationType::getKey(StationType::AF) => $controlSystem
-                                    ? $controlSystem->has_jockey
+                                    ? $controlSystem->has_jockey->value
                                         ? FirePumpControlCabinet::WithJockey
                                         : FirePumpControlCabinet::NoJockey
                                     : null
