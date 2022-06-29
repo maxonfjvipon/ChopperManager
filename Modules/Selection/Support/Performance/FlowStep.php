@@ -2,6 +2,7 @@
 
 namespace Modules\Selection\Support\Performance;
 
+use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 
@@ -17,6 +18,10 @@ final class FlowStep implements Numerable
     {
     }
 
+    /**
+     * @return float|int
+     * @throws Exception
+     */
     public function asNumber(): float|int
     {
         $graphicsDist = ($_xx = $this->xx->asArray())[count($_xx) - 1] - $_xx[0];

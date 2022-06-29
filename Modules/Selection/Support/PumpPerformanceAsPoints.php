@@ -2,37 +2,42 @@
 
 namespace Modules\Selection\Support;
 
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrExploded;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
+use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
 
 /**
  * Pump performance as points array
  */
-final class PumpPerformanceAsPoints implements Arrayable
+final class PumpPerformanceAsPoints extends ArrEnvelope
 {
     /**
      * Ctor.
      * @param string $performance
      */
-    public function __construct(private string $performance) {}
-
-    /**
-     * @inheritDoc
-     */
-    public function asArray(): array
+    public function __construct(private string $performance)
     {
-        $perfAsArr = array_map(
-            fn($value) => floatval($value),
-            explode(
-                " ",
-                $this->performance
-            ),
+        parent::__construct(
+            new ArrMapped(
+                new ArrRange(
+                    1,
+                    new LengthOf(
+                        $perf = array_map(
+                            fn($value) => floatval($value),
+                            explode(
+                                " ",
+                                $this->performance
+                            ),
+                        )
+                    ),
+                    2
+                ),
+                fn(int $index) => [
+                    $perf[$index - 1],
+                    $perf[$index]
+                ]
+            )
         );
-        $arr = [];
-        for ($i = 0; $i < count($perfAsArr) - 1; $i += 2) {
-            $arr[] = [$perfAsArr[$i], $perfAsArr[$i + 1]];
-        }
-        return $arr;
     }
 }

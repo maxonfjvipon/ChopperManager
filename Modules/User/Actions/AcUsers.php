@@ -37,7 +37,7 @@ final class AcUsers extends ArrEnvelope
                         $users->all(),
                         fn(User $user) => [
                             'id' => $user->id,
-                            'created_at' => date_format($user->created_at, 'd.m.Y'),
+                            'created_at' => formatted_date($user->created_at),
                             'organization_name' => $user->organization_name,
                             'full_name' => $user->full_name,
                             'phone' => $user->phone,

@@ -8,6 +8,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Components\Entities\YesNo;
@@ -45,9 +46,10 @@ final class AcCreateOrShowSelection extends ArrEnvelope
                 function () {
                     $series_ids = self::availableSeriesIds();
                     return new ArrMerged(
-                        [
-                            'project_id' => $this->projectId,
-                            'selection_props' => ArrMerged::new(
+                        ['project_id' => $this->projectId],
+                        new ArrObject(
+                            "selection_props",
+                            new ArrMerged(
                                 [
                                     'control_system_types' => array_values(
                                         ControlSystemType::allOrCached()
@@ -77,13 +79,19 @@ final class AcCreateOrShowSelection extends ArrEnvelope
                                     $this->stationType === StationType::getKey(StationType::AF),
                                     fn() => ['yes_no' => YesNo::asArrayForSelect()]
                                 )
-                            )->asArray(),
+                            )
+                        ),
+                        [
+                            'project_id' => $this->projectId,
                             'selection_type' => $this->selectionType,
                             'station_type' => $this->stationType
                         ],
                         new ArrIf(
                             !!$this->selection,
-                            fn() => ['selection' => (new SelectionAsResource($this->selection))->asArray()]
+                            fn() => new ArrObject(
+                                "selection",
+                                new SelectionAsResource($this->selection)
+                            )
                         ),
                     );
                 }

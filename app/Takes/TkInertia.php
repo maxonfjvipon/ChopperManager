@@ -2,17 +2,14 @@
 
 namespace App\Takes;
 
-use App\Interfaces\RsAction;
 use App\Interfaces\Take;
-use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
+use Maxonfjvipon\Elegant_Elephant\CastMixed;
 use Maxonfjvipon\Elegant_Elephant\Text;
-use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Unit\Takes\TkInertiaTest;
 
@@ -23,27 +20,15 @@ use Tests\Unit\Takes\TkInertiaTest;
  */
 final class TkInertia implements Take
 {
-    use Overloadable, ArrayableOverloaded;
-
-    /**
-     * @var string|Text $component
-     */
-    private string|Text $component;
-
-    /**
-     * @var array|callable|Arrayable $props
-     */
-    private $props;
+    use CastMixed;
 
     /**
      * Ctor.
      * @param string|Text $component
-     * @param array|callable|Arrayable $props
+     * @param array|Arrayable $props
      */
-    public function __construct(string|Text $component, array|callable|Arrayable $props = [])
+    public function __construct(private string|Text $component, private array|Arrayable $props = [])
     {
-        $this->component = $component;
-        $this->props = $props;
     }
 
     /**
@@ -53,13 +38,9 @@ final class TkInertia implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return Inertia::render(...$this->overload([$this->component, $this->props], [[
-            'string',
-            Text::class => fn(Text $txt) => $txt->asString()
-        ], [
-            'array',
-            Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
-            Closure::class => fn(Closure $closure) => call_user_func($closure),
-        ]]));
+        return Inertia::render(
+            $this->castMixed($this->component),
+            $this->castMixed($this->props)
+        );
     }
 }

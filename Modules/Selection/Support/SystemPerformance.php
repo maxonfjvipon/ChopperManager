@@ -3,6 +3,9 @@
 namespace Modules\Selection\Support;
 
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
 
 /**
  * System performance.
@@ -20,7 +23,8 @@ final class SystemPerformance implements Arrayable
         private float $flow,
         private float $head,
         private float $to,
-        private float $dist = 1)
+        private float $dist = 1
+    )
     {
     }
 
@@ -33,10 +37,9 @@ final class SystemPerformance implements Arrayable
         $systemPerformance = [];
         $y = 0;
         for ($q = 0.1; $y < $this->to; $q += $this->dist) {
-            $y = $this->head / ($this->flow * $this->flow) * $q * $q;
             $systemPerformance[] = [
                 'x' => $q,
-                'y' => $y
+                'y' => $y = $this->head / ($this->flow * $this->flow) * $q * $q
             ];
         }
         return $systemPerformance;

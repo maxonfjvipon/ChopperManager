@@ -21,11 +21,9 @@ final class PumpPerfLines extends ArrEnvelope
     {
         parent::__construct(
             new ArrMapped(
-                new ArrMapped(
-                    new ArrRange(1, $this->count),
-                    fn($num) => new PumpPerfLine($this->pump, $num)
-                ),
-                fn(PumpPerfLine $line) => $line->asArray()
+                new ArrRange(1, $this->count),
+                fn($num) => new PumpPerfLine($this->pump, $num),
+                true
             )
         );
     }

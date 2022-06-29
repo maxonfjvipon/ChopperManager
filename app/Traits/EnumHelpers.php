@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMappedKeyValue;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 
 /**
  * Enum helpers
@@ -26,12 +27,14 @@ trait EnumHelpers
      */
     public static function asArrayForSelect(): array
     {
-        return ArrMappedKeyValue::new(
-            self::asSelectArray(),
-            fn($value, $description) => [
-                'id' => $value,
-                'name' => $description
-            ]
+        return ArrValues::new(
+            ArrMappedKeyValue::new(
+                self::asSelectArray(),
+                fn($value, $description) => [
+                    'id' => $value,
+                    'name' => $description
+                ]
+            )
         )->asArray();
     }
 

@@ -3,6 +3,7 @@
 namespace Modules\Selection\Support;
 
 use App\Interfaces\Rates;
+use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
@@ -25,7 +26,7 @@ final class ArrCostStructure extends ArrEnvelope
      * @param Rates $rates
      * @param array $components
      * @param int $pumpsCount
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(
         private RqMakeSelection $request,

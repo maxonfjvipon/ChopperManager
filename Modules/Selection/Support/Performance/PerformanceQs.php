@@ -5,15 +5,12 @@ namespace Modules\Selection\Support\Performance;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Maxonfjvipon\OverloadedElephant\Overloadable;
 
 /**
  * Array of flow values of pump performance
  */
 final class PerformanceQs extends ArrEnvelope
 {
-    use Overloadable;
-
     /**
      * Ctor.
      * @param array|PumpPerformance $performance
@@ -24,10 +21,9 @@ final class PerformanceQs extends ArrEnvelope
     {
         parent::__construct(
             new ArrMapped(
-                $this->overload([$this->performance], [[
-                    'array',
-                    PumpPerformance::class => fn(PumpPerformance $perf) => $perf->asArrayAt($this->pos)
-                ]])[0],
+                is_array($this->performance)
+                    ? $this->performance
+                    : $this->performance->asArrayAt($this->pos),
                 fn(array $point) => $point[0]
             )
         );

@@ -42,62 +42,60 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
     {
         $key = 1;
         parent::__construct(
-            new ArrMapped(
-                new ArrFlatten(
-                    new ArrMapped(
-                        new ArrPumpsForSelecting($this->request), // load pumps
-                        function (Pump $pump) use (&$key) {
-                            $minDn = DN::minDNforPump($pump); // min DN for $pump
-                            return new ArrMapped(
-                                $this->request->main_pumps_counts,
-                                function ($mainPumpsCount) use ($pump, $minDn, &$key) {
-                                    $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
-                                    return new ArrIf(
-                                        $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
-                                        function () use ($pump, $qEnd, $mainPumpsCount, $minDn, &$key) {
-                                            return new ArrIf(
-                                                new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
-                                                function () use ($minDn, $pump, $mainPumpsCount, &$key) {
-                                                    $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
-                                                    return new ArrMapped( // foreach by collectors
-                                                        new ArrCollectorsForAutoSelection(
-                                                            $this->request,
-                                                            $this->dnsMaterials,
-                                                            $pump,
-                                                            $pumpsCount,
-                                                            $minDn
-                                                        ),
-                                                        function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key) {
-                                                            return new ArrMapped(
-                                                                new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, false, $this->controlSystems),
-                                                                function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key) {
-                                                                    return new ArrSelectedPump(
-                                                                        $key,
-                                                                        $this->request,
-                                                                        $mainPumpsCount,
-                                                                        $this->rates,
-                                                                        [
-                                                                            'pump' => $pump,
-                                                                            'control_system' => $controlSystem,
-                                                                            'chassis' => $chassis,
-                                                                            'collectors' => $_collectors,
-                                                                        ]
-                                                                    );
-                                                                }
-                                                            );
-                                                        }
-                                                    );
-                                                }
-                                            );
-                                        }
-                                    );
-                                }
-                            );
-                        },
-                    ),
-                    3
+            new ArrFlatten(
+                new ArrMapped(
+                    new ArrPumpsForSelecting($this->request), // load pumps
+                    function (Pump $pump) use (&$key) {
+                        $minDn = DN::minDNforPump($pump); // min DN for $pump
+                        return new ArrMapped(
+                            $this->request->main_pumps_counts,
+                            function ($mainPumpsCount) use ($pump, $minDn, &$key) {
+                                $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
+                                return new ArrIf(
+                                    $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
+                                    function () use ($pump, $qEnd, $mainPumpsCount, $minDn, &$key) {
+                                        return new ArrIf(
+                                            new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
+                                            function () use ($minDn, $pump, $mainPumpsCount, &$key) {
+                                                $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
+                                                return new ArrMapped( // foreach by collectors
+                                                    new ArrCollectorsForAutoSelection(
+                                                        $this->request,
+                                                        $this->dnsMaterials,
+                                                        $pump,
+                                                        $pumpsCount,
+                                                        $minDn
+                                                    ),
+                                                    function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key) {
+                                                        return new ArrMapped(
+                                                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, false, $this->controlSystems),
+                                                            function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key) {
+                                                                return new ArrSelectedPump(
+                                                                    $key,
+                                                                    $this->request,
+                                                                    $mainPumpsCount,
+                                                                    $this->rates,
+                                                                    [
+                                                                        'pump' => $pump,
+                                                                        'control_system' => $controlSystem,
+                                                                        'chassis' => $chassis,
+                                                                        'collectors' => $_collectors,
+                                                                    ]
+                                                                );
+                                                            },
+                                                            true
+                                                        );
+                                                    }
+                                                );
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+                    },
                 ),
-                fn(Arrayable $arr) => $arr->asArray()
+                3
             )
         );
     }

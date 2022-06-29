@@ -2,17 +2,14 @@
 
 namespace App\Takes;
 
-use App\Interfaces\RsAction;
 use App\Interfaces\Take;
-use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
+use Maxonfjvipon\Elegant_Elephant\CastMixed;
 use Maxonfjvipon\Elegant_Elephant\Text;
-use Maxonfjvipon\OverloadedElephant\Overloadable;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Unit\Takes\TkJsonTest;
 
@@ -23,16 +20,16 @@ use Tests\Unit\Takes\TkJsonTest;
  */
 final class TkJson implements Take
 {
-    use Overloadable, ArrayableOverloaded;
+    use ArrayableOverloaded, CastMixed;
 
     /**
      * Ctor.
-     * @param string|array|Closure|Arrayable|Text $data
+     * @param string|array|Arrayable|Text $data
      * @param int $status
      * @param array $headers
      */
     public function __construct(
-        private string|array|Closure|Arrayable|Text $data,
+        private string|array|Arrayable|Text $data,
         private int                                          $status = 200,
         private array                                        $headers = []
     )
@@ -45,13 +42,6 @@ final class TkJson implements Take
      */
     public function act(Request $request = null): Responsable|Response
     {
-        return response()->json($this->overload([$this->data], [[
-            'boolean',
-            'string',
-            'array',
-            Closure::class => fn(Closure $closure) => call_user_func($closure),
-            Arrayable::class => fn(Arrayable $arr) => $arr->asArray(),
-            Text::class => fn(Text $txt) => $txt->asString()
-        ]])[0], $this->status, $this->headers);
+        return response()->json($this->castMixed($this->data), $this->status, $this->headers);
     }
 }

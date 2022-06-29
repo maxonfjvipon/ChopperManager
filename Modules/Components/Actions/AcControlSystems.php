@@ -3,7 +3,10 @@
 namespace Modules\Components\Actions;
 
 use App\Support\ArrForFiltering;
-use Illuminate\Support\Collection;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Components\Entities\ControlSystem;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Components\Entities\YesNo;
@@ -17,21 +20,39 @@ final class AcControlSystems extends AcComponents
 {
     /**
      * Ctor.
+     * @throws Exception
      */
     public function __construct()
     {
+        $controlSystems = ControlSystem::allOrCached()->load('type');
         parent::__construct(
-            new ArrForFiltering([
-                'pumps_counts' => [2, 3, 4, 5, 6],
-                'montage_types' => MontageType::getDescriptions(),
-                'gate_valves_counts' => [0, 1, 2],
-                'yes_no' => YesNo::getDescriptions(),
-            ]),
+            new ArrMerged(
+                new ArrForFiltering([
+                    'pumps_counts' => [2, 3, 4, 5, 6],
+                    'montage_types' => MontageType::getDescriptions(),
+                    'gate_valves_counts' => [0, 1, 2],
+                    'yes_no' => YesNo::getDescriptions(),
+                ]),
+                new ArrObject(
+                    'powers',
+                    new ArrForFiltering(
+                        array_map(
+                            fn(int $stationType) => $controlSystems
+                                ->where('type.station_type.value', $stationType)
+                                ->unique('power')
+                                ->sortBy('power')
+                                ->pluck('power')
+                                ->all(),
+                            StationType::getValues()
+                        )
+                    )
+                )
+            ),
             'control_systems',
             [
                 self::stationTypeItems(
                     StationType::fromValue(StationType::WS),
-                    $controlSystems = ControlSystem::with('type')->get(),
+                    $controlSystems,
                     fn(ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,
                         'power' => $controlSystem->power,

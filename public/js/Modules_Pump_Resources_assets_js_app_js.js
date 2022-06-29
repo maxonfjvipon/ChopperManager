@@ -9948,8 +9948,9 @@ function Index() {
   }),
       _useState10 = _slicedToArray(_useState9, 2),
       pagination = _useState10[0],
-      setPagination = _useState10[1]; // CONSTS
+      setPagination = _useState10[1];
 
+  console.log(filter_data); // CONSTS
 
   var searchFieldId = "search-pumps";
   var columns = [{

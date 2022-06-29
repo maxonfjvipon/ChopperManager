@@ -6,7 +6,6 @@ use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Logical\Conjunction;
 use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
-use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtIf;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtJoined;
@@ -25,10 +24,9 @@ final class TxtCostStructure extends TxtEnvelope
         private Arrayable $structure
     )
     {
-        $structure = $this->structure->asArray();
         parent::__construct(
             new TxtJoined(
-                "Насос: " . $structure['pump'],
+                "Насос: " . ($structure = $this->structure->asArray())['pump'],
                 "\nНасосы: " . $structure['pumps'],
                 "\nСистема управления: " . $structure['control_system'],
                 "\nРама: " . $structure['chassis'],

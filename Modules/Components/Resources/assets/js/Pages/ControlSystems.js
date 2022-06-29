@@ -19,6 +19,8 @@ export default function ControlSystems() {
                 title: 'Мощность ПЧ',
                 dataIndex: 'power',
                 sorter: (a, b) => a.power - b.power,
+                filters: filter_data.powers[0],
+                onFilter: (power, record) => record.power === power,
             },
             {
                 title: 'Количество насосов',
@@ -54,6 +56,8 @@ export default function ControlSystems() {
                 title: 'Мощность ПЧ',
                 dataIndex: 'power',
                 sorter: (a, b) => a.power - b.power,
+                filters: filter_data.powers[1],
+                onFilter: (power, record) => record.power === power,
             },
             {
                 title: 'Количество насосов',

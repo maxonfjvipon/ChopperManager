@@ -5,14 +5,13 @@ namespace Modules\Selection\Support\Regression;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumerableOverloaded;
-use Maxonfjvipon\OverloadedElephant\Overloadable;
 
 /**
  * Polynomial equation
  */
 trait CanCalcPolynomialEquation
 {
-    use Overloadable, NumerableOverloaded;
+    use NumerableOverloaded;
 
     /**
      * @throws Exception

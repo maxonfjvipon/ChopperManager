@@ -8166,6 +8166,10 @@ function ControlSystems() {
     dataIndex: 'power',
     sorter: function sorter(a, b) {
       return a.power - b.power;
+    },
+    filters: filter_data.powers[0],
+    onFilter: function onFilter(power, record) {
+      return record.power === power;
     }
   }, {
     title: 'Количество насосов',
@@ -8200,6 +8204,10 @@ function ControlSystems() {
     dataIndex: 'power',
     sorter: function sorter(a, b) {
       return a.power - b.power;
+    },
+    filters: filter_data.powers[1],
+    onFilter: function onFilter(power, record) {
+      return record.power === power;
     }
   }, {
     title: 'Количество насосов',

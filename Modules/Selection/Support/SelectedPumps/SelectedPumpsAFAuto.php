@@ -41,12 +41,14 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
      * @param RqMakeSelection $request
      * @param Arrayable $dnsMaterials
      * @param Rates $rates
-     * @throws Exception
+     * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
-        private RqMakeSelection $request,
-        private Arrayable       $dnsMaterials,
-        private Rates           $rates,
+        private RqMakeSelection                          $request,
+        private Arrayable                                $dnsMaterials,
+        private Rates                                    $rates,
+        private \Illuminate\Database\Eloquent\Collection $controlSystems
+
     )
     {
         parent::__construct(
@@ -59,64 +61,62 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                         $jockeyPump = self::jockeyPump($this->request, $this->rates);
                         $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
                     }
-                    return new ArrMapped(
-                        new ArrFlatten(
-                            new ArrMapped(
-                                new ArrPumpsForSelecting($this->request),
-                                function (Pump $pump) use (&$key, $isSprinkler, $jockeyPump, $jockeyChassis) {
-                                    $minDn = DN::minDNforPump($pump); // min DN for $pump
-                                    return new ArrMapped(
-                                        $this->request->main_pumps_counts,
-                                        function ($mainPumpsCount) use ($pump, $minDn, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
-                                            $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
-                                            $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
-                                            return new ArrIf(
-                                                $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
-                                                function () use ($pump, $qEnd, $mainPumpsCount, $minDn, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump, $isSprinkler) {
-                                                    return new ArrIf( // if pump is appropriate
-                                                        new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
-                                                        function () use ($minDn, $pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis, $isSprinkler) {
-                                                            return new ArrMapped( // foreach by collectors
-                                                                new ArrCollectorsForAutoSelection(
-                                                                    $this->request,
-                                                                    $this->dnsMaterials,
-                                                                    $pump,
-                                                                    $pumpsCount,
-                                                                    $minDn
-                                                                ),
-                                                                function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
-                                                                    return new ArrMapped(
-                                                                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler),
-                                                                        function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump) {
-                                                                            return new ArrSelectedPump(
-                                                                                $key,
-                                                                                $this->request,
-                                                                                $mainPumpsCount,
-                                                                                $this->rates,
-                                                                                [
-                                                                                    'pump' => $pump,
-                                                                                    'control_system' => $controlSystem,
-                                                                                    'chassis' => $chassis,
-                                                                                    'collectors' => $_collectors,
-                                                                                    'jockey_pump' => $jockeyPump,
-                                                                                    'jockey_chassis' => $jockeyChassis
-                                                                                ]
-                                                                            );
-                                                                        }
-                                                                    );
-                                                                }
-                                                            );
-                                                        }
-                                                    );
-                                                }
-                                            );
-                                        }
-                                    );
-                                },
-                            ),
-                            3
+                    return new ArrFlatten(
+                        new ArrMapped(
+                            new ArrPumpsForSelecting($this->request),
+                            function (Pump $pump) use (&$key, $isSprinkler, $jockeyPump, $jockeyChassis) {
+                                $minDn = DN::minDNforPump($pump); // min DN for $pump
+                                return new ArrMapped(
+                                    $this->request->main_pumps_counts,
+                                    function ($mainPumpsCount) use ($pump, $minDn, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
+                                        $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
+                                        $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
+                                        return new ArrIf(
+                                            $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
+                                            function () use ($pump, $qEnd, $mainPumpsCount, $minDn, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump, $isSprinkler) {
+                                                return new ArrIf( // if pump is appropriate
+                                                    new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
+                                                    function () use ($minDn, $pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis, $isSprinkler) {
+                                                        return new ArrMapped( // foreach by collectors
+                                                            new ArrCollectorsForAutoSelection(
+                                                                $this->request,
+                                                                $this->dnsMaterials,
+                                                                $pump,
+                                                                $pumpsCount,
+                                                                $minDn
+                                                            ),
+                                                            function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
+                                                                return new ArrMapped(
+                                                                    new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
+                                                                    function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump) {
+                                                                        return new ArrSelectedPump(
+                                                                            $key,
+                                                                            $this->request,
+                                                                            $mainPumpsCount,
+                                                                            $this->rates,
+                                                                            [
+                                                                                'pump' => $pump,
+                                                                                'control_system' => $controlSystem,
+                                                                                'chassis' => $chassis,
+                                                                                'collectors' => $_collectors,
+                                                                                'jockey_pump' => $jockeyPump,
+                                                                                'jockey_chassis' => $jockeyChassis
+                                                                            ]
+                                                                        );
+                                                                    },
+                                                                    true
+                                                                );
+                                                            }
+                                                        );
+                                                    }
+                                                );
+                                            }
+                                        );
+                                    }
+                                );
+                            },
                         ),
-                        fn(ArrSelectedPump $pump) => $pump->asArray()
+                        3
                     );
                 }
             )

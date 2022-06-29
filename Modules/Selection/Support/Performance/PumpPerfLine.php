@@ -9,6 +9,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
 use Maxonfjvipon\Elegant_Elephant\Logical\EqualityOf;
@@ -38,10 +39,10 @@ final class PumpPerfLine extends ArrEnvelope
                     $eq = new EqFromPumpCoefficients(
                         $this->pump->coefficientsAt($this->position)
                     );
-                    return new ArrMapped(
-                        new ArrMerged(
-                            $lines = new ArrSticky(
-                                new ArrMapped(
+                    return new ArrMerged(
+                        $lines = new ArrSticky(
+                            new ArrMapped(
+                                $range = new ArrSticky(
                                     new ArrRange(
                                         $xxFirst = new NumSticky(
                                             new NumerableOf(
@@ -61,21 +62,24 @@ final class PumpPerfLine extends ArrEnvelope
                                             )
                                         ),
                                         $qStep = new NumSticky(new FlowStep($xx)),
-                                    ),
-                                    fn($x) => new SimplePoint($x, $eq->y($x))
-                                )
-                            ),
-                            new ArrIf(
-                                new Negation(
-                                    new EqualityOf(
-                                        new LengthOf($lines),
-                                        (($xxLastAsNum = $xxLast->asNumber()) - $xxFirst->asNumber()) / $qStep->asNumber()
                                     )
                                 ),
-                                fn() => [new SimplePoint($xxLastAsNum, $eq->y($xxLastAsNum))]
+                                fn($x) => new SimplePoint($x, $eq->y($x)),
+                                true
                             )
                         ),
-                        fn(SimplePoint $point) => $point->asArray()
+                        new ArrIf(
+                            new Negation(
+                                new EqualityOf(
+                                    new LengthOf($lines),
+                                    (($xxLastAsNum = $xxLast->asNumber()) - $xxFirst->asNumber()) / $qStep->asNumber()
+                                )
+                            ),
+                            fn() => new ArrObject(
+                                new LengthOf($range),
+                                new SimplePoint($xxLastAsNum, $eq->y($xxLastAsNum))
+                            )
+                        )
                     );
                 }
             )

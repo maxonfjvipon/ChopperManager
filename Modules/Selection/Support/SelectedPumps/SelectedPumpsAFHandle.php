@@ -4,6 +4,7 @@ namespace Modules\Selection\Support\SelectedPumps;
 
 use App\Interfaces\Rates;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
@@ -22,11 +23,13 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
      * Ctor.
      * @param RqMakeSelection $request
      * @param Rates $rates
-     * @throws Exception
+     * @param Collection $controlSystems
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Rates           $rates
+        private Rates           $rates,
+        private Collection      $controlSystems
+
     )
     {
         parent::__construct(
@@ -60,26 +63,25 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                         $jockeyPump = Pump::find($this->request->jockey_pump_id);
                         $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
                     }
-                    return ArrayableOf::items(
-                        ...new ArrMapped(
-                            new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler),
-                            function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis) {
-                                return new ArrSelectedPump(
-                                    $key,
-                                    $this->request,
-                                    $this->request->main_pumps_count,
-                                    $this->rates,
-                                    [
-                                        'pump' => $pump,
-                                        'control_system' => $controlSystem,
-                                        'chassis' => $chassis,
-                                        'collectors' => $collectors,
-                                        'jockey_pump' => $jockeyPump,
-                                        'jockey_chassis' => $jockeyChassis,
-                                    ]
-                                );
-                            }
-                        )
+                    return new ArrMapped(
+                        new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
+                        function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis) {
+                            return new ArrSelectedPump(
+                                $key,
+                                $this->request,
+                                $this->request->main_pumps_count,
+                                $this->rates,
+                                [
+                                    'pump' => $pump,
+                                    'control_system' => $controlSystem,
+                                    'chassis' => $chassis,
+                                    'collectors' => $collectors,
+                                    'jockey_pump' => $jockeyPump,
+                                    'jockey_chassis' => $jockeyChassis,
+                                ]
+                            );
+                        },
+                        true
                     );
                 }
             )

@@ -6,14 +6,13 @@ use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
-use Maxonfjvipon\OverloadedElephant\Overloadable;
 
 /**
  * Polynomial regression
  */
 final class EqPolynomial implements Equation
 {
-    use CalculateRegression, Overloadable, CanCalcPolynomialEquation, ArrayableOverloaded;
+    use CalculateRegression, CanCalcPolynomialEquation, ArrayableOverloaded;
 
     /**
      * @var array $cache

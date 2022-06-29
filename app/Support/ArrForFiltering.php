@@ -22,15 +22,16 @@ final class ArrForFiltering extends ArrEnvelope
     public function __construct(private array|Arrayable $data)
     {
         parent::__construct(
-            ArrMapped::new(
+            new ArrMapped(
                 $this->data,
-                fn($item) => ArrMapped::new(
+                fn($item) => new ArrMapped(
                     $item,
                     fn($value) => [
                         'text' => $value,
                         'value' => $value
                     ],
-                )->asArray()
+                ),
+                true
             )
         );
     }

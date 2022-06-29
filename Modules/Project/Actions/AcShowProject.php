@@ -25,7 +25,8 @@ final class AcShowProject extends ArrEnvelope
                     'project',
                     new RcProjectToShow($project)
                 ),
-                new ArrObject('filter_data',
+                new ArrObject(
+                    'filter_data',
                     new ArrForFiltering([
                         'station_types' => StationType::getDescriptions(),
                         'selection_types' => SelectionType::getDescriptions()
