@@ -34,6 +34,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property array<Contractor>|Collection<Contractor> $contractors
  *
  * @method static self create(array $attributes)
+ * @method static self find(int|string $id)
  */
 final class User extends Authenticatable
 {
@@ -55,6 +56,7 @@ final class User extends Authenticatable
         'area_id',
         'phone',
         'is_active',
+        'organization_name',
         'role',
     ];
 

@@ -2,6 +2,7 @@
 
 namespace Modules\User\Entities;
 
+use App\Traits\EnumHelpers;
 use BenSampo\Enum\Attributes\Description;
 use BenSampo\Enum\Enum;
 
@@ -10,6 +11,8 @@ use BenSampo\Enum\Enum;
  */
 final class UserRole extends Enum
 {
+    use EnumHelpers;
+
     #[Description("Админ")]
     const Admin = 1;
 

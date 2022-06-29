@@ -122,6 +122,10 @@ export default function Show() {
             dataIndex: 'head',
         },
         {
+            title: "Комментарий",
+            dataIndex: "comment",
+        },
+        {
             key: 'actions', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>

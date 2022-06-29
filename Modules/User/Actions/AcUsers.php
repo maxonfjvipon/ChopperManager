@@ -8,6 +8,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\User\Entities\User;
+use Modules\User\Entities\UserRole;
 
 /**
  * Users action.
@@ -24,11 +25,14 @@ final class AcUsers extends ArrEnvelope
                 new ArrObject(
                     "filter_data",
                     new ArrForFiltering([
-                        'areas' => ($users = User::with('area')
-                            ->get())
-                            ->map(fn(User $user) => $user->area->name)
-                            ->unique()
-                            ->all()
+                        'areas' => array_values(
+                            ($users = User::with('area')
+                                ->get())
+                                ->map(fn(User $user) => $user->area->name)
+                                ->unique()
+                                ->all()
+                        ),
+                        'roles' => UserRole::getDescriptions(),
                     ])
                 ),
                 new ArrObject(
@@ -40,10 +44,11 @@ final class AcUsers extends ArrEnvelope
                             'created_at' => formatted_date($user->created_at),
                             'organization_name' => $user->organization_name,
                             'full_name' => $user->full_name,
-                            'phone' => $user->phone,
                             'email' => $user->email,
+                            'phone' => $user->phone,
                             'area' => $user->area->name,
                             'is_active' => $user->is_active,
+                            'role' => $user->role->description,
                         ]
                     )
                 )

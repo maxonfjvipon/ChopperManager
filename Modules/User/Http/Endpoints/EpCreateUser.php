@@ -2,28 +2,25 @@
 
 namespace Modules\User\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Exception;
-use Illuminate\Contracts\Support\Responsable;
-use Modules\User\Support\UsersFilterData;
-use Symfony\Component\HttpFoundation\Response;
+use Modules\User\Actions\AcCreateOrEditUser;
 
 /**
  * Create user endpoint
  */
-final class EpCreateUser extends Controller
+final class EpCreateUser extends TakeEndpoint
 {
     /**
-     * @return Responsable|Response
-     * @throws Exception
+     * Ctor.
      */
-    public function __invoke(): Responsable|Response
+    public function __construct()
     {
-        return (new TkInertia(
-            'User::Create',
-            new UsersFilterData()
-        ))->act();
+        parent::__construct(
+            new TkInertia(
+                "User::Create",
+                new AcCreateOrEditUser()
+            )
+        );
     }
 }

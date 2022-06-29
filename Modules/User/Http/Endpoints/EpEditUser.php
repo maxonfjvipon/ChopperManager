@@ -2,30 +2,32 @@
 
 namespace Modules\User\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
 use Exception;
-use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
+use Modules\User\Actions\AcCreateOrEditUser;
 use Modules\User\Entities\User;
-use Modules\User\Support\UserToEdit;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Users edit endpoint
  */
-final class EpEditUser extends Controller
+final class EpEditUser extends TakeEndpoint
 {
     /**
-     * @param int $user_id
-     * @return Responsable|Response
+     * Ctor.
+     * @param Request $request
      * @throws Exception
      */
-    public function __invoke(int $user_id): Responsable|Response
+    public function __construct(Request $request)
     {
-        return (new TkInertia(
-            'User::Edit',
-            new UserToEdit(User::find($user_id))
-        ))->act();
+        parent::__construct(
+            new TkInertia(
+                "User::Edit",
+                new AcCreateOrEditUser(
+                    User::find($request->user)
+                )
+            )
+        );
     }
 }

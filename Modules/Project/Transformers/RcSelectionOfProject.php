@@ -22,7 +22,8 @@ final class RcSelectionOfProject extends JsonResource
             'station_type' => $this->resource->station_type->description,
             'type' => $this->resource->type->description,
             'flow' => $this->resource->flow,
-            'head' => $this->resource->head
+            'head' => $this->resource->head,
+            'comment' => $this->resource->comment
         ];
     }
 }

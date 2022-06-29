@@ -2,33 +2,32 @@
 
 namespace Modules\User\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use App\Takes\TkAuthorize;
+use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
 use Modules\User\Entities\User;
+use Modules\User\Entities\UserPumpSeries;
 use Modules\User\Http\Requests\RqUpdateUser;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Update user endpoint.
  */
-final class EpUpdateUser extends Controller
+final class EpUpdateUser extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUpdateUser $request
-     * @param User $user
-     * @return Responsable|Response
      */
-    public function __invoke(RqUpdateUser $request, User $user): Responsable|Response
+    public function __construct(RqUpdateUser $request)
     {
-        return (new TkWithCallback(
-            function () use ($request, $user) {
-                $user->update($request->userProps());
-                $user->updateAvailablePropsFromRequest($request);
-            },
-            new TkRedirectToRoute('users.index')
-        ))->act($request);
+        parent::__construct(
+            new TkWithCallback(
+                function() use ($request) {
+                    ($user = User::find($request->user))->update($request->userProps());
+                    UserPumpSeries::updateSeriesForUser($request->available_series_ids, $user);
+                },
+                new TkRedirectToRoute('users.index')
+            )
+        );
     }
 }

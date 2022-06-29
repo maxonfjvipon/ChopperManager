@@ -34,7 +34,7 @@ export const useInputRules = () => {
             email: [required, email],
             password: [required],
             itn: [itn],
-            phone: [required, phone],
+            phone,
             required,
             number,
             max,

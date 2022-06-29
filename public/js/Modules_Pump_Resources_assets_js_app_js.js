@@ -10507,7 +10507,7 @@ var useInputRules = function useInputRules() {
       email: [required, email],
       password: [required],
       itn: [itn],
-      phone: [required, phone],
+      phone: phone,
       required: required,
       number: number,
       max: max

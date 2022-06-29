@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {Tag, Tooltip} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {usePage} from "@inertiajs/inertia-react";
-import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
-import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {Edit} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
@@ -16,9 +14,9 @@ import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 export default function Index() {
     // HOOKS
     const {users, filter_data} = usePage().props
-    const tRoute = useTransRoutes()
-    const {has} = usePermissions()
     const {compareDate} = useDate()
+
+    console.log(users, filter_data)
 
     // STATE
     const [usersToShow, setUsersToShow] = useState(users)
@@ -27,43 +25,43 @@ export default function Index() {
     const searchId = 'users-search-input'
     const columns = [
         {
-            title: Lang.get('pages.users.index.table.created_at'),
+            title: "Дата создания",
             dataIndex: 'created_at',
             sorter: (a, b) => compareDate(a.created_at, b.created_at)
         },
         {
-            title: Lang.get('pages.users.index.table.organization_name'),
+            title: "Роль",
+            dataIndex: 'role',
+            filters: filter_data.roles,
+            onFilter: (role, record) => record.role === role
+        },
+        {
+            title: "Наименование организации",
             dataIndex: 'organization_name',
             sorter: (a, b) => a.organization_name.localeCompare(b.organization_name),
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
         },
         {
-            title: Lang.get('pages.users.index.table.full_name'),
+            title: "ФИО",
             dataIndex: 'full_name',
             sorter: (a, b) => a.full_name.localeCompare(b.full_name),
         },
         {
-            title: Lang.get('pages.users.index.table.phone'),
+            title: "Телефон",
             dataIndex: 'phone'
         },
         {
-            title: Lang.get('pages.users.index.table.email'),
+            title: "Email",
             dataIndex: 'email'
         },
         {
-            title: Lang.get('pages.users.index.table.business'),
-            dataIndex: 'business',
-            filters: filter_data.businesses,
-            onFilter: (business, record) => record.business === business
-        },
-        {title: Lang.get('pages.users.index.table.country'), dataIndex: 'country'},
-        {
-            title: Lang.get('pages.users.index.table.city'),
-            dataIndex: 'city',
-            sorter: (a, b) => a.city.localeCompare(b.city),
+            title: "Область",
+            dataIndex: 'area',
+            filters: filter_data.areas,
+            onFilter: (area, record) => record.area === area
         },
         {
-            title: Lang.get('pages.users.index.table.is_active'),
+            title: "Активен",
             dataIndex: 'is_active',
             render: (_, record) => record.is_active
                 ? <Tag color="green">
@@ -76,7 +74,7 @@ export default function Index() {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
                     <TableActionsContainer>
-                        {has('user_edit') && <Edit clickHandler={editUserHandler(record.id)}/>}
+                        <Edit clickHandler={editUserHandler(record.id)}/>
                     </TableActionsContainer>
                 )
             }
@@ -96,25 +94,25 @@ export default function Index() {
     }
 
     const editUserHandler = id => () => {
-        Inertia.get(tRoute('users.edit', id))
+        Inertia.get(route('users.edit', id))
     }
 
     // RENDER
     return (
         <>
             <IndexContainer
-                actions={<PrimaryAction label={Lang.get('pages.users.create.title')} route={tRoute('users.create')}/>}
-                title={Lang.get('pages.users.title')}
+                actions={<PrimaryAction label="Создать пользователя" route={route('users.create')}/>}
+                title="Пользователи"
             >
                 <SearchInput
                     id={searchId}
-                    placeholder={Lang.get('pages.users.index.search.placeholder')}
+                    placeholder="Поиск по ФИО и организации"
                     searchClickHandler={searchUserClickHandler}
                 />
                 <TTable
                     columns={columns}
                     dataSource={usersToShow}
-                    doubleClickHandler={has('user_edit') && editUserHandler}
+                    doubleClickHandler={editUserHandler}
                 />
             </IndexContainer>
         </>

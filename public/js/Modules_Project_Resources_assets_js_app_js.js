@@ -11570,6 +11570,9 @@ function Show() {
     title: "Напор, м",
     dataIndex: 'head'
   }, {
+    title: "Комментарий",
+    dataIndex: "comment"
+  }, {
     key: 'actions',
     width: '1%',
     render: function render(_, record) {
@@ -12539,7 +12542,7 @@ var useInputRules = function useInputRules() {
       email: [required, email],
       password: [required],
       itn: [itn],
-      phone: [required, phone],
+      phone: phone,
       required: required,
       number: number,
       max: max

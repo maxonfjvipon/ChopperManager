@@ -1,9 +1,6 @@
 import React from 'react';
 import {Input, Switch} from "antd";
 import {Inertia} from "@inertiajs/inertia";
-import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
-import {usePermissions} from "../../../../../../resources/js/src/Hooks/permissions.hook";
-import Lang from "../../../../../../resources/js/translation/lang";
 import {SubmitAction} from "../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
 import {ResourceContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
@@ -16,139 +13,130 @@ import {Selection} from "../../../../../../resources/js/src/Shared/Inputs/Select
 export default function Edit () {
     // HOOKS
     const {rules} = useInputRules()
-    const tRoute = useTransRoutes()
-    const {has} = usePermissions()
     const {user, filter_data} = usePage().props
 
-    const formName = 'edit-project-form'
+    console.log(user, filter_data)
+
+    const formName = 'edit-user-form'
     const items = [
         {
             values: {
-                name: 'organization_name',
-                label: Lang.get('pages.users.edit.form.organization_name'),
+                name: 'role',
+                label: "Роль",
                 rules: [rules.required],
-                initialValue: user.data.organization_name,
+                initialValue: user.role,
+            },
+            input: <Selection options={filter_data.roles}/>
+        },
+        {
+            values: {
+                name: 'organization_name',
+                label: "Наименование организации",
+                initialValue: user.organization_name,
             }, input: <Input/>
         },
         {
             values: {
-                name: 'business_id',
-                label: Lang.get('pages.users.edit.form.main_business'),
-                rules: [rules.required],
-                initialValue: user.data.business_id,
-            },
-            input: <Selection options={filter_data.businesses}/>
-        },
-        {
-            values: {
                 name: 'itn',
-                label: Lang.get('pages.users.edit.form.itn'),
+                label: "ИНН",
                 rules: rules.itn,
-                initialValue: user.data.itn,
+                initialValue: user.itn,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'phone',
-                label: Lang.get('pages.users.edit.form.phone'),
-                rules: rules.phone,
-                initialValue: user.data.phone,
+                label: "Контактный телефон",
+                initialValue: user.phone,
+                rules: [rules.phone],
             },
             input: <Input/>,
         },
         {
             values: {
-                name: 'country_id',
-                label: Lang.get('pages.users.edit.form.country'),
+                name: 'area_id',
+                label: "Область",
                 rules: [rules.required],
-                initialValue: user.data.country_id
+                initialValue: user.area_id
             },
-            input: <Selection options={filter_data.countries}/>
-        },
-        {
-            values: {name: 'city', label: Lang.get('pages.users.edit.form.city'),
-                initialValue: user.data.city, rules: [rules.required]},
-            input: <Input/>
-        },
-        {
-            values: {
-                name: 'postcode',
-                label: Lang.get('pages.users.edit.form.postcode'),
-                initialValue: user.data.postcode,
-                // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
-            },
-            input: <Input/>
+            input: <Selection options={filter_data.areas}/>
         },
         {
             values: {
                 name: 'first_name',
-                label: Lang.get('pages.users.edit.form.first_name'),
+                label: "Имя",
                 rules: [rules.required, rules.max(255)],
-                initialValue: user.data.first_name
+                initialValue: user.first_name,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'middle_name',
-                label: Lang.get('pages.users.edit.form.middle_name'),
+                label: "Фамилия",
                 rules: [rules.required, rules.max(255)],
-                initialValue: user.data.middle_name
+                initialValue: user.middle_name,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'last_name',
-                label: Lang.get('pages.users.edit.form.last_name'),
+                label: "Отчество",
                 rules: [rules.max(255)],
-                initialValue: user.data.last_name
+                initialValue: user.last_name,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'email',
-                label: Lang.get('pages.users.edit.form.email'),
+                label: "Email",
                 rules: rules.email,
-                initialValue: user.data.email,
+                initialValue: user.email
             },
             input: <Input/>
         },
         {
             values: {
+                name: 'password',
+                label: "Пароль",
+            },
+            input: <Input.Password/>
+        },
+        {
+            values: {
+                name: 'password_confirmation',
+                label: "Подтверждение пароля",
+            },
+            input: <Input.Password/>
+        },
+        {
+            values: {
                 name: 'available_series_ids',
-                label: Lang.get('pages.users.edit.form.available_series'),
-                initialValue: user.data.available_series_ids,
+                label: "Доступные серии",
+                initialValue: user.available_series_ids,
             },
             input: <MultipleSelection options={filter_data.series}/>
         },
         {
             values: {
-                name: 'available_selection_type_ids',
-                label: Lang.get('pages.users.edit.form.available_selection_types'),
-                initialValue: user.data.available_selection_type_ids,
-            },
-            input: <MultipleSelection options={filter_data.selection_types}/>
-        },
-        {
-            values: {
                 name: 'is_active',
-                label: Lang.get('pages.users.edit.form.is_active'),
+                label: "Активен",
                 rules: [rules.required],
                 valuePropName: "checked",
-                initialValue: user.data.is_active,
+                initialValue: user.is_active,
             }, input: <Switch/>,
-        }
+        },
     ]
 
     // HANDLERS
     const updateUserHandler = body => {
-        Inertia.put(tRoute('users.update', user.data.id), body)
+        Inertia.put(route('users.update', user.id), body)
     }
 
     return (
         <ResourceContainer
-            title={Lang.get('pages.users.edit.title')}
-            actions={has('user_edit') && <SubmitAction label={Lang.get('pages.users.edit.button')} form={formName}/>}
-            extra={has('user_access') && <BackToUsersLink/>}
+            title="Изменить пользователя"
+            actions={<SubmitAction label="Изменить" form={formName}/>}
+            extra={<BackToUsersLink/>}
         >
             <ItemsForm
                 layout="vertical"
