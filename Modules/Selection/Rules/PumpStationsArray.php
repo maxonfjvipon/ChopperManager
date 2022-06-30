@@ -37,6 +37,7 @@ final class PumpStationsArray implements Rule
         foreach ($value as $pumpStation) {
             validator($pumpStation, [
                 'id' => ['nullable', new In(PumpStation::pluck('id')->all())],
+                'full_name' => ['required', 'string', 'max:255'],
                 'cost_price' => ['required', 'numeric', 'min:0'],
                 'extra_percentage' => ['required', 'numeric'],
                 'extra_sum' => ['required', 'numeric'],

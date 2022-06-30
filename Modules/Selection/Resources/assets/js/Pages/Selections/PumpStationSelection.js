@@ -174,6 +174,7 @@ export const PumpStationSelection = ({title, widths}) => {
             selection_type,
             added_stations: addedStations.map(station => ({
                 id: station.id || null,
+                full_name: station.full_name,
                 cost_price: station.cost_price,
                 extra_percentage: station.extra_percentage,
                 extra_sum: station.extra_sum,

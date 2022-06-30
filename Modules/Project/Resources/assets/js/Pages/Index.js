@@ -18,6 +18,8 @@ export default function Index() {
     const {filteredBoolArray} = usePermissions()
     const {compareDate} = useDate()
 
+    console.log(projects)
+
     // STATE
     const [projectsToShow, setProjectsToShow] = useState(projects)
 
@@ -49,13 +51,13 @@ export default function Index() {
             width: 120,
             filters: filter_data.statuses,
             onFilter: (status, record) => record.status === status
-        }, auth.is_admin && {
+        }, {
             title: 'Заказчик',
             dataIndex: 'customer',
-        }, auth.is_admin && {
+        }, {
             title: 'Монтажник',
             dataIndex: 'installer',
-        }, auth.is_admin && {
+        }, {
             title: 'Проектировщик',
             dataIndex: 'designer',
         }, auth.is_admin && {
@@ -86,7 +88,16 @@ export default function Index() {
         if (value === "") {
             setProjectsToShow(projects)
         } else {
-            setProjectsToShow(projects.filter(project => project.name.toLowerCase().includes(value)))
+            setProjectsToShow(projects
+                .filter(project => project
+                    .name
+                    .toLowerCase()
+                    .includes(value)
+                    || project
+                        .pump_stations
+                        .includes(value)
+                )
+            )
         }
     }
 
@@ -106,8 +117,9 @@ export default function Index() {
         >
             <SearchInput
                 id={searchId}
-                placeholder="Поиск по наименованию"
+                placeholder="Поиск по наименованию проекта и станций"
                 searchClickHandler={searchProjectClickHandler}
+                width={450}
             />
             <TTable
                 columns={columns}

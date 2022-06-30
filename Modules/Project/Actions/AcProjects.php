@@ -31,24 +31,19 @@ final class AcProjects extends ArrEnvelope
                     new ArrObject(
                         'projects',
                         $projects = new ArrSticky(
-                            new ArrTernary(
-                                Auth::user()->isAdmin(),
-                                fn() => new ArrMapped(
-                                    Project::with('area')
-                                        ->withAllPartners()
-                                        ->get()
-                                        ->all(),
-                                    fn(Project $project) => $project->asArrayForAdmin()
-                                ),
-                                fn() => new ArrMapped(
-                                    Auth::user()->projects()->with('area')->get()->all(),
-                                    fn(Project $project) => $project->asArrayforClient()
-                                )
-                            )
+                            new ArrMapped(
+                                Project::with('area')
+                                    ->withAllContractors()
+                                    ->withPumpStations()
+                                    ->get()
+                                    ->all(),
+                                fn(Project $project) => $project->asArray()
+                            ),
                         )
                     ),
                     new ArrObject(
-                        'filter_data', new ArrForFiltering([
+                        'filter_data',
+                        new ArrForFiltering([
                             'areas' => new ArrUnique(
                                 new ArrMapped(
                                     $projects,

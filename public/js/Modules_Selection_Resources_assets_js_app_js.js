@@ -11482,6 +11482,7 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
                 added_stations: addedStations.map(function (station) {
                   return {
                     id: station.id || null,
+                    full_name: station.full_name,
                     cost_price: station.cost_price,
                     extra_percentage: station.extra_percentage,
                     extra_sum: station.extra_sum,

@@ -13,6 +13,7 @@ use Maxonfjvipon\Elegant_Elephant\Logical\Conjunction;
 use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
 use Maxonfjvipon\Elegant_Elephant\Logical\StrContains;
 use Maxonfjvipon\Elegant_Elephant\Numerable\Rounded;
+use Maxonfjvipon\Elegant_Elephant\Text\TxtJoined;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtSticky;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrCostStructure;
@@ -52,9 +53,21 @@ final class ArrSelectedPump extends ArrEnvelope
                             $pumpsCount = $mainPumpsCount + $request->reserve_pumps_count,
                             $pump = $components['pump'],
                             $inputCollector = ($collectors = $components['collectors'])->firstWhere('dn_pipes', $pump->dn_suction),
-                            $components['jockey_pump'] ?? null
+                            $jockeyPump = $components['jockey_pump'] ?? null
                         )
                     )
+                ),
+                new ArrObject(
+                    'full_name',
+                    new TxtPumpStationName(
+                        $controlSystem,
+                        $pumpsCount,
+                        $pump,
+                        $inputCollector,
+                        $jockeyPump,
+                        true
+                    )
+
                 ),
                 new ArrObject(
                     'cost_price',

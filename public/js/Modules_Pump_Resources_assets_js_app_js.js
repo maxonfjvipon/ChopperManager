@@ -11518,7 +11518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["id", "loading", "searchClickHandler", "placeholder"];
+var _excluded = ["id", "loading", "searchClickHandler", "placeholder", "width"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -11542,6 +11542,8 @@ var SearchInput = function SearchInput(_ref) {
       loading = _ref$loading === void 0 ? false : _ref$loading,
       searchClickHandler = _ref.searchClickHandler,
       placeholder = _ref.placeholder,
+      _ref$width = _ref.width,
+      width = _ref$width === void 0 ? 300 : _ref$width,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -11554,7 +11556,7 @@ var SearchInput = function SearchInput(_ref) {
       id: id,
       allowClear: true,
       style: {
-        width: 300
+        width: width
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, _objectSpread(_objectSpread({
       loading: loading,

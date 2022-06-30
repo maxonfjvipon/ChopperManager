@@ -12283,8 +12283,9 @@ function Index() {
       filteredBoolArray = _usePermissions.filteredBoolArray;
 
   var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_9__.useDate)(),
-      compareDate = _useDate.compareDate; // STATE
+      compareDate = _useDate.compareDate;
 
+  console.log(projects); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(projects),
       _useState2 = _slicedToArray(_useState, 2),
@@ -12339,13 +12340,13 @@ function Index() {
     onFilter: function onFilter(status, record) {
       return record.status === status;
     }
-  }, auth.is_admin && {
+  }, {
     title: 'Заказчик',
     dataIndex: 'customer'
-  }, auth.is_admin && {
+  }, {
     title: 'Монтажник',
     dataIndex: 'installer'
-  }, auth.is_admin && {
+  }, {
     title: 'Проектировщик',
     dataIndex: 'designer'
   }, auth.is_admin && {
@@ -12384,7 +12385,7 @@ function Index() {
       setProjectsToShow(projects);
     } else {
       setProjectsToShow(projects.filter(function (project) {
-        return project.name.toLowerCase().includes(value);
+        return project.name.toLowerCase().includes(value) || project.pump_stations.includes(value);
       }));
     }
   }; // EFFECTS
@@ -12402,8 +12403,9 @@ function Index() {
     }),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_SearchInput__WEBPACK_IMPORTED_MODULE_10__.SearchInput, {
       id: searchId,
-      placeholder: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E",
-      searchClickHandler: searchProjectClickHandler
+      placeholder: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u0438 \u0441\u0442\u0430\u043D\u0446\u0438\u0439",
+      searchClickHandler: searchProjectClickHandler,
+      width: 450
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_8__.TTable, {
       columns: columns,
       dataSource: projectsToShow,
@@ -13679,7 +13681,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../translation/lang */ "./resources/js/translation/lang.js");
 /* harmony import */ var _Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["id", "loading", "searchClickHandler", "placeholder"];
+var _excluded = ["id", "loading", "searchClickHandler", "placeholder", "width"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -13703,6 +13705,8 @@ var SearchInput = function SearchInput(_ref) {
       loading = _ref$loading === void 0 ? false : _ref$loading,
       searchClickHandler = _ref.searchClickHandler,
       placeholder = _ref.placeholder,
+      _ref$width = _ref.width,
+      width = _ref$width === void 0 ? 300 : _ref$width,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -13715,7 +13719,7 @@ var SearchInput = function SearchInput(_ref) {
       id: id,
       allowClear: true,
       style: {
-        width: 300
+        width: width
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_2__.PrimaryButton, _objectSpread(_objectSpread({
       loading: loading,

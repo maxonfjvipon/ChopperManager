@@ -21,7 +21,10 @@ class CreatePumpStationsTable extends Migration
             $table->float('extra_percentage')->unsigned();
             $table->float('extra_sum', 12)->unsigned();
             $table->float('final_price', 12)->unsigned();
+
             $table->text('comment')->nullable();
+            $table->string('full_name');
+
             $table->integer('main_pumps_count')->unsigned();
             $table->integer('reserve_pumps_count')->unsigned();
 
