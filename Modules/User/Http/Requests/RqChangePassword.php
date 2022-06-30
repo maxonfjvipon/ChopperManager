@@ -3,8 +3,12 @@
 namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password;
 
+/**
+ * Change password request.
+ * @property string $password
+ */
 final class RqChangePassword extends FormRequest
 {
     /**
@@ -26,8 +30,8 @@ final class RqChangePassword extends FormRequest
     {
         return [
             'current_password' => 'nullable|required_with_all:password,password_confirmation|current_password',
-            'password' => ['nullable', 'required_with_all:current_password,password_confirmation', 'confirmed', Rules\Password::default()],
-            'password_confirmation' => ['nullable', 'required_with_all:password,current_password', Rules\Password::default()],
+            'password' => ['nullable', 'required_with_all:current_password,password_confirmation', 'confirmed', Password::default()],
+            'password_confirmation' => ['nullable', 'required_with_all:password,current_password', Password::default()],
         ];
     }
 }

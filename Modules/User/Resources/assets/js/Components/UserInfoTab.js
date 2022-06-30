@@ -1,127 +1,93 @@
 import React from 'react'
 import {Input} from "antd";
 import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/RoundedCard";
-import Lang from "../../../../../../resources/js/translation/lang";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {BoxFlex} from "../../../../../../resources/js/src/Shared/Box/BoxFlex";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {useInputRules} from "../../../../../../resources/js/src/Hooks/input-rules.hook";
 import {usePage} from "@inertiajs/inertia-react";
-import {useTransRoutes} from "../../../../../../resources/js/src/Hooks/routes.hook";
 import {Selection} from "../../../../../../resources/js/src/Shared/Inputs/Selection";
 import {Inertia} from "@inertiajs/inertia";
 
 export const UserInfoTab = () => {
     const {reducedAntFormItemClassName, margin} = useStyles()
     const {rules} = useInputRules()
-    const {user, businesses, countries, currencies} = usePage().props
-    const tRoute = useTransRoutes()
+    const {user, filter_data} = usePage().props
 
-    const userdata = user.data
     const profileFormName = 'profile-form'
 
     const items = [
         {
             values: {
                 name: 'organization_name',
-                label: Lang.get('pages.profile.index.organization_name'),
-                rules: [rules.required],
-                initialValue: userdata.organization_name,
+                label: "Наименование организации",
+                initialValue: user.organization_name,
             }, input: <Input/>
         },
         {
             values: {
-                name: 'business_id',
-                label: Lang.get('pages.profile.index.main_business'),
-                rules: [rules.required],
-                initialValue: userdata.business_id
-            },
-            input: <Selection options={businesses}/>
-        },
-        {
-            values: {
                 name: 'itn',
-                label: Lang.get('pages.profile.index.itn'),
+                label: "ИНН",
                 rules: rules.itn,
-                initialValue: userdata.itn,
+                initialValue: user.itn,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'phone',
-                label: Lang.get('pages.profile.index.phone'),
-                rules: rules.phone,
-                initialValue: userdata.phone,
+                label: "Контактный телефон",
+                initialValue: user.phone,
+                rules: [rules.phone],
             },
-            input: <Input readOnly/>,
+            input: <Input/>,
         },
         {
             values: {
-                name: 'country_id',
-                label: Lang.get('pages.profile.index.country'),
+                name: 'area_id',
+                label: "Область",
                 rules: [rules.required],
-                initialValue: userdata.country_id
+                initialValue: user.area_id,
             },
-            input: <Selection options={countries}/>
-        },
-        {
-            values: {
-                name: 'city',
-                label: Lang.get('pages.profile.index.city'),
-                initialValue: userdata.city,
-                rules: [rules.required]
-            },
-            input: <Input/>
-        },
-        {
-            values: {
-                name: 'currency_id',
-                label: Lang.get('pages.profile.index.currency.label'),
-                initialValue: userdata.currency_id,
-                // tooltip: Lang.get('pages.profile.index.currency.tooltip'),
-                rules: [rules.required]
-            },
-            input: <Selection options={currencies}/>
+            input: <Selection options={filter_data.areas}/>
         },
         {
             values: {
                 name: 'first_name',
-                label: Lang.get('pages.profile.index.first_name'),
+                label: "Имя",
                 rules: [rules.required, rules.max(255)],
-                initialValue: userdata.first_name
-            }, input: <Input readOnly/>
+                initialValue: user.first_name,
+            }, input: <Input/>
         },
         {
             values: {
                 name: 'middle_name',
-                label: Lang.get('pages.profile.index.middle_name'),
+                label: "Фамилия",
                 rules: [rules.required, rules.max(255)],
-                initialValue: userdata.middle_name
-            }, input: <Input readOnly/>
+                initialValue: user.middle_name,
+            }, input: <Input/>
         },
         {
             values: {
                 name: 'last_name',
-                label: Lang.get('pages.profile.index.last_name'),
+                label: "Отчество",
                 rules: [rules.max(255)],
-                initialValue: userdata.last_name
+                initialValue: user.last_name,
             }, input: <Input/>
         },
         {
             values: {
                 name: 'email',
-                label: Lang.get('pages.profile.index.email'),
+                label: "Email",
                 rules: rules.email,
-                initialValue: userdata.email,
-                className: reducedAntFormItemClassName
+                initialValue: user.email,
             },
-            input: <Input readOnly/>
+            input: <Input/>
         },
     ]
 
     const updateProfileHandler = async body => {
-        Inertia.post(tRoute('profile.update'), body, {
+        Inertia.post(route('profile.update'), body, {
             preserveScroll: true,
         })
     }
@@ -130,7 +96,7 @@ export const UserInfoTab = () => {
         <>
             <RoundedCard
                 type="inner"
-                title={Lang.get('pages.profile.index.cards.user_info')}
+                title="Профиль пользователя"
             >
                 <ItemsForm
                     layout="horizontal"
@@ -142,7 +108,7 @@ export const UserInfoTab = () => {
             </RoundedCard>
             <BoxFlex style={margin.top(16)}>
                 <PrimaryButton htmlType="submit" form={profileFormName}>
-                    {Lang.get('pages.profile.index.save_changes')}
+                    Сохранить изменения
                 </PrimaryButton>
             </BoxFlex>
         </>

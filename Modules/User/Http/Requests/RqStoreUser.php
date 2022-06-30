@@ -40,14 +40,14 @@ class RqStoreUser extends FormRequest
     public function rules(): array
     {
         return [
-            'organization_name' => ['required', 'string', 'max:255'],
+            'organization_name' => ['sometimes', 'nullable', 'string', 'max:255'],
             'itn' => ['sometimes', 'nullable', 'max:12', 'unique:users,itn'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'max:12'],
+            'phone' => ['sometimes', 'nullable', 'required', 'max:12'],
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['sometimes', 'nullable', 'string', 'max:255'],
             'role' => ['required', new EnumValue(UserRole::class)],
             'area_id' => ['required', new In(Area::allOrCached()->pluck('id')->all())],
             'is_active' => ['required', 'boolean'],

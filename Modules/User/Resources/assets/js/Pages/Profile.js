@@ -2,15 +2,15 @@ import React from 'react';
 import {Col, Row, Tabs} from "antd";
 import Lang from "../../../../../../resources/js/translation/lang";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
-import {DiscountsTab} from "../Components/DiscountsTab";
+// import {DiscountsTab} from "../Components/DiscountsTab";
 import {UserInfoTab} from "../Components/UserInfoTab";
 import {ChangePasswordTab} from "../Components/ChangePasswordTab";
 
 export default function Profile() {
     const tabs = [
-        {name: Lang.get('pages.profile.index.tab'), key: "user-info", comp: <UserInfoTab/> },
-        {name: Lang.get("pages.profile.index.change_password"), key: "change-password", comp: <ChangePasswordTab/>},
-        {name: Lang.get('pages.profile.discounts.tab'), key: "producers-discounts", comp: <DiscountsTab/>},
+        {name: "Профиль", key: "user-info", comp: <UserInfoTab/> },
+        {name: "Изменить пароль", key: "change-password", comp: <ChangePasswordTab/>},
+        // {name: Lang.get('pages.profile.discounts.tab'), key: "producers-discounts", comp: <DiscountsTab/>},
     ]
 
     return (

@@ -2,34 +2,31 @@
 
 namespace Modules\User\Http\Requests;
 
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\In;
+use Modules\User\Entities\Area;
 
+/**
+ * Update profile request.
+ */
 final class RqUpdateProfile extends FormRequest
 {
+    /**
+     * @return array
+     * @throws Exception
+     */
     public function rules(): array
     {
         return [
-            'organization_name' => 'required|string|max:255',
-            'itn' => 'max:12|unique:users,itn,' . $this->user()->id,
-            'phone' => 'required|max:12',
-            'country_id' => 'required|exists:countries,id',
-            'city' => 'nullable|string|max:255',
-            'currency_id' => 'required|exists:currencies,id',
-            'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
-            'last_name' => 'nullable|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $this->user()->id,
-            'business_id' => 'required|exists:businesses,id',
+            'organization_name' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'itn' => ['sometimes', 'nullable', 'max:12', 'unique:users,itn,' . $this->user()->id],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $this->user()->id],
+            'phone' => ['sometimes', 'nullable', 'max:12'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'area_id' => ['required', new In(Area::allOrCached()->pluck('id')->all())],
         ];
-    }
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize(): bool
-    {
-        return true;
     }
 }
