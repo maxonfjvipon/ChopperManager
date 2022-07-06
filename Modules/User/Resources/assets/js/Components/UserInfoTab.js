@@ -72,7 +72,7 @@ export const UserInfoTab = () => {
             values: {
                 name: 'email',
                 label: "Email",
-                rules: rules.email,
+                rules: rules.rq_email,
                 initialValue: user.email,
             },
             input: <Input/>

@@ -10536,7 +10536,7 @@ var UserInfoTab = function UserInfoTab() {
     values: {
       name: 'email',
       label: "Email",
-      rules: rules.email,
+      rules: rules.rq_email,
       initialValue: user.email
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
