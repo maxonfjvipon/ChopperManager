@@ -19,6 +19,7 @@ use Modules\Selection\Entities\Selection;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Transformers\SelectionResources\SelectionAsResource;
+use Modules\ProjectParticipant\Entities\Dealer;
 
 /**
  * Create or show selection action.
@@ -100,12 +101,12 @@ final class AcCreateOrShowSelection extends ArrEnvelope
     }
 
     /**
-     * Get available {@see PumpSeries::$id}s for {@see Auth::user()}
+     * Get available {@see PumpSeries::$id}s for {@see Dealer} of {@see Auth::user()}
      * @return array
      */
     private static function availableSeriesIds(): array
     {
-        return Auth::user()->available_series()
+        return Auth::user()->dealer->available_series()
             ->notDiscontinued()
             ->pluck('id')
             ->all();

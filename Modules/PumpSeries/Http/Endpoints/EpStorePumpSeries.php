@@ -7,6 +7,8 @@ use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
 use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\PumpSeries\Http\Requests\RqStorePumpSeries;
+use Modules\ProjectParticipant\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Entities\User;
 
 /**
@@ -22,7 +24,7 @@ final class EpStorePumpSeries extends TakeEndpoint
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => User::allowNewSeriesToAdmins(PumpSeries::create($request->validated())),
+                fn() => Dealer::allowNewSeriesToBPE(PumpSeries::create($request->validated())),
                 new TkRedirectToRoute('pump_series.index')
             )
         );

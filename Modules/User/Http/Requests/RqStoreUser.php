@@ -2,21 +2,19 @@
 
 namespace Modules\User\Http\Requests;
 
-use App\Rules\ArrayExistsInArray;
 use BenSampo\Enum\Rules\EnumValue;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\In;
-use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\User\Entities\Area;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Entities\UserRole;
 
 /**
  * Store user request.
  *
- * @property string|null $organization_name
  * @property string|null $itn
  * @property string $email
  * @property string $password
@@ -26,8 +24,8 @@ use Modules\User\Entities\UserRole;
  * @property string|null $last_name
  * @property int $area_id
  * @property boolean $is_active
- * @property array $available_series_ids
  * @property int $role
+ * @property int $dealer_id
  */
 class RqStoreUser extends FormRequest
 {
@@ -40,18 +38,17 @@ class RqStoreUser extends FormRequest
     public function rules(): array
     {
         return [
-            'organization_name' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'dealer_id' => ['required', new In(Dealer::allOrCached()->pluck('id')->all())],
             'itn' => ['sometimes', 'nullable', 'max:12', 'unique:users,itn'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['sometimes', 'nullable', 'required', 'max:12'],
+            'phone' => ['sometimes', 'nullable', 'max:12'],
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name' => ['sometimes', 'nullable', 'string', 'max:255'],
             'role' => ['required', new EnumValue(UserRole::class)],
             'area_id' => ['required', new In(Area::allOrCached()->pluck('id')->all())],
             'is_active' => ['required', 'boolean'],
-            'available_series_ids' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(PumpSeries::pluck('id')->all())],
         ];
     }
 
@@ -59,7 +56,7 @@ class RqStoreUser extends FormRequest
     {
         return array_merge(
             [
-                'organization_name' => $this->organization_name,
+                'dealer_id' => $this->dealer_id,
                 'itn' => $this->itn,
                 'email' => $this->email,
                 'phone' => $this->phone,

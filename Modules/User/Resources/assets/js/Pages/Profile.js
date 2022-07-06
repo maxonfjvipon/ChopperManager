@@ -1,8 +1,6 @@
 import React from 'react';
 import {Col, Row, Tabs} from "antd";
-import Lang from "../../../../../../resources/js/translation/lang";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
-// import {DiscountsTab} from "../Components/DiscountsTab";
 import {UserInfoTab} from "../Components/UserInfoTab";
 import {ChangePasswordTab} from "../Components/ChangePasswordTab";
 

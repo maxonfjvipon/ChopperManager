@@ -2,24 +2,33 @@
 
 namespace Modules\User\Http\Endpoints\Profile;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Takes\TkRedirectBack;
+use App\Takes\TkRedirectWith;
+use App\Takes\TkWithCallback;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Http\Requests\RqUpdateProfile;
-use Redirect;
 
 /**
  * Update profile endpoint.
  */
-final class EpUpdateProfile extends Controller
+final class EpUpdateProfile extends TakeEndpoint
 {
     /**
+     * Ctor.
      * @param RqUpdateProfile $request
-     * @return RedirectResponse
      */
-    public function __invoke(RqUpdateProfile $request): RedirectResponse
+    public function __construct(RqUpdateProfile $request)
     {
-        Auth::user()->update($request->validated());
-        return Redirect::back()->with('success', __('flash.users.updated'));
+        parent::__construct(
+            new TkWithCallback(
+                fn() => Auth::user()->update($request->validated()),
+                new TkRedirectWith(
+                    'success',
+                    __('flash.users.updated'),
+                    new TkRedirectBack()
+                )
+            )
+        );
     }
 }

@@ -26,38 +26,33 @@ final class AcLoadPumps extends ArrEnvelope
     public function __construct(RqLoadPumps $request)
     {
         parent::__construct(
-            new ArrFromCallback(
-                function () use ($request) {
-                    $pumps = self::getPumps($request);
-                    return new ArrMerged(
-                        [
-                            'pumps' => [
-                                'total' => $pumps->count(),
-                                'items' => RcPumpToShow::collection($pumps
-                                    ->offset((array_key_exists('current', $request->pagination ?? [])
-                                            ? $request->pagination['current'] - 1
-                                            : 0)
-                                        * ($request->pagination['pageSize'] ?? 10))
-                                    ->limit($request->pagination['pageSize'] ?? 10)
-                                    ->get()),
-                            ]
-                        ],
-                        new ArrIf(
-                            !!$request->brand,
-                            fn() => new ArrObject(
-                                'filter_data',
-                                new ArrForFilteringWithId([
-                                    'series' => array_merge(...PumpBrand::with([
-                                        'series' => fn($query) => $query->select('id', 'name', 'brand_id')
-                                    ])
-                                        ->whereIn('id', $request->brand)
-                                        ->get(['id', 'name'])
-                                        ->map(fn(PumpBrand $brand) => $brand->series->all())),
-                                ])
-                            )
-                        )
-                    );
-                }
+            new ArrMerged(
+                [
+                    'pumps' => [
+                        'total' => ($pumps = self::getPumps($request))->count(),
+                        'items' => RcPumpToShow::collection($pumps
+                            ->offset((array_key_exists('current', $request->pagination ?? [])
+                                    ? $request->pagination['current'] - 1
+                                    : 0)
+                                * ($request->pagination['pageSize'] ?? 10))
+                            ->limit($request->pagination['pageSize'] ?? 10)
+                            ->get()),
+                    ]
+                ],
+                new ArrIf(
+                    !!$request->brand,
+                    fn() => new ArrObject(
+                        'filter_data',
+                        new ArrForFilteringWithId([
+                            'series' => array_merge(...PumpBrand::with([
+                                'series' => fn($query) => $query->select('id', 'name', 'brand_id')
+                            ])
+                                ->whereIn('id', $request->brand)
+                                ->get(['id', 'name'])
+                                ->map(fn(PumpBrand $brand) => $brand->series->all())),
+                        ])
+                    )
+                )
             )
         );
     }

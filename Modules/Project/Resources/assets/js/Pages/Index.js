@@ -17,9 +17,7 @@ export default function Index() {
     const {projects, auth, filter_data} = usePage().props
     const {filteredBoolArray} = usePermissions()
     const {compareDate} = useDate()
-
-    console.log(projects)
-
+    
     // STATE
     const [projectsToShow, setProjectsToShow] = useState(projects)
 
@@ -63,6 +61,9 @@ export default function Index() {
         }, auth.is_admin && {
             title: 'Диллер',
             dataIndex: 'dealer',
+        }, auth.is_admin && {
+            title: 'Пользователь',
+            dataIndex: 'user',
         }, {
             key: 'key', width: '1%', render: (_, record) => {
                 return (
@@ -90,9 +91,9 @@ export default function Index() {
         } else {
             setProjectsToShow(projects
                 .filter(project => project
-                    .name
-                    .toLowerCase()
-                    .includes(value)
+                        .name
+                        .toLowerCase()
+                        .includes(value)
                     || project
                         .pump_stations
                         .includes(value)

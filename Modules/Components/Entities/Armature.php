@@ -101,11 +101,7 @@ final class Armature extends Model
             new ArrMapped(
                 self::armatureByStationType($pump, $stationType, $pumpsCount, $inputCollector),
                 function (?ArrArmatureCount $armatureCount) use (&$bad, $field, $rates, $pump) {
-                    if ($armatureCount == null) {
-                        dd($pump);
-                    }
-                    $acEntity = $armatureCount->asArray();
-                    if (($armature = $acEntity['armature']) != null) {
+                    if (($armature = ($acEntity = $armatureCount->asArray())['armature']) != null) {
                         return (!!$rates
                                 ? $armature->priceByRates($rates)
                                 : $armature->{$field})

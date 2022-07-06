@@ -16,8 +16,6 @@ export default function Index() {
     const {users, filter_data} = usePage().props
     const {compareDate} = useDate()
 
-    console.log(users, filter_data)
-
     // STATE
     const [usersToShow, setUsersToShow] = useState(users)
 
@@ -36,9 +34,9 @@ export default function Index() {
             onFilter: (role, record) => record.role === role
         },
         {
-            title: "Наименование организации",
-            dataIndex: 'organization_name',
-            sorter: (a, b) => a.organization_name.localeCompare(b.organization_name),
+            title: "Дилер",
+            dataIndex: 'dealer',
+            sorter: (a, b) => a.dealer.localeCompare(b.dealer),
             render: (text) => <Tooltip placement="topLeft" title={text}>{text}</Tooltip>,
         },
         {

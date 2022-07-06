@@ -9,6 +9,7 @@ export const MessagesLayout = ({children}) => {
     const {isEmptyObj, isUndefined} = useCheck()
     //
     useEffect(() => {
+        console.log(errors)
         if (errors && !isUndefined(errors) && !isEmptyObj(errors))
             for (let key in errors) {
                 message.error(errors[key])

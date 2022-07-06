@@ -6,5 +6,6 @@
     "Auth": true,
     "Selection": true,
     "PumpStation": true,
-    "Components": true
+    "Components": true,
+    "ProjectParticipant": true
 }

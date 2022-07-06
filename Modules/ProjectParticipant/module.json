@@ -1,0 +1,13 @@
+{
+    "name": "ProjectParticipant",
+    "alias": "projectparticipant",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProjectParticipant\\Providers\\ProjectParticipantServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -48,7 +48,7 @@ export default function Show() {
                 className: reducedBottomAntFormItemClassName,
             }, input: <Input readOnly/>,
         },
-        auth.is_admin && {
+        {
             values: {
                 name: 'customer',
                 label: "Заказчик",
@@ -56,7 +56,7 @@ export default function Show() {
                 className: reducedBottomAntFormItemClassName,
             }, input: <Input readOnly/>,
         },
-        auth.is_admin && {
+        {
             values: {
                 name: 'installer',
                 label: "Монтажник",
@@ -64,7 +64,7 @@ export default function Show() {
                 className: reducedBottomAntFormItemClassName,
             }, input: <Input readOnly/>,
         },
-        auth.is_admin && {
+        {
             values: {
                 name: 'designer',
                 label: "Проектировщик",
@@ -79,7 +79,16 @@ export default function Show() {
                 initialValue: project.dealer,
                 className: reducedBottomAntFormItemClassName,
             }, input: <Input readOnly/>,
-        }, {
+        },
+        auth.is_admin && {
+            values: {
+                name: 'user',
+                label: "Пользователь",
+                initialValue: project.user,
+                className: reducedBottomAntFormItemClassName,
+            }, input: <Input readOnly/>,
+        },
+        {
             values: {
                 name: 'description',
                 label: "Описание",

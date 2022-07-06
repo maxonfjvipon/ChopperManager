@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Project\Entities\Project;
 use Modules\PumpSeries\Entities\PumpSeries;
-use Modules\User\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 
 /**
@@ -32,23 +33,6 @@ trait UserRelationships
         return $this->hasManyDeepFromRelations($this->available_series(), (new PumpSeries())->brand());
     }
 
-    /**
-     * Available series for pump-manager users
-     * @return BelongsToMany
-     */
-    public function available_series(): BelongsToMany
-    {
-        return $this->belongsToMany(PumpSeries::class, 'users_pump_series', 'user_id', 'series_id');
-    }
-
-    /**
-     * @return BelongsToMany
-     */
-    public function contractors(): BelongsToMany
-    {
-        return $this->belongsToMany(Contractor::class, 'users_contractors', 'user_id', 'contractor_id');
-    }
-
 //    public function discounts(): HasMany
 //    {
 //        return $this->hasMany(Discount::class, 'user_id');
@@ -60,6 +44,11 @@ trait UserRelationships
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'created_by');
+    }
+
+    public function dealer()
+    {
+        return $this->belongsTo(Dealer::class, 'dealer_id');
     }
 
 //    public function country(): BelongsTo

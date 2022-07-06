@@ -26,7 +26,7 @@ final class AcUsers extends ArrEnvelope
                     "filter_data",
                     new ArrForFiltering([
                         'areas' => array_values(
-                            ($users = User::with('area')
+                            ($users = User::with(['area', 'dealer'])
                                 ->get())
                                 ->map(fn(User $user) => $user->area->name)
                                 ->unique()
@@ -42,7 +42,7 @@ final class AcUsers extends ArrEnvelope
                         fn(User $user) => [
                             'id' => $user->id,
                             'created_at' => formatted_date($user->created_at),
-                            'organization_name' => $user->organization_name,
+                            'dealer' => $user->dealer->name,
                             'full_name' => $user->full_name,
                             'email' => $user->email,
                             'phone' => $user->phone,

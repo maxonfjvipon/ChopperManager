@@ -20,7 +20,7 @@ final class RcUserToEdit extends JsonResource
     {
         return [
             'id' => $this->resource->id,
-            'organization_name' => $this->resource->organization_name,
+            'dealer_id' => $this->resource->dealer_id,
             'itn' => $this->resource->itn,
             'phone' => $this->resource->phone,
             'first_name' => $this->resource->first_name,
@@ -30,7 +30,6 @@ final class RcUserToEdit extends JsonResource
             'area_id' => $this->resource->area_id,
             'is_active' => $this->resource->is_active,
             'role' => $this->resource->role->value,
-            'available_series_ids' => $this->resource->available_series()->pluck('id')->all(),
         ];
     }
 }

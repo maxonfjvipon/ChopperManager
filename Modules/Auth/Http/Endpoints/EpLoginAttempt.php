@@ -2,31 +2,30 @@
 
 namespace Modules\Auth\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Validation\ValidationException;
+use App\Http\Endpoints\TakeEndpoint;
+use App\Takes\TkWithCallback;
 use Modules\Auth\Http\Requests\RqLogin;
-use Redirect;
-use Symfony\Component\HttpFoundation\Response;
+use Modules\Project\Takes\TkRedirectToProjectsIndex;
 
 /**
  * Login attempt endpoint
  * @package Modules\Auth\Takes
  */
-final class EpLoginAttempt extends Controller
+final class EpLoginAttempt extends TakeEndpoint
 {
-    use AuthenticatesUsers;
-
     /**
      * @param RqLogin $request
-     * @return Responsable|Response
-     * @throws ValidationException
      */
-    public function __invoke(RqLogin $request): Responsable|Response
+    public function __construct(RqLogin $request)
     {
-        $request->authenticate();
-        $request->session()->regenerate();
-        return Redirect::route('projects.index');
+        parent::__construct(
+            new TkWithCallback(
+                function () use ($request) {
+                    $request->authenticate();
+                    $request->session()->regenerate();
+                },
+                new TkRedirectToProjectsIndex()
+            )
+        );
     }
 }

@@ -7,11 +7,11 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Endpoints\EpShowUser;
 use Modules\User\Http\Endpoints\Profile\EpChangePassword;
 use Modules\User\Http\Endpoints\Profile\EpProfile;
 use Modules\User\Http\Endpoints\Profile\EpUpdateProfile;
-use Modules\User\Http\Endpoints\EpCreateUser;
-use Modules\User\Http\Endpoints\EpEditUser;
+use Modules\User\Http\Endpoints\EpCreateOrEditUser;
 use Modules\User\Http\Endpoints\EpUsers;
 use Modules\User\Http\Endpoints\EpStoreUser;
 use Modules\User\Http\Endpoints\EpUpdateUser;
@@ -26,18 +26,18 @@ Route::prefix('profile')->as('profile.')->group(function () {
 
 // USERS
 Route::prefix('users')->as('users.')->middleware('admin')->group(function () {
-        Route::get('create')->name('create')->uses(EpCreateUser::class);
-        Route::post('/')->name('store')->uses(EpStoreUser::class);
+    Route::get('create')->name('create')->uses(EpCreateOrEditUser::class);
+    Route::post('/')->name('store')->uses(EpStoreUser::class);
 
-        Route::get('/')->name('index')->uses(EpUsers::class);
+    Route::get('/')->name('index')->uses(EpUsers::class);
 //        Route::get('stats')->name('statistics')->uses(EpUsersStatistics::class);
 
-        Route::prefix("{user}")->group(function () {
-            Route::get('edit')->name('edit')->uses(EpEditUser::class);
-            Route::put('/')->name('update')->uses(EpUpdateUser::class);
+    Route::prefix("{user}")->group(function () {
+        Route::get('edit')->name('edit')->uses(EpCreateOrEditUser::class);
+        Route::get('show')->name('show')->uses(EpShowUser::class);
+        Route::post('/')->name('update')->uses(EpUpdateUser::class);
 
 //            Route::post('stats/detail')->name('statistics.detail')->uses(EpDetailUserStatistics::class);
-        });
     });
-
+});
 

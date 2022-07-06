@@ -2,16 +2,11 @@
 
 namespace Modules\Project\Http\Endpoints;
 
-use App\Http\Controllers\Controller;
 use App\Http\Endpoints\TakeEndpoint;
-use App\Interfaces\Take;
 use App\Takes\TkWithCallback;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Project\Http\Requests\RqStoreProject;
 use Modules\Project\Takes\TkRedirectToProjectsIndex;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Store project endpoint.

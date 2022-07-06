@@ -2,6 +2,8 @@
 
 namespace Modules\Project\Traits;
 
+use Auth;
+
 /**
  * Project scopes.
  */
@@ -11,17 +13,18 @@ trait ProjectScopes
      * @param $query
      * @return mixed
      */
-    public function scopeWithAllContractors($query): mixed
+    public function scopeWithAllParticipants($query): mixed
     {
         return $query->with(array_merge(
                 [
-                    'installer' => ($callback = fn($query) => $query->select('id', 'name')),
+                    'installer' => ($callback = fn($query) => $query->select('id', 'name', 'area_id', 'itn')),
                     'designer' => $callback,
                     'customer' => $callback,
                 ],
-                \Auth::user()->isAdmin()
-                    ? ['dealer' => fn($query) => $query->select('id', 'first_name', 'middle_name', 'last_name')]
-                    : []
+                Auth::user()->isAdmin() ? [
+                    'dealer' => fn($query) => $query->select('id', 'name'),
+                    'user' => fn($query) => $query->select('id', 'first_name', 'middle_name', 'last_name'),
+                ] : []
             )
         );
     }

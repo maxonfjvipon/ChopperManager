@@ -31,19 +31,17 @@ final class AcPumps extends ArrEnvelope
             new ArrMerged(
                 new ArrObject(
                     "filter_data",
-                    new ArrValues(
-                        new ArrMerged(
-                            new ArrForFilteringWithId([
-                                'brands' => ($brandsWithSeries = PumpBrand::with(['series' => fn($query) => $query->select('id', 'name', 'brand_id')])
-                                    ->get(['id', 'name']))
-                                    ->all(),
-                                'series' => array_merge(...$brandsWithSeries->map(fn(PumpBrand $brand) => $brand->series->all())),
-                                'connection_types' => ConnectionType::asArrayForSelect(),
-                                'pump_orientations' => PumpOrientation::asArrayForSelect(),
-                                'collector_switches' => CollectorSwitch::asArrayForSelect()
-                            ]),
-                            new ArrForFiltering(['dns' => DN::values()])
-                        )
+                    new ArrMerged(
+                        new ArrForFilteringWithId([
+                            'brands' => ($brandsWithSeries = PumpBrand::with(['series' => fn($query) => $query->select('id', 'name', 'brand_id')])
+                                ->get(['id', 'name']))
+                                ->all(),
+                            'series' => array_merge(...$brandsWithSeries->map(fn(PumpBrand $brand) => $brand->series->all())),
+                            'connection_types' => ConnectionType::asArrayForSelect(),
+                            'pump_orientations' => PumpOrientation::asArrayForSelect(),
+                            'collector_switches' => CollectorSwitch::asArrayForSelect()
+                        ]),
+                        new ArrForFiltering(['dns' => DN::values()])
                     )
                 ),
                 ['pumps_total' => Pump::allOrCached()->count()]

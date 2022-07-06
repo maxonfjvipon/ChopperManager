@@ -19,7 +19,7 @@ use Modules\User\Entities\User;
 use Modules\User\Entities\UserAndPumpSeries;
 use Modules\User\Entities\UserAndSelectionType;
 use Modules\User\Http\Endpoints\EpDetailUserStatistics;
-use Modules\User\Http\Endpoints\EpCreateUser;
+use Modules\User\Http\Endpoints\EpCreateOrEditUser;
 use Modules\User\Http\Endpoints\EpEditUser;
 use Modules\User\Http\Endpoints\EpUsers;
 use Modules\User\Http\Endpoints\EpUsersStatistics;
@@ -37,7 +37,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @see EpUsers
      * @see EpEditUser
-     * @see EpCreateUser
+     * @see EpCreateOrEditUser
      * @see EpUsersStatistics
      * @author Max Trunnikov
      */
@@ -123,7 +123,7 @@ class UserEndpointsTest extends TestCase
      * @return void
      * @throws Exception
      * @author Max Trunnikov
-     * @see EpCreateUser
+     * @see EpCreateOrEditUser
      */
     public function test_users_create_endpoint()
     {

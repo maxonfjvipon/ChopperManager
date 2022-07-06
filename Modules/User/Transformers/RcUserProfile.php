@@ -20,7 +20,6 @@ final class RcUserProfile extends JsonResource
     {
         return [
             'id' => $this->resource->id,
-            'organization_name' => $this->resource->organization_name,
             'itn' => $this->resource->itn,
             'phone' => $this->resource->phone,
             'first_name' => $this->resource->first_name,

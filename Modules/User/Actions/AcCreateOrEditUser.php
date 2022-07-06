@@ -5,10 +5,8 @@ namespace Modules\User\Actions;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Modules\PumpSeries\Entities\PumpSeries;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Transformers\RcUserToEdit;
 use Modules\User\Entities\Area;
 use Modules\User\Entities\User;
@@ -28,15 +26,12 @@ final class AcCreateOrEditUser extends ArrEnvelope
             new ArrMerged(
                 [
                     "filter_data" => [
-                        'series' => array_map(
-                            fn(PumpSeries $series) => [
-                                'id' => $series->id,
-                                'name' => $series->brand->name . " " . $series->name
-                            ],
-                            PumpSeries::with('brand')->get()->all(),
-                        ),
                         'areas' => Area::allOrCached(),
-                        'roles' => UserRole::asArrayForSelect()
+                        'roles' => UserRole::asArrayForSelect(),
+                        'dealers' => Dealer::allOrCached()->map(fn(Dealer $dealer) => [
+                            'id' => $dealer->id,
+                            'name' => $dealer->name
+                        ]),
                     ]
                 ],
                 new ArrIf(

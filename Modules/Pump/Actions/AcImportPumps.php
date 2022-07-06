@@ -14,6 +14,7 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Entities\PumpOrientation;
+use Modules\Pump\Rules\PumpPerformanceRegex;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
 
@@ -71,7 +72,7 @@ final class AcImportPumps extends AcImport
             '15' => ['required', new In(PumpOrientation::getDescriptions())], // orientation
             '16' => ['required', new In(DN::values())], // dn suction
             '17' => ['required', new In(DN::values())], // dn pressure
-            '18' => ['required', 'regex:/^\s*\d+((,|.)\d+)?(\s{1}\d+((,|.)\d+)?){7,59}\s*$/'], // performance
+            '18' => ['required', new PumpPerformanceRegex()], // performance
             '19' => ['required', new In(CollectorSwitch::getDescriptions())], // collector switch
 //            '20' => ['required', new In([0, 1])] // is discontinued
         ];

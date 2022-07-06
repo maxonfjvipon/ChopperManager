@@ -5,8 +5,10 @@ namespace Modules\Project\Transformers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Selection\Entities\Selection;
 
+/**
+ * Project to show resource.
+ */
 final class RcProjectToShow extends JsonResource
 {
     /**

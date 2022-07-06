@@ -20,13 +20,6 @@ export const UserInfoTab = () => {
     const items = [
         {
             values: {
-                name: 'organization_name',
-                label: "Наименование организации",
-                initialValue: user.organization_name,
-            }, input: <Input/>
-        },
-        {
-            values: {
                 name: 'itn',
                 label: "ИНН",
                 rules: rules.itn,

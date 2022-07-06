@@ -11019,169 +11019,78 @@ function ErrorLayout(_ref) {
 
 /***/ }),
 
-/***/ "./Modules/Project/Resources/assets/js/Pages/Create.js":
-/*!*************************************************************!*\
-  !*** ./Modules/Project/Resources/assets/js/Pages/Create.js ***!
-  \*************************************************************/
+/***/ "./Modules/Project/Resources/assets/js/Components/WithContractors.js":
+/*!***************************************************************************!*\
+  !*** ./Modules/Project/Resources/assets/js/Components/WithContractors.js ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Create)
+/* harmony export */   "WithContractors": () => (/* binding */ WithContractors)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer */ "./resources/js/src/Shared/Resource/Containers/ResourceContainer.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction */ "./resources/js/src/Shared/Resource/Actions/SubmitAction.js");
-/* harmony import */ var _Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
 
 
 
-
-
-
-
-
-
-
-
-
-function Create() {
-  // HOOKS
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_2__.useInputRules)(),
-      rules = _useInputRules.rules;
-
-  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_8__.usePage)().props,
-      areas = _usePage$props.areas,
-      statuses = _usePage$props.statuses,
-      users = _usePage$props.users,
-      auth = _usePage$props.auth,
-      contractors = _usePage$props.contractors;
-
-  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_9__.usePermissions)(),
-      filteredBoolArray = _usePermissions.filteredBoolArray; // CONSTS
-
-
-  var formName = 'create-project-form';
-  var items = filteredBoolArray([{
-    values: {
-      name: 'name',
-      label: "Наименование",
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      placeholder: "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
-    })
-  }, {
-    values: {
-      name: 'area_id',
-      label: "Область",
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: areas,
-      placeholder: "\u041E\u0431\u043B\u0430\u0441\u0442\u044C"
-    })
-  }, {
-    values: {
-      name: 'status',
-      label: "Статус",
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: statuses,
-      placeholder: "\u0421\u0442\u0430\u0442\u0443\u0441"
-    })
-  }, auth.is_admin && {
-    values: {
-      name: 'customer_id',
-      label: "Заказчик"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: contractors,
-      placeholder: "\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A"
-    })
-  }, auth.is_admin && {
-    values: {
-      name: 'installer_id',
-      label: "Установщик"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: contractors,
-      placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
-    })
-  }, auth.is_admin && {
-    values: {
-      name: 'designer_id',
-      label: "Проектировщик"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: contractors,
-      placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
-    })
-  }, auth.is_admin && {
-    values: {
-      name: 'dealer_id',
-      label: "Диллер"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_7__.Selection, {
-      options: users,
-      placeholder: "\u0414\u0438\u043B\u043B\u0435\u0440"
-    })
-  }, {
-    values: {
-      name: 'description',
-      label: "Описание"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].TextArea, {
-      placeholder: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435"
-    })
-  }]); // HANDLERS
-
-  var createProjectHandler = function createProjectHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post(route('projects.store'), body);
-  }; // RENDER
-
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__.ResourceContainer, {
-    title: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
-    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_4__.SubmitAction, {
-      label: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
-      form: formName
-    }),
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_5__.BackToProjectsLink, {}),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_6__.ItemsForm, {
-      layout: "vertical",
-      items: items,
-      name: formName,
-      onFinish: createProjectHandler
-    })
-  });
-}
+var WithContractors = function WithContractors(_ref) {
+  var children = _ref.children,
+      setContractors = _ref.setContractors,
+      contractorsSearchValue = _ref.contractorsSearchValue;
+  var debouncedContractorsSearchValue = (0,_resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_1__.useDebounce)(contractorsSearchValue, 700);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!!debouncedContractorsSearchValue) {
+      var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
+      var token = "fef9ff490530693826b443662382a513395d5522";
+      var options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": "Token " + token
+        },
+        body: JSON.stringify({
+          query: debouncedContractorsSearchValue,
+          count: 20
+        })
+      };
+      fetch(url, options).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        console.log(result);
+        setContractors(result.suggestions.map(function (suggestion) {
+          return {
+            name: suggestion.value + " / " + suggestion.data.inn + ' / ' + suggestion.data.address.data.region_with_type,
+            value: [suggestion.value, suggestion.data.inn, suggestion.data.address.data.region_kladr_id].join("?")
+          };
+        }));
+      })["catch"](function (error) {
+        return antd__WEBPACK_IMPORTED_MODULE_2__["default"].error(error);
+      });
+    }
+  }, [debouncedContractorsSearchValue]);
+  return children;
+};
 
 /***/ }),
 
-/***/ "./Modules/Project/Resources/assets/js/Pages/Edit.js":
-/*!***********************************************************!*\
-  !*** ./Modules/Project/Resources/assets/js/Pages/Edit.js ***!
-  \***********************************************************/
+/***/ "./Modules/Project/Resources/assets/js/Pages/CreateOrEdit.js":
+/*!*******************************************************************!*\
+  !*** ./Modules/Project/Resources/assets/js/Pages/CreateOrEdit.js ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */   "default": () => (/* binding */ CreateOrEdit)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
@@ -11191,7 +11100,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Components/BackToProjectsLink */ "./Modules/Project/Resources/assets/js/Components/BackToProjectsLink.js");
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Components_WithContractors__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Components/WithContractors */ "./Modules/Project/Resources/assets/js/Components/WithContractors.js");
+/* harmony import */ var _resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/labels.hook */ "./resources/js/src/Hooks/labels.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -11204,7 +11126,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Edit() {
+
+
+
+function CreateOrEdit() {
   // HOOKS
   var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_2__.useInputRules)(),
       rules = _useInputRules.rules;
@@ -11214,113 +11139,143 @@ function Edit() {
 
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.usePage)().props,
       project = _usePage$props.project,
-      areas = _usePage$props.areas,
-      statuses = _usePage$props.statuses,
-      users = _usePage$props.users,
       auth = _usePage$props.auth,
-      contractors = _usePage$props.contractors; // CONSTS
+      filter_data = _usePage$props.filter_data;
 
-  var formName = 'edit-project-form';
+  var _useLabels = (0,_resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_11__.useLabels)(),
+      labels = _useLabels.labels; // STATE
+
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      contractors = _useState2[0],
+      setContractors = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      contractorsSearchValue = _useState4[0],
+      setContractorsSearchValue = _useState4[1]; // CONSTS
+
+
+  var formName = 'project-form';
+  var contractorPlaceholder = "Начните вводить название или ИНН организации...";
   var items = filteredBoolArray([{
     values: {
       name: 'name',
-      label: "Наименование",
+      label: labels.name,
       rules: [rules.required],
-      initialValue: project.name
+      initialValue: project === null || project === void 0 ? void 0 : project.name
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      placeholder: "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435"
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      placeholder: labels.name
     })
   }, {
     values: {
       name: 'area_id',
-      label: "Область",
+      label: labels.area,
       rules: [rules.required],
-      initialValue: project.area_id
+      initialValue: project === null || project === void 0 ? void 0 : project.area_id
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: areas,
-      placeholder: "\u041E\u0431\u043B\u0430\u0441\u0442\u044C"
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+      options: filter_data.areas,
+      placeholder: labels.area
     })
   }, {
     values: {
       name: 'status',
-      label: "Статус",
+      label: labels.status,
       rules: [rules.required],
-      initialValue: project.status
+      initialValue: project === null || project === void 0 ? void 0 : project.status
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: statuses,
-      placeholder: "\u0421\u0442\u0430\u0442\u0443\u0441"
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+      options: filter_data.statuses,
+      placeholder: labels.status
     })
-  }, auth.is_admin && {
+  }, {
     values: {
-      name: 'customer_id',
-      label: "Заказчик",
-      initialValue: project.customer_id
+      name: 'customer',
+      label: labels.customer,
+      initialValue: project === null || project === void 0 ? void 0 : project.customer
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
       options: contractors,
-      placeholder: "\u0417\u0430\u043A\u0430\u0437\u0447\u0438\u043A"
+      placeholder: contractorPlaceholder,
+      onSearch: function onSearch(value) {
+        return setContractorsSearchValue(value);
+      }
     })
-  }, auth.is_admin && {
+  }, {
     values: {
-      name: 'installer_id',
-      label: "Монтажник",
-      initialValue: project.installer_id
+      name: 'installer',
+      label: labels.installer,
+      initialValue: project === null || project === void 0 ? void 0 : project.installer
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
       options: contractors,
-      placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
+      placeholder: contractorPlaceholder,
+      onSearch: function onSearch(value) {
+        return setContractorsSearchValue(value);
+      }
     })
-  }, auth.is_admin && {
+  }, {
     values: {
-      name: 'designer_id',
-      label: "Проектировщик",
-      initialValue: project.designer_id
+      name: 'designer',
+      label: labels.designer,
+      initialValue: project === null || project === void 0 ? void 0 : project.designer
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
       options: contractors,
-      placeholder: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A"
+      placeholder: contractorPlaceholder,
+      onSearch: function onSearch(value) {
+        return setContractorsSearchValue(value);
+      }
     })
   }, auth.is_admin && {
     values: {
       name: 'dealer_id',
-      label: "Диллер",
-      initialValue: project.dealer_id
+      label: labels.dealer,
+      initialValue: project === null || project === void 0 ? void 0 : project.dealer_id
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: users,
-      placeholder: "\u0414\u0438\u043B\u043B\u0435\u0440"
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+      options: filter_data.dealers,
+      placeholder: labels.dealer
     })
   }, {
     values: {
       name: 'description',
-      label: "Описание",
-      initialValue: project.description
+      label: labels.description,
+      initialValue: project === null || project === void 0 ? void 0 : project.description
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].TextArea, {
-      placeholder: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435"
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(antd__WEBPACK_IMPORTED_MODULE_13__["default"].TextArea, {
+      placeholder: labels.description
     })
   }]); // HANDLERS
 
-  var updateProjectHandler = function updateProjectHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.put(route('projects.update', project.id), body);
+  var createOrUpdateProjectHandler = function createOrUpdateProjectHandler(body) {
+    if (project) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.put(route('projects.update', project.id), body);
+    } else {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post(route('projects.store'), body);
+    }
   }; // RENDER
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_5__.ResourceContainer, {
-    title: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0440\u043E\u0435\u043A\u0442",
-    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_6__.SubmitAction, {
-      label: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C",
-      form: formName
-    }),
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_7__.BackToProjectsLink, {}),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__.ItemsForm, {
-      layout: "vertical",
-      items: items,
-      name: formName,
-      onFinish: updateProjectHandler
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_WithContractors__WEBPACK_IMPORTED_MODULE_10__.WithContractors, {
+    setContractors: setContractors,
+    contractorsSearchValue: contractorsSearchValue,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_5__.ResourceContainer, {
+      title: project ? "Изменить проект" : "Создать проект",
+      actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_6__.SubmitAction, {
+        label: project ? "Изменить" : "Создать",
+        form: formName
+      }),
+      extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Components_BackToProjectsLink__WEBPACK_IMPORTED_MODULE_7__.BackToProjectsLink, {}),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_8__.ItemsForm, {
+        layout: "vertical",
+        items: items,
+        name: formName,
+        onFinish: createOrUpdateProjectHandler
+      })
     })
   });
 }
@@ -11484,7 +11439,7 @@ function Show() {
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
       readOnly: true
     })
-  }, auth.is_admin && {
+  }, {
     values: {
       name: 'customer',
       label: "Заказчик",
@@ -11494,7 +11449,7 @@ function Show() {
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
       readOnly: true
     })
-  }, auth.is_admin && {
+  }, {
     values: {
       name: 'installer',
       label: "Монтажник",
@@ -11504,7 +11459,7 @@ function Show() {
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
       readOnly: true
     })
-  }, auth.is_admin && {
+  }, {
     values: {
       name: 'designer',
       label: "Проектировщик",
@@ -11519,6 +11474,16 @@ function Show() {
       name: 'dealer',
       label: "Диллер",
       initialValue: project.dealer,
+      className: reducedBottomAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      readOnly: true
+    })
+  }, auth.is_admin && {
+    values: {
+      name: 'user',
+      label: "Пользователь",
+      initialValue: project.user,
       className: reducedBottomAntFormItemClassName
     },
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(antd__WEBPACK_IMPORTED_MODULE_16__["default"], {
@@ -12283,9 +12248,8 @@ function Index() {
       filteredBoolArray = _usePermissions.filteredBoolArray;
 
   var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_9__.useDate)(),
-      compareDate = _useDate.compareDate;
+      compareDate = _useDate.compareDate; // STATE
 
-  console.log(projects); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(projects),
       _useState2 = _slicedToArray(_useState, 2),
@@ -12352,6 +12316,9 @@ function Index() {
   }, auth.is_admin && {
     title: 'Диллер',
     dataIndex: 'dealer'
+  }, auth.is_admin && {
+    title: 'Пользователь',
+    dataIndex: 'user'
   }, {
     key: 'key',
     width: '1%',
@@ -12428,12 +12395,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Pages__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages */ "./Modules/Project/Resources/assets/js/Pages/index.js");
-/* harmony import */ var _Pages_Edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Edit */ "./Modules/Project/Resources/assets/js/Pages/Edit.js");
-/* harmony import */ var _Pages_Create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Create */ "./Modules/Project/Resources/assets/js/Pages/Create.js");
-/* harmony import */ var _Pages_Show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Show */ "./Modules/Project/Resources/assets/js/Pages/Show.js");
-/* harmony import */ var _Pages_Error__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Error */ "./Modules/Project/Resources/assets/js/Pages/Error.js");
-/* harmony import */ var _Pages_Statistics__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/Statistics */ "./Modules/Project/Resources/assets/js/Pages/Statistics.js");
-
+/* harmony import */ var _Pages_CreateOrEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/CreateOrEdit */ "./Modules/Project/Resources/assets/js/Pages/CreateOrEdit.js");
+/* harmony import */ var _Pages_Show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Show */ "./Modules/Project/Resources/assets/js/Pages/Show.js");
+/* harmony import */ var _Pages_Error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Error */ "./Modules/Project/Resources/assets/js/Pages/Error.js");
+/* harmony import */ var _Pages_Statistics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Statistics */ "./Modules/Project/Resources/assets/js/Pages/Statistics.js");
 
 
 
@@ -12441,11 +12406,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Index: _Pages__WEBPACK_IMPORTED_MODULE_0__["default"],
-  Edit: _Pages_Edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  Create: _Pages_Create__WEBPACK_IMPORTED_MODULE_2__["default"],
-  Show: _Pages_Show__WEBPACK_IMPORTED_MODULE_3__["default"],
-  Statistics: _Pages_Statistics__WEBPACK_IMPORTED_MODULE_5__["default"],
-  ErrorPage: _Pages_Error__WEBPACK_IMPORTED_MODULE_4__["default"]
+  CreateOrEdit: _Pages_CreateOrEdit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  Show: _Pages_Show__WEBPACK_IMPORTED_MODULE_2__["default"],
+  Statistics: _Pages_Statistics__WEBPACK_IMPORTED_MODULE_4__["default"],
+  ErrorPage: _Pages_Error__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -12479,6 +12443,64 @@ var useDate = function useDate() {
     dateStringFromDB: dateStringFromDB,
     compareDate: compareDate
   };
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Hooks/debounce.hook.js":
+/*!*************************************************!*\
+  !*** ./resources/js/src/Hooks/debounce.hook.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useDebounce": () => (/* binding */ useDebounce)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var useDebounce = function useDebounce(value, delay) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
+      _useState2 = _slicedToArray(_useState, 2),
+      debouncedValue = _useState2[0],
+      setDebouncedValue = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // Выставить debouncedValue равным value (переданное значение)
+    // после заданной задержки
+    var handler = setTimeout(function () {
+      setDebouncedValue(value);
+    }, delay); // Вернуть функцию очистки, которая будет вызываться каждый раз, когда ...
+    // ... useEffect вызван снова. useEffect будет вызван снова, только если ...
+    // ... value будет изменено (смотри ниже массив зависимостей).
+    // Так мы избегаем изменений debouncedValue, если значение value ...
+    // ... поменялось в рамках интервала задержки.
+    // Таймаут очищается и стартует снова.
+    // Что бы сложить это воедино: если пользователь печатает что-то внутри ...
+    // ... нашего приложения в поле поиска, мы не хотим, чтобы debouncedValue...
+    // ... не менялось до тех пор, пока он не прекратит печатать дольше, чем 500ms.
+
+    return function () {
+      clearTimeout(handler);
+    };
+  }, // Вызывается снова, только если значение изменится
+  // мы так же можем добавить переменную "delay" в массива зависимостей ...
+  // ... если вы собираетесь менять ее динамически.
+  [value]);
+  return debouncedValue;
 };
 
 /***/ }),
@@ -12541,13 +12563,52 @@ var useInputRules = function useInputRules() {
 
   return {
     rules: {
-      email: [required, email],
+      email: email,
+      rq_email: [required, email],
       password: [required],
       itn: [itn],
       phone: phone,
       required: required,
       number: number,
       max: max
+    }
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Hooks/labels.hook.js":
+/*!***********************************************!*\
+  !*** ./resources/js/src/Hooks/labels.hook.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useLabels": () => (/* binding */ useLabels)
+/* harmony export */ });
+var useLabels = function useLabels() {
+  return {
+    labels: {
+      created_at: "Дата создания",
+      updated_at: "Дата обновления",
+      name: "Наименование",
+      area: "Область",
+      role: "Роль",
+      fio: "ФИО",
+      phone: "Контактный телефон",
+      email: "Email",
+      itn: "ИНН",
+      description: "Описание",
+      is_active: "Активен",
+      status: "Статус",
+      customer: "Заказчик",
+      installer: "Монтажник",
+      designer: "Проектировщик",
+      user: "Пользователь",
+      dealer: "Дилер",
+      available_series: "Допустимые серии"
     }
   };
 };

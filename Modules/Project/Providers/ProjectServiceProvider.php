@@ -5,7 +5,7 @@ namespace Modules\Project\Providers;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
-class ProjectServiceProvider extends ServiceProvider
+final class ProjectServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName

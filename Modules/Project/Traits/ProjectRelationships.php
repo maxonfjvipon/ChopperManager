@@ -5,7 +5,8 @@ namespace Modules\Project\Traits;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Selection\Entities\Selection;
-use Modules\User\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Entities\User;
 
 /**
@@ -50,7 +51,7 @@ trait ProjectRelationships
      */
     public function dealer(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'dealer_id');
+        return $this->belongsTo(Dealer::class, 'dealer_id');
     }
 
     /**

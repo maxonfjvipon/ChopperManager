@@ -5,19 +5,15 @@ namespace App\Http\Middleware;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Inertia\Middleware;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFiltered;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
-use Spatie\Permission\Models\Permission;
 
-class HandleInertiaRequests extends Middleware
+/**
+ * Handle Inertia requests middleware.
+ */
+final class HandleInertiaRequests extends Middleware
 {
-
-
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -53,23 +49,26 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return array_merge(parent::share($request), [
-            'title' => 'BPE Pump Master',
-            'auth' => array_merge([
-                'full_name' => Auth::user()->full_name ?? null,
-            ], Auth::user()?->isAdmin()
-                ? ['is_admin' => true]
-                : []),
-            'flash' => function () use ($request) {
-                return [
-                    'success' => $request->session()->get('success'),
-                    'warning' => $request->session()->get('warning'),
-                    'info' => $request->session()->get('info'),
-                    'error' => $request->session()->get('error'),
-                    'errorBag' => $request->session()->get('errorBag'),
-                ];
-            }], $this->doesRequestContain($request, "selections")
-            ? [
+        return array_merge(
+            parent::share($request),
+            [
+                'title' => 'BPE Pump Master',
+                'auth' => array_merge([
+                    'full_name' => Auth::user()->full_name ?? null,
+                ], Auth::user()?->isAdmin()
+                    ? ['is_admin' => true]
+                    : []),
+                'flash' => function () use ($request) {
+                    return [
+                        'success' => $request->session()->get('success'),
+                        'warning' => $request->session()->get('warning'),
+                        'info' => $request->session()->get('info'),
+                        'error' => $request->session()->get('error'),
+                        'errorBag' => $request->session()->get('errorBag'),
+                    ];
+                }],
+            $this->doesRequestContain($request, "selections")
+                ? [
                 'selection_types' => [
                     SelectionType::fromValue(SelectionType::Auto)->key => SelectionType::fromValue(SelectionType::Auto)->key,
                     SelectionType::fromValue(SelectionType::Handle)->key => SelectionType::fromValue(SelectionType::Handle)->key,
@@ -79,6 +78,7 @@ class HandleInertiaRequests extends Middleware
                     StationType::fromValue(StationType::AF)->key => StationType::fromValue(StationType::AF)->key
                 ],
             ]
-            : []);
+                : []
+        );
     }
 }

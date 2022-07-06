@@ -10484,13 +10484,6 @@ var UserInfoTab = function UserInfoTab() {
   var profileFormName = 'profile-form';
   var items = [{
     values: {
-      name: 'organization_name',
-      label: "Наименование организации",
-      initialValue: user.organization_name
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-  }, {
-    values: {
       name: 'itn',
       label: "ИНН",
       rules: rules.itn,
@@ -10697,30 +10690,29 @@ var UserProjectsTab = function UserProjectsTab(_ref) {
 
 /***/ }),
 
-/***/ "./Modules/User/Resources/assets/js/Pages/Create.js":
-/*!**********************************************************!*\
-  !*** ./Modules/User/Resources/assets/js/Pages/Create.js ***!
-  \**********************************************************/
+/***/ "./Modules/User/Resources/assets/js/Pages/CreateOrEdit.js":
+/*!****************************************************************!*\
+  !*** ./Modules/User/Resources/assets/js/Pages/CreateOrEdit.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Create)
+/* harmony export */   "default": () => (/* binding */ CreateOrEdit)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/switch/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/switch/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction */ "./resources/js/src/Shared/Resource/Actions/SubmitAction.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer */ "./resources/js/src/Shared/Resource/Containers/ResourceContainer.js");
 /* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Components/BackToUsersLink */ "./Modules/User/Resources/assets/js/Components/BackToUsersLink.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Components/BackToUsersLink */ "./Modules/User/Resources/assets/js/Components/BackToUsersLink.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -10732,304 +10724,173 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-function Create() {
-  // HOOKS
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__.useInputRules)(),
-      rules = _useInputRules.rules;
-
-  var filter_data = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.usePage)().props.filter_data;
-  var formName = 'create-project-form';
-  var items = [{
-    values: {
-      name: 'role',
-      label: "Роль",
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: filter_data.roles
-    })
-  }, {
-    values: {
-      name: 'organization_name',
-      label: "Наименование организации"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'itn',
-      label: "ИНН",
-      rules: rules.itn
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'phone',
-      label: "Контактный телефон",
-      rules: [rules.phone]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'area_id',
-      label: "Область",
-      rules: [rules.required]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
-      options: filter_data.areas
-    })
-  }, {
-    values: {
-      name: 'first_name',
-      label: "Имя",
-      rules: [rules.required, rules.max(255)]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'middle_name',
-      label: "Фамилия",
-      rules: [rules.required, rules.max(255)]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'last_name',
-      label: "Отчество",
-      rules: [rules.max(255)]
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'email',
-      label: "Email",
-      rules: rules.email
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
-  }, {
-    values: {
-      name: 'password',
-      label: "Пароль",
-      rules: rules.password
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
-  }, {
-    values: {
-      name: 'password_confirmation',
-      label: "Подтверждение пароля",
-      rules: rules.password
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
-  }, {
-    values: {
-      name: 'available_series_ids',
-      label: "Доступные серии"
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-      options: filter_data.series
-    })
-  }, {
-    values: {
-      name: 'is_active',
-      label: "Активен",
-      rules: [rules.required],
-      valuePropName: "checked",
-      initialValue: true
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-  }]; // HANDLERS
-
-  var createUserHandler = function createUserHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post(route('users.store'), body);
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__.ResourceContainer, {
-    title: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
-    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_2__.SubmitAction, {
-      label: "\u0421\u043E\u0437\u0434\u0430\u0442\u044C",
-      form: formName
-    }),
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_8__.BackToUsersLink, {}),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__.ItemsForm, {
-      layout: "vertical",
-      items: items,
-      name: formName,
-      onFinish: createUserHandler
-    })
-  });
-}
-
-/***/ }),
-
-/***/ "./Modules/User/Resources/assets/js/Pages/Edit.js":
-/*!********************************************************!*\
-  !*** ./Modules/User/Resources/assets/js/Pages/Edit.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Edit)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/switch/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction */ "./resources/js/src/Shared/Resource/Actions/SubmitAction.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer */ "./resources/js/src/Shared/Resource/Containers/ResourceContainer.js");
-/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
-/* harmony import */ var _Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Components/BackToUsersLink */ "./Modules/User/Resources/assets/js/Components/BackToUsersLink.js");
-/* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-
-
-
-function Edit() {
+function CreateOrEdit() {
   // HOOKS
   var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_6__.useInputRules)(),
       rules = _useInputRules.rules;
 
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.usePage)().props,
-      user = _usePage$props.user,
-      filter_data = _usePage$props.filter_data;
-  console.log(user, filter_data);
-  var formName = 'edit-user-form';
+      filter_data = _usePage$props.filter_data,
+      user = _usePage$props.user; // CONSTS
+
+  var labels = {
+    role: "Роль",
+    dealer: "Дилер",
+    itn: "ИНН",
+    phone: "Контактный телефон",
+    area: "Область",
+    first_name: "Имя",
+    middle_name: "Фамилия",
+    last_name: "Отчество",
+    email: "Email",
+    password: "Пароль",
+    password_confirmation: "Подтверждение пароля",
+    is_active: "Активен"
+  };
+  var formName = 'user-form';
   var items = [{
     values: {
       name: 'role',
-      label: "Роль",
+      label: labels.role,
       rules: [rules.required],
-      initialValue: user.role
+      initialValue: user === null || user === void 0 ? void 0 : user.role
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_8__.Selection, {
+      placeholder: labels.role,
       options: filter_data.roles
     })
   }, {
     values: {
-      name: 'organization_name',
-      label: "Наименование организации",
-      initialValue: user.organization_name
+      name: 'dealer_id',
+      label: labels.dealer,
+      rules: [rules.required],
+      initialValue: user === null || user === void 0 ? void 0 : user.dealer_id
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_8__.Selection, {
+      placeholder: labels.dealer,
+      options: filter_data.dealers
+    })
   }, {
     values: {
       name: 'itn',
-      label: "ИНН",
+      label: labels.itn,
       rules: rules.itn,
-      initialValue: user.itn
+      initialValue: user === null || user === void 0 ? void 0 : user.itn
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.itn
+    })
   }, {
     values: {
       name: 'phone',
-      label: "Контактный телефон",
-      initialValue: user.phone,
-      rules: [rules.phone]
+      label: labels.phone,
+      rules: [rules.phone],
+      initialValue: user === null || user === void 0 ? void 0 : user.phone
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.phone
+    })
   }, {
     values: {
       name: 'area_id',
-      label: "Область",
+      label: labels.area,
       rules: [rules.required],
-      initialValue: user.area_id
+      initialValue: user === null || user === void 0 ? void 0 : user.area_id
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_9__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_8__.Selection, {
+      placeholder: labels.area,
       options: filter_data.areas
     })
   }, {
     values: {
       name: 'first_name',
-      label: "Имя",
+      label: labels.first_name,
       rules: [rules.required, rules.max(255)],
-      initialValue: user.first_name
+      initialValue: user === null || user === void 0 ? void 0 : user.first_name
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.first_name
+    })
   }, {
     values: {
       name: 'middle_name',
-      label: "Фамилия",
+      label: labels.middle_name,
       rules: [rules.required, rules.max(255)],
-      initialValue: user.middle_name
+      initialValue: user === null || user === void 0 ? void 0 : user.middle_name
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.middle_name
+    })
   }, {
     values: {
       name: 'last_name',
-      label: "Отчество",
+      label: labels.last_name,
       rules: [rules.max(255)],
-      initialValue: user.last_name
+      initialValue: user === null || user === void 0 ? void 0 : user.last_name
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.last_name
+    })
   }, {
     values: {
       name: 'email',
-      label: "Email",
-      rules: rules.email,
-      initialValue: user.email
+      label: labels.email,
+      rules: rules.rq_email,
+      initialValue: user === null || user === void 0 ? void 0 : user.email
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      placeholder: labels.email
+    })
   }, {
     values: {
       name: 'password',
-      label: "Пароль"
+      label: labels.password,
+      rules: user ? [] : rules.password
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {
+      placeholder: labels.password
+    })
   }, {
     values: {
       name: 'password_confirmation',
-      label: "Подтверждение пароля"
+      label: labels.password_confirmation,
+      rules: user ? [] : rules.password
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"].Password, {})
-  }, {
-    values: {
-      name: 'available_series_ids',
-      label: "Доступные серии",
-      initialValue: user.available_series_ids
-    },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_7__.MultipleSelection, {
-      options: filter_data.series
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].Password, {
+      placeholder: labels.password_confirmation
     })
   }, {
     values: {
       name: 'is_active',
-      label: "Активен",
+      label: labels.is_active,
       rules: [rules.required],
       valuePropName: "checked",
-      initialValue: user.is_active
+      initialValue: user ? user.is_active : true
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {})
   }]; // HANDLERS
 
-  var updateUserHandler = function updateUserHandler(body) {
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.put(route('users.update', user.id), body);
-  };
+  var createOrUpdateUserHandler = function createOrUpdateUserHandler(body) {
+    if (user) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post(route('users.update', user.id), body);
+    } else {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post(route('users.store'), body);
+    }
+  }; // RENDER
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__.ResourceContainer, {
-    title: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F",
-    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_2__.SubmitAction, {
-      label: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C",
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_3__.ResourceContainer, {
+    title: user ? "Изменить пользователя" : "Создать пользователя",
+    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_2__.SubmitAction, {
+      label: user ? "Изменить" : "Создать",
       form: formName
     }),
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_8__.BackToUsersLink, {}),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__.ItemsForm, {
+    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Components_BackToUsersLink__WEBPACK_IMPORTED_MODULE_7__.BackToUsersLink, {}),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_4__.ItemsForm, {
       layout: "vertical",
       items: items,
       name: formName,
-      onFinish: updateUserHandler
+      onFinish: createOrUpdateUserHandler
     })
   });
 }
@@ -11095,9 +10956,8 @@ function Index() {
       filter_data = _usePage$props.filter_data;
 
   var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_10__.useDate)(),
-      compareDate = _useDate.compareDate;
+      compareDate = _useDate.compareDate; // STATE
 
-  console.log(users, filter_data); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(users),
       _useState2 = _slicedToArray(_useState, 2),
@@ -11120,10 +10980,10 @@ function Index() {
       return record.role === role;
     }
   }, {
-    title: "Наименование организации",
-    dataIndex: 'organization_name',
+    title: "Дилер",
+    dataIndex: 'dealer',
     sorter: function sorter(a, b) {
-      return a.organization_name.localeCompare(b.organization_name);
+      return a.dealer.localeCompare(b.dealer);
     },
     render: function render(text) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -11228,18 +11088,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Profile)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
-/* harmony import */ var _resources_js_translation_lang__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/translation/lang */ "./resources/js/translation/lang.js");
-/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
-/* harmony import */ var _Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/UserInfoTab */ "./Modules/User/Resources/assets/js/Components/UserInfoTab.js");
-/* harmony import */ var _Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/ChangePasswordTab */ "./Modules/User/Resources/assets/js/Components/ChangePasswordTab.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tabs/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/row/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/UserInfoTab */ "./Modules/User/Resources/assets/js/Components/UserInfoTab.js");
+/* harmony import */ var _Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Components/ChangePasswordTab */ "./Modules/User/Resources/assets/js/Components/ChangePasswordTab.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-
- // import {DiscountsTab} from "../Components/DiscountsTab";
 
 
 
@@ -11248,24 +11105,24 @@ function Profile() {
   var tabs = [{
     name: "Профиль",
     key: "user-info",
-    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_3__.UserInfoTab, {})
+    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_UserInfoTab__WEBPACK_IMPORTED_MODULE_2__.UserInfoTab, {})
   }, {
     name: "Изменить пароль",
     key: "change-password",
-    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_4__.ChangePasswordTab, {})
+    comp: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_ChangePasswordTab__WEBPACK_IMPORTED_MODULE_3__.ChangePasswordTab, {})
   } // {name: Lang.get('pages.profile.discounts.tab'), key: "producers-discounts", comp: <DiscountsTab/>},
   ];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_2__.IndexContainer, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_1__.IndexContainer, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"], {
       centered: true,
       type: "card",
       defaultActiveKey: tabs[0].key,
       children: tabs.map(function (tab) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"].TabPane, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__["default"].TabPane, {
           tab: tab.name,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_6__["default"], {
             justify: "space-around",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(antd__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_7__["default"], {
               xs: 22,
               sm: 20,
               md: 18,
@@ -11746,10 +11603,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Pages_Index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Index */ "./Modules/User/Resources/assets/js/Pages/Index.js");
 /* harmony import */ var _Pages_Profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Profile */ "./Modules/User/Resources/assets/js/Pages/Profile.js");
-/* harmony import */ var _Pages_Edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Edit */ "./Modules/User/Resources/assets/js/Pages/Edit.js");
-/* harmony import */ var _Pages_Create__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Create */ "./Modules/User/Resources/assets/js/Pages/Create.js");
-/* harmony import */ var _Pages_Statistics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Statistics */ "./Modules/User/Resources/assets/js/Pages/Statistics.js");
-
+/* harmony import */ var _Pages_CreateOrEdit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/CreateOrEdit */ "./Modules/User/Resources/assets/js/Pages/CreateOrEdit.js");
+/* harmony import */ var _Pages_Statistics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Statistics */ "./Modules/User/Resources/assets/js/Pages/Statistics.js");
 
 
 
@@ -11757,9 +11612,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   Index: _Pages_Index__WEBPACK_IMPORTED_MODULE_0__["default"],
   Profile: _Pages_Profile__WEBPACK_IMPORTED_MODULE_1__["default"],
-  Edit: _Pages_Edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  Create: _Pages_Create__WEBPACK_IMPORTED_MODULE_3__["default"],
-  Statistics: _Pages_Statistics__WEBPACK_IMPORTED_MODULE_4__["default"]
+  CreateOrEdit: _Pages_CreateOrEdit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  Statistics: _Pages_Statistics__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -12114,7 +11968,8 @@ var useInputRules = function useInputRules() {
 
   return {
     rules: {
-      email: [required, email],
+      email: email,
+      rq_email: [required, email],
       password: [required],
       itn: [itn],
       phone: phone,
@@ -12432,41 +12287,6 @@ var InputNum = function InputNum(_ref) {
     },
     children: children
   }));
-};
-
-/***/ }),
-
-/***/ "./resources/js/src/Shared/Inputs/MultipleSelection.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/src/Shared/Inputs/MultipleSelection.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MultipleSelection": () => (/* binding */ MultipleSelection)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Selection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-var MultipleSelection = function MultipleSelection(_ref) {
-  var rest = _extends({}, _ref);
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Selection__WEBPACK_IMPORTED_MODULE_1__.Selection, _objectSpread({
-    mode: "multiple"
-  }, rest));
 };
 
 /***/ }),

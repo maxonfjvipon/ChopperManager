@@ -9,8 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
-use JetBrains\PhpStorm\Pure;
-use Modules\PumpSeries\Entities\PumpSeries;
+use Modules\Project\Entities\Project;
+use Modules\ProjectParticipant\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Traits\UserRelationships;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -24,14 +25,15 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string $last_name
  * @property string $itn
  * @property boolean $is_active
- * @property string $organization_name
  * @property string $phone
  * @property string $email
  *
  * @property UserRole $role
  * @property Carbon $created_at
  * @property Area $area
+ * @property Dealer $dealer
  * @property array<Contractor>|Collection<Contractor> $contractors
+ * @property array<Project>|Collection<Project> $projects
  *
  * @method static self create(array $attributes)
  * @method static self find(int|string $id)
@@ -54,9 +56,9 @@ final class User extends Authenticatable
         'last_name',
         'itn',
         'area_id',
+        'dealer_id',
         'phone',
         'is_active',
-        'organization_name',
         'role',
     ];
 
@@ -88,28 +90,6 @@ final class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role->is(UserRole::Admin);
-    }
-
-    /**
-     * @param PumpSeries $series
-     * @return void
-     */
-    public static function allowNewSeriesToAdmins(PumpSeries $series)
-    {
-        foreach (self::with(['available_series' => fn($query) => $query->select('id')])
-                     ->where('role', UserRole::Admin)
-                     ->get(['id'])
-                     ->all() as $user) {
-            UserPumpSeries::updateSeriesForUser(
-                array_merge(
-                    $user->available_series
-                        ->map(fn($series) => $series->id)
-                        ->toArray(),
-                    [$series->id]
-                ),
-                $user
-            );
-        }
     }
 
     /**

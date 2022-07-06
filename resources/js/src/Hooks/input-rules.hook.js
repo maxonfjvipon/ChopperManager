@@ -31,7 +31,8 @@ export const useInputRules = () => {
 
     return {
         rules: {
-            email: [required, email],
+            email,
+            rq_email: [required, email],
             password: [required],
             itn: [itn],
             phone,

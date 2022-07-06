@@ -8,7 +8,6 @@ import {RoundedCard} from "../../../../../../resources/js/src/Shared/Cards/Round
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
 import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {GuestLayout} from "../../../../../../resources/js/src/Shared/Layout/GuestLayout";
-import {Link} from "@inertiajs/inertia-react";
 
 const Login = () => {
 
@@ -20,7 +19,7 @@ const Login = () => {
     const formName = 'login-form'
     const items = [
         {
-            values: {name: 'email', label: "Email", rules: rules.email},
+            values: {name: 'email', label: "Email", rules: rules.rq_email},
             input: <Input/>
         },
         {

@@ -9,7 +9,7 @@ use Modules\Project\Entities\ProjectStatus;
 use Modules\Project\Http\Endpoints\EpCloneProject;
 use Modules\Project\Http\Endpoints\EpCreateProject;
 use Modules\Project\Http\Endpoints\EpDestroyProject;
-use Modules\Project\Http\Endpoints\EpEditProject;
+use Modules\Project\Http\Endpoints\EpCreateOrEditProject;
 use Modules\Project\Http\Endpoints\EpExportProject;
 use Modules\Project\Http\Endpoints\EpProjects;
 use Modules\Project\Http\Endpoints\EpRestoreProject;
@@ -139,7 +139,7 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
-     * @see EpEditProject
+     * @see EpCreateOrEditProject
      * @author Max Trunnikov
      */
     public function test_projects_edit_endpoint()

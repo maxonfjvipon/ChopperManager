@@ -6,7 +6,6 @@ use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectToRoute;
 use App\Takes\TkWithCallback;
 use Modules\User\Entities\User;
-use Modules\User\Entities\UserPumpSeries;
 use Modules\User\Http\Requests\RqUpdateUser;
 
 /**
@@ -22,10 +21,7 @@ final class EpUpdateUser extends TakeEndpoint
     {
         parent::__construct(
             new TkWithCallback(
-                function() use ($request) {
-                    ($user = User::find($request->user))->update($request->userProps());
-                    UserPumpSeries::updateSeriesForUser($request->available_series_ids, $user);
-                },
+                fn() => User::find($request->user)->update($request->userProps()),
                 new TkRedirectToRoute('users.index')
             )
         );

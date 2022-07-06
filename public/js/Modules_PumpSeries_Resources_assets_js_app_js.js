@@ -10432,7 +10432,8 @@ var useInputRules = function useInputRules() {
 
   return {
     rules: {
-      email: [required, email],
+      email: email,
+      rq_email: [required, email],
       password: [required],
       itn: [itn],
       phone: phone,

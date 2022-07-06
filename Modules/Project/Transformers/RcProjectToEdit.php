@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Project to edit resource.
+ */
 final class RcProjectToEdit extends JsonResource
 {
     /**
@@ -23,9 +26,9 @@ final class RcProjectToEdit extends JsonResource
             'status' => $this->status->value,
             'description' => $this->description,
         ], Auth::user()->isAdmin() ? [
-            'installer_id' => $this->installer_id,
-            'customer_id' => $this->customer_id,
-            'designer_id' => $this->designer_id,
+            'installer' => $this->installer?->full_name,
+            'customer' => $this->customer?->full_name,
+            'designer' => $this->designer?->full_name,
             'dealer_id' => $this->dealer_id
         ] : []);
     }

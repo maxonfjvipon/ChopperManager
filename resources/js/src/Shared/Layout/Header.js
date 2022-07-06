@@ -5,7 +5,7 @@ import {
     ClusterOutlined,
     DownOutlined,
     LogoutOutlined,
-    ProfileOutlined, SnippetsOutlined,
+    ProfileOutlined, SnippetsOutlined, SolutionOutlined,
     UnorderedListOutlined, OrderedListOutlined, UserOutlined,
 } from "@ant-design/icons";
 import React from "react";
@@ -30,6 +30,10 @@ export const Header = () => {
             itemProps: {key: 'pumps', icon: <ClusterOutlined/>},
             route: 'pumps.index',
             label: "Насосы"
+        }, auth.is_admin && {
+            itemProps: {key: 'dealers', icon: <SolutionOutlined/>},
+            route: 'dealers.index',
+            label: "Дилеры",
         }, auth.is_admin && {
             itemProps: {key: 'users', icon: <UserOutlined/>},
             route: 'users.index',
@@ -57,7 +61,7 @@ export const Header = () => {
                         )
                     )}
                     {auth.is_admin && <Menu.SubMenu
-                        icon={<OrderedListOutlined />}
+                        icon={<OrderedListOutlined/>}
                         key='components'
                         title="Компоненты"
                         popupOffset={[0, -5]}

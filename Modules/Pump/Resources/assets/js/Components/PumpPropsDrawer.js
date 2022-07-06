@@ -1,12 +1,8 @@
-import {Col, Drawer, Form, Input, List, Space, Tabs} from "antd";
-import {FilePdfOutlined} from "@ant-design/icons";
+import {Drawer, Form, Input} from "antd";
 import Lang from "../../../../../../resources/js/translation/lang";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useStyles} from "../../../../../../resources/js/src/Hooks/styles.hook";
 import {ItemsForm} from "../../../../../../resources/js/src/Shared/ItemsForm";
-import {JustifiedRow} from "../../../../../../resources/js/src/Shared/JustifiedRow";
-import {PrimaryButton} from "../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
-import {AddPumpsToProjectsDrawer} from "./AddPumpToProjectsDrawer";
 
 export const PumpPropsDrawer = ({
                                     visible,
@@ -133,6 +129,16 @@ export const PumpPropsDrawer = ({
                 name: 'connection_type',
                 label: "Тип соединения",
                 // initialValue: pumpInfo?.connection_type,
+                className: reducedAntFormItemClassName,
+            }, input: <Input
+                bordered={false}
+                readOnly
+            />
+        },
+        {
+            values: {
+                name: 'orientation',
+                label: "Ориентация",
                 className: reducedAntFormItemClassName,
             }, input: <Input
                 bordered={false}

@@ -16,7 +16,8 @@ use Modules\Project\Traits\ProjectScopes;
 use Modules\Selection\Entities\PumpStation;
 use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Area;
-use Modules\User\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Contractor;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\User\Entities\User;
 
 /**
@@ -39,7 +40,7 @@ use Modules\User\Entities\User;
  * @property Contractor $installer
  * @property Contractor $designer
  * @property Contractor $customer
- * @property User $dealer
+ * @property Dealer $dealer
  * @property Area $area
  * @property Collection<Selection> $selections
  * @property array<string> $all_pump_station_names
@@ -59,16 +60,6 @@ final class Project extends Model implements Arrayable
         'status' => ProjectStatus::class
     ];
 
-    // BOOTED
-    protected static function booted()
-    {
-        self::created(function (self $project) {
-            if (!$project->user->isAdmin()) {
-                $project->update(['dealer_id' => $project->user->id]); // fixme
-            }
-        });
-    }
-
     /**
      * @return array
      */
@@ -80,16 +71,17 @@ final class Project extends Model implements Arrayable
                 'name' => $this->name,
                 'area' => $this->area->name,
                 'status' => $this->status->description,
-                'installer' => $this->installer?->name,
-                'designer' => $this->designer?->name,
-                'customer' => $this->customer?->name,
+                'installer' => $this->installer?->full_name,
+                'designer' => $this->designer?->full_name,
+                'customer' => $this->customer?->full_name,
                 'pump_stations' => $this->all_pump_station_names,
                 'created_at' => formatted_date($this->created_at),
                 'updated_at' => formatted_date($this->updated_at),
             ],
-            Auth::user()->isAdmin()
-                ? ['dealer' => $this->dealer?->full_name]
-                : []
+            Auth::user()->isAdmin() ? [
+                'dealer' => $this->dealer?->name,
+                'user' => $this->user->full_name,
+            ] : []
         );
     }
 }
