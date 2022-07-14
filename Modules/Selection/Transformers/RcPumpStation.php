@@ -5,6 +5,7 @@ namespace Modules\Selection\Transformers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Selection\Support\TxtPumpStationFullName;
 use Modules\Selection\Support\TxtPumpStationName;
 
 /**
@@ -29,12 +30,16 @@ final class RcPumpStation extends JsonResource
                 'updated_at' => formatted_date($this->resource->updated_at),
                 'id' => $this->resource->id,
                 'key' => $this->resource->id,
-                'name' => (new TxtPumpStationName(
+                'name' => $name = (new TxtPumpStationName(
                     $this->resource->control_system,
                     $this->resource->main_pumps_count + $this->resource->reserve_pumps_count,
                     $this->resource->pump,
                     $this->resource->input_collector,
                     $this->resource->jockey_pump
+                ))->asString(),
+                'full_name' => (new TxtPumpStationFullName(
+                    $name,
+                    $this->resource->control_system,
                 ))->asString(),
                 'cost_price' => $this->resource->cost_price,
                 'extra_percentage' => $this->resource->extra_percentage,

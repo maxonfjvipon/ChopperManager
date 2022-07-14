@@ -17,6 +17,12 @@ final class TxtPumpStationName extends TxtEnvelope
 {
     /**
      * Ctor.
+     *
+     * @param  ControlSystem|null  $controlSystem
+     * @param  int  $pumpsCount
+     * @param  Pump  $pump
+     * @param  Collector|null  $inputCollector
+     * @param  Pump|null  $jockeyPump
      */
     public function __construct(
         private ?ControlSystem $controlSystem,
@@ -24,14 +30,9 @@ final class TxtPumpStationName extends TxtEnvelope
         private Pump $pump,
         private ?Collector $inputCollector,
         private ?Pump $jockeyPump = null,
-        private bool $forPdf = false
     ) {
         parent::__construct(
             new TxtJoined(
-                new TxtIf(
-                    $this->forPdf,
-                    fn () => 'BPE PumpMaster '.$this->controlSystem?->type->station_type->key.' '
-                ),
                 $this->controlSystem?->type->name ?? '?',
                 ' '.$this->pumpsCount,
                 ' '.$this->pump->series->name,
@@ -45,7 +46,7 @@ final class TxtPumpStationName extends TxtEnvelope
                     )
                 ),
                 new TxtIf(
-                    (bool) $this->controlSystem?->type->station_type->is(StationType::AF),
+                    $this->controlSystem?->type->station_type->is(StationType::AF),
                     fn () => new TxtJoined(
                         new TxtIf((bool) $this->controlSystem?->avr->value, ' АВР'),
                         new TxtIf(

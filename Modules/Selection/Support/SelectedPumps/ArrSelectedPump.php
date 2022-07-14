@@ -18,6 +18,7 @@ use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrCostStructure;
 use Modules\Selection\Support\PumpStationPrice;
 use Modules\Selection\Support\TxtCostStructure;
+use Modules\Selection\Support\TxtPumpStationFullName;
 use Modules\Selection\Support\TxtPumpStationName;
 
 /**
@@ -47,19 +48,15 @@ final class ArrSelectedPump extends ArrEnvelope
                             $pumpsCount = $mainPumpsCount + $request->reserve_pumps_count,
                             $pump = $components['pump'],
                             $inputCollector = ($collectors = $components['collectors'])->firstWhere('dn_pipes', $pump->dn_suction),
-                            $jockeyPump = $components['jockey_pump'] ?? null
+                            $components['jockey_pump'] ?? null
                         )
                     )
                 ),
                 new ArrObject(
                     'full_name',
-                    new TxtPumpStationName(
-                        $controlSystem,
-                        $pumpsCount,
-                        $pump,
-                        $inputCollector,
-                        $jockeyPump,
-                        true
+                    new TxtPumpStationFullName(
+                        $name,
+                        $controlSystem
                     )
                 ),
                 new ArrObject(

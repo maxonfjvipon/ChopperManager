@@ -3,18 +3,17 @@
 namespace Modules\Selection\Http\Requests;
 
 use App\Rules\ArrayExistsInArray;
-use JetBrains\PhpStorm\Pure;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Selection\Rules\PumpStationsArray;
 
 /**
- * @property float        $flow
- * @property float        $head
+ * @property float $flow
+ * @property float $head
  * @property array<array> $added_stations
- * @property int          $reserve_pumps_count
- * @property string       $comment
- * @property array<int>   $control_system_type_ids
- * @property string       $selection
+ * @property int $reserve_pumps_count
+ * @property string $comment
+ * @property array<int> $control_system_type_ids
+ * @property string $selection
  */
 abstract class RqStoreSelection extends RqDetermineSelection
 {
@@ -35,11 +34,10 @@ abstract class RqStoreSelection extends RqDetermineSelection
 
     private string $separator = ',';
 
-    #[Pure]
- protected function imploded($array): ?string
- {
-     return $array ? implode($this->separator, $array) : null;
- }
+    protected function imploded($array): ?string
+    {
+        return $array ? implode($this->separator, $array) : null;
+    }
 
     public function selectionProps(): array
     {
