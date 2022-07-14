@@ -10,6 +10,11 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
  */
 final class PumpStationPrice implements Numerable
 {
+    /**
+     * Ctor.
+     *
+     * @param  Arrayable  $components
+     */
     public function __construct(private Arrayable $components)
     {
     }

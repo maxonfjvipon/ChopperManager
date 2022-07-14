@@ -15,11 +15,17 @@ trait SelectionRelationships
 {
     use HasJockeyPump;
 
+    /**
+     * @return HasMany
+     */
     public function pump_stations(): HasMany
     {
         return $this->hasMany(PumpStation::class, 'selection_id', 'id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class, 'project_id');

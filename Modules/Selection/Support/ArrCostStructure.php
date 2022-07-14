@@ -13,7 +13,7 @@ use Modules\Components\Entities\Armature;
 use Modules\Components\Entities\AssemblyJob;
 use Modules\Components\Entities\FirePumpControlCabinet;
 use Modules\Selection\Entities\StationType;
-use Modules\Selection\Http\Requests\RqMakeSelection;
+use Modules\Selection\Http\Requests\RqDetermineSelection;
 
 /**
  * Pump station cost components.
@@ -23,10 +23,15 @@ final class ArrCostStructure extends ArrEnvelope
     /**
      * Ctor.
      *
+     * @param  RqDetermineSelection  $request
+     * @param  Rates  $rates
+     * @param  array  $components
+     * @param  int  $pumpsCount
+     *
      * @throws Exception
      */
     public function __construct(
-        private RqMakeSelection $request,
+        private RqDetermineSelection $request,
         private Rates $rates,
         private array $components,
         private int $pumpsCount,

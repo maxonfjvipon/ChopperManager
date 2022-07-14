@@ -33,7 +33,7 @@ final class AcContractors extends ArrEnvelope
                             Contractor::allOrCached()
                                 ->load('area')
                                 ->all(),
-                            fn(Contractor $contractor) => $contractor->asArray()
+                            fn (Contractor $contractor) => $contractor->asArray()
                         )
                     )
                 ),
@@ -43,7 +43,7 @@ final class AcContractors extends ArrEnvelope
                         ['areas' => new ArrUnique(
                             new ArrMapped(
                                 $contractors,
-                                fn(array $contractor) => $contractor['area']
+                                fn (array $contractor) => $contractor['area']
                             )
                         )]
                     )

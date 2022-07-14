@@ -834,6 +834,8 @@ export const PumpStationSelection = ({title, widths}) => {
                                 loading={loading}
                                 setStationToShow={setStationToShow}
                                 setAddedStations={setAddedStations}
+                                selectionType={selection_type}
+                                stationType={station_type}
                             />
                         </RoundedCard>
                     </Col>

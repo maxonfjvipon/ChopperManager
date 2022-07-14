@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
+use Modules\Components\Entities\Chassis;
+use Modules\Components\Entities\Collector;
+use Modules\Components\Entities\ControlSystem;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\Performance\PpHMax;
 use Modules\Selection\Support\Performance\PpXMax;
@@ -29,7 +32,13 @@ use Modules\Selection\Traits\PumpStationRelationships;
  * @property float     $flow
  * @property float     $head
  * @property Selection $selection
+ * @property ControlSystem $control_system
  * @property Pump      $pump
+ * @property Chassis $chassis
+ * @property Collector $input_collector
+ * @property Collector $output_collector
+ *
+ * @method static self find(int|string $id)
  */
 final class PumpStation extends Model
 {

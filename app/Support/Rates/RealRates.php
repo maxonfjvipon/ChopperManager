@@ -11,8 +11,14 @@ use Exception;
  */
 final class RealRates implements Rates
 {
+    /**
+     * @var bool
+     */
     private static bool $fromForex = false;
 
+    /**
+     * @var Rates
+     */
     private Rates $rates;
 
     /**
@@ -25,6 +31,10 @@ final class RealRates implements Rates
             : new CBRRates();
     }
 
+    /**
+     * @param  Currency|int  $currency
+     * @return bool
+     */
     public function hasTheSameBaseAs(Currency|int $currency): bool
     {
         return $this->rates->hasTheSameBaseAs($currency);

@@ -10,6 +10,9 @@ use Modules\Pump\Entities\Pump;
  */
 trait HasJockeyPump
 {
+    /**
+     * @return BelongsTo
+     */
     public function jockey_pump(): BelongsTo
     {
         return $this->belongsTo(Pump::class, 'jockey_pump_id');

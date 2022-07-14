@@ -8,6 +8,9 @@ use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Rules\DnsMaterialsArray;
 
+/**
+ * Make WS auto selection request.
+ */
 class RqMakeWSAutoSelection extends RqMakeSelection
 {
     /**

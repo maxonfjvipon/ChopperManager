@@ -72,6 +72,24 @@ var DeleteOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/DollarOutlined.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/DollarOutlined.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var DollarOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372zm47.7-395.2l-25.4-5.9V348.6c38 5.2 61.5 29 65.5 58.2.5 4 3.9 6.9 7.9 6.9h44.9c4.7 0 8.4-4.1 8-8.8-6.1-62.3-57.4-102.3-125.9-109.2V263c0-4.4-3.6-8-8-8h-28.1c-4.4 0-8 3.6-8 8v33c-70.8 6.9-126.2 46-126.2 119 0 67.6 49.8 100.2 102.1 112.7l24.7 6.3v142.7c-44.2-5.9-69-29.5-74.1-61.3-.6-3.8-4-6.6-7.9-6.6H363c-4.7 0-8.4 4-8 8.7 4.5 55 46.2 105.6 135.2 112.1V761c0 4.4 3.6 8 8 8h28.4c4.4 0 8-3.6 8-8.1l-.2-31.7c78.3-6.9 134.3-48.8 134.3-124-.1-69.4-44.2-100.4-109-116.4zm-68.6-16.2c-5.6-1.6-10.3-3.1-15-5-33.8-12.2-49.5-31.9-49.5-57.3 0-36.3 27.5-57 64.5-61.7v124zM534.3 677V543.3c3.1.9 5.9 1.6 8.8 2.2 47.3 14.4 63.2 34.4 63.2 65.1 0 39.1-29.4 62.6-72 66.4z" } }] }, "name": "dollar", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DollarOutlined);
+
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js ***!
@@ -565,6 +583,40 @@ var DeleteOutlined = function DeleteOutlined(props, ref) {
 
 DeleteOutlined.displayName = 'DeleteOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(DeleteOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/DollarOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/DollarOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_DollarOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/DollarOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/DollarOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var DollarOutlined = function DollarOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_DollarOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+DollarOutlined.displayName = 'DollarOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(DollarOutlined));
 
 /***/ }),
 
@@ -10315,19 +10367,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AddedPumpsTable": () => (/* binding */ AddedPumpsTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/LineChartOutlined.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FilePdfOutlined.js");
-/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DollarOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/LineChartOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/FilePdfOutlined.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js");
 /* harmony import */ var _resources_js_src_Shared_EditableCell__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/EditableCell */ "./resources/js/src/Shared/EditableCell.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit */ "./resources/js/src/Shared/Resource/Table/Actions/Edit.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Resource/Table/Actions/Save */ "./resources/js/src/Shared/Resource/Table/Actions/Save.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../resources/js/src/Hooks/http.hook */ "./resources/js/src/Hooks/http.hook.js");
+/* harmony import */ var ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ziggy-js/src/js */ "./node_modules/ziggy-js/src/js/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10366,20 +10422,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var AddedPumpsTable = function AddedPumpsTable(_ref) {
   var addedStations = _ref.addedStations,
       setStationToShow = _ref.setStationToShow,
       loading = _ref.loading,
-      setAddedStations = _ref.setAddedStations;
+      setAddedStations = _ref.setAddedStations,
+      stationType = _ref.stationType,
+      selectionType = _ref.selectionType;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       editingKey = _useState2[0],
       setEditingKey = _useState2[1];
 
-  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_9__["default"].useForm(),
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_11__["default"].useForm(),
       _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
       form = _Form$useForm2[0];
+
+  var _useHttp = (0,_resources_js_src_Hooks_http_hook__WEBPACK_IMPORTED_MODULE_8__.useHttp)(),
+      postRequest = _useHttp.postRequest;
 
   var inputProps = function inputProps(record) {
     return {
@@ -10391,6 +10454,10 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
   var columns = [{
     title: "Дата создания",
     dataIndex: 'created_at' // render: (_, record) => record.created_at.toLocaleString()
+
+  }, {
+    title: "Дата обновления",
+    dataIndex: 'updated_at' // render: (_, record) => record.created_at.toLocaleString()
 
   }, {
     title: "Наименование",
@@ -10406,7 +10473,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     dataIndex: "extra_percentage",
     editable: true,
     input: function input(record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
         precision: 2,
         min: 0
       }, inputProps(record)));
@@ -10419,7 +10486,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     dataIndex: "extra_sum",
     editable: true,
     input: function input(record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_7__.InputNum, _objectSpread({
         precision: 2,
         min: 0
       }, inputProps(record)));
@@ -10438,7 +10505,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     dataIndex: 'comment',
     editable: true,
     input: function input(record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"].TextArea, _objectSpread({
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"].TextArea, _objectSpread({
         autoSize: true
       }, inputProps(record)));
     }
@@ -10446,22 +10513,26 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     key: 'actions',
     width: '1%',
     render: function render(_, record) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_2__.TableActionsContainer, {
-        children: [isEditing(record) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_6__.Save, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_2__.TableActionsContainer, {
+        children: [isEditing(record) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_6__.Save, {
           clickHandler: saveRowHandler(record)
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_5__.Edit, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_5__.Edit, {
           clickHandler: editRowHandler(record)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+        }), record.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+          clickHandler: updateCostHandler(record),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_13__["default"], {}),
+          title: "\u041E\u0431\u043D\u043E\u043E\u0432\u0438\u0442\u044C \u0441\u0435\u0431\u0435\u0441\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
           clickHandler: function clickHandler() {
             return setStationToShow(record);
           },
-          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {}),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_14__["default"], {}),
           title: "\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u0433\u0440\u0430\u0444\u0438\u043A"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
           clickHandler: function clickHandler() {},
-          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {}),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_15__["default"], {}),
           title: "\u0421\u0444\u043E\u0440\u043C\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u0422\u041A\u041F"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_4__.TableAction, {
           clickHandler: function clickHandler() {
             var stations = addedStations;
             var index = stations.findIndex(function (p) {
@@ -10470,7 +10541,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
             stations.splice(index, 1);
             setAddedStations(_toConsumableArray(stations));
           },
-          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_13__["default"], {}),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_16__["default"], {}),
           title: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C"
         })]
       });
@@ -10493,6 +10564,35 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
 
   var isEditing = function isEditing(record) {
     return record.key === editingKey;
+  };
+
+  var updateCostHandler = function updateCostHandler(record) {
+    return function () {
+      postRequest((0,ziggy_js_src_js__WEBPACK_IMPORTED_MODULE_9__["default"])('pump_stations.update_cost', record.id), {
+        station_type: stationType,
+        selection_type: selectionType
+      }).then(function (res) {
+        var stations = addedStations;
+        var index = stations.findIndex(function (p) {
+          return p.key === record.key;
+        });
+        var final_price = res.cost_price;
+
+        if (record.extra_percentage !== 0) {
+          final_price = final_price + final_price * record.extra_percentage / 100;
+        } else if (record.extra_sum !== 0) {
+          final_price = final_price + record.extra_sum;
+        }
+
+        stations.splice(index, 1, _objectSpread(_objectSpread({}, record), {}, {
+          cost_price: res.cost_price,
+          final_price: final_price
+        }));
+        setAddedStations(_toConsumableArray(stations));
+      })["catch"](function (reason) {
+        antd__WEBPACK_IMPORTED_MODULE_17__["default"].error(reason);
+      });
+    };
   };
 
   var editRowHandler = function editRowHandler(record) {
@@ -10526,9 +10626,9 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     };
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(antd__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(antd__WEBPACK_IMPORTED_MODULE_11__["default"], {
     form: form,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_1__.TTable, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_1__.TTable, {
       columns: _columns,
       dataSource: addedStations,
       loading: loading,
@@ -12036,7 +12136,9 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
               addedStations: addedStations,
               loading: loading,
               setStationToShow: setStationToShow,
-              setAddedStations: setAddedStations
+              setAddedStations: setAddedStations,
+              selectionType: selection_type,
+              stationType: station_type
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
@@ -34526,6 +34628,437 @@ function scrollIntoView(target, options) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (scrollIntoView);
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/Route.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/Route.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Route)
+/* harmony export */ });
+/**
+ * A Laravel route. This class represents one route and its configuration and metadata.
+ */
+class Route {
+    /**
+     * @param {String} name - Route name.
+     * @param {Object} definition - Route definition.
+     * @param {Object} config - Ziggy configuration.
+     */
+    constructor(name, definition, config) {
+        this.name = name;
+        this.definition = definition;
+        this.bindings = definition.bindings ?? {};
+        this.config = config;
+    }
+
+    /**
+     * Get a 'template' of the complete URL for this route.
+     *
+     * @example
+     * https://{team}.ziggy.dev/user/{user}
+     *
+     * @return {String} Route template.
+     */
+    get template() {
+        // If  we're building just a path there's no origin, otherwise: if this route has a
+        // domain configured we construct the origin with that, if not we use the app URL
+        const origin = !this.config.absolute ? '' : this.definition.domain
+            ? `${this.config.url.match(/^\w+:\/\//)[0]}${this.definition.domain}${this.config.port ? `:${this.config.port}` : ''}`
+            : this.config.url;
+
+        return `${origin}/${this.definition.uri}`.replace(/\/+$/, '');
+    }
+
+    /**
+     * Get an array of objects representing the parameters that this route accepts.
+     *
+     * @example
+     * [{ name: 'team', required: true }, { name: 'user', required: false }]
+     *
+     * @return {Array} Parameter segments.
+     */
+    get parameterSegments() {
+        return this.template.match(/{[^}?]+\??}/g)?.map((segment) => ({
+            name: segment.replace(/{|\??}/g, ''),
+            required: !/\?}$/.test(segment),
+        })) ?? [];
+    }
+
+    /**
+     * Get whether this route's template matches the given URL.
+     *
+     * @param {String} url - URL to check.
+     * @return {Boolean} Whether this route matches.
+     */
+    matchesUrl(url) {
+        if (!this.definition.methods.includes('GET')) return false;
+
+        // Transform the route's template into a regex that will match a hydrated URL,
+        // by replacing its parameter segments with matchers for parameter values
+        const pattern = this.template
+            .replace(/\/{[^}?]*\?}/g, '(\/[^/?]+)?')
+            // TODO: the above line with the leading slash is necessary to pick up completely optional *segments*,
+            // like in `/pages/{subPage?}`, so that those are handled first before the more permissive patterns
+            // below, but there's probably a way to do this in one shot
+            .replace(/{[^}?]*\?}/g, '([^/?]+)?')
+            .replace(/{[^}]+}/g, '[^/?]+')
+            .replace(/^\w+:\/\//, '');
+
+        return new RegExp(`^${pattern}$`).test(url.replace(/\/+$/, '').split('?').shift());
+    }
+
+    /**
+     * Hydrate and return a complete URL for this route with the given parameters.
+     *
+     * @param {Object} params
+     * @return {String}
+     */
+    compile(params) {
+        if (!this.parameterSegments.length) return this.template;
+
+        return this.template.replace(/{([^}?]+)\??}/g, (_, segment) => {
+            // If the parameter is missing but is not optional, throw an error
+            if ([null, undefined].includes(params[segment]) && this.parameterSegments.find(({ name }) => name === segment).required) {
+                throw new Error(`Ziggy error: '${segment}' parameter is required for route '${this.name}'.`)
+            }
+
+            return encodeURIComponent(params[segment] ?? '');
+        }).replace(/\/+$/, '');
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/Router.js":
+/*!************************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/Router.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Router)
+/* harmony export */ });
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Route */ "./node_modules/ziggy-js/src/js/Route.js");
+
+
+
+/**
+ * A collection of Laravel routes. This class constitutes Ziggy's main API.
+ */
+class Router extends String {
+    /**
+     * @param {String} name - Route name.
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @param {Boolean} absolute - Whether to include the URL origin.
+     * @param {Object} config - Ziggy configuration.
+     */
+    constructor(name, params, absolute = true, config) {
+        super();
+
+        this._config = config ?? (typeof Ziggy !== 'undefined' ? Ziggy : globalThis?.Ziggy);
+        this._config = { ...this._config, absolute };
+
+        if (name) {
+            if (!this._config.routes[name]) {
+                throw new Error(`Ziggy error: route '${name}' is not in the route list.`);
+            }
+
+            this._route = new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](name, this._config.routes[name], this._config);
+            this._params = this._parse(params);
+        }
+    }
+
+    /**
+     * Get the compiled URL string for the current route and parameters.
+     *
+     * @example
+     * // with 'posts.show' route 'posts/{post}'
+     * (new Router('posts.show', 1)).toString(); // 'https://ziggy.dev/posts/1'
+     *
+     * @return {String}
+     */
+    toString() {
+        // Get parameters that don't correspond to any route segments to append them to the query
+        const unhandled = Object.keys(this._params)
+            .filter((key) => !this._route.parameterSegments.some(({ name }) => name === key))
+            .filter((key) => key !== '_query')
+            .reduce((result, current) => ({ ...result, [current]: this._params[current] }), {});
+
+        return this._route.compile(this._params) + (0,qs__WEBPACK_IMPORTED_MODULE_0__.stringify)({ ...unhandled, ...this._params['_query'] }, {
+            addQueryPrefix: true,
+            arrayFormat: 'indices',
+            encodeValuesOnly: true,
+            skipNulls: true,
+            encoder: (value, encoder) => typeof value === 'boolean' ? Number(value) : encoder(value),
+        });
+    }
+
+    /**
+     * Get the name of the route matching the current window URL, or, given a route name
+     * and parameters, check if the current window URL and parameters match that route.
+     *
+     * @example
+     * // at URL https://ziggy.dev/posts/4 with 'posts.show' route 'posts/{post}'
+     * route().current(); // 'posts.show'
+     * route().current('posts.index'); // false
+     * route().current('posts.show'); // true
+     * route().current('posts.show', { post: 1 }); // false
+     * route().current('posts.show', { post: 4 }); // true
+     *
+     * @param {String} name - Route name to check.
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @return {(Boolean|String|undefined)}
+     */
+    current(name, params) {
+        const url = this._config.absolute
+            ? this._location().host + this._location().pathname
+            : this._location().pathname.replace(this._config.url.replace(/^\w*:\/\/[^/]+/, ''), '').replace(/^\/+/, '/');
+
+        // Find the first route that matches the current URL
+        const [current, route] = Object.entries(this._config.routes).find(
+            ([_, route]) => new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](name, route, this._config).matchesUrl(url)
+        ) || [undefined, undefined];
+
+        // If a name wasn't passed, return the name of the current route
+        if (!name) return current;
+
+        // Test the passed name against the current route, matching some
+        // basic wildcards, e.g. passing `events.*` matches `events.show`
+        const match = new RegExp(`^${name.replace(/\./g, '\\.').replace(/\*/g, '.*')}$`).test(current);
+
+        if ([null, undefined].includes(params) || !match) return match;
+
+        const routeObject = new _Route__WEBPACK_IMPORTED_MODULE_1__["default"](current, route, this._config);
+
+        params = this._parse(params, routeObject);
+        const routeParams = this._dehydrate(route);
+
+        // If the current window URL has no route parameters, and the passed parameters are empty, return true
+        if (Object.values(params).every(p => !p) && !Object.values(routeParams).length) return true;
+
+        // Check that all passed parameters match their values in the current window URL
+        // Use weak equality because all values in the current window URL will be strings
+        return Object.entries(params).every(([key, value]) => routeParams[key] == value);
+    }
+
+    /**
+     * Get an object representing the current location (by default this will be
+     * the JavaScript `window` global if it's available).
+     *
+     * @return {Object}
+     */
+    _location() {
+        const { host = '', pathname = '', search = '' } = typeof window !== 'undefined' ? window.location : {};
+
+        return {
+            host: this._config.location?.host ?? host,
+            pathname: this._config.location?.pathname ?? pathname,
+            search: this._config.location?.search ?? search,
+        };
+    }
+
+    /**
+     * Get all parameter values from the current window URL.
+     *
+     * @example
+     * // at URL https://tighten.ziggy.dev/posts/4?lang=en with 'posts.show' route 'posts/{post}' and domain '{team}.ziggy.dev'
+     * route().params; // { team: 'tighten', post: 4, lang: 'en' }
+     *
+     * @return {Object}
+     */
+    get params() {
+        return this._dehydrate(this._config.routes[this.current()]);
+    }
+
+    /**
+     * Check whether the given route exists.
+     *
+     * @param {String} name
+     * @return {Boolean}
+     */
+    has(name) {
+        return Object.keys(this._config.routes).includes(name);
+    }
+
+    /**
+     * Parse Laravel-style route parameters of any type into a normalized object.
+     *
+     * @example
+     * // with route parameter names 'event' and 'venue'
+     * _parse(1); // { event: 1 }
+     * _parse({ event: 2, venue: 3 }); // { event: 2, venue: 3 }
+     * _parse(['Taylor', 'Matt']); // { event: 'Taylor', venue: 'Matt' }
+     * _parse([4, { uuid: 56789, name: 'Grand Canyon' }]); // { event: 4, venue: 56789 }
+     *
+     * @param {(String|Number|Array|Object)} params - Route parameters.
+     * @param {Route} route - Route instance.
+     * @return {Object} Normalized complete route parameters.
+     */
+    _parse(params = {}, route = this._route) {
+        // If `params` is a string or integer, wrap it in an array
+        params = ['string', 'number'].includes(typeof params) ? [params] : params;
+
+        // Separate segments with and without defaults, and fill in the default values
+        const segments = route.parameterSegments.filter(({ name }) => !this._config.defaults[name]);
+
+        if (Array.isArray(params)) {
+            // If the parameters are an array they have to be in order, so we can transform them into
+            // an object by keying them with the template segment names in the order they appear
+            params = params.reduce((result, current, i) => !!segments[i] ? ({ ...result, [segments[i].name]: current }) : ({ ...result, [current]: '' }), {});
+        } else if (
+            segments.length === 1
+            && !params[segments[0].name]
+            && (params.hasOwnProperty(Object.values(route.bindings)[0]) || params.hasOwnProperty('id'))
+        ) {
+            // If there is only one template segment and `params` is an object, that object is
+            // ambiguous—it could contain the parameter key and value, or it could be an object
+            // representing just the value (e.g. a model); we can inspect it to find out, and
+            // if it's just the parameter value, we can wrap it in an object with its key
+            params = { [segments[0].name]: params };
+        }
+
+        return {
+            ...this._defaults(route),
+            ...this._substituteBindings(params, route),
+        };
+    }
+
+    /**
+     * Populate default parameters for the given route.
+     *
+     * @example
+     * // with default parameters { locale: 'en', country: 'US' } and 'posts.show' route '{locale}/posts/{post}'
+     * defaults(...); // { locale: 'en' }
+     *
+     * @param {Route} route
+     * @return {Object} Default route parameters.
+     */
+    _defaults(route) {
+        return route.parameterSegments.filter(({ name }) => this._config.defaults[name])
+            .reduce((result, { name }, i) => ({ ...result, [name]: this._config.defaults[name] }), {});
+    }
+
+    /**
+     * Substitute Laravel route model bindings in the given parameters.
+     *
+     * @example
+     * _substituteBindings({ post: { id: 4, slug: 'hello-world', title: 'Hello, world!' } }, { bindings: { post: 'slug' } }); // { post: 'hello-world' }
+     *
+     * @param {Object} params - Route parameters.
+     * @param {Object} route - Route definition.
+     * @return {Object} Normalized route parameters.
+     */
+    _substituteBindings(params, { bindings, parameterSegments }) {
+        return Object.entries(params).reduce((result, [key, value]) => {
+            // If the value isn't an object, or if the key isn't a named route parameter,
+            // there's nothing to substitute so we return it as-is
+            if (!value || typeof value !== 'object' || Array.isArray(value) || !parameterSegments.some(({ name }) => name === key)) {
+                return { ...result, [key]: value };
+            }
+
+            if (!value.hasOwnProperty(bindings[key])) {
+                if (value.hasOwnProperty('id')) {
+                    // As a fallback, we still accept an 'id' key not explicitly registered as a binding
+                    bindings[key] = 'id';
+                } else {
+                    throw new Error(`Ziggy error: object passed as '${key}' parameter is missing route model binding key '${bindings[key]}'.`)
+                }
+            }
+
+            return { ...result, [key]: value[bindings[key]] };
+        }, {});
+    }
+
+    /**
+     * Get all parameters and their values from the current window URL, based on the given route definition.
+     *
+     * @example
+     * // at URL https://tighten.ziggy.dev/events/8/venues/chicago?zoom=true
+     * _dehydrate({ domain: '{team}.ziggy.dev', uri: 'events/{event}/venues/{venue?}' }); // { team: 'tighten', event: 8, venue: 'chicago', zoom: true }
+     *
+     * @param {Object} route - Route definition.
+     * @return {Object} Parameters.
+     */
+    _dehydrate(route) {
+        let pathname = this._location().pathname
+            // If this Laravel app is in a subdirectory, trim the subdirectory from the path
+            .replace(this._config.url.replace(/^\w*:\/\/[^/]+/, ''), '')
+            .replace(/^\/+/, '');
+
+        // Given part of a valid 'hydrated' URL containing all its parameter values,
+        // a route template, and a delimiter, extract the parameters as an object
+        // E.g. dehydrate('events/2/chicago', 'events/{event}/{venue}', '/'); // { event: 2, venue: 'chicago' }
+        const dehydrate = (hydrated, template = '', delimiter) => {
+            const [values, segments] = [hydrated, template].map(s => s.split(delimiter));
+
+            return segments.reduce((result, current, i) => {
+                // Only include template segments that are route parameters
+                // AND have a value present in the passed hydrated string
+                return /{[^}?]+\??}/.test(current) && values[i]
+                    ? {
+                        ...result,
+                        [current.replace(/.*{|\??}.*/g, '')]: values[i]
+                            .replace(current.match(/^[^{]*/g), '')
+                            .replace(current.match(/[^}]*$/g), ''),
+                    }
+                    : result;
+            }, {});
+        }
+
+        return {
+            ...dehydrate(this._location().host, route.domain, '.'), // Domain parameters
+            ...dehydrate(pathname, route.uri, '/'), // Path parameters
+            ...(0,qs__WEBPACK_IMPORTED_MODULE_0__.parse)(this._location().search?.replace(/^\?/, '')), // Query parameters
+        };
+    }
+
+    valueOf() {
+        return this.toString();
+    }
+
+    /**
+     * @deprecated since v1.0, use `has()` instead.
+     */
+    check(name) {
+        return this.has(name);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/ziggy-js/src/js/index.js":
+/*!***********************************************!*\
+  !*** ./node_modules/ziggy-js/src/js/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ route)
+/* harmony export */ });
+/* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Router */ "./node_modules/ziggy-js/src/js/Router.js");
+
+
+function route(name, params, absolute, config) {
+    const router = new _Router__WEBPACK_IMPORTED_MODULE_0__["default"](name, params, absolute, config);
+
+    return name ? router.toString() : router;
+}
+
 
 /***/ })
 

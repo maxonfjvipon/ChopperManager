@@ -16,6 +16,7 @@ use Modules\Selection\Http\Endpoints\EpRestoreSelection;
 use Modules\Selection\Http\Endpoints\EpSelectionsDashboard;
 use Modules\Selection\Http\Endpoints\EpShowSelection;
 use Modules\Selection\Http\Endpoints\EpStoreSelection;
+use Modules\Selection\Http\Endpoints\EpUpdatePumpStationCost;
 use Modules\Selection\Http\Endpoints\EpUpdateSelection;
 use Modules\Selection\Http\Middleware\AuthorizeSelection;
 use Modules\Selection\Http\Middleware\DetermineSelection;
@@ -46,4 +47,8 @@ Route::prefix('selections')->as('selections.')->group(function () {
 
 Route::prefix('pump-stations')->as('pump_stations.')->group(function () {
     Route::post('curves')->name('curves')->uses(EpPumpStationCurves::class);
+
+    Route::prefix('{pump_station}')->group(function () {
+        Route::post('update-cost')->name('update_cost')->uses(EpUpdatePumpStationCost::class);
+    });
 });

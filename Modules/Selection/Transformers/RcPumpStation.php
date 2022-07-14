@@ -16,6 +16,7 @@ final class RcPumpStation extends JsonResource
      * Transform the resource into an array.
      *
      * @param Request
+     * @return array
      *
      * @throws Exception
      */
@@ -25,6 +26,7 @@ final class RcPumpStation extends JsonResource
         return array_merge(
             [
                 'created_at' => formatted_date($this->resource->created_at),
+                'updated_at' => formatted_date($this->resource->updated_at),
                 'id' => $this->resource->id,
                 'key' => $this->resource->id,
                 'name' => (new TxtPumpStationName(

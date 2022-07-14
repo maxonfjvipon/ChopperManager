@@ -1,17 +1,27 @@
 import React, {useState} from 'react'
-import {Form, Input} from "antd";
+import {Form, Input, message} from "antd";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
-import {LineChartOutlined, FilePdfOutlined, DeleteOutlined} from "@ant-design/icons";
+import {LineChartOutlined, FilePdfOutlined, DeleteOutlined, DollarOutlined} from "@ant-design/icons";
 import {EditableCell} from "../../../../../../resources/js/src/Shared/EditableCell";
 import {TableAction} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableAction";
 import {Edit} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
 import {Save} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Save";
 import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNum";
+import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
+import route from "ziggy-js/src/js";
 
-export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAddedStations}) => {
+export const AddedPumpsTable = ({
+                                    addedStations,
+                                    setStationToShow,
+                                    loading,
+                                    setAddedStations,
+                                    stationType,
+                                    selectionType
+                                }) => {
     const [editingKey, setEditingKey] = useState('');
     const [form] = Form.useForm()
+    const {postRequest} = useHttp()
 
     const inputProps = record => ({onBlur: saveRowHandler(record), onPressEnter: saveRowHandler(record)})
 
@@ -19,6 +29,11 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
         {
             title: "Дата создания",
             dataIndex: 'created_at',
+            // render: (_, record) => record.created_at.toLocaleString()
+        },
+        {
+            title: "Дата обновления",
+            dataIndex: 'updated_at',
             // render: (_, record) => record.created_at.toLocaleString()
         },
         {
@@ -63,6 +78,11 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
                             ? <Save clickHandler={saveRowHandler(record)}/>
                             : <Edit clickHandler={editRowHandler(record)}/>
                         }
+                        {record.id && <TableAction
+                            clickHandler={updateCostHandler(record)}
+                            icon={<DollarOutlined/>}
+                            title="Обноовить себестоимость"
+                        />}
                         <TableAction
                             clickHandler={() => setStationToShow(record)}
                             icon={<LineChartOutlined/>}
@@ -106,6 +126,30 @@ export const AddedPumpsTable = ({addedStations, setStationToShow, loading, setAd
     });
 
     const isEditing = record => record.key === editingKey
+
+    const updateCostHandler = record => () => {
+        postRequest(route('pump_stations.update_cost', record.id), {
+            station_type: stationType,
+            selection_type: selectionType
+        }).then(res => {
+            let stations = addedStations
+            const index = stations.findIndex(p => p.key === record.key)
+            let final_price = res.cost_price
+            if (record.extra_percentage !== 0) {
+                final_price = final_price + final_price * record.extra_percentage / 100
+            } else if (record.extra_sum !== 0) {
+                final_price = final_price + record.extra_sum
+            }
+            stations.splice(index, 1, {
+                ...record,
+                cost_price: res.cost_price,
+                final_price
+            })
+            setAddedStations([...stations])
+        }).catch(reason => {
+            message.error(reason)
+        })
+    }
 
     const editRowHandler = record => () => {
         form.setFieldsValue({...record})
