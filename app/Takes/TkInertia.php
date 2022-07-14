@@ -15,7 +15,7 @@ use Tests\Unit\Takes\TkInertiaTest;
 
 /**
  * Inertia endpoint.
- * @package App\Takes
+ *
  * @see TkInertiaTest
  */
 final class TkInertia implements Take
@@ -24,7 +24,8 @@ final class TkInertia implements Take
 
     /**
      * Ctor.
-     * @param string|Text $component
+     *
+     * @param string|Text     $component
      * @param array|Arrayable $props
      */
     public function __construct(private string|Text $component, private array|Arrayable $props = [])
@@ -32,8 +33,6 @@ final class TkInertia implements Take
     }
 
     /**
-     * @param Request|null $request
-     * @return Responsable|Response
      * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response

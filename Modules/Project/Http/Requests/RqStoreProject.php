@@ -17,18 +17,17 @@ use Modules\ProjectParticipant\Entities\Dealer;
  * @property string|null $installer
  * @property string|null $customer
  * @property string|null $designer
- * @property string $name
- * @property int $area_id
- * @property int $status
- * @property string $description
- * @property int $dealer_id
+ * @property string      $name
+ * @property int         $area_id
+ * @property int         $status
+ * @property string      $description
+ * @property int         $dealer_id
  */
 class RqStoreProject extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
      * @throws Exception
      */
     public function rules(): array
@@ -45,9 +44,6 @@ class RqStoreProject extends FormRequest
         ];
     }
 
-    /**
-     * @return array
-     */
     public function projectProps(): array
     {
         return [
@@ -58,7 +54,7 @@ class RqStoreProject extends FormRequest
             'installer_id' => Contractor::getOrCreateFrom($this->installer)?->id,
             'customer_id' => Contractor::getOrCreateFrom($this->customer)?->id,
             'designer_id' => Contractor::getOrCreateFrom($this->designer)?->id,
-            'dealer_id' => $this->dealer_id ?? $this->user()->dealer->id
+            'dealer_id' => $this->dealer_id ?? $this->user()->dealer->id,
         ];
     }
 }

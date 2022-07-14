@@ -3,7 +3,7 @@
 namespace Modules\Pump\Traits\Pump;
 
 /**
- * Pump attributes
+ * Pump attributes.
  */
 trait PumpAttributes
 {

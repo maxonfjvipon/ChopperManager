@@ -15,7 +15,6 @@ final class RcProjectToEdit extends JsonResource
      * Transform the resource into an array.
      *
      * @param  Request
-     * @return array
      */
     public function toArray($request): array
     {
@@ -29,7 +28,7 @@ final class RcProjectToEdit extends JsonResource
             'installer' => $this->installer?->full_name,
             'customer' => $this->customer?->full_name,
             'designer' => $this->designer?->full_name,
-            'dealer_id' => $this->dealer_id
+            'dealer_id' => $this->dealer_id,
         ] : []);
     }
 }

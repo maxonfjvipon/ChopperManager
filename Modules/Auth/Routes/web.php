@@ -13,11 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Auth\Http\Endpoints\EpAwait;
-use Modules\Auth\Http\Endpoints\EpLoginAttempt;
 use Modules\Auth\Http\Endpoints\EpLogin;
+use Modules\Auth\Http\Endpoints\EpLoginAttempt;
 use Modules\Auth\Http\Endpoints\EpLogout;
-use Modules\Auth\Http\Endpoints\EpRegisterAttempt;
 use Modules\Auth\Http\Endpoints\EpRegister;
+use Modules\Auth\Http\Endpoints\EpRegisterAttempt;
 
 Route::middleware('guest')->group(function () {
     // LOGIN

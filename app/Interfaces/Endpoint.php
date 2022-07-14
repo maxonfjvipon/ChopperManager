@@ -10,8 +10,5 @@ use Symfony\Component\HttpFoundation\Response;
  */
 interface Endpoint
 {
-    /**
-     * @return Responsable|Response
-     */
     public function __invoke(): Responsable|Response;
 }

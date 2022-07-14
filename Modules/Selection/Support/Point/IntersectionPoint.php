@@ -10,22 +10,19 @@ use Modules\Selection\Support\Regression\Equation;
  */
 final class IntersectionPoint implements Point
 {
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * @param Equation $equation
-     * @param float $flow
-     * @param float $head
+     * @param float    $flow
+     * @param float    $head
      */
     public function __construct(private Equation $equation, private float $flow, private float $head)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
@@ -34,15 +31,17 @@ final class IntersectionPoint implements Point
             $eq = $this->equation->asArray();
             $t = $eq[0] - $z;
             $x = (-$eq[1] - sqrt($eq[1] * $eq[1] - 4 * $t * $eq[2])) / (2 * $t);
+
             return [
                 'x' => $x,
-                'y' => $z * $x * $x
+                'y' => $z * $x * $x,
             ];
         })();
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function x(): int|float
@@ -51,7 +50,8 @@ final class IntersectionPoint implements Point
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function y(): int|float

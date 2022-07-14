@@ -22,10 +22,6 @@ use Modules\Selection\Support\TxtCostStructure;
 use Modules\Selection\Support\TxtPumpStationName;
 
 if (!function_exists('pumpsForSelecting')) {
-    /**
-     * @param RqMakeSelection $request
-     * @return array
-     */
     function pumpsForSelecting(RqMakeSelection $request): array
     {
         return Pump::whereIn('series_id', $request->pump_series_ids)
@@ -33,10 +29,10 @@ if (!function_exists('pumpsForSelecting')) {
             ->with([
                 'series',
                 'series.brand',
-                'coefficients' => fn($query) => $query->whereBetween(
+                'coefficients' => fn ($query) => $query->whereBetween(
                     'position',
                     [1, max($request->main_pumps_counts) + $request->reserve_pumps_count]
-                )
+                ),
             ])
             ->get()
             ->all();
@@ -45,11 +41,6 @@ if (!function_exists('pumpsForSelecting')) {
 
 if (!function_exists('pumpIsGoodForSelect')) {
     /**
-     * @param RqMakeSelection $request
-     * @param Pump $pump
-     * @param int $mainPumpsCount
-     * @param Numerable $qEnd
-     * @return bool
      * @throws Exception
      */
     function pumpIsGoodForSelect(RqMakeSelection $request, Pump $pump, int $mainPumpsCount, Numerable $qEnd): bool
@@ -67,28 +58,22 @@ if (!function_exists('pumpIsGoodForSelect')) {
             $request->flow,
             $request->head
         );
+
         return $request->flow >= $qStart->asNumber()
             && $intersectionPoint->x() >= $qStart->asNumber()
             && $intersectionPoint->x() <= $qEnd->asNumber()
             && $intersectionPoint->y() >= $request->head + $request->head * (($request->deviation ?? 0) / 100);
-
     }
 }
 
 if (!function_exists('collectorsForAutoSelection')) {
     /**
-     * @param RqMakeSelection $request
-     * @param Arrayable $dnsMaterials
-     * @param Pump $pump
-     * @param int $pumpsCount
-     * @param int $minDn
-     * @return array
      * @throws Exception
      */
     function collectorsForAutoSelection(RqMakeSelection $request, Arrayable $dnsMaterials, Pump $pump, int $pumpsCount, int $minDn): array
     {
         return array_map(
-            fn(array $dnMaterial) => Collector::forSelection(
+            fn (array $dnMaterial) => Collector::forSelection(
                 $request->station_type,
                 $pump,
                 $pumpsCount,
@@ -102,24 +87,18 @@ if (!function_exists('collectorsForAutoSelection')) {
 
 if (!function_exists('controlSystemsForSelection')) {
     /**
-     * @param RqMakeSelection $request
-     * @param Pump $pump
-     * @param int $pumpsCount
-     * @param bool|null $isSprinkler
-     * @param Collection|null $controlSystems
-     * @return array
      * @throws Exception
      */
     function controlSystemsForSelection(RqMakeSelection $request, Pump $pump, int $pumpsCount, ?bool $isSprinkler = false, ?Collection $controlSystems = null): array
     {
         return array_map(
-            fn(int $controlSystemTypeId) => ($controlSystems ?? ControlSystem::allOrCached())
+            fn (int $controlSystemTypeId) => ($controlSystems ?? ControlSystem::allOrCached())
                 ->where('power', '>=', $pump->power)
                 ->where('pumps_count', $pumpsCount)
                 ->where('type_id', $controlSystemTypeId)
                 ->when(
                     $request->station_type === StationType::getKey(StationType::AF),
-                    fn($query) => $query
+                    fn ($query) => $query
                         ->where('avr.value', $request->boolean('avr'))
                         ->where('gate_valves_count', $request->gate_valves_count)
                         ->where('kkv.value', $request->boolean('kkv'))
@@ -135,12 +114,6 @@ if (!function_exists('controlSystemsForSelection')) {
 
 if (!function_exists('selectedPump')) {
     /**
-     * @param int $key
-     * @param RqMakeSelection $request
-     * @param int $mainPumpsCount
-     * @param Rates $rates
-     * @param array $components
-     * @return array
      * @throws Exception
      */
     function selectedPump(int &$key, RqMakeSelection $request, int $mainPumpsCount, Rates $rates, array $components): array
@@ -187,11 +160,8 @@ if (!function_exists('selectedPump')) {
                 'head' => $request->head,
                 'reserve_pumps_count' => $request->reserve_pumps_count,
                 'main_pumps_count' => $mainPumpsCount,
-                'bad' => str_contains($name, "?")
+                'bad' => str_contains($name, '?'),
             ]
         );
     }
 }
-
-
-

@@ -13,15 +13,15 @@ final class CollectorSwitch extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Резьба")]
-    const Trd = 1;
+    #[Description('Резьба')]
+    public const Trd = 1;
 
-    #[Description("Овальный фланец")]
-    const OvlFln = 2;
+    #[Description('Овальный фланец')]
+    public const OvlFln = 2;
 
-    #[Description("Фланец")]
-    const Fln = 3;
+    #[Description('Фланец')]
+    public const Fln = 3;
 
-    #[Description("Фланец на резьбу")]
-    const FlnToTrd = 4;
+    #[Description('Фланец на резьбу')]
+    public const FlnToTrd = 4;
 }

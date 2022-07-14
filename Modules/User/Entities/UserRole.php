@@ -13,9 +13,9 @@ final class UserRole extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Админ")]
-    const Admin = 1;
+    #[Description('Админ')]
+    public const Admin = 1;
 
-    #[Description("Дилер")]
-    const Dealer = 2;
+    #[Description('Дилер')]
+    public const Dealer = 2;
 }

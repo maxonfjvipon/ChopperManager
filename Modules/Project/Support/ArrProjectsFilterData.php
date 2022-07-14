@@ -8,6 +8,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrUnique;
+use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectStatus;
 
 /**
@@ -17,7 +18,6 @@ final class ArrProjectsFilterData extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param Arrayable $projects
      */
     public function __construct(Arrayable $projects)
     {
@@ -28,10 +28,10 @@ final class ArrProjectsFilterData extends ArrEnvelope
                     'areas' => new ArrUnique(
                         new ArrMapped(
                             $projects,
-                            fn(array $project) => $project['area']
+                            fn (array|Project $project) => $project['area']->name ?? $project['area'] ?? $project->area->name
                         )
                     ),
-                    'statuses' => ProjectStatus::getDescriptions()
+                    'statuses' => ProjectStatus::getDescriptions(),
                 ])
             )
         );

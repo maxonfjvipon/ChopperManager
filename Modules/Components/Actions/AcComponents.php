@@ -14,17 +14,12 @@ class AcComponents extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param array|Arrayable $filterData
-     * @param string $componentsName
-     * @param array|Arrayable $components
      */
     public function __construct(
         array|Arrayable $filterData,
-        string          $componentsName,
+        string $componentsName,
         array|Arrayable $components
-    )
-    {
+    ) {
         parent::__construct(
             new ArrMerged(
                 new ArrObject(

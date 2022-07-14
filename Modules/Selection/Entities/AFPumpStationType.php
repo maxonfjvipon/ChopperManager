@@ -7,9 +7,9 @@ use BenSampo\Enum\Enum;
 
 final class AFPumpStationType extends Enum
 {
-    #[Description("Сприклерная")]
-    const Sprinkler = 1;
+    #[Description('Сприклерная')]
+    public const Sprinkler = 1;
 
-    #[Description("Дренчерная")]
-    const Deluge = 2;
+    #[Description('Дренчерная')]
+    public const Deluge = 2;
 }

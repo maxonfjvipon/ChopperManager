@@ -3,7 +3,6 @@
 namespace Modules\ProjectParticipant\Http\Endpoints;
 
 use App\Http\Endpoints\TakeEndpoint;
-use App\Interfaces\Take;
 use App\Takes\TkInertia;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,14 +16,14 @@ final class EpCreateOrEditDealer extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
+     *
      * @throws Exception
      */
     public function __construct(Request $request)
     {
         parent::__construct(
             new TkInertia(
-                "ProjectParticipant::Dealers/CreateOrEdit",
+                'ProjectParticipant::Dealers/CreateOrEdit',
                 new AcCreateOrEditDealer(Dealer::find($request->dealer))
             )
         );

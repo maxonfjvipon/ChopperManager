@@ -11,7 +11,6 @@ use Modules\Selection\Rules\DnMaterialRegex;
 class RqMakeWSHandleSelection extends RqMakeSelection
 {
     /**
-     * @return array
      * @throws Exception
      */
     public function rules(): array

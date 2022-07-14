@@ -15,13 +15,12 @@ final class EpUpdatePumpSeries extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqUpdatePumpSeries $request
      */
     public function __construct(RqUpdatePumpSeries $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => PumpSeries::find($request->pump_series)->update($request->validated()),
+                fn () => PumpSeries::find($request->pump_series)->update($request->validated()),
                 new TkRedirectToRoute('pump_series.index')
             )
         );

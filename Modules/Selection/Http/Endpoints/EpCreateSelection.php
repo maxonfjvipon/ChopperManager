@@ -12,14 +12,14 @@ use Modules\Selection\Tests\Feature\SelectionEndpointsTest;
 
 /**
  * Create selection endpoint.
+ *
  * @see SelectionEndpointsTest::test_selections_create_endpoint()
- * @package Modules\Selection\Takes
  */
 final class EpCreateSelection extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqDetermineSelection $request
+     *
      * @throws Exception
      */
     public function __construct(RqDetermineSelection $request)

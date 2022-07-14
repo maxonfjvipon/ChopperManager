@@ -8,14 +8,10 @@ use Modules\Auth\Http\Requests\RqLogin;
 use Modules\Project\Takes\TkRedirectToProjectsIndex;
 
 /**
- * Login attempt endpoint
- * @package Modules\Auth\Takes
+ * Login attempt endpoint.
  */
 final class EpLoginAttempt extends TakeEndpoint
 {
-    /**
-     * @param RqLogin $request
-     */
     public function __construct(RqLogin $request)
     {
         parent::__construct(

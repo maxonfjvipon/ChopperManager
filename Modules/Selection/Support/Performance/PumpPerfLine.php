@@ -22,14 +22,15 @@ use Modules\Selection\Support\Point\SimplePoint;
 use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
 
 /**
- * Pump performance line
+ * Pump performance line.
  */
 final class PumpPerfLine extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param Pump $pump
-     * @param int $position
+     * @param int  $position
      */
     public function __construct(private Pump $pump, private int $position = 1)
     {
@@ -39,6 +40,7 @@ final class PumpPerfLine extends ArrEnvelope
                     $eq = new EqFromPumpCoefficients(
                         $this->pump->coefficientsAt($this->position)
                     );
+
                     return new ArrMerged(
                         $lines = new ArrSticky(
                             new ArrMapped(
@@ -64,7 +66,7 @@ final class PumpPerfLine extends ArrEnvelope
                                         $qStep = new NumSticky(new FlowStep($xx)),
                                     )
                                 ),
-                                fn($x) => new SimplePoint($x, $eq->y($x)),
+                                fn ($x) => new SimplePoint($x, $eq->y($x)),
                                 true
                             )
                         ),
@@ -75,7 +77,7 @@ final class PumpPerfLine extends ArrEnvelope
                                     (($xxLastAsNum = $xxLast->asNumber()) - $xxFirst->asNumber()) / $qStep->asNumber()
                                 )
                             ),
-                            fn() => new ArrObject(
+                            fn () => new ArrObject(
                                 new LengthOf($range),
                                 new SimplePoint($xxLastAsNum, $eq->y($xxLastAsNum))
                             )

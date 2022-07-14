@@ -15,13 +15,13 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\StationType;
 
 /**
- * Armature for {@see StationType::AF}
+ * Armature for {@see StationType::AF}.
  */
 final class ArmaAF extends ArrEnvelope
 {
     /**
-     * @param Pump $pump
-     * @param int $pumpsCount
+     * @param Pump           $pump
+     * @param int            $pumpsCount
      * @param Collector|null $inputCollector
      */
     public function __construct(private Pump $pump, private int $pumpsCount, private ?Collector $inputCollector)
@@ -30,6 +30,7 @@ final class ArmaAF extends ArrEnvelope
             new ArrFromCallback(
                 function () {
                     $armature = Armature::allOrCached();
+
                     return new ArrMerged(
                         new ArrMapped(
                             match ($this->pump->collector_switch->value) {
@@ -38,7 +39,7 @@ final class ArmaAF extends ArrEnvelope
                                 CollectorSwitch::Fln => new ArAFFln($armature, $this->pump),
                                 CollectorSwitch::FlnToTrd => new ArAFFlnToTrd($armature, $this->pump)
                             },
-                            fn(?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
+                            fn (?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
                         ),
                         [
                             new ArrArmatureCount(
@@ -46,7 +47,7 @@ final class ArmaAF extends ArrEnvelope
                                     ->where('dn', $this->inputCollector?->dn_common)
                                     ->first(),
                                 2 * ($this->pumpsCount - 1)
-                            )
+                            ),
                         ],
                     );
                 }

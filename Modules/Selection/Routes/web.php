@@ -9,11 +9,11 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Project\Http\Middleware\AuthorizeProject;
 use Modules\Selection\Http\Endpoints\EpCreateSelection;
-use Modules\Selection\Http\Endpoints\EpPumpStationCurves;
-use Modules\Selection\Http\Endpoints\EpSelectionsDashboard;
 use Modules\Selection\Http\Endpoints\EpDestroySelection;
-use Modules\Selection\Http\Endpoints\EpRestoreSelection;
 use Modules\Selection\Http\Endpoints\EpMakeSelection;
+use Modules\Selection\Http\Endpoints\EpPumpStationCurves;
+use Modules\Selection\Http\Endpoints\EpRestoreSelection;
+use Modules\Selection\Http\Endpoints\EpSelectionsDashboard;
 use Modules\Selection\Http\Endpoints\EpShowSelection;
 use Modules\Selection\Http\Endpoints\EpStoreSelection;
 use Modules\Selection\Http\Endpoints\EpUpdateSelection;

@@ -14,6 +14,7 @@ class TkEnvelope implements Take
 {
     /**
      * Ctor.
+     *
      * @param Take $origin
      */
     public function __construct(private Take $origin)
@@ -21,7 +22,7 @@ class TkEnvelope implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {

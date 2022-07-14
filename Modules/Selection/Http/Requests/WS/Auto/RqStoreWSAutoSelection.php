@@ -11,15 +11,15 @@ use Modules\Selection\Http\Requests\RqStoreSelection;
 use Modules\Selection\Rules\DnsMaterialsArray;
 
 /**
- * @property float $flow
- * @property float $head
- * @property float $deviation
- * @property array<int> $main_pumps_counts
- * @property array<int> $control_system_type_ids
- * @property array<int> $pump_brand_ids
- * @property array<int> $pump_series_ids
+ * @property float         $flow
+ * @property float         $head
+ * @property float         $deviation
+ * @property array<int>    $main_pumps_counts
+ * @property array<int>    $control_system_type_ids
+ * @property array<int>    $pump_brand_ids
+ * @property array<int>    $pump_series_ids
  * @property array<string> $collectors
- * @property string $comment
+ * @property string        $comment
  */
 class RqStoreWSAutoSelection extends RqStoreSelection
 {
@@ -37,9 +37,6 @@ class RqStoreWSAutoSelection extends RqStoreSelection
         );
     }
 
-    /**
-     * @return array
-     */
     public function selectionProps(): array
     {
         return array_merge(

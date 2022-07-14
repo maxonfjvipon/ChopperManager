@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\PumpSeries\Http\Endpoints\EpCreatePumpBrand;
-use Modules\PumpSeries\Http\Endpoints\EpDestroyPumpBrand;
-use Modules\PumpSeries\Http\Endpoints\EpEditPumpBrand;
-use Modules\PumpSeries\Http\Endpoints\EpRestorePumpBrand;
-use Modules\PumpSeries\Http\Endpoints\EpStorePumpBrand;
-use Modules\PumpSeries\Http\Endpoints\EpUpdatePumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpCreatePumpSeries;
+use Modules\PumpSeries\Http\Endpoints\EpDestroyPumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpDestroyPumpSeries;
+use Modules\PumpSeries\Http\Endpoints\EpEditPumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpEditPumpSeries;
 use Modules\PumpSeries\Http\Endpoints\EpPumpSeries;
+use Modules\PumpSeries\Http\Endpoints\EpRestorePumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpRestorePumpSeries;
+use Modules\PumpSeries\Http\Endpoints\EpStorePumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpStorePumpSeries;
+use Modules\PumpSeries\Http\Endpoints\EpUpdatePumpBrand;
 use Modules\PumpSeries\Http\Endpoints\EpUpdatePumpSeries;
 
 /*
@@ -22,7 +22,6 @@ use Modules\PumpSeries\Http\Endpoints\EpUpdatePumpSeries;
 */
 
 Route::middleware('admin')->group(function () {
-
     // PUMP SERIES
     Route::prefix('pump-series')->as('pump_series.')->group(function () {
         Route::get('/')->name('index')->uses(EpPumpSeries::class);

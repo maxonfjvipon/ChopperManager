@@ -9,7 +9,6 @@ use Modules\Selection\Http\Requests\RqPumpStationCurves;
 
 /**
  * Selection curves endpoint.
- * @package Modules\Selection\Http\Endpoints
  */
 final class EpPumpStationCurves extends TakeEndpoint
 {

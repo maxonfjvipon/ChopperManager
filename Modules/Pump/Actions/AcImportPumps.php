@@ -25,7 +25,6 @@ final class AcImportPumps extends AcImport
 {
     /**
      * Ctor.
-     * @param array $files
      */
     public function __construct(array $files)
     {
@@ -36,19 +35,17 @@ final class AcImportPumps extends AcImport
     }
 
     /**
-     * @param array $sheet
-     * @return void
      * @throws Exception
      */
     protected function import(array $sheet): void
     {
-        foreach (array_chunk($sheet, 100) as $chuckedSheet)
+        foreach (array_chunk($sheet, 100) as $chuckedSheet) {
             DB::table('pumps')->upsert($chuckedSheet, ['article']);
+        }
         Pump::clearCache();
     }
 
     /**
-     * @param array $entity
      * @return array[]
      */
     protected function rules(array $entity): array
@@ -74,43 +71,38 @@ final class AcImportPumps extends AcImport
             '17' => ['required', new In(DN::values())], // dn pressure
             '18' => ['required', new PumpPerformanceRegex()], // performance
             '19' => ['required', new In(CollectorSwitch::getDescriptions())], // collector switch
-//            '20' => ['required', new In([0, 1])] // is discontinued
+            //            '20' => ['required', new In([0, 1])] // is discontinued
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function attributes(): array
     {
         return [
-            '0' => "Артикул",
-            '1' => "Бренд",
-            '2' => "Серия",
-            '3' => "Наименование",
-            '4' => "Цена",
-            '5' => "Валюта",
-            '6' => "Длина",
-            '7' => "Высота",
-            '8' => "Ширина",
-            '9' => "Высота всаса",
-            '10' => "Монтажная длина",
-            '11' => "Масса",
-            '12' => "Мощность",
-            '13' => "Ток",
-            '14' => "Тип соединения",
-            '15' => "Ориентация",
-            '16' => "ДУ входа",
-            '17' => "ДУ выхода",
-            '18' => "Гидравлическая характеристика",
-            '19' => "Переход на коллектор",
-//            '20' => "Активен",
+            '0' => 'Артикул',
+            '1' => 'Бренд',
+            '2' => 'Серия',
+            '3' => 'Наименование',
+            '4' => 'Цена',
+            '5' => 'Валюта',
+            '6' => 'Длина',
+            '7' => 'Высота',
+            '8' => 'Ширина',
+            '9' => 'Высота всаса',
+            '10' => 'Монтажная длина',
+            '11' => 'Масса',
+            '12' => 'Мощность',
+            '13' => 'Ток',
+            '14' => 'Тип соединения',
+            '15' => 'Ориентация',
+            '16' => 'ДУ входа',
+            '17' => 'ДУ выхода',
+            '18' => 'Гидравлическая характеристика',
+            '19' => 'Переход на коллектор',
+            //            '20' => "Активен",
         ];
     }
 
     /**
-     * @param array $entity
-     * @return array
      * @throws Exception
      */
     protected function entityToImport(array $entity): array
@@ -120,8 +112,8 @@ final class AcImportPumps extends AcImport
             'series_id' => $this->db['series'][$entity[2]],
             'name' => trim($entity[3]),
             'price' => $entity[4],
-//            'currency' => Currency::getValue($entity[5]),
-            'size' => implode("x", [$entity[6], $entity[7], $entity[8]]),
+            //            'currency' => Currency::getValue($entity[5]),
+            'size' => implode('x', [$entity[6], $entity[7], $entity[8]]),
             'suction_height' => $entity[9],
             'ptp_length' => $entity[10],
             'weight' => $entity[11],
@@ -132,7 +124,7 @@ final class AcImportPumps extends AcImport
             'dn_suction' => $entity[16],
             'dn_pressure' => $entity[17],
             'performance' => str_replace(',', '.', trim($entity[18])),
-            'collector_switch' => CollectorSwitch::getValueByDescription($entity[19])
+            'collector_switch' => CollectorSwitch::getValueByDescription($entity[19]),
         ];
     }
 }

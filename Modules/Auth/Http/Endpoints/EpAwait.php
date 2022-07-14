@@ -15,6 +15,6 @@ final class EpAwait extends TakeEndpoint
      */
     public function __construct()
     {
-        parent::__construct(new TkInertia("Auth::Await"));
+        parent::__construct(new TkInertia('Auth::Await'));
     }
 }

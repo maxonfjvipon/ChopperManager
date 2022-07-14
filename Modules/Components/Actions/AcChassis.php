@@ -15,17 +15,18 @@ final class AcChassis extends AcComponents
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
     {
         parent::__construct(
             new ArrForFiltering(['pumps_count' => [2, 3, 4, 5, 6]]),
-            "chassis",
+            'chassis',
             new ArrValues(
                 new ArrMapped(
                     Chassis::allOrCached()->all(),
-                    fn(Chassis $chassis) => [
+                    fn (Chassis $chassis) => [
                         'id' => $chassis->id,
                         'article' => $chassis->article,
                         'pumps_count' => $chassis->pumps_count,
@@ -33,7 +34,7 @@ final class AcChassis extends AcComponents
                         'weight' => $chassis->weight,
                         'price' => $chassis->price,
                         'currency' => $chassis->currency->description,
-                        'price_updated_at' => formatted_date($chassis->price_updated_at)
+                        'price_updated_at' => formatted_date($chassis->price_updated_at),
                     ],
                 )
             )

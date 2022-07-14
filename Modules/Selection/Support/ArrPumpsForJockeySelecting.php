@@ -6,7 +6,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Pumps for auto jockey pump selection
+ * Pumps for auto jockey pump selection.
  */
 final class ArrPumpsForJockeySelecting implements Arrayable
 {
@@ -18,7 +18,7 @@ final class ArrPumpsForJockeySelecting implements Arrayable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
@@ -27,7 +27,7 @@ final class ArrPumpsForJockeySelecting implements Arrayable
             ->with([
                 'series',
                 'series.brand',
-                'coefficients' => fn ($query) => $query->where('position', 1)
+                'coefficients' => fn ($query) => $query->where('position', 1),
             ])
             ->get()
             ->all();

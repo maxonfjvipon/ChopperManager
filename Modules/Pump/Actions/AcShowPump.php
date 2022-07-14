@@ -13,15 +13,13 @@ final class AcShowPump implements Arrayable
 {
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
     public function __construct(private Pump $pump)
     {
     }
 
-    /**
-     * @return array
-     */
     public function asArray(): array
     {
         return ['pump' => new RcPumpToShow($this->pump)];

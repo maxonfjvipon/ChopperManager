@@ -22,7 +22,6 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrCollectorsForAutoSelection;
 use Modules\Selection\Support\ArrControlSystemForSelection;
-use Modules\Selection\Support\ArrCostStructure;
 use Modules\Selection\Support\ArrPumpsForJockeySelecting;
 use Modules\Selection\Support\ArrPumpsForSelecting;
 use Modules\Selection\Support\Performance\PpQEnd;
@@ -38,19 +37,18 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param RqMakeSelection $request
-     * @param Arrayable $dnsMaterials
-     * @param Rates $rates
+     *
+     * @param RqMakeSelection                          $request
+     * @param Arrayable                                $dnsMaterials
+     * @param Rates                                    $rates
      * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
-        private RqMakeSelection                          $request,
-        private Arrayable                                $dnsMaterials,
-        private Rates                                    $rates,
+        private RqMakeSelection $request,
+        private Arrayable $dnsMaterials,
+        private Rates $rates,
         private \Illuminate\Database\Eloquent\Collection $controlSystems
-
-    )
-    {
+    ) {
         parent::__construct(
             new ArrFromCallback(
                 function () {
@@ -61,16 +59,19 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                         $jockeyPump = self::jockeyPump($this->request, $this->rates);
                         $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
                     }
+
                     return new ArrFlatten(
                         new ArrMapped(
                             new ArrPumpsForSelecting($this->request),
                             function (Pump $pump) use (&$key, $isSprinkler, $jockeyPump, $jockeyChassis) {
                                 $minDn = DN::minDNforPump($pump); // min DN for $pump
+
                                 return new ArrMapped(
                                     $this->request->main_pumps_counts,
                                     function ($mainPumpsCount) use ($pump, $minDn, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
                                         $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
                                         $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
+
                                         return new ArrIf(
                                             $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
                                             function () use ($pump, $qEnd, $mainPumpsCount, $minDn, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump, $isSprinkler) {
@@ -88,7 +89,7 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                                             function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key, $isSprinkler, $jockeyChassis, $jockeyPump) {
                                                                 return new ArrMapped(
                                                                     new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
-                                                                    function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key, $jockeyChassis, $jockeyPump) {
+                                                                    function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $chassis, &$key, $jockeyChassis, $jockeyPump) {
                                                                         return new ArrSelectedPump(
                                                                             $key,
                                                                             $this->request,
@@ -100,7 +101,7 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                                                                 'chassis' => $chassis,
                                                                                 'collectors' => $_collectors,
                                                                                 'jockey_pump' => $jockeyPump,
-                                                                                'jockey_chassis' => $jockeyChassis
+                                                                                'jockey_chassis' => $jockeyChassis,
                                                                             ]
                                                                         );
                                                                     },
@@ -125,9 +126,7 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
 
     /**
      * Load jockey pump.
-     * @param RqMakeSelection $request
-     * @param Rates $rates
-     * @return Pump
+     *
      * @throws Exception
      */
     private static function jockeyPump(RqMakeSelection $request, Rates $rates): Pump
@@ -148,18 +147,19 @@ final class SelectedPumpsAFAuto extends ArrEnvelope
                                     $request->jockey_flow,
                                     $request->jockey_head
                                 );
+
                                 return $request->jockey_flow >= $qStart
                                     && $intersectionPoint->x() >= $qStart + ($qEnd - $qStart) * 0.2
                                     && $intersectionPoint->x() <= $qEnd - ($qEnd - $qStart) * 0.2
                                     && $intersectionPoint->y() >= $request->jockey_head;
-
                             }
+
                             return false;
                         }
                     ),
-                    fn(Pump $pump) => [
+                    fn (Pump $pump) => [
                         'pump' => $pump,
-                        'cost' => $pump->priceByRates($rates)
+                        'cost' => $pump->priceByRates($rates),
                     ]
                 ),
                 'cost'

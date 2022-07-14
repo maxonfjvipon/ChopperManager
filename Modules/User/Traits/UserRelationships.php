@@ -2,12 +2,10 @@
 
 namespace Modules\User\Traits;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Project\Entities\Project;
-use Modules\PumpSeries\Entities\PumpSeries;
-use Modules\ProjectParticipant\Entities\Contractor;
 use Modules\ProjectParticipant\Entities\Dealer;
+use Modules\PumpSeries\Entities\PumpSeries;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 
 /**
@@ -15,18 +13,13 @@ use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
  */
 trait UserRelationships
 {
-    /**
-     * @return HasManyDeep
-     */
     public function available_pumps(): HasManyDeep
     {
         return $this->hasManyDeepFromRelations($this->available_series(), (new PumpSeries())->pumps());
     }
 
     /**
-     * Available brands for user
-     *
-     * @return HasManyDeep
+     * Available brands for user.
      */
     public function available_brands(): HasManyDeep
     {
@@ -38,9 +31,6 @@ trait UserRelationships
 //        return $this->hasMany(Discount::class, 'user_id');
 //    }
 
-    /**
-     * @return HasMany
-     */
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'created_by');

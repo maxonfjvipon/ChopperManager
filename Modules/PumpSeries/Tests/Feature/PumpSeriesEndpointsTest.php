@@ -36,9 +36,10 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @author Max Trunnikov
      */
-    public function test_unauthorized_user_cannot_get_access_to_series_pages()
+    public function testUnauthorizedUserCannotGetAccessToSeriesPages()
     {
         $this->get(route('pump_series.index'))
             ->assertStatus(302)
@@ -57,9 +58,10 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_get_access_to_series_page()
+    public function testClientCannotGetAccessToSeriesPage()
     {
         $user = User::fakeWithRole();
         $this->actingAs($user)
@@ -75,50 +77,51 @@ class PumpSeriesEndpointsTest extends TestCase
         $this->actingAs($user)
             ->get(route('pump_series.restore', $series->id))
             ->assertForbidden();
-
     }
 
     /**
      * @return void
+     *
      * @see EpPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_index_endpoint()
+    public function testPumpSeriesIndexEndpoint()
     {
         $user = User::fakeWithRole('SuperAdmin');
         $brands = PumpBrand::factory()->count(2)->create();
         foreach ($brands as $brand) {
             PumpSeries::factory()->count(2)->create([
-                'brand_id' => $brand
+                'brand_id' => $brand,
             ]);
         }
         $this->actingAs($user)
             ->get(route('pump_series.index'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('PumpSeries::Index', false)
-                ->has('filter_data', fn(AssertableInertia $page) => $page
+                ->has('filter_data', fn (AssertableInertia $page) => $page
                     ->has('brands')
-                    ->has('brands.0', fn(AssertableInertia $page) => $page
+                    ->has('brands.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('categories')
-                    ->has('categories.0', fn(AssertableInertia $page) => $page
+                    ->has('categories.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('power_adjustments')
-                    ->has('power_adjustments.0', fn(AssertableInertia $page) => $page
+                    ->has('power_adjustments.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('applications')
-                    ->has('applications.0', fn(AssertableInertia $page) => $page
+                    ->has('applications.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('types')
-                    ->has('types.0', fn(AssertableInertia $page) => $page
+                    ->has('types.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
@@ -127,7 +130,7 @@ class PumpSeriesEndpointsTest extends TestCase
                 ->count('brands', PumpBrand::count())
                 ->has('series')
                 ->count('series', PumpSeries::count())
-                ->has('series.0', fn(AssertableInertia $page) => $page
+                ->has('series.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('brand')
                     ->has('name')
@@ -142,18 +145,20 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpCreatePumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_create_endpoint()
+    public function testPumpSeriesCreateEndpoint()
     {
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('pump_series.create'))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('PumpSeries::Create', false)
-                ->has('pump_series_props', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('pump_series_props', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->has('brands')
                         ->has('categories')
                         ->has('power_adjustments')
@@ -166,11 +171,14 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpEditPumpSeries
      */
-    public function test_edit_pump_series_endpoint()
+    public function testEditPumpSeriesEndpoint()
     {
         $series = PumpSeries::factory()->create();
         PumpSeriesAndType::createForSeries($series, PumpType::all()->pluck('id')->all());
@@ -178,10 +186,10 @@ class PumpSeriesEndpointsTest extends TestCase
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('pump_series.edit', $series->id))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('PumpSeries::Edit', false)
-                ->has('pump_series_props', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('pump_series_props', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->has('brands')
                         ->has('categories')
                         ->has('power_adjustments')
@@ -189,8 +197,8 @@ class PumpSeriesEndpointsTest extends TestCase
                         ->has('types')
                     )
                 )
-                ->has('series', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('series', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->where('id', $series->id)
                         ->where('brand_id', $series->brand->id)
                         ->where('name', $series->name)
@@ -208,10 +216,12 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpRestorePumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_restore_endpoint()
+    public function testPumpSeriesRestoreEndpoint()
     {
         $series = PumpSeries::factory()->create();
         $series->delete();
@@ -225,16 +235,18 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpDestroyPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_destroy_pump_series()
+    public function testClientCannotDestroyPumpSeries()
     {
         $series = PumpSeries::factory()->create();
         $this->startSession()
             ->actingAs(User::fakeWithRole())
             ->delete(route('pump_series.destroy', $series->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertForbidden();
         $this->assertNotSoftDeleted($series);
@@ -242,17 +254,19 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpDestroyPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_destroy_endpoint()
+    public function testPumpSeriesDestroyEndpoint()
     {
         $series = PumpSeries::factory()->create();
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->from(route('pump_series.index'))
             ->delete(route('pump_series.destroy', $series->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pump_series.index'));
@@ -261,11 +275,13 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @throws Exception
+     *
      * @see EpStorePumpSeries
      * @see RqStorePumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_store_endpoint()
+    public function testClientCannotStoreEndpoint()
     {
         $brand = PumpBrand::factory()->create();
         $this->startSession()
@@ -284,11 +300,14 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpStorePumpSeries
      */
-    public function test_pump_series_store_endpoint()
+    public function testPumpSeriesStoreEndpoint()
     {
         $brand = PumpBrand::factory()->create();
         $seriesData = [
@@ -318,11 +337,13 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @throws Exception
+     *
      * @see EpStorePumpSeries
      * @see RqStorePumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_update_pump_series()
+    public function testClientCannotUpdatePumpSeries()
     {
         $series = PumpSeries::factory()->create();
         $this->startSession()
@@ -340,11 +361,14 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpUpdatePumpSeries
      */
-    public function test_update_pump_series_endpoint()
+    public function testUpdatePumpSeriesEndpoint()
     {
         $series = PumpSeries::factory()->create();
         $seriesToUpdate = [
@@ -356,7 +380,7 @@ class PumpSeriesEndpointsTest extends TestCase
         ];
         $extra = [
             'applications' => PumpApplication::allOrCached()->pluck('id')->all(),
-            'types' => PumpType::allOrCached()->pluck('id')->all()
+            'types' => PumpType::allOrCached()->pluck('id')->all(),
         ];
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
@@ -368,7 +392,7 @@ class PumpSeriesEndpointsTest extends TestCase
             ->assertRedirect(route('pump_series.index'))
             ->assertStatus(302);
         $this->assertDatabaseHas('pump_series', array_merge([
-            'id' => $series->id],
+            'id' => $series->id, ],
             $seriesToUpdate
         ));
         $this->assertDatabaseCount('pump_series_and_types', PumpType::allOrCached()->count());
@@ -377,11 +401,14 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpUpdatePumpSeries
      */
-    public function test_discontinuing_pump_series_discontinues_pumps_of_the_series()
+    public function testDiscontinuingPumpSeriesDiscontinuesPumpsOfTheSeries()
     {
         $series = PumpSeries::factory()->create();
         Pump::factory()->count(10)->create(['series_id' => $series->id]);
@@ -404,65 +431,71 @@ class PumpSeriesEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpImportPumpSeriesMedia
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_import_pump_series_media()
+    public function testClientCannotImportPumpSeriesMedia()
     {
         $this->startSession()
             ->actingAs(User::fakeWithRole())
             ->post(route('pump_series.import.media'), [
                 '_token' => csrf_token(),
                 'files' => ['file'],
-                'folder' => 'folder'
+                'folder' => 'folder',
             ])->assertForbidden();
     }
 
-    public function test_pump_series_pump_series_import_media()
+    public function testPumpSeriesPumpSeriesImportMedia()
     {
-        $fileName = "fake-pump-series.jpg";
+        $fileName = 'fake-pump-series.jpg';
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->post(route('pump_series.import.media'), [
                 '_token' => csrf_token(),
                 'files' => [UploadedFile::fake()->image($fileName)],
-                'folder' => 'pump_series/images'
+                'folder' => 'pump_series/images',
             ]);
         $this->assertTrue(Storage::disk('media')
-            ->exists('1/pump_series/images/' . $fileName));
+            ->exists('1/pump_series/images/'.$fileName));
     }
 
     /**
      * @return void
+     *
      * @see EpImportPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_import_pump_series()
+    public function testClientCannotImportPumpSeries()
     {
         $this->startSession()
             ->actingAs(User::fakeWithRole())
             ->post(route('pump_series.import'), [
                 '_token' => csrf_token(),
-                'files' => ['file']
+                'files' => ['file'],
             ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @see EpImportPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_import()
+    public function testPumpSeriesImport()
     {
         PumpBrand::factory()->create(['name' => 'Wilo']);
         PumpBrand::factory()->create(['name' => 'DAB']);
-        $file = new UploadedFile(__DIR__ . '/Series.xlsx', 'Series.xlsx');
+        $file = new UploadedFile(__DIR__.'/Series.xlsx', 'Series.xlsx');
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->from(route('pump_series.index'))
             ->post(route('pump_series.import'), [
                 '_token' => csrf_token(),
-                'files' => [$file]
+                'files' => [$file],
             ])->assertRedirect(route('pump_series.index'));
         $this->assertDatabaseHas('pump_series', [
             'name' => 'TOP-S',
@@ -472,7 +505,7 @@ class PumpSeriesEndpointsTest extends TestCase
             'image' => 'pump_series/images/TOP-S.jpg',
             'temps_min' => null,
             'temps_max' => null,
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
         $this->assertDatabaseHas('pump_series', [
             'name' => 'BMH, BPH',
@@ -482,7 +515,7 @@ class PumpSeriesEndpointsTest extends TestCase
             'image' => 'pump_series/images/BMH, BPH.jpg',
             'temps_min' => null,
             'temps_max' => null,
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
         $top_s = PumpSeries::firstWhere('name', 'TOP-S');
         $bmh = PumpSeries::firstWhere('name', 'BMH, BPH');
@@ -493,20 +526,23 @@ class PumpSeriesEndpointsTest extends TestCase
     }
 
     /**
-     * Import pump series when brands don't exist
+     * Import pump series when brands don't exist.
+     *
      * @return void
+     *
      * @see EpImportPumpSeries
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_series_import_with_invalid_data()
+    public function testPumpSeriesImportWithInvalidData()
     {
-        $file = new UploadedFile(__DIR__ . '/Series.xlsx', 'Series.xlsx');
+        $file = new UploadedFile(__DIR__.'/Series.xlsx', 'Series.xlsx');
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->from(route('pump_series.index'))
             ->post(route('pump_series.import'), [
                 '_token' => csrf_token(),
-                'files' => [$file]
+                'files' => [$file],
             ])
             ->assertRedirect(route('pump_series.index'))
             ->assertStatus(302)
@@ -514,22 +550,22 @@ class PumpSeriesEndpointsTest extends TestCase
                 [
                     'head' => [
                         'key' => __('validation.attributes.import.pump_series.name'),
-                        'value' => 'Wilo TOP-S'
+                        'value' => 'Wilo TOP-S',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.pump_series.brand')
-                    ])
+                        'attribute' => __('validation.attributes.import.pump_series.brand'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.pump_series.name'),
-                        'value' => 'DAB BMH, BPH'
+                        'value' => 'DAB BMH, BPH',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.pump_series.brand')
-                    ])
-                ]
+                        'attribute' => __('validation.attributes.import.pump_series.brand'),
+                    ]),
+                ],
             ]);
         $this->assertDatabaseMissing('pump_series', [
             'name' => 'TOP-S',
@@ -539,7 +575,7 @@ class PumpSeriesEndpointsTest extends TestCase
             'image' => 'pump_series/images/TOP-S.jpg',
             'temps_min' => null,
             'temps_max' => null,
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
         $this->assertDatabaseMissing('pump_series', [
             'name' => 'BMH, BPH',
@@ -549,7 +585,7 @@ class PumpSeriesEndpointsTest extends TestCase
             'image' => 'pump_series/images/BMH, BPH.jpg',
             'temps_min' => null,
             'temps_max' => null,
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
         $this->assertDatabaseCount('pump_series_and_applications', 0);
         $this->assertDatabaseCount('pump_series_and_types', 0);

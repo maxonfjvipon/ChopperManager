@@ -15,7 +15,7 @@ final class EpMakeSelection extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqMakeSelection $request
+     *
      * @throws Exception
      */
     public function __construct(RqMakeSelection $request)
@@ -27,5 +27,3 @@ final class EpMakeSelection extends TakeEndpoint
         );
     }
 }
-
-

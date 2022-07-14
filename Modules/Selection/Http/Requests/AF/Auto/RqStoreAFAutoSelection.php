@@ -7,12 +7,12 @@ use Modules\Selection\Http\Requests\WS\Auto\RqStoreWSAutoSelection;
 use Modules\Selection\Traits\AFSelectionRequestHelpers;
 
 /**
- * @property int $gate_valves_count
- * @property boolean $avr
- * @property boolean $kkv
- * @property boolean $on_street
- * @property float $jockey_flow
- * @property float $jockey_head
+ * @property int    $gate_valves_count
+ * @property bool   $avr
+ * @property bool   $kkv
+ * @property bool   $on_street
+ * @property float  $jockey_flow
+ * @property float  $jockey_head
  * @property string $jockey_series_ids
  * @property string $jockey_brand_ids
  */
@@ -21,7 +21,6 @@ final class RqStoreAFAutoSelection extends RqStoreWSAutoSelection
     use AFSelectionRequestHelpers;
 
     /**
-     * @return array
      * @throws Exception
      */
     public function rules(): array
@@ -31,7 +30,6 @@ final class RqStoreAFAutoSelection extends RqStoreWSAutoSelection
             $this->afSelectionRules(),
         );
     }
-
 
     public function selectionProps(): array
     {

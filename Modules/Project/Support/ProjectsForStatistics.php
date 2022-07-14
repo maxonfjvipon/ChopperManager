@@ -25,7 +25,7 @@ use Modules\User\Entities\Country;
 final class ProjectsForStatistics implements Arrayable
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
@@ -34,30 +34,31 @@ final class ProjectsForStatistics implements Arrayable
         $deliveryStatuses = ProjectDeliveryStatus::allOrCached()->all();
         $usersData = DB::table('users')
             ->select('city', 'organization_name', 'country_id', 'business_id')->get();
+
         return (new ArrMerged(
             [
                 'project_statuses' => $statuses,
-                'delivery_statuses' => $deliveryStatuses
+                'delivery_statuses' => $deliveryStatuses,
             ],
             new ArrObject(
-                "projects",
+                'projects',
                 new ArrMapped(
                     Project::withTrashed()
                         ->withCount('all_selections')
                         ->with(['user' => function ($query) {
-                                $query->select('id', 'first_name', 'middle_name',
+                            $query->select('id', 'first_name', 'middle_name',
                                     'last_name', 'organization_name', 'city', 'country_id', 'business_id');
-                            }, 'user.country', 'user.business', 'all_selections' => function ($query) {
-                                $query->select('id', 'pumps_count', 'pump_id', 'project_id');
-                            }, 'all_selections.pump' => function ($query) {
-                                $query->select('id', 'pumpable_type');
-                            }, 'all_selections.pump.price_list', 'all_selections.pump.price_list.currency']
+                        }, 'user.country', 'user.business', 'all_selections' => function ($query) {
+                            $query->select('id', 'pumps_count', 'pump_id', 'project_id');
+                        }, 'all_selections.pump' => function ($query) {
+                            $query->select('id', 'pumpable_type');
+                        }, 'all_selections.pump.price_list', 'all_selections.pump.price_list.currency']
                         )->get()->all(),
                     function (Project $project) use ($rates) {
                         return [
                             'key' => $project->id,
                             'id' => $project->id,
-                            'created_at' => date_format($project->created_at, "d.m.Y"),
+                            'created_at' => date_format($project->created_at, 'd.m.Y'),
                             'name' => $project->name,
                             'user_organization_name' => $project->user->organization_name,
                             'user_full_name' => $project->user->full_name,
@@ -69,29 +70,29 @@ final class ProjectsForStatistics implements Arrayable
                                 new ArraySum(
                                     new ArrMapped(
                                         [...$project->all_selections],
-                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
+                                        fn (Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
                                 ),
                                 2
                             ))->asNumber(),
                             'status_id' => $project->status_id,
                             'delivery_status_id' => $project->delivery_status_id,
-                            'comment' => $project->comment
+                            'comment' => $project->comment,
                         ];
                     }
                 )
             ),
             new ArrObject(
-                "filter_data",
+                'filter_data',
                 new ArrMerged(
                     new ArrMapped([
                         'project_statuses' => $statuses,
                         'delivery_statuses' => $deliveryStatuses,
-                    ], fn(array $arr) => (new ArrMapped(
+                    ], fn (array $arr) => (new ArrMapped(
                         $arr,
-                        fn($item) => [
+                        fn ($item) => [
                             'text' => $item->name,
-                            'value' => $item->id
+                            'value' => $item->id,
                         ]))->asArray()
                     ),
                     new ArrForFiltering([
@@ -101,7 +102,7 @@ final class ProjectsForStatistics implements Arrayable
                             ->pluck('name')->all(),
                         'cities' => $usersData->unique('city')->sortBy('city')->pluck('city')->all(),
                         'organizations' => $usersData->unique('organization_name')->sortBy('organization_name')
-                            ->pluck('organization_name')->all()
+                            ->pluck('organization_name')->all(),
                     ])
                 )
             )

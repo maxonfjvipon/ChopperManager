@@ -17,7 +17,7 @@ final class EpCreatePumpSeries extends TakeEndpoint
     public function __construct()
     {
         parent::__construct(
-            new TkInertia("PumpSeries::Create", new AcCreateOrEditPumpSeries()),
+            new TkInertia('PumpSeries::Create', new AcCreateOrEditPumpSeries()),
         );
     }
 }

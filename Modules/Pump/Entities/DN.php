@@ -19,10 +19,12 @@ final class DN
 
     /**
      * @param Pump $pump
+     *
      * @return int
      */
-    #[Pure] public static function minDNforPump(Pump $pump): int
-    {
-        return self::values()[array_search($pump->dn_suction, self::values()) + 1];
-    }
+    #[Pure]
+ public static function minDNforPump(Pump $pump): int
+ {
+     return self::values()[array_search($pump->dn_suction, self::values()) + 1];
+ }
 }

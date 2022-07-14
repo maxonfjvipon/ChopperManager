@@ -16,8 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 final class EpDetailUserStatistics extends Controller
 {
     /**
-     * @param User $user
-     * @return Responsable|Response
      * @throws Exception
      */
     public function __invoke(User $user): Responsable|Response
@@ -34,7 +32,7 @@ final class EpDetailUserStatistics extends Controller
 //            ->get();
         return (new TkAuthorize(
             'user_statistics',
-            new TkJson(fn() => [
+            new TkJson(fn () => [
                 'id' => $user->id,
                 'full_name' => $user->full_name,
                 'discounts' => $user->formatted_discounts,

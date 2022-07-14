@@ -12,8 +12,8 @@ return [
                 '2' => 'does not match to selected filter params:',
                 'types' => 'types',
                 'applications' => 'applications',
-                'power_adjustment' => 'power adjustment'
-            ]
-        ]
+                'power_adjustment' => 'power adjustment',
+            ],
+        ],
     ],
 ];

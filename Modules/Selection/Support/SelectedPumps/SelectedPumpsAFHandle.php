@@ -3,9 +3,7 @@
 namespace Modules\Selection\Support\SelectedPumps;
 
 use App\Interfaces\Rates;
-use Exception;
 use Illuminate\Database\Eloquent\Collection;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
@@ -21,17 +19,16 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param RqMakeSelection $request
-     * @param Rates $rates
-     * @param Collection $controlSystems
+     * @param Rates           $rates
+     * @param Collection      $controlSystems
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Rates           $rates,
-        private Collection      $controlSystems
-
-    )
-    {
+        private Rates $rates,
+        private Collection $controlSystems
+    ) {
         parent::__construct(
             new ArrFromCallback(
                 function () {
@@ -40,10 +37,10 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                         ->load([
                             'series',
                             'series.brand',
-                            'coefficients' => fn($query) => $query->whereBetween(
+                            'coefficients' => fn ($query) => $query->whereBetween(
                                 'position',
                                 [1, $this->request->main_pumps_count + $this->request->reserve_pumps_count]
-                            )
+                            ),
                         ]),
                         $pumpsCount = $this->request->main_pumps_count + $this->request->reserve_pumps_count
                     );
@@ -52,8 +49,8 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                         $pump,
                         $pumpsCount,
                         [
-                            'dn' => ($explodedDnMaterial = explode(" ", $this->request->collector))[0],
-                            'material' => $explodedDnMaterial[1]
+                            'dn' => ($explodedDnMaterial = explode(' ', $this->request->collector))[0],
+                            'material' => $explodedDnMaterial[1],
                         ],
                         DN::minDNforPump($pump)
                     );
@@ -63,9 +60,10 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                         $jockeyPump = Pump::find($this->request->jockey_pump_id);
                         $jockeyChassis = Chassis::appropriateFor($jockeyPump, 1);
                     }
+
                     return new ArrMapped(
                         new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, $isSprinkler, $this->controlSystems),
-                        function (?ControlSystem $controlSystem) use ($pump, $collectors, $pumpsCount, $chassis, &$key, $jockeyPump, $jockeyChassis) {
+                        function (?ControlSystem $controlSystem) use ($pump, $collectors, $chassis, &$key, $jockeyPump, $jockeyChassis) {
                             return new ArrSelectedPump(
                                 $key,
                                 $this->request,

@@ -2,13 +2,12 @@
 
 namespace Modules\Selection\Support\Performance;
 
-use JetBrains\PhpStorm\Pure;
 use Maxonfjvipon\Elegant_Elephant\Numerable\MaxOf;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumEnvelope;
 use Modules\Selection\Traits\AxisStep;
 
 /**
- * Max X from pump performance lines
+ * Max X from pump performance lines.
  */
 final class PpXMax extends NumEnvelope
 {
@@ -16,10 +15,11 @@ final class PpXMax extends NumEnvelope
 
     /**
      * Ctor.
-     * @param array $lines
+     *
+     * @param array      $lines
      * @param float|null $flow
      */
-    #[Pure] public function __construct(private array $lines, private ?float $flow = 0)
+    public function __construct(private array $lines, private ?float $flow = 0)
     {
         $lastLine = $this->lines[count($this->lines) - 1];
         parent::__construct(

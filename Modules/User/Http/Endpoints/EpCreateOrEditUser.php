@@ -10,7 +10,7 @@ use Modules\User\Actions\AcCreateOrEditUser;
 use Modules\User\Entities\User;
 
 /**
- * Create user endpoint
+ * Create user endpoint.
  */
 final class EpCreateOrEditUser extends TakeEndpoint
 {
@@ -23,7 +23,7 @@ final class EpCreateOrEditUser extends TakeEndpoint
     {
         parent::__construct(
             new TkInertia(
-                "User::CreateOrEdit",
+                'User::CreateOrEdit',
                 new AcCreateOrEditUser(User::find($request->user))
             )
         );

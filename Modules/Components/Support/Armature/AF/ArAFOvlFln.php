@@ -12,7 +12,7 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature fire for {@see CollectorSwitch::OvlFln}
+ * Armature fire for {@see CollectorSwitch::OvlFln}.
  */
 final class ArAFOvlFln extends ArrEnvelope
 {
@@ -29,7 +29,7 @@ final class ArAFOvlFln extends ArrEnvelope
      * комплект резьбового тройника по Ду выхода
      *
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {

@@ -14,19 +14,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Take where user is being registered.
- * @package Modules\Auth\Takes\Deep
+ *
  * @see AuthEndpointsTest
  */
 final class TkRegisterUser implements Take
 {
-    /**
-     * @var Take $origin
-     */
     private Take $origin;
 
     /**
      * Ctor.
-     * @param Take $take
      */
     public function __construct(Take $take)
     {
@@ -34,7 +30,8 @@ final class TkRegisterUser implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function act(RqRegister|Request $request = null): Responsable|Response

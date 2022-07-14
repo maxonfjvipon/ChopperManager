@@ -7,14 +7,14 @@ use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectDeliveryStatus;
 use Modules\Project\Entities\ProjectStatus;
 use Modules\Project\Http\Endpoints\EpCloneProject;
+use Modules\Project\Http\Endpoints\EpCreateOrEditProject;
 use Modules\Project\Http\Endpoints\EpCreateProject;
 use Modules\Project\Http\Endpoints\EpDestroyProject;
-use Modules\Project\Http\Endpoints\EpCreateOrEditProject;
 use Modules\Project\Http\Endpoints\EpExportProject;
 use Modules\Project\Http\Endpoints\EpProjects;
+use Modules\Project\Http\Endpoints\EpProjectsStatistics;
 use Modules\Project\Http\Endpoints\EpRestoreProject;
 use Modules\Project\Http\Endpoints\EpShowProject;
-use Modules\Project\Http\Endpoints\EpProjectsStatistics;
 use Modules\Project\Http\Endpoints\EpStoreProject;
 use Modules\Project\Http\Endpoints\EpUpdateProject;
 use Modules\Project\Takes\TkUpdateProject;
@@ -29,10 +29,12 @@ class ProjectsEndpointsTest extends TestCase
 {
     /**
      * @return void
+     *
      * @see EpProjects
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_index_endpoint()
+    public function testProjectsIndexEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
@@ -40,7 +42,7 @@ class ProjectsEndpointsTest extends TestCase
         $this->actingAs($user)
             ->get(route('projects.index'))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Project::Projects/Index', false)
                 ->has('projects')
                 ->has('projects.0', function (AssertableInertia $page) use ($project, $selection) {
@@ -63,10 +65,12 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpProjects
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_can_see_only_his_projects()
+    public function testIfUserCanSeeOnlyHisProjects()
     {
         $user1 = User::fakeWithRole();
         $user2 = User::fakeWithRole();
@@ -75,14 +79,14 @@ class ProjectsEndpointsTest extends TestCase
         $this->actingAs($user2)
             ->get(route('projects.index'))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Project::Projects/Index', false)
                 ->has('projects')
                 ->count('projects', 1)
             );
         $this->actingAs($user1)
             ->get(route('projects.index'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Project::Projects/Index', false)
                 ->has('projects')
                 ->count('projects', 3)
@@ -91,24 +95,28 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpCreateProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_create_endpoint()
+    public function testProjectsCreateEndpoint()
     {
         $this->actingAs(User::fakeWithRole())
             ->get(route('projects.create'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Project::Projects/Create', false)
             )->assertStatus(200);
     }
 
     /**
      * @return void
+     *
      * @see EpShowProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_show_endpoint()
+    public function testProjectsShowEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
@@ -118,18 +126,18 @@ class ProjectsEndpointsTest extends TestCase
             ->assertInertia(function (AssertableInertia $page) use ($project) {
                 return $page
                     ->component('Project::Projects/Show', false)
-                    ->has('project', fn(AssertableInertia $page) => $page
-                        ->has('data', fn(AssertableInertia $page) => $page
+                    ->has('project', fn (AssertableInertia $page) => $page
+                        ->has('data', fn (AssertableInertia $page) => $page
                             ->where('id', $project->id)
                             ->where('name', $project->name)
                             ->has('selections')
                             ->count('selections', 2)
-                            ->has('selections.0', fn($page) => $page
+                            ->has('selections.0', fn ($page) => $page
                                 ->hasAll([
                                     'id', 'pump_id', 'article_num', 'created_at',
                                     'flow', 'head', 'selected_pump_name', 'discounted_price',
                                     'total_discounted_price', 'rated_power', 'total_rated_power',
-                                    'pumpable_type'
+                                    'pumpable_type',
                                 ])
                             )
                         )
@@ -139,64 +147,69 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpCreateOrEditProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_edit_endpoint()
+    public function testProjectsEditEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
         $this->actingAs($user)
             ->get(route('projects.edit', $project->id))
-            ->assertInertia(fn(AssertableInertia $page) => $page
-                ->has('project', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->has('project', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->where('id', $project->id)
                         ->where('name', $project->name)
                     )
                 )
-            )->assertStatus(200)
-        ;
+            )->assertStatus(200);
     }
 
     /**
      * @return void
+     *
      * @see EpStoreProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_store_endpoint()
+    public function testProjectsStoreEndpoint()
     {
         $user = User::fakeWithRole();
-        $testName = "project store test name";
+        $testName = 'project store test name';
         $this->startSession()
             ->actingAs($user)
             ->post(route('projects.store'), [
                 'name' => $testName,
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('projects.index'));
         $this->assertDatabaseHas('projects', [
             'name' => $testName,
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpUpdateProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_update_endpoint()
+    public function testProjectsUpdateEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::factory()->create([
             'user_id' => $user->id,
             'status_id' => 1,
             'delivery_status_id' => 1,
-            'comment' => 'Test'
+            'comment' => 'Test',
         ]);
-        $nameToUpdate = "new project name";
+        $nameToUpdate = 'new project name';
         $this->startSession()
             ->actingAs($user)
             ->put(route('projects.update', $project->id), [
@@ -204,7 +217,7 @@ class ProjectsEndpointsTest extends TestCase
                 'status_id' => 2,
                 'delivery_status_id' => 2,
                 'comment' => 'Foo',
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('projects.index'));
@@ -214,23 +227,25 @@ class ProjectsEndpointsTest extends TestCase
             'user_id' => $user->id,
             'status_id' => 2,
             'delivery_status_id' => 2,
-            'comment' => 'Foo'
+            'comment' => 'Foo',
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpDestroyProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_destroy_endpoint()
+    public function testProjectsDestroyEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
         $this->startSession()
             ->actingAs($user)
             ->delete(route('projects.destroy', $project->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(302)
             ->assertRedirect('/');
@@ -239,14 +254,16 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpCloneProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_clone_endpoint()
+    public function testProjectsCloneEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
-        $cloneName = "project_clone_name";
+        $cloneName = 'project_clone_name';
         $this->startSession()
             ->actingAs($user)
             ->post(route('projects.clone', $project->id), [
@@ -257,17 +274,19 @@ class ProjectsEndpointsTest extends TestCase
             ->assertRedirect(route('projects.index'));
         $this->assertDatabaseHas('projects', [
             'name' => $cloneName,
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
         $this->assertDatabaseCount('projects', 2);
     }
 
     /**
      * @return void
+     *
      * @see EpRestoreProject
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_restore_endpoint()
+    public function testProjectsRestoreEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
@@ -282,16 +301,17 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpExportProject
      * @autho Max Trunnikov
      */
-    public function test_export_projects_endpoint()
+    public function testExportProjectsEndpoint()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
         $selection1 = Selection::factory()
             ->for(Pump::factory()->state([
-                'pumpable_type' => Pump::$SINGLE_PUMP
+                'pumpable_type' => Pump::$SINGLE_PUMP,
             ]))
             ->create([
                 'project_id' => $project->id,
@@ -311,7 +331,7 @@ class ProjectsEndpointsTest extends TestCase
                 'reserve_pumps_count' => null,
                 'main_pumps_counts' => null,
                 'flow' => 10,
-                'head' => 10
+                'head' => 10,
             ]);
         $this->startSession()
             ->actingAs($user)
@@ -323,7 +343,7 @@ class ProjectsEndpointsTest extends TestCase
                 'pump_image' => true,
                 'pump_sizes_image' => true,
                 'pump_electric_diagram_image' => true,
-                'pump_cross_sectional_drawing_image' => true
+                'pump_cross_sectional_drawing_image' => true,
             ])
             ->assertDownload()
             ->assertStatus(200);
@@ -331,10 +351,12 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpShowProject
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_cannot_see_other_user_project()
+    public function testIfUserCannotSeeOtherUserProject()
     {
         $user1 = User::fakeWithRole();
         $project = Project::fakeForUser($user1);
@@ -348,26 +370,30 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpDestroyProject
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_cannot_delete_other_user_project()
+    public function testIfUserCannotDeleteOtherUserProject()
     {
         $project = Project::fakeForUser(User::fakeWithRole());
         $user2 = User::fakeWithRole();
         $this->startSession()
             ->actingAs($user2)
             ->delete(route('projects.destroy', $project->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @see EpRestoreProject
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_cannot_restore_other_user_project()
+    public function testIfUserCannotRestoreOtherUserProject()
     {
         $project = Project::fakeForUser(User::fakeWithRole());
         $this->actingAs(User::fakeWithRole())
@@ -377,10 +403,12 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpProjectsStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_if_client_cannot_see_projects_statistics()
+    public function testIfClientCannotSeeProjectsStatistics()
     {
         $this->actingAs(User::fakeWithRole())
             ->get(route('projects.statistics'))
@@ -389,16 +417,18 @@ class ProjectsEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpUpdateProject
+     *
      * @author Max Trunnikov
      */
-    public function test_if_project_will_be_deleted_if_status_changed()
+    public function testIfProjectWillBeDeletedIfStatusChanged()
     {
         $user = User::fakeWithRole();
         $project = Project::factory()->create([
             'user_id' => $user->id,
             'status_id' => 1,
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
         $this->startSession()
             ->actingAs($user)
@@ -406,24 +436,26 @@ class ProjectsEndpointsTest extends TestCase
             ->put(route('projects.update', $project->id), [
                 '_token' => csrf_token(),
                 'name' => $project->name,
-                'status_id' => 3
+                'status_id' => 3,
             ])->assertStatus(302);
         $this->assertSoftDeleted($project);
     }
 
     /**
      * @return void
+     *
      * @see TkUpdateProject
      * @see EpUpdateProject
+     *
      * @author Max Trunnikov
      */
-    public function test_if_project_will_be_restored_if_status_changed()
+    public function testIfProjectWillBeRestoredIfStatusChanged()
     {
         $user = User::fakeWithRole();
         $project = Project::factory()->create([
             'user_id' => $user->id,
             'status_id' => 1,
-            'deleted_at' => now()
+            'deleted_at' => now(),
         ]);
         $this->startSession()
             ->actingAs($user)
@@ -431,17 +463,19 @@ class ProjectsEndpointsTest extends TestCase
             ->put(route('projects.update', $project->id), [
                 '_token' => csrf_token(),
                 'name' => $project->name,
-                'status_id' => 2
+                'status_id' => 2,
             ])->assertStatus(302);
         $this->assertNotSoftDeleted($project);
     }
 
     /**
      * @return void
+     *
      * @see EpProjectsStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_projects_statistics_endpoint()
+    public function testProjectsStatisticsEndpoint()
     {
         $usersCount = 10;
         $user = User::fakeWithRole('SuperAdmin');
@@ -456,9 +490,9 @@ class ProjectsEndpointsTest extends TestCase
 
         $this->actingAs($user)
             ->get(route('projects.statistics'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Project::Projects/Statistics', false)
-                ->has('filter_data', fn(AssertableInertia $page) => $page
+                ->has('filter_data', fn (AssertableInertia $page) => $page
                     ->has('countries')
                     ->count('countries', Country::allOrCached()
                         ->whereIn('id', $allUsers->pluck('country_id')->all())
@@ -475,32 +509,32 @@ class ProjectsEndpointsTest extends TestCase
                     ->count('organizations', $allUsers->unique('organization_name')->pluck('organization_name')->count())
                     ->has('project_statuses')
                     ->count('project_statuses', ProjectStatus::allOrCached()->count())
-                    ->has('project_statuses.0', fn(AssertableInertia $page) => $page
+                    ->has('project_statuses.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('delivery_statuses')
                     ->count('delivery_statuses', ProjectDeliveryStatus::allOrCached()->count())
-                    ->has('delivery_statuses.0', fn(AssertableInertia $page) => $page
+                    ->has('delivery_statuses.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                 )
                 ->has('project_statuses')
                 ->count('project_statuses', ProjectStatus::allOrCached()->count())
-                ->has('project_statuses.0', fn(AssertableInertia $page) => $page
+                ->has('project_statuses.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
                 ->has('delivery_statuses')
                 ->count('delivery_statuses', ProjectDeliveryStatus::allOrCached()->count())
-                ->has('delivery_statuses.0', fn(AssertableInertia $page) => $page
+                ->has('delivery_statuses.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
                 ->has('projects')
                 ->count('projects', $usersCount)
-                ->has('projects.0', fn(AssertableInertia $page) => $page
+                ->has('projects.0', fn (AssertableInertia $page) => $page
                     ->has('key')
                     ->has('id')
                     ->has('created_at')

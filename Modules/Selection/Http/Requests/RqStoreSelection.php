@@ -8,13 +8,13 @@ use Modules\Components\Entities\ControlSystemType;
 use Modules\Selection\Rules\PumpStationsArray;
 
 /**
- * @property float $flow
- * @property float $head
+ * @property float        $flow
+ * @property float        $head
  * @property array<array> $added_stations
- * @property int $reserve_pumps_count
- * @property string $comment
- * @property array<int> $control_system_type_ids
- * @property string $selection
+ * @property int          $reserve_pumps_count
+ * @property string       $comment
+ * @property array<int>   $control_system_type_ids
+ * @property string       $selection
  */
 abstract class RqStoreSelection extends RqDetermineSelection
 {
@@ -28,22 +28,19 @@ abstract class RqStoreSelection extends RqDetermineSelection
                 'reserve_pumps_count' => ['required', 'numeric', 'in:0,1,2,3,4'],
                 'control_system_type_ids' => ['required', 'array', new ArrayExistsInArray(ControlSystemType::allOrCached()->pluck('id')->all())],
                 'added_stations' => ['required', 'array', new PumpStationsArray()],
-                'comment' => ['sometimes', 'nullable', 'string']
+                'comment' => ['sometimes', 'nullable', 'string'],
             ]
         );
     }
 
+    private string $separator = ',';
 
-    private string $separator = ",";
+    #[Pure]
+ protected function imploded($array): ?string
+ {
+     return $array ? implode($this->separator, $array) : null;
+ }
 
-    #[Pure] protected function imploded($array): ?string
-    {
-        return $array ? implode($this->separator, $array) : null;
-    }
-
-    /**
-     * @return array
-     */
     public function selectionProps(): array
     {
         return [
@@ -51,7 +48,7 @@ abstract class RqStoreSelection extends RqDetermineSelection
             'head' => $this->head,
             'reserve_pumps_count' => $this->reserve_pumps_count,
             'control_system_type_ids' => $this->imploded($this->control_system_type_ids),
-            'comment' => $this->comment
+            'comment' => $this->comment,
         ];
     }
 }

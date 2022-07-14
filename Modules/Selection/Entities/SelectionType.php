@@ -13,9 +13,9 @@ final class SelectionType extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Автоматический")]
-    const Auto = 1;
+    #[Description('Автоматический')]
+    public const Auto = 1;
 
-    #[Description("Ручной")]
-    const Handle = 2;
+    #[Description('Ручной')]
+    public const Handle = 2;
 }

@@ -15,14 +15,15 @@ final class EpShowDealer extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
         parent::__construct(
             new TkInertia(
-                "ProjectParticipant::Dealers/Show",
-                new AcShowDealer(Dealer::find($request->dealer))
+                'ProjectParticipant::Dealers/Show',
+                new AcShowDealer(
+                    Dealer::find($request->dealer)
+                )
             )
         );
     }

@@ -6,7 +6,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 
 /**
- * Pump station price
+ * Pump station price.
  */
 final class PumpStationPrice implements Numerable
 {
@@ -18,13 +18,13 @@ final class PumpStationPrice implements Numerable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asNumber(): float|int
     {
         $sum = 0;
         foreach ($this->components->asArray() as $component => $price) {
-            if ($component === 'pump') {
+            if ('pump' === $component) {
                 continue;
             }
             if (is_null($price)) {
@@ -32,6 +32,7 @@ final class PumpStationPrice implements Numerable
             }
             $sum += $price;
         }
+
         return $sum;
     }
 }

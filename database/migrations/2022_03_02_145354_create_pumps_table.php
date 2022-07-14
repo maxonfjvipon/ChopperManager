@@ -1,13 +1,8 @@
 <?php
 
-use App\Models\Enums\Currency;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Pump\Entities\CollectorSwitch;
-use Modules\Pump\Entities\ConnectionType;
-use Modules\Pump\Entities\DN;
-use Modules\Pump\Entities\PumpOrientation;
 
 class CreatePumpsTable extends Migration
 {

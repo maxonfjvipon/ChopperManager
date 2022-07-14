@@ -13,13 +13,14 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Entities\StationType;
 
 /**
- * Armature for {@see StationType::WS}
+ * Armature for {@see StationType::WS}.
  */
 final class ArmaWS extends ArrEnvelope
 {
     /**
      * @param Pump $pump
-     * @param int $pumpsCount
+     * @param int  $pumpsCount
+     *
      * @throws Exception
      */
     public function __construct(private Pump $pump, private int $pumpsCount)
@@ -28,6 +29,7 @@ final class ArmaWS extends ArrEnvelope
             new ArrFromCallback(
                 function () {
                     $armature = Armature::allOrCached();
+
                     return new ArrMapped(
                         match ($this->pump->collector_switch->value) {
                             CollectorSwitch::Trd => new ArWSTrd($armature, $this->pump),
@@ -35,7 +37,7 @@ final class ArmaWS extends ArrEnvelope
                             CollectorSwitch::Fln => new ArWSFln($armature, $this->pump),
                             CollectorSwitch::FlnToTrd => new ArWSFlnToTrd($armature, $this->pump)
                         },
-                        fn(?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
+                        fn (?Armature $_armature) => new ArrArmatureCount($_armature, $this->pumpsCount)
                     );
                 }
             )

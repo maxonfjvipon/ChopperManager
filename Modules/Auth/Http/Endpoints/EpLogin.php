@@ -9,7 +9,6 @@ use App\Takes\TkWithCallback;
 
 /**
  * Login endpoint.
- * @package Modules\Auth\Takes
  */
 final class EpLogin extends TakeEndpoint
 {
@@ -20,7 +19,7 @@ final class EpLogin extends TakeEndpoint
     {
         parent::__construct(
             new TkFromCallback(
-                fn() => new TkWithCallback(
+                fn () => new TkWithCallback(
                     function () {
                         if (!session()->has('url.intended')) {
                             session(['url.intended' => url()->previous()]);

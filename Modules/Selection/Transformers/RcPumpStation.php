@@ -16,7 +16,7 @@ final class RcPumpStation extends JsonResource
      * Transform the resource into an array.
      *
      * @param Request
-     * @return array
+     *
      * @throws Exception
      */
     public function toArray($request): array
@@ -54,7 +54,7 @@ final class RcPumpStation extends JsonResource
                 'jockey_chassis_id' => $this->resource->jockey_chassis_id,
                 'jockey_pump_id' => $this->resource->jockey_pump_id,
                 'jockey_flow' => $this->resource->jockey_flow,
-                'jockey_head' => $this->resource->jockey_head
+                'jockey_head' => $this->resource->jockey_head,
             ] : []
         );
     }

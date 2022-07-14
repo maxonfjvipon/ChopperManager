@@ -13,15 +13,15 @@ final class ProjectStatus extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Проект")]
-    const Project = 1;
+    #[Description('Проект')]
+    public const Project = 1;
 
-    #[Description("Цикл 0")]
-    const Phase0 = 2;
+    #[Description('Цикл 0')]
+    public const Phase0 = 2;
 
-    #[Description("Цикл крыша")]
-    const PhaseRoof = 3;
+    #[Description('Цикл крыша')]
+    public const PhaseRoof = 3;
 
-    #[Description("Архив")]
-    const Archive = 4;
+    #[Description('Архив')]
+    public const Archive = 4;
 }

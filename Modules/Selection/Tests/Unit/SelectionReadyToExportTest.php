@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 /**
  * @see Selection::readyForExport()
+ *
  * @author Max Trunnikov
  */
 class SelectionReadyToExportTest extends TestCase
@@ -18,14 +19,14 @@ class SelectionReadyToExportTest extends TestCase
     /**
      * @return void
      */
-    public function test_ready_for_export()
+    public function testReadyForExport()
     {
         $selection = Selection::factory()->create([
             'project_id' => Project::fakeForUser(
                 User::fakeWithRole()
             )->id,
             'pump_id' => Pump::factory()->create([
-                'pumpable_type' => Pump::$SINGLE_PUMP
+                'pumpable_type' => Pump::$SINGLE_PUMP,
             ])->id,
         ])->readyForExport()->getAttributes();
         $this->assertArrayHasKey('main_curves', $selection);

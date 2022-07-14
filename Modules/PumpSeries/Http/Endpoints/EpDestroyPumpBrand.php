@@ -15,13 +15,12 @@ final class EpDestroyPumpBrand extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => PumpBrand::find($request->pump_brand)->delete(),
+                fn () => PumpBrand::find($request->pump_brand)->delete(),
                 new TkRedirectToRoute('pump_series.index')
             )
         );

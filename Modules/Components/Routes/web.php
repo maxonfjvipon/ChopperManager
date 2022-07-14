@@ -24,7 +24,6 @@ use Modules\Components\Http\Endpoints\EpImportCollectors;
 use Modules\Components\Http\Endpoints\EpImportControlSystems;
 
 Route::middleware('admin')->group(function () {
-
     Route::prefix('control-systems')->as('control_systems.')->group(function () {
         Route::get('/')->name('index')->uses(EpControlSystems::class);
         Route::post('import')->name('import')->uses(EpImportControlSystems::class);
@@ -40,12 +39,12 @@ Route::middleware('admin')->group(function () {
         Route::post('import')->name('import')->uses(EpImportAssemblyJobs::class);
     });
 
-    Route::prefix('chassis')->as('chassis.')->group(function() {
+    Route::prefix('chassis')->as('chassis.')->group(function () {
         Route::get('/')->name('index')->uses(EpChassis::class);
         Route::post('import')->name('import')->uses(EpImportChassis::class);
     });
 
-    Route::prefix('collectors')->as('collectors.')->group(function() {
+    Route::prefix('collectors')->as('collectors.')->group(function () {
         Route::get('/')->name('index')->uses(EpCollectors::class);
         Route::post('import')->name('import')->uses(EpImportCollectors::class);
     });

@@ -15,7 +15,6 @@ final class EpShowPump extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqShowPump $request
      */
     public function __construct(RqShowPump $request)
     {

@@ -23,19 +23,22 @@ class ArrayExistsInArray implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
-    #[Pure] public function passes($attribute, $value): bool
-    {
-        foreach ($value as $item) {
-            if (!in_array($item, $this->searchArray)) {
-                return false;
-            }
-        }
-        return true;
-    }
+    #[Pure]
+ public function passes($attribute, $value): bool
+ {
+     foreach ($value as $item) {
+         if (!in_array($item, $this->searchArray)) {
+             return false;
+         }
+     }
+
+     return true;
+ }
 
     /**
      * Get the validation error message.
@@ -44,6 +47,6 @@ class ArrayExistsInArray implements Rule
      */
     public function message()
     {
-        return "The array does not contain some of the values";
+        return 'The array does not contain some of the values';
     }
 }

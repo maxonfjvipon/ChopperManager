@@ -15,7 +15,7 @@ final class RcProjectToShow extends JsonResource
      * Transform the resource into an array.
      *
      * @param Request
-     * @return array
+     *
      * @throws Exception
      */
     public function toArray($request): array

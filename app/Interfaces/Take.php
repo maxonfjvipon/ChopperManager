@@ -7,14 +7,9 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * System snapshot
- * @package App\Support
+ * System snapshot.
  */
 interface Take
 {
-    /**
-     * @param Request|null $request
-     * @return Responsable|Response
-     */
     public function act(Request $request = null): Responsable|Response;
 }

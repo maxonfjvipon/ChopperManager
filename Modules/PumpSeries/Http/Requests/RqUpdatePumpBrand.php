@@ -10,14 +10,12 @@ final class RqUpdatePumpBrand extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255', 'unique:pump_brands,name,' . $this->pump_brand->id],
-            'country' => ['required', new EnumValue(Country::class)]
+            'name' => ['required', 'string', 'max:255', 'unique:pump_brands,name,'.$this->pump_brand->id],
+            'country' => ['required', new EnumValue(Country::class)],
         ];
     }
 }

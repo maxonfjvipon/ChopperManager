@@ -15,14 +15,14 @@ final class AcStoreSelection
 {
     /**
      * Ctor.
+     *
      * @param RqStoreSelection $request
-     * @param Project $project
+     * @param Project          $project
      */
     public function __construct(
         private RqStoreSelection $request,
-        private Project          $project
-    )
-    {
+        private Project $project
+    ) {
     }
 
     /**
@@ -41,12 +41,12 @@ final class AcStoreSelection
             )
         );
         DB::table('pump_stations')->insert(array_map(
-            fn(array $station) => array_merge(
+            fn (array $station) => array_merge(
                 $station,
                 [
                     'selection_id' => $selection->id,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ]
             ),
             $this->request->added_stations

@@ -8,27 +8,28 @@ use Modules\Components\Entities\Armature;
 /**
  * Armature count array
  * Return armature with count in following structure
- * ['armature' => $armature, 'count' => $count]
+ * ['armature' => $armature, 'count' => $count].
  */
 final class ArrArmatureCount implements Arrayable
 {
     /**
      * Ctor.
+     *
      * @param Armature|null $armature
-     * @param int $count
+     * @param int           $count
      */
     public function __construct(private ?Armature $armature, private int $count)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
         return [
             'armature' => $this->armature,
-            'count' => $this->count
+            'count' => $this->count,
         ];
     }
 }

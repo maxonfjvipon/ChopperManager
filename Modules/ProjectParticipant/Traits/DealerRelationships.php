@@ -14,7 +14,6 @@ trait DealerRelationships
 {
     /**
      * Available series for pump-manager users.
-     * @return BelongsToMany
      */
     public function available_series(): BelongsToMany
     {
@@ -23,7 +22,6 @@ trait DealerRelationships
 
     /**
      * Project with the dealer.
-     * @return HasMany
      */
     public function projects(): HasMany
     {

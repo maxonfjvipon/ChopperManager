@@ -11,10 +11,10 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Numerable\ArraySum;
 use Modules\Project\Entities\Project;
-use Modules\User\Entities\User;
 use Modules\Selection\Entities\Selection;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
+use Modules\User\Entities\User;
 
 /**
  * Users to show on users statistics page.
@@ -22,7 +22,7 @@ use Modules\User\Entities\Country;
 final class UsersForStatistics implements Arrayable
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
@@ -35,32 +35,34 @@ final class UsersForStatistics implements Arrayable
             $query->select('id', 'project_id', 'pump_id', 'pumps_count');
         }, 'projects.selections.pump' => function ($query) {
             $query->select('id', 'pumpable_type');
-        }, 'projects.selections.pump.price_list', 'projects.selections.pump.price_list.currency'
+        }, 'projects.selections.pump.price_list', 'projects.selections.pump.price_list.currency',
         ])
             ->withCount('projects')
             ->get(['id', 'organization_name', 'business_id',
-                'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at'
+                'country_id', 'city', 'first_name', 'middle_name', 'last_name', 'last_login_at',
             ]);
+
         return (new ArrMerged(
             new ArrObject(
-                "users",
+                'users',
                 new ArrMapped(
                     $users->all(),
                     function (User $user) use ($rates) {
                         $projectsPrice = (new ArraySum(
                             new ArrMapped(
                                 [...$user->projects],
-                                fn(Project $project) => (new ArraySum(
+                                fn (Project $project) => (new ArraySum(
                                     new ArrMapped(
                                         [...$project->selections],
-                                        fn(Selection $selection) => $selection->totalRetailPrice($rates)
+                                        fn (Selection $selection) => $selection->totalRetailPrice($rates)
                                     )
                                 ))->asNumber()
                             )
                         ))->asNumber();
-                        $avgProjectsPrice = $user->projects_count !== 0
+                        $avgProjectsPrice = 0 !== $user->projects_count
                             ? $projectsPrice / $user->projects_count
                             : 0;
+
                         return [
                             'id' => $user->id,
                             'key' => $user->id,
@@ -72,13 +74,13 @@ final class UsersForStatistics implements Arrayable
                             'city' => $user->city,
                             'projects_count' => $user->projects_count,
                             'total_projects_price' => round($projectsPrice, 2),
-                            'avg_projects_price' => round($avgProjectsPrice, 2)
+                            'avg_projects_price' => round($avgProjectsPrice, 2),
                         ];
                     }
                 )
             ),
             new ArrObject(
-                "filter_data",
+                'filter_data',
                 new ArrForFiltering(
                     [
                         'businesses' => Business::allOrCached()->whereIn('id', $users->pluck('business_id')->all())

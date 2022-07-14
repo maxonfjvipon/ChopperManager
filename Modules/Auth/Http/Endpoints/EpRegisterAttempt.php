@@ -14,7 +14,6 @@ final class EpRegisterAttempt extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqRegister $request
      */
     public function __construct(RqRegister $request)
     {

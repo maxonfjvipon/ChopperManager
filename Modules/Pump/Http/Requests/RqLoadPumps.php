@@ -13,32 +13,30 @@ use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpSeries;
 
 /**
- * @property-read string $sortOrder
- * @property-read string $sortField
- * @property-read string $search
- * @property-read array<string|int> $brand
- * @property-read array<string|int> $series
- * @property-read array<string|int> $collector_switch
- * @property-read array<string|int> $connection_type
- * @property-read array<string|int> $dn_suction
- * @property-read array<string|int> $dn_pressure
- * @property-read array<string|int> $orientation
- * @property-read array<string|int> $pagination
+ * @property string            $sortOrder
+ * @property string            $sortField
+ * @property string            $search
+ * @property array<string|int> $brand
+ * @property array<string|int> $series
+ * @property array<string|int> $collector_switch
+ * @property array<string|int> $connection_type
+ * @property array<string|int> $dn_suction
+ * @property array<string|int> $dn_pressure
+ * @property array<string|int> $orientation
+ * @property array<string|int> $pagination
  */
 final class RqLoadPumps extends FormRequest
 {
     protected function prepareForValidation()
     {
         if ($this->sortOrder) {
-            $this->merge(['sortOrder' => $this->sortOrder === 'ascend' ? 'ASC' : "DESC"]);
+            $this->merge(['sortOrder' => 'ascend' === $this->sortOrder ? 'ASC' : 'DESC']);
         }
         $this->merge(['need_info' => true]);
     }
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -51,14 +49,14 @@ final class RqLoadPumps extends FormRequest
                 'dn_suction',
                 'dn_pressure',
                 'suction_height',
-                'ptp_length'
+                'ptp_length',
             ])],
             'sortOrder' => ['sometimes', 'nullable', new In(['ASC', 'DESC'])],
             'pagination' => [
                 'sometimes',
                 'nullable',
                 'array',
-//                new ArrayExistsInArray(['current', 'pageSize', 'pageSizeOptions'])
+                //                new ArrayExistsInArray(['current', 'pageSize', 'pageSizeOptions'])
             ],
             'brand' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(PumpBrand::pluck('id')->all())],
             'series' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(PumpSeries::pluck('id')->all())],
@@ -67,7 +65,7 @@ final class RqLoadPumps extends FormRequest
             'dn_suction' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(DN::values())],
             'dn_pressure' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(DN::values())],
             'orientation' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(PumpOrientation::getValues())],
-            'search' => ['sometimes', 'nullable', 'string']
+            'search' => ['sometimes', 'nullable', 'string'],
         ];
     }
 }

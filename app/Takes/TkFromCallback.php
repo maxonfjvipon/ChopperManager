@@ -16,6 +16,7 @@ final class TkFromCallback implements Take
 {
     /**
      * Ctor.
+     *
      * @param Closure $callback
      */
     public function __construct(private Closure $callback)
@@ -23,16 +24,15 @@ final class TkFromCallback implements Take
     }
 
     /**
-     * @param Request|null $request
-     * @return Responsable|Response
      * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response
     {
         $take = call_user_func($this->callback);
         if (!$take instanceof Take) {
-            throw new Exception("Callback must return an instance of Take");
+            throw new Exception('Callback must return an instance of Take');
         }
+
         return $take->act($request);
     }
 }

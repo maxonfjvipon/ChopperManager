@@ -12,7 +12,8 @@ final class ArrForFilteringWithId extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param array $data
+     *
+     * @param array  $data
      * @param string $attrName
      */
     public function __construct(private array $data, private string $attrName = 'name')
@@ -20,10 +21,10 @@ final class ArrForFilteringWithId extends ArrEnvelope
         parent::__construct(
             new ArrMapped(
                 $this->data,
-                fn($obj) => array_map(
-                    fn($object) => [
+                fn ($obj) => array_map(
+                    fn ($object) => [
                         'text' => $object['name'] ?? $object['value'] ?? $object[$this->attrName],
-                        'value' => $object['id']
+                        'value' => $object['id'],
                     ],
                     $obj
                 )

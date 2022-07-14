@@ -3,7 +3,6 @@
 use Modules\User\Entities\User;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -40,7 +39,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users'
+            'provider' => 'users',
         ],
         'api' => [
             'driver' => 'token',
@@ -109,5 +108,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

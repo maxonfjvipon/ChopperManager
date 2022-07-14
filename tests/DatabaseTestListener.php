@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestListenerDefaultImplementation;
 use PHPUnit\Framework\TestSuite;
@@ -13,27 +12,25 @@ class DatabaseTestListener implements TestListener
 
     /**
      * Set up the database for testing.
-     *
-     * @param TestSuite $suite
      */
     public function startTestSuite(TestSuite $suite): void
     {
         if (str_contains($suite->getName(), 'Endpoint') || str_contains($suite->getName(), 'DB')) {
             $this->dropFiles();
 
-            chdir(__DIR__ . '/..');
+            chdir(__DIR__.'/..');
 
-            if (shell_exec('php artisan migrate:fresh') == null)
+            if (null == shell_exec('php artisan migrate:fresh')) {
                 var_dump('cant migrate');
-            if (shell_exec('php artisan db:seed --class=TestingSeeder') == null)
+            }
+            if (null == shell_exec('php artisan db:seed --class=TestingSeeder')) {
                 var_dump('cant seed');
+            }
         }
     }
 
     /**
      * Clean up the database files.
-     *
-     * @param TestSuite $suite
      */
     public function endTestSuite(TestSuite $suite): void
     {
@@ -44,13 +41,13 @@ class DatabaseTestListener implements TestListener
 
     private function dropFiles()
     {
-        $basePath = __DIR__ . '/../database/base.sqlite';
+        $basePath = __DIR__.'/../database/base.sqlite';
 
-        shell_exec('rm -f ' . $basePath);
+        shell_exec('rm -f '.$basePath);
 
-        $copyPath = __DIR__ . '/../database/database.sqlite';
+        $copyPath = __DIR__.'/../database/database.sqlite';
 
-        shell_exec('rm ' . $copyPath);
-        shell_exec('touch ' . $copyPath);
-}
+        shell_exec('rm '.$copyPath);
+        shell_exec('touch '.$copyPath);
+    }
 }

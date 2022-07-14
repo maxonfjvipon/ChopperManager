@@ -17,15 +17,17 @@ class PumpBrandEndpointsTest extends TestCase
 {
     /**
      * @return void
+     *
      * @see PumpBrandsStoreEndpoint
      * @see PumpBrandsCreateEndpoint
      * @see PumpBrandsEditEndpoint
      * @see PumpBrandsDestroyEndpoint
      * @see PumpBrandsRestoreEndpoint
      * @see PumpBrandsUpdateEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_get_access_to_brands_pages()
+    public function testClientCannotGetAccessToBrandsPages()
     {
         $user = User::fakeWithRole();
         $brand = PumpBrand::factory()->create();
@@ -37,67 +39,73 @@ class PumpBrandEndpointsTest extends TestCase
         $this->startSession()
             ->put(route('pump_brands.update', $brand->id), [
                 '_token' => csrf_token(),
-                'name' => 'Test name'
+                'name' => 'Test name',
             ])->assertForbidden();
         $this->delete(route('pump_brands.destroy', $brand->id), [
-            '_token' => csrf_token()
+            '_token' => csrf_token(),
         ])->assertForbidden();
         $this->post(route('pump_brands.store'), [
             '_token' => csrf_token(),
-            'name' => 'Test'
+            'name' => 'Test',
         ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @see PumpBrandsCreateEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_create_endpoint()
+    public function testPumpBrandsCreateEndpoint()
     {
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('pump_brands.create'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Pump::PumpBrands/Create', false)
             );
     }
 
     /**
      * @return void
+     *
      * @see PumpBrandsStoreEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_store_endpoint()
+    public function testPumpBrandsStoreEndpoint()
     {
         $name = 'Test brand';
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->post(route('pump_brands.store'), [
                 '_token' => csrf_token(),
-                'name' => $name
+                'name' => $name,
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pump_series.index'));
         $this->assertDatabaseHas('pump_brands', [
-            'name' => $name
+            'name' => $name,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see PumpBrandsEditEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_edit_endpoint()
+    public function testPumpBrandsEditEndpoint()
     {
         $brand = PumpBrand::factory()->create();
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('pump_brands.edit', $brand->id))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Pump::PumpBrands/Edit', false)
-                ->has('brand', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('brand', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->where('id', $brand->id)
                         ->where('name', $brand->name)
                     )
@@ -107,10 +115,12 @@ class PumpBrandEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see PumpBrandsRestoreEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_restore_endpoint()
+    public function testPumpBrandsRestoreEndpoint()
     {
         $brand = PumpBrand::factory()->create();
         $brand->delete();
@@ -124,33 +134,37 @@ class PumpBrandEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see PumpBrandsUpdateEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_update_endpoint()
+    public function testPumpBrandsUpdateEndpoint()
     {
-        $name = "new name";
+        $name = 'new name';
         $brand = PumpBrand::factory()->create();
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->put(route('pump_brands.update', $brand->id), [
                 '_token' => csrf_token(),
-                'name' => $name
+                'name' => $name,
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pump_series.index'));
         $this->assertDatabaseHas('pump_brands', [
             'id' => $brand->id,
-            'name' => $name
+            'name' => $name,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see PumpBrandsDestroyEndpoint
+     *
      * @author Max Trunnikov
      */
-    public function test_pump_brands_destroy_endpoint()
+    public function testPumpBrandsDestroyEndpoint()
     {
         $brand = PumpBrand::factory()->create();
         $this->startSession()

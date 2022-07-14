@@ -19,7 +19,9 @@ final class SelectionAsResource extends ArrEnvelope
 
     /**
      * Ctor.
+     *
      * @param Selection $selection
+     *
      * @throws Exception
      */
     public function __construct(protected Selection $selection)
@@ -32,7 +34,7 @@ final class SelectionAsResource extends ArrEnvelope
                     'head' => $this->selection->head,
                     'control_system_type_ids' => $this->idsArrayFromString($this->selection->control_system_type_ids),
                     'comment' => $this->selection->comment,
-                    'pump_stations' => RcPumpStation::collection($this->selection->pump_stations_to_show())
+                    'pump_stations' => RcPumpStation::collection($this->selection->pump_stations_to_show()),
                 ],
                 match ($this->selection->station_type->value) {
                     StationType::WS => match ($this->selection->type->value) {

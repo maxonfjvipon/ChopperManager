@@ -11,17 +11,17 @@ class ArrForFilteringTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_as_array()
+    public function testAsArray()
     {
         $expected = [
             'props1' => [
                 [
                     'text' => 'foo',
-                    'value' => 'foo'
+                    'value' => 'foo',
                 ], [
                     'text' => 'bar',
-                    'value' => 'bar'
-                ]
+                    'value' => 'bar',
+                ],
             ],
             'props2' => [
                 [
@@ -29,15 +29,15 @@ class ArrForFilteringTest extends TestCase
                     'value' => 'foobar',
                 ], [
                     'text' => 'barfoo',
-                    'value' => 'barfoo'
-                ]
-            ]
+                    'value' => 'barfoo',
+                ],
+            ],
         ];
         $this->assertEquals(
             $expected,
             (new ArrForFiltering([
                 'props1' => ['foo', 'bar'],
-                'props2' => ['foobar', 'barfoo']
+                'props2' => ['foobar', 'barfoo'],
             ]))->asArray()
         );
     }

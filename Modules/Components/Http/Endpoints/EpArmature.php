@@ -18,7 +18,7 @@ final class EpArmature extends TakeEndpoint
     {
         parent::__construct(
             new TkInertia(
-                "Components::Armature",
+                'Components::Armature',
                 new AcArmature()
             )
         );

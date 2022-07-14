@@ -12,29 +12,28 @@ use Modules\Selection\Support\Point\IntersectionPoint;
 use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
 
 /**
- * Is pump appropriate for selection
+ * Is pump appropriate for selection.
  */
 final class PumpIsGoodToSelect implements Logical
 {
-
     /**
      * Ctor.
+     *
      * @param RqMakeSelection $request
-     * @param Pump $pump
-     * @param int $mainPumpsCount
-     * @param Numerable $qEnd
+     * @param Pump            $pump
+     * @param int             $mainPumpsCount
+     * @param Numerable       $qEnd
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Pump            $pump,
-        private int             $mainPumpsCount,
-        private Numerable       $qEnd,
-    )
-    {
+        private Pump $pump,
+        private int $mainPumpsCount,
+        private Numerable $qEnd,
+    ) {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asBool(): bool
     {
@@ -51,6 +50,7 @@ final class PumpIsGoodToSelect implements Logical
             $this->request->flow,
             $this->request->head
         );
+
         return $this->request->flow >= $qStart->asNumber()
             && $intersectionPoint->x() >= $qStart->asNumber()
             && $intersectionPoint->x() <= $this->qEnd->asNumber()

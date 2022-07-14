@@ -15,7 +15,6 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
     ];
 
     /**
@@ -37,14 +36,12 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
         });
     }
 
     /**
      * @param $request
-     * @param Throwable $e
-     * @return \Illuminate\Http\Response|JsonResponse|Response
+     *
      * @throws Throwable
      */
     public function render($request, Throwable $e): \Illuminate\Http\Response|JsonResponse|Response

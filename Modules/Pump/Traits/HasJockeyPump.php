@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Has jockey pump relationship
+ * Has jockey pump relationship.
  */
 trait HasJockeyPump
 {
-    /**
-     * @return BelongsTo
-     */
     public function jockey_pump(): BelongsTo
     {
         return $this->belongsTo(Pump::class, 'jockey_pump_id');

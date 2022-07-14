@@ -22,24 +22,24 @@ use Modules\Selection\Support\Performance\PpQEnd;
 use Modules\Selection\Support\PumpIsGoodToSelect;
 
 /**
- * Water Auto selected pumps
+ * Water Auto selected pumps.
  */
 final class SelectedPumpsWSAuto extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param RqMakeSelection $request
-     * @param Arrayable $dnsMaterials
-     * @param Rates $rates
+     *
+     * @param RqMakeSelection                          $request
+     * @param Arrayable                                $dnsMaterials
+     * @param Rates                                    $rates
      * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
-        private RqMakeSelection                          $request,
-        private Arrayable                                $dnsMaterials,
-        private Rates                                    $rates,
+        private RqMakeSelection $request,
+        private Arrayable $dnsMaterials,
+        private Rates $rates,
         private \Illuminate\Database\Eloquent\Collection $controlSystems
-    )
-    {
+    ) {
         $key = 1;
         parent::__construct(
             new ArrFlatten(
@@ -47,10 +47,12 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                     new ArrPumpsForSelecting($this->request), // load pumps
                     function (Pump $pump) use (&$key) {
                         $minDn = DN::minDNforPump($pump); // min DN for $pump
+
                         return new ArrMapped(
                             $this->request->main_pumps_counts,
                             function ($mainPumpsCount) use ($pump, $minDn, &$key) {
                                 $qEnd = new NumSticky(new PpQEnd($pump->performance(), $mainPumpsCount));
+
                                 return new ArrIf(
                                     $this->request->flow < $qEnd->asNumber(), // if flow < qEnd
                                     function () use ($pump, $qEnd, $mainPumpsCount, $minDn, &$key) {
@@ -58,6 +60,7 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                                             new PumpIsGoodToSelect($this->request, $pump, $mainPumpsCount, $qEnd),
                                             function () use ($minDn, $pump, $mainPumpsCount, &$key) {
                                                 $chassis = Chassis::appropriateFor($pump, $pumpsCount = $mainPumpsCount + $this->request->reserve_pumps_count);
+
                                                 return new ArrMapped( // foreach by collectors
                                                     new ArrCollectorsForAutoSelection(
                                                         $this->request,
@@ -69,7 +72,7 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                                                     function (Collection $_collectors) use ($pump, $pumpsCount, $mainPumpsCount, $chassis, &$key) {
                                                         return new ArrMapped(
                                                             new ArrControlSystemForSelection($this->request, $pump, $pumpsCount, false, $this->controlSystems),
-                                                            function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $pumpsCount, $chassis, &$key) {
+                                                            function (?ControlSystem $controlSystem) use ($pump, $mainPumpsCount, $_collectors, $chassis, &$key) {
                                                                 return new ArrSelectedPump(
                                                                     $key,
                                                                     $this->request,

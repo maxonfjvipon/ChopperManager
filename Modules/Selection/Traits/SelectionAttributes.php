@@ -7,7 +7,6 @@ use Modules\Pump\Entities\Pump;
 
 /**
  * Selection attributes.
- * @package Modules\Selection\Traits
  */
 trait SelectionAttributes
 {
@@ -28,15 +27,16 @@ trait SelectionAttributes
         };
     }
 
-    #[Pure] public function getTotalRatedPowerAttribute(): float|int
-    {
-        return match ($this->pump_type) {
-            Pump::$SINGLE_PUMP => round(
+    #[Pure]
+ public function getTotalRatedPowerAttribute(): float|int
+ {
+     return match ($this->pump_type) {
+         Pump::$SINGLE_PUMP => round(
                 $this->pump->rated_power * $this->pumps_count, 4
             ),
             Pump::$DOUBLE_PUMP => $this->pump->rated_power * 2,
-        };
-    }
+     };
+ }
 
     public function getPumpTypeAttribute()
     {

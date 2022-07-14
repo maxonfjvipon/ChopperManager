@@ -17,30 +17,24 @@ final class ArrControlSystemForSelection extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param RqMakeSelection $request
-     * @param Pump $pump
-     * @param int $pumpsCount
-     * @param bool|null $isSprinkler
-     * @param Collection|null $controlSystems
      */
     public function __construct(
         RqMakeSelection $request,
-        Pump            $pump,
-        int             $pumpsCount,
-        ?bool           $isSprinkler = false,
-        ?Collection     $controlSystems = null
-    )
-    {
+        Pump $pump,
+        int $pumpsCount,
+        ?bool $isSprinkler = false,
+        ?Collection $controlSystems = null
+    ) {
         parent::__construct(
             new ArrMapped(
                 $request->control_system_type_ids,
-                fn(int $controlSystemTypeId) => ($controlSystems ?? ControlSystem::allOrCached())
+                fn (int $controlSystemTypeId) => ($controlSystems ?? ControlSystem::allOrCached())
                     ->where('power', '>=', $pump->power)
                     ->where('pumps_count', $pumpsCount)
                     ->where('type_id', $controlSystemTypeId)
                     ->when(
                         $request->station_type === StationType::getKey(StationType::AF),
-                        fn($query) => $query
+                        fn ($query) => $query
                             ->where('avr.value', $request->boolean('avr'))
                             ->where('gate_valves_count', $request->gate_valves_count)
                             ->where('kkv.value', $request->boolean('kkv'))

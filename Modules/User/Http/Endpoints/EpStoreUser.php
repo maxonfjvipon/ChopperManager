@@ -15,13 +15,12 @@ final class EpStoreUser extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqStoreUser $request
      */
     public function __construct(RqStoreUser $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => User::create($request->userProps()),
+                fn () => User::create($request->userProps()),
                 new TkRedirectToRoute('users.index')
             )
         );

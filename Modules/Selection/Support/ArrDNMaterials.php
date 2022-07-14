@@ -15,19 +15,18 @@ final class ArrDNMaterials extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param RqMakeSelection $request
      */
     public function __construct(RqMakeSelection $request)
     {
         parent::__construct(
             new ArrSticky(
                 new ArrIf(
-                    !!$request->collectors,
-                    fn() => new ArrMapped(
+                    (bool) $request->collectors,
+                    fn () => new ArrMapped(
                         $request->collectors,
-                        fn(string $dnMaterial) => [
-                            'dn' => ($exploded = explode(" ", $dnMaterial))[0],
-                            'material' => $exploded[1]
+                        fn (string $dnMaterial) => [
+                            'dn' => ($exploded = explode(' ', $dnMaterial))[0],
+                            'material' => $exploded[1],
                         ]
                     )
                 ),

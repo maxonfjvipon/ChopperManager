@@ -4,7 +4,6 @@ namespace App\Takes;
 
 use App\Interfaces\Take;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class TkFake implements Take
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {

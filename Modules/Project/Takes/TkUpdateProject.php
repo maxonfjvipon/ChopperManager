@@ -11,21 +11,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Endpoint that update the project from request.
- * @package Modules\Project\Takes\Deep
  */
 final class TkUpdateProject implements Take
 {
     /**
      * & Ctor.
+     *
      * @param Project $project
-     * @param Take $origin
+     * @param Take    $origin
      */
     public function __construct(private Project $project, private Take $origin)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
@@ -33,9 +33,10 @@ final class TkUpdateProject implements Take
             function () use ($request) {
                 $this->project->update($request->validated());
                 if (in_array($this->project->status_id, [3, 4])) {
-                    if (!$this->project->trashed())
+                    if (!$this->project->trashed()) {
                         $this->project->delete();
-                } else if ($this->project->trashed()) {
+                    }
+                } elseif ($this->project->trashed()) {
                     $this->project->restore();
                 }
             },

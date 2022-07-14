@@ -6,7 +6,7 @@ use Modules\Selection\Http\Requests\WS\Handle\RqStoreWSHandleSelection;
 use Modules\Selection\Traits\AFSelectionRequestHelpers;
 
 /**
- * @property-read int $jockey_pump_id
+ * @property int $jockey_pump_id
  */
 final class RqStoreAFHandleSelection extends RqStoreWSHandleSelection
 {
@@ -19,7 +19,6 @@ final class RqStoreAFHandleSelection extends RqStoreWSHandleSelection
             $this->afSelectionRules(),
         );
     }
-
 
     public function selectionProps(): array
     {

@@ -9,8 +9,6 @@ final class RqUploadFiles extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -25,13 +23,10 @@ final class RqUploadFiles extends FormRequest
     public function rules()
     {
         return [
-            'files' => ['required', 'array']
+            'files' => ['required', 'array'],
         ];
     }
 
-    /**
-     * @return array|UploadedFile|null
-     */
     public function files(): array|UploadedFile|null
     {
         return $this->file('files');

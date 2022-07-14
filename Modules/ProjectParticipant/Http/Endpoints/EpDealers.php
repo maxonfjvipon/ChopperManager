@@ -18,7 +18,7 @@ final class EpDealers extends TakeEndpoint
     {
         parent::__construct(
             new TkInertia(
-                "ProjectParticipant::Dealers/Index",
+                'ProjectParticipant::Dealers/Index',
                 new AcDealers()
             )
         );

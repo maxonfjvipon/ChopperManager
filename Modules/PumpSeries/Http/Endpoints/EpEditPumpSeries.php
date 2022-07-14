@@ -15,7 +15,6 @@ final class EpEditPumpSeries extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
      */
     public function __construct(Request $request)
     {

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * Logout endpoint.
- * @package Modules\Auth\Takes
  */
 final class EpLogout extends TakeEndpoint
 {

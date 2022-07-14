@@ -8,31 +8,30 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\Rules\In;
-use Modules\User\Entities\Area;
 use Modules\ProjectParticipant\Entities\Dealer;
+use Modules\User\Entities\Area;
 use Modules\User\Entities\UserRole;
 
 /**
  * Store user request.
  *
  * @property string|null $itn
- * @property string $email
- * @property string $password
- * @property string $phone
- * @property string $first_name
- * @property string $middle_name
+ * @property string      $email
+ * @property string      $password
+ * @property string      $phone
+ * @property string      $first_name
+ * @property string      $middle_name
  * @property string|null $last_name
- * @property int $area_id
- * @property boolean $is_active
- * @property int $role
- * @property int $dealer_id
+ * @property int         $area_id
+ * @property bool        $is_active
+ * @property int         $role
+ * @property int         $dealer_id
  */
 class RqStoreUser extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
      * @throws Exception
      */
     public function rules(): array
@@ -66,7 +65,7 @@ class RqStoreUser extends FormRequest
                 'area_id' => $this->area_id,
                 'role' => $this->role,
                 'is_active' => $this->is_active,
-            ], !!$this->password
+            ], (bool) $this->password
                 ? ['password' => Hash::make($this->password)]
                 : []
         );

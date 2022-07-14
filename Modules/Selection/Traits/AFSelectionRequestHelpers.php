@@ -33,9 +33,6 @@ trait AFSelectionRequestHelpers
         );
     }
 
-    /**
-     * @return array
-     */
     public function afSelectionProps(): array
     {
         return array_merge([
@@ -47,13 +44,13 @@ trait AFSelectionRequestHelpers
             'on_street' => $this->on_street,
 
             'jockey_flow' => $this->jockey_flow,
-            'jockey_head' => $this->jockey_head
+            'jockey_head' => $this->jockey_head,
         ], $this->selection_type === SelectionType::getKey(SelectionType::Auto)
             ? [
                 'jockey_series_ids' => $this->imploded($this->jockey_series_ids),
-                'jockey_brand_ids' => $this->imploded($this->jockey_brand_ids)
+                'jockey_brand_ids' => $this->imploded($this->jockey_brand_ids),
             ] : [
-                'jockey_pump_id' => $this->jockey_pump_id
+                'jockey_pump_id' => $this->jockey_pump_id,
             ]
         );
     }

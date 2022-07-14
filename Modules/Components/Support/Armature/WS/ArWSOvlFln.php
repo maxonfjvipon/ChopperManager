@@ -11,13 +11,13 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature water for {@see CollectorSwitch::OvlFln}
+ * Armature water for {@see CollectorSwitch::OvlFln}.
  */
 final class ArWSOvlFln implements Arrayable
 {
     /**
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
@@ -28,7 +28,8 @@ final class ArWSOvlFln implements Arrayable
      * ниппель по ду выхода +
      * ниппель по ду выхода +
      * обратный клапан резьбовой по ду выхода +
-     * Кран резьбовой по ду выхода
+     * Кран резьбовой по ду выхода.
+     *
      * @throws Exception
      */
     public function asArray(): array

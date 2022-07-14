@@ -10,9 +10,9 @@ final class YesNo extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Да")]
-    const Yes = true;
+    #[Description('Да')]
+    public const Yes = true;
 
-    #[Description("Нет")]
-    const No = false;
+    #[Description('Нет')]
+    public const No = false;
 }

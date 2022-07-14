@@ -20,12 +20,14 @@ class EmailVerificationController extends Controller
     public function verify(EmailVerificationRequest $request): RedirectResponse
     {
         $request->fulfill();
+
         return Redirect::route('projects.index')->with('success', __('flash.email_verification.verified'));
     }
 
     public function resendVerification(Request $request): RedirectResponse
     {
         $request->user()->sendEmailVerificationNotification();
+
         return back()->with('info', __('flash.email_verification.sent_again'));
     }
 }

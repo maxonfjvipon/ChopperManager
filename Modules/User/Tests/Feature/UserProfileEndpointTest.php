@@ -15,10 +15,10 @@ use Modules\User\Entities\Discount;
 use Modules\User\Entities\User;
 use Modules\User\Http\Endpoints\Profile\EpChangePassword;
 use Modules\User\Http\Endpoints\Profile\EpProfile;
-use Modules\User\Http\Endpoints\Profile\EpUpdateProfile;
 use Modules\User\Http\Endpoints\Profile\EpUpdateDiscount;
-use Modules\User\Http\Requests\RqUpdateDiscount;
+use Modules\User\Http\Endpoints\Profile\EpUpdateProfile;
 use Modules\User\Http\Requests\RqChangePassword;
+use Modules\User\Http\Requests\RqUpdateDiscount;
 use Modules\User\Traits\UserAttributes;
 use Tests\TestCase;
 
@@ -28,10 +28,12 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpProfile
+     *
      * @author Max Trunnikov
      */
-    public function test_if_unauthorized_user_cannot_get_access_to_profile()
+    public function testIfUnauthorizedUserCannotGetAccessToProfile()
     {
         $this->get(route('profile.index'))
             ->assertStatus(302)
@@ -40,11 +42,13 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpProfile
      * @see UserAttributes
+     *
      * @author Max Trunnikov
      */
-    public function test_profile_index_endpoint()
+    public function testProfileIndexEndpoint()
     {
         $user = User::fakeWithRole();
         $series = PumpSeries::factory()->count(4)->create();
@@ -52,10 +56,10 @@ class UserProfileEndpointTest extends TestCase
         $this->actingAs($user)
             ->get(route('profile.index'))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('User::Profile', false)
-                ->has('user', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('user', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->where('id', $user->id)
                         ->where('organization_name', $user->organization_name)
                         ->where('itn', $user->itn)
@@ -73,19 +77,19 @@ class UserProfileEndpointTest extends TestCase
                 )
                 ->has('currencies')
                 ->count('currencies', Currency::allOrCached()->count())
-                ->has('currencies.0', fn(AssertableInertia $page) => $page
+                ->has('currencies.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
                 ->has('businesses')
                 ->count('businesses', Business::allOrCached()->count())
-                ->has('businesses.0', fn(AssertableInertia $page) => $page
+                ->has('businesses.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
                 ->has('countries')
                 ->count('countries', Country::allOrCached()->count())
-                ->has('countries.0', fn(AssertableInertia $page) => $page
+                ->has('countries.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                     ->has('currency_id')
@@ -93,7 +97,7 @@ class UserProfileEndpointTest extends TestCase
                 )
                 ->has('discounts')
                 ->count('discounts', $user->discounts()->whereDiscountableType('pump_series')->count())
-                ->has('discounts.0', fn(AssertableInertia $page) => $page
+                ->has('discounts.0', fn (AssertableInertia $page) => $page
                     ->has('key')
                     ->has('discountable_id')
                     ->has('discountable_type')
@@ -101,7 +105,7 @@ class UserProfileEndpointTest extends TestCase
                     ->has('name')
                     ->has('value')
                     ->has('children')
-                    ->has('children.0', fn(AssertableInertia $page) => $page
+                    ->has('children.0', fn (AssertableInertia $page) => $page
                         ->has('key')
                         ->has('discountable_id')
                         ->has('discountable_type')
@@ -115,11 +119,14 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpUpdateProfile
      */
-    public function test_profile_update_endpoint()
+    public function testProfileUpdateEndpoint()
     {
         $user = User::fakeWithRole();
         $newUserData = [
@@ -152,10 +159,12 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpChangePassword
+     *
      * @author Max Trunnikov
      */
-    public function test_change_password_endpoint()
+    public function testChangePasswordEndpoint()
     {
         $user = User::fakeWithRole();
         $newPassword = 'new password 123';
@@ -166,7 +175,7 @@ class UserProfileEndpointTest extends TestCase
                 '_token' => csrf_token(),
                 'current_password' => 'password',
                 'password' => $newPassword,
-                'password_confirmation' => $newPassword
+                'password_confirmation' => $newPassword,
             ])
             ->assertStatus(302)
             ->assertRedirect(route('profile.index'));
@@ -178,11 +187,13 @@ class UserProfileEndpointTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpChangePassword
      * @see RqChangePassword
+     *
      * @author Max Trunnikov
      */
-    public function test_user_cannot_change_password_without_passing_an_old_one()
+    public function testUserCannotChangePasswordWithoutPassingAnOldOne()
     {
         $user = User::fakeWithRole();
         $newPassword = 'new password';
@@ -192,7 +203,7 @@ class UserProfileEndpointTest extends TestCase
             ->post(route('profile.password.change'), [
                 '_token' => csrf_token(),
                 'password' => $newPassword,
-                'password_confirmation' => $newPassword
+                'password_confirmation' => $newPassword,
             ])
             ->assertRedirect(route('profile.index'))
             ->assertStatus(302);
@@ -202,17 +213,19 @@ class UserProfileEndpointTest extends TestCase
         );
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'password' => $user->password
+            'password' => $user->password,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpChangePassword
      * @see RqChangePassword
+     *
      * @author Max Trunnikov
      */
-    public function test_user_cannot_change_password_with_incorrect_an_old_one()
+    public function testUserCannotChangePasswordWithIncorrectAnOldOne()
     {
         $user = User::fakeWithRole();
         $newPassword = 'new password';
@@ -223,7 +236,7 @@ class UserProfileEndpointTest extends TestCase
                 '_token' => csrf_token(),
                 'current_password' => 'invalid password',
                 'password' => $newPassword,
-                'password_confirmation' => $newPassword
+                'password_confirmation' => $newPassword,
             ])
             ->assertRedirect(route('profile.index'))
             ->assertStatus(302);
@@ -233,17 +246,19 @@ class UserProfileEndpointTest extends TestCase
         );
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'password' => $user->password
+            'password' => $user->password,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpChangePassword
      * @see RqChangePassword
+     *
      * @author Max Trunnikov
      */
-    public function test_user_cannot_update_password_if_new_password_is_not_confirmed()
+    public function testUserCannotUpdatePasswordIfNewPasswordIsNotConfirmed()
     {
         $user = User::fakeWithRole();
         $newPassword = 'new password';
@@ -254,7 +269,7 @@ class UserProfileEndpointTest extends TestCase
                 '_token' => csrf_token(),
                 'current_password' => 'password',
                 'password' => $newPassword,
-                'password_confirmation' => 'invalid confirmation'
+                'password_confirmation' => 'invalid confirmation',
             ])
             ->assertRedirect(route('profile.index'))
             ->assertStatus(302);
@@ -264,17 +279,19 @@ class UserProfileEndpointTest extends TestCase
         );
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'password' => $user->password
+            'password' => $user->password,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpUpdateDiscount
      * @see RqUpdateDiscount
+     *
      * @author Max Trunnikov
      */
-    public function test_update_series_discount()
+    public function testUpdateSeriesDiscount()
     {
         $user = User::fakeWithRole();
         $series = PumpSeries::factory()->create();
@@ -287,7 +304,7 @@ class UserProfileEndpointTest extends TestCase
                 'discountable_id' => $series->id,
                 'discountable_type' => 'pump_series',
                 'user_id' => $user->id,
-                'value' => 50
+                'value' => 50,
             ])
             ->assertStatus(302)
             ->assertRedirect(route('profile.index'));
@@ -295,17 +312,19 @@ class UserProfileEndpointTest extends TestCase
             'discountable_id' => $series->id,
             'discountable_type' => 'pump_series',
             'user_id' => $user->id,
-            'value' => 50
+            'value' => 50,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpUpdateDiscount
      * @see RqUpdateDiscount
+     *
      * @author Max Trunnikov
      */
-    public function test_update_brand_discount()
+    public function testUpdateBrandDiscount()
     {
         $user = User::fakeWithRole();
         $brand = PumpBrand::factory()->create();
@@ -320,7 +339,7 @@ class UserProfileEndpointTest extends TestCase
                 'discountable_id' => $brand->id,
                 'discountable_type' => 'pump_brand',
                 'user_id' => $user->id,
-                'value' => 50
+                'value' => 50,
             ])
             ->assertStatus(302)
             ->assertRedirect(route('profile.index'));
@@ -328,19 +347,19 @@ class UserProfileEndpointTest extends TestCase
             'discountable_id' => $brand->id,
             'discountable_type' => 'pump_brand',
             'user_id' => $user->id,
-            'value' => 50
+            'value' => 50,
         ]);
         $this->assertDatabaseHas('discounts', [
             'discountable_id' => $series->first()->id,
             'discountable_type' => 'pump_series',
             'user_id' => $user->id,
-            'value' => 50
+            'value' => 50,
         ]);
         $this->assertDatabaseHas('discounts', [
             'discountable_id' => $series->last()->id,
             'discountable_type' => 'pump_series',
             'user_id' => $user->id,
-            'value' => 50
+            'value' => 50,
         ]);
     }
 }

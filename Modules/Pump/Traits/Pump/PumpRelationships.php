@@ -29,7 +29,7 @@ trait PumpRelationships
     {
         return $this->belongsToThrough(PumpBrand::class, PumpSeries::class, null, '', [
             PumpBrand::class => 'brand_id',
-            PumpSeries::class => 'series_id'
+            PumpSeries::class => 'series_id',
         ]);
     }
 

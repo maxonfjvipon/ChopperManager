@@ -11,25 +11,16 @@ use Modules\Project\Takes\TkAuthorizeProject;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Endpoint that authorize project if {@project_id} is not -1
- * @package Modules\Selection\Support
+ * Endpoint that authorize project if {@project_id} is not -1.
  */
 final class TkOptAuthorizedProject implements Take
 {
-    /**
-     * @var string $project_id
-     */
     private string $project_id;
 
-    /**
-     * @var Take $origin
-     */
     private Take $origin;
 
     /**
      * Ctor.
-     * @param string $project_id
-     * @param Take $take
      */
     public function __construct(string $project_id, Take $take)
     {
@@ -38,13 +29,14 @@ final class TkOptAuthorizedProject implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response
     {
         return (new TkTernary(
-            $this->project_id !== "-1",
+            '-1' !== $this->project_id,
             new TkAuthorizeProject($this->project_id, $this->origin),
             $this->origin
         ))->act($request);

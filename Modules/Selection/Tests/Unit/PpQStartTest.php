@@ -5,7 +5,6 @@ namespace Modules\Selection\Tests\Unit;
 use Exception;
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Selection\Support\Performance\FakePerformance;
-use Modules\Selection\Support\Performance\PpQEnd;
 use Modules\Selection\Support\Performance\PpQStart;
 use Tests\TestCase;
 
@@ -15,9 +14,10 @@ class PpQStartTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_as_number_at_random_position()
+    public function testAsNumberAtRandomPosition()
     {
         $num = $this->faker->numberBetween(2, 9);
         $atPos = $this->faker->randomNumber();
@@ -29,7 +29,7 @@ class PpQStartTest extends TestCase
                         [$atPos, 2],
                         [3, 4],
                         [4, 5],
-                        [10, 6]
+                        [10, 6],
                     ]
                 ),
                 $num

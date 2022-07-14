@@ -7,14 +7,16 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 
 /**
- * Array of flow values of pump performance
+ * Array of flow values of pump performance.
  */
 final class PerformanceQs extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param array|PumpPerformance $performance
-     * @param int $pos
+     * @param int                   $pos
+     *
      * @throws Exception
      */
     public function __construct(private array|PumpPerformance $performance, private int $pos)
@@ -24,7 +26,7 @@ final class PerformanceQs extends ArrEnvelope
                 is_array($this->performance)
                     ? $this->performance
                     : $this->performance->asArrayAt($this->pos),
-                fn(array $point) => $point[0]
+                fn (array $point) => $point[0]
             )
         );
     }

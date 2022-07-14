@@ -15,15 +15,10 @@ use Modules\Selection\Entities\Selection;
  */
 final class ProjectToShow implements Arrayable
 {
-    /**
-     * @var Project $project
-     */
     private Project $project;
-
 
     /**
      * Ctor.
-     * @param Project $project
      */
     public function __construct(Project $project)
     {
@@ -32,11 +27,13 @@ final class ProjectToShow implements Arrayable
 
     /**
      * @return array[]
+     *
      * @throws Exception
      */
     public function asArray(): array
     {
         $rates = new StickyRates(new RealRates());
+
         return [
             'project' => [
                 'data' => [
@@ -58,6 +55,7 @@ final class ProjectToShow implements Arrayable
                             ->all(),
                         function (Selection $selection) use ($rates) {
                             $selection = $selection->withPrices($rates);
+
                             return [
                                 'id' => $selection->id,
                                 'pump_id' => $selection->pump->id,
@@ -70,12 +68,12 @@ final class ProjectToShow implements Arrayable
                                 'total_discounted_price' => round($selection->total_discounted_price, 2),
                                 'rated_power' => $selection->pump_rated_power,
                                 'total_rated_power' => $selection->total_rated_power,
-                                'pumpable_type' => $selection->pump_type
+                                'pumpable_type' => $selection->pump_type,
                             ];
                         }
-                    ))->asArray()
-                ]
-            ]
+                    ))->asArray(),
+                ],
+            ],
         ];
     }
 }

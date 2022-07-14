@@ -18,13 +18,13 @@ use Modules\User\Entities\Discount;
 use Modules\User\Entities\User;
 use Modules\User\Entities\UserAndPumpSeries;
 use Modules\User\Entities\UserAndSelectionType;
-use Modules\User\Http\Endpoints\EpDetailUserStatistics;
 use Modules\User\Http\Endpoints\EpCreateOrEditUser;
+use Modules\User\Http\Endpoints\EpDetailUserStatistics;
 use Modules\User\Http\Endpoints\EpEditUser;
-use Modules\User\Http\Endpoints\EpUsers;
-use Modules\User\Http\Endpoints\EpUsersStatistics;
 use Modules\User\Http\Endpoints\EpStoreUser;
 use Modules\User\Http\Endpoints\EpUpdateUser;
+use Modules\User\Http\Endpoints\EpUsers;
+use Modules\User\Http\Endpoints\EpUsersStatistics;
 use Modules\User\Http\Middleware\CheckUserIsActive;
 use Modules\User\Support\UsersFilterData;
 use Tests\TestCase;
@@ -35,13 +35,15 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpUsers
      * @see EpEditUser
      * @see EpCreateOrEditUser
      * @see EpUsersStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_if_regular_user_cannot_get_access_to_users_pages()
+    public function testIfRegularUserCannotGetAccessToUsersPages()
     {
         $user = User::fakeWithRole();
         $this->actingAs($user)
@@ -60,42 +62,44 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpUsers
+     *
      * @author Max Trunnikov
      */
-    public function test_users_index_endpoint()
+    public function testUsersIndexEndpoint()
     {
         $user = User::fakeWithRole('SuperAdmin');
         User::factory()->count(5)->create();
         $this->actingAs($user)
             ->get(route('users.index'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('User::Index', false)
-                ->has('filter_data', fn(AssertableInertia $page) => $page
+                ->has('filter_data', fn (AssertableInertia $page) => $page
                     ->has('businesses')
                     ->count('businesses', Business::allOrCached()->count())
-                    ->has('businesses.0', fn(AssertableInertia $page) => $page
+                    ->has('businesses.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                 )
                 ->has('users')
                 ->count('users', User::count())
-                ->has('users.0', fn(AssertableInertia $page) => $page
+                ->has('users.0', fn (AssertableInertia $page) => $page
                     ->hasAll([
                         'id', 'key', 'created_at', 'organization_name',
                         'full_name', 'phone', 'email', 'business',
-                        'country', 'city', 'is_active'
+                        'country', 'city', 'is_active',
                     ])
                 )
             )->assertStatus(200);
     }
 
     /**
-     * @param AssertableInertia $page
-     * @return AssertableJson|AssertableInertia|Has
      * @throws Exception
+     *
      * @see UsersFilterData
+     *
      * @author Max Trunnikov
      */
     private function assertInertiaUsersFilterData(AssertableInertia $page): AssertableJson|AssertableInertia|Has
@@ -107,13 +111,13 @@ class UserEndpointsTest extends TestCase
             ->count('businesses', Business::allOrCached()->count())
             ->has('series')
             ->count('series', PumpSeries::count())
-            ->has('series.0', fn(AssertableInertia $page) => $page
+            ->has('series.0', fn (AssertableInertia $page) => $page
                 ->has('id')
                 ->has('name')
             )
             ->has('countries')
             ->count('countries', Country::allOrCached()->count())
-            ->has('countries.0', fn(AssertableInertia $page) => $page
+            ->has('countries.0', fn (AssertableInertia $page) => $page
                 ->has('id')
                 ->has('name')
             );
@@ -121,27 +125,33 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpCreateOrEditUser
      */
-    public function test_users_create_endpoint()
+    public function testUsersCreateEndpoint()
     {
         PumpSeries::factory()->count(3)->create();
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('users.create'))
-            ->assertInertia(fn(AssertableInertia $page) => $this->assertInertiaUsersFilterData($page)
+            ->assertInertia(fn (AssertableInertia $page) => $this->assertInertiaUsersFilterData($page)
                 ->component('User::Create', false)
             )->assertStatus(200);
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpEditUser
      */
-    public function test_users_edit_endpoint()
+    public function testUsersEditEndpoint()
     {
         $seriesCount = 3;
         $user = User::fakeWithRole();
@@ -151,10 +161,10 @@ class UserEndpointsTest extends TestCase
 
         $this->actingAs(User::fakeWithRole('SuperAdmin'))
             ->get(route('users.edit', $user->id))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('User::Edit', false)
-                ->has('user', fn(AssertableInertia $page) => $page
-                    ->has('data', fn(AssertableInertia $page) => $page
+                ->has('user', fn (AssertableInertia $page) => $page
+                    ->has('data', fn (AssertableInertia $page) => $page
                         ->where('id', $user->id)
                         ->where('organization_name', $user->organization_name)
                         ->where('itn', $user->itn)
@@ -173,17 +183,20 @@ class UserEndpointsTest extends TestCase
                         ->count('available_selection_type_ids', SelectionType::allOrCached()->count())
                     )
                 )
-                ->has('filter_data', fn(AssertableInertia $page) => $this->assertInertiaUsersFilterData($page))
+                ->has('filter_data', fn (AssertableInertia $page) => $this->assertInertiaUsersFilterData($page))
             )->assertStatus(200);
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpStoreUser
      */
-    public function test_if_client_cannot_store_user()
+    public function testIfClientCannotStoreUser()
     {
         $this->startSession()
             ->actingAs(User::fakeWithRole())
@@ -205,17 +218,20 @@ class UserEndpointsTest extends TestCase
                 'is_active' => true,
                 'email_verified' => true,
                 'available_selection_type_ids' => [],
-                'available_series_ids' => []
+                'available_series_ids' => [],
             ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpStoreUser
      */
-    public function test_users_store_endpoint()
+    public function testUsersStoreEndpoint()
     {
         $series = PumpSeries::factory()->count(2)->create();
         $this->startSession()
@@ -238,7 +254,7 @@ class UserEndpointsTest extends TestCase
                 'is_active' => true,
                 'email_verified' => true,
                 'available_selection_type_ids' => [1, 2],
-                'available_series_ids' => $series->pluck('id')->all()
+                'available_series_ids' => $series->pluck('id')->all(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('users.index'));
@@ -257,29 +273,32 @@ class UserEndpointsTest extends TestCase
         ]);
         $this->assertDatabaseHas('users_and_pump_series', [
             'user_id' => $user->id,
-            'series_id' => $series->first()->id
+            'series_id' => $series->first()->id,
         ]);
         $this->assertDatabaseHas('users_and_pump_series', [
             'user_id' => $user->id,
-            'series_id' => $series->last()->id
+            'series_id' => $series->last()->id,
         ]);
         $this->assertDatabaseHas('users_and_selection_types', [
             'user_id' => $user->id,
-            'type_id' => 1
+            'type_id' => 1,
         ]);
         $this->assertDatabaseHas('users_and_selection_types', [
             'user_id' => $user->id,
-            'type_id' => 2
+            'type_id' => 2,
         ]);
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpUpdateUser
      */
-    public function test_if_client_cannot_update_user()
+    public function testIfClientCannotUpdateUser()
     {
         $user = User::fakeWithRole();
         $this->startSession()
@@ -299,17 +318,20 @@ class UserEndpointsTest extends TestCase
                 'business_id' => Business::allOrCached()->random()->id,
                 'is_active' => true,
                 'available_selection_type_ids' => [],
-                'available_series_ids' => []
+                'available_series_ids' => [],
             ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpUpdateUser
      */
-    public function test_users_update_endpoint()
+    public function testUsersUpdateEndpoint()
     {
         $user = User::fakeWithRole();
         $series = PumpSeries::factory()->count(2)->create();
@@ -330,7 +352,7 @@ class UserEndpointsTest extends TestCase
                 'business_id' => 1,
                 'is_active' => false,
                 'available_selection_type_ids' => [1, 2],
-                'available_series_ids' => $series->pluck('id')->all()
+                'available_series_ids' => $series->pluck('id')->all(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('users.index'));
@@ -348,32 +370,34 @@ class UserEndpointsTest extends TestCase
             'country_id' => 1,
             'business_id' => 1,
             'is_active' => false,
-            'email_verified_at' => $user->email_verified_at
+            'email_verified_at' => $user->email_verified_at,
         ]);
         $this->assertDatabaseHas('users_and_pump_series', [
             'user_id' => $user->id,
-            'series_id' => $series->first()->id
+            'series_id' => $series->first()->id,
         ]);
         $this->assertDatabaseHas('users_and_pump_series', [
             'user_id' => $user->id,
-            'series_id' => $series->last()->id
+            'series_id' => $series->last()->id,
         ]);
         $this->assertDatabaseHas('users_and_selection_types', [
             'user_id' => $user->id,
-            'type_id' => 1
+            'type_id' => 1,
         ]);
         $this->assertDatabaseHas('users_and_selection_types', [
             'user_id' => $user->id,
-            'type_id' => 2
+            'type_id' => 2,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpUsersStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_users_statistics_endpoint()
+    public function testUsersStatisticsEndpoint()
     {
         $usersCount = 10;
         $user = User::fakeWithRole('SuperAdmin');
@@ -388,9 +412,9 @@ class UserEndpointsTest extends TestCase
 
         $this->actingAs($user)
             ->get(route('users.statistics'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('User::Statistics', false)
-                ->has('filter_data', fn(AssertableInertia $page) => $page
+                ->has('filter_data', fn (AssertableInertia $page) => $page
                     ->has('countries')
                     ->count('countries', Country::allOrCached()
                         ->whereIn('id', $allUsers->pluck('country_id')->all())
@@ -408,7 +432,7 @@ class UserEndpointsTest extends TestCase
                 )
                 ->has('users')
                 ->count('users', $usersCount)
-                ->has('users.0', fn(AssertableInertia $page) => $page
+                ->has('users.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('key')
                     ->has('last_login_at')
@@ -427,25 +451,29 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpDetailUserStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_get_access_to_user_detail_statistics()
+    public function testClientCannotGetAccessToUserDetailStatistics()
     {
         $user = User::fakeWithRole();
         $this->startSession()
             ->actingAs($user)
             ->post(route('users.statistics.detail', $user->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @see EpDetailUserStatistics
+     *
      * @author Max Trunnikov
      */
-    public function test_user_detail_statistics_endpoint()
+    public function testUserDetailStatisticsEndpoint()
     {
         $user = User::fakeWithRole();
         Project::fakeForUser($user, 3);
@@ -454,15 +482,15 @@ class UserEndpointsTest extends TestCase
         $this->startSession()
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->post(route('users.statistics.detail', $user->id), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->where('id', $user->id)
                 ->where('full_name', $user->full_name)
                 ->has('discounts')
                 ->count('discounts', $user->discounts()->whereDiscountableType('pump_series')->count())
-                ->has('discounts.0', fn(AssertableJson $json) => $json
+                ->has('discounts.0', fn (AssertableJson $json) => $json
                     ->has('key')
                     ->has('discountable_id')
                     ->has('discountable_type')
@@ -470,7 +498,7 @@ class UserEndpointsTest extends TestCase
                     ->has('name')
                     ->has('value')
                     ->has('children')
-                    ->has('children.0', fn(AssertableJson $json) => $json
+                    ->has('children.0', fn (AssertableJson $json) => $json
                         ->has('key')
                         ->has('discountable_id')
                         ->has('discountable_type')
@@ -481,7 +509,7 @@ class UserEndpointsTest extends TestCase
                 )
                 ->has('projects')
                 ->count('projects', $user->projects()->count())
-                ->has('projects.0', fn(AssertableJson $json) => $json
+                ->has('projects.0', fn (AssertableJson $json) => $json
                     ->has('id')
                     ->has('created_at')
                     ->has('name')
@@ -494,10 +522,12 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see CheckUserIsActive
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_is_active()
+    public function testIfUserIsActive()
     {
         $this->actingAs(User::fakeWithRole())
             ->get(route('projects.index'))
@@ -506,13 +536,15 @@ class UserEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see CheckUserIsActive
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_is_not_active()
+    public function testIfUserIsNotActive()
     {
         $user = User::factory()->create([
-            'is_active' => false
+            'is_active' => false,
         ]);
         $user->assignRole('Client');
         $this->actingAs($user)

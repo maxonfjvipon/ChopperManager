@@ -9,21 +9,22 @@ use Modules\Project\Entities\Project;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Take that duplicates project
+ * Take that duplicates project.
  */
 final class TkDuplicateProject implements Take
 {
     /**
      * Ctor.
+     *
      * @param Project $project
-     * @param Take $origin
+     * @param Take    $origin
      */
     public function __construct(private Project $project, private Take $origin)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {

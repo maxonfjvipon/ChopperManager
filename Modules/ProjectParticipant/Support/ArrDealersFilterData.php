@@ -8,16 +8,14 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrUnique;
-use Modules\PumpSeries\Entities\PumpSeries;
 
 /**
- * Dealers filter data as {@see Arrayable}
+ * Dealers filter data as {@see Arrayable}.
  */
 final class ArrDealersFilterData extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param Arrayable $dealers
      */
     public function __construct(Arrayable $dealers)
     {
@@ -28,9 +26,9 @@ final class ArrDealersFilterData extends ArrEnvelope
                     'areas' => new ArrUnique(
                         new ArrMapped(
                             $dealers,
-                            fn(array $dealer) => $dealer['area']
+                            fn (array $dealer) => $dealer['area']
                         )
-                    )
+                    ),
                 ])
             )
         );

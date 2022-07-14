@@ -18,19 +18,16 @@ trait UserAttributes
     public function getFullNameAttribute(): string
     {
         return (new TxtImploded(
-            " ",
+            ' ',
             $this->first_name,
             $this->middle_name,
             $this->last_name,
         ))->asString();
     }
 
-    /**
-     * @return string
-     */
     public function getLastNameAttribute(): string
     {
-        return $this->last_name ?? "";
+        return $this->last_name ?? '';
     }
 
     /**
@@ -49,16 +46,16 @@ trait UserAttributes
                                     'series',
                                     'series.discount' => function ($query) {
                                         $query->where('user_id', $this->id);
-                                    }
-                                ]
+                                    },
+                                ],
                             ]);
                         }])
                         ->get()
                         ->all(),
-                    fn($discount) => $discount->discountable
+                    fn ($discount) => $discount->discountable
                 ),
-                fn($discount) => [
-                    'key' => $discount->discountable_id . '-' . $discount->discountable_type . '-' . $discount->user_id,
+                fn ($discount) => [
+                    'key' => $discount->discountable_id.'-'.$discount->discountable_type.'-'.$discount->user_id,
                     'discountable_id' => $discount->discountable_id,
                     'discountable_type' => $discount->discountable_type,
                     'user_id' => $discount->user_id,
@@ -68,12 +65,12 @@ trait UserAttributes
                         new ArrMapped(
                             new ArrFiltered(
                                 [...$discount->discountable->series],
-                                fn($series) => $series->discount
+                                fn ($series) => $series->discount
                             ),
-                            fn($series) => [
+                            fn ($series) => [
                                 'key' => $series->discount->discountable_id
-                                    . '-' . $series->discount->discountable_type
-                                    . '-' . $series->discount->user_id,
+                                    .'-'.$series->discount->discountable_type
+                                    .'-'.$series->discount->user_id,
                                 'discountable_id' => $series->discount->discountable_id,
                                 'discountable_type' => $series->discount->discountable_type,
                                 'user_id' => $series->discount->user_id,

@@ -16,13 +16,9 @@ use Modules\Components\Entities\ControlSystemType;
  */
 final class AcImportControlSystems extends AcImport
 {
-    /**
-     * @var string $type
-     */
-    private string $type = "";
+    private string $type = '';
 
     /**
-     * @param array $files
      * @throws Exception
      */
     public function __construct(array $files)
@@ -35,8 +31,8 @@ final class AcImportControlSystems extends AcImport
                     [
                         'on_street' => [
                             'Indoor' => false,
-                            'Outdoor' => true
-                        ]
+                            'Outdoor' => true,
+                        ],
                     ]
                 )
             ),
@@ -44,7 +40,8 @@ final class AcImportControlSystems extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function import(array $sheet): void
@@ -54,24 +51,25 @@ final class AcImportControlSystems extends AcImport
     }
 
     /**
-     * @param array $entity
      * @return array[]
+     *
      * @throws ValidationException|BindingResolutionException
      */
     protected function rules(array $entity): array
     {
         validator()->make($entity, [
             '0' => ['required'],
-            '1' => ['required', new In(array_keys($this->db))]
+            '1' => ['required', new In(array_keys($this->db))],
         ], [], [
-            1 => "Тип станции"
+            1 => 'Тип станции',
         ])->validate();
         $this->type = $entity[1];
+
         return $this->db[$this->type]->rules($entity);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
@@ -79,7 +77,7 @@ final class AcImportControlSystems extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function entityToImport(array $entity): array
     {

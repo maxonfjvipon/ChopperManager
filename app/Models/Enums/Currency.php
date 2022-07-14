@@ -13,12 +13,12 @@ final class Currency extends Enum
 {
     use EnumHelpers;
 
-    #[Description("RUB")]
-    const RUB = 1;
+    #[Description('RUB')]
+    public const RUB = 1;
 
-    #[Description("EUR")]
-    const EUR = 2;
+    #[Description('EUR')]
+    public const EUR = 2;
 
-    #[Description("USD")]
-    const USD = 3;
+    #[Description('USD')]
+    public const USD = 3;
 }

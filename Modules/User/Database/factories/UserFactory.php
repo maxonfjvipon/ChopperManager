@@ -3,13 +3,12 @@
 namespace Modules\User\Database\factories;
 
 use Exception;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Modules\Project\Entities\Currency;
 use Modules\User\Entities\Business;
 use Modules\User\Entities\Country;
 use Modules\User\Entities\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
@@ -23,7 +22,6 @@ class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
      * @throws Exception
      */
     public function definition(): array
@@ -39,12 +37,12 @@ class UserFactory extends Factory
             'first_name' => $this->faker->firstNameMale(),
             'middle_name' => $this->faker->lastName(),
             'city' => 'Bryansk',
-            'postcode' => "123123",
+            'postcode' => '123123',
             'business_id' => Business::allOrCached()->random()->id,
             'country_id' => Country::allOrCached()->random()->id,
             'currency_id' => Currency::allOrCached()->random()->id,
             'is_active' => true,
-            'last_login_at' => now()
+            'last_login_at' => now(),
         ];
     }
 

@@ -9,19 +9,23 @@ final class FakePerformance implements PumpPerformance
 {
     /**
      * Ctor.
+     *
      * @param array $array
      */
-    public function __construct(private array $array) {}
+    public function __construct(private array $array)
+    {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function asArrayAt(int $position): array
     {
         return (new ArrMapped(
             $this->array,
-            fn(array $arr) => [$arr[0] * $position, $arr[1]]
+            fn (array $arr) => [$arr[0] * $position, $arr[1]]
         ))->asArray();
     }
 }

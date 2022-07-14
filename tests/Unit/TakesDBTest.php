@@ -21,7 +21,6 @@ use Illuminate\Testing\Fluent\AssertableJson;
 use Inertia\Testing\AssertableInertia;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOf;
 use Maxonfjvipon\Elegant_Elephant\Text\TextOf;
-use Modules\User\Entities\Business;
 use Modules\User\Entities\User;
 use Spatie\Permission\Models\Permission;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,20 +28,14 @@ use Tests\TestCase;
 
 class TakesDBTest extends TestCase
 {
-    /**
-     * @var string $html
-     */
-    private string $html = "<html lang=\"ru\"><body><div>Hello world</div></body></html>";
+    private string $html = '<html lang="ru"><body><div>Hello world</div></body></html>';
 
-    /**
-     * @var string $permissionName
-     */
     private string $permissionName = 'fake_permission';
 
     /**
      * @return void
      */
-    public function test_authorized_take_act_without_permission()
+    public function testAuthorizedTakeActWithoutPermission()
     {
         $this->actingAs(User::fakeWithRole())
             ->expectException(AuthorizationException::class);
@@ -55,7 +48,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_authorized_take_act_with_permission()
+    public function testAuthorizedTakeActWithPermission()
     {
         $user = User::fakeWithRole();
         $user->givePermissionTo(Permission::create(['name' => $this->permissionName])->name);
@@ -72,7 +65,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_take_downloaded_pdf_returns_response()
+    public function testTakeDownloadedPdfReturnsResponse()
     {
         $this->assertInstanceOf(
             Response::class,
@@ -83,7 +76,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_take_downloaded_pdf_downloads_file()
+    public function testTakeDownloadedPdfDownloadsFile()
     {
         $this->createTestResponse(
             (new TkDownloadPDF($this->html))->act()
@@ -96,25 +89,26 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_inertia_take_act_returns_inertia_response()
+    public function testInertiaTakeActReturnsInertiaResponse()
     {
         $this->assertInstanceOf(
             \Inertia\Response::class,
-            (new TkInertia("Component", []))->act()
+            (new TkInertia('Component', []))->act()
         );
     }
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_inertia_take_act_with_string_and_array()
+    public function testInertiaTakeActWithStringAndArray()
     {
         $this->createTestResponse(
-            (new TkInertia("Component", [
-                'props' => 'Hello world'
+            (new TkInertia('Component', [
+                'props' => 'Hello world',
             ]))->act()->toResponse(request())
-        )->assertInertia(fn(AssertableInertia $page) => $page
+        )->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Component', false)
             ->where('props', 'Hello world')
         );
@@ -122,16 +116,17 @@ class TakesDBTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_inertia_take_act_with_text_and_arrayable()
+    public function testInertiaTakeActWithTextAndArrayable()
     {
         $this->createTestResponse(
             (new TkInertia(
-                new TextOf("Component"),
+                new TextOf('Component'),
                 new ArrayableOf(['props' => 'Hello world'])
             ))->act()->toResponse(request())
-        )->assertInertia(fn(AssertableInertia $page) => $page
+        )->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Component', false)
             ->where('props', 'Hello world')
         );
@@ -139,16 +134,17 @@ class TakesDBTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_inertia_take_act_with_string_and_callable()
+    public function testInertiaTakeActWithStringAndCallable()
     {
         $this->createTestResponse(
             (new TkInertia(
-                "Component",
-                fn() => ['props' => 'Hello world']
+                'Component',
+                fn () => ['props' => 'Hello world']
             ))->act()->toResponse(request())
-        )->assertInertia(fn(AssertableInertia $page) => $page
+        )->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Component', false)
             ->where('props', 'Hello world')
         );
@@ -157,7 +153,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_json_take_act_returns_json_response()
+    public function testJsonTakeActReturnsJsonResponse()
     {
         $this->assertInstanceOf(
             JsonResponse::class,
@@ -168,7 +164,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_json_take_act()
+    public function testJsonTakeAct()
     {
         $this->createTestResponse(
             (new TkJson(
@@ -177,7 +173,7 @@ class TakesDBTest extends TestCase
                 ['test_header' => 'test_header_value']
             ))->act()
         )
-            ->assertJson(fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->where('data', 'value')
             )
             ->assertHeader('test_header', 'test_header_value')
@@ -185,11 +181,9 @@ class TakesDBTest extends TestCase
     }
 
     /**
-     * @param string $name
-     * @param string $url
      * @return void
      */
-    private function setFakeRoute(string $name = "fake", string $url = "fake")
+    private function setFakeRoute(string $name = 'fake', string $url = 'fake')
     {
         Route::name($name)->get($url, function () {
             return (new TkFake())->act();
@@ -199,7 +193,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_route_take_returns_redirect_response()
+    public function testRedirectedRouteTakeReturnsRedirectResponse()
     {
         $this->setFakeRoute();
         $this->assertInstanceOf(
@@ -213,7 +207,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_route_take_redirect_returns_redirect_response()
+    public function testRedirectedRouteTakeRedirectReturnsRedirectResponse()
     {
         $this->setFakeRoute();
         $this->assertInstanceOf(
@@ -227,9 +221,9 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_route_take_redirects_to_route_with_params()
+    public function testRedirectedRouteTakeRedirectsToRouteWithParams()
     {
-        $this->setFakeRoute("fake_with_params", 'fake/{fake}');
+        $this->setFakeRoute('fake_with_params', 'fake/{fake}');
         $this->createTestResponse(
             (new TkRedirectToRoute(
                 'fake_with_params',
@@ -243,7 +237,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_back_take_returns_redirect_response()
+    public function testRedirectedBackTakeReturnsRedirectResponse()
     {
         $this->setFakeRoute();
         $this->from(\route('fake'))
@@ -256,7 +250,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_back_take_act()
+    public function testRedirectedBackTakeAct()
     {
         $this->setFakeRoute();
         $this->from(\route('fake'))
@@ -269,7 +263,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_with_take_act_returns_redirect_response()
+    public function testRedirectedWithTakeActReturnsRedirectResponse()
     {
         $this->setFakeRoute();
         $this->assertInstanceOf(
@@ -285,7 +279,7 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_redirected_with_take_act()
+    public function testRedirectedWithTakeAct()
     {
         $this->setFakeRoute();
         $this->from(\route('fake'))
@@ -303,7 +297,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_ternary_take_act_returns_valid_response()
+    public function testTernaryTakeActReturnsValidResponse()
     {
         $this->assertInstanceOf(
             Response::class,
@@ -318,7 +312,7 @@ class TakesDBTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_ternary_take_act_can_returns_alt_take_response()
+    public function testTernaryTakeActCanReturnsAltTakeResponse()
     {
         $this->assertInstanceOf(
             RedirectResponse::class,
@@ -333,12 +327,12 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_take_with_callback_act_returns_response()
+    public function testTakeWithCallbackActReturnsResponse()
     {
         $this->assertInstanceOf(
             Response::class,
             (new TkWithCallback(
-                fn() => "foo",
+                fn () => 'foo',
                 new TkFake()
             ))->act()
         );
@@ -347,11 +341,11 @@ class TakesDBTest extends TestCase
     /**
      * @return void
      */
-    public function test_take_with_callback_act_executes_callback()
+    public function testTakeWithCallbackActExecutesCallback()
     {
         $num = 0;
         (new TkWithCallback(
-            function() use (&$num) {
+            function () use (&$num) {
                 $num = 5;
             },
             new TkFake()

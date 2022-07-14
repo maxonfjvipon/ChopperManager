@@ -14,30 +14,32 @@ use Symfony\Component\HttpFoundation\Response;
 use Tests\Unit\Takes\TkJsonTest;
 
 /**
- * Json take
- * @package App\Takes
+ * Json take.
+ *
  * @see TkJsonTest
  */
 final class TkJson implements Take
 {
-    use ArrayableOverloaded, CastMixed;
+    use ArrayableOverloaded;
+    use CastMixed;
 
     /**
      * Ctor.
+     *
      * @param string|array|Arrayable|Text $data
-     * @param int $status
-     * @param array $headers
+     * @param int                         $status
+     * @param array                       $headers
      */
     public function __construct(
         private string|array|Arrayable|Text $data,
-        private int                                          $status = 200,
-        private array                                        $headers = []
-    )
-    {
+        private int $status = 200,
+        private array $headers = []
+    ) {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response

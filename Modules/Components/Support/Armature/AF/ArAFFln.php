@@ -12,7 +12,7 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature fire for {@see CollectorSwitch::Fln}
+ * Armature fire for {@see CollectorSwitch::Fln}.
  */
 final class ArAFFln extends ArrEnvelope
 {
@@ -29,7 +29,7 @@ final class ArAFFln extends ArrEnvelope
      * + Катушка с Патрубком по Ду Выхода
      *
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
@@ -56,15 +56,15 @@ final class ArAFFln extends ArrEnvelope
                     // затвор по ду выхода
                     $this->armature->where('type.value', ArmatureType::ZF)
                         ->where('dn', $this->pump->dn_pressure)
-                        ->first()
+                        ->first(),
                 ],
                 new ArrIf(
                     $this->pump->isHorizontal(),
-                    fn() => [
+                    fn () => [
                         // Катушка с патрубком по ДУ выхода
                         $this->armature->where('type.value', ArmatureType::KatP)
                             ->where('dn', $this->pump->dn_pressure)
-                            ->first()
+                            ->first(),
                     ]
                 )
             )

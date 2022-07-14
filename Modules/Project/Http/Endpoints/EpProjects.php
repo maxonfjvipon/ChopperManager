@@ -4,7 +4,6 @@ namespace Modules\Project\Http\Endpoints;
 
 use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkInertia;
-use Illuminate\Http\Request;
 use Modules\Project\Actions\AcProjects;
 
 /**

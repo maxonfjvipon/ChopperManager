@@ -11,14 +11,14 @@ class FormattedPriceTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_as_string()
+    public function testAsString()
     {
         $this->assertEquals(
-            "1 123 456,78",
+            '1 123 456,78',
             (new FormattedPrice(1123456.78))->asString()
         );
         $this->assertEquals(
-            "1 123,9",
+            '1 123,9',
             (new FormattedPrice(1123.91231, 1))->asString()
         );
         $this->assertEquals(

@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Pump\Entities\Pump;
 use Modules\Pump\Http\Endpoints\EpLoadPumps;
-use Modules\Pump\Services\Pumps\PumpType\DoublePumpService;
-use Modules\Pump\Services\Pumps\PumpType\PumpableTypePumpService;
-use Modules\Pump\Services\Pumps\PumpType\SinglePumpService;
 use Modules\Pump\Support\LazyLoadedPumps\DPLazyLoaded;
 use Modules\Pump\Support\LazyLoadedPumps\LazyLoadedPumps;
 use Modules\Pump\Support\LazyLoadedPumps\SPLazyLoaded;
@@ -19,14 +16,8 @@ use Modules\Pump\Support\LoadedPumps\SPLoaded;
 
 class PumpServiceProvider extends ServiceProvider
 {
-    /**
-     * @var string $moduleName
-     */
     protected string $moduleName = 'Pump';
 
-    /**
-     * @var string $moduleNameLower
-     */
     protected string $moduleNameLower = 'pump';
 
     /**
@@ -61,7 +52,7 @@ class PumpServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
+            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower.'.php'),
         ], 'config');
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
@@ -75,13 +66,13 @@ class PumpServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
+        $viewPath = resource_path('views/modules/'.$this->moduleNameLower);
 
         $sourcePath = module_path($this->moduleName, 'Resources/views');
 
         $this->publishes([
-            $sourcePath => $viewPath
-        ], ['views', $this->moduleNameLower . '-module-views']);
+            $sourcePath => $viewPath,
+        ], ['views', $this->moduleNameLower.'-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
     }
@@ -93,7 +84,7 @@ class PumpServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
+        $langPath = resource_path('lang/modules/'.$this->moduleNameLower);
 
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
@@ -116,10 +107,11 @@ class PumpServiceProvider extends ServiceProvider
     {
         $paths = [];
         foreach (Config::get('view.paths') as $path) {
-            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
-                $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            if (is_dir($path.'/modules/'.$this->moduleNameLower)) {
+                $paths[] = $path.'/modules/'.$this->moduleNameLower;
             }
         }
+
         return $paths;
     }
 
@@ -127,7 +119,7 @@ class PumpServiceProvider extends ServiceProvider
     {
         $this->app->when(EpLoadPumps::class)
             ->needs(LoadedPumps::class)
-            ->give(function() {
+            ->give(function () {
                 return App::make(match (request()->pumpable_type) {
                     Pump::$DOUBLE_PUMP => DPLoaded::class,
                     default => SPLoaded::class
@@ -136,7 +128,7 @@ class PumpServiceProvider extends ServiceProvider
 
         $this->app->when(EpLoadPumps::class)
             ->needs(LazyLoadedPumps::class)
-            ->give(function() {
+            ->give(function () {
                 return App::make(match (request()->pumpable_type) {
                     Pump::$DOUBLE_PUMP => DPLazyLoaded::class,
                     default => SPLazyLoaded::class

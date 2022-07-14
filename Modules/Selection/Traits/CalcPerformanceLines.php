@@ -3,14 +3,6 @@
 namespace Modules\Selection\Traits;
 
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrIf;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
-use Maxonfjvipon\Elegant_Elephant\Logical\EqualityOf;
-use Maxonfjvipon\Elegant_Elephant\Logical\Negation;
-use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
 use Modules\Selection\Support\Point\SimplePoint;
 use Modules\Selection\Support\Regression\Equation;
 

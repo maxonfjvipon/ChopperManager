@@ -7,9 +7,9 @@ use BenSampo\Enum\Enum;
 
 final class FirePumpControlCabinet extends Enum
 {
-    #[Description("ШУПН")]
-    const NoJockey = 1;
+    #[Description('ШУПН')]
+    public const NoJockey = 1;
 
-    #[Description("ШУПН с жокеем")]
-    const WithJockey = 2;
+    #[Description('ШУПН с жокеем')]
+    public const WithJockey = 2;
 }

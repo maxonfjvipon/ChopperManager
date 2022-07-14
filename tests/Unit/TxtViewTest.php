@@ -9,6 +9,7 @@ use Tests\TestCase;
 /**
  * @see TxtView
  * @see resources/views/test.blade.php
+ *
  * @author Max Trunnikov
  */
 class TxtViewTest extends TestCase
@@ -16,7 +17,7 @@ class TxtViewTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_as_string()
+    public function testAsString()
     {
         $html = <<<EOF
         <!DOCTYPE html>
@@ -31,7 +32,7 @@ class TxtViewTest extends TestCase
         EOF;
         $this->assertEquals(
             $html,
-            (new TxtView("test", ['text' => 'Hello world']))->asString()
+            (new TxtView('test', ['text' => 'Hello world']))->asString()
         );
     }
 }

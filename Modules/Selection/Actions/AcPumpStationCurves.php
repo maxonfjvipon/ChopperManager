@@ -17,7 +17,7 @@ final class AcPumpStationCurves extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param RqPumpStationCurves $request
+     *
      * @throws Exception
      */
     public function __construct(RqPumpStationCurves $request)
@@ -29,7 +29,7 @@ final class AcPumpStationCurves extends ArrEnvelope
                 ),
                 new ArrIf(
                     $request->hasJockey(),
-                    fn() => new PumpStationCurves(
+                    fn () => new PumpStationCurves(
                         new PumpStation($request->jockeyPumpProps()),
                         'jockey_curves'
                     )

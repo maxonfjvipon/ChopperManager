@@ -15,22 +15,23 @@ use Illuminate\Validation\Rules\In;
 final class AcImportWSControlSystems extends AcImport
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function import(array $sheet): void
     {
-        throw new Exception("This method should never be called");
+        throw new Exception('This method should never be called');
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function rules(array $entity): array
     {
         return [
             '0' => ['required', new NotEmptyStr()], // article
-            '1' => ['required', new In(["WS"])], // WS/AF
+            '1' => ['required', new In(['WS'])], // WS/AF
             '2' => ['required', new In(array_keys($this->db['control_system_types']))], // control system type
             '3' => ['required', 'numeric', new NotEmptyStr()], // pumps count
             '4' => ['required', 'numeric', new NotEmptyStr()], // power
@@ -42,25 +43,25 @@ final class AcImportWSControlSystems extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
         return [
-            '0' => "Артикул",
-            "1" => "Тип станции",
-            "2" => "Тип системы управления",
-            "3" => "Количество насосов",
-            "4" => "Мощность",
-            "5" => "Масса",
-            "6" => "Описание",
-            "7" => "Цена",
-            "8" => "Валюта"
+            '0' => 'Артикул',
+            '1' => 'Тип станции',
+            '2' => 'Тип системы управления',
+            '3' => 'Количество насосов',
+            '4' => 'Мощность',
+            '5' => 'Масса',
+            '6' => 'Описание',
+            '7' => 'Цена',
+            '8' => 'Валюта',
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function entityToImport(array $entity): array
     {
@@ -72,7 +73,7 @@ final class AcImportWSControlSystems extends AcImport
             'weight' => $entity[5],
             'description' => $entity[6],
             'price' => $entity[7],
-            'currency' => Currency::getValue($entity[8])
+            'currency' => Currency::getValue($entity[8]),
         ];
     }
 }

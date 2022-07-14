@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 /**
  * @see PpQEnd
+ *
  * @author Max Trunnikov
  */
 class PpQEndTest extends TestCase
@@ -18,9 +19,10 @@ class PpQEndTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_as_number_at_random_position()
+    public function testAsNumberAtRandomPosition()
     {
         $num = $this->faker->numberBetween(2, 9);
         $atPos = $this->faker->randomNumber();
@@ -32,7 +34,7 @@ class PpQEndTest extends TestCase
                         [1, 2],
                         [3, 4],
                         [4, 5],
-                        [$atPos, 6]
+                        [$atPos, 6],
                     ]
                 ),
                 $num

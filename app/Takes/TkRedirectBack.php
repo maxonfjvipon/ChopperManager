@@ -12,22 +12,19 @@ use Tests\Unit\Takes\TkRedirectedTest;
 
 /**
  * Redirect back endpoint.
- * @package App\Takes
+ *
  * @see TkRedirectedTest
  */
 final class TkRedirectBack implements TakeRedirect
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
         return $this->redirect();
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function redirect(): RedirectResponse
     {
         return Redirect::back();

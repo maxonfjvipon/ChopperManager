@@ -9,15 +9,17 @@ use Tests\TestCase;
 
 /**
  * @see DPPerformance
+ *
  * @author Max Trunnikov
  */
 class DPPerformanceTest extends TestCase
 {
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_as_array_at_first_position()
+    public function testAsArrayAtFirstPosition()
     {
         $this->assertEquals(
             [
@@ -34,7 +36,7 @@ class DPPerformanceTest extends TestCase
                 [20.322, 1.268],
                 [21.842, 0.964],
                 [23.249, 0.660],
-                [23.937, 0.498]
+                [23.937, 0.498],
             ],
             (new DPPerformance(
                 Pump::factory()->create(),
@@ -43,10 +45,11 @@ class DPPerformanceTest extends TestCase
     }
 
     /**
-     * @throws Exception
      * @return void
+     *
+     * @throws Exception
      */
-    public function test_as_array_at_second_position()
+    public function testAsArrayAtSecondPosition()
     {
         $this->assertEquals(
             [
@@ -61,7 +64,7 @@ class DPPerformanceTest extends TestCase
                 [42.162, 1.354],
                 [46.648, 0.949],
                 [50.089, 0.626],
-                [51.381, 0.496]
+                [51.381, 0.496],
             ],
             (new DPPerformance(
                 Pump::factory()->create(),

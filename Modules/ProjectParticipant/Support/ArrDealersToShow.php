@@ -21,7 +21,7 @@ final class ArrDealersToShow extends ArrEnvelope
         parent::__construct(
             new ArrMapped(
                 Dealer::allOrCached()->load('area')->all(),
-                fn(Dealer $dealer) => $dealer->asArray()
+                fn (Dealer $dealer) => $dealer->asArray()
             )
         );
     }

@@ -4,7 +4,6 @@ namespace Modules\Selection\Support;
 
 use App\Support\TxtView;
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Text;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtEnvelope;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\Performance\PpHMax;
@@ -12,7 +11,7 @@ use Modules\Selection\Support\Performance\PumpPerfLine;
 use Modules\Selection\Traits\AxisStep;
 
 /**
- * Single pump main curves view
+ * Single pump main curves view.
  */
 final class TxtSinglePumpMainCurvesView extends TxtEnvelope
 {
@@ -20,7 +19,9 @@ final class TxtSinglePumpMainCurvesView extends TxtEnvelope
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
+     *
      * @throws Exception
      */
     public function __construct(private Pump $pump)
@@ -34,7 +35,7 @@ final class TxtSinglePumpMainCurvesView extends TxtEnvelope
                     'dy' => 400 / ($yMax = (new PpHMax($this->pump->performance()))->asNumber()),
                     'x_axis_step' => $this->axisStep($xMax),
                     'y_axis_step' => $this->axisStep($yMax),
-                    'dots_data' => [$this->pump->performance()->asArrayAt(1)]
+                    'dots_data' => [$this->pump->performance()->asArrayAt(1)],
                 ]
             )
         );

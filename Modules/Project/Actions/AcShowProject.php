@@ -15,7 +15,6 @@ final class AcShowProject extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param Project $project
      */
     public function __construct(Project $project)
     {
@@ -29,7 +28,7 @@ final class AcShowProject extends ArrEnvelope
                     'filter_data',
                     new ArrForFiltering([
                         'station_types' => StationType::getDescriptions(),
-                        'selection_types' => SelectionType::getDescriptions()
+                        'selection_types' => SelectionType::getDescriptions(),
                     ])
                 )
             )

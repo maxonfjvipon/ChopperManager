@@ -8,22 +8,20 @@ use Modules\Components\Entities\ArmatureType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature with {@see ArmatureType::NP} and {@see ArmatureType::KRT}
+ * Armature with {@see ArmatureType::NP} and {@see ArmatureType::KRT}.
  */
 final class ArAFNipKRT implements Arrayable
 {
     /**
      * Ctor.
+     *
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
     }
 
-    /**
-     * @return array
-     */
     public function asArray(): array
     {
         return [
@@ -32,7 +30,7 @@ final class ArAFNipKRT implements Arrayable
                 ->first(),
             $this->armature->where('type.value', ArmatureType::KRT)
                 ->where('dn', $this->pump->dn_pressure)
-                ->first()
+                ->first(),
         ];
     }
 }

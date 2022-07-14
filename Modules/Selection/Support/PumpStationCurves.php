@@ -10,7 +10,7 @@ use Modules\Selection\Entities\PumpStation;
 use Modules\Selection\Traits\AxisStep;
 
 /**
- * Selection curves view as {@Text}
+ * Selection curves view as {@Text}.
  */
 final class PumpStationCurves extends ArrEnvelope
 {
@@ -18,20 +18,21 @@ final class PumpStationCurves extends ArrEnvelope
 
     /**
      * Ctor.
+     *
      * @param PumpStation $pumpStation
-     * @param string $viewName
+     * @param string      $viewName
+     *
      * @throws Exception
      */
     public function __construct(
         private PumpStation $pumpStation,
-        private string      $viewName = "curves"
-    )
-    {
+        private string $viewName = 'curves'
+    ) {
         parent::__construct(
             new ArrObject(
                 $this->viewName,
                 new TxtView(
-                    "selection::pump_station_curves",
+                    'selection::pump_station_curves',
                     $this->pumpStation
                         ->withCurves()
                         ->curves

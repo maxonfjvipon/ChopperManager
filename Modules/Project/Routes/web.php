@@ -13,6 +13,8 @@ use Modules\Project\Http\Endpoints\EpShowProject;
 use Modules\Project\Http\Endpoints\EpStoreProject;
 use Modules\Project\Http\Endpoints\EpUpdateProject;
 
+Route::redirect('/', '/projects');
+
 Route::prefix('projects')->as('projects.')->group(function () {
     Route::get('/')->name('index')->uses(EpProjects::class);
     Route::get('create')->name('create')->uses(EpCreateOrEditProject::class);

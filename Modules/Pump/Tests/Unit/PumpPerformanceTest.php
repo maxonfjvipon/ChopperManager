@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 /**
  * @see Pump::performance()
+ *
  * @author Max Trunnikov
  */
 class PumpPerformanceTest extends TestCase
@@ -16,7 +17,7 @@ class PumpPerformanceTest extends TestCase
     /**
      * @return void
      */
-    public function test_perf_for_single_pump()
+    public function testPerfForSinglePump()
     {
         $this->assertInstanceOf(
             SPPerformance::class,
@@ -28,7 +29,7 @@ class PumpPerformanceTest extends TestCase
     /**
      * @return void
      */
-    public function test_perf_for_double_pump()
+    public function testPerfForDoublePump()
     {
         $this->assertInstanceOf(
             DPPerformance::class,

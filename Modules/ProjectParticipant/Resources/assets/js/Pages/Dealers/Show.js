@@ -22,7 +22,7 @@ export default function Show() {
     const {reducedBottomAntFormItemClassName} = useStyles()
     const {labels} = useLabels()
 
-    console.log(dealer)
+    console.log(filter_data)
 
     // CONSTS
     const formName = 'dealer-form'

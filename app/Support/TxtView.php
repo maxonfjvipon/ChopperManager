@@ -8,19 +8,14 @@ use Maxonfjvipon\Elegant_Elephant\Text;
 use Tests\Unit\TxtViewTest;
 
 /**
- * View as html
- * @package App\Support
+ * View as html.
+ *
  * @see TxtViewTest
  */
 final class TxtView implements Text
 {
     use ArrayableOverloaded;
 
-    /**
-     * @param string $name
-     * @param Arrayable|array $data
-     * @return TxtView
-     */
     public static function new(string $name, Arrayable|array $data = []): TxtView
     {
         return new self($name, $data);
@@ -28,7 +23,8 @@ final class TxtView implements Text
 
     /**
      * Ctor.
-     * @param string $name
+     *
+     * @param string          $name
      * @param Arrayable|array $data
      */
     public function __construct(private string $name, private Arrayable|array $data = [])
@@ -36,7 +32,7 @@ final class TxtView implements Text
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asString(): string
     {

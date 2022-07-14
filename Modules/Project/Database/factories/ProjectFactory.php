@@ -21,7 +21,6 @@ class ProjectFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
      * @throws Exception
      */
     public function definition(): array
@@ -35,4 +34,3 @@ class ProjectFactory extends Factory
         ];
     }
 }
-

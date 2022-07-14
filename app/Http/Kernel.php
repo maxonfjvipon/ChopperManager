@@ -5,9 +5,6 @@ namespace App\Http;
 use App\Http\Middleware\Administrate;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
-use Modules\Project\Http\Middleware\AuthorizeProject;
-use Modules\Selection\Http\Middleware\DetermineSelection;
-use Modules\User\Http\Middleware\EnsureUserIsActive;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -23,7 +20,9 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Modules\User\Http\Middleware\CheckUserIsActive;
+use Modules\Project\Http\Middleware\AuthorizeProject;
+use Modules\Selection\Http\Middleware\DetermineSelection;
+use Modules\User\Http\Middleware\EnsureUserIsActive;
 
 final class Kernel extends HttpKernel
 {
@@ -96,6 +95,6 @@ final class Kernel extends HttpKernel
         'password.confirm' => RequirePassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
-//        'verified' => EnsureEmailIsVerified::class,
+        //        'verified' => EnsureEmailIsVerified::class,
     ];
 }

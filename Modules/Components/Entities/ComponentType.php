@@ -6,9 +6,13 @@ use BenSampo\Enum\Enum;
 
 final class ComponentType extends Enum
 {
-    const ControlSystems = "control-systems";
-    const Armature = "armature";
-    const Chassis = "chassis";
-    const Collectors = "collectors";
-    const AssemblyJobs = "assembly-jobs";
+    public const ControlSystems = 'control-systems';
+
+    public const Armature = 'armature';
+
+    public const Chassis = 'chassis';
+
+    public const Collectors = 'collectors';
+
+    public const AssemblyJobs = 'assembly-jobs';
 }

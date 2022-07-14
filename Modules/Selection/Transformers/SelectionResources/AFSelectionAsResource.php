@@ -12,6 +12,7 @@ final class AFSelectionAsResource implements Arrayable
 {
     /**
      * Ctor.
+     *
      * @param Selection $selection
      */
     public function __construct(private Selection $selection)
@@ -19,7 +20,7 @@ final class AFSelectionAsResource implements Arrayable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {

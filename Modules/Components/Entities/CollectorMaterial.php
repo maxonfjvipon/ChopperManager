@@ -13,9 +13,9 @@ final class CollectorMaterial extends Enum
 {
     use EnumHelpers;
 
-    #[Description("AISI-304")]
-    const AISI = 1;
+    #[Description('AISI-304')]
+    public const AISI = 1;
 
-    #[Description("Сталь-20")]
-    const Steel = 2;
+    #[Description('Сталь-20')]
+    public const Steel = 2;
 }

@@ -13,9 +13,9 @@ final class ConnectionType extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Резьбовой")]
-    const Threaded = 1;
+    #[Description('Резьбовой')]
+    public const Threaded = 1;
 
-    #[Description("Фланцевый")]
-    const Flanged = 2;
+    #[Description('Фланцевый')]
+    public const Flanged = 2;
 }

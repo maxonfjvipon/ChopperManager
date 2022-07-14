@@ -11,13 +11,11 @@ use Modules\Selection\Http\Requests\RqStoreSelection;
 
 /**
  * Update selection endpoint.
- * @package Modules\Selection\Http\Endpoints
  */
 final class EpUpdateSelection extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqStoreSelection $request
      */
     public function __construct(RqStoreSelection $request)
     {

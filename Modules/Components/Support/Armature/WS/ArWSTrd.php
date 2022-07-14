@@ -12,13 +12,13 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Water armature for {@see CollectorSwitch::Trd}
+ * Water armature for {@see CollectorSwitch::Trd}.
  */
 final class ArWSTrd implements Arrayable
 {
     /**
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
@@ -30,7 +30,8 @@ final class ArWSTrd implements Arrayable
      * быстросъемное соединение по ду выхода +
      * ниппель по ду выхода +
      * обратный клапан резьбовой по ду выхода +
-     * Кран резьбовой по ду выхода
+     * Кран резьбовой по ду выхода.
+     *
      * @throws Exception
      */
     public function asArray(): array

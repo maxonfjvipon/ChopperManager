@@ -5,25 +5,23 @@ namespace App\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 /**
- * Cached model
- * @package App\Traits
+ * Cached model.
  */
 trait Cached
 {
     /**
      * @return string cache key
+     *
      * @throws Exception
      */
     protected static function getCacheKey(): string
     {
-        throw new Exception("getCacheKey method must be overridden");
+        throw new Exception('getCacheKey method must be overridden');
     }
 
     /**
-     * @return Collection|array
      * @throws Exception
      */
     public static function allOrCached(): Collection|array
@@ -33,6 +31,7 @@ trait Cached
         }
         $all = self::all();
         Cache::put(self::getCacheKey(), $all);
+
         return $all;
     }
 

@@ -19,8 +19,6 @@ use Modules\Pump\Entities\DN;
 final class AcImportArmature extends AcImport
 {
     /**
-     * @param array $sheet
-     * @return void
      * @throws Exception
      */
     protected function import(array $sheet): void
@@ -30,7 +28,6 @@ final class AcImportArmature extends AcImport
     }
 
     /**
-     * @param array $entity
      * @return array[]
      */
     protected function rules(array $entity): array
@@ -60,13 +57,11 @@ final class AcImportArmature extends AcImport
             '4' => 'Длина',
             '5' => 'Масса',
             '6' => 'Цена',
-            '7' => 'Валюта'
+            '7' => 'Валюта',
         ];
     }
 
     /**
-     * @param array $entity
-     * @return array
      * @throws Exception
      */
     protected function entityToImport(array $entity): array
@@ -79,7 +74,7 @@ final class AcImportArmature extends AcImport
             'length' => $entity[4],
             'weight' => $entity[5],
             'price' => $entity[6],
-            'currency' => Currency::getValue($entity[7])
+            'currency' => Currency::getValue($entity[7]),
         ];
     }
 }

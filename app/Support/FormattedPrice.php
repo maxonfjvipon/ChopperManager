@@ -6,25 +6,18 @@ use Maxonfjvipon\Elegant_Elephant\Text;
 use Tests\Unit\FormattedPriceTest;
 
 /**
- * Formatted price for Russian standards
+ * Formatted price for Russian standards.
+ *
  * @see FormattedPriceTest
  */
 final class FormattedPrice implements Text
 {
-    /**
-     * @var float|int $price
-     */
     private float|int $price;
 
-    /**
-     * @var int $decimals
-     */
     private int $decimals;
 
     /**
      * Ctor.
-     * @param float|int $price
-     * @param int $decimals
      */
     public function __construct(float|int $price, int $decimals = 2)
     {
@@ -34,8 +27,8 @@ final class FormattedPrice implements Text
 
     public function asString(): string
     {
-        return $this->price === 0
+        return 0 === $this->price
             ? 0
-            : number_format($this->price, $this->decimals, ",", " ");
+            : number_format($this->price, $this->decimals, ',', ' ');
     }
 }

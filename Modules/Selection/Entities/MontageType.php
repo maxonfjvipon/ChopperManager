@@ -13,9 +13,9 @@ final class MontageType extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Навесной")]
-    const Mounted = 1;
+    #[Description('Навесной')]
+    public const Mounted = 1;
 
-    #[Description("Отдельностоящий")]
-    const Detached = 2;
+    #[Description('Отдельностоящий')]
+    public const Detached = 2;
 }

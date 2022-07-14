@@ -23,12 +23,12 @@ final class AcUsers extends ArrEnvelope
         parent::__construct(
             new ArrMerged(
                 new ArrObject(
-                    "filter_data",
+                    'filter_data',
                     new ArrForFiltering([
                         'areas' => array_values(
                             ($users = User::with(['area', 'dealer'])
                                 ->get())
-                                ->map(fn(User $user) => $user->area->name)
+                                ->map(fn (User $user) => $user->area->name)
                                 ->unique()
                                 ->all()
                         ),
@@ -36,10 +36,10 @@ final class AcUsers extends ArrEnvelope
                     ])
                 ),
                 new ArrObject(
-                    "users",
+                    'users',
                     new ArrMapped(
                         $users->all(),
-                        fn(User $user) => [
+                        fn (User $user) => [
                             'id' => $user->id,
                             'created_at' => formatted_date($user->created_at),
                             'dealer' => $user->dealer->name,

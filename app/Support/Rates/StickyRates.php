@@ -11,19 +11,12 @@ use Exception;
  */
 final class StickyRates implements Rates
 {
-    /**
-     * @var Rates $origin
-     */
     private Rates $origin;
 
-    /**
-     * @var array $cached
-     */
     private array $cached = [];
 
     /**
      * Ctor.
-     * @param Rates $origin
      */
     public function __construct(Rates $origin)
     {
@@ -31,7 +24,7 @@ final class StickyRates implements Rates
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function hasTheSameBaseAs(Currency|int $currency): bool
     {
@@ -39,11 +32,12 @@ final class StickyRates implements Rates
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function rateFor(string $code): mixed
     {
-        return $this->cached[$code] ??= $this->cached[$code] = $this->origin->rateFor($code) ;
+        return $this->cached[$code] ??= $this->cached[$code] = $this->origin->rateFor($code);
     }
 }

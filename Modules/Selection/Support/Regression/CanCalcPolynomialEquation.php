@@ -7,7 +7,7 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumerableOverloaded;
 
 /**
- * Polynomial equation
+ * Polynomial equation.
  */
 trait CanCalcPolynomialEquation
 {
@@ -19,6 +19,7 @@ trait CanCalcPolynomialEquation
     private function polynomialEquationValue(float|int|Numerable $arg, array $coefficients)
     {
         $x = $this->firstNumerableOverloaded($arg);
+
         return $coefficients[0] * $x * $x + $coefficients[1] * $x + $coefficients[2];
     }
 }

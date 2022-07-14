@@ -10,26 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Endpoint that checks for user access for specified project.
- * @package App\Takes
  */
 final class TkAuthorizeProject implements Take
 {
     /**
      * Ctor.
+     *
      * @param string $project_id
-     * @param Take $origin
+     * @param Take   $origin
      */
     public function __construct(private string $project_id, private Take $origin)
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
         return (new TkAuthorize(
-            'project_access_' . $this->project_id,
+            'project_access_'.$this->project_id,
             $this->origin
         ))->act($request);
     }

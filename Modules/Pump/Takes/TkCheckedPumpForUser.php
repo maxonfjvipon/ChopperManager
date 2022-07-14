@@ -13,26 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class TkCheckedPumpForUser implements Take
 {
-    /**
-     * @var Take $origin
-     */
     private Take $origin;
 
-    /**
-     * @var Pump $pump
-     */
     private Pump $pump;
 
-    /**
-     * @var Authenticatable|User $user
-     */
     private Authenticatable|User $user;
 
-    /**
-     * @param Pump $pump
-     * @param Authenticatable|User $user
-     * @param Take $take
-     */
     public function __construct(Pump $pump, Authenticatable|User $user, Take $take)
     {
         $this->pump = $pump;
@@ -41,17 +27,17 @@ final class TkCheckedPumpForUser implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
         return (new TkWithCallback(
-            fn() => abort_if(
+            fn () => abort_if(
                 !in_array(
                     $this->pump->id,
                     $this->user->available_pumps()
                         ->onPumpableType($this->pump->pumpable_type)
-                        ->pluck($this->pump->getTable() . '.id')
+                        ->pluck($this->pump->getTable().'.id')
                         ->all()
                 ),
                 404

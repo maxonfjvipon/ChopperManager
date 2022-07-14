@@ -10,13 +10,13 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature water for {@see CollectorSwitch::Fln}
+ * Armature water for {@see CollectorSwitch::Fln}.
  */
 final class ArWSFln implements Arrayable
 {
     /**
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
@@ -27,7 +27,8 @@ final class ArWSFln implements Arrayable
      * Катушка по ДУ входа +
      * обратный клапан фланцевый по ду выхода +
      * катушка по ДУ выхода +
-     * затвор по ду выхода
+     * затвор по ду выхода.
+     *
      * @throws Exception
      */
     public function asArray(): array
@@ -53,7 +54,7 @@ final class ArWSFln implements Arrayable
             // затвор по ду выхода
             $this->armature->where('type.value', ArmatureType::ZF)
                 ->where('dn', $this->pump->dn_pressure)
-                ->first()
+                ->first(),
         ];
     }
 }

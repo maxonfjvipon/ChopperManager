@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\User\Entities\Area;
 
 /**
- * Has {@see Area}
+ * Has {@see Area}.
  */
 trait HasArea
 {
-    /**
-     * @return BelongsTo
-     */
     public function area(): BelongsTo
     {
         return $this->belongsTo(Area::class, 'area_id');

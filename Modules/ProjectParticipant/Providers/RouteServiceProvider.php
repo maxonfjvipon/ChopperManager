@@ -7,8 +7,9 @@ use JetBrains\PhpStorm\Pure;
 
 final class RouteServiceProvider extends BaseRouteServiceProvider
 {
-    #[Pure] public function __construct($app)
-    {
-        parent::__construct($app, "ProjectParticipant");
-    }
+    #[Pure]
+ public function __construct($app)
+ {
+     parent::__construct($app, 'ProjectParticipant');
+ }
 }

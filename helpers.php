@@ -15,13 +15,8 @@ if (!function_exists('formatted_price')) {
 }
 
 if (!function_exists('formatted_date')) {
-    /**
-     * @param Carbon|null $datetime
-     * @param string $format
-     * @return string
-     */
-    function formatted_date(?Carbon $datetime, string $format = "d.m.Y H:i"): string
+    function formatted_date(?Carbon $datetime, string $format = 'd.m.Y H:i'): string
     {
-        return $datetime ? date_format($datetime, $format) : "";
+        return $datetime ? date_format($datetime, $format) : '';
     }
 }

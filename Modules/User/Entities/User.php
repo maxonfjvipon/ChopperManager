@@ -18,30 +18,33 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 /**
  * User.
  *
- * @property int $id
- * @property string $full_name
- * @property string $first_name
- * @property string $middle_name
- * @property string $last_name
- * @property string $itn
- * @property boolean $is_active
- * @property string $phone
- * @property string $email
- *
- * @property UserRole $role
- * @property Carbon $created_at
- * @property Area $area
- * @property Dealer $dealer
+ * @property int                                      $id
+ * @property string                                   $full_name
+ * @property string                                   $first_name
+ * @property string                                   $middle_name
+ * @property string                                   $last_name
+ * @property string                                   $itn
+ * @property bool                                     $is_active
+ * @property string                                   $phone
+ * @property string                                   $email
+ * @property UserRole                                 $role
+ * @property Carbon                                   $created_at
+ * @property Area                                     $area
+ * @property Dealer                                   $dealer
  * @property array<Contractor>|Collection<Contractor> $contractors
- * @property array<Project>|Collection<Project> $projects
+ * @property array<Project>|Collection<Project>       $projects
  *
  * @method static self create(array $attributes)
  * @method static self find(int|string $id)
  */
 final class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasArea, SoftDeletes;
-    use UserRelationships, HasRelationships;
+    use HasFactory;
+    use Notifiable;
+    use HasArea;
+    use SoftDeletes;
+    use UserRelationships;
+    use HasRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -92,15 +95,12 @@ final class User extends Authenticatable
         return $this->role->is(UserRole::Admin);
     }
 
-    /**
-     * @return string
-     */
     public function getFullNameAttribute(): string
     {
-        return implode(" ", [
+        return implode(' ', [
             $this->first_name,
             $this->middle_name,
-            $this->last_name ?? ""
+            $this->last_name ?? '',
         ]);
     }
 }

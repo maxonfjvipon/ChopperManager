@@ -13,7 +13,6 @@ use Modules\Selection\Entities\PumpStation;
 
 final class PumpStationsArray implements Rule
 {
-
     /**
      * Create a new rule instance.
      *
@@ -21,15 +20,14 @@ final class PumpStationsArray implements Rule
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Determine if the validation rule passes.
      *
      * @param string $attribute
-     * @param mixed $value
-     * @return bool
+     * @param mixed  $value
+     *
      * @throws Exception
      */
     public function passes($attribute, $value): bool
@@ -58,13 +56,12 @@ final class PumpStationsArray implements Rule
                 'jockey_head' => ['sometimes', 'nullable', 'numeric', 'min:0'],
             ])->validate();
         }
+
         return true;
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

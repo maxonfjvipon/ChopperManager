@@ -8,7 +8,7 @@ use Modules\Pump\Actions\AcLoadPumps;
 use Modules\Pump\Http\Requests\RqLoadPumps;
 
 /**
- * Load pumps endpoint
+ * Load pumps endpoint.
  */
 final class EpLoadPumps extends TakeEndpoint
 {

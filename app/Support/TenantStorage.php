@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Storage;
 final class TenantStorage
 {
     private Filesystem $storage;
-    private string $noImageName = "no_image.jpg";
+
+    private string $noImageName = 'no_image.jpg';
+
     private string $currentTenantFolder;
 
     public function __construct($disk = 'media')
@@ -24,7 +26,8 @@ final class TenantStorage
 
     public function urlToImage($name): string
     {
-        $fullPath = $this->currentTenantFolder . $name;
+        $fullPath = $this->currentTenantFolder.$name;
+
         return ($name && $this->storage->exists($fullPath))
             ? $this->storage->url($fullPath)
             : $this->storage->url($this->noImageName);
@@ -32,7 +35,8 @@ final class TenantStorage
 
     public function urlToFile($name): ?string
     {
-        $fullPath = $this->currentTenantFolder . $name;
+        $fullPath = $this->currentTenantFolder.$name;
+
         return ($name && $this->storage->exists($fullPath))
             ? $this->storage->url($name)
             : null;
@@ -40,6 +44,6 @@ final class TenantStorage
 
     public function putFileTo($folder, $file): bool|string
     {
-        return $this->storage->putFileAs($this->currentTenantFolder . $folder, $file, $file->getClientOriginalName());
+        return $this->storage->putFileAs($this->currentTenantFolder.$folder, $file, $file->getClientOriginalName());
     }
 }

@@ -6,8 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Modules\Components\Entities\FirePumpControlCabinet;
-use Modules\Selection\Entities\StationType;
 use Modules\ProjectParticipant\Entities\Dealer;
+use Modules\Selection\Entities\StationType;
 use Modules\User\Entities\User;
 use Modules\User\Entities\UserRole;
 
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /** * Areas */
+        /* * Areas */
         DB::insert("INSERT INTO `areas` (`id`, `name`, `region_kladr_id`) VALUES
             (1, 'Алтайский край', '04'),
             (2, 'Амурская область', '28'),
@@ -110,24 +110,24 @@ class DatabaseSeeder extends Seeder
             (86, 'Ярославская область', '76');
             ");
 
-        /** Control system types */
-        DB::insert("INSERT INTO `control_system_types` (`id`, `name`, `description`, `station_type`) VALUES
-            (" . FirePumpControlCabinet::NoJockey . ", '" . FirePumpControlCabinet::getDescription(FirePumpControlCabinet::NoJockey) . "', null, null),
-            (" . FirePumpControlCabinet::WithJockey . ", '" . FirePumpControlCabinet::getDescription(FirePumpControlCabinet::WithJockey) . "', null, null),
-            (3, 'DD', 'прямой пуск'," . StationType::AF . "),
-            (4, 'SD', 'пуск звезда-треугольник'," . StationType::AF . "),
-            (5, 'SS', 'плавный пуск'," . StationType::AF . "),
-            (6, 'VF', 'частотное управления двигателями основных и резервных насосов'," . StationType::AF . "),
-            (7, 'Comfort', null," . StationType::WS . "),
-            (8, 'Multi', null," . StationType::WS . "),
-            (9, 'Multi-E', null," . StationType::WS . "),
-            (10, 'Multi-EL', null," . StationType::WS . "),
-            (11, 'WS-AF', null," . StationType::WS . ");");
+        /* Control system types */
+        DB::insert('INSERT INTO `control_system_types` (`id`, `name`, `description`, `station_type`) VALUES
+            ('.FirePumpControlCabinet::NoJockey.", '".FirePumpControlCabinet::getDescription(FirePumpControlCabinet::NoJockey)."', null, null),
+            (".FirePumpControlCabinet::WithJockey.", '".FirePumpControlCabinet::getDescription(FirePumpControlCabinet::WithJockey)."', null, null),
+            (3, 'DD', 'прямой пуск',".StationType::AF."),
+            (4, 'SD', 'пуск звезда-треугольник',".StationType::AF."),
+            (5, 'SS', 'плавный пуск',".StationType::AF."),
+            (6, 'VF', 'частотное управления двигателями основных и резервных насосов',".StationType::AF."),
+            (7, 'Comfort', null,".StationType::WS."),
+            (8, 'Multi', null,".StationType::WS."),
+            (9, 'Multi-E', null,".StationType::WS."),
+            (10, 'Multi-EL', null,".StationType::WS."),
+            (11, 'WS-AF', null,".StationType::WS.');');
 
         $bpe = Dealer::create([
             'id' => Dealer::BPE,
-            'name' => "ООО \"БПЕ\"",
-            'area_id' => 6
+            'name' => 'ООО "БПЕ"',
+            'area_id' => 6,
         ]);
 
         /** Users */

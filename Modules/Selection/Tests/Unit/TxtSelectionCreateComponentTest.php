@@ -13,17 +13,17 @@ class TxtSelectionCreateComponentTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_as_string()
+    public function testAsString()
     {
         $req = new Request();
         $req->pumpable_type = Pump::$SINGLE_PUMP;
         $this->assertEquals(
-            "Selection::SinglePump",
+            'Selection::SinglePump',
             (new TxtSelectionComponent($req))->asString()
         );
         $req->pumpable_type = Pump::$DOUBLE_PUMP;
         $this->assertEquals(
-            "Selection::DoublePump",
+            'Selection::DoublePump',
             (new TxtSelectionComponent($req))->asString()
         );
     }

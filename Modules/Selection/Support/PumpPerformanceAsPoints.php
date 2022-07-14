@@ -8,12 +8,13 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrRange;
 use Maxonfjvipon\Elegant_Elephant\Numerable\LengthOf;
 
 /**
- * Pump performance as points array
+ * Pump performance as points array.
  */
 final class PumpPerformanceAsPoints extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param string $performance
      */
     public function __construct(private string $performance)
@@ -24,18 +25,18 @@ final class PumpPerformanceAsPoints extends ArrEnvelope
                     1,
                     new LengthOf(
                         $perf = array_map(
-                            fn($value) => floatval($value),
+                            fn ($value) => floatval($value),
                             explode(
-                                " ",
+                                ' ',
                                 $this->performance
                             ),
                         )
                     ),
                     2
                 ),
-                fn(int $index) => [
+                fn (int $index) => [
                     $perf[$index - 1],
-                    $perf[$index]
+                    $perf[$index],
                 ]
             )
         );

@@ -14,7 +14,7 @@ use VerumConsilium\Browsershot\Facades\PDF;
 
 /**
  * Endpoint that render pdf to download.
- * @package App\Takes
+ *
  * @see TkDownloadedDPFTest
  */
 final class TkDownloadPDF implements Take
@@ -23,6 +23,7 @@ final class TkDownloadPDF implements Take
 
     /**
      * Ctor.
+     *
      * @param string|Text $html
      */
     public function __construct(private string|Text $html)
@@ -30,7 +31,8 @@ final class TkDownloadPDF implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function act(Request $request = null): Responsable|Response

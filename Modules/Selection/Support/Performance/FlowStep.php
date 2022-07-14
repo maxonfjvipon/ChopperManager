@@ -19,7 +19,6 @@ final class FlowStep implements Numerable
     }
 
     /**
-     * @return float|int
      * @throws Exception
      */
     public function asNumber(): float|int
@@ -30,6 +29,7 @@ final class FlowStep implements Numerable
                 return $step;
             }
         }
+
         return 20;
     }
 }

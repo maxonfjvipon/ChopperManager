@@ -10,9 +10,9 @@ final class PumpOrientation extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Вертикальный")]
-    const Vertical = 1;
+    #[Description('Вертикальный')]
+    public const Vertical = 1;
 
-    #[Description("Горизонтальный")]
-    const Horizontal = 2;
+    #[Description('Горизонтальный')]
+    public const Horizontal = 2;
 }

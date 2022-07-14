@@ -19,18 +19,18 @@ final class EpChangePassword extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqChangePassword $request
+     *
      * @throws Exception
      */
     public function __construct(RqChangePassword $request)
     {
         parent::__construct(
             new TkTernary(
-                $request->has('password') && !!$request->password,
+                $request->has('password') && (bool) $request->password,
                 new TkWithCallback(
-                    fn() => Auth::user()->update(['password' => Hash::make($request->password)]),
+                    fn () => Auth::user()->update(['password' => Hash::make($request->password)]),
                     new TkRedirectWith(
-                        "success",
+                        'success',
                         __('flash.users.password_changed'),
                         $back = new TkRedirectBack()
                     )

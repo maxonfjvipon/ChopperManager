@@ -3,7 +3,7 @@
 return [
     'popconfirm' => [
         'yes' => 'Yes',
-        'no' => 'No'
+        'no' => 'No',
     ],
     'edit' => 'Edit',
     'view' => 'View',
@@ -13,5 +13,5 @@ return [
     'clone' => 'Clone',
     'save' => 'Save',
     'statistics' => 'Statistics',
-    'detail' => 'Detail'
+    'detail' => 'Detail',
 ];

@@ -12,7 +12,7 @@ use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\Pump;
 
 /**
- * Armature fire for {@see CollectorSwitch::FlnToTrd}
+ * Armature fire for {@see CollectorSwitch::FlnToTrd}.
  */
 final class ArAFFlnToTrd extends ArrEnvelope
 {
@@ -31,7 +31,7 @@ final class ArAFFlnToTrd extends ArrEnvelope
      * комплект резьбового тройника по Ду выхода +
      *
      * @param Collection|array $armature
-     * @param Pump $pump
+     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {

@@ -16,7 +16,7 @@ final class EpProfile extends TakeEndpoint
     {
         parent::__construct(
             new TkFromCallback(
-                fn() => new TkInertia("User::Profile", new AcUserProfile())
+                fn () => new TkInertia('User::Profile', new AcUserProfile())
             )
         );
     }

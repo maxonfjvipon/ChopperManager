@@ -8,8 +8,6 @@ final class RqUpdateDiscount extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -18,8 +16,6 @@ final class RqUpdateDiscount extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -27,7 +23,7 @@ final class RqUpdateDiscount extends FormRequest
             'discountable_id' => ['required', 'exists:discounts,discountable_id'],
             'discountable_type' => ['required', 'exists:discounts,discountable_type'],
             'user_id' => ['required', 'exists:users,id'],
-            'value' => ['required', 'nullable', 'min:0', 'max:100']
+            'value' => ['required', 'nullable', 'min:0', 'max:100'],
         ];
     }
 }

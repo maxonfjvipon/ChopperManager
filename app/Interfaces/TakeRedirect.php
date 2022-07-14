@@ -5,13 +5,9 @@ namespace App\Interfaces;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * For redirect endpoints
- * @package App\Takes
+ * For redirect endpoints.
  */
 interface TakeRedirect extends Take
 {
-    /**
-     * @return RedirectResponse
-     */
     public function redirect(): RedirectResponse;
 }

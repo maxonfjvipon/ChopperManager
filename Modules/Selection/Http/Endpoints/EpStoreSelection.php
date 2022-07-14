@@ -12,13 +12,11 @@ use Modules\Selection\Http\Requests\RqStoreSelection;
 
 /**
  * Store selection endpoint.
- * @package Modules\Selection\Takes
  */
 final class EpStoreSelection extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqStoreSelection $request
      */
     public function __construct(RqStoreSelection $request)
     {

@@ -9,23 +9,17 @@ use Modules\Selection\Tests\Unit\DPPerformanceTest;
 
 /**
  * Double pump performance.
+ *
  * @see DPPerformanceTest
  */
 final class DPPerformance implements PumpPerformance
 {
-    /**
-     * @var Pump $pump
-     */
     private Pump $pump;
 
-    /**
-     * @var array $performances
-     */
     private array $performances = [];
 
     /**
      * Ctor.
-     * @param Pump $pump
      */
     public function __construct(Pump $pump)
     {

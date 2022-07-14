@@ -10,13 +10,11 @@ use Modules\Project\Entities\Project;
 
 /**
  * Show project endpoint.
- * @package Modules\Project\Takes
  */
 final class EpShowProject extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
@@ -25,7 +23,6 @@ final class EpShowProject extends TakeEndpoint
                 'Project::Show',
                 new AcShowProject(Project::find($request->project))
             ),
-            $request
         );
     }
 }

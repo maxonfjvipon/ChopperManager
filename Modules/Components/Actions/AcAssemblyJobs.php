@@ -17,6 +17,7 @@ final class AcAssemblyJobs extends AcComponents
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -28,15 +29,15 @@ final class AcAssemblyJobs extends AcComponents
             new ArrValues(
                 new ArrMapped(
                     CollectorType::getInstances(),
-                    fn(CollectorType $collectorType) => [
-                        'collector_type' => $collectorType->description . " коллектор",
+                    fn (CollectorType $collectorType) => [
+                        'collector_type' => $collectorType->description.' коллектор',
                         'items' => array_values(
                             array_map(
-                                fn(ControlSystemType $controlSystemType) => [
+                                fn (ControlSystemType $controlSystemType) => [
                                     'control_system_type' => $controlSystemType->name,
                                     'items' => array_values(
                                         array_map(
-                                            fn(AssemblyJob $job) => [
+                                            fn (AssemblyJob $job) => [
                                                 'id' => $job->id,
                                                 'pumps_count' => $job->pumps_count,
                                                 'pumps_weight' => $job->pumps_weight,
@@ -48,14 +49,14 @@ final class AcAssemblyJobs extends AcComponents
                                                 ->where('control_system_type_id', $controlSystemType->id)
                                                 ->all()
                                         )
-                                    )
+                                    ),
                                 ],
                                 $jobs->where('collector_type.value', $collectorType->value)
-                                    ->map(fn(AssemblyJob $job) => $job->control_system_type)
+                                    ->map(fn (AssemblyJob $job) => $job->control_system_type)
                                     ->unique()
                                     ->all()
                             )
-                        )
+                        ),
                     ]
                 )
             )

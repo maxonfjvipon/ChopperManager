@@ -9,7 +9,7 @@ use Modules\Selection\Support\Performance\PumpPerfLine;
 use Modules\Selection\Traits\AxisStep;
 
 /**
- * Single pump additional curves view
+ * Single pump additional curves view.
  */
 final class TxtSinglePumpAddCurvesView implements Text
 {
@@ -17,12 +17,15 @@ final class TxtSinglePumpAddCurvesView implements Text
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
-    public function __construct(private Pump $pump) {}
+    public function __construct(private Pump $pump)
+    {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asString(): string
     {
@@ -30,20 +33,21 @@ final class TxtSinglePumpAddCurvesView implements Text
         $xMax = -1;
         foreach (CurveType::cases() as $type) {
             $line = (new PumpPerfLine($this->pump, 1, $type))->asArray();
-            $xMax = max($xMax, ...array_map(fn($point) => $point['x'], $line));
+            $xMax = max($xMax, ...array_map(fn ($point) => $point['x'], $line));
             $data[$type->name] = [
                 'lines' => [$line],
                 'dy' => 133 / ($yMax = ($max = max(
-                            ...array_map(fn($point) => $point['y'], $line)
+                            ...array_map(fn ($point) => $point['y'], $line)
                         )) + $max * 0.1),
-                'y_axis_step' => $this->axisStep($yMax)
+                'y_axis_step' => $this->axisStep($yMax),
             ];
         }
+
         return (new TxtView(
             'pump::additional_curves',
             array_merge($data, [
                 'dx' => 900 / $xMax,
-                'x_axis_step' => $this->axisStep($xMax)
+                'x_axis_step' => $this->axisStep($xMax),
             ])
         ))->asString();
     }

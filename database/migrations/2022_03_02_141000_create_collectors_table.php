@@ -1,13 +1,8 @@
 <?php
 
-use App\Models\Enums\Currency;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Components\Entities\CollectorMaterial;
-use Modules\Components\Entities\CollectorType;
-use Modules\Pump\Entities\ConnectionType;
-use Modules\Pump\Entities\DN;
 
 class CreateCollectorsTable extends Migration
 {

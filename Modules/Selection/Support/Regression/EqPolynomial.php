@@ -8,29 +8,27 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrayableOverloaded;
 use Maxonfjvipon\Elegant_Elephant\Numerable;
 
 /**
- * Polynomial regression
+ * Polynomial regression.
  */
 final class EqPolynomial implements Equation
 {
-    use CalculateRegression, CanCalcPolynomialEquation, ArrayableOverloaded;
+    use CalculateRegression;
+    use CanCalcPolynomialEquation;
+    use ArrayableOverloaded;
 
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * Ctor.
+     *
      * @param array|Arrayable $data
-     * @param int $precision
+     * @param int             $precision
      */
     public function __construct(private array|Arrayable $data, private int $precision = 8)
     {
     }
 
     /**
-     * @param float|int|Numerable $x
-     * @return float|int|Numerable
      * @throws Exception
      */
     public function y(float|int|Numerable $x): float|int|Numerable
@@ -39,7 +37,6 @@ final class EqPolynomial implements Equation
     }
 
     /**
-     * @return array
      * @throws Exception
      */
     public function asArray(): array

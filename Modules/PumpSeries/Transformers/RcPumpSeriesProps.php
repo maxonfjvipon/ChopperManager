@@ -14,23 +14,24 @@ final class RcPumpSeriesProps extends JsonResource
     /**
      * Ctor.
      */
-    #[Pure] public function __construct()
-    {
-        parent::__construct(null);
-    }
+    #[Pure]
+ public function __construct()
+ {
+     parent::__construct(null);
+ }
 
     /**
      * Transform the resource into an array.
      *
      * @param Request
-     * @return array
+     *
      * @throws Exception
      */
     public function toArray($request): array
     {
         return [
             'brands' => PumpBrand::allForFiltering(),
-            'currencies' => Currency::asArrayForSelect()
+            'currencies' => Currency::asArrayForSelect(),
         ];
     }
 }

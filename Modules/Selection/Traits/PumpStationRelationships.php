@@ -14,41 +14,27 @@ trait PumpStationRelationships
     use HasJockeyPump;
 
     // RELATIONSHIPS
-    /**
-     * @return BelongsTo
-     */
+
     public function input_collector(): BelongsTo
     {
         return $this->belongsTo(Collector::class, 'input_collector_id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function output_collector(): BelongsTo
     {
         return $this->belongsTo(Collector::class, 'output_collector_id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function control_system(): BelongsTo
     {
         return $this->belongsTo(ControlSystem::class, 'control_system_id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function pump(): BelongsTo
     {
         return $this->belongsTo(Pump::class, 'pump_id');
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function selection(): BelongsTo
     {
         return $this->belongsTo(Selection::class, 'selection_id');

@@ -5,15 +5,13 @@ namespace Modules\Auth\Http\Requests;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Contracts\ChangeUser\WithUserProps;
 use Illuminate\Validation\Rules;
+use Modules\User\Contracts\ChangeUser\WithUserProps;
 
 final class RqRegister extends FormRequest implements WithUserProps
 {
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
     public function rules(): array
     {
@@ -44,14 +42,12 @@ final class RqRegister extends FormRequest implements WithUserProps
             'email' => $this->email,
             'password' => Hash::make($this->password),
             'phone' => $this->phone,
-            'area_id' => $this->area_id
+            'area_id' => $this->area_id,
         ];
     }
 
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {

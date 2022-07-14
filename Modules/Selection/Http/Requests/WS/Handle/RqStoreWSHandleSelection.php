@@ -13,21 +13,20 @@ use Modules\Selection\Http\Requests\RqStoreSelection;
 use Modules\Selection\Rules\DnMaterialRegex;
 
 /**
- * @property float $flow
- * @property float $head
- * @property int $main_pumps_count
- * @property int $reserve_pumps_count
+ * @property float      $flow
+ * @property float      $head
+ * @property int        $main_pumps_count
+ * @property int        $reserve_pumps_count
  * @property array<int> $control_system_type_ids
- * @property int $pump_brand_id
- * @property int $pump_series_id
- * @property string $collector
- * @property string $comment
- * @property int $pump_id
+ * @property int        $pump_brand_id
+ * @property int        $pump_series_id
+ * @property string     $collector
+ * @property string     $comment
+ * @property int        $pump_id
  */
 class RqStoreWSHandleSelection extends RqStoreSelection
 {
     /**
-     * @return array
      * @throws Exception
      */
     public function rules(): array
@@ -44,17 +43,14 @@ class RqStoreWSHandleSelection extends RqStoreSelection
         );
     }
 
-    /**
-     * @return array
-     */
     public function selectionProps(): array
     {
         return array_merge(
             parent::selectionProps(),
             [
-                'main_pumps_counts' => (string)$this->main_pumps_count,
-                'pump_brand_ids' => (string)$this->pump_brand_id,
-                'pump_series_ids' => (string)$this->pump_series_id,
+                'main_pumps_counts' => (string) $this->main_pumps_count,
+                'pump_brand_ids' => (string) $this->pump_brand_id,
+                'pump_series_ids' => (string) $this->pump_series_id,
                 'pump_id' => $this->pump_id,
                 'collectors' => $this->collector,
                 'type' => SelectionType::Handle,

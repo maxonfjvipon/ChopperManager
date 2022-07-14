@@ -7,8 +7,8 @@
 */
 
 use Illuminate\Support\Facades\Route;
-use Modules\Pump\Http\Endpoints\EpLoadPumps;
 use Modules\Pump\Http\Endpoints\EpImportPumps;
+use Modules\Pump\Http\Endpoints\EpLoadPumps;
 use Modules\Pump\Http\Endpoints\EpPumps;
 use Modules\Pump\Http\Endpoints\EpShowPump;
 

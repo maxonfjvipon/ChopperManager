@@ -8292,9 +8292,361 @@ __webpack_require__.r(__webpack_exports__);
 var BackToDealersLink = function BackToDealersLink() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: route('dealers.index'),
-    children: "<<Назад к дилера"
+    children: "<<Назад к дилерам"
   });
 };
+
+/***/ }),
+
+/***/ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Index.js":
+/*!***********************************************************************************!*\
+  !*** ./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Index.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Index)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View */ "./resources/js/src/Shared/Resource/Table/Actions/View.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer */ "./resources/js/src/Shared/Resource/Containers/IndexContainer.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var _resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/date.hook */ "./resources/js/src/Hooks/date.hook.js");
+/* harmony import */ var _resources_js_src_Shared_SearchInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/SearchInput */ "./resources/js/src/Shared/SearchInput.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
+/* harmony import */ var _resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/labels.hook */ "./resources/js/src/Hooks/labels.hook.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Index() {
+  // HOOKS
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
+      contractors = _usePage$props.contractors,
+      filter_data = _usePage$props.filter_data;
+
+  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_3__.usePermissions)(),
+      filteredBoolArray = _usePermissions.filteredBoolArray;
+
+  var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_7__.useDate)(),
+      compareDate = _useDate.compareDate;
+
+  var _useLabels = (0,_resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_10__.useLabels)(),
+      labels = _useLabels.labels; // STATE
+
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(contractors),
+      _useState2 = _slicedToArray(_useState, 2),
+      contractorsToShow = _useState2[0],
+      setContractorsToShow = _useState2[1]; // CONSTS
+
+
+  var searchId = 'contractor-search-input';
+  var columns = filteredBoolArray([{
+    title: labels.created_at,
+    dataIndex: 'created_at',
+    sorter: function sorter(a, b) {
+      return compareDate(a.created_at, b.created_at);
+    }
+  }, {
+    title: labels.name,
+    dataIndex: 'name',
+    render: function render(text) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        placement: "topLeft",
+        title: text,
+        children: text
+      });
+    }
+  }, {
+    title: labels.area,
+    dataIndex: 'area',
+    width: 180,
+    render: function render(text) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(antd__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        placement: "topLeft",
+        title: text,
+        children: text
+      });
+    },
+    filters: filter_data.areas,
+    onFilter: function onFilter(area, record) {
+      return record.area === area;
+    }
+  }, {
+    title: labels.itn,
+    dataIndex: 'itn'
+  }, {
+    key: 'key',
+    width: '1%',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_9__.TableActionsContainer, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_4__.View, {
+          clickHandler: showContractorHandler(record.id)
+        })
+      });
+    }
+  }]);
+
+  var showContractorHandler = function showContractorHandler(id) {
+    return function () {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('contractors.show', id));
+    };
+  };
+
+  var searchContractorClickHandler = function searchContractorClickHandler() {
+    var value = document.getElementById(searchId).value.toLowerCase();
+
+    if (value === "") {
+      setContractorsToShow(dealers);
+    } else {
+      setContractorsToShow(contractors.filter(function (contractor) {
+        return contractor.name.toLowerCase().includes(value) || contractor.itn.includes(value);
+      }));
+    }
+  }; // EFFECTS
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setContractorsToShow(contractors);
+  }, [contractors]); // RENDER
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_resources_js_src_Shared_Resource_Containers_IndexContainer__WEBPACK_IMPORTED_MODULE_5__.IndexContainer, {
+    title: "Контрагенты",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_SearchInput__WEBPACK_IMPORTED_MODULE_8__.SearchInput, {
+      id: searchId,
+      placeholder: "\u041F\u043E\u0438\u0441\u043A \u043F\u043E \u043D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u044E \u0438 \u0418\u041D\u041D",
+      searchClickHandler: searchContractorClickHandler,
+      width: 450
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_6__.TTable, {
+      columns: columns,
+      dataSource: contractorsToShow,
+      doubleClickHandler: showContractorHandler
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Show.js":
+/*!**********************************************************************************!*\
+  !*** ./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Show.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Show)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/tooltip/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var _resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/permissions.hook */ "./resources/js/src/Hooks/permissions.hook.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/View */ "./resources/js/src/Shared/Resource/Table/Actions/View.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer */ "./resources/js/src/Shared/Resource/Containers/ResourceContainer.js");
+/* harmony import */ var _resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/ItemsForm */ "./resources/js/src/Shared/ItemsForm.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var _resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/date.hook */ "./resources/js/src/Hooks/date.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
+/* harmony import */ var _resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/labels.hook */ "./resources/js/src/Hooks/labels.hook.js");
+/* harmony import */ var _Components_BackToDealersLink__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/BackToDealersLink */ "./Modules/ProjectParticipant/Resources/assets/js/Components/BackToDealersLink.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Show() {
+  // HOOKS
+  var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props,
+      contractor = _usePage$props.contractor,
+      auth = _usePage$props.auth,
+      filter_data = _usePage$props.filter_data;
+
+  var _usePermissions = (0,_resources_js_src_Hooks_permissions_hook__WEBPACK_IMPORTED_MODULE_3__.usePermissions)(),
+      filteredBoolArray = _usePermissions.filteredBoolArray;
+
+  var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_9__.useDate)(),
+      compareDate = _useDate.compareDate;
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_10__.useStyles)(),
+      reducedBottomAntFormItemClassName = _useStyles.reducedBottomAntFormItemClassName;
+
+  var _useLabels = (0,_resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_11__.useLabels)(),
+      labels = _useLabels.labels; // CONSTS
+
+
+  var formName = 'contractor-form';
+  var items = [{
+    values: {
+      name: 'name',
+      label: labels.name,
+      initialValue: contractor.name,
+      className: reducedBottomAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'area',
+      label: labels.area,
+      initialValue: contractor.area,
+      className: reducedBottomAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }, {
+    values: {
+      name: 'itn',
+      label: labels.itn,
+      initialValue: contractor.itn,
+      className: reducedBottomAntFormItemClassName
+    },
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      readOnly: true
+    })
+  }];
+  var columns = filteredBoolArray([{
+    title: "Дата создания",
+    dataIndex: 'created_at',
+    sorter: function sorter(a, b) {
+      return compareDate(a.created_at, b.created_at);
+    }
+  }, {
+    title: "Дата обновления",
+    dataIndex: 'updated_at',
+    sorter: function sorter(a, b) {
+      return compareDate(a.updated_at, b.updated_at);
+    },
+    defaultSortOrder: 'ascend'
+  }, {
+    title: "Наименование",
+    dataIndex: 'name',
+    render: function render(text) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        placement: "topLeft",
+        title: text,
+        children: text
+      });
+    }
+  }, {
+    title: 'Область',
+    dataIndex: 'area',
+    width: 180,
+    render: function render(text) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        placement: "topLeft",
+        title: text,
+        children: text
+      });
+    },
+    filters: filter_data.areas,
+    onFilter: function onFilter(area, record) {
+      return record.area === area;
+    }
+  }, {
+    title: 'Статус',
+    dataIndex: 'status',
+    width: 120,
+    filters: filter_data.statuses,
+    onFilter: function onFilter(status, record) {
+      return record.status === status;
+    }
+  }, {
+    title: 'Заказчик',
+    dataIndex: 'customer'
+  }, {
+    title: 'Монтажник',
+    dataIndex: 'installer'
+  }, {
+    title: 'Проектировщик',
+    dataIndex: 'designer'
+  }, auth.is_admin && {
+    title: 'Пользователь',
+    dataIndex: 'user'
+  }, {
+    key: 'key',
+    width: '1%',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_4__.TableActionsContainer, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_View__WEBPACK_IMPORTED_MODULE_5__.View, {
+          clickHandler: showProjectHandler(record.id)
+        })
+      });
+    }
+  }]); // HANDLERS
+
+  var showProjectHandler = function showProjectHandler(id) {
+    return function () {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('projects.show', id));
+    };
+  }; // RENDER
+
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_6__.ResourceContainer, {
+      title: contractor.name,
+      extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_Components_BackToDealersLink__WEBPACK_IMPORTED_MODULE_12__.BackToDealersLink, {}),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_7__.ItemsForm, {
+        name: formName,
+        layout: "vertical",
+        items: items
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_8__.TTable, {
+        columns: columns,
+        dataSource: contractor === null || contractor === void 0 ? void 0 : contractor.projects,
+        doubleClickHandler: showProjectHandler,
+        clickRecord: true
+      })]
+    })
+  });
+}
 
 /***/ }),
 
@@ -8685,7 +9037,7 @@ function Show() {
   var _useLabels = (0,_resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_12__.useLabels)(),
       labels = _useLabels.labels;
 
-  console.log(dealer); // CONSTS
+  console.log(filter_data); // CONSTS
 
   var formName = 'dealer-form';
   var items = [{
@@ -8830,13 +9182,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Dealers_Index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dealers/Index */ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Dealers/Index.js");
 /* harmony import */ var _Pages_Dealers_CreateOrEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/Dealers/CreateOrEdit */ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Dealers/CreateOrEdit.js");
 /* harmony import */ var _Pages_Dealers_Show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Dealers/Show */ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Dealers/Show.js");
+/* harmony import */ var _Pages_Contractors_Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Contractors/Index */ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Index.js");
+/* harmony import */ var _Pages_Contractors_Show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Contractors/Show */ "./Modules/ProjectParticipant/Resources/assets/js/Pages/Contractors/Show.js");
+
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   'Dealers/Index': _Pages_Dealers_Index__WEBPACK_IMPORTED_MODULE_0__["default"],
   'Dealers/CreateOrEdit': _Pages_Dealers_CreateOrEdit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  'Dealers/Show': _Pages_Dealers_Show__WEBPACK_IMPORTED_MODULE_2__["default"]
+  'Dealers/Show': _Pages_Dealers_Show__WEBPACK_IMPORTED_MODULE_2__["default"],
+  'Contractors/Index': _Pages_Contractors_Index__WEBPACK_IMPORTED_MODULE_3__["default"],
+  'Contractors/Show': _Pages_Contractors_Show__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),

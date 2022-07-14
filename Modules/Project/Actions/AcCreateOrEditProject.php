@@ -11,8 +11,8 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Project\Entities\Project;
 use Modules\Project\Entities\ProjectStatus;
 use Modules\Project\Transformers\RcProjectToEdit;
-use Modules\User\Entities\Area;
 use Modules\ProjectParticipant\Entities\Dealer;
+use Modules\User\Entities\Area;
 
 /**
  * Edit or create project action.
@@ -21,7 +21,7 @@ final class AcCreateOrEditProject extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param Project|null $project
+     *
      * @throws Exception
      */
     public function __construct(?Project $project = null)
@@ -33,23 +33,17 @@ final class AcCreateOrEditProject extends ArrEnvelope
                     new ArrMerged(
                         [
                             'areas' => Area::allOrCached(),
-                            'statuses' => ProjectStatus::asArrayForSelect()
+                            'statuses' => ProjectStatus::asArrayForSelect(),
                         ],
                         new ArrIf(
                             Auth::user()->isAdmin(),
-                            fn() => [
-                                'dealers' => Dealer::allOrCached()
-                                    ->map(fn(Dealer $user) => [
-                                        'id' => $user->id,
-                                        'name' => $user->name
-                                    ])
-                            ]
+                            fn () => ['dealers' => Dealer::allOrCached()->only(['id', 'name'])]
                         ),
                     )
                 ),
                 new ArrIf(
-                    !!$project,
-                    fn() => ['project' => new RcProjectToEdit($project)]
+                    (bool) $project,
+                    fn () => ['project' => new RcProjectToEdit($project)]
                 )
             )
         );

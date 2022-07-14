@@ -13,13 +13,13 @@ return [
                 'created_at' => 'Created at',
                 'user_organization_name' => 'Client organization name',
                 'user_full_name' => 'Client full name',
-                'user_business' => "Client business",
+                'user_business' => 'Client business',
                 'name' => 'Name',
                 'selections_count' => 'Selections count',
                 'retail_price' => 'Retail price',
                 'status' => 'Status',
                 'delivery_status' => 'Delivery status',
-                'comment' => 'Comment'
+                'comment' => 'Comment',
             ],
             'filters' => [
                 'search' => 'Project or client organization name',
@@ -28,8 +28,8 @@ return [
                 'condition' => 'Condition',
                 'total_selections_price' => 'Total selections price',
                 'apply' => 'Apply',
-                'reset' => 'Reset'
-            ]
+                'reset' => 'Reset',
+            ],
         ],
         'users' => [
             'title' => 'By users',
@@ -38,12 +38,12 @@ return [
                 'last_login_at' => 'Last logged in at',
                 'organization_name' => 'Organization name',
                 'full_name' => 'Full name',
-                'business' => "Main business",
+                'business' => 'Main business',
                 'country' => 'Country',
                 'city' => 'City',
                 'projects_count' => 'Amount of projects',
                 'total_projects_price' => 'Total projects price',
-                'avg_projects_price' => 'Average projects price'
+                'avg_projects_price' => 'Average projects price',
             ],
             'filters' => [
                 'search' => 'Full name or organization name',
@@ -52,17 +52,16 @@ return [
                 'condition' => 'Condition',
                 'total_projects_price' => 'Total projects price',
                 'apply' => 'Apply',
-                'reset' => 'Reset'
-
-            ]
-        ]
+                'reset' => 'Reset',
+            ],
+        ],
     ],
     'login' => [
         'welcome' => 'Welcome!',
         'email' => 'E-mail',
         'password' => 'Password',
         'login' => 'Login',
-        'not_registered' => 'Not registered yet?'
+        'not_registered' => 'Not registered yet?',
     ],
     'register' => [
         'please_register' => 'Please register',
@@ -80,20 +79,20 @@ return [
         'password' => 'Password',
         'password_confirmation' => 'Confirm your password',
         'register' => 'Register',
-        'already_registered' => 'Already registered?'
+        'already_registered' => 'Already registered?',
     ],
     'email_verification' => [
         'thanks' => 'Thank you for registering',
         'send_again' => 'Send email again',
         'text1' => 'Before you get started, could you please confirm your email address, by clicking on the link that we just sent you by email?',
         'text2' => 'If you have not received an email, we will be happy to send you another one. Also, just in case, check the "Spam" folder',
-        'logout' => 'Logout'
+        'logout' => 'Logout',
     ],
     'dashboard' => [
         'title' => 'Dashboard',
         'select' => 'Selection of pumping stations',
         'marketplace' => 'Marketplace',
-        'pumps' => 'Pumps'
+        'pumps' => 'Pumps',
     ],
     'projects' => [
         'back' => 'Back to projects',
@@ -102,14 +101,14 @@ return [
             'clone' => [
                 'title' => 'Clone project',
                 'button' => 'Clone',
-                'save_as' => 'Save as'
+                'save_as' => 'Save as',
             ],
             'search' => [
-                'placeholder' => 'Search projects by name'
+                'placeholder' => 'Search projects by name',
             ],
             'restore' => [
                 'title' => 'Restore project?',
-                'button' => 'Restore'
+                'button' => 'Restore',
             ],
             'button' => 'Create project',
             'selection' => 'Hydraulic selection without saving',
@@ -117,13 +116,13 @@ return [
                 'created_at' => 'Created at',
                 'name' => 'Name',
                 'count' => 'Selections count',
-                'delete' => 'Are you sure you want to delete the project?'
+                'delete' => 'Are you sure you want to delete the project?',
             ],
         ],
         'show' => [
             'restore' => [
                 'title' => 'Restore selection?',
-                'button' => 'Restore'
+                'button' => 'Restore',
             ],
             'save_button' => 'Save changes',
             'selection' => 'Hydraulic selection',
@@ -138,15 +137,15 @@ return [
                 'total_price' => 'Total discounted price',
                 'power' => 'P₁, kW',
                 'total_power' => 'P total, kW',
-                'delete' => 'Are you sure you want to delete the selection?'
-            ]
+                'delete' => 'Are you sure you want to delete the selection?',
+            ],
         ],
         'create' => [
             'title' => 'Create project',
             'form' => [
                 'name' => 'Name',
             ],
-            'button' => 'Create'
+            'button' => 'Create',
         ],
         'edit' => [
             'title' => 'Update project',
@@ -169,32 +168,31 @@ return [
             ],
             'button' => 'Export',
             'm3h' => 'm³/h',
-            'm' => 'm'
+            'm' => 'm',
         ],
         'statistics' => [
             'title' => 'Projects statistics',
-
-        ]
+        ],
     ],
     'pump_brands' => [
         'index' => [
             'restore' => [
                 'title' => 'Restore brand?',
-                'button' => 'Restore'
+                'button' => 'Restore',
             ],
             'title' => 'Brands',
             'button' => 'Create brand',
             'table' => [
                 'name' => 'Name',
-                'delete' => 'Are you sure you want to delete the brand?'
-            ]
+                'delete' => 'Are you sure you want to delete the brand?',
+            ],
         ],
         'create' => [
             'title' => 'Create brand',
             'form' => [
                 'name' => 'Name',
             ],
-            'button' => 'Create'
+            'button' => 'Create',
         ],
         'edit' => [
             'title' => 'Update brand',
@@ -210,7 +208,7 @@ return [
         'index' => [
             'restore' => [
                 'title' => 'Restore series?',
-                'button' => 'Restore'
+                'button' => 'Restore',
             ],
             'upload_images' => [
                 'title' => 'Upload images',
@@ -231,7 +229,7 @@ return [
                 'applications' => 'Applications',
                 'types' => 'Types',
                 'is_discontinued' => 'Is active',
-                'delete' => 'Are you sure you want to delete the series?'
+                'delete' => 'Are you sure you want to delete the series?',
             ],
         ],
         'create' => [
@@ -268,7 +266,7 @@ return [
         'back' => 'Back to pumps',
         'search' => [
             'placeholder' => 'Search pumps by article nums and name',
-            'button' => 'Search'
+            'button' => 'Search',
         ],
         'tabs' => [
             'single' => 'Single pumps',
@@ -320,8 +318,8 @@ return [
             ],
             'files' => [
                 'title' => 'Files (max 300, .pdf)',
-                'files' => 'Files'
-            ]
+                'files' => 'Files',
+            ],
         ],
         'errors_title' => 'Import errors:',
         'hydraulic_perf' => 'Hydraulic performance',
@@ -334,7 +332,7 @@ return [
             'tab' => 'User info',
             'cards' => [
                 'user_info' => 'Update user info',
-                'password' => 'Change password'
+                'password' => 'Change password',
             ],
             'organization_name' => 'Name of the organization',
             'main_business' => 'Main business',
@@ -345,7 +343,7 @@ return [
             'postcode' => 'Postcode',
             'currency' => [
                 'label' => 'Currency',
-                'tooltip' => 'Currency affects on ...'
+                'tooltip' => 'Currency affects on ...',
             ],
             'first_name' => 'First name',
             'middle_name' => 'Middle name',
@@ -355,25 +353,25 @@ return [
             'new_password' => 'New password',
             'new_password_confirmation' => 'Confirm new password',
             'save_changes' => 'Save changes',
-            'change_password' => 'Change password'
+            'change_password' => 'Change password',
         ],
         'discounts' => [
             'tab' => "Producer's discounts",
             'name' => 'Name',
-            'discount' => 'Discount, %'
-        ]
+            'discount' => 'Discount, %',
+        ],
     ],
     'selections' => [
         'back' => [
             'to_selections_dashboard' => 'Back to selections dashboard',
-            'to_project' => 'Back to project'
+            'to_project' => 'Back to project',
         ],
         'dashboard' => [
             'title' => 'Hydraulic selections',
             'subtitle' => 'Choose selection type',
             'back' => [
                 'to_project' => 'Back to project',
-                'to_projects' => 'Back to projects'
+                'to_projects' => 'Back to projects',
             ],
             'preferences' => [
                 'pump' => [
@@ -384,8 +382,8 @@ return [
                 ],
                 'station' => [
                     'water' => 'Water supply pumping station selection',
-                    'fire' => 'Fire extinguishing pumping station selection'
-                ]
+                    'fire' => 'Fire extinguishing pumping station selection',
+                ],
             ],
             '404' => [
                 'title' => "Sorry, you don't have access to any of selection types",
@@ -409,17 +407,17 @@ return [
             'brands' => 'Brands',
             'types' => [
                 'label' => 'Types',
-                'tooltip' => 'The presence of all the selected types for the series is checked!'
+                'tooltip' => 'The presence of all the selected types for the series is checked!',
             ],
             'applications' => [
                 'label' => 'Applications',
-                'tooltip' => 'The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)'
+                'tooltip' => 'The presence of all the selected applications for the series is checked! (pumps are assigned only the applications recommended by the manufacturer)',
             ],
             'power_adjustments' => 'Power adjustments',
             'fluid_temp' => 'Fluid temperature, °C',
             'temp_tooltip' => [
                 'red' => "Red - the series isn't suitable for the selected temperature",
-                'orange' => "Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected"
+                'orange' => 'Orange - only a part of the pumps in the series is suitable for the selected temperature, and only they will be selected',
             ],
             'pressure' => 'Delivery head, m',
             'consumption' => 'Volume flow, m³/h',
@@ -432,14 +430,14 @@ return [
                 'label' => 'Range',
                 'custom' => [
                     'label' => 'Custom range',
-                    'value' => 'Custom'
-                ]
+                    'value' => 'Custom',
+                ],
             ],
             'additional_filters' => [
                 'checkbox' => 'Use additional filters',
                 'title' => 'Additional filters',
                 'apply' => 'Apply',
-                'button' => 'More filters'
+                'button' => 'More filters',
             ],
             'phase' => 'Mains connection',
             'condition' => 'Condition',
@@ -481,7 +479,7 @@ return [
                 'dn_output' => 'Pressure side DN',
                 'power' => 'P, kW',
                 'total_power' => 'P total, kW',
-                'ptp_length' => 'Port-to-port length, mm'
+                'ptp_length' => 'Port-to-port length, mm',
             ],
             'export' => [
                 'title' => 'Export selection',
@@ -502,7 +500,7 @@ return [
             'brands' => 'Brands',
             'types' => [
                 'label' => 'Types',
-                'tooltip' => 'The presence of all the selected types for the series is checked!'
+                'tooltip' => 'The presence of all the selected types for the series is checked!',
             ],
             'power_adjustments' => 'Power adjustments',
             'fluid_temp' => 'Fluid temperature, °C',
@@ -516,14 +514,14 @@ return [
                 'label' => 'Range',
                 'custom' => [
                     'label' => 'Custom range',
-                    'value' => 'Custom'
-                ]
+                    'value' => 'Custom',
+                ],
             ],
             'additional_filters' => [
                 'checkbox' => 'Use additional filters',
                 'title' => 'Additional filters',
                 'apply' => 'Apply',
-                'button' => 'More filters'
+                'button' => 'More filters',
             ],
             'phase' => 'Mains connection',
             'condition' => 'Condition',
@@ -564,7 +562,7 @@ return [
                 'dn_output' => 'Pressure side DN',
                 'power' => 'P, kW',
                 'total_power' => 'P total, kW',
-                'ptp_length' => 'Port-to-port length, mm'
+                'ptp_length' => 'Port-to-port length, mm',
             ],
             'export' => [
                 'title' => 'Export selection',
@@ -576,7 +574,7 @@ return [
                 ],
                 'button' => 'Export',
             ],
-        ]
+        ],
     ],
     'users' => [
         'title' => 'Users',
@@ -594,24 +592,24 @@ return [
                 'city' => 'City',
             ],
             'search' => [
-                'placeholder' => 'Search by full name and organization '
+                'placeholder' => 'Search by full name and organization ',
             ],
             'button' => 'New user',
             'restore' => [
                 'title' => 'Restore user?',
-                'button' => 'Restore'
+                'button' => 'Restore',
             ],
             'statistics' => [
                 'discounts' => [
-                    'tab' => "Producer's discounts"
+                    'tab' => "Producer's discounts",
                 ],
                 'analytics' => [
-                    'tab' => 'Analytics'
+                    'tab' => 'Analytics',
                 ],
                 'projects' => [
-                    'tab' => 'Projects'
-                ]
-            ]
+                    'tab' => 'Projects',
+                ],
+            ],
         ],
         'edit' => [
             'title' => 'Edit user',
@@ -655,6 +653,6 @@ return [
                 'is_active' => 'Is active',
                 'email_verified' => 'Email confirmed',
             ],
-        ]
+        ],
     ],
 ];

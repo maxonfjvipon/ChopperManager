@@ -8,19 +8,14 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 
 /**
- * Pumps for select from
- * @package Modules\Selection\Support
+ * Pumps for select from.
  */
 final class ArrPumpsForSelecting implements Arrayable
 {
-    /**
-     * @var Request $request
-     */
     private Request $request;
 
     /**
      * Ctor.
-     * @param RqMakeSelection $req
      */
     public function __construct(RqMakeSelection $req)
     {
@@ -28,7 +23,7 @@ final class ArrPumpsForSelecting implements Arrayable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asArray(): array
     {
@@ -42,7 +37,7 @@ final class ArrPumpsForSelecting implements Arrayable
                         'position',
                         [1, max($this->request->main_pumps_counts) + $this->request->reserve_pumps_count]
                     );
-                }
+                },
             ])
             ->get()
             ->all();

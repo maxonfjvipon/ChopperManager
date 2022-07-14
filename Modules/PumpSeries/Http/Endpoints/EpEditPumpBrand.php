@@ -16,7 +16,7 @@ final class EpEditPumpBrand extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
+     *
      * @throws Exception
      */
     public function __construct(Request $request)

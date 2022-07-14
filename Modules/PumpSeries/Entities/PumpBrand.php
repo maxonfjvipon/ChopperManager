@@ -13,24 +13,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Pump brand.
  *
- * @property int $id
- * @property string $name
- *
+ * @property int     $id
+ * @property string  $name
  * @property Country $country
+ *
  * @method static PumpBrand find(int|string $id)
  * @method static PumpBrand create(array $attributes)
  */
 class PumpBrand extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait;
+    use HasFactory;
+    use SoftDeletes;
+    use SoftCascadeTrait;
 
-    protected $table = "pump_brands";
+    protected $table = 'pump_brands';
+
     public $timestamps = false;
+
     protected $guarded = [];
+
     protected array $softCascade = ['series'];
 
     protected $casts = [
-        'country' => Country::class
+        'country' => Country::class,
     ];
 
     public static function allForFiltering(): Collection

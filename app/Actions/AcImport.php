@@ -7,12 +7,12 @@ use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Validation\ValidationException;
+use Rap2hpoutre\FastExcel\FastExcel;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Import action
+ * Import action.
  */
 abstract class AcImport implements Take
 {
@@ -20,6 +20,7 @@ abstract class AcImport implements Take
 
     /**
      * Ctor.
+     *
      * @param array $files
      * @param array $db
      */
@@ -27,10 +28,6 @@ abstract class AcImport implements Take
     {
     }
 
-    /**
-     * @param Request|null $request
-     * @return Responsable|Response
-     */
     public function act(Request $request = null): Responsable|Response
     {
         ini_set('max_execution_time', self::MAX_EXECUTION_TIME);
@@ -52,66 +49,45 @@ abstract class AcImport implements Take
                             }, $exception->validator->errors()->messages());
                         }
                         if (!empty($errorBag)) {
-                            throw new Exception("Error bag is not empty"); // todo
+                            throw new Exception('Error bag is not empty'); // todo
                         }
+
                         return $this->entityToImport($entity);
                     });
             }
             foreach ($files as $sheet) {
                 $this->import($sheet->toArray());
             }
+
             return Redirect::back()->with('success', 'Загрузка прошла успешно');
         } catch (Exception $exception) {
             dd($exception, $errorBag);
+
             return Redirect::back()->with('errorBag', array_splice($errorBag, 0, 50));
         }
     }
 
-    /**
-     * @param array $sheet
-     * @return void
-     */
     abstract protected function import(array $sheet): void;
 
-    /**
-     * @param array $entity
-     * @param array $message
-     * @return array
-     */
     protected function errorBagEntity(array $entity, array $message): array
     {
         return [
             'head' => [
                 'key' => 'Артикул',
-                'value' => $entity[0] !== "" ? $entity[0] : "Unknown",
+                'value' => '' !== $entity[0] ? $entity[0] : 'Unknown',
             ],
-            'message' => $message[0]
+            'message' => $message[0],
         ];
     }
 
-    /**
-     * @param array $entity
-     * @return array
-     */
     abstract protected function rules(array $entity): array;
 
-    /**
-     * @return array
-     */
     protected function messages(): array
     {
         return [];
     }
 
-    /**
-     * @return array
-     */
     abstract protected function attributes(): array;
 
-    /**
-     * @param array $entity
-     * @return array
-     */
     abstract protected function entityToImport(array $entity): array;
-
 }

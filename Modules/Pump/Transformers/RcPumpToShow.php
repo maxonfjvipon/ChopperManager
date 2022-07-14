@@ -23,8 +23,8 @@ final class RcPumpToShow extends JsonResource
     {
         return ArrMerged::new(
             new ArrIf(
-                !!$request->need_info,
-                fn() => [
+                (bool) $request->need_info,
+                fn () => [
                     'id' => $this->resource->id,
                     'article' => $this->resource->article,
                     'is_discontinued' => $this->resource->is_discontinued_with_series,
@@ -48,8 +48,8 @@ final class RcPumpToShow extends JsonResource
                 ],
             ),
             new ArrIf(
-                !!$request->need_curves,
-                fn() => new ArrObject(
+                (bool) $request->need_curves,
+                fn () => new ArrObject(
                     'curves',
                     new TxtSinglePumpMainCurvesView($this->resource)
                 )

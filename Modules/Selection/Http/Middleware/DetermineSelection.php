@@ -11,10 +11,6 @@ final class DetermineSelection
 {
     /**
      * Handle an incoming request.
-     *
-     * @param Request $request
-     * @param Closure $next
-     * @return mixed
      */
     public function handle(Request $request, Closure $next): mixed
     {
@@ -23,6 +19,7 @@ final class DetermineSelection
             || !in_array($request->selection_type, SelectionType::getKeys()),
             404
         );
+
         return $next($request);
     }
 }

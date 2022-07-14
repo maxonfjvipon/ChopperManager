@@ -6,21 +6,18 @@ use AmrShawky\LaravelCurrency\Facade\Currency as RateCurrency;
 use App\Interfaces\Rates;
 use App\Models\Enums\Currency;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\Pure;
 
 /**
- * Rates from Forex
+ * Rates from Forex.
  */
 final class ForexRates implements Rates
 {
-    /**
-     * @var Currency $base
-     */
     private Currency $base;
 
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -28,17 +25,18 @@ final class ForexRates implements Rates
         $this->base = Currency::fromValue(Currency::RUB);
     }
 
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    #[Pure] public function hasTheSameBaseAs(Currency|int $currency): bool
-    {
-        return $this->base->is($currency);
-    }
+    #[Pure]
+ public function hasTheSameBaseAs(Currency|int $currency): bool
+ {
+     return $this->base->is($currency);
+ }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function rateFor(string $code): mixed
@@ -50,6 +48,7 @@ final class ForexRates implements Rates
             ->amount(1)
             ->round(5)
             ->get();
+
         return $rates[array_key_exists($code, $rates) ? $code : $this->base->key];
     }
 }

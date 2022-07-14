@@ -22,19 +22,20 @@ final class ArrCostStructure extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param RqMakeSelection $request
-     * @param Rates $rates
-     * @param array $components
-     * @param int $pumpsCount
+     * @param Rates           $rates
+     * @param array           $components
+     * @param int             $pumpsCount
+     *
      * @throws Exception
      */
     public function __construct(
         private RqMakeSelection $request,
-        private Rates           $rates,
-        private array           $components,
-        private int             $pumpsCount,
-    )
-    {
+        private Rates $rates,
+        private array $components,
+        private int $pumpsCount,
+    ) {
         parent::__construct(
             new ArrMerged(
                 [
@@ -70,18 +71,18 @@ final class ArrCostStructure extends ArrEnvelope
                         )
                         ->sortBy('pumps_weight')
                         ->first()
-                        ?->priceByRates($this->rates)
+                        ?->priceByRates($this->rates),
                 ],
                 new ArrIf(
                     new Conjunction(
                         new KeyExists('jockey_pump', $this->components),
                         new KeyExists('jockey_chassis', $this->components),
                     ),
-                    fn() => new ArrIf(
-                        !!$this->components['jockey_pump'],
-                        fn() => [
+                    fn () => new ArrIf(
+                        (bool) $this->components['jockey_pump'],
+                        fn () => [
                             'jockey_pump' => $this->components['jockey_pump']->priceByRates($this->rates),
-                            'jockey_chassis' => $this->components['jockey_chassis']?->priceByRates($this->rates)
+                            'jockey_chassis' => $this->components['jockey_chassis']?->priceByRates($this->rates),
                         ]
                     )
                 )

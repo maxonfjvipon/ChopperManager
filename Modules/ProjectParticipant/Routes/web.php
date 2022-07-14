@@ -6,16 +6,18 @@
 |--------------------------------------------------------------------------
 */
 
-
+use Modules\ProjectParticipant\Http\Endpoints\EpContractors;
 use Modules\ProjectParticipant\Http\Endpoints\EpCreateOrEditDealer;
 use Modules\ProjectParticipant\Http\Endpoints\EpDealers;
+use Modules\ProjectParticipant\Http\Endpoints\EpShowContractor;
 use Modules\ProjectParticipant\Http\Endpoints\EpShowDealer;
 use Modules\ProjectParticipant\Http\Endpoints\EpStoreDealer;
 use Modules\ProjectParticipant\Http\Endpoints\EpUpdateDealer;
 
 Route::middleware(['admin'])->group(function () {
-
     Route::prefix('contractors')->as('contractors.')->group(function () {
+        Route::get('/')->name('index')->uses(EpContractors::class);
+        Route::get('{contractor}/show')->name('show')->uses(EpShowContractor::class);
     });
 
     Route::prefix('dealers')->as('dealers.')->group(function () {
@@ -31,5 +33,3 @@ Route::middleware(['admin'])->group(function () {
         });
     });
 });
-
-

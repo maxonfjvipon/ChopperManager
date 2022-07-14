@@ -13,7 +13,6 @@ final class EpImportCollectors extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqUploadFiles $request
      */
     public function __construct(RqUploadFiles $request)
     {

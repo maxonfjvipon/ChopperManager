@@ -4,7 +4,6 @@ namespace Modules\Selection\Rules;
 
 use App\Rules\ArrayExistsInArray;
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Validation\Rules\In;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Pump\Entities\DN;
 
@@ -17,22 +16,20 @@ final class DnsMaterialsArray implements Rule
      */
     public function __construct()
     {
-
     }
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
+     * @param string $attribute
+     * @param mixed  $value
      */
     public function passes($attribute, $value): bool
     {
         return (new ArrayExistsInArray(
             array_merge(...array_map(
-                fn($dn) => array_map(
-                    fn($material) => "$dn $material",
+                fn ($dn) => array_map(
+                    fn ($material) => "$dn $material",
                     CollectorMaterial::getDescriptions()
                 ),
                 DN::values()
@@ -42,8 +39,6 @@ final class DnsMaterialsArray implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {

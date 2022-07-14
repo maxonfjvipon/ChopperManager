@@ -7,7 +7,7 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Modules\Pump\Entities\PumpCoefficients;
 
 /**
- * Equation from {@see PumpCoefficients}
+ * Equation from {@see PumpCoefficients}.
  */
 final class EqFromPumpCoefficients implements Equation
 {
@@ -16,10 +16,13 @@ final class EqFromPumpCoefficients implements Equation
     /**
      * @param PumpCoefficients $coefficients
      */
-    public function __construct(private PumpCoefficients $coefficients) {}
+    public function __construct(private PumpCoefficients $coefficients)
+    {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function y(float|int|Numerable $x): float|int|Numerable

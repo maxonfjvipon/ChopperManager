@@ -15,13 +15,12 @@ final class EpStorePumpBrand extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqStorePumpBrand $request
      */
     public function __construct(RqStorePumpBrand $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => PumpBrand::create($request->validated()),
+                fn () => PumpBrand::create($request->validated()),
                 new TkRedirectToRoute('pump_series.index')
             )
         );

@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Enums\Currency;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Selection\Entities\MontageType;
 
 class CreateControlSystemsTable extends Migration
 {

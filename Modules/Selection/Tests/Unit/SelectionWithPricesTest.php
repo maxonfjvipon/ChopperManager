@@ -17,6 +17,7 @@ use Tests\TestCase;
 
 /**
  * @see Selection::withPrices()
+ *
  * @author Max Trunnikov
  */
 class SelectionWithPricesTest extends TestCase
@@ -25,9 +26,10 @@ class SelectionWithPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_single_pump_selection_with_prices()
+    public function testSinglePumpSelectionWithPrices()
     {
         $count = $this->faker->numberBetween(1, 8);
         $pump = Pump::factory()->create(['pumpable_type' => Pump::$SINGLE_PUMP]);
@@ -37,7 +39,7 @@ class SelectionWithPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $currency->id,
             'country_id' => $countryId,
-            'price' => $hundred = 100
+            'price' => $hundred = 100,
         ]);
         $selection = Selection::factory()->create([
             'pump_id' => $pump->id,
@@ -45,9 +47,9 @@ class SelectionWithPricesTest extends TestCase
             'project_id' => Project::fakeForUser(
                 $user = User::factory()->create([ // user with
                     'country_id' => $countryId,
-                    'currency_id' => $currency->id
+                    'currency_id' => $currency->id,
                 ])
-            )->id
+            )->id,
         ]);
         Discount::updateForUser([$pump->series->id], $user); // user has discount
         Discount::where('user_id', $user->id)->update(['value' => $twenty = 20]); // user has 20% discount
@@ -62,9 +64,10 @@ class SelectionWithPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_double_pump_selection_with_prices()
+    public function testDoublePumpSelectionWithPrices()
     {
         $pump = Pump::factory()->create(['pumpable_type' => Pump::$DOUBLE_PUMP]);
         $currency = Currency::allOrCached()->random();
@@ -73,16 +76,16 @@ class SelectionWithPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $currency->id,
             'country_id' => $countryId,
-            'price' => $hundred = 100
+            'price' => $hundred = 100,
         ]);
         $selection = Selection::factory()->create([
             'pump_id' => $pump->id,
             'project_id' => Project::fakeForUser(
                 $user = User::factory()->create([ // user with
                     'country_id' => $countryId,
-                    'currency_id' => $currency->id
+                    'currency_id' => $currency->id,
                 ])
-            )->id
+            )->id,
         ]);
         Discount::updateForUser([$pump->series->id], $user); // user has discount
         Discount::where('user_id', $user->id)->update(['value' => $twenty = 20]); // user has 20% discount

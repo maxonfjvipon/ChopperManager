@@ -8,13 +8,13 @@ use Maxonfjvipon\Elegant_Elephant\Text;
 use Modules\Project\Entities\Project;
 
 /**
- * Export project view as {@Text}
- * @package Modules\Project\Support
+ * Export project view as {@Text}.
  */
 final class TxtExportProjectView implements Text
 {
     /**
      * Ctor.
+     *
      * @param Project $project
      * @param Request $request
      */
@@ -23,13 +23,13 @@ final class TxtExportProjectView implements Text
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function asString(): string
     {
         return (new TxtView('project::project_export', [
             'project' => $this->project->readyForExport($this->request->selection_ids),
-            'request' => $this->request
+            'request' => $this->request,
         ]))->asString();
     }
 }

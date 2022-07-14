@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Pump\Database\factories;
 
 use Exception;
@@ -19,7 +20,6 @@ class PumpSeriesFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
      * @throws Exception
      */
     public function definition(): array
@@ -29,11 +29,10 @@ class PumpSeriesFactory extends Factory
             'brand_id' => PumpBrand::factory(),
             'power_adjustment_id' => ElPowerAdjustment::allOrCached()->random()->id,
             'category_id' => PumpCategory::allOrCached()->random()->id,
-            'temps_min' => "0,20",
-            'temps_max' => "100,110",
+            'temps_min' => '0,20',
+            'temps_max' => '100,110',
             'image' => $this->faker->text,
-            'is_discontinued' => false
+            'is_discontinued' => false,
         ];
     }
 }
-

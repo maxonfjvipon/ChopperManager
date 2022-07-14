@@ -28,21 +28,21 @@ final class AcPumpSeries extends ArrEnvelope
                         'brands' => ($brands = PumpBrand::all())->pluck('name')->all(),
                         'countries' => $brands->unique('country')
                             ->pluck('country')
-                            ->map(fn(Country $country) => $country->description)
+                            ->map(fn (Country $country) => $country->description)
                             ->all(),
                     ])
                 ),
                 [
                     'brands' => array_map(
-                        fn(PumpBrand $brand) => [
+                        fn (PumpBrand $brand) => [
                             'id' => $brand->id,
                             'name' => $brand->name,
-                            'country' => $brand->country->description
+                            'country' => $brand->country->description,
                         ],
                         $brands->all(),
                     ),
                     'series' => array_map(
-                        fn(PumpSeries $series) => [
+                        fn (PumpSeries $series) => [
                             'id' => $series->id,
                             'brand' => $series->brand->name,
                             'name' => $series->name,
@@ -50,7 +50,7 @@ final class AcPumpSeries extends ArrEnvelope
                             'is_discontinued' => $series->is_discontinued,
                         ],
                         PumpSeries::with('brand')->get()->all(),
-                    )
+                    ),
                 ]
             )
         );

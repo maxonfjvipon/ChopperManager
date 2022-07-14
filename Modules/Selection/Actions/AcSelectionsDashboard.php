@@ -16,8 +16,6 @@ final class AcSelectionsDashboard extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param int $project_id
      */
     public function __construct(int $project_id)
     {
@@ -27,13 +25,13 @@ final class AcSelectionsDashboard extends ArrEnvelope
                 new ArrMapped(
                     [
                         'selection_types' => SelectionType::getInstances(),
-                        'station_types' => StationType::getInstances()
+                        'station_types' => StationType::getInstances(),
                     ],
-                    fn(array $enum) => array_values(
+                    fn (array $enum) => array_values(
                         array_map(
-                            fn(Enum $type) => [
+                            fn (Enum $type) => [
                                 'description' => $type->description,
-                                'key' => $type->key
+                                'key' => $type->key,
                             ],
                             $enum
                         )

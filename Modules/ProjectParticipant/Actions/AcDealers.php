@@ -17,6 +17,7 @@ final class AcDealers extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()

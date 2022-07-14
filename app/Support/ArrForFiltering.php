@@ -8,15 +8,16 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Tests\Unit\ArrForFilteringTest;
 
 /**
- * Array that represent data in format to filtering on front-end
+ * Array that represent data in format to filtering on front-end.
+ *
  * @see https://ant.design/components/table/#components-table-demo-head
- * @package App\Support
  * @see ArrForFilteringTest
  */
 final class ArrForFiltering extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param array|Arrayable $data
      */
     public function __construct(private array|Arrayable $data)
@@ -24,11 +25,11 @@ final class ArrForFiltering extends ArrEnvelope
         parent::__construct(
             new ArrMapped(
                 $this->data,
-                fn($item) => new ArrMapped(
+                fn ($item) => new ArrMapped(
                     $item,
-                    fn($value) => [
+                    fn ($value) => [
                         'text' => $value,
-                        'value' => $value
+                        'value' => $value,
                     ],
                 ),
                 true

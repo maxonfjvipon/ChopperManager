@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 class ExistsInIdsArray extends InArrayFromDB
 {
     protected string $separator;
+
     private array $invalidValues = [];
 
     /**
@@ -24,29 +25,27 @@ class ExistsInIdsArray extends InArrayFromDB
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
+     * @param string $attribute
+     * @param mixed  $value
      */
     public function passes($attribute, $value): bool
     {
         $passes = true;
-        foreach (explode($this->separator, (string)$value) as $_value) {
-            if (!in_array((int)trim($_value), $this->array)) {
+        foreach (explode($this->separator, (string) $value) as $_value) {
+            if (!in_array((int) trim($_value), $this->array)) {
                 $this->invalidValues[] = $_value;
                 $passes = false;
             }
         }
+
         return $passes;
     }
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
-        return __('validation.import.in_array_complex') . ": " . implode(", ", $this->invalidValues);
+        return __('validation.import.in_array_complex').': '.implode(', ', $this->invalidValues);
     }
 }

@@ -8,19 +8,16 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 use Maxonfjvipon\Elegant_Elephant\Numerable\MaxOf;
 
 /**
- * Max head of pump performance
+ * Max head of pump performance.
  */
 final class PpHMax implements Numerable
 {
-    /**
-     * @var float $head
-     */
     private float $head;
 
     /**
      * Ctor.
+     *
      * @param PumpPerformance $performance
-     * @param float|null $head
      */
     public function __construct(private PumpPerformance $performance, ?float $head = 0)
     {
@@ -28,7 +25,8 @@ final class PpHMax implements Numerable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function asNumber(): float|int
@@ -37,7 +35,7 @@ final class PpHMax implements Numerable
                 $this->head,
                 ...new ArrMapped(
                     $this->performance->asArrayAt(1),
-                    fn(array $point) => $point[1]
+                    fn (array $point) => $point[1]
                 )
             )->asNumber()) + $max * 0.1;
     }

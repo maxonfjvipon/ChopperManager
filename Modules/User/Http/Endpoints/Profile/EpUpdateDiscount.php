@@ -9,14 +9,10 @@ use Modules\User\Entities\Discount;
 use Modules\User\Http\Requests\RqUpdateDiscount;
 
 /**
- * Update discounts endpoint
+ * Update discounts endpoint.
  */
 final class EpUpdateDiscount extends Controller
 {
-    /**
-     * @param RqUpdateDiscount $request
-     * @return RedirectResponse
-     */
     public function __invoke(RqUpdateDiscount $request): RedirectResponse
     {
         $discount = Discount::where('user_id', $request->user_id)
@@ -26,12 +22,13 @@ final class EpUpdateDiscount extends Controller
         $discount->update($request->validated());
 
         // update series discounts as producer discount
-        if ($discount->discountable_type === 'pump_brand') {
+        if ('pump_brand' === $discount->discountable_type) {
             Discount::where('user_id', $request->user_id)
                 ->whereIn('discountable_id', $discount->discountable->series()->pluck('id')->all())
                 ->where('discountable_type', 'pump_series')
                 ->update(['value' => $request->value]);
         }
+
         return Redirect::back();
     }
 }

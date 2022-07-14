@@ -22,7 +22,6 @@ class PumpFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
      * @throws Exception
      */
     public function definition(): array
@@ -50,8 +49,7 @@ class PumpFactory extends Factory
             'HE_performance' => '0.8 0.341 0.8 0.341 1 0.385 1.2 0.419 1.4 0.442 1.6 0.454 1.8 0.455 2 0.443 2.2 0.416 2.4 0.373',
             'ShP_performance' => '0.8 0.0781 1 0.084 1.2 0.0897 1.4 0.0947 1.6 0.0988 1.8 0.102 2 0.104 2.2 0.105 2.4 0.104',
             'NPSH_performance' => '0.8 0.613 1 0.62 1.2 0.682 1.4 0.817 1.6 1.07 1.8 1.49 2 2.14 2.2 3.11 2.4 4.45',
-            'is_discontinued' => false
+            'is_discontinued' => false,
         ];
     }
 }
-

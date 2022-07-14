@@ -2,7 +2,6 @@
 
 namespace App\Takes;
 
-use App\Interfaces\Take;
 use App\Interfaces\TakeRedirect;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\RedirectResponse;
@@ -12,24 +11,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Redirect endpoint.
- * @package App\Takes
+ *
  * @see TkRedirectedTest
  */
 final class TkRedirectToRoute implements TakeRedirect
 {
-    /**
-     * @var string $route
-     */
     private string $route;
 
     /**
-     * @var array $params;
+     * @var array;
      */
     private array $params;
 
     /**
      * Ctor.
-     * @param string $route
+     *
      * @param mixed ...$params
      */
     public function __construct(string $route, ...$params)
@@ -39,18 +35,15 @@ final class TkRedirectToRoute implements TakeRedirect
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
         return $this->redirect();
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function redirect(): RedirectResponse
     {
-         return Redirect::route($this->route, ...$this->params);
+        return Redirect::route($this->route, ...$this->params);
     }
 }

@@ -14,9 +14,21 @@ use Rap2hpoutre\FastExcel\FastExcel;
 
 abstract class ImportAction
 {
-    protected array $db, $rules, $attributes, $messages, $files;
+    protected array $db;
+
+    protected array $rules;
+
+    protected array $attributes;
+
+    protected array $messages;
+
+    protected array $files;
+
     private int $MAX_EXECUTION_TIME = 180;
-    protected string $redirectRouteName, $flashMessageSuccess;
+
+    protected string $redirectRouteName;
+
+    protected string $flashMessageSuccess;
 
     public function __construct($db, $rules, $attributes, $messages, $files, $redirectRouteName, $flashMessageSuccess)
     {
@@ -29,9 +41,9 @@ abstract class ImportAction
         $this->flashMessageSuccess = $flashMessageSuccess;
     }
 
-    protected function idsArrayFromString($string, $separator = ","): array
+    protected function idsArrayFromString($string, $separator = ','): array
     {
-        return array_map(fn($id) => trim($id), explode($separator, $string));
+        return array_map(fn ($id) => trim($id), explode($separator, $string));
     }
 
     public function execute(): RedirectResponse
@@ -67,10 +79,12 @@ abstract class ImportAction
                     $this->import($sheet);
                 }
             }
+
             return Redirect::back()->with('success', 'Import was successful');
-        } catch (IOException | UnsupportedTypeException | ReaderNotOpenedException | Exception $exception) {
+        } catch (IOException|UnsupportedTypeException|ReaderNotOpenedException|Exception $exception) {
             Log::error($exception->getTraceAsString());
             Log::error($exception->getMessage());
+
             return Redirect::route($this->redirectRouteName)
                 ->withErrors(__('validation.import.exception', ['attribute' => $this->flashMessageSuccess]));
         }

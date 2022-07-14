@@ -2,9 +2,8 @@
 
 namespace Modules\Auth\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -48,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')->group(function() {
+        Route::middleware('web')->group(function () {
             Route::namespace($this->namespace)
                 ->group(module_path('Auth', '/Routes/web.php'));
         });

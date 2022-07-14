@@ -11,23 +11,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Pump\Entities\ConnectionType;
-use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\Pump;
-use Modules\Selection\Http\Requests\RqMakeSelection;
 
 /**
  * Collector.
- * @property int $dn_common
- * @property int $dn_pipes
  *
+ * @property int               $dn_common
+ * @property int               $dn_pipes
  * @property CollectorMaterial $material
  */
 final class Collector extends Model
 {
-    use HasFactory, SoftDeletes, Cached;
+    use HasFactory;
+    use SoftDeletes;
+    use Cached;
     use HasPriceByRates;
 
     protected $guarded = [];
+
     public $timestamps = false;
 
     protected $casts = [
@@ -35,24 +36,15 @@ final class Collector extends Model
         'currency' => Currency::class,
         'connection_type' => ConnectionType::class,
         'material' => CollectorMaterial::class,
-        'price_updated_at' => 'datetime:d.m.Y'
+        'price_updated_at' => 'datetime:d.m.Y',
     ];
 
-    /**
-     * @return string
-     */
     protected static function getCacheKey(): string
     {
-        return "collectors";
+        return 'collectors';
     }
 
     /**
-     * @param string $stationType
-     * @param Pump $pump
-     * @param int $pumpsCount
-     * @param array $dnMaterial
-     * @param int $minDn
-     * @return Collection|array
      * @throws Exception
      */
     public static function forSelection(
@@ -61,8 +53,7 @@ final class Collector extends Model
         int $pumpsCount,
         array $dnMaterial,
         int $minDn,
-    ): Collection|array
-    {
+    ): Collection|array {
         return self::allOrCached()
             ->where('dn_common', max($minDn, $dnMaterial['dn']))
             ->whereIn('dn_pipes', [$pump->dn_suction, $pump->dn_pressure])

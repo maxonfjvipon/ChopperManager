@@ -30,7 +30,6 @@ final class AcMakeSelection extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param RqMakeSelection $request
      * @throws Exception
      */
     public function __construct(RqMakeSelection $request)
@@ -40,6 +39,7 @@ final class AcMakeSelection extends ArrEnvelope
                 function () use ($request) {
                     $controlSystems = ControlSystem::allOrCached()->load('type');
                     $rates = new StickyRates(new RealRates());
+
                     return new ArrTernary(
                         new IsEmpty(
                             $selectedPumps = new ArrSticky(
@@ -74,13 +74,13 @@ final class AcMakeSelection extends ArrEnvelope
                             )
                         ),
                         ['info' => __('flash.selections.pumps_not_found')],
-                        fn() => new ArrMerged(
+                        fn () => new ArrMerged(
                             ['working_point' => [
                                 'x' => $request->flow,
-                                'y' => $request->head
+                                'y' => $request->head,
                             ]],
                             new ArrObject(
-                                "selected_pumps",
+                                'selected_pumps',
                                 $selectedPumps
                             )
                         )

@@ -9,25 +9,25 @@ use Inertia\Testing\AssertableInertia;
 use Modules\Project\Entities\Project;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
-use Modules\PumpSeries\Entities\ElPowerAdjustment;
 use Modules\Pump\Entities\MainsConnection;
 use Modules\Pump\Entities\Pump;
+use Modules\Pump\Entities\PumpsPriceList;
+use Modules\Pump\Http\Endpoints\EpAddPumpToProjects;
+use Modules\Pump\Http\Endpoints\EpImportPriceLists;
+use Modules\Pump\Http\Endpoints\EpImportPumps;
+use Modules\Pump\Http\Endpoints\EpLoadPumps;
+use Modules\Pump\Http\Endpoints\EpPumps;
+use Modules\Pump\Http\Endpoints\EpShowPump;
+use Modules\Pump\Transformers\RcDoubleRcPump;
+use Modules\Pump\Transformers\RcSinglePump;
+use Modules\PumpSeries\Entities\ElPowerAdjustment;
 use Modules\PumpSeries\Entities\PumpApplication;
 use Modules\PumpSeries\Entities\PumpBrand;
 use Modules\PumpSeries\Entities\PumpCategory;
 use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\PumpSeries\Entities\PumpSeriesAndApplication;
 use Modules\PumpSeries\Entities\PumpSeriesAndType;
-use Modules\Pump\Entities\PumpsPriceList;
 use Modules\PumpSeries\Entities\PumpType;
-use Modules\Pump\Http\Endpoints\EpLoadPumps;
-use Modules\Pump\Http\Endpoints\EpAddPumpToProjects;
-use Modules\Pump\Http\Endpoints\EpImportPumps;
-use Modules\Pump\Http\Endpoints\EpImportPriceLists;
-use Modules\Pump\Http\Endpoints\EpPumps;
-use Modules\Pump\Http\Endpoints\EpShowPump;
-use Modules\Pump\Transformers\RcDoubleRcPump;
-use Modules\Pump\Transformers\RcSinglePump;
 use Modules\Selection\Entities\SelectionType;
 use Modules\User\Entities\User;
 use Tests\TestCase;
@@ -40,35 +40,39 @@ class PumpEndpointsTest extends TestCase
 {
     /**
      * @return void
+     *
      * @author Max Trunnikov
      */
-    public function test_client_cannot_get_access_to_import_pump_endpoints()
+    public function testClientCannotGetAccessToImportPumpEndpoints()
     {
         $user = User::fakeWithRole();
         $this->startSession()->actingAs($user);
 
         $this->post(route('pumps.import'), [
             '_token' => csrf_token(),
-            'files' => ['file']
+            'files' => ['file'],
         ])->assertForbidden();
         $this->post(route('pumps.import.price_lists'), [
             '_token' => csrf_token(),
-            'files' => ['file']
+            'files' => ['file'],
         ])->assertForbidden();
         $this->post(route('pumps.import.media'), [
             '_token' => csrf_token(),
             'files' => ['file'],
-            'folder' => 'folder'
+            'folder' => 'folder',
         ])->assertForbidden();
     }
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpPumps
      */
-    public function test_pumps_index_endpoint()
+    public function testPumpsIndexEndpoint()
     {
         $series = PumpSeries::factory()->count(3)->create();
         foreach ($series as $_series) {
@@ -82,61 +86,61 @@ class PumpEndpointsTest extends TestCase
         $this->actingAs($user)
             ->get(route('pumps.index'))
             ->assertStatus(200)
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Pump::Index', false)
-                ->has('filter_data', fn(AssertableInertia $page) => $page
+                ->has('filter_data', fn (AssertableInertia $page) => $page
                     ->has('brands')
                     ->count('brands', $user->available_brands()->count())
-                    ->has('brands.0', fn(AssertableInertia $page) => $page
+                    ->has('brands.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('series')
                     ->count('series', $user->available_series()->count())
-                    ->has('series.0', fn(AssertableInertia $page) => $page
+                    ->has('series.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('connection_types')
                     ->count('connection_types', ConnectionType::allOrCached()->count())
-                    ->has('connection_types.0', fn(AssertableInertia $page) => $page
+                    ->has('connection_types.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('dns')
                     ->count('dns', DN::allOrCached()->count())
-                    ->has('dns.0', fn(AssertableInertia $page) => $page
+                    ->has('dns.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('power_adjustments')
                     ->count('power_adjustments', ElPowerAdjustment::allOrCached()->count())
-                    ->has('power_adjustments.0', fn(AssertableInertia $page) => $page
+                    ->has('power_adjustments.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('types')
                     ->count('types', PumpType::allOrCached()->count())
-                    ->has('types.0', fn(AssertableInertia $page) => $page
+                    ->has('types.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('applications')
                     ->count('applications', PumpApplication::allOrCached()->count())
-                    ->has('applications.0', fn(AssertableInertia $page) => $page
+                    ->has('applications.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                     ->has('mains_connections')
                     ->count('mains_connections', MainsConnection::allOrCached()->count())
-                    ->has('mains_connections.0', fn(AssertableInertia $page) => $page
+                    ->has('mains_connections.0', fn (AssertableInertia $page) => $page
                         ->has('text')
                         ->has('value')
                     )
                 )
                 ->has('projects')
                 ->count('projects', $user->projects()->count())
-                ->has('projects.0', fn(AssertableInertia $page) => $page
+                ->has('projects.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                     ->etc()
@@ -146,11 +150,14 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpLoadPumps
      */
-    public function test_load_single_pumps()
+    public function testLoadSinglePumps()
     {
         Pump::clearCache();
 
@@ -168,14 +175,14 @@ class PumpEndpointsTest extends TestCase
                 'pumpable_type' => Pump::$SINGLE_PUMP,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
-                ->has('0', fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
+                ->has('0', fn (AssertableJson $json) => $json
                     ->hasAll([
                         'id', 'article_num_main', 'article_num_archive', 'brand', 'series',
                         'name', 'weight', 'price', 'currency', 'rated_power', 'rated_current', 'connection_type',
                         'fluid_temp_min', 'fluid_temp_max', 'ptp_length', 'dn_suction', 'dn_pressure',
                         'category', 'power_adjustment', 'mains_connection', 'applications', 'types',
-                        'is_discontinued'
+                        'is_discontinued',
                     ])->where('pumpable_type', Pump::$SINGLE_PUMP)
                 )
             );
@@ -183,11 +190,14 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpLoadPumps
      */
-    public function test_load_double_pumps()
+    public function testLoadDoublePumps()
     {
         Pump::clearCache();
 
@@ -205,14 +215,14 @@ class PumpEndpointsTest extends TestCase
                 'pumpable_type' => Pump::$DOUBLE_PUMP,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
-                ->has('0', fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
+                ->has('0', fn (AssertableJson $json) => $json
                     ->hasAll([
                         'id', 'article_num_main', 'article_num_archive', 'brand', 'series',
                         'name', 'weight', 'price', 'currency', 'rated_power', 'rated_current', 'connection_type',
                         'fluid_temp_min', 'fluid_temp_max', 'ptp_length', 'dn_suction', 'dn_pressure',
                         'category', 'power_adjustment', 'mains_connection', 'applications', 'types',
-                        'is_discontinued'
+                        'is_discontinued',
                     ])->where('pumpable_type', Pump::$DOUBLE_PUMP)
                 )
             );
@@ -220,12 +230,15 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      * @throws Throwable
+     *
      * @author Max Trunnikov
+     *
      * @see EpLoadPumps
      */
-    public function test_load_single_pumps_with_filter()
+    public function testLoadSinglePumpsWithFilter()
     {
         Pump::clearCache();
 
@@ -243,17 +256,17 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.load'), [
                 '_token',
                 'pumpable_type' => Pump::$SINGLE_PUMP,
-                'filter' => $name
+                'filter' => $name,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
-                ->has('0', fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
+                ->has('0', fn (AssertableJson $json) => $json
                     ->hasAll([
                         'id', 'article_num_main', 'article_num_archive', 'brand', 'series',
                         'name', 'weight', 'price', 'currency', 'rated_power', 'rated_current', 'connection_type',
                         'fluid_temp_min', 'fluid_temp_max', 'ptp_length', 'dn_suction', 'dn_pressure',
                         'category', 'power_adjustment', 'mains_connection', 'applications', 'types',
-                        'is_discontinued'
+                        'is_discontinued',
                     ])->where('pumpable_type', Pump::$SINGLE_PUMP)
                 )
             )->getContent());
@@ -264,12 +277,15 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see  EpShowPump
      * @see  RcSinglePump
      */
-    public function test_show_single_pump_without_curves()
+    public function testShowSinglePumpWithoutCurves()
     {
         $series = PumpSeries::factory()->create();
         PumpSeriesAndType::createForSeries($series, PumpType::allOrCached()->pluck('id')->all());
@@ -277,7 +293,7 @@ class PumpEndpointsTest extends TestCase
 
         $pump = Pump::factory()->create([
             'series_id' => $series->id,
-            'pumpable_type' => Pump::$SINGLE_PUMP
+            'pumpable_type' => Pump::$SINGLE_PUMP,
         ]);
         $user = User::fakeWithRole();
         $priceList = PumpsPriceList::factory()->create([
@@ -290,10 +306,10 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.show', $pump->id), [
                 '_token' => csrf_token(),
                 'need_curves' => false,
-                'pumpable_type' => Pump::$SINGLE_PUMP
+                'pumpable_type' => Pump::$SINGLE_PUMP,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->whereAll([
                     'id' => $pump->id,
                     'article_num_main' => $pump->article_num_main,
@@ -317,9 +333,9 @@ class PumpEndpointsTest extends TestCase
                     'applications' => $pump->applications,
                     'types' => $pump->types,
                     'description' => $pump->description,
-                    'pumpable_type' => Pump::$SINGLE_PUMP
+                    'pumpable_type' => Pump::$SINGLE_PUMP,
                 ])
-                ->has('images', fn(AssertableJson $json) => $json
+                ->has('images', fn (AssertableJson $json) => $json
                     ->hasAll(['pump', 'sizes', 'electric_diagram', 'cross_sectional_drawing'])
                 )
                 ->has('files')
@@ -328,12 +344,15 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @todo add additional curves check
+     *
      * @see EpShowPump
      * @see RcSinglePump
+     *
      * @author Max Trunnikov
      */
-    public function test_show_single_pump_with_curves()
+    public function testShowSinglePumpWithCurves()
     {
         $pump = Pump::factory()->create();
         $user = User::fakeWithRole();
@@ -343,10 +362,10 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.show', $pump->id), [
                 '_token' => csrf_token(),
                 'need_curves' => true,
-                'pumpable_type' => Pump::$SINGLE_PUMP
+                'pumpable_type' => Pump::$SINGLE_PUMP,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->has('main_curves')
                 ->etc()
             );
@@ -354,13 +373,17 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @todo add additional curves
+     *
      * @see RcDoubleRcPump
      * @see EpShowPump
+     *
      * @author Max Trunnikov
      */
-    public function test_show_double_pump_with_curves()
+    public function testShowDoublePumpWithCurves()
     {
         $series = PumpSeries::factory()->create();
         PumpSeriesAndType::createForSeries($series, PumpType::allOrCached()->pluck('id')->all());
@@ -368,7 +391,7 @@ class PumpEndpointsTest extends TestCase
 
         $pump = Pump::factory()->create([
             'series_id' => $series->id,
-            'pumpable_type' => Pump::$DOUBLE_PUMP
+            'pumpable_type' => Pump::$DOUBLE_PUMP,
         ]);
         $user = User::fakeWithRole();
         $priceList = PumpsPriceList::factory()->create([
@@ -381,10 +404,10 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.show', $pump->id), [
                 '_token' => csrf_token(),
                 'need_curves' => true,
-                'pumpable_type' => Pump::$DOUBLE_PUMP
+                'pumpable_type' => Pump::$DOUBLE_PUMP,
             ])
             ->assertStatus(200)
-            ->assertJson(fn(AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->whereAll([
                     'id' => $pump->id,
                     'article_num_main' => $pump->article_num_main,
@@ -408,9 +431,9 @@ class PumpEndpointsTest extends TestCase
                     'applications' => $pump->applications,
                     'types' => $pump->types,
                     'description' => $pump->description,
-                    'pumpable_type' => Pump::$DOUBLE_PUMP
+                    'pumpable_type' => Pump::$DOUBLE_PUMP,
                 ])
-                ->has('images', fn(AssertableJson $json) => $json
+                ->has('images', fn (AssertableJson $json) => $json
                     ->hasAll(['pump', 'sizes', 'electric_diagram', 'cross_sectional_drawing'])
                 )
                 ->has('files')
@@ -420,10 +443,12 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpAddPumpToProjects
+     *
      * @author Max Trunnikov
      */
-    public function test_add_pump_to_projects_endpoint()
+    public function testAddPumpToProjectsEndpoint()
     {
         $pump = Pump::factory()->create(['pumpable_type' => Pump::$SINGLE_PUMP]);
         $user = User::fakeWithRole();
@@ -436,27 +461,29 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.add_to_projects', $pump->id), [
                 '_token' => csrf_token(),
                 'project_ids' => [$project1->id, $project2->id],
-                'pumps_count' => 2
+                'pumps_count' => 2,
             ])
             ->assertStatus(200);
         $this->assertDatabaseHas('selections', [
             'project_id' => $project1->id,
             'pumps_count' => 2,
-            'main_pumps_counts' => 2
+            'main_pumps_counts' => 2,
         ]);
         $this->assertDatabaseHas('selections', [
             'project_id' => $project2->id,
             'pumps_count' => 2,
-            'main_pumps_counts' => 2
+            'main_pumps_counts' => 2,
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpImportPumps
+     *
      * @author Max Trunnikov
      */
-    public function test_pumps_import_endpoint()
+    public function testPumpsImportEndpoint()
     {
         $wilo = PumpBrand::factory()->create(['name' => 'Wilo']);
         $dab = PumpBrand::factory()->create(['name' => 'DAB']);
@@ -469,18 +496,18 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.import'), [
                 '_token' => csrf_token(),
                 'files' => [
-                    new UploadedFile(__DIR__ . '/DAB.xlsx', 'DAB.xlsx'),
-                    new UploadedFile(__DIR__ . '/Wilo.xlsx', 'Wilo.xlsx')
-                ]
+                    new UploadedFile(__DIR__.'/DAB.xlsx', 'DAB.xlsx'),
+                    new UploadedFile(__DIR__.'/Wilo.xlsx', 'Wilo.xlsx'),
+                ],
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pumps.index'));
         $this->assertDatabaseCount('pumps', 68); // check amount of pumps in uploaded files
         $this->assertDatabaseHas('pumps', [
-            'article_num_main' => "4210722",
-            'article_num_archive' => "4148926",
+            'article_num_main' => '4210722',
+            'article_num_archive' => '4148926',
             'series_id' => $mhi->id,
-            'name' => "MHI 206-1/E/3-400-50-2/IE3",
+            'name' => 'MHI 206-1/E/3-400-50-2/IE3',
             'weight' => 13.8,
             'rated_power' => 1.1,
             'rated_current' => 2.8,
@@ -493,20 +520,20 @@ class PumpEndpointsTest extends TestCase
             'connection_id' => 3,
             'sp_performance' => '0 69.49 0.7708 66.14 1.497 62.24 2.238 56.71 2.911 50.33 3.682 41.66 4.423 31.93 4.999 23.18 5.455 15.34 5.979 5.138',
             'is_discontinued' => false,
-            'description' => "",
+            'description' => '',
             'pumpable_type' => Pump::$SINGLE_PUMP,
             'dp_standby_performance' => null,
             'dp_peak_performance' => null,
-            'image' => "",
-            'sizes_image' => "",
-            'electric_diagram_image' => "",
-            'cross_sectional_drawing_image' => ""
+            'image' => '',
+            'sizes_image' => '',
+            'electric_diagram_image' => '',
+            'cross_sectional_drawing_image' => '',
         ]);
         $this->assertDatabaseHas('pumps', [
-            'article_num_main' => "505822041",
-            'article_num_archive' => "",
+            'article_num_main' => '505822041',
+            'article_num_archive' => '',
             'series_id' => $d->id,
-            'name' => "D 50/250.40 M",
+            'name' => 'D 50/250.40 M',
             'weight' => 14.2,
             'rated_power' => 0.1462,
             'rated_current' => 0.95,
@@ -519,28 +546,30 @@ class PumpEndpointsTest extends TestCase
             'connection_id' => 1,
             'sp_performance' => null,
             'is_discontinued' => 1,
-            'description' => "",
+            'description' => '',
             'pumpable_type' => Pump::$DOUBLE_PUMP,
             'dp_standby_performance' => '0.000 5.777 0.884 5.600 2.489 5.096 3.551 4.600 4.440 4.109 5.230 3.609 5.971 3.118 6.687 2.618 7.379 2.134 8.070 1.641 8.787 1.153 9.528 0.657 9.874 0.436',
             'dp_peak_performance' => '0.015 5.766 1.223 5.666 3.542 5.381 5.770 4.939 7.726 4.451 9.385 3.972 10.909 3.486 12.364 2.998 13.751 2.515 15.115 2.030 16.502 1.539 17.911 1.052 19.277 0.588 19.753 0.436',
-            'image' => "",
-            'sizes_image' => "",
-            'electric_diagram_image' => "",
-            'cross_sectional_drawing_image' => ""
+            'image' => '',
+            'sizes_image' => '',
+            'electric_diagram_image' => '',
+            'cross_sectional_drawing_image' => '',
         ]);
     }
 
     /**
      * @return void
+     *
      * @see EpImportPumps
+     *
      * @author Max Trunnikov
      */
-    public function test_import_pumps_with_invalid_data()
+    public function testImportPumpsWithInvalidData()
     {
         $wilo = PumpBrand::factory()->create(['name' => 'Wilo']);
         PumpSeries::factory()->createMany([
             ['name' => 'MHI', 'brand_id' => $wilo->id, 'category_id' => PumpCategory::$SINGLE_PUMP],
-            ['name' => 'TOP-SD', 'brand_id' => $wilo->id, 'category_id' => PumpCategory::$DOUBLE_PUMP]
+            ['name' => 'TOP-SD', 'brand_id' => $wilo->id, 'category_id' => PumpCategory::$DOUBLE_PUMP],
         ]);
         $this->startSession()
             ->from(route('pump_series.index'))
@@ -548,8 +577,8 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.import'), [
                 '_token' => csrf_token(),
                 'files' => [
-                    new UploadedFile(__DIR__ . '/Wilo invalid.xlsx', 'Wilo invalid.xlsx')
-                ]
+                    new UploadedFile(__DIR__.'/Wilo invalid.xlsx', 'Wilo invalid.xlsx'),
+                ],
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pump_series.index')) // redirected back, not to {@code route('pumps.index')}
@@ -557,32 +586,34 @@ class PumpEndpointsTest extends TestCase
                 [
                     'head' => [
                         'key' => __('validation.attributes.import.pumps.article_num_main'),
-                        'value' => 'Unknown'
+                        'value' => 'Unknown',
                     ],
                     'file' => '',
                     'message' => __('validation.required', [
-                        'attribute' => __('validation.attributes.import.pumps.article_num_main')
-                    ])
+                        'attribute' => __('validation.attributes.import.pumps.article_num_main'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.pumps.article_num_main'),
-                        'value' => '2044015'
+                        'value' => '2044015',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.pumps.series')
-                    ])
-                ]
+                        'attribute' => __('validation.attributes.import.pumps.series'),
+                    ]),
+                ],
             ]);
         $this->assertDatabaseCount('pumps', 0);
     }
 
     /**
      * @return void
+     *
      * @see EpImportPriceLists
+     *
      * @author Max Trunnikov
      */
-    public function test_import_pumps_price_lists()
+    public function testImportPumpsPriceLists()
     {
         $tops = Pump::factory()->createMany([
             ['article_num_main' => '2044009'],
@@ -601,7 +632,7 @@ class PumpEndpointsTest extends TestCase
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->post(route('pumps.import.price_lists'), [
                 '_token' => csrf_token(),
-                'files' => [new UploadedFile(__DIR__ . '/WiloPriceLists.xlsx', 'WiloPriceLists.xlsx')]
+                'files' => [new UploadedFile(__DIR__.'/WiloPriceLists.xlsx', 'WiloPriceLists.xlsx')],
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pumps.index'));
@@ -610,7 +641,7 @@ class PumpEndpointsTest extends TestCase
             $this->assertDatabaseHas('pumps_price_lists', [
                 'pump_id' => $pump->id,
                 'country_id' => 3, // BLR
-                'currency_id' => 1 // EUR
+                'currency_id' => 1, // EUR
             ]);
         });
         $mhi->map(function ($pump) {
@@ -624,10 +655,12 @@ class PumpEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpImportPumps
+     *
      * @author Max Trunnikov
      */
-    public function test_import_pumps_price_lists_with_invalid_data()
+    public function testImportPumpsPriceListsWithInvalidData()
     {
         Pump::factory()->createMany([
             ['article_num_main' => '2044009'], // will be not found
@@ -644,7 +677,7 @@ class PumpEndpointsTest extends TestCase
             ->actingAs(User::fakeWithRole('SuperAdmin'))
             ->post(route('pumps.import.price_lists'), [
                 '_token' => csrf_token(),
-                'files' => [new UploadedFile(__DIR__ . '/WiloPriceListsInvalid.xlsx', 'WiloPriceListsInvalid.xlsx')]
+                'files' => [new UploadedFile(__DIR__.'/WiloPriceListsInvalid.xlsx', 'WiloPriceListsInvalid.xlsx')],
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pumps.index'))
@@ -652,59 +685,61 @@ class PumpEndpointsTest extends TestCase
                 [
                     'head' => [
                         'key' => __('validation.attributes.import.price_lists.article_num_main'),
-                        'value' => '20440091'
+                        'value' => '20440091',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.price_lists.article_num_main')
-                    ])
+                        'attribute' => __('validation.attributes.import.price_lists.article_num_main'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.price_lists.article_num_main'),
-                        'value' => '2044010'
+                        'value' => '2044010',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.price_lists.country')
-                    ])
+                        'attribute' => __('validation.attributes.import.price_lists.country'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.price_lists.article_num_main'),
-                        'value' => '2048320'
+                        'value' => '2048320',
                     ],
                     'file' => '',
                     'message' => __('validation.import.in_array', [
-                        'attribute' => __('validation.attributes.import.price_lists.currency')
-                    ])
+                        'attribute' => __('validation.attributes.import.price_lists.currency'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.price_lists.article_num_main'),
-                        'value' => '2048321'
+                        'value' => '2048321',
                     ],
                     'file' => '',
                     'message' => __('validation.required', [
-                        'attribute' => __('validation.attributes.import.price_lists.price')
-                    ])
+                        'attribute' => __('validation.attributes.import.price_lists.price'),
+                    ]),
                 ], [
                     'head' => [
                         'key' => __('validation.attributes.import.price_lists.article_num_main'),
-                        'value' => 'Unknown'
+                        'value' => 'Unknown',
                     ],
                     'file' => '',
                     'message' => __('validation.required', [
-                        'attribute' => __('validation.attributes.import.price_lists.article_num_main')
-                    ])
-                ]
+                        'attribute' => __('validation.attributes.import.price_lists.article_num_main'),
+                    ]),
+                ],
             ]);
         $this->assertDatabaseCount('pumps_price_lists', 0);
     }
 
     /**
      * @return void
+     *
      * @see EpImportPumps
+     *
      * @author Max Trunnikov
      */
-    public function test_import_pumps_media()
+    public function testImportPumpsMedia()
     {
         $fileName = 'fake-pump-image.jpg';
         $this->startSession()
@@ -713,7 +748,7 @@ class PumpEndpointsTest extends TestCase
             ->post(route('pumps.import.media'), [
                 '_token' => csrf_token(),
                 'files' => [UploadedFile::fake()->image($fileName)],
-                'folder' => 'pumps/images'
+                'folder' => 'pumps/images',
             ])
             ->assertStatus(302)
             ->assertRedirect(route('pumps.index'))

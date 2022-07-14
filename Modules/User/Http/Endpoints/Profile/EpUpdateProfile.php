@@ -16,13 +16,12 @@ final class EpUpdateProfile extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqUpdateProfile $request
      */
     public function __construct(RqUpdateProfile $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => Auth::user()->update($request->validated()),
+                fn () => Auth::user()->update($request->validated()),
                 new TkRedirectWith(
                     'success',
                     __('flash.users.updated'),

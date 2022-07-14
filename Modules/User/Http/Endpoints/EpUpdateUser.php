@@ -15,13 +15,12 @@ final class EpUpdateUser extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param RqUpdateUser $request
      */
     public function __construct(RqUpdateUser $request)
     {
         parent::__construct(
             new TkWithCallback(
-                fn() => User::find($request->user)->update($request->userProps()),
+                fn () => User::find($request->user)->update($request->userProps()),
                 new TkRedirectToRoute('users.index')
             )
         );

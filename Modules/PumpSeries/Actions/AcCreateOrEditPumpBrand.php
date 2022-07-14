@@ -17,7 +17,9 @@ final class AcCreateOrEditPumpBrand extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @param PumpBrand|null $brand
+     *
      * @throws Exception
      */
     public function __construct(private ?PumpBrand $brand = null)
@@ -26,8 +28,8 @@ final class AcCreateOrEditPumpBrand extends ArrEnvelope
             new ArrMerged(
                 ['countries' => Country::asArrayForSelect()],
                 new ArrIf(
-                    !!$this->brand,
-                    fn() => ['brand' => new RcPumpBrand($this->brand)]
+                    (bool) $this->brand,
+                    fn () => ['brand' => new RcPumpBrand($this->brand)]
                 )
             )
         );

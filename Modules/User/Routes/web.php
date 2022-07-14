@@ -7,14 +7,14 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Modules\User\Http\Endpoints\EpCreateOrEditUser;
 use Modules\User\Http\Endpoints\EpShowUser;
+use Modules\User\Http\Endpoints\EpStoreUser;
+use Modules\User\Http\Endpoints\EpUpdateUser;
+use Modules\User\Http\Endpoints\EpUsers;
 use Modules\User\Http\Endpoints\Profile\EpChangePassword;
 use Modules\User\Http\Endpoints\Profile\EpProfile;
 use Modules\User\Http\Endpoints\Profile\EpUpdateProfile;
-use Modules\User\Http\Endpoints\EpCreateOrEditUser;
-use Modules\User\Http\Endpoints\EpUsers;
-use Modules\User\Http\Endpoints\EpStoreUser;
-use Modules\User\Http\Endpoints\EpUpdateUser;
 
 // PROFILE
 Route::prefix('profile')->as('profile.')->group(function () {
@@ -32,7 +32,7 @@ Route::prefix('users')->as('users.')->middleware('admin')->group(function () {
     Route::get('/')->name('index')->uses(EpUsers::class);
 //        Route::get('stats')->name('statistics')->uses(EpUsersStatistics::class);
 
-    Route::prefix("{user}")->group(function () {
+    Route::prefix('{user}')->group(function () {
         Route::get('edit')->name('edit')->uses(EpCreateOrEditUser::class);
         Route::get('show')->name('show')->uses(EpShowUser::class);
         Route::post('/')->name('update')->uses(EpUpdateUser::class);
@@ -40,4 +40,3 @@ Route::prefix('users')->as('users.')->middleware('admin')->group(function () {
 //            Route::post('stats/detail')->name('statistics.detail')->uses(EpDetailUserStatistics::class);
     });
 });
-

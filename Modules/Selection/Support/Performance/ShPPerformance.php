@@ -8,23 +8,24 @@ use Modules\Pump\Entities\Pump;
 use Modules\Selection\Support\PumpPerformanceAsPoints;
 
 /**
- * Shaft power pump performance
+ * Shaft power pump performance.
  */
 final class ShPPerformance implements PumpPerformance
 {
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
-    public function __construct(private Pump $pump) {}
+    public function __construct(private Pump $pump)
+    {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function asArrayAt(int $position): array
@@ -35,7 +36,7 @@ final class ShPPerformance implements PumpPerformance
                 ?? $this->cache[1] = (new PumpPerformanceAsPoints(
                     $this->pump->ShP_performance
                 ))->asArray(),
-                fn(array $point) => [$point[0] * $position, $point[1] * $position]
+                fn (array $point) => [$point[0] * $position, $point[1] * $position]
             ))->asArray();
     }
 }

@@ -19,35 +19,39 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpLogin
+     *
      * @author Max Trunnikov
      */
-    public function test_login_page_endpoint()
+    public function testLoginPageEndpoint()
     {
         $this->get(route('login'))
             ->assertSuccessful()
-            ->assertInertia(fn(AssertableInertia $page) => $page
-                ->component("Auth::Login", false)
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('Auth::Login', false)
             )->assertStatus(200);
     }
 
     /**
      * @return void
+     *
      * @see EpRegister
+     *
      * @author Max Trunnikov
      */
-    public function test_register_page_endpoint()
+    public function testRegisterPageEndpoint()
     {
         $this->get(route('register'))
-            ->assertInertia(fn(AssertableInertia $page) => $page
+            ->assertInertia(fn (AssertableInertia $page) => $page
                 ->component('Auth::Register', false)
                 ->has('businesses')
-                ->has('businesses.0', fn(AssertableInertia $page) => $page
+                ->has('businesses.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
                 ->has('countries')
-                ->has('countries.0', fn(AssertableInertia $page) => $page
+                ->has('countries.0', fn (AssertableInertia $page) => $page
                     ->has('id')
                     ->has('name')
                 )
@@ -56,11 +60,14 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpLoginAttempt
      */
-    public function test_login_attempt_endpoint()
+    public function testLoginAttemptEndpoint()
     {
         $user = User::factory()->create();
         $this->startSession()
@@ -68,7 +75,7 @@ class AuthEndpointsTest extends TestCase
             ->post(route('login.attempt'), [
                 '_token' => csrf_token(),
                 'email' => $user->email,
-                'password' => 'password'
+                'password' => 'password',
             ])
             ->assertStatus(302)
             ->assertRedirect(route('projects.index'));
@@ -77,16 +84,18 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpLoginAttempt
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_cannot_login_with_invalid_password()
+    public function testIfUserCannotLoginWithInvalidPassword()
     {
         $this->startSession()
             ->post(route('login.attempt'), [
                 '_token' => csrf_token(),
                 'email' => User::factory()->create()->email,
-                'password' => 'invalid'
+                'password' => 'invalid',
             ])
             ->assertStatus(302)
             ->assertRedirect('/')
@@ -96,17 +105,19 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpLoginAttempt
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_cannot_login_with_invalid_email()
+    public function testIfUserCannotLoginWithInvalidEmail()
     {
         User::factory()->create(['email' => 'some_email@test.com']);
         $this->startSession()
             ->post(route('login.attempt'), [
                 '_token' => csrf_token(),
                 'email' => 'invalid@test.com',
-                'password' => 'password'
+                'password' => 'password',
             ])
             ->assertStatus(302)
             ->assertRedirect('/')
@@ -116,10 +127,12 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpLogin
+     *
      * @author Max Trunnikov
      */
-    public function test_if_authenticated_user_cannot_see_login_page()
+    public function testIfAuthenticatedUserCannotSeeLoginPage()
     {
         $this->actingAs($user = User::factory()->create())
             ->get(route('login'))
@@ -129,10 +142,12 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpRegister
+     *
      * @author Max Trunnikov
      */
-    public function test_if_authenticated_user_cannot_see_register_page()
+    public function testIfAuthenticatedUserCannotSeeRegisterPage()
     {
         $this->actingAs(User::factory()->create())
             ->get(route('register'))
@@ -142,11 +157,14 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @author Max Trunnikov
+     *
      * @see EpRegisterAttempt
      */
-    public function test_register_attempt_endpoint()
+    public function testRegisterAttemptEndpoint()
     {
         $this->expectsEvents(Registered::class);
         $this->startSession()
@@ -173,15 +191,18 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
+     *
      * @see EpRegisterAttempt
+     *
      * @author Max Trunnikov
      */
-    public function test_if_user_with_the_email_exists()
+    public function testIfUserWithTheEmailExists()
     {
         $testEmail = 'test@test.com';
         User::factory()->create([
-            'email' => $testEmail
+            'email' => $testEmail,
         ]);
         $this->startSession()
             ->post(route('register.attempt'), [
@@ -207,16 +228,18 @@ class AuthEndpointsTest extends TestCase
 
     /**
      * @return void
+     *
      * @see EpLogout
+     *
      * @author Max Trunnikov
      */
-    public function test_logout_endpoint()
+    public function testLogoutEndpoint()
     {
         $this->startSession()
             ->actingAs(User::fakeWithRole())
             ->from(route('projects.index'))
             ->post(route('logout'), [
-                '_token' => csrf_token()
+                '_token' => csrf_token(),
             ])
             ->assertStatus(302)
             ->assertRedirect(route('login'));

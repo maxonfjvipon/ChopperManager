@@ -13,6 +13,7 @@ use Tests\TestCase;
 
 /**
  * @see Project::readyForExport()
+ *
  * @author Max Trunnikov
  */
 class ProjectReadyToExportTest extends TestCase
@@ -20,15 +21,15 @@ class ProjectReadyToExportTest extends TestCase
     /**
      * @throws Exception
      */
-    public function test_ready_to_export()
+    public function testReadyToExport()
     {
         $user = User::fakeWithRole();
         $project = Project::fakeForUser($user);
         $selections = Selection::factory()->count(3)->create([
             'project_id' => $project->id,
             'pump_id' => Pump::factory()->create([
-                'pumpable_type' => Pump::$SINGLE_PUMP
-            ])->id
+                'pumpable_type' => Pump::$SINGLE_PUMP,
+            ])->id,
         ]);
         $this->actingAs($user);
         $project = $project->readyForExport(

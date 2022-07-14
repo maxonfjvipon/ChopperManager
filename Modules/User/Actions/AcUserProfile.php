@@ -5,7 +5,6 @@ namespace Modules\User\Actions;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Modules\User\Entities\Area;
-use Modules\User\Entities\UserRole;
 use Modules\User\Transformers\RcUserProfile;
 
 /**
@@ -14,7 +13,6 @@ use Modules\User\Transformers\RcUserProfile;
 final class AcUserProfile implements Arrayable
 {
     /**
-     * @return array
      * @throws Exception
      */
     public function asArray(): array
@@ -23,7 +21,7 @@ final class AcUserProfile implements Arrayable
             'user' => new RcUserProfile(\Auth::user()),
             'filter_data' => [
                 'areas' => Area::allOrCached(),
-            ]
+            ],
         ];
     }
 }

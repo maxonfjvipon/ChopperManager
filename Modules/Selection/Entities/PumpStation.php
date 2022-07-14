@@ -23,28 +23,31 @@ use Modules\Selection\Traits\PumpStationRelationships;
 /**
  * Pump station.
  *
- * @property int $main_pumps_count
- * @property int $reserve_pumps_count
- * @property int $pumps_count
- * @property float $flow
- * @property float $head
- *
+ * @property int       $main_pumps_count
+ * @property int       $reserve_pumps_count
+ * @property int       $pumps_count
+ * @property float     $flow
+ * @property float     $head
  * @property Selection $selection
- * @property Pump $pump
+ * @property Pump      $pump
  */
 final class PumpStation extends Model
 {
-    use HasFactory, SoftDeletes, AxisStep;
-    use PumpStationRelationships, PumpStationAttributes;
+    use HasFactory;
+    use SoftDeletes;
+    use AxisStep;
+    use PumpStationRelationships;
+    use PumpStationAttributes;
 
     protected $guarded = [];
 
     protected $casts = [
-        'station_type' => StationType::class
+        'station_type' => StationType::class,
     ];
 
     /**
      * @return $this
+     *
      * @throws Exception
      */
     public function withCurves(): PumpStation
@@ -57,10 +60,10 @@ final class PumpStation extends Model
                 'x_axis_step' => $this->axisStep($xMax),
                 'y_axis_step' => $this->axisStep($yMax),
                 'width' => $width,
-                'height' => $height
+                'height' => $height,
             ],
             new ArrIf(
-                !!$this->flow && !!$this->head,
+                (bool) $this->flow && (bool) $this->head,
                 function () {
                     $intersectionPoint = new IntersectionPoint(
                         new EqFromPumpCoefficients(
@@ -69,9 +72,10 @@ final class PumpStation extends Model
                         $this->flow,
                         $this->head
                     );
+
                     return new ArrMerged(
                         new ArrObject(
-                            "system_performance",
+                            'system_performance',
                             new SystemPerformance(
                                 $this->flow,
                                 $this->head,
@@ -87,12 +91,13 @@ final class PumpStation extends Model
                             'intersection_point' => [
                                 'flow' => $intersectionPoint->x(),
                                 'head' => $intersectionPoint->y(),
-                            ]
+                            ],
                         ]
                     );
                 }
             )
         )->asArray();
+
         return $this;
     }
 }

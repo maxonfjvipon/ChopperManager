@@ -10,7 +10,7 @@ use Tests\Unit\Takes\TkTernaryTest;
 
 /**
  * Ternary take.
- * @package App\Takes
+ *
  * @see TkTernaryTest
  */
 final class TkTernary extends TkEnvelope
@@ -19,9 +19,11 @@ final class TkTernary extends TkEnvelope
 
     /**
      * Ctor wrap.
+     *
      * @param bool|Logical $cond
-     * @param Take $first
-     * @param Take $alt
+     * @param Take         $first
+     * @param Take         $alt
+     *
      * @throws Exception
      */
     public function __construct(private bool|Logical $cond, private Take $first, private Take $alt)

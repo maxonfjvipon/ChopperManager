@@ -6,7 +6,6 @@ use App\Support\Rates\FakeRates;
 use Exception;
 use Modules\Project\Entities\Currency;
 use Modules\Pump\Entities\Pump;
-use Modules\PumpSeries\Entities\PumpSeries;
 use Modules\Pump\Entities\PumpsPriceList;
 use Modules\User\Entities\Country;
 use Modules\User\Entities\Discount;
@@ -15,6 +14,7 @@ use Tests\TestCase;
 
 /**
  * @see Pump::currentPrices()
+ *
  * @author Max Trunnikov
  */
 class PumpCurrentPricesTest extends TestCase
@@ -22,7 +22,7 @@ class PumpCurrentPricesTest extends TestCase
     /**
      * @return void
      */
-    public function test_without_price_list()
+    public function testWithoutPriceList()
     {
         $this->actingAs(User::fakeWithRole());
         $this->assertEquals(
@@ -33,9 +33,10 @@ class PumpCurrentPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_with_price_list_for_different_country_without_discounts_with_the_same_base()
+    public function testWithPriceListForDifferentCountryWithoutDiscountsWithTheSameBase()
     {
         $pump = Pump::factory()->create();
         $currency = Currency::allOrCached()->random();
@@ -45,11 +46,11 @@ class PumpCurrentPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $currency->id,
             'country_id' => $countryId,
-            'price' => 100
+            'price' => 100,
         ]);
         $user = User::factory()->create([
             'country_id' => $diffCountryId,
-            'currency_id' => $currency->id
+            'currency_id' => $currency->id,
         ]);
         $this->actingAs($user);
         $this->assertEquals(
@@ -60,9 +61,10 @@ class PumpCurrentPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_with_price_list_without_discounts_with_the_same_base()
+    public function testWithPriceListWithoutDiscountsWithTheSameBase()
     {
         $pump = Pump::factory()->create();
         $currency = Currency::allOrCached()->random();
@@ -71,11 +73,11 @@ class PumpCurrentPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $currency->id,
             'country_id' => $countryId,
-            'price' => $price = 100
+            'price' => $price = 100,
         ]);
         $user = User::factory()->create([
             'country_id' => $countryId,
-            'currency_id' => $currency->id
+            'currency_id' => $currency->id,
         ]);
         $this->actingAs($user);
         $this->assertEquals(
@@ -86,9 +88,10 @@ class PumpCurrentPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_with_price_list_without_discounts_with_not_the_same_base()
+    public function testWithPriceListWithoutDiscountsWithNotTheSameBase()
     {
         $pump = Pump::factory()->create();
         $firstCurrency = Currency::allOrCached()->first();
@@ -98,11 +101,11 @@ class PumpCurrentPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $firstCurrency->id,
             'country_id' => $countryId,
-            'price' => $hundred = 100
+            'price' => $hundred = 100,
         ]);
         $user = User::factory()->create([
             'country_id' => $countryId,
-            'currency_id' => $firstCurrency->id
+            'currency_id' => $firstCurrency->id,
         ]);
         $five = $hundred / ($twenty = 20);
         $this->actingAs($user);
@@ -114,9 +117,10 @@ class PumpCurrentPricesTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_with_price_list_with_discounts_with_the_same_base()
+    public function testWithPriceListWithDiscountsWithTheSameBase()
     {
         $pump = Pump::factory()->create();
         $currency = Currency::allOrCached()->random();
@@ -125,11 +129,11 @@ class PumpCurrentPricesTest extends TestCase
             'pump_id' => $pump->id,
             'currency_id' => $currency->id,
             'country_id' => $countryId,
-            'price' => $hundred = 100
+            'price' => $hundred = 100,
         ]);
         $user = User::factory()->create([
             'country_id' => $countryId,
-            'currency_id' => $currency->id
+            'currency_id' => $currency->id,
         ]);
         Discount::updateForUser([$pump->series->id], $user);
         Discount::where('user_id', $user->id)->update(['value' => $twenty = 20]);

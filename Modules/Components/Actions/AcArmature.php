@@ -18,6 +18,7 @@ final class AcArmature extends AcComponents
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -26,13 +27,13 @@ final class AcArmature extends AcComponents
             new ArrForFiltering([
                 'dns' => DN::values(),
                 'connection_types' => ConnectionType::getDescriptions(),
-                'armature_types' => ArmatureType::getDescriptions()
+                'armature_types' => ArmatureType::getDescriptions(),
             ]),
             'armature',
             new ArrValues(
                 new ArrMapped(
                     Armature::allOrCached()->all(),
-                    fn(Armature $armature) => [
+                    fn (Armature $armature) => [
                         'id' => $armature->id,
                         'article' => $armature->article,
                         'type' => $armature->type->description,
@@ -42,7 +43,7 @@ final class AcArmature extends AcComponents
                         'weight' => $armature->weight,
                         'price' => $armature->price,
                         'currency' => $armature->currency->description,
-                        'price_updated_at' => formatted_date($armature->price_updated_at)
+                        'price_updated_at' => formatted_date($armature->price_updated_at),
                     ]
                 )
             )

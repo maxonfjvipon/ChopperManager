@@ -29,9 +29,9 @@ trait PumpSeriesAttributes
     /**
      * @throws Exception
      */
-    protected function explodedAttribute($originalKey, $separator = ","): array
+    protected function explodedAttribute($originalKey, $separator = ','): array
     {
-        return $this->original[$originalKey] !== null
+        return null !== $this->original[$originalKey]
             ? (new ArrMapped(
                 new ArrExploded(
                     $separator,
@@ -45,7 +45,7 @@ trait PumpSeriesAttributes
     /**
      * @throws Exception
      */
-    private function implodedAttributes($attributes, $separator = ","): string
+    private function implodedAttributes($attributes, $separator = ','): string
     {
         return (new TxtImploded(
             $separator,
@@ -61,7 +61,7 @@ trait PumpSeriesAttributes
      */
     public function getImplodedTypesAttribute(): string
     {
-        return $this->implodedAttributes($this->types, ", ");
+        return $this->implodedAttributes($this->types, ', ');
     }
 
     /**
@@ -69,6 +69,6 @@ trait PumpSeriesAttributes
      */
     public function getImplodedApplicationsAttribute(): string
     {
-        return $this->implodedAttributes($this->applications, ", ");
+        return $this->implodedAttributes($this->applications, ', ');
     }
 }

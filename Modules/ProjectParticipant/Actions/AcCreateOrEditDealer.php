@@ -18,7 +18,7 @@ final class AcCreateOrEditDealer extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param Dealer|null $dealer
+     *
      * @throws Exception
      */
     public function __construct(?Dealer $dealer)
@@ -30,16 +30,16 @@ final class AcCreateOrEditDealer extends ArrEnvelope
                         'areas' => Area::allOrCached(),
                         'series' => PumpSeries::with('brand')
                             ->get()
-                            ->map(fn(PumpSeries $series) => [
+                            ->map(fn (PumpSeries $series) => [
                                 'id' => $series->id,
-                                'name' => $series->brand->name . ' ' . $series->name
+                                'name' => $series->brand->name.' '.$series->name,
                             ])
-                            ->all()
-                    ]
+                            ->all(),
+                    ],
                 ],
                 new ArrIf(
-                    !!$dealer,
-                    fn() => ['dealer' => new RcDealerToEdit($dealer)]
+                    (bool) $dealer,
+                    fn () => ['dealer' => new RcDealerToEdit($dealer)]
                 )
             )
         );

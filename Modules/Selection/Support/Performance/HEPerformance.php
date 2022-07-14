@@ -8,17 +8,15 @@ use Modules\Selection\Support\PointsForPos;
 use Modules\Selection\Support\PumpPerformanceAsPoints;
 
 /**
- * Hydraulic efficiency performance as array for position
+ * Hydraulic efficiency performance as array for position.
  */
 final class HEPerformance implements PumpPerformance
 {
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
     public function __construct(private Pump $pump)
@@ -26,7 +24,8 @@ final class HEPerformance implements PumpPerformance
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function asArrayAt(int $position): array

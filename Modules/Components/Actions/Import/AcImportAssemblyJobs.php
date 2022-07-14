@@ -18,7 +18,8 @@ use Modules\Components\Entities\ControlSystemType;
 final class AcImportAssemblyJobs extends AcImport
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function import(array $sheet): void
@@ -28,8 +29,8 @@ final class AcImportAssemblyJobs extends AcImport
     }
 
     /**
-     * @param array $entity
      * @return array[]
+     *
      * @throws Exception
      */
     protected function rules(array $entity): array
@@ -46,23 +47,24 @@ final class AcImportAssemblyJobs extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
         return [
-            '0' => "Артикул",
-            '1' => "Тип коллектора",
-            '2' => "Система управления",
-            '3' => "Количество насосов",
-            '4' => "Допустимая масса насоса",
-            '5' => "Цена",
-            '6' => "Валюта",
+            '0' => 'Артикул',
+            '1' => 'Тип коллектора',
+            '2' => 'Система управления',
+            '3' => 'Количество насосов',
+            '4' => 'Допустимая масса насоса',
+            '5' => 'Цена',
+            '6' => 'Валюта',
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function entityToImport(array $entity): array
@@ -74,7 +76,7 @@ final class AcImportAssemblyJobs extends AcImport
             'pumps_count' => $entity[3],
             'pumps_weight' => $entity[4],
             'price' => $entity[5],
-            'currency' => Currency::getValue($entity[6])
+            'currency' => Currency::getValue($entity[6]),
         ];
     }
 }

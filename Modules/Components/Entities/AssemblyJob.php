@@ -17,10 +17,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 final class AssemblyJob extends Model
 {
-    use HasFactory, SoftDeletes, Cached;
+    use HasFactory;
+    use SoftDeletes;
+    use Cached;
     use HasPriceByRates;
 
     public $timestamps = false;
+
     protected $guarded = [];
 
     protected $casts = [
@@ -28,9 +31,6 @@ final class AssemblyJob extends Model
         'collector_type' => CollectorType::class,
     ];
 
-    /**
-     * @return string
-     */
     protected static function getCacheKey(): string
     {
         return 'assembly_jobs';

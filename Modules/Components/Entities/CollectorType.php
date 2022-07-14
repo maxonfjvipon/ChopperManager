@@ -9,22 +9,19 @@ use Modules\Selection\Entities\StationType;
 
 /**
  * Collector type.
+ *
  * @method static getDescriptions()
  */
 final class CollectorType extends Enum
 {
     use EnumHelpers;
 
-    #[Description("Общий")]
-    const Common = 1;
+    #[Description('Общий')]
+    public const Common = 1;
 
-    #[Description("Раздельный")]
-    const Separated = 2;
+    #[Description('Раздельный')]
+    public const Separated = 2;
 
-    /**
-     * @param string $station_type
-     * @return int
-     */
     public static function getTypeByStationType(string $station_type): int
     {
         return match ($station_type) {

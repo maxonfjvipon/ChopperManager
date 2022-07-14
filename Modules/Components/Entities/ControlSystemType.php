@@ -10,29 +10,29 @@ use Modules\Selection\Entities\StationType;
 /**
  * Control system type.
  *
- * @property string $name
+ * @property string      $name
  * @property StationType $station_type
  */
 final class ControlSystemType extends Model
 {
-    use HasFactory, Cached;
+    use HasFactory;
+    use Cached;
 
     public $timestamps = false;
+
     protected $guarded = [];
 
     protected $casts = [
         'station_type' => StationType::class,
     ];
 
-    /**
-     * @return string
-     */
     protected static function getCacheKey(): string
     {
         return 'control_system_types';
     }
 
-    public function scopeOnStationType($query, StationType $stationType) {
+    public function scopeOnStationType($query, StationType $stationType)
+    {
         return $query->where('station_type', $stationType->value);
     }
 }

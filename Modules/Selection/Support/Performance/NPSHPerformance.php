@@ -8,23 +8,24 @@ use Modules\Selection\Support\PointsForPos;
 use Modules\Selection\Support\PumpPerformanceAsPoints;
 
 /**
- * NPSH performance
+ * NPSH performance.
  */
 final class NPSHPerformance implements PumpPerformance
 {
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
-    public function __construct(private Pump $pump) {}
+    public function __construct(private Pump $pump)
+    {
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     public function asArrayAt(int $position): array

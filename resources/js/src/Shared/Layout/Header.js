@@ -4,7 +4,7 @@ import {Link, usePage} from "@inertiajs/inertia-react";
 import {
     ClusterOutlined,
     DownOutlined,
-    LogoutOutlined,
+    LogoutOutlined, UserSwitchOutlined,
     ProfileOutlined, SnippetsOutlined, SolutionOutlined,
     UnorderedListOutlined, OrderedListOutlined, UserOutlined,
 } from "@ant-design/icons";
@@ -34,6 +34,10 @@ export const Header = () => {
             itemProps: {key: 'dealers', icon: <SolutionOutlined/>},
             route: 'dealers.index',
             label: "Дилеры",
+        }, auth.is_admin && {
+            itemProps: {key: 'contractors', icon: <UserSwitchOutlined/>},
+            route: 'contractors.index',
+            label: 'Контрагенты',
         }, auth.is_admin && {
             itemProps: {key: 'users', icon: <UserOutlined/>},
             route: 'users.index',
@@ -95,31 +99,31 @@ export const Header = () => {
                 </Menu>
                 <Space>
                     {auth.full_name &&
-                        <Dropdown
-                            key="user-actions" arrow trigger={['click']}
-                            overlay={
-                                <Menu>
-                                    <Menu.Item key="profile" icon={<ProfileOutlined/>}>
-                                        <Link href={route('profile.index')}>
-                                            Профиль
-                                        </Link>
-                                    </Menu.Item>
-                                    <Menu.Divider/>
-                                    <Menu.Item
-                                        key="logout"
-                                        icon={<LogoutOutlined/>}
-                                    >
-                                        <Link method="post" href={route('logout')}>
-                                            Выйти
-                                        </Link>
-                                    </Menu.Item>
-                                </Menu>
-                            }
-                        >
-                            <Button color={"white"}>
-                                {auth?.full_name}<DownOutlined/>
-                            </Button>
-                        </Dropdown>}
+                    <Dropdown
+                        key="user-actions" arrow trigger={['click']}
+                        overlay={
+                            <Menu>
+                                <Menu.Item key="profile" icon={<ProfileOutlined/>}>
+                                    <Link href={route('profile.index')}>
+                                        Профиль
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Divider/>
+                                <Menu.Item
+                                    key="logout"
+                                    icon={<LogoutOutlined/>}
+                                >
+                                    <Link method="post" href={route('logout')}>
+                                        Выйти
+                                    </Link>
+                                </Menu.Item>
+                            </Menu>
+                        }
+                    >
+                        <Button color={"white"}>
+                            {auth?.full_name}<DownOutlined/>
+                        </Button>
+                    </Dropdown>}
                 </Space>
             </div>
 

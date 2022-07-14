@@ -2,21 +2,23 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 use JetBrains\PhpStorm\Pure;
 
 class RouteServiceProvider extends ServiceProvider
 {
     /**
      * Ctor.
+     *
      * @param $app
      * @param string|null $moduleName
      */
-    #[Pure] public function __construct($app, private ?string $moduleName = null)
-    {
-        parent::__construct($app);
-    }
+    #[Pure]
+ public function __construct($app, private ?string $moduleName = null)
+ {
+     parent::__construct($app);
+ }
 
     /**
      * This namespace is applied to your controller routes.
@@ -29,7 +31,6 @@ class RouteServiceProvider extends ServiceProvider
 
     public const HOME = '/';
 
-
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -37,8 +38,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -52,8 +51,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -72,7 +69,6 @@ class RouteServiceProvider extends ServiceProvider
                     ? module_path($this->moduleName, '/Routes/web.php')
                     : base_path('routes/web.php')
                 );
-
         });
     }
 

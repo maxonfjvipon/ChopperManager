@@ -20,6 +20,7 @@ final class AcControlSystems extends AcComponents
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -37,7 +38,7 @@ final class AcControlSystems extends AcComponents
                     'powers',
                     new ArrForFiltering(
                         array_map(
-                            fn(int $stationType) => $controlSystems
+                            fn (int $stationType) => $controlSystems
                                 ->where('type.station_type.value', $stationType)
                                 ->unique('power')
                                 ->sortBy('power')
@@ -53,7 +54,7 @@ final class AcControlSystems extends AcComponents
                 self::stationTypeItems(
                     StationType::fromValue(StationType::WS),
                     $controlSystems,
-                    fn(ControlSystem $controlSystem) => [
+                    fn (ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,
                         'power' => $controlSystem->power,
                         'pumps_count' => $controlSystem->pumps_count,
@@ -67,7 +68,7 @@ final class AcControlSystems extends AcComponents
                 self::stationTypeItems(
                     StationType::fromValue(StationType::AF),
                     $controlSystems,
-                    fn(ControlSystem $controlSystem) => [
+                    fn (ControlSystem $controlSystem) => [
                         'id' => $controlSystem->id,
                         'power' => $controlSystem->power,
                         'pumps_count' => $controlSystem->pumps_count,
@@ -81,26 +82,20 @@ final class AcControlSystems extends AcComponents
                         'price' => $controlSystem->price,
                         'currency' => $controlSystem->currency->key,
                         'price_updated_at' => formatted_date($controlSystem->price_updated_at),
-                        'description' => $controlSystem->description
+                        'description' => $controlSystem->description,
                     ]
-                )
+                ),
             ]
         );
     }
 
-    /**
-     * @param StationType $type
-     * @param Collection $controlSystems
-     * @param callable $csCallback
-     * @return array
-     */
     public static function stationTypeItems(StationType $type, Collection $controlSystems, callable $csCallback): array
     {
         return [
             'station_type' => $type->description,
             'items' => array_values(
                 array_map(
-                    fn(ControlSystemType $controlSystemType) => [
+                    fn (ControlSystemType $controlSystemType) => [
                         'control_system_type' => $controlSystemType->name,
                         'items' => array_values(
                             array_map(
@@ -109,14 +104,14 @@ final class AcControlSystems extends AcComponents
                                     ->where('type_id', $controlSystemType->id)
                                     ->all()
                             )
-                        )
+                        ),
                     ],
                     $controlSystems->where('type.station_type.value', $type->value)
-                        ->map(fn(ControlSystem $controlSystem) => $controlSystem->type)
+                        ->map(fn (ControlSystem $controlSystem) => $controlSystem->type)
                         ->unique('name')
                         ->all()
                 )
-            )
+            ),
         ];
     }
 }

@@ -10,25 +10,20 @@ use Tests\Unit\Takes\TkWithCallbackTest;
 
 /**
  * Take that calls function.
- * @package App\Takes
+ *
  * @see TkWithCallbackTest
  */
 final class TkWithCallback implements Take
 {
     /**
-     * @var callable $callback
+     * @var callable
      */
     private $callback;
 
-    /**
-     * @var Take $origin
-     */
     private Take $origin;
 
     /**
      * Ctor.
-     * @param callable $callback
-     * @param Take $take
      */
     public function __construct(callable $callback, Take $take)
     {
@@ -37,11 +32,12 @@ final class TkWithCallback implements Take
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function act(Request $request = null): Responsable|Response
     {
         call_user_func($this->callback);
+
         return $this->origin->act($request);
     }
 }

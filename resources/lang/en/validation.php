@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -142,12 +141,12 @@ return [
         'sheet_name' => [
             'brand' => "Brand in list name doesn't exist",
             'series' => "Series in list name doesn't exist",
-        ]
+        ],
     ],
     'custom' => [
         'city' => [
-            'correct' => 'Choose a correct city for area'
-        ]
+            'correct' => 'Choose a correct city for area',
+        ],
     ],
 
     /*
@@ -205,9 +204,9 @@ return [
                 'name' => 'Name',
                 'price' => 'Price',
                 'currency' => 'Currency',
-                'weight' => "Weight",
-                'rated_power' => "Rated power",
-                'rated_current' => "Rated current",
+                'weight' => 'Weight',
+                'rated_power' => 'Rated power',
+                'rated_current' => 'Rated current',
                 'connection_type' => 'Connection type',
                 'dn_suction' => 'Suction side DN',
                 'dn_pressure' => 'Pressure side DN',
@@ -228,13 +227,13 @@ return [
                 'pump_sizes_image' => 'Pump sizes image',
                 'pump_electric_diagram_image' => 'Pump electric diagram image',
                 'pump_cross_sectional_drawing_image' => 'Pump cross sectional drawing image',
-                'pump_files' => 'Pump files'
+                'pump_files' => 'Pump files',
             ],
             'price_lists' => [
                 'article_num_main' => 'Main article number',
                 'country' => 'Country',
                 'currency' => 'Currency',
-                'price' => 'Price'
+                'price' => 'Price',
             ],
             'pump_series' => [
                 'brand' => 'Brand',
@@ -244,9 +243,8 @@ return [
                 'applications' => 'Applications',
                 'is_discontinued' => 'Is discontinued',
                 'types' => 'Types',
-                'icon' => 'Icon image'
-            ]
+                'icon' => 'Icon image',
+            ],
         ],
     ],
-
 ];

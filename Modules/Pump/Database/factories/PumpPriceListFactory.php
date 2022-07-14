@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Pump\Database\factories;
 
 use Exception;
@@ -20,7 +21,6 @@ class PumpPriceListFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
      * @throws Exception
      */
     public function definition(): array
@@ -29,8 +29,7 @@ class PumpPriceListFactory extends Factory
             'pump_id' => Pump::factory(),
             'country_id' => Country::allOrCached()->random()->id,
             'currency_id' => Currency::allOrCached()->random()->id,
-            'price' => $this->faker->numberBetween(0, 1000)
+            'price' => $this->faker->numberBetween(0, 1000),
         ];
     }
 }
-

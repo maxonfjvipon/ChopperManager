@@ -12,13 +12,12 @@ use Modules\Selection\Support\TxtSelectionComponent;
 
 /**
  * Show selection endpoint.
- * @package Modules\Selection\Takes
  */
 final class EpShowSelection extends TakeEndpoint
 {
     /**
      * Ctor.
-     * @param Request $request
+     *
      * @throws Exception
      */
     public function __construct(Request $request)

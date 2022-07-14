@@ -15,29 +15,34 @@ use Modules\Pump\Entities\Pump;
 /**
  * Pump series.
  *
- * @property int $id
- * @property string $name
- * @property bool $is_discontinued
- * @property int $brand_id
- *
+ * @property int       $id
+ * @property string    $name
+ * @property bool      $is_discontinued
+ * @property int       $brand_id
  * @property PumpBrand $brand
- * @property Currency $currency
+ * @property Currency  $currency
  *
  * @method static PumpSeries create(array $attributes)
  * @method static PumpSeries find(string|int $id)
  */
 final class PumpSeries extends Model
 {
-    use HasFactory, SoftDeletes, SoftCascadeTrait, CanBeDiscontinued;
+    use HasFactory;
+    use SoftDeletes;
+    use SoftCascadeTrait;
+    use CanBeDiscontinued;
 
-    protected $table = "pump_series";
+    protected $table = 'pump_series';
+
     public $timestamps = false;
+
     protected $guarded = [];
+
     protected array $softCascade = ['pumps'];
 
     protected $casts = [
         'currency' => Currency::class,
-        'is_discontinued' => 'boolean'
+        'is_discontinued' => 'boolean',
     ];
 
     public function brand(): BelongsTo

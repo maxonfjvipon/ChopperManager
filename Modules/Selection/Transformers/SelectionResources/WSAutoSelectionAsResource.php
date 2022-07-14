@@ -15,6 +15,7 @@ final class WSAutoSelectionAsResource implements Arrayable
 
     /**
      * Ctor.
+     *
      * @param Selection $selection
      */
     public function __construct(protected Selection $selection)
@@ -22,7 +23,6 @@ final class WSAutoSelectionAsResource implements Arrayable
     }
 
     /**
-     * @return array
      * @throws Exception
      */
     public function asArray(): array
@@ -33,7 +33,7 @@ final class WSAutoSelectionAsResource implements Arrayable
             'reserve_pumps_count' => $this->selection->reserve_pumps_count,
             'pump_brand_ids' => $this->idsArrayFromString($this->selection->pump_brand_ids),
             'pump_series_ids' => $this->idsArrayFromString($this->selection->pump_series_ids),
-            'collectors' => explode(",", $this->selection->collectors),
+            'collectors' => explode(',', $this->selection->collectors),
         ];
     }
 }

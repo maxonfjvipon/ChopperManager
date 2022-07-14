@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 /**
  * @see SPPerformance
+ *
  * @author Max Trunnikov
  */
 class SPPerformanceTest extends TestCase
@@ -18,9 +19,10 @@ class SPPerformanceTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_as_array_at_first()
+    public function testAsArrayAtFirst()
     {
         $this->assertEquals(
             [
@@ -32,7 +34,7 @@ class SPPerformanceTest extends TestCase
                 [3.6, 2.6],
                 [4, 2.13],
                 [4.8, 1.16],
-                [5.44, 0.37]
+                [5.44, 0.37],
             ],
             (new SPPerformance(
                 Pump::factory()->create()
@@ -42,9 +44,10 @@ class SPPerformanceTest extends TestCase
 
     /**
      * @return void
+     *
      * @throws Exception
      */
-    public function test_as_array_at_not_first()
+    public function testAsArrayAtNotFirst()
     {
         $num = $this->faker->numberBetween(2, 9);
         $this->assertEquals(
@@ -57,7 +60,7 @@ class SPPerformanceTest extends TestCase
                 [3.6 * $num, 2.6],
                 [4 * $num, 2.13],
                 [4.8 * $num, 1.16],
-                [5.44 * $num, 0.37]
+                [5.44 * $num, 0.37],
             ],
             (new SPPerformance(
                 Pump::factory()->create()

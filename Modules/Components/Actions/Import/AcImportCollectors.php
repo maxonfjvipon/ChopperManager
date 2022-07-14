@@ -20,7 +20,8 @@ use Modules\Pump\Entities\DN;
 final class AcImportCollectors extends AcImport
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function import(array $sheet): void
@@ -30,7 +31,6 @@ final class AcImportCollectors extends AcImport
     }
 
     /**
-     * @param array $entity
      * @return array[]
      */
     protected function rules(array $entity): array
@@ -47,12 +47,12 @@ final class AcImportCollectors extends AcImport
             '8' => ['required', new In(Currency::getKeys())], // currency
             '9' => ['required', 'numeric', new NotEmptyStr()], // weight
             '10' => ['required', 'numeric', new NotEmptyStr()], // length
-            '11' => ['required', 'numeric', new NotEmptyStr()] // pipes length
+            '11' => ['required', 'numeric', new NotEmptyStr()], // pipes length
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
@@ -73,7 +73,8 @@ final class AcImportCollectors extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function entityToImport(array $entity): array

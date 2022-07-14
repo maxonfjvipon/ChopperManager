@@ -24,7 +24,6 @@ class CreatePumpSeriesTable extends Migration
 
             $table->bigInteger('brand_id')->unsigned();
 
-
             $table->foreign('brand_id')->references('id')->on('pump_brands')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }

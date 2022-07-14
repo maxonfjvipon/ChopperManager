@@ -16,8 +16,6 @@ use Modules\Components\Entities\Chassis;
 final class AcImportChassis extends AcImport
 {
     /**
-     * @param array $sheet
-     * @return void
      * @throws Exception
      */
     protected function import(array $sheet): void
@@ -27,7 +25,6 @@ final class AcImportChassis extends AcImport
     }
 
     /**
-     * @param array $entity
      * @return array[]
      */
     protected function rules(array $entity): array
@@ -43,7 +40,7 @@ final class AcImportChassis extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
@@ -57,10 +54,6 @@ final class AcImportChassis extends AcImport
         ];
     }
 
-    /**
-     * @param array $entity
-     * @return array
-     */
     protected function entityToImport(array $entity): array
     {
         return [
@@ -69,7 +62,7 @@ final class AcImportChassis extends AcImport
             'pumps_weight' => $entity[2],
             'weight' => $entity[3],
             'price' => $entity[4],
-            'currency' => Currency::getValue($entity[5])
+            'currency' => Currency::getValue($entity[5]),
         ];
     }
 }

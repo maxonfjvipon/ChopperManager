@@ -4,13 +4,8 @@ namespace Modules\Components\Actions;
 
 use App\Support\ArrForFiltering;
 use Exception;
-use Maxonfjvipon\Elegant_Elephant\Arrayable;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
-use Modules\Components\Entities\Armature;
-use Modules\Components\Entities\ArmatureType;
 use Modules\Components\Entities\Collector;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Components\Entities\CollectorType;
@@ -21,6 +16,7 @@ final class AcCollectors extends AcComponents
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -37,11 +33,11 @@ final class AcCollectors extends AcComponents
             new ArrValues(
                 new ArrMapped(
                     CollectorType::getInstances(),
-                    fn(CollectorType $collectorType) => [
-                        'collector_type' => $collectorType->description . " коллектор",
+                    fn (CollectorType $collectorType) => [
+                        'collector_type' => $collectorType->description.' коллектор',
                         'items' => array_values(
                             array_map(
-                                fn(Collector $collector) => [
+                                fn (Collector $collector) => [
                                     'id' => $collector->id,
                                     'article' => $collector->article,
                                     'dn_common' => $collector->dn_common,
@@ -54,12 +50,12 @@ final class AcCollectors extends AcComponents
                                     'weight' => $collector->weight,
                                     'price' => $collector->price,
                                     'currency' => $collector->currency->description,
-                                    'price_updated_at' => date_format($collector->price_updated_at, 'd.m.Y')
+                                    'price_updated_at' => date_format($collector->price_updated_at, 'd.m.Y'),
                                 ],
                                 $collectors->where('type.value', $collectorType->value)
                                     ->all()
                             )
-                        )
+                        ),
                     ]
                 )
             )

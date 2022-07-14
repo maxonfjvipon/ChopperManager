@@ -8,7 +8,6 @@ use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
-use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Modules\Pump\Entities\CollectorSwitch;
 use Modules\Pump\Entities\ConnectionType;
 use Modules\Pump\Entities\DN;
@@ -23,6 +22,7 @@ final class AcPumps extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
      * @throws Exception
      */
     public function __construct()
@@ -30,16 +30,16 @@ final class AcPumps extends ArrEnvelope
         parent::__construct(
             new ArrMerged(
                 new ArrObject(
-                    "filter_data",
+                    'filter_data',
                     new ArrMerged(
                         new ArrForFilteringWithId([
-                            'brands' => ($brandsWithSeries = PumpBrand::with(['series' => fn($query) => $query->select('id', 'name', 'brand_id')])
+                            'brands' => ($brandsWithSeries = PumpBrand::with(['series' => fn ($query) => $query->select('id', 'name', 'brand_id')])
                                 ->get(['id', 'name']))
                                 ->all(),
-                            'series' => array_merge(...$brandsWithSeries->map(fn(PumpBrand $brand) => $brand->series->all())),
+                            'series' => array_merge(...$brandsWithSeries->map(fn (PumpBrand $brand) => $brand->series->all())),
                             'connection_types' => ConnectionType::asArrayForSelect(),
                             'pump_orientations' => PumpOrientation::asArrayForSelect(),
-                            'collector_switches' => CollectorSwitch::asArrayForSelect()
+                            'collector_switches' => CollectorSwitch::asArrayForSelect(),
                         ]),
                         new ArrForFiltering(['dns' => DN::values()])
                     )

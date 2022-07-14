@@ -11,17 +11,16 @@ use Modules\Selection\Tests\Unit\SPPerformanceTest;
 
 /**
  * Single pump performance.
+ *
  * @see SPPerformanceTest
  */
 final class SPPerformance implements PumpPerformance
 {
-    /**
-     * @var array $cache
-     */
     private array $cache = [];
 
     /**
      * Ctor.
+     *
      * @param Pump $pump
      */
     public function __construct(private Pump $pump)
@@ -34,7 +33,8 @@ final class SPPerformance implements PumpPerformance
      *   0 => [0 => q1, 1 => h1],
      *   1 => [0 => q2, 1 => h2],
      *   ...
-     * ]
+     * ].
+     *
      * @throws Exception
      */
     public function asArrayAt(int $position): array

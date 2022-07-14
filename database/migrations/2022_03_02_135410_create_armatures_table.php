@@ -1,12 +1,8 @@
 <?php
 
-use App\Models\Enums\Currency;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Components\Entities\ArmatureType;
-use Modules\Pump\Entities\ConnectionType;
-use Modules\Pump\Entities\DN;
 
 class CreateArmaturesTable extends Migration
 {
@@ -19,8 +15,8 @@ class CreateArmaturesTable extends Migration
     {
         Schema::create('armature', function (Blueprint $table) {
             $table->id();
-            $table->string("article", 30)->unique();
-            $table->integer("length");
+            $table->string('article', 30)->unique();
+            $table->integer('length');
             $table->float('weight');
             $table->float('price');
             $table->timestamp('price_updated_at')->useCurrent()->useCurrentOnUpdate();

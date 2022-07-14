@@ -8,14 +8,15 @@ use Maxonfjvipon\Elegant_Elephant\Numerable\NumEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumerableOf;
 
 /**
- * Start flow value from pump performance
+ * Start flow value from pump performance.
  */
 final class PpQStart extends NumEnvelope
 {
     /**
      * Ctor.
+     *
      * @param PumpPerformance $origin
-     * @param int $position
+     * @param int             $position
      */
     public function __construct(private PumpPerformance $origin, private int $position)
     {

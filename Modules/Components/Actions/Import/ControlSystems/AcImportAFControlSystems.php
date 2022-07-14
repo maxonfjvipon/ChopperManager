@@ -16,22 +16,23 @@ use Modules\Selection\Entities\MontageType;
 final class AcImportAFControlSystems extends AcImport
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function import(array $sheet): void
     {
-        throw new Exception("This method should never be called");
+        throw new Exception('This method should never be called');
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function rules(array $entity): array
     {
         return [
             '0' => ['required', new NotEmptyStr()], // article
-            '1' => ['required', new In(["AF"])], // WS/AF
+            '1' => ['required', new In(['AF'])], // WS/AF
             '2' => ['required', new In(array_keys($this->db['control_system_types']))], // control system type
             '3' => ['required', 'numeric', new NotEmptyStr()], // pumps count
             '4' => ['required', 'numeric', new NotEmptyStr()], // power
@@ -49,31 +50,32 @@ final class AcImportAFControlSystems extends AcImport
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function attributes(): array
     {
         return [
-            '0' => "Артикул",
-            "1" => "Тип станции",
-            "2" => "Тип системы управления",
-            "3" => "Количество насосов",
-            "4" => "Мощность",
-            "5" => "АВР",
-            "6" => "Количество задвижек",
-            "7" => "ККВ",
-            "8" => "Жокей",
-            "9" => "Исполнение",
-            "10" => "Монтаж",
-            "11" => "Масса",
-            "12" => "Описание",
-            "13" => "Цена",
-            "14" => "Валюта"
+            '0' => 'Артикул',
+            '1' => 'Тип станции',
+            '2' => 'Тип системы управления',
+            '3' => 'Количество насосов',
+            '4' => 'Мощность',
+            '5' => 'АВР',
+            '6' => 'Количество задвижек',
+            '7' => 'ККВ',
+            '8' => 'Жокей',
+            '9' => 'Исполнение',
+            '10' => 'Монтаж',
+            '11' => 'Масса',
+            '12' => 'Описание',
+            '13' => 'Цена',
+            '14' => 'Валюта',
         ];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
      * @throws Exception
      */
     protected function entityToImport(array $entity): array
@@ -92,7 +94,7 @@ final class AcImportAFControlSystems extends AcImport
             'weight' => $entity[11],
             'description' => $entity[12],
             'price' => $entity[13],
-            'currency' => Currency::getValue($entity[14])
+            'currency' => Currency::getValue($entity[14]),
         ];
     }
 }

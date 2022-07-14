@@ -9,25 +9,16 @@ use Maxonfjvipon\Elegant_Elephant\Text;
 use Modules\Selection\Entities\Selection;
 
 /**
- * Export selection view as {@Text}
- * @package Modules\Selection\Takes
+ * Export selection view as {@Text}.
  */
 final class TxtExportSelectionView implements Text
 {
-    /**
-     * @var Selection $selection
-     */
     private Selection $selection;
 
-    /**
-     * @var Request $request
-     */
     private Request $request;
 
     /**
      * Ctor.
-     * @param Selection $selection
-     * @param Request $request
      */
     public function __construct(Selection $selection, Request $request)
     {
@@ -36,14 +27,13 @@ final class TxtExportSelectionView implements Text
     }
 
     /**
-     * @return string
      * @throws Exception
      */
     public function asString(): string
     {
         return (new TxtView('selection::selection_to_export', [
             'selection' => $this->selection->readyForExport(),
-            'request' => $this->request
+            'request' => $this->request,
         ]))->asString();
     }
 }

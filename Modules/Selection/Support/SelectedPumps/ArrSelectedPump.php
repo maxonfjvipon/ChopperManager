@@ -13,7 +13,6 @@ use Maxonfjvipon\Elegant_Elephant\Logical\Conjunction;
 use Maxonfjvipon\Elegant_Elephant\Logical\KeyExists;
 use Maxonfjvipon\Elegant_Elephant\Logical\StrContains;
 use Maxonfjvipon\Elegant_Elephant\Numerable\Rounded;
-use Maxonfjvipon\Elegant_Elephant\Text\TxtJoined;
 use Maxonfjvipon\Elegant_Elephant\Text\TxtSticky;
 use Modules\Selection\Http\Requests\RqMakeSelection;
 use Modules\Selection\Support\ArrCostStructure;
@@ -28,21 +27,16 @@ final class ArrSelectedPump extends ArrEnvelope
 {
     /**
      * Ctor.
-     * @param int $key
-     * @param RqMakeSelection $request
-     * @param int $mainPumpsCount
-     * @param Rates $rates
-     * @param array $components
+     *
      * @throws Exception
      */
     public function __construct(
-        int             &$key,
+        int &$key,
         RqMakeSelection $request,
-        int             $mainPumpsCount,
-        Rates           $rates,
-        array           $components
-    )
-    {
+        int $mainPumpsCount,
+        Rates $rates,
+        array $components
+    ) {
         parent::__construct(
             new ArrMerged(
                 new ArrObject(
@@ -67,7 +61,6 @@ final class ArrSelectedPump extends ArrEnvelope
                         $jockeyPump,
                         true
                     )
-
                 ),
                 new ArrObject(
                     'cost_price',
@@ -91,7 +84,7 @@ final class ArrSelectedPump extends ArrEnvelope
                 ),
                 new ArrObject(
                     'bad',
-                    new StrContains($name, "?")
+                    new StrContains($name, '?')
                 ),
                 [
                     'key' => $key++,
@@ -117,11 +110,11 @@ final class ArrSelectedPump extends ArrEnvelope
                         new KeyExists('jockey_pump', $components),
                         new KeyExists('jockey_chassis', $components)
                     ),
-                    fn() => [
+                    fn () => [
                         'jockey_pump_id' => $components['jockey_pump']?->id,
                         'jockey_chassis_id' => $components['jockey_chassis']?->id,
                         'jockey_flow' => $request->jockey_flow,
-                        'jockey_head' => $request->jockey_head
+                        'jockey_head' => $request->jockey_head,
                     ]
                 )
             )

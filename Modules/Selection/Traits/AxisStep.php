@@ -3,7 +3,7 @@
 namespace Modules\Selection\Traits;
 
 /**
- * Axis step for graphics
+ * Axis step for graphics.
  */
 trait AxisStep
 {
@@ -15,6 +15,7 @@ trait AxisStep
                 return $step;
             }
         }
+
         return 2000;
     }
 }

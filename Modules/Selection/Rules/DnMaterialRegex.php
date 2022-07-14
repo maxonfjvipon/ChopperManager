@@ -20,9 +20,9 @@ class DnMaterialRegex
      */
     public function __toString()
     {
-        return $this->rule . ":/^\d{2,3}\s{1}("
-            . CollectorMaterial::getDescription(CollectorMaterial::Steel)
-            . "|"
-            . CollectorMaterial::getDescription(CollectorMaterial::AISI) . ")$/";
+        return $this->rule.":/^\d{2,3}\s{1}("
+            .CollectorMaterial::getDescription(CollectorMaterial::Steel)
+            .'|'
+            .CollectorMaterial::getDescription(CollectorMaterial::AISI).')$/';
     }
 }

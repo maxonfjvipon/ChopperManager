@@ -11,20 +11,12 @@ use Modules\User\Entities\Area;
 
 /**
  * Store dealer request.
- *
- * @property array<int> $available_series_ids
- * @property string $name
- * @property string $itn
- * @property string $email
- * @property string $phone
- * @property int $area_id
  */
 class RqStoreDealer extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
      * @throws Exception
      */
     public function rules(): array
@@ -35,13 +27,10 @@ class RqStoreDealer extends FormRequest
             'itn' => ['sometimes', 'nullable', 'max:12', 'unique:dealers,itn'],
             'email' => ['sometimes', 'nullable', 'string', 'email', 'max:255', 'unique:dealers,email'],
             'phone' => ['sometimes', 'nullable', 'max:12'],
-            'available_series_ids' => ['sometimes', 'nullable', 'array',  new ArrayExistsInArray(PumpSeries::pluck('id')->all())]
+            'available_series_ids' => ['sometimes', 'nullable', 'array',  new ArrayExistsInArray(PumpSeries::pluck('id')->all())],
         ];
     }
 
-    /**
-     * @return array
-     */
     public function dealerProps(): array
     {
         return [
@@ -49,7 +38,7 @@ class RqStoreDealer extends FormRequest
             'area_id' => $this->area_id,
             'itn' => $this->itn,
             'email' => $this->email,
-            'phone' => $this->phone
+            'phone' => $this->phone,
         ];
     }
 }

@@ -11,7 +11,6 @@ final class RcSelectionOfProject extends JsonResource
      * Transform the resource into an array.
      *
      * @param  Request
-     * @return array
      */
     public function toArray($request): array
     {
@@ -23,7 +22,7 @@ final class RcSelectionOfProject extends JsonResource
             'type' => $this->resource->type->description,
             'flow' => $this->resource->flow,
             'head' => $this->resource->head,
-            'comment' => $this->resource->comment
+            'comment' => $this->resource->comment,
         ];
     }
 }
