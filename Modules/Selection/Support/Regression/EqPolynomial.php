@@ -20,9 +20,6 @@ final class EqPolynomial implements Equation
 
     /**
      * Ctor.
-     *
-     * @param array|Arrayable $data
-     * @param int             $precision
      */
     public function __construct(private array|Arrayable $data, private int $precision = 8)
     {

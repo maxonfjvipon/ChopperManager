@@ -14,8 +14,6 @@ final class AcUpdateDealer implements InvokableAction
 {
     /**
      * Ctor.
-     *
-     * @param RqUpdateDealer $request
      */
     public function __construct(private RqUpdateDealer $request)
     {

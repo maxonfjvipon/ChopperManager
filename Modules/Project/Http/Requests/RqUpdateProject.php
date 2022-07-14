@@ -21,7 +21,7 @@ final class RqUpdateProject extends RqStoreProject
             'designer' => $this->designer,
             'customer' => $this->customer,
         ] as $name => $contractor) {
-            if ((bool) $contractor && !preg_match(ProjectContractorRegex::REGEX, $contractor)) {
+            if ((bool) $contractor && ! preg_match(ProjectContractorRegex::REGEX, $contractor)) {
                 $parts = explode(' / ', $contractor);
                 $this->merge([
                     $name => implode(

@@ -17,9 +17,6 @@ final class TkAuthorize extends TkEnvelope
 
     /**
      * Ctor.
-     *
-     * @param Take   $origin
-     * @param string $ability
      */
     public function __construct(private string $ability, private Take $origin)
     {

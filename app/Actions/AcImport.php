@@ -20,9 +20,6 @@ abstract class AcImport implements Take
 
     /**
      * Ctor.
-     *
-     * @param array $files
-     * @param array $db
      */
     public function __construct(private array $files, protected array $db = [])
     {
@@ -48,7 +45,7 @@ abstract class AcImport implements Take
                                 $errorBag[] = $this->errorBagEntity($entity, $message);
                             }, $exception->validator->errors()->messages());
                         }
-                        if (!empty($errorBag)) {
+                        if (! empty($errorBag)) {
                             throw new Exception('Error bag is not empty'); // todo
                         }
 

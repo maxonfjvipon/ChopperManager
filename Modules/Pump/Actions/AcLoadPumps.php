@@ -61,7 +61,7 @@ final class AcLoadPumps extends ArrEnvelope
     private static function getPumps(RqLoadPumps $request): mixed
     {
         return Pump::with([
-            'series' => fn ($query) => $query->select('id', 'name', 'brand_id', 'currency'),
+            'series' => fn ($query) => $query->select('id', 'name', 'brand_id', 'currency', 'is_discontinued'),
             'series.brand' => fn ($query) => $query->select('id', 'name'),
         ])->when(
             $request->sortField && $request->sortOrder,

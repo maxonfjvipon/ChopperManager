@@ -14,9 +14,6 @@ final class ArAFNipKRT implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param Collection|array $armature
-     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {

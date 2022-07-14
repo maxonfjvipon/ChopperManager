@@ -23,7 +23,7 @@ export const WithContractors = ({children, setContractors, contractorsSearchValu
             fetch(url, options)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
+                    // console.log(result)
                     setContractors(result.suggestions.map(suggestion => {
                         return {
                             name: suggestion.value + " / " + suggestion.data.inn + ' / ' + suggestion.data.address.data.region_with_type,

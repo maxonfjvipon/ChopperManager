@@ -15,9 +15,6 @@ final class PpQEnd extends NumEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param PumpPerformance $origin
-     * @param int             $position
      */
     public function __construct(private PumpPerformance $origin, private int $position)
     {

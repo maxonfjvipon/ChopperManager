@@ -22,10 +22,6 @@ final class SelectedPumpsWSHandle extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param RqMakeSelection $request
-     * @param Rates           $rates
-     * @param Collection      $controlSystems
      */
     public function __construct(
         private RqMakeSelection $request,

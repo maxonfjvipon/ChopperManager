@@ -13,9 +13,6 @@ final class EqFromPumpCoefficients implements Equation
 {
     use CanCalcPolynomialEquation;
 
-    /**
-     * @param PumpCoefficients $coefficients
-     */
     public function __construct(private PumpCoefficients $coefficients)
     {
     }

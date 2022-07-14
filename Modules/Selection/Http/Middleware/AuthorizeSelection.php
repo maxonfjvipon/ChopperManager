@@ -17,7 +17,7 @@ final class AuthorizeSelection
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!$request->user()->isAdmin()) {
+        if (! $request->user()->isAdmin()) {
             abort_if(Auth::id() !== Selection::findOrFail($request->route()->originalParameter('selection'))->created_by, 404);
         }
 

@@ -13,7 +13,7 @@ class CheckUserIsActive
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!Auth::user()->is_active) {
+        if (! Auth::user()->is_active) {
             Auth::logout();
             abort(401, 'Your account is disabled');
         }

@@ -16,8 +16,6 @@ final class AcCreateOrEditPumpSeries extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param PumpSeries|null $pumpSeries
      */
     public function __construct(private ?PumpSeries $pumpSeries = null)
     {

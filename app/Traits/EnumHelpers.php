@@ -44,7 +44,7 @@ trait EnumHelpers
     public static function getValueByDescription(string $description): int|string
     {
         $value = array_search($description, self::asSelectArray());
-        if (!$value) {
+        if (! $value) {
             throw new \Exception('Description does not exists');
         }
 

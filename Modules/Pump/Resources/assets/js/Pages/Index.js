@@ -28,7 +28,7 @@ export default function Index() {
         pageSizeOptions: [10, 20, 50],
     })
 
-    console.log(filter_data)
+    // console.log(filter_data)
 
     // CONSTS
     const searchFieldId = "search-pumps"

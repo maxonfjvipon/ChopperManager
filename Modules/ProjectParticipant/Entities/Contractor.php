@@ -31,6 +31,7 @@ final class Contractor extends Model implements Arrayable
     use Cached;
     use HasArea;
     use ContractorRelationships;
+
     public const SEPARATOR = '?';
 
     protected $guarded = [];
@@ -55,6 +56,9 @@ final class Contractor extends Model implements Arrayable
         return implode(' / ', [$this->name, $this->itn, $this->area->name]);
     }
 
+    /**
+     * @return $this
+     */
     public function withAllProjects(): self
     {
         $this->{'projects'} = Project::with([
@@ -73,6 +77,8 @@ final class Contractor extends Model implements Arrayable
     }
 
     /**
+     * @param  string|null  $contractorToCreate
+     * @param  string  $separator
      * @return Contractor|null
      */
     public static function getOrCreateFrom(?string $contractorToCreate, string $separator = '?'): ?self

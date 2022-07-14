@@ -16,8 +16,6 @@ final class ShPPerformance implements PumpPerformance
 
     /**
      * Ctor.
-     *
-     * @param Pump $pump
      */
     public function __construct(private Pump $pump)
     {

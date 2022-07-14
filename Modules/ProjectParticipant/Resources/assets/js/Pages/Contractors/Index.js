@@ -18,6 +18,8 @@ export default function Index() {
     const {compareDate} = useDate()
     const {labels} = useLabels()
 
+    // console.log(filter_data)
+
     // STATE
     const [contractorsToShow, setContractorsToShow] = useState(contractors)
 

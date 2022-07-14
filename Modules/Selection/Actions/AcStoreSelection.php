@@ -15,9 +15,6 @@ final class AcStoreSelection
 {
     /**
      * Ctor.
-     *
-     * @param RqStoreSelection $request
-     * @param Project          $project
      */
     public function __construct(
         private RqStoreSelection $request,

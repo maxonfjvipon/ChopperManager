@@ -20,8 +20,6 @@ final class SelectionAsResource extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param Selection $selection
-     *
      * @throws Exception
      */
     public function __construct(protected Selection $selection)

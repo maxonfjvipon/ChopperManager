@@ -25,10 +25,6 @@ final class TkJson implements Take
 
     /**
      * Ctor.
-     *
-     * @param string|array|Arrayable|Text $data
-     * @param int                         $status
-     * @param array                       $headers
      */
     public function __construct(
         private string|array|Arrayable|Text $data,

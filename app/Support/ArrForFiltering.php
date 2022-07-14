@@ -17,8 +17,6 @@ final class ArrForFiltering extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param array|Arrayable $data
      */
     public function __construct(private array|Arrayable $data)
     {

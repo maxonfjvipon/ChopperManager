@@ -13,8 +13,6 @@ final class WSHandleSelectionAsResource implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param Selection $selection
      */
     public function __construct(private Selection $selection)
     {

@@ -18,9 +18,6 @@ use Modules\Selection\Entities\StationType;
 final class ArmaWS extends ArrEnvelope
 {
     /**
-     * @param Pump $pump
-     * @param int  $pumpsCount
-     *
      * @throws Exception
      */
     public function __construct(private Pump $pump, private int $pumpsCount)

@@ -14,9 +14,6 @@ final class TxtExportProjectView implements Text
 {
     /**
      * Ctor.
-     *
-     * @param Project $project
-     * @param Request $request
      */
     public function __construct(private Project $project, private Request $request)
     {

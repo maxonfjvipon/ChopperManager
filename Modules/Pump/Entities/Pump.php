@@ -76,9 +76,6 @@ final class Pump extends Model
         return 'pumps';
     }
 
-    /**
-     * @return bool
-     */
     #[Pure]
  public function isHorizontal(): bool
  {
@@ -90,7 +87,7 @@ final class Pump extends Model
      */
     public function performance(): PumpPerformance
     {
-        if (!$this->getAttribute('__performance')) {
+        if (! $this->getAttribute('__performance')) {
             $this->{'__performance'} = new SPPerformance($this);
         }
 

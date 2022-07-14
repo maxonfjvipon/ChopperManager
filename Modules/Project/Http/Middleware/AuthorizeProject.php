@@ -14,7 +14,7 @@ final class AuthorizeProject
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!$request->user()->isAdmin()) {
+        if (! $request->user()->isAdmin()) {
             abort_if(Auth::id() !== Project::findOrFail($request->route()->originalParameter('project'))->created_by, 404);
         }
 

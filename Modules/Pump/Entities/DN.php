@@ -17,11 +17,6 @@ final class DN
         return [15, 20, 25, 32, 40, 50, 65, 80, 100, 125, 150, 200, 250, 300];
     }
 
-    /**
-     * @param Pump $pump
-     *
-     * @return int
-     */
     #[Pure]
  public static function minDNforPump(Pump $pump): int
  {

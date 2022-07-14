@@ -28,11 +28,6 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param RqMakeSelection                          $request
-     * @param Arrayable                                $dnsMaterials
-     * @param Rates                                    $rates
-     * @param \Illuminate\Database\Eloquent\Collection $controlSystems
      */
     public function __construct(
         private RqMakeSelection $request,

@@ -12,7 +12,6 @@ class RouteServiceProvider extends ServiceProvider
      * Ctor.
      *
      * @param $app
-     * @param string|null $moduleName
      */
     #[Pure]
  public function __construct($app, private ?string $moduleName = null)

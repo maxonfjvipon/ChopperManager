@@ -16,9 +16,6 @@ final class TkUpdateProject implements Take
 {
     /**
      * & Ctor.
-     *
-     * @param Project $project
-     * @param Take    $origin
      */
     public function __construct(private Project $project, private Take $origin)
     {
@@ -33,7 +30,7 @@ final class TkUpdateProject implements Take
             function () use ($request) {
                 $this->project->update($request->validated());
                 if (in_array($this->project->status_id, [3, 4])) {
-                    if (!$this->project->trashed()) {
+                    if (! $this->project->trashed()) {
                         $this->project->delete();
                     }
                 } elseif ($this->project->trashed()) {

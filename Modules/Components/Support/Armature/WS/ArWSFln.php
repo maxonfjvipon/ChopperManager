@@ -14,10 +14,6 @@ use Modules\Pump\Entities\Pump;
  */
 final class ArWSFln implements Arrayable
 {
-    /**
-     * @param Collection|array $armature
-     * @param Pump             $pump
-     */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {
     }

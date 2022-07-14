@@ -14,8 +14,6 @@ final class PumpPerformanceAsPoints extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param string $performance
      */
     public function __construct(private string $performance)
     {

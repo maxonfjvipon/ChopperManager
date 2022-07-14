@@ -12,8 +12,6 @@ final class AFSelectionAsResource implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param Selection $selection
      */
     public function __construct(private Selection $selection)
     {

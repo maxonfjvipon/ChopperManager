@@ -11061,7 +11061,7 @@ var WithContractors = function WithContractors(_ref) {
       fetch(url, options).then(function (response) {
         return response.json();
       }).then(function (result) {
-        console.log(result);
+        // console.log(result)
         setContractors(result.suggestions.map(function (suggestion) {
           return {
             name: suggestion.value + " / " + suggestion.data.inn + ' / ' + suggestion.data.address.data.region_with_type,

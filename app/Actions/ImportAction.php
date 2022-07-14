@@ -71,7 +71,7 @@ abstract class ImportAction
                         }
                     });
             }
-            if (!empty($errorBag)) {
+            if (! empty($errorBag)) {
                 return Redirect::back()->with('errorBag', array_splice($errorBag, 0, 50));
             }
             foreach ($files as $fileSheets) {

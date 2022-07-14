@@ -23,9 +23,6 @@ final class TxtView implements Text
 
     /**
      * Ctor.
-     *
-     * @param string          $name
-     * @param Arrayable|array $data
      */
     public function __construct(private string $name, private Arrayable|array $data = [])
     {

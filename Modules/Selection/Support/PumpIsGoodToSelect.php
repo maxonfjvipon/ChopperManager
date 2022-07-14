@@ -18,11 +18,6 @@ final class PumpIsGoodToSelect implements Logical
 {
     /**
      * Ctor.
-     *
-     * @param RqMakeSelection $request
-     * @param Pump            $pump
-     * @param int             $mainPumpsCount
-     * @param Numerable       $qEnd
      */
     public function __construct(
         private RqMakeSelection $request,

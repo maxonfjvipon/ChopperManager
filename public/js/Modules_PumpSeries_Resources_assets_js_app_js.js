@@ -10040,9 +10040,9 @@ function Index() {
       series = _usePage$props.series;
 
   var _useNotifications = (0,_resources_js_src_Hooks_notifications_hook__WEBPACK_IMPORTED_MODULE_6__.useNotifications)(),
-      openRestoreNotification = _useNotifications.openRestoreNotification;
+      openRestoreNotification = _useNotifications.openRestoreNotification; // console.log(filter_data)
+  // CONSTS
 
-  console.log(filter_data); // CONSTS
 
   var brandsColumns = [{
     title: "Наименование",

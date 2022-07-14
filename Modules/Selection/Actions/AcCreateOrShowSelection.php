@@ -29,11 +29,6 @@ final class AcCreateOrShowSelection extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param int            $projectId
-     * @param string         $stationType
-     * @param string         $selectionType
-     * @param Selection|null $selection
-     *
      * @throws Exception
      */
     public function __construct(

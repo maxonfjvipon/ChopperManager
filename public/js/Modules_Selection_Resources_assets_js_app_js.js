@@ -10789,8 +10789,8 @@ function Dashboard() {
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
       project_id = _usePage$props.project_id,
       selection_types = _usePage$props.selection_types,
-      station_types = _usePage$props.station_types;
-  console.log(selection_types, station_types);
+      station_types = _usePage$props.station_types; // console.log(selection_types, station_types)
+
   var cards = selection_types.reduce(function (arr1, selection_type) {
     return [].concat(_toConsumableArray(arr1), _toConsumableArray(station_types.reduce(function (arr2, station_type) {
       return [].concat(_toConsumableArray(arr2), [{

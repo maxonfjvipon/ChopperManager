@@ -13,9 +13,6 @@ final class PointsForPos extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param array|Arrayable $origin
-     * @param int             $position
      */
     public function __construct(private array|Arrayable $origin, private int $position = 1)
     {

@@ -20,8 +20,6 @@ final class SPPerformance implements PumpPerformance
 
     /**
      * Ctor.
-     *
-     * @param Pump $pump
      */
     public function __construct(private Pump $pump)
     {

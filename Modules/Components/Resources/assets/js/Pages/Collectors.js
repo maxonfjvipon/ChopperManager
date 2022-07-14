@@ -5,12 +5,14 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import {ExcelFileUploader} from "../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader";
 import {Tabs} from "antd";
 import {ImportErrorBagDrawer} from "../../../../../../resources/js/src/Shared/ImportErrorBagDrawer";
+import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function Collectors() {
     // HOOKS
     const {collectors, filter_data} = usePage().props
+    const {compareDate} = useDate()
 
-    console.log(collectors)
+    // console.log(collectors)
 
     // CONSTS
     const columns = [
@@ -71,6 +73,7 @@ export default function Collectors() {
         {
             title: "Дата актуализации цены",
             dataIndex: 'price_updated_at',
+            sorter: (a, b) => compareDate(a.price_updated_at, b.price_updated_at),
         }
     ]
 

@@ -95,6 +95,6 @@ class SelectionWithPricesTest extends TestCase
         $this->assertEquals($hundred, $selection->retail_price);
         $this->assertEquals($hundred, $selection->total_retail_price);
         $this->assertEquals($hundred - ($hundred * $twenty) / 100, $selection->discounted_price);
-        $this->assertEquals(($hundred - ($hundred * $twenty) / 100), $selection->total_discounted_price);
+        $this->assertEquals($hundred - ($hundred * $twenty) / 100, $selection->total_discounted_price);
     }
 }

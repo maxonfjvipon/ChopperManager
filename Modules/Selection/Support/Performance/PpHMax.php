@@ -16,8 +16,6 @@ final class PpHMax implements Numerable
 
     /**
      * Ctor.
-     *
-     * @param PumpPerformance $performance
      */
     public function __construct(private PumpPerformance $performance, ?float $head = 0)
     {

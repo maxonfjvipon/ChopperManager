@@ -13,8 +13,6 @@ final class AcUpdateProject implements InvokableAction
 {
     /**
      * Ctor.
-     *
-     * @param RqUpdateProject $request
      */
     public function __construct(private RqUpdateProject $request)
     {

@@ -11,11 +11,6 @@ final class SystemPerformance implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param float $flow
-     * @param float $head
-     * @param float $to
-     * @param float $dist
      */
     public function __construct(
         private float $flow,

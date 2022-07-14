@@ -12,6 +12,7 @@ import {useDate} from "../../../../../../../resources/js/src/Hooks/date.hook";
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
 import {useLabels} from "../../../../../../../resources/js/src/Hooks/labels.hook";
 import {BackToDealersLink} from "../../Components/BackToDealersLink";
+import {BackLink} from "../../../../../../../resources/js/src/Shared/Resource/BackLinks/BackLink";
 
 export default function Show() {
     // HOOKS
@@ -108,7 +109,7 @@ export default function Show() {
         <>
             <ResourceContainer
                 title={contractor.name}
-                extra={<BackToDealersLink/>}
+                extra={<BackLink href={route('contractors.index')} title="Назад к контрагентам"/>}
             >
                 <ItemsForm
                     name={formName}

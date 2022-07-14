@@ -10,9 +10,6 @@ use Modules\Pump\Entities\Pump;
  */
 final class ArrPumpsForJockeySelecting implements Arrayable
 {
-    /**
-     * @param array $seriesIds
-     */
     public function __construct(private array $seriesIds)
     {
     }

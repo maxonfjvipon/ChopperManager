@@ -5,12 +5,14 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import {ExcelFileUploader} from "../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader";
 import {Tabs} from "antd";
 import {ImportErrorBagDrawer} from "../../../../../../resources/js/src/Shared/ImportErrorBagDrawer";
+import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function ControlSystems() {
     // HOOKS
     const {control_systems, filter_data} = usePage().props
+    const {compareDate} = useDate()
 
-    console.log(filter_data)
+    // console.log(filter_data)
 
     // CONSTS
     const columns = [
@@ -45,6 +47,7 @@ export default function ControlSystems() {
             {
                 title: "Дата актуализации цены",
                 dataIndex: 'price_updated_at',
+                sorter: (a, b) => compareDate(a.price_updated_at, b.price_updated_at),
             },
             {
                 title: 'Описание',
@@ -118,6 +121,7 @@ export default function ControlSystems() {
             {
                 title: "Дата актуализации цены",
                 dataIndex: 'price_updated_at',
+                sorter: (a, b) => compareDate(a.price_updated_at, b.price_updated_at),
             },
             {
                 title: 'Описание',

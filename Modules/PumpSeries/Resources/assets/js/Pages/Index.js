@@ -17,7 +17,7 @@ export default function Index() {
     const {filter_data, brands, series} = usePage().props
     const {openRestoreNotification} = useNotifications()
 
-    console.log(filter_data)
+    // console.log(filter_data)
 
     // CONSTS
     const brandsColumns = [

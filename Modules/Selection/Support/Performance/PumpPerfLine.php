@@ -28,9 +28,6 @@ final class PumpPerfLine extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param Pump $pump
-     * @param int  $position
      */
     public function __construct(private Pump $pump, private int $position = 1)
     {

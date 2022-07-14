@@ -40,7 +40,7 @@ final class RqLogin extends FormRequest
     public function authenticate(string $guard = 'web', string $loginBy = 'email')
     {
         $this->ensureIsNotRateLimited($loginBy);
-        if (!Auth::guard($guard)->attempt($this->only($loginBy, 'password'), $this->boolean('remember'))) {
+        if (! Auth::guard($guard)->attempt($this->only($loginBy, 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey($loginBy));
 
             throw ValidationException::withMessages([$loginBy => __('auth.failed')]);
@@ -52,14 +52,13 @@ final class RqLogin extends FormRequest
      * Ensure the login request is not rate limited.
      *
      * @param $loginBy
-     *
      * @return void
      *
      * @throws ValidationException
      */
     public function ensureIsNotRateLimited($loginBy)
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey($loginBy), 5)) {
+        if (! RateLimiter::tooManyAttempts($this->throttleKey($loginBy), 5)) {
             return;
         }
 

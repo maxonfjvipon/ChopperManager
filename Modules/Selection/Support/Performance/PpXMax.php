@@ -15,9 +15,6 @@ final class PpXMax extends NumEnvelope
 
     /**
      * Ctor.
-     *
-     * @param array      $lines
-     * @param float|null $flow
      */
     public function __construct(private array $lines, private ?float $flow = 0)
     {

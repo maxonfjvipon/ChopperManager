@@ -10,8 +10,6 @@ final class AFHandleSelectionAsResource extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param Selection $selection
      */
     public function __construct(private Selection $selection)
     {

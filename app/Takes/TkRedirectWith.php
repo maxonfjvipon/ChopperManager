@@ -21,7 +21,6 @@ final class TkRedirectWith implements TakeRedirect
      *
      * @param $key
      * @param $value
-     * @param TakeRedirect $origin
      */
     public function __construct(private $key, private $value, private TakeRedirect $origin)
     {

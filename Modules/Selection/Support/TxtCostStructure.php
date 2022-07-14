@@ -18,8 +18,6 @@ final class TxtCostStructure extends TxtEnvelope
     /**
      * Ctor.
      *
-     * @param Arrayable $structure
-     *
      * @throws Exception
      */
     public function __construct(

@@ -23,11 +23,6 @@ final class ArrCostStructure extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param RqMakeSelection $request
-     * @param Rates           $rates
-     * @param array           $components
-     * @param int             $pumpsCount
-     *
      * @throws Exception
      */
     public function __construct(

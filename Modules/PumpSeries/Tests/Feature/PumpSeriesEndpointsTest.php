@@ -320,7 +320,7 @@ class PumpSeriesEndpointsTest extends TestCase
             'types' => PumpType::all()->pluck('id')->all(),
             'applications' => PumpApplication::allOrCached()->pluck('id')->all(),
         ];
-        $user = (User::fakeWithRole('SuperAdmin'));
+        $user = User::fakeWithRole('SuperAdmin');
         $this->startSession()
             ->actingAs($user)
             ->from(route('pump_series.create'))

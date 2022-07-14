@@ -12,9 +12,6 @@ final class AcUpdateSelection
 {
     /**
      * Ctor.
-     *
-     * @param RqStoreSelection $request
-     * @param Selection        $selection
      */
     public function __construct(
         private RqStoreSelection $request,
@@ -62,7 +59,7 @@ final class AcUpdateSelection
                 ],
                 array_filter(
                     $this->request->added_stations,
-                    fn (array $station) => !$station['id']
+                    fn (array $station) => ! $station['id']
                 )
             )
         );

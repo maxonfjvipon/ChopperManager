@@ -25,14 +25,14 @@ class ExistsInIdsArray extends InArrayFromDB
     /**
      * Determine if the validation rule passes.
      *
-     * @param string $attribute
-     * @param mixed  $value
+     * @param  string  $attribute
+     * @param  mixed  $value
      */
     public function passes($attribute, $value): bool
     {
         $passes = true;
         foreach (explode($this->separator, (string) $value) as $_value) {
-            if (!in_array((int) trim($_value), $this->array)) {
+            if (! in_array((int) trim($_value), $this->array)) {
                 $this->invalidValues[] = $_value;
                 $passes = false;
             }

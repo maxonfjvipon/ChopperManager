@@ -11,7 +11,7 @@ export default function Dashboard() {
     // HOOKS
     const {project_id, selection_types, station_types} = usePage().props
 
-    console.log(selection_types, station_types)
+    // console.log(selection_types, station_types)
 
     const cards = selection_types.reduce((arr1, selection_type) => [
         ...arr1, ...station_types.reduce((arr2, station_type) => [

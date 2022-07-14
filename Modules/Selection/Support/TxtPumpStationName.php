@@ -17,13 +17,6 @@ final class TxtPumpStationName extends TxtEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param ControlSystem|null $controlSystem
-     * @param int                $pumpsCount
-     * @param Pump               $pump
-     * @param Collector|null     $inputCollector
-     * @param Pump|null          $jockeyPump
-     * @param bool               $forPdf
      */
     public function __construct(
         private ?ControlSystem $controlSystem,

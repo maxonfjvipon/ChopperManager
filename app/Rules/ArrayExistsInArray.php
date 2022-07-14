@@ -23,16 +23,14 @@ class ArrayExistsInArray implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param string $attribute
-     * @param mixed  $value
-     *
-     * @return bool
+     * @param  string  $attribute
+     * @param  mixed  $value
      */
     #[Pure]
  public function passes($attribute, $value): bool
  {
      foreach ($value as $item) {
-         if (!in_array($item, $this->searchArray)) {
+         if (! in_array($item, $this->searchArray)) {
              return false;
          }
      }

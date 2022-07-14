@@ -13,11 +13,6 @@ trait AuthorizeProject
         return $user->can($this->authorizeProjectPermission($project));
     }
 
-    /**
-     * @param Project $project
-     *
-     * @return string
-     */
     #[Pure]
  private function authorizeProjectPermission(Project $project): string
  {

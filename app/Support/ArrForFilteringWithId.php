@@ -12,9 +12,6 @@ final class ArrForFilteringWithId extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param array  $data
-     * @param string $attrName
      */
     public function __construct(private array $data, private string $attrName = 'name')
     {

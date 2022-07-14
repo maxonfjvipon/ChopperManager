@@ -13,8 +13,6 @@ final class AcShowPump implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param Pump $pump
      */
     public function __construct(private Pump $pump)
     {

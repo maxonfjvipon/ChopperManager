@@ -33,7 +33,7 @@ final class TkCheckedPumpForUser implements Take
     {
         return (new TkWithCallback(
             fn () => abort_if(
-                !in_array(
+                ! in_array(
                     $this->pump->id,
                     $this->user->available_pumps()
                         ->onPumpableType($this->pump->pumpable_type)

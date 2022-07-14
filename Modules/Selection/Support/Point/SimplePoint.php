@@ -11,17 +11,11 @@ final class SimplePoint implements Point
 {
     /**
      * Ctor.
-     *
-     * @param float $x
-     * @param float $y
      */
     public function __construct(private float $x, private float $y)
     {
     }
 
-    /**
-     * @return array
-     */
     #[ArrayShape(['x' => 'float', 'y' => 'float'])]
  public function asArray(): array
  {

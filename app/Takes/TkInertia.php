@@ -24,9 +24,6 @@ final class TkInertia implements Take
 
     /**
      * Ctor.
-     *
-     * @param string|Text     $component
-     * @param array|Arrayable $props
      */
     public function __construct(private string|Text $component, private array|Arrayable $props = [])
     {

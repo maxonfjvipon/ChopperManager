@@ -27,9 +27,6 @@ final class ArAFFln extends ArrEnvelope
      *
      * Если горизонтальный:
      * + Катушка с Патрубком по Ду Выхода
-     *
-     * @param Collection|array $armature
-     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {

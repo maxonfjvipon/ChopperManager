@@ -15,8 +15,6 @@ final class WSAutoSelectionAsResource implements Arrayable
 
     /**
      * Ctor.
-     *
-     * @param Selection $selection
      */
     public function __construct(protected Selection $selection)
     {

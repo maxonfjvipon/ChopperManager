@@ -26,7 +26,7 @@ final class DealerPumpSeries extends Model
     protected $guarded = [];
 
     /**
-     * @param array<int> $series_ids
+     * @param  array<int>  $series_ids
      */
     public static function updateSeriesForDealer(array $series_ids, Dealer $dealer): int
     {

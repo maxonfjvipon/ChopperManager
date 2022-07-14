@@ -18,8 +18,6 @@ final class AcCreateOrEditPumpBrand extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param PumpBrand|null $brand
-     *
      * @throws Exception
      */
     public function __construct(private ?PumpBrand $brand = null)

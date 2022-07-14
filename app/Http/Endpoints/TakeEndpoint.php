@@ -24,8 +24,6 @@ abstract class TakeEndpoint implements Endpoint
 
     /**
      * Ctor.
-     *
-     * @param Take $take
      */
     public function __construct(
         private Take $take,

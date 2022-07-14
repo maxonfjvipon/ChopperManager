@@ -14,9 +14,6 @@ final class PerformanceQs extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param array|PumpPerformance $performance
-     * @param int                   $pos
-     *
      * @throws Exception
      */
     public function __construct(private array|PumpPerformance $performance, private int $pos)

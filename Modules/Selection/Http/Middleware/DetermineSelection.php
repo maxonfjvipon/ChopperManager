@@ -15,8 +15,8 @@ final class DetermineSelection
     public function handle(Request $request, Closure $next): mixed
     {
         abort_if(
-            !in_array($request->station_type, StationType::getKeys())
-            || !in_array($request->selection_type, SelectionType::getKeys()),
+            ! in_array($request->station_type, StationType::getKeys())
+            || ! in_array($request->selection_type, SelectionType::getKeys()),
             404
         );
 

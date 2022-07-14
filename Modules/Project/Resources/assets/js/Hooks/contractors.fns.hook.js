@@ -21,7 +21,7 @@ export const useContractors = (debouncedSearchValue, setContractors) => {
             fetch(url, options)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
+                    // console.log(result)
                     setContractors(result.suggestions.map(suggestion => {
                         return {
                             name: suggestion.value + " / " + suggestion.data.inn + ' / ' + suggestion.data.address.value,

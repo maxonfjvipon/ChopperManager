@@ -29,9 +29,6 @@ final class ArAFFlnToTrd extends ArrEnvelope
      * Если горизонтальный:
      * + ниппель по ду выхода +
      * комплект резьбового тройника по Ду выхода +
-     *
-     * @param Collection|array $armature
-     * @param Pump             $pump
      */
     public function __construct(private Collection|array $armature, private Pump $pump)
     {

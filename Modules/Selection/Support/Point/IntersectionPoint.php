@@ -12,11 +12,6 @@ final class IntersectionPoint implements Point
 {
     private array $cache = [];
 
-    /**
-     * @param Equation $equation
-     * @param float    $flow
-     * @param float    $head
-     */
     public function __construct(private Equation $equation, private float $flow, private float $head)
     {
     }

@@ -2,6 +2,7 @@
 
 namespace Modules\ProjectParticipant\Actions;
 
+use App\Support\ArrForFiltering;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
@@ -32,20 +33,19 @@ final class AcContractors extends ArrEnvelope
                             Contractor::allOrCached()
                                 ->load('area')
                                 ->all(),
-                            fn (Contractor $contractor) => $contractor->asArray()
+                            fn(Contractor $contractor) => $contractor->asArray()
                         )
                     )
                 ),
                 new ArrObject(
                     'filter_data',
-                    new ArrObject(
-                        'areas',
-                        new ArrUnique(
+                    new ArrForFiltering(
+                        ['areas' => new ArrUnique(
                             new ArrMapped(
                                 $contractors,
-                                fn (array $contractor) => $contractor['area']
+                                fn(array $contractor) => $contractor['area']
                             )
-                        )
+                        )]
                     )
                 )
             )

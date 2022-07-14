@@ -19,9 +19,6 @@ final class PumpStationCurves extends ArrEnvelope
     /**
      * Ctor.
      *
-     * @param PumpStation $pumpStation
-     * @param string      $viewName
-     *
      * @throws Exception
      */
     public function __construct(

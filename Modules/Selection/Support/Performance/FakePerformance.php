@@ -9,8 +9,6 @@ final class FakePerformance implements PumpPerformance
 {
     /**
      * Ctor.
-     *
-     * @param array $array
      */
     public function __construct(private array $array)
     {

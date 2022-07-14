@@ -19,11 +19,6 @@ use Modules\Selection\Entities\StationType;
  */
 final class ArmaAF extends ArrEnvelope
 {
-    /**
-     * @param Pump           $pump
-     * @param int            $pumpsCount
-     * @param Collector|null $inputCollector
-     */
     public function __construct(private Pump $pump, private int $pumpsCount, private ?Collector $inputCollector)
     {
         parent::__construct(

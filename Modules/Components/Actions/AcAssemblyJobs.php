@@ -43,7 +43,7 @@ final class AcAssemblyJobs extends AcComponents
                                                 'pumps_weight' => $job->pumps_weight,
                                                 'price' => $job->price,
                                                 'currency' => $job->currency->key,
-                                                'price_updated_at' => $job->price_updated_at,
+                                                'price_updated_at' => formatted_date($job->price_updated_at),
                                             ],
                                             $jobs->where('collector_type.value', $collectorType->value)
                                                 ->where('control_system_type_id', $controlSystemType->id)

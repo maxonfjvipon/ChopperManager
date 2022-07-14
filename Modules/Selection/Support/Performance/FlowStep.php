@@ -12,7 +12,7 @@ use Maxonfjvipon\Elegant_Elephant\Numerable;
 final class FlowStep implements Numerable
 {
     /**
-     * @param PerformanceQs $xx
+     * @param  PerformanceQs  $xx
      */
     public function __construct(private Arrayable $xx)
     {

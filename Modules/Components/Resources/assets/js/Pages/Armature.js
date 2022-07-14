@@ -3,10 +3,12 @@ import {usePage} from "@inertiajs/inertia-react";
 import {IndexContainer} from "../../../../../../resources/js/src/Shared/Resource/Containers/IndexContainer";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {ExcelFileUploader} from "../../../../../../resources/js/src/Shared/Buttons/ExcelFileUploader";
+import {useDate} from "../../../../../../resources/js/src/Hooks/date.hook";
 
 export default function Armature() {
     // HOOKS
     const {armature, filter_data} = usePage().props
+    const {compareDate} = useDate()
 
     // CONSTS
     const columns = [
@@ -49,6 +51,7 @@ export default function Armature() {
         {
             title: "Дата актуализации цены",
             dataIndex: 'price_updated_at',
+            sorter: (a, b) => compareDate(a.price_updated_at, b.price_updated_at),
         }
     ]
 

@@ -17,7 +17,7 @@ class CreateAssemblyJobsTable extends Migration
             $table->id();
             $table->string('article', 64)->unique();
             $table->integer('pumps_count');
-            $table->timestamp('price_update_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('price_updated_at')->useCurrent()->useCurrentOnUpdate();
             $table->float('price');
             $table->float('pumps_weight');
 

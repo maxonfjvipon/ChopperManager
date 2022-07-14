@@ -15,7 +15,7 @@ trait RefreshDatabase
 
         $copyPath = base_path('database/database.sqlite');
 
-        if (!File::exists($basePath)) {
+        if (! File::exists($basePath)) {
             File::copy($copyPath, $basePath);
         } else {
             File::copy($basePath, $copyPath);

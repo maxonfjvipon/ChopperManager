@@ -29,6 +29,7 @@ final class AssemblyJob extends Model
     protected $casts = [
         'currency' => Currency::class,
         'collector_type' => CollectorType::class,
+        'price_updated_at' => 'datetime:d.m.Y H:i',
     ];
 
     protected static function getCacheKey(): string

@@ -14,8 +14,6 @@ class TkEnvelope implements Take
 {
     /**
      * Ctor.
-     *
-     * @param Take $origin
      */
     public function __construct(private Take $origin)
     {

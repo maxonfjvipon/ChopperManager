@@ -14,9 +14,6 @@ final class ArrArmatureCount implements Arrayable
 {
     /**
      * Ctor.
-     *
-     * @param Armature|null $armature
-     * @param int           $count
      */
     public function __construct(private ?Armature $armature, private int $count)
     {

@@ -21,7 +21,7 @@ use Modules\Selection\Support\Regression\EqFromPumpCoefficients;
 use Modules\Selection\Support\TxtCostStructure;
 use Modules\Selection\Support\TxtPumpStationName;
 
-if (!function_exists('pumpsForSelecting')) {
+if (! function_exists('pumpsForSelecting')) {
     function pumpsForSelecting(RqMakeSelection $request): array
     {
         return Pump::whereIn('series_id', $request->pump_series_ids)
@@ -39,7 +39,7 @@ if (!function_exists('pumpsForSelecting')) {
     }
 }
 
-if (!function_exists('pumpIsGoodForSelect')) {
+if (! function_exists('pumpIsGoodForSelect')) {
     /**
      * @throws Exception
      */
@@ -66,7 +66,7 @@ if (!function_exists('pumpIsGoodForSelect')) {
     }
 }
 
-if (!function_exists('collectorsForAutoSelection')) {
+if (! function_exists('collectorsForAutoSelection')) {
     /**
      * @throws Exception
      */
@@ -85,7 +85,7 @@ if (!function_exists('collectorsForAutoSelection')) {
     }
 }
 
-if (!function_exists('controlSystemsForSelection')) {
+if (! function_exists('controlSystemsForSelection')) {
     /**
      * @throws Exception
      */
@@ -112,7 +112,7 @@ if (!function_exists('controlSystemsForSelection')) {
     }
 }
 
-if (!function_exists('selectedPump')) {
+if (! function_exists('selectedPump')) {
     /**
      * @throws Exception
      */

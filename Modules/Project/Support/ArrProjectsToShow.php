@@ -22,9 +22,9 @@ final class ArrProjectsToShow extends ArrEnvelope
             new ArrMapped(
                 ((bool) $user
                     ? $user->projects()->with('area')
-                    : ((Auth::user()->isAdmin()
+                    : (Auth::user()->isAdmin()
                         ? Project::with('area')
-                        : Auth::user()->projects()->with('area'))
+                        : Auth::user()->projects()->with('area')
                     )->withPumpStations())
                     ->withAllParticipants()
                     ->get()

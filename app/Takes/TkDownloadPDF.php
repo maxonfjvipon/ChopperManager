@@ -23,8 +23,6 @@ final class TkDownloadPDF implements Take
 
     /**
      * Ctor.
-     *
-     * @param string|Text $html
      */
     public function __construct(private string|Text $html)
     {

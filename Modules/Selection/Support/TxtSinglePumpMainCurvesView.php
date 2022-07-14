@@ -20,8 +20,6 @@ final class TxtSinglePumpMainCurvesView extends TxtEnvelope
     /**
      * Ctor.
      *
-     * @param Pump $pump
-     *
      * @throws Exception
      */
     public function __construct(private Pump $pump)

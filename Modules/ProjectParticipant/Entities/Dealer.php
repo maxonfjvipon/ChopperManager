@@ -36,6 +36,7 @@ final class Dealer extends Model implements Arrayable
     use Cached;
     use DealerRelationships;
     use HasArea;
+
     public const BPE = 1;
 
     protected $table = 'dealers';

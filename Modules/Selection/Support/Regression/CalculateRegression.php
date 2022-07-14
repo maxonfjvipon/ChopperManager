@@ -23,8 +23,8 @@ trait CalculateRegression
         $len = count($data);
         $k = $order + 1;
 
-        for ($i = 0; $i < $k; ++$i) {
-            for ($l = 0; $l < $len; ++$l) {
+        for ($i = 0; $i < $k; $i++) {
+            for ($l = 0; $l < $len; $l++) {
                 if (null != $data[$l][1]) {
                     $a += pow($data[$l][0], $i) * $data[$l][1];
                 }
@@ -34,8 +34,8 @@ trait CalculateRegression
             $a = 0;
 
             $c = [];
-            for ($j = 0; $j < $k; ++$j) {
-                for ($_l = 0; $_l < $len; ++$_l) {
+            for ($j = 0; $j < $k; $j++) {
+                for ($_l = 0; $_l < $len; $_l++) {
                     if (null != $data[$_l][1]) {
                         $b += pow($data[$_l][0], $i + $j);
                     }
@@ -65,30 +65,30 @@ trait CalculateRegression
         $n = count($input) - 1;
         $coefficients = [$order];
 
-        for ($i = 0; $i < $n; ++$i) {
+        for ($i = 0; $i < $n; $i++) {
             $maxrow = $i;
-            for ($j = $i + 1; $j < $n; ++$j) {
+            for ($j = $i + 1; $j < $n; $j++) {
                 if (abs($matrix[$i][$j]) > abs($matrix[$i][$maxrow])) {
                     $maxrow = $j;
                 }
             }
 
-            for ($k = $i; $k < $n + 1; ++$k) {
+            for ($k = $i; $k < $n + 1; $k++) {
                 $tmp = $matrix[$k][$i];
                 $matrix[$k][$i] = $matrix[$k][$maxrow];
                 $matrix[$k][$maxrow] = $tmp;
             }
 
-            for ($_j = $i + 1; $_j < $n; ++$_j) {
-                for ($_k = $n; $_k >= $i; --$_k) {
+            for ($_j = $i + 1; $_j < $n; $_j++) {
+                for ($_k = $n; $_k >= $i; $_k--) {
                     $matrix[$_k][$_j] -= $matrix[$_k][$i] * $matrix[$i][$_j] / $matrix[$i][$i];
                 }
             }
         }
 
-        for ($_j2 = $n - 1; $_j2 >= 0; --$_j2) {
+        for ($_j2 = $n - 1; $_j2 >= 0; $_j2--) {
             $total = 0;
-            for ($_k2 = $_j2 + 1; $_k2 < $n; ++$_k2) {
+            for ($_k2 = $_j2 + 1; $_k2 < $n; $_k2++) {
                 $total += $matrix[$_k2][$_j2] * $coefficients[$_k2];
             }
 

@@ -18,8 +18,6 @@ final class AcShowUser extends ArrEnvelope
 {
     /**
      * Ctor.
-     *
-     * @param User $user
      */
     public function __construct(private User $user)
     {

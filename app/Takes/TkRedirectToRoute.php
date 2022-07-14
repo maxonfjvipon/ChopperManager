@@ -26,7 +26,7 @@ final class TkRedirectToRoute implements TakeRedirect
     /**
      * Ctor.
      *
-     * @param mixed ...$params
+     * @param  mixed  ...$params
      */
     public function __construct(string $route, ...$params)
     {

@@ -14,7 +14,7 @@ class Administrate
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        abort_if(!$request->user()->isAdmin(), 404);
+        abort_if(! $request->user()->isAdmin(), 404);
 
         return $next($request);
     }

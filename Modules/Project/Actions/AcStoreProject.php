@@ -13,8 +13,6 @@ final class AcStoreProject implements InvokableAction
 {
     /**
      * Ctor.
-     *
-     * @param RqStoreProject $request
      */
     public function __construct(private RqStoreProject $request)
     {

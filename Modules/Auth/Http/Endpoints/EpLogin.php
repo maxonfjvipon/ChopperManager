@@ -21,7 +21,7 @@ final class EpLogin extends TakeEndpoint
             new TkFromCallback(
                 fn () => new TkWithCallback(
                     function () {
-                        if (!session()->has('url.intended')) {
+                        if (! session()->has('url.intended')) {
                             session(['url.intended' => url()->previous()]);
                         }
                     },

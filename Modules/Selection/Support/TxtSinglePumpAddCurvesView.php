@@ -17,8 +17,6 @@ final class TxtSinglePumpAddCurvesView implements Text
 
     /**
      * Ctor.
-     *
-     * @param Pump $pump
      */
     public function __construct(private Pump $pump)
     {

@@ -15,9 +15,6 @@ final class TkAuthorizeProject implements Take
 {
     /**
      * Ctor.
-     *
-     * @param string $project_id
-     * @param Take   $origin
      */
     public function __construct(private string $project_id, private Take $origin)
     {
