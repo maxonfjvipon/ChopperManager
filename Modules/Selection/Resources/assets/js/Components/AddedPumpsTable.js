@@ -81,7 +81,7 @@ export const AddedPumpsTable = ({
                         {record.id && <TableAction
                             clickHandler={updateCostHandler(record)}
                             icon={<DollarOutlined/>}
-                            title="Обноовить себестоимость"
+                            title="Обновить себестоимость"
                         />}
                         <TableAction
                             clickHandler={() => setStationToShow(record)}
