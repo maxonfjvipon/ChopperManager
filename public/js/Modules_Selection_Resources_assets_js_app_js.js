@@ -10589,6 +10589,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
           final_price: final_price
         }));
         setAddedStations(_toConsumableArray(stations));
+        antd__WEBPACK_IMPORTED_MODULE_17__["default"].success("Себестоимость обновлена");
       })["catch"](function (reason) {
         antd__WEBPACK_IMPORTED_MODULE_17__["default"].error(reason);
       });

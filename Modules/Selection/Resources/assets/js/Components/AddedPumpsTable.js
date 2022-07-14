@@ -146,6 +146,7 @@ export const AddedPumpsTable = ({
                 final_price
             })
             setAddedStations([...stations])
+            message.success("Себестоимость обновлена")
         }).catch(reason => {
             message.error(reason)
         })
