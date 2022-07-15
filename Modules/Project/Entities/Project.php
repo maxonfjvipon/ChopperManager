@@ -61,6 +61,17 @@ final class Project extends Model implements Arrayable
         'status' => ProjectStatus::class,
     ];
 
+    /**
+     * @return bool
+     */
+    public function upd(): bool
+    {
+        return $this->update(['updated_at' => now()]);
+    }
+
+    /**
+     * @return array
+     */
     public function asArray(): array
     {
         return array_merge(

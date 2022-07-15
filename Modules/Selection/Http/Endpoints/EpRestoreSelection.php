@@ -6,6 +6,7 @@ use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectBack;
 use App\Takes\TkWithCallback;
 use Illuminate\Http\Request;
+use Modules\Selection\Actions\AcRestoreSelection;
 use Modules\Selection\Entities\Selection;
 
 /**
@@ -20,9 +21,7 @@ final class EpRestoreSelection extends TakeEndpoint
     {
         parent::__construct(
             new TkWithCallback(
-                fn () => Selection::withTrashed()
-                    ->find($request->selection)
-                    ->restore(),
+                new AcRestoreSelection($request),
                 new TkRedirectBack()
             )
         );

@@ -27,7 +27,7 @@ final class AcStoreSelection
      */
     public function __invoke()
     {
-        $this->project->updateTimestamps();
+        $this->project->upd();
         $selection = Selection::create(
             array_merge(
                 $this->request->selectionProps(),

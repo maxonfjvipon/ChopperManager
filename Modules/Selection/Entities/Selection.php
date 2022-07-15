@@ -2,7 +2,6 @@
 
 namespace Modules\Selection\Entities;
 
-use App\Traits\WithOrWithoutTrashed;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -55,7 +54,6 @@ final class Selection extends Model
     use HasFactory;
     use SoftDeletes;
     use SoftCascadeTrait;
-    use WithOrWithoutTrashed;
     use SelectionRelationships;
 
     protected $guarded = [];
@@ -72,6 +70,9 @@ final class Selection extends Model
         'on_street' => YesNo::class,
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function pump_stations_to_show(): \Illuminate\Database\Eloquent\Collection
     {
         return $this->pump_stations()

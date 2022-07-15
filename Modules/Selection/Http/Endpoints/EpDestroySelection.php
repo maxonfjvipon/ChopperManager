@@ -6,6 +6,7 @@ use App\Http\Endpoints\TakeEndpoint;
 use App\Takes\TkRedirectBack;
 use App\Takes\TkWithCallback;
 use Illuminate\Http\Request;
+use Modules\Selection\Actions\AcDestroySelection;
 use Modules\Selection\Entities\Selection;
 
 /**
@@ -20,7 +21,7 @@ final class EpDestroySelection extends TakeEndpoint
     {
         parent::__construct(
             new TkWithCallback(
-                fn () => Selection::find($request->selection)->delete(),
+                new AcDestroySelection($request),
                 new TkRedirectBack()
             )
         );
