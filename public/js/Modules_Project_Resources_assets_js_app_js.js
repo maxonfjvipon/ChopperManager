@@ -11512,8 +11512,7 @@ function Show() {
     sorter: function sorter(a, b) {
       return compareDate(a.updated_at, b.updated_at);
     },
-    defaultSortOrder: 'ascend' // fixme - doesn't work
-
+    defaultSortOrder: 'descend'
   }, {
     title: "Тип станции",
     dataIndex: "station_type",
@@ -12270,7 +12269,7 @@ function Index() {
     sorter: function sorter(a, b) {
       return compareDate(a.updated_at, b.updated_at);
     },
-    defaultSortOrder: 'ascend'
+    defaultSortOrder: 'descend'
   }, {
     title: "Наименование",
     dataIndex: 'name',

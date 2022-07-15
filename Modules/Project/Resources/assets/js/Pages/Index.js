@@ -17,7 +17,7 @@ export default function Index() {
     const {projects, auth, filter_data} = usePage().props
     const {filteredBoolArray} = usePermissions()
     const {compareDate} = useDate()
-    
+
     // STATE
     const [projectsToShow, setProjectsToShow] = useState(projects)
 
@@ -32,7 +32,7 @@ export default function Index() {
             title: "Дата обновления",
             dataIndex: 'updated_at',
             sorter: (a, b) => compareDate(a.updated_at, b.updated_at),
-            defaultSortOrder: 'ascend',
+            defaultSortOrder: 'descend',
         }, {
             title: "Наименование",
             dataIndex: 'name',

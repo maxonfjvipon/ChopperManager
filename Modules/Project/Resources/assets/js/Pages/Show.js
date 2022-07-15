@@ -108,7 +108,7 @@ export default function Show() {
             title: "Дата обновления",
             dataIndex: 'updated_at',
             sorter: (a, b) => compareDate(a.updated_at, b.updated_at),
-            defaultSortOrder: 'ascend' // fixme - doesn't work
+            defaultSortOrder: 'descend',
         },
         {
             title: "Тип станции",
