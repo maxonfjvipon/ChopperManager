@@ -24,7 +24,7 @@ import {useHttp} from "../../../../../../../resources/js/src/Hooks/http.hook";
 import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
 import {useDebounce} from "../../../../../../../resources/js/src/Hooks/debounce.hook";
 import {InputNum} from "../../../../../../../resources/js/src/Shared/Inputs/InputNum";
-import {AddedPumpsTable} from "../../Components/AddedPumpsTable";
+import {AddedPumpStationsTable} from "../../Components/AddedPumpStationsTable";
 import {PumpPropsDrawer} from "../../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer";
 
 const BackToProjectLink = ({project_id}) => <BackLink
@@ -829,7 +829,7 @@ export const PumpStationSelection = ({title, widths}) => {
                             type="inner"
                             title="Добавленные станции"
                         >
-                            <AddedPumpsTable
+                            <AddedPumpStationsTable
                                 addedStations={addedStations}
                                 loading={loading}
                                 setStationToShow={setStationToShow}

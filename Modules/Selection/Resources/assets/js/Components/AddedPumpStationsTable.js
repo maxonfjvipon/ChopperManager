@@ -11,7 +11,7 @@ import {InputNum} from "../../../../../../resources/js/src/Shared/Inputs/InputNu
 import {useHttp} from "../../../../../../resources/js/src/Hooks/http.hook";
 import route from "ziggy-js/src/js";
 
-export const AddedPumpsTable = ({
+export const AddedPumpStationsTable = ({
                                     addedStations,
                                     setStationToShow,
                                     loading,
@@ -43,7 +43,7 @@ export const AddedPumpsTable = ({
         {
             title: "Себестоимость, ₽",
             dataIndex: 'cost_price',
-            render: (_, record) => record.cost_price.toFixed(2).toLocaleString()
+            render: (_, record) => Number(record.cost_price.toFixed(2)).toLocaleString()
         },
         {
             title: "Наценка, %",
@@ -62,7 +62,7 @@ export const AddedPumpsTable = ({
         {
             title: "Цена в КП, ₽",
             dataIndex: 'final_price',
-            render: (_, record) => record.final_price.toFixed(2).toLocaleString()
+            render: (_, record) => Number(record.final_price.toFixed(2)).toLocaleString()
         },
         {
             title: "Комментарий",

@@ -10355,16 +10355,16 @@ var PumpPropsDrawer = function PumpPropsDrawer(_ref) {
 
 /***/ }),
 
-/***/ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js":
-/*!*****************************************************************************!*\
-  !*** ./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js ***!
-  \*****************************************************************************/
+/***/ "./Modules/Selection/Resources/assets/js/Components/AddedPumpStationsTable.js":
+/*!************************************************************************************!*\
+  !*** ./Modules/Selection/Resources/assets/js/Components/AddedPumpStationsTable.js ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AddedPumpsTable": () => (/* binding */ AddedPumpsTable)
+/* harmony export */   "AddedPumpStationsTable": () => (/* binding */ AddedPumpStationsTable)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
@@ -10424,7 +10424,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AddedPumpsTable = function AddedPumpsTable(_ref) {
+var AddedPumpStationsTable = function AddedPumpStationsTable(_ref) {
   var addedStations = _ref.addedStations,
       setStationToShow = _ref.setStationToShow,
       loading = _ref.loading,
@@ -10466,7 +10466,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     title: "Себестоимость, ₽",
     dataIndex: 'cost_price',
     render: function render(_, record) {
-      return record.cost_price.toFixed(2).toLocaleString();
+      return Number(record.cost_price.toFixed(2)).toLocaleString();
     }
   }, {
     title: "Наценка, %",
@@ -10498,7 +10498,7 @@ var AddedPumpsTable = function AddedPumpsTable(_ref) {
     title: "Цена в КП, ₽",
     dataIndex: 'final_price',
     render: function render(_, record) {
-      return record.final_price.toFixed(2).toLocaleString();
+      return Number(record.final_price.toFixed(2)).toLocaleString();
     }
   }, {
     title: "Комментарий",
@@ -11072,7 +11072,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Hooks_debounce_hook__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/debounce.hook */ "./resources/js/src/Hooks/debounce.hook.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
-/* harmony import */ var _Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../Components/AddedPumpsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpsTable.js");
+/* harmony import */ var _Components_AddedPumpStationsTable__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../Components/AddedPumpStationsTable */ "./Modules/Selection/Resources/assets/js/Components/AddedPumpStationsTable.js");
 /* harmony import */ var _Pump_Resources_assets_js_Components_PumpPropsDrawer__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../../../../../Pump/Resources/assets/js/Components/PumpPropsDrawer */ "./Modules/Pump/Resources/assets/js/Components/PumpPropsDrawer.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -12133,7 +12133,7 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
             className: "table-rounded-card",
             type: "inner",
             title: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0442\u0430\u043D\u0446\u0438\u0438",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Components_AddedPumpsTable__WEBPACK_IMPORTED_MODULE_19__.AddedPumpsTable, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Components_AddedPumpStationsTable__WEBPACK_IMPORTED_MODULE_19__.AddedPumpStationsTable, {
               addedStations: addedStations,
               loading: loading,
               setStationToShow: setStationToShow,
