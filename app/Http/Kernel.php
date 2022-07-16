@@ -54,9 +54,9 @@ final class Kernel extends HttpKernel
         'web' => [
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
-            StartSession::class,
+            //            StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
-            ShareErrorsFromSession::class,
+            //            ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
             HandleInertiaRequests::class,

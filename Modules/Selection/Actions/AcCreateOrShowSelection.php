@@ -54,13 +54,13 @@ final class AcCreateOrShowSelection extends ArrEnvelope
                                             ->all()
                                     ),
                                     'brands_with_series_with_pumps' => PumpBrand::with(
-                                        array_merge([
-                                            'series' => ($seriesCallback = function ($query) use ($series_ids) {
-                                                $query->whereIn('id', $series_ids);
-                                            }),
-                                        ], $this->selectionType === SelectionType::getKey(SelectionType::Handle)
-                                            ? ['series.pumps' => fn ($query) => $query->select('id', 'series_id', 'name')]
-                                            : [])
+                                        array_merge(
+                                            [
+                                                'series' => ($seriesCallback = fn ($query) => $query->whereIn('id', $series_ids)),
+                                            ],
+                                            $this->selectionType === SelectionType::getKey(SelectionType::Handle)
+                                                ? ['series.pumps' => fn ($query) => $query->select('id', 'series_id', 'name')]
+                                                : [])
                                     )
                                         ->whereHas('series', $seriesCallback)
                                         ->get(),

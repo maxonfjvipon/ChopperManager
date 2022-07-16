@@ -11176,7 +11176,11 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
       isArrayEmpty = _useCheck.isArrayEmpty; // STATE
 
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((selection === null || selection === void 0 ? void 0 : selection.pump_brand_ids) || []),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(selection ? selection_props.brands_with_series_with_pumps.map(function (brand) {
+    return brand.id;
+  }).filter(function (id) {
+    return selection.pump_series_ids.includes(id);
+  }) : []),
       _useState2 = _slicedToArray(_useState, 2),
       brandsValue = _useState2[0],
       setBrandsValue = _useState2[1];

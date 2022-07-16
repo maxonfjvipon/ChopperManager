@@ -53,7 +53,11 @@ export const PumpStationSelection = ({title, widths}) => {
     const {isArrayEmpty} = useCheck()
 
     // STATE
-    const [brandsValue, setBrandsValue] = useState(selection?.pump_brand_ids || [])
+    const [brandsValue, setBrandsValue] = useState(selection
+        ? selection_props.brands_with_series_with_pumps
+            .map(brand => brand.id)
+            .filter(id => selection.pump_series_ids.includes(id))
+        : [])
     const [seriesValue, setSeriesValue] = useState(selection?.pump_series_ids || [])
     const [selectedPumps, setSelectedPumps] = useState([])
     const [addedStations, setAddedStations] = useState(selection?.pump_stations || [])
