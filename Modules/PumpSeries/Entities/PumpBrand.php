@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static PumpBrand find(int|string $id)
  * @method static PumpBrand create(array $attributes)
  */
-class PumpBrand extends Model
+final class PumpBrand extends Model
 {
     use HasFactory;
     use SoftDeletes;

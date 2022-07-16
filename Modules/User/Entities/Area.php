@@ -3,6 +3,7 @@
 namespace Modules\User\Entities;
 
 use App\Traits\Cached;
+use App\Traits\PluckCached;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,7 @@ final class Area extends Model
 {
     use HasFactory;
     use Cached;
+    use PluckCached;
 
     public $timestamps = false;
 

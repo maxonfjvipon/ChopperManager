@@ -19,9 +19,6 @@ final class AcStoreDealer implements InvokableAction
     {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function __invoke(): void
     {
         DealerPumpSeries::updateSeriesForDealer(

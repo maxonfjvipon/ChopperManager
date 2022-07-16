@@ -19,9 +19,6 @@ final class AcUpdateDealer implements InvokableAction
     {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function __invoke(): void
     {
         ($dealer = Dealer::find($this->request->dealer))->update($this->request->dealerProps());

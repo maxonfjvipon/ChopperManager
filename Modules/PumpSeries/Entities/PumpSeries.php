@@ -4,6 +4,7 @@ namespace Modules\PumpSeries\Entities;
 
 use App\Models\Enums\Currency;
 use App\Traits\CanBeDiscontinued;
+use App\Traits\PluckCached;
 use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +32,7 @@ final class PumpSeries extends Model
     use SoftDeletes;
     use SoftCascadeTrait;
     use CanBeDiscontinued;
+    use PluckCached;
 
     protected $table = 'pump_series';
 

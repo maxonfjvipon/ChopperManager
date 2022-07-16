@@ -31,7 +31,7 @@ final class DealerPumpSeries extends Model
     public static function updateSeriesForDealer(array $series_ids, Dealer $dealer): int
     {
         self::where('dealer_id', $dealer->id)
-            ->whereNotIn('series_id', $series_ids)
+            ->when(!empty($series_ids), fn($query) => $query->whereNotIn('series_id', $series_ids))
             ->delete();
 
         return DB::table('dealers_pump_series')

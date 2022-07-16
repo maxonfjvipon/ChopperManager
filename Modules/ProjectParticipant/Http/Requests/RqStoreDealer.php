@@ -23,7 +23,7 @@ class RqStoreDealer extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'area_id' => ['required', new In(Area::allOrCached()->pluck('id')->all())],
+            'area_id' => ['required', new In(Area::pluckFromCached())],
             'itn' => ['sometimes', 'nullable', 'max:12', 'unique:dealers,itn'],
             'email' => ['sometimes', 'nullable', 'string', 'email', 'max:255', 'unique:dealers,email'],
             'phone' => ['sometimes', 'nullable', 'max:12'],

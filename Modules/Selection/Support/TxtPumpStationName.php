@@ -46,7 +46,7 @@ final class TxtPumpStationName extends TxtEnvelope
                     )
                 ),
                 new TxtIf(
-                    $this->controlSystem?->type->station_type->is(StationType::AF),
+                    (bool) $this->controlSystem?->type->station_type->is(StationType::AF),
                     fn () => new TxtJoined(
                         new TxtIf((bool) $this->controlSystem?->avr->value, ' АВР'),
                         new TxtIf(
