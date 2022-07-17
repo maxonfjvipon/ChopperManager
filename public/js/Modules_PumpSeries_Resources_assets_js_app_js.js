@@ -11411,7 +11411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler"];
+var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler", "selectable"];
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -11444,6 +11444,8 @@ var TTable = function TTable(_ref) {
       clickRecord = _ref.clickRecord,
       clickHandler = _ref.clickHandler,
       doubleClickHandler = _ref.doubleClickHandler,
+      _ref$selectable = _ref.selectable,
+      selectable = _ref$selectable === void 0 ? true : _ref$selectable,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   var _columns = columns.map(function (column) {
@@ -11460,7 +11462,7 @@ var TTable = function TTable(_ref) {
       setSelectedRowKey = _useState2[1];
 
   var rowClassName = function rowClassName(record) {
-    return record.key === selectedRowKey ? 'clickRowStyle' : '';
+    return selectable && record.key === selectedRowKey ? 'clickRowStyle' : '';
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({

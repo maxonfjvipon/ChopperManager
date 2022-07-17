@@ -14,6 +14,7 @@ final class RcDealerToEdit extends JsonResource
      * Transform the resource into an array.
      *
      * @param Request
+     * @return array
      */
     public function toArray($request): array
     {
@@ -25,6 +26,7 @@ final class RcDealerToEdit extends JsonResource
             'itn' => $this->resource->itn,
             'email' => $this->resource->email,
             'available_series_ids' => $this->resource->available_series->pluck('id')->all(),
+            'markups' => RcDealerMarkup::collection($this->resource->markups)
         ];
     }
 }

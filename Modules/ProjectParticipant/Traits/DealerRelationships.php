@@ -5,6 +5,8 @@ namespace Modules\ProjectParticipant\Traits;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Project\Entities\Project;
+use Modules\ProjectParticipant\Entities\Dealer;
+use Modules\ProjectParticipant\Entities\DealerMarkup;
 use Modules\PumpSeries\Entities\PumpSeries;
 
 /**
@@ -26,5 +28,13 @@ trait DealerRelationships
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'dealer_id', 'id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function markups(): HasMany
+    {
+        return $this->hasMany(DealerMarkup::class, 'dealer_id', 'id');
     }
 }

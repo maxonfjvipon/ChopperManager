@@ -54,6 +54,24 @@ var CaretUpOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var DeleteOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z" } }] }, "name": "delete", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteOutlined);
+
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@ant-design/icons-svg/es/asn/DoubleLeftOutlined.js ***!
@@ -306,6 +324,24 @@ var QuestionCircleOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var SaveOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z" } }] }, "name": "save", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SaveOutlined);
+
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons-svg/es/asn/SearchOutlined.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ant-design/icons-svg/es/asn/SearchOutlined.js ***!
@@ -320,6 +356,24 @@ __webpack_require__.r(__webpack_exports__);
 // This icon file is generated automatically.
 var SearchOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" } }] }, "name": "search", "theme": "outlined" };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchOutlined);
+
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/UpOutlined.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/UpOutlined.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var UpOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z" } }] }, "name": "up", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpOutlined);
 
 
 /***/ }),
@@ -423,6 +477,40 @@ var CaretUpOutlined = function CaretUpOutlined(props, ref) {
 
 CaretUpOutlined.displayName = 'CaretUpOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(CaretUpOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_DeleteOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/DeleteOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/DeleteOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var DeleteOutlined = function DeleteOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_DeleteOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+DeleteOutlined.displayName = 'DeleteOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(DeleteOutlined));
 
 /***/ }),
 
@@ -902,6 +990,40 @@ QuestionCircleOutlined.displayName = 'QuestionCircleOutlined';
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons/es/icons/SaveOutlined.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/SaveOutlined.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_SaveOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/SaveOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/SaveOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var SaveOutlined = function SaveOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_SaveOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+SaveOutlined.displayName = 'SaveOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(SaveOutlined));
+
+/***/ }),
+
 /***/ "./node_modules/@ant-design/icons/es/icons/SearchOutlined.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@ant-design/icons/es/icons/SearchOutlined.js ***!
@@ -933,6 +1055,40 @@ var SearchOutlined = function SearchOutlined(props, ref) {
 
 SearchOutlined.displayName = 'SearchOutlined';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(SearchOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/UpOutlined.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/UpOutlined.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons_svg_es_asn_UpOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/UpOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/UpOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var UpOutlined = function UpOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props), {}, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_UpOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+UpOutlined.displayName = 'UpOutlined';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(UpOutlined));
 
 /***/ }),
 
@@ -3597,6 +3753,118 @@ var Row = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (p
 });
 Row.displayName = 'Row';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Row);
+
+/***/ }),
+
+/***/ "./node_modules/antd/es/input-number/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/antd/es/input-number/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var rc_input_number__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-input-number */ "./node_modules/rc-input-number/es/index.js");
+/* harmony import */ var _ant_design_icons_es_icons_UpOutlined__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ant-design/icons/es/icons/UpOutlined */ "./node_modules/@ant-design/icons/es/icons/UpOutlined.js");
+/* harmony import */ var _ant_design_icons_es_icons_DownOutlined__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ant-design/icons/es/icons/DownOutlined */ "./node_modules/@ant-design/icons/es/icons/DownOutlined.js");
+/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
+/* harmony import */ var _config_provider_SizeContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config-provider/SizeContext */ "./node_modules/antd/es/config-provider/SizeContext.js");
+/* harmony import */ var _util_reactNode__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../_util/reactNode */ "./node_modules/antd/es/_util/reactNode.js");
+
+
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+
+
+
+
+
+
+
+
+var InputNumber = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function (props, ref) {
+  var _classNames;
+
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_2__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_5__.ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var size = react__WEBPACK_IMPORTED_MODULE_2__.useContext(_config_provider_SizeContext__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+  var className = props.className,
+      customizeSize = props.size,
+      customizePrefixCls = props.prefixCls,
+      addonBefore = props.addonBefore,
+      addonAfter = props.addonAfter,
+      _props$bordered = props.bordered,
+      bordered = _props$bordered === void 0 ? true : _props$bordered,
+      readOnly = props.readOnly,
+      others = __rest(props, ["className", "size", "prefixCls", "addonBefore", "addonAfter", "bordered", "readOnly"]);
+
+  var prefixCls = getPrefixCls('input-number', customizePrefixCls);
+  var upIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ant_design_icons_es_icons_UpOutlined__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    className: "".concat(prefixCls, "-handler-up-inner")
+  });
+  var downIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(_ant_design_icons_es_icons_DownOutlined__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    className: "".concat(prefixCls, "-handler-down-inner")
+  });
+  var mergeSize = customizeSize || size;
+  var inputNumberClass = classnames__WEBPACK_IMPORTED_MODULE_3___default()((_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-lg"), mergeSize === 'large'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-sm"), mergeSize === 'small'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-readonly"), readOnly), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _classNames), className);
+  var element = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(rc_input_number__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref,
+    className: inputNumberClass,
+    upHandler: upIcon,
+    downHandler: downIcon,
+    prefixCls: prefixCls,
+    readOnly: readOnly
+  }, others));
+
+  if (addonBefore != null || addonAfter != null) {
+    var _classNames3;
+
+    var wrapperClassName = "".concat(prefixCls, "-group");
+    var addonClassName = "".concat(wrapperClassName, "-addon");
+    var addonBeforeNode = addonBefore ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+      className: addonClassName
+    }, addonBefore) : null;
+    var addonAfterNode = addonAfter ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+      className: addonClassName
+    }, addonAfter) : null;
+    var mergedWrapperClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()("".concat(prefixCls, "-wrapper"), wrapperClassName, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, "".concat(wrapperClassName, "-rtl"), direction === 'rtl'));
+    var mergedGroupClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()("".concat(prefixCls, "-group-wrapper"), (_classNames3 = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames3, "".concat(prefixCls, "-group-wrapper-sm"), size === 'small'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames3, "".concat(prefixCls, "-group-wrapper-lg"), size === 'large'), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames3, "".concat(prefixCls, "-group-wrapper-rtl"), direction === 'rtl'), _classNames3), className);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+      className: mergedGroupClassName,
+      style: props.style
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+      className: mergedWrapperClassName
+    }, addonBeforeNode, (0,_util_reactNode__WEBPACK_IMPORTED_MODULE_9__.cloneElement)(element, {
+      style: null
+    }), addonAfterNode));
+  }
+
+  return element;
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputNumber);
 
 /***/ }),
 
@@ -8744,8 +9012,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/input-rules.hook */ "./resources/js/src/Hooks/input-rules.hook.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/Selection */ "./resources/js/src/Shared/Inputs/Selection.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/message/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/divider/index.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer */ "./resources/js/src/Shared/Resource/Containers/ResourceContainer.js");
 /* harmony import */ var _resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction */ "./resources/js/src/Shared/Resource/Actions/SubmitAction.js");
@@ -8755,7 +9025,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection */ "./resources/js/src/Shared/Inputs/MultipleSelection.js");
 /* harmony import */ var _resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Hooks/styles.hook */ "./resources/js/src/Hooks/styles.hook.js");
 /* harmony import */ var _resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton */ "./resources/js/src/Shared/Buttons/PrimaryButton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/TTable */ "./resources/js/src/Shared/Resource/Table/TTable.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer */ "./resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/DeleteOutlined.js");
+/* harmony import */ var _resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Inputs/InputNum */ "./resources/js/src/Shared/Inputs/InputNum.js");
+/* harmony import */ var _resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton */ "./resources/js/src/Shared/Buttons/SecondaryButton.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit */ "./resources/js/src/Shared/Resource/Table/Actions/Edit.js");
+/* harmony import */ var _resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../../../../../resources/js/src/Shared/Resource/Table/Actions/Save */ "./resources/js/src/Shared/Resource/Table/Actions/Save.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -8770,22 +9073,81 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import {EditableCell} from "../../../../../../../resources/js/src/Shared/EditableCell";
 
+
+
+
+
+
+
+
+
+
+
+
+var EditableCell = function EditableCell(_ref) {
+  var dataIndex = _ref.dataIndex,
+      input = _ref.input,
+      editing = _ref.editing,
+      children = _ref.children;
+
+  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_1__.useInputRules)(),
+      rules = _useInputRules.rules;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("td", {
+    children: editing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"].Item, {
+      rules: [rules.required],
+      name: dataIndex,
+      style: {
+        margin: 0
+      },
+      children: input
+    }) : children
+  });
+};
 
 function CreateOrEdit() {
   // HOOKS
-  var _useInputRules = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_1__.useInputRules)(),
-      rules = _useInputRules.rules;
+  var _useInputRules2 = (0,_resources_js_src_Hooks_input_rules_hook__WEBPACK_IMPORTED_MODULE_1__.useInputRules)(),
+      rules = _useInputRules2.rules;
 
   var _usePage$props = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.usePage)().props,
       filter_data = _usePage$props.filter_data,
       dealer = _usePage$props.dealer;
 
   var _useLabels = (0,_resources_js_src_Hooks_labels_hook__WEBPACK_IMPORTED_MODULE_9__.useLabels)(),
-      labels = _useLabels.labels; // CONSTS
+      labels = _useLabels.labels;
+
+  var _useStyles = (0,_resources_js_src_Hooks_styles_hook__WEBPACK_IMPORTED_MODULE_11__.useStyles)(),
+      margin = _useStyles.margin,
+      fullWidth = _useStyles.fullWidth; // STATE
+
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((dealer === null || dealer === void 0 ? void 0 : dealer.markups) || []),
+      _useState2 = _slicedToArray(_useState, 2),
+      markups = _useState2[0],
+      setMarkups = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.max(dealer === null || dealer === void 0 ? void 0 : dealer.markups.map(function (m) {
+    return m.id;
+  })) || 1),
+      _useState4 = _slicedToArray(_useState3, 2),
+      markupsCount = _useState4[0],
+      setMarkupsCount = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      editingKey = _useState6[0],
+      setEditingKey = _useState6[1]; // CONSTS
 
 
   var formName = 'dealer-form';
+
+  var _Form$useForm = antd__WEBPACK_IMPORTED_MODULE_21__["default"].useForm(),
+      _Form$useForm2 = _slicedToArray(_Form$useForm, 1),
+      form = _Form$useForm2[0];
+
   var items = [{
     values: {
       name: 'name',
@@ -8793,7 +9155,7 @@ function CreateOrEdit() {
       rules: [rules.required, rules.max(255)],
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.name
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
       placeholder: labels.name
     })
   }, {
@@ -8803,7 +9165,7 @@ function CreateOrEdit() {
       rules: [rules.required],
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.area_id
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_3__.Selection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_Selection__WEBPACK_IMPORTED_MODULE_3__.Selection, {
       placeholder: labels.area,
       options: filter_data.areas
     })
@@ -8814,7 +9176,7 @@ function CreateOrEdit() {
       rules: rules.itn,
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.itn
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
       placeholder: labels.itn
     })
   }, {
@@ -8824,7 +9186,7 @@ function CreateOrEdit() {
       rules: [rules.phone],
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.phone
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
       placeholder: labels.phone
     })
   }, {
@@ -8834,7 +9196,7 @@ function CreateOrEdit() {
       rules: [rules.email],
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.email
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_22__["default"], {
       placeholder: labels.email
     })
   }, {
@@ -8843,38 +9205,183 @@ function CreateOrEdit() {
       label: labels.available_series,
       initialValue: dealer === null || dealer === void 0 ? void 0 : dealer.available_series_ids
     },
-    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_10__.MultipleSelection, {
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_MultipleSelection__WEBPACK_IMPORTED_MODULE_10__.MultipleSelection, {
       placeholder: labels.available_series,
       options: filter_data.series
     })
-  }]; // HANDLERS
+  }];
+
+  var isEditing = function isEditing(record) {
+    return record.key === editingKey;
+  };
+
+  var columns = [{
+    title: "Себестоимость от, ₽",
+    dataIndex: "cost_from",
+    editable: true,
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_16__.InputNum, {
+      style: fullWidth,
+      min: 0
+    }),
+    render: function render(_, record) {
+      var _record$cost_from;
+
+      return (_record$cost_from = record.cost_from) === null || _record$cost_from === void 0 ? void 0 : _record$cost_from.toLocaleString();
+    }
+  }, {
+    title: "Себестоимость до, ₽",
+    dataIndex: "cost_to",
+    editable: true,
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_16__.InputNum, {
+      style: fullWidth,
+      min: 0
+    })
+  }, {
+    title: "Наценка, %",
+    dataIndex: "value",
+    editable: true,
+    input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_16__.InputNum, {
+      style: fullWidth,
+      min: -50,
+      max: 500
+    })
+  }, {
+    key: 'action',
+    width: '1%',
+    render: function render(_, record) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(_resources_js_src_Shared_Resource_Table_Actions_TableActionsContainer__WEBPACK_IMPORTED_MODULE_14__.TableActionsContainer, {
+        children: [isEditing(record) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Save__WEBPACK_IMPORTED_MODULE_19__.Save, {
+          clickHandler: saveRowHandler(record)
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_Edit__WEBPACK_IMPORTED_MODULE_18__.Edit, {
+          clickHandler: editRowHandler(record)
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_Actions_TableAction__WEBPACK_IMPORTED_MODULE_15__.TableAction, {
+          clickHandler: deleteMarkupHandler(record),
+          icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_23__["default"], {}),
+          title: "\u0423\u0434\u0430\u043B\u0438\u0442\u044C"
+        })]
+      });
+    }
+  }].map(function (col) {
+    if (!col.editable) {
+      return col;
+    }
+
+    return _objectSpread(_objectSpread({}, col), {}, {
+      onCell: function onCell(record) {
+        return {
+          editing: isEditing(record),
+          dataIndex: col.dataIndex,
+          title: col.title,
+          input: col.input
+        };
+      }
+    });
+  }); // HANDLERS
 
   var createOrUpdateDealerHandler = function createOrUpdateDealerHandler(body) {
+    body = _objectSpread(_objectSpread({}, body), {}, {
+      markups: markups.map(function (m) {
+        return {
+          cost_from: m.cost_from,
+          cost_to: m.cost_to,
+          value: m.value
+        };
+      })
+    });
+
     if (dealer) {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.post(route('dealers.update', dealer.id), body);
     } else {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_4__.Inertia.post(route('dealers.store'), body);
     }
+  };
+
+  var addMarkupHandler = function addMarkupHandler() {
+    setMarkups([].concat(_toConsumableArray(markups), [{
+      key: markupsCount,
+      cost_from: 0,
+      cost_to: 0,
+      value: 0
+    }]));
+    setEditingKey(markupsCount);
+    setMarkupsCount(markupsCount + 1);
+  };
+
+  var editRowHandler = function editRowHandler(record) {
+    return function () {
+      form.setFieldsValue(_objectSpread({}, record));
+      setEditingKey(record.key);
+    };
+  };
+
+  var deleteMarkupHandler = function deleteMarkupHandler(record) {
+    return function () {
+      var _markups = markups.filter(function (markup) {
+        return markup.key !== record.key;
+      });
+
+      setMarkups(_markups);
+      form.resetFields();
+      setEditingKey('');
+    };
+  };
+
+  var saveRowHandler = function saveRowHandler(record) {
+    return function () {
+      form.validateFields().then(function (values) {
+        if (values.cost_from < values.cost_to) {
+          var _markups = markups;
+
+          var index = _markups.findIndex(function (m) {
+            return m.key === record.key;
+          });
+
+          _markups.splice(index, 1, _objectSpread(_objectSpread({}, _markups[index]), values));
+
+          setMarkups(_toConsumableArray(_markups));
+          setEditingKey('');
+          form.resetFields();
+        } else {
+          antd__WEBPACK_IMPORTED_MODULE_24__["default"].error('"Себестоимость до" должна быть больше, чем "Себестоимость от"!');
+        }
+      });
+    };
   }; // RENDER
 
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_5__.ResourceContainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(_resources_js_src_Shared_Resource_Containers_ResourceContainer__WEBPACK_IMPORTED_MODULE_5__.ResourceContainer, {
     title: dealer ? "Изменить дилера" : "Создать дилера",
-    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_6__.SubmitAction, {
+    actions: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Actions_SubmitAction__WEBPACK_IMPORTED_MODULE_6__.SubmitAction, {
+      disabled: editingKey !== '',
       label: dealer ? "Изменить" : "Создать",
       form: formName
     }),
-    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_Components_BackToDealersLink__WEBPACK_IMPORTED_MODULE_8__.BackToDealersLink, {}),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_7__.ItemsForm, {
+    extra: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_Components_BackToDealersLink__WEBPACK_IMPORTED_MODULE_8__.BackToDealersLink, {}),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_ItemsForm__WEBPACK_IMPORTED_MODULE_7__.ItemsForm, {
       layout: "vertical",
       items: items,
       name: formName,
       onFinish: createOrUpdateDealerHandler
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(antd__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_25__["default"], {
       orientation: "left",
       children: "\u041D\u0430\u0446\u0435\u043D\u043A\u0438"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_resources_js_src_Shared_Buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, {
-      children: "Add a row"
+    }), markups.length < 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Buttons_SecondaryButton__WEBPACK_IMPORTED_MODULE_17__.SecondaryButton, {
+      disabled: editingKey !== '',
+      onClick: addMarkupHandler,
+      style: margin.bottom(16),
+      children: "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0446\u0435\u043D\u043A\u0443"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(antd__WEBPACK_IMPORTED_MODULE_21__["default"], {
+      form: form,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Resource_Table_TTable__WEBPACK_IMPORTED_MODULE_13__.TTable, {
+        selectable: false,
+        components: {
+          body: {
+            cell: EditableCell
+          }
+        },
+        dataSource: markups,
+        columns: columns
+      })
     })]
   });
 }
@@ -9564,6 +10071,51 @@ var PrimaryButton = function PrimaryButton(props) {
 
 /***/ }),
 
+/***/ "./resources/js/src/Shared/Buttons/SecondaryButton.js":
+/*!************************************************************!*\
+  !*** ./resources/js/src/Shared/Buttons/SecondaryButton.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SecondaryButton": () => (/* binding */ SecondaryButton)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/button/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["type", "children"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var SecondaryButton = function SecondaryButton(_ref) {
+  var _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'primary' : _ref$type,
+      children = _ref.children,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
+    danger: true,
+    type: type
+  }, rest), {}, {
+    children: children
+  }));
+};
+
+/***/ }),
+
 /***/ "./resources/js/src/Shared/Cards/FlexRoundedCard.js":
 /*!**********************************************************!*\
   !*** ./resources/js/src/Shared/Cards/FlexRoundedCard.js ***!
@@ -9647,6 +10199,52 @@ var RoundedCard = function RoundedCard(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(antd__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread(_objectSpread({
     className: "rounded-card " + className
   }, rest), {}, {
+    children: children
+  }));
+};
+
+/***/ }),
+
+/***/ "./resources/js/src/Shared/Inputs/InputNum.js":
+/*!****************************************************!*\
+  !*** ./resources/js/src/Shared/Inputs/InputNum.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "InputNum": () => (/* binding */ InputNum)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/input-number/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+var _excluded = ["children"];
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+var InputNum = function InputNum(_ref) {
+  var children = _ref.children,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({}, rest), {}, {
+    formatter: function formatter(value) {
+      return value.replace(',', '.');
+    },
+    parser: function parser(value) {
+      return value.replace(',', '.');
+    },
     children: children
   }));
 };
@@ -10157,6 +10755,36 @@ var Edit = function Edit(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/src/Shared/Resource/Table/Actions/Save.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/src/Shared/Resource/Table/Actions/Save.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Save": () => (/* binding */ Save)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/SaveOutlined.js");
+/* harmony import */ var _TableAction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TableAction */ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Save = function Save(_ref) {
+  var clickHandler = _ref.clickHandler;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_TableAction__WEBPACK_IMPORTED_MODULE_1__.TableAction, {
+    clickHandler: clickHandler,
+    icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {}),
+    title: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C"
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/src/Shared/Resource/Table/Actions/TableAction.js":
 /*!***********************************************************************!*\
   !*** ./resources/js/src/Shared/Resource/Table/Actions/TableAction.js ***!
@@ -10296,7 +10924,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/table/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler"];
+var _excluded = ["columns", "dataSource", "clickRecord", "clickHandler", "doubleClickHandler", "selectable"];
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -10329,6 +10957,8 @@ var TTable = function TTable(_ref) {
       clickRecord = _ref.clickRecord,
       clickHandler = _ref.clickHandler,
       doubleClickHandler = _ref.doubleClickHandler,
+      _ref$selectable = _ref.selectable,
+      selectable = _ref$selectable === void 0 ? true : _ref$selectable,
       rest = _objectWithoutProperties(_ref, _excluded);
 
   var _columns = columns.map(function (column) {
@@ -10345,7 +10975,7 @@ var TTable = function TTable(_ref) {
       setSelectedRowKey = _useState2[1];
 
   var rowClassName = function rowClassName(record) {
-    return record.key === selectedRowKey ? 'clickRowStyle' : '';
+    return selectable && record.key === selectedRowKey ? 'clickRowStyle' : '';
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread({
@@ -35395,6 +36025,1293 @@ Checkbox.defaultProps = {
   onKeyUp: function onKeyUp() {}
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkbox);
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/InputNumber.js":
+/*!********************************************************!*\
+  !*** ./node_modules/rc-input-number/es/InputNumber.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rc-util/es/KeyCode */ "./node_modules/rc-util/es/KeyCode.js");
+/* harmony import */ var rc_util_es_ref__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rc-util/es/ref */ "./node_modules/rc-util/es/ref.js");
+/* harmony import */ var _utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utils/MiniDecimal */ "./node_modules/rc-input-number/es/utils/MiniDecimal.js");
+/* harmony import */ var _StepHandler__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./StepHandler */ "./node_modules/rc-input-number/es/StepHandler.js");
+/* harmony import */ var _utils_numberUtil__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/numberUtil */ "./node_modules/rc-input-number/es/utils/numberUtil.js");
+/* harmony import */ var _hooks_useCursor__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hooks/useCursor */ "./node_modules/rc-input-number/es/hooks/useCursor.js");
+/* harmony import */ var _hooks_useUpdateEffect__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./hooks/useUpdateEffect */ "./node_modules/rc-input-number/es/hooks/useUpdateEffect.js");
+/* harmony import */ var _hooks_useFrame__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./hooks/useFrame */ "./node_modules/rc-input-number/es/hooks/useFrame.js");
+
+
+
+
+
+var _excluded = ["prefixCls", "className", "style", "min", "max", "step", "defaultValue", "value", "disabled", "readOnly", "upHandler", "downHandler", "keyboard", "controls", "stringMode", "parser", "formatter", "precision", "decimalSeparator", "onChange", "onInput", "onPressEnter", "onStep"];
+
+
+
+
+
+
+
+
+
+
+/**
+ * We support `stringMode` which need handle correct type when user call in onChange
+ */
+
+var getDecimalValue = function getDecimalValue(stringMode, decimalValue) {
+  if (stringMode || decimalValue.isEmpty()) {
+    return decimalValue.toString();
+  }
+
+  return decimalValue.toNumber();
+};
+
+var getDecimalIfValidate = function getDecimalIfValidate(value) {
+  var decimal = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(value);
+  return decimal.isInvalidate() ? null : decimal;
+};
+
+var InputNumber = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.forwardRef(function (props, ref) {
+  var _classNames;
+
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-input-number' : _props$prefixCls,
+      className = props.className,
+      style = props.style,
+      min = props.min,
+      max = props.max,
+      _props$step = props.step,
+      step = _props$step === void 0 ? 1 : _props$step,
+      defaultValue = props.defaultValue,
+      value = props.value,
+      disabled = props.disabled,
+      readOnly = props.readOnly,
+      upHandler = props.upHandler,
+      downHandler = props.downHandler,
+      keyboard = props.keyboard,
+      _props$controls = props.controls,
+      controls = _props$controls === void 0 ? true : _props$controls,
+      stringMode = props.stringMode,
+      parser = props.parser,
+      formatter = props.formatter,
+      precision = props.precision,
+      decimalSeparator = props.decimalSeparator,
+      onChange = props.onChange,
+      onInput = props.onInput,
+      onPressEnter = props.onPressEnter,
+      onStep = props.onStep,
+      inputProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_4__["default"])(props, _excluded);
+
+  var inputClassName = "".concat(prefixCls, "-input");
+  var inputRef = react__WEBPACK_IMPORTED_MODULE_5__.useRef(null);
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_5__.useState(false),
+      _React$useState2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState, 2),
+      focus = _React$useState2[0],
+      setFocus = _React$useState2[1];
+
+  var userTypingRef = react__WEBPACK_IMPORTED_MODULE_5__.useRef(false);
+  var compositionRef = react__WEBPACK_IMPORTED_MODULE_5__.useRef(false); // ============================ Value =============================
+  // Real value control
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_5__.useState(function () {
+    return (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(value !== null && value !== void 0 ? value : defaultValue);
+  }),
+      _React$useState4 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState3, 2),
+      decimalValue = _React$useState4[0],
+      setDecimalValue = _React$useState4[1];
+
+  function setUncontrolledDecimalValue(newDecimal) {
+    if (value === undefined) {
+      setDecimalValue(newDecimal);
+    }
+  } // ====================== Parser & Formatter ======================
+
+  /**
+   * `precision` is used for formatter & onChange.
+   * It will auto generate by `value` & `step`.
+   * But it will not block user typing.
+   *
+   * Note: Auto generate `precision` is used for legacy logic.
+   * We should remove this since we already support high precision with BigInt.
+   *
+   * @param number  Provide which number should calculate precision
+   * @param userTyping  Change by user typing
+   */
+
+
+  var getPrecision = react__WEBPACK_IMPORTED_MODULE_5__.useCallback(function (numStr, userTyping) {
+    if (userTyping) {
+      return undefined;
+    }
+
+    if (precision >= 0) {
+      return precision;
+    }
+
+    return Math.max((0,_utils_numberUtil__WEBPACK_IMPORTED_MODULE_11__.getNumberPrecision)(numStr), (0,_utils_numberUtil__WEBPACK_IMPORTED_MODULE_11__.getNumberPrecision)(step));
+  }, [precision, step]); // >>> Parser
+
+  var mergedParser = react__WEBPACK_IMPORTED_MODULE_5__.useCallback(function (num) {
+    var numStr = String(num);
+
+    if (parser) {
+      return parser(numStr);
+    }
+
+    var parsedStr = numStr;
+
+    if (decimalSeparator) {
+      parsedStr = parsedStr.replace(decimalSeparator, '.');
+    } // [Legacy] We still support auto convert `$ 123,456` to `123456`
+
+
+    return parsedStr.replace(/[^\w.-]+/g, '');
+  }, [parser, decimalSeparator]); // >>> Formatter
+
+  var inputValueRef = react__WEBPACK_IMPORTED_MODULE_5__.useRef('');
+  var mergedFormatter = react__WEBPACK_IMPORTED_MODULE_5__.useCallback(function (number, userTyping) {
+    if (formatter) {
+      return formatter(number, {
+        userTyping: userTyping,
+        input: String(inputValueRef.current)
+      });
+    }
+
+    var str = typeof number === 'number' ? (0,_utils_numberUtil__WEBPACK_IMPORTED_MODULE_11__.num2str)(number) : number; // User typing will not auto format with precision directly
+
+    if (!userTyping) {
+      var mergedPrecision = getPrecision(str, userTyping);
+
+      if ((0,_utils_numberUtil__WEBPACK_IMPORTED_MODULE_11__.validateNumber)(str) && (decimalSeparator || mergedPrecision >= 0)) {
+        // Separator
+        var separatorStr = decimalSeparator || '.';
+        str = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__.toFixed)(str, separatorStr, mergedPrecision);
+      }
+    }
+
+    return str;
+  }, [formatter, getPrecision, decimalSeparator]); // ========================== InputValue ==========================
+
+  /**
+   * Input text value control
+   *
+   * User can not update input content directly. It update with follow rules by priority:
+   *  1. controlled `value` changed
+   *    * [SPECIAL] Typing like `1.` should not immediately convert to `1`
+   *  2. User typing with format (not precision)
+   *  3. Blur or Enter trigger revalidate
+   */
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_5__.useState(function () {
+    var initValue = defaultValue !== null && defaultValue !== void 0 ? defaultValue : value;
+
+    if (decimalValue.isInvalidate() && ['string', 'number'].includes((0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_2__["default"])(initValue))) {
+      return Number.isNaN(initValue) ? '' : initValue;
+    }
+
+    return mergedFormatter(decimalValue.toString(), false);
+  }),
+      _React$useState6 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState5, 2),
+      inputValue = _React$useState6[0],
+      setInternalInputValue = _React$useState6[1];
+
+  inputValueRef.current = inputValue; // Should always be string
+
+  function setInputValue(newValue, userTyping) {
+    setInternalInputValue(mergedFormatter( // Invalidate number is sometime passed by external control, we should let it go
+    // Otherwise is controlled by internal interactive logic which check by userTyping
+    // You can ref 'show limited value when input is not focused' test for more info.
+    newValue.isInvalidate() ? newValue.toString(false) : newValue.toString(!userTyping), userTyping));
+  } // >>> Max & Min limit
+
+
+  var maxDecimal = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
+    return getDecimalIfValidate(max);
+  }, [max]);
+  var minDecimal = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
+    return getDecimalIfValidate(min);
+  }, [min]);
+  var upDisabled = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
+    if (!maxDecimal || !decimalValue || decimalValue.isInvalidate()) {
+      return false;
+    }
+
+    return maxDecimal.lessEquals(decimalValue);
+  }, [maxDecimal, decimalValue]);
+  var downDisabled = react__WEBPACK_IMPORTED_MODULE_5__.useMemo(function () {
+    if (!minDecimal || !decimalValue || decimalValue.isInvalidate()) {
+      return false;
+    }
+
+    return decimalValue.lessEquals(minDecimal);
+  }, [minDecimal, decimalValue]); // Cursor controller
+
+  var _useCursor = (0,_hooks_useCursor__WEBPACK_IMPORTED_MODULE_12__["default"])(inputRef.current, focus),
+      _useCursor2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_useCursor, 2),
+      recordCursor = _useCursor2[0],
+      restoreCursor = _useCursor2[1]; // ============================= Data =============================
+
+  /**
+   * Find target value closet within range.
+   * e.g. [11, 28]:
+   *    3  => 11
+   *    23 => 23
+   *    99 => 28
+   */
+
+
+  var getRangeValue = function getRangeValue(target) {
+    // target > max
+    if (maxDecimal && !target.lessEquals(maxDecimal)) {
+      return maxDecimal;
+    } // target < min
+
+
+    if (minDecimal && !minDecimal.lessEquals(target)) {
+      return minDecimal;
+    }
+
+    return null;
+  };
+  /**
+   * Check value is in [min, max] range
+   */
+
+
+  var isInRange = function isInRange(target) {
+    return !getRangeValue(target);
+  };
+  /**
+   * Trigger `onChange` if value validated and not equals of origin.
+   * Return the value that re-align in range.
+   */
+
+
+  var triggerValueUpdate = function triggerValueUpdate(newValue, userTyping) {
+    var updateValue = newValue;
+    var isRangeValidate = isInRange(updateValue) || updateValue.isEmpty(); // Skip align value when trigger value is empty.
+    // We just trigger onChange(null)
+    // This should not block user typing
+
+    if (!updateValue.isEmpty() && !userTyping) {
+      // Revert value in range if needed
+      updateValue = getRangeValue(updateValue) || updateValue;
+      isRangeValidate = true;
+    }
+
+    if (!readOnly && !disabled && isRangeValidate) {
+      var numStr = updateValue.toString();
+      var mergedPrecision = getPrecision(numStr, userTyping);
+
+      if (mergedPrecision >= 0) {
+        updateValue = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])((0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__.toFixed)(numStr, '.', mergedPrecision));
+      } // Trigger event
+
+
+      if (!updateValue.equals(decimalValue)) {
+        setUncontrolledDecimalValue(updateValue);
+        onChange === null || onChange === void 0 ? void 0 : onChange(updateValue.isEmpty() ? null : getDecimalValue(stringMode, updateValue)); // Reformat input if value is not controlled
+
+        if (value === undefined) {
+          setInputValue(updateValue, userTyping);
+        }
+      }
+
+      return updateValue;
+    }
+
+    return decimalValue;
+  }; // ========================== User Input ==========================
+
+
+  var onNextPromise = (0,_hooks_useFrame__WEBPACK_IMPORTED_MODULE_14__["default"])(); // >>> Collect input value
+
+  var collectInputValue = function collectInputValue(inputStr) {
+    recordCursor(); // Update inputValue incase input can not parse as number
+
+    setInternalInputValue(inputStr); // Parse number
+
+    if (!compositionRef.current) {
+      var finalValue = mergedParser(inputStr);
+      var finalDecimal = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(finalValue);
+
+      if (!finalDecimal.isNaN()) {
+        triggerValueUpdate(finalDecimal, true);
+      }
+    } // Trigger onInput later to let user customize value if they want do handle something after onChange
+
+
+    onInput === null || onInput === void 0 ? void 0 : onInput(inputStr); // optimize for chinese input experience
+    // https://github.com/ant-design/ant-design/issues/8196
+
+    onNextPromise(function () {
+      var nextInputStr = inputStr;
+
+      if (!parser) {
+        nextInputStr = inputStr.replace(/。/g, '.');
+      }
+
+      if (nextInputStr !== inputStr) {
+        collectInputValue(nextInputStr);
+      }
+    });
+  }; // >>> Composition
+
+
+  var onCompositionStart = function onCompositionStart() {
+    compositionRef.current = true;
+  };
+
+  var onCompositionEnd = function onCompositionEnd() {
+    compositionRef.current = false;
+    collectInputValue(inputRef.current.value);
+  }; // >>> Input
+
+
+  var onInternalInput = function onInternalInput(e) {
+    collectInputValue(e.target.value);
+  }; // ============================= Step =============================
+
+
+  var onInternalStep = function onInternalStep(up) {
+    var _inputRef$current;
+
+    // Ignore step since out of range
+    if (up && upDisabled || !up && downDisabled) {
+      return;
+    } // Clear typing status since it may caused by up & down key.
+    // We should sync with input value.
+
+
+    userTypingRef.current = false;
+    var stepDecimal = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(step);
+
+    if (!up) {
+      stepDecimal = stepDecimal.negate();
+    }
+
+    var target = (decimalValue || (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(0)).add(stepDecimal.toString());
+    var updatedValue = triggerValueUpdate(target, false);
+    onStep === null || onStep === void 0 ? void 0 : onStep(getDecimalValue(stringMode, updatedValue), {
+      offset: step,
+      type: up ? 'up' : 'down'
+    });
+    (_inputRef$current = inputRef.current) === null || _inputRef$current === void 0 ? void 0 : _inputRef$current.focus();
+  }; // ============================ Flush =============================
+
+  /**
+   * Flush current input content to trigger value change & re-formatter input if needed
+   */
+
+
+  var flushInputValue = function flushInputValue(userTyping) {
+    var parsedValue = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(mergedParser(inputValue));
+    var formatValue = parsedValue;
+
+    if (!parsedValue.isNaN()) {
+      // Only validate value or empty value can be re-fill to inputValue
+      // Reassign the formatValue within ranged of trigger control
+      formatValue = triggerValueUpdate(parsedValue, userTyping);
+    } else {
+      formatValue = decimalValue;
+    }
+
+    if (value !== undefined) {
+      // Reset back with controlled value first
+      setInputValue(decimalValue, false);
+    } else if (!formatValue.isNaN()) {
+      // Reset input back since no validate value
+      setInputValue(formatValue, false);
+    }
+  };
+
+  var onKeyDown = function onKeyDown(event) {
+    var which = event.which;
+    userTypingRef.current = true;
+
+    if (which === rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_7__["default"].ENTER) {
+      if (!compositionRef.current) {
+        userTypingRef.current = false;
+      }
+
+      flushInputValue(false);
+      onPressEnter === null || onPressEnter === void 0 ? void 0 : onPressEnter(event);
+    }
+
+    if (keyboard === false) {
+      return;
+    } // Do step
+
+
+    if (!compositionRef.current && [rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_7__["default"].UP, rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_7__["default"].DOWN].includes(which)) {
+      onInternalStep(rc_util_es_KeyCode__WEBPACK_IMPORTED_MODULE_7__["default"].UP === which);
+      event.preventDefault();
+    }
+  };
+
+  var onKeyUp = function onKeyUp() {
+    userTypingRef.current = false;
+  }; // >>> Focus & Blur
+
+
+  var onBlur = function onBlur() {
+    flushInputValue(false);
+    setFocus(false);
+    userTypingRef.current = false;
+  }; // ========================== Controlled ==========================
+  // Input by precision
+
+
+  (0,_hooks_useUpdateEffect__WEBPACK_IMPORTED_MODULE_13__["default"])(function () {
+    if (!decimalValue.isInvalidate()) {
+      setInputValue(decimalValue, false);
+    }
+  }, [precision]); // Input by value
+
+  (0,_hooks_useUpdateEffect__WEBPACK_IMPORTED_MODULE_13__["default"])(function () {
+    var newValue = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(value);
+    setDecimalValue(newValue);
+    var currentParsedValue = (0,_utils_MiniDecimal__WEBPACK_IMPORTED_MODULE_9__["default"])(mergedParser(inputValue)); // When user typing from `1.2` to `1.`, we should not convert to `1` immediately.
+    // But let it go if user set `formatter`
+
+    if (!newValue.equals(currentParsedValue) || !userTypingRef.current || formatter) {
+      // Update value as effect
+      setInputValue(newValue, userTypingRef.current);
+    }
+  }, [value]); // ============================ Cursor ============================
+
+  (0,_hooks_useUpdateEffect__WEBPACK_IMPORTED_MODULE_13__["default"])(function () {
+    if (formatter) {
+      restoreCursor();
+    }
+  }, [inputValue]); // ============================ Render ============================
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_6___default()(prefixCls, className, (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-focused"), focus), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-disabled"), disabled), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-readonly"), readOnly), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-not-a-number"), decimalValue.isNaN()), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(_classNames, "".concat(prefixCls, "-out-of-range"), !decimalValue.isInvalidate() && !isInRange(decimalValue)), _classNames)),
+    style: style,
+    onFocus: function onFocus() {
+      setFocus(true);
+    },
+    onBlur: onBlur,
+    onKeyDown: onKeyDown,
+    onKeyUp: onKeyUp,
+    onCompositionStart: onCompositionStart,
+    onCompositionEnd: onCompositionEnd
+  }, controls && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_StepHandler__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    prefixCls: prefixCls,
+    upNode: upHandler,
+    downNode: downHandler,
+    upDisabled: upDisabled,
+    downDisabled: downDisabled,
+    onStep: onInternalStep
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("div", {
+    className: "".concat(inputClassName, "-wrap")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement("input", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    autoComplete: "off",
+    role: "spinbutton",
+    "aria-valuemin": min,
+    "aria-valuemax": max,
+    "aria-valuenow": decimalValue.isInvalidate() ? null : decimalValue.toString(),
+    step: step
+  }, inputProps, {
+    ref: (0,rc_util_es_ref__WEBPACK_IMPORTED_MODULE_8__.composeRef)(inputRef, ref),
+    className: inputClassName,
+    value: inputValue,
+    onChange: onInternalInput,
+    disabled: disabled,
+    readOnly: readOnly
+  }))));
+});
+InputNumber.displayName = 'InputNumber';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputNumber);
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/StepHandler.js":
+/*!********************************************************!*\
+  !*** ./node_modules/rc-input-number/es/StepHandler.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StepHandler)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var rc_util_es_isMobile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-util/es/isMobile */ "./node_modules/rc-util/es/isMobile.js");
+
+
+
+
+
+/**
+ * When click and hold on a button - the speed of auto changing the value.
+ */
+
+var STEP_INTERVAL = 200;
+/**
+ * When click and hold on a button - the delay before auto changing the value.
+ */
+
+var STEP_DELAY = 600;
+function StepHandler(_ref) {
+  var prefixCls = _ref.prefixCls,
+      upNode = _ref.upNode,
+      downNode = _ref.downNode,
+      upDisabled = _ref.upDisabled,
+      downDisabled = _ref.downDisabled,
+      onStep = _ref.onStep;
+  // ======================== Step ========================
+  var stepTimeoutRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef();
+  var onStepRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef();
+  onStepRef.current = onStep; // We will interval update step when hold mouse down
+
+  var onStepMouseDown = function onStepMouseDown(e, up) {
+    e.preventDefault();
+    onStepRef.current(up); // Loop step for interval
+
+    function loopStep() {
+      onStepRef.current(up);
+      stepTimeoutRef.current = setTimeout(loopStep, STEP_INTERVAL);
+    } // First time press will wait some time to trigger loop step update
+
+
+    stepTimeoutRef.current = setTimeout(loopStep, STEP_DELAY);
+  };
+
+  var onStopStep = function onStopStep() {
+    clearTimeout(stepTimeoutRef.current);
+  };
+
+  react__WEBPACK_IMPORTED_MODULE_2__.useEffect(function () {
+    return onStopStep;
+  }, []); // ======================= Render =======================
+
+  if ((0,rc_util_es_isMobile__WEBPACK_IMPORTED_MODULE_4__["default"])()) {
+    return null;
+  }
+
+  var handlerClassName = "".concat(prefixCls, "-handler");
+  var upClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()(handlerClassName, "".concat(handlerClassName, "-up"), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, "".concat(handlerClassName, "-up-disabled"), upDisabled));
+  var downClassName = classnames__WEBPACK_IMPORTED_MODULE_3___default()(handlerClassName, "".concat(handlerClassName, "-down"), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, "".concat(handlerClassName, "-down-disabled"), downDisabled));
+  var sharedHandlerProps = {
+    unselectable: 'on',
+    role: 'button',
+    onMouseUp: onStopStep,
+    onMouseLeave: onStopStep
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: "".concat(handlerClassName, "-wrap")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, sharedHandlerProps, {
+    onMouseDown: function onMouseDown(e) {
+      onStepMouseDown(e, true);
+    },
+    "aria-label": "Increase Value",
+    "aria-disabled": upDisabled,
+    className: upClassName
+  }), upNode || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
+    unselectable: "on",
+    className: "".concat(prefixCls, "-handler-up-inner")
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, sharedHandlerProps, {
+    onMouseDown: function onMouseDown(e) {
+      onStepMouseDown(e, false);
+    },
+    "aria-label": "Decrease Value",
+    "aria-disabled": downDisabled,
+    className: downClassName
+  }), downNode || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("span", {
+    unselectable: "on",
+    className: "".concat(prefixCls, "-handler-down-inner")
+  })));
+}
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/hooks/useCursor.js":
+/*!************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/hooks/useCursor.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useCursor)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var rc_util_es_warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rc-util/es/warning */ "./node_modules/rc-util/es/warning.js");
+
+
+/**
+ * Keep input cursor in the correct position if possible.
+ * Is this necessary since we have `formatter` which may mass the content?
+ */
+
+function useCursor(input, focused) {
+  var selectionRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  function recordCursor() {
+    // Record position
+    try {
+      var start = input.selectionStart,
+          end = input.selectionEnd,
+          value = input.value;
+      var beforeTxt = value.substring(0, start);
+      var afterTxt = value.substring(end);
+      selectionRef.current = {
+        start: start,
+        end: end,
+        value: value,
+        beforeTxt: beforeTxt,
+        afterTxt: afterTxt
+      };
+    } catch (e) {// Fix error in Chrome:
+      // Failed to read the 'selectionStart' property from 'HTMLInputElement'
+      // http://stackoverflow.com/q/21177489/3040605
+    }
+  }
+  /**
+   * Restore logic:
+   *  1. back string same
+   *  2. start string same
+   */
+
+
+  function restoreCursor() {
+    if (input && selectionRef.current && focused) {
+      try {
+        var value = input.value;
+        var _selectionRef$current = selectionRef.current,
+            beforeTxt = _selectionRef$current.beforeTxt,
+            afterTxt = _selectionRef$current.afterTxt,
+            start = _selectionRef$current.start;
+        var startPos = value.length;
+
+        if (value.endsWith(afterTxt)) {
+          startPos = value.length - selectionRef.current.afterTxt.length;
+        } else if (value.startsWith(beforeTxt)) {
+          startPos = beforeTxt.length;
+        } else {
+          var beforeLastChar = beforeTxt[start - 1];
+          var newIndex = value.indexOf(beforeLastChar, start - 1);
+
+          if (newIndex !== -1) {
+            startPos = newIndex + 1;
+          }
+        }
+
+        input.setSelectionRange(startPos, startPos);
+      } catch (e) {
+        (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_1__["default"])(false, "Something warning of cursor restore. Please fire issue about this: ".concat(e.message));
+      }
+    }
+  }
+
+  return [recordCursor, restoreCursor];
+}
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/hooks/useFrame.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/rc-input-number/es/hooks/useFrame.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var rc_util_es_raf__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rc-util/es/raf */ "./node_modules/rc-util/es/raf.js");
+
+
+/**
+ * Always trigger latest once when call multiple time
+ */
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var idRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+
+  var cleanUp = function cleanUp() {
+    rc_util_es_raf__WEBPACK_IMPORTED_MODULE_1__["default"].cancel(idRef.current);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return cleanUp;
+  }, []);
+  return function (callback) {
+    cleanUp();
+    idRef.current = (0,rc_util_es_raf__WEBPACK_IMPORTED_MODULE_1__["default"])(function () {
+      callback();
+    });
+  };
+});
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/hooks/useLayoutEffect.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/hooks/useLayoutEffect.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useLayoutEffect": () => (/* binding */ useLayoutEffect)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var rc_util_es_Dom_canUseDom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rc-util/es/Dom/canUseDom */ "./node_modules/rc-util/es/Dom/canUseDom.js");
+
+
+var useLayoutEffect = (0,rc_util_es_Dom_canUseDom__WEBPACK_IMPORTED_MODULE_1__["default"])() ? react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect : react__WEBPACK_IMPORTED_MODULE_0__.useEffect;
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/hooks/useUpdateEffect.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/hooks/useUpdateEffect.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ useUpdateEffect)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _useLayoutEffect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useLayoutEffect */ "./node_modules/rc-input-number/es/hooks/useLayoutEffect.js");
+
+
+/**
+ * Work as `componentDidUpdate`
+ */
+
+function useUpdateEffect(callback, condition) {
+  var initRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef(false);
+  (0,_useLayoutEffect__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)(function () {
+    if (!initRef.current) {
+      initRef.current = true;
+      return undefined;
+    }
+
+    return callback();
+  }, condition);
+}
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/rc-input-number/es/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _InputNumber__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InputNumber */ "./node_modules/rc-input-number/es/InputNumber.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_InputNumber__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/utils/MiniDecimal.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/utils/MiniDecimal.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NumberDecimal": () => (/* binding */ NumberDecimal),
+/* harmony export */   "BigIntDecimal": () => (/* binding */ BigIntDecimal),
+/* harmony export */   "default": () => (/* binding */ getMiniDecimal),
+/* harmony export */   "toFixed": () => (/* binding */ toFixed)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _numberUtil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./numberUtil */ "./node_modules/rc-input-number/es/utils/numberUtil.js");
+/* harmony import */ var _supportUtil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./supportUtil */ "./node_modules/rc-input-number/es/utils/supportUtil.js");
+
+
+
+/* eslint-disable max-classes-per-file */
+
+
+/**
+ * We can remove this when IE not support anymore
+ */
+
+var NumberDecimal = /*#__PURE__*/function () {
+  function NumberDecimal(value) {
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, NumberDecimal);
+
+    this.origin = '';
+    this.number = void 0;
+    this.empty = void 0;
+
+    if (!value && value !== 0 || !String(value).trim()) {
+      this.empty = true;
+      return;
+    }
+
+    this.origin = String(value);
+    this.number = Number(value);
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(NumberDecimal, [{
+    key: "negate",
+    value: function negate() {
+      return new NumberDecimal(-this.toNumber());
+    }
+  }, {
+    key: "add",
+    value: function add(value) {
+      if (this.isInvalidate()) {
+        return new NumberDecimal(value);
+      }
+
+      var target = Number(value);
+
+      if (Number.isNaN(target)) {
+        return this;
+      }
+
+      var number = this.number + target; // [Legacy] Back to safe integer
+
+      if (number > Number.MAX_SAFE_INTEGER) {
+        return new NumberDecimal(Number.MAX_SAFE_INTEGER);
+      }
+
+      if (number < Number.MIN_SAFE_INTEGER) {
+        return new NumberDecimal(Number.MIN_SAFE_INTEGER);
+      }
+
+      var maxPrecision = Math.max((0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.getNumberPrecision)(this.number), (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.getNumberPrecision)(target));
+      return new NumberDecimal(number.toFixed(maxPrecision));
+    }
+  }, {
+    key: "isEmpty",
+    value: function isEmpty() {
+      return this.empty;
+    }
+  }, {
+    key: "isNaN",
+    value: function isNaN() {
+      return Number.isNaN(this.number);
+    }
+  }, {
+    key: "isInvalidate",
+    value: function isInvalidate() {
+      return this.isEmpty() || this.isNaN();
+    }
+  }, {
+    key: "equals",
+    value: function equals(target) {
+      return this.toNumber() === (target === null || target === void 0 ? void 0 : target.toNumber());
+    }
+  }, {
+    key: "lessEquals",
+    value: function lessEquals(target) {
+      return this.add(target.negate().toString()).toNumber() <= 0;
+    }
+  }, {
+    key: "toNumber",
+    value: function toNumber() {
+      return this.number;
+    }
+  }, {
+    key: "toString",
+    value: function toString() {
+      var safe = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+      if (!safe) {
+        return this.origin;
+      }
+
+      if (this.isInvalidate()) {
+        return '';
+      }
+
+      return (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.num2str)(this.number);
+    }
+  }]);
+
+  return NumberDecimal;
+}();
+var BigIntDecimal = /*#__PURE__*/function () {
+  /** BigInt will convert `0009` to `9`. We need record the len of decimal */
+  function BigIntDecimal(value) {
+    (0,_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, BigIntDecimal);
+
+    this.origin = '';
+    this.negative = void 0;
+    this.integer = void 0;
+    this.decimal = void 0;
+    this.decimalLen = void 0;
+    this.empty = void 0;
+    this.nan = void 0;
+
+    if (!value && value !== 0 || !String(value).trim()) {
+      this.empty = true;
+      return;
+    }
+
+    this.origin = String(value); // Act like Number convert
+
+    if (value === '-') {
+      this.nan = true;
+      return;
+    }
+
+    var mergedValue = value; // We need convert back to Number since it require `toFixed` to handle this
+
+    if ((0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.isE)(mergedValue)) {
+      mergedValue = Number(mergedValue);
+    }
+
+    mergedValue = typeof mergedValue === 'string' ? mergedValue : (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.num2str)(mergedValue);
+
+    if ((0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.validateNumber)(mergedValue)) {
+      var trimRet = (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.trimNumber)(mergedValue);
+      this.negative = trimRet.negative;
+      var numbers = trimRet.trimStr.split('.');
+      this.integer = BigInt(numbers[0]);
+      var decimalStr = numbers[1] || '0';
+      this.decimal = BigInt(decimalStr);
+      this.decimalLen = decimalStr.length;
+    } else {
+      this.nan = true;
+    }
+  }
+
+  (0,_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(BigIntDecimal, [{
+    key: "getMark",
+    value: function getMark() {
+      return this.negative ? '-' : '';
+    }
+  }, {
+    key: "getIntegerStr",
+    value: function getIntegerStr() {
+      return this.integer.toString();
+    }
+  }, {
+    key: "getDecimalStr",
+    value: function getDecimalStr() {
+      return this.decimal.toString().padStart(this.decimalLen, '0');
+    }
+    /**
+     * Align BigIntDecimal with same decimal length. e.g. 12.3 + 5 = 1230000
+     * This is used for add function only.
+     */
+
+  }, {
+    key: "alignDecimal",
+    value: function alignDecimal(decimalLength) {
+      var str = "".concat(this.getMark()).concat(this.getIntegerStr()).concat(this.getDecimalStr().padEnd(decimalLength, '0'));
+      return BigInt(str);
+    }
+  }, {
+    key: "negate",
+    value: function negate() {
+      var clone = new BigIntDecimal(this.toString());
+      clone.negative = !clone.negative;
+      return clone;
+    }
+  }, {
+    key: "add",
+    value: function add(value) {
+      if (this.isInvalidate()) {
+        return new BigIntDecimal(value);
+      }
+
+      var offset = new BigIntDecimal(value);
+
+      if (offset.isInvalidate()) {
+        return this;
+      }
+
+      var maxDecimalLength = Math.max(this.getDecimalStr().length, offset.getDecimalStr().length);
+      var myAlignedDecimal = this.alignDecimal(maxDecimalLength);
+      var offsetAlignedDecimal = offset.alignDecimal(maxDecimalLength);
+      var valueStr = (myAlignedDecimal + offsetAlignedDecimal).toString(); // We need fill string length back to `maxDecimalLength` to avoid parser failed
+
+      var _trimNumber = (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.trimNumber)(valueStr),
+          negativeStr = _trimNumber.negativeStr,
+          trimStr = _trimNumber.trimStr;
+
+      var hydrateValueStr = "".concat(negativeStr).concat(trimStr.padStart(maxDecimalLength + 1, '0'));
+      return new BigIntDecimal("".concat(hydrateValueStr.slice(0, -maxDecimalLength), ".").concat(hydrateValueStr.slice(-maxDecimalLength)));
+    }
+  }, {
+    key: "isEmpty",
+    value: function isEmpty() {
+      return this.empty;
+    }
+  }, {
+    key: "isNaN",
+    value: function isNaN() {
+      return this.nan;
+    }
+  }, {
+    key: "isInvalidate",
+    value: function isInvalidate() {
+      return this.isEmpty() || this.isNaN();
+    }
+  }, {
+    key: "equals",
+    value: function equals(target) {
+      return this.toString() === (target === null || target === void 0 ? void 0 : target.toString());
+    }
+  }, {
+    key: "lessEquals",
+    value: function lessEquals(target) {
+      return this.add(target.negate().toString()).toNumber() <= 0;
+    }
+  }, {
+    key: "toNumber",
+    value: function toNumber() {
+      if (this.isNaN()) {
+        return NaN;
+      }
+
+      return Number(this.toString());
+    }
+  }, {
+    key: "toString",
+    value: function toString() {
+      var safe = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+      if (!safe) {
+        return this.origin;
+      }
+
+      if (this.isInvalidate()) {
+        return '';
+      }
+
+      return (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.trimNumber)("".concat(this.getMark()).concat(this.getIntegerStr(), ".").concat(this.getDecimalStr())).fullStr;
+    }
+  }]);
+
+  return BigIntDecimal;
+}();
+function getMiniDecimal(value) {
+  // We use BigInt here.
+  // Will fallback to Number if not support.
+  if ((0,_supportUtil__WEBPACK_IMPORTED_MODULE_3__.supportBigInt)()) {
+    return new BigIntDecimal(value);
+  }
+
+  return new NumberDecimal(value);
+}
+/**
+ * Align the logic of toFixed to around like 1.5 => 2
+ */
+
+function toFixed(numStr, separatorStr, precision) {
+  if (numStr === '') {
+    return '';
+  }
+
+  var _trimNumber2 = (0,_numberUtil__WEBPACK_IMPORTED_MODULE_2__.trimNumber)(numStr),
+      negativeStr = _trimNumber2.negativeStr,
+      integerStr = _trimNumber2.integerStr,
+      decimalStr = _trimNumber2.decimalStr;
+
+  var precisionDecimalStr = "".concat(separatorStr).concat(decimalStr);
+  var numberWithoutDecimal = "".concat(negativeStr).concat(integerStr);
+
+  if (precision >= 0) {
+    // We will get last + 1 number to check if need advanced number
+    var advancedNum = Number(decimalStr[precision]);
+
+    if (advancedNum >= 5) {
+      var advancedDecimal = getMiniDecimal(numStr).add("".concat(negativeStr, "0.").concat('0'.repeat(precision)).concat(10 - advancedNum));
+      return toFixed(advancedDecimal.toString(), separatorStr, precision);
+    }
+
+    if (precision === 0) {
+      return numberWithoutDecimal;
+    }
+
+    return "".concat(numberWithoutDecimal).concat(separatorStr).concat(decimalStr.padEnd(precision, '0').slice(0, precision));
+  }
+
+  if (precisionDecimalStr === '.0') {
+    return numberWithoutDecimal;
+  }
+
+  return "".concat(numberWithoutDecimal).concat(precisionDecimalStr);
+}
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/utils/numberUtil.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/utils/numberUtil.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "trimNumber": () => (/* binding */ trimNumber),
+/* harmony export */   "isE": () => (/* binding */ isE),
+/* harmony export */   "getNumberPrecision": () => (/* binding */ getNumberPrecision),
+/* harmony export */   "num2str": () => (/* binding */ num2str),
+/* harmony export */   "validateNumber": () => (/* binding */ validateNumber)
+/* harmony export */ });
+/* harmony import */ var _supportUtil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supportUtil */ "./node_modules/rc-input-number/es/utils/supportUtil.js");
+
+/**
+ * Format string number to readable number
+ */
+
+function trimNumber(numStr) {
+  var str = numStr.trim();
+  var negative = str.startsWith('-');
+
+  if (negative) {
+    str = str.slice(1);
+  }
+
+  str = str // Remove decimal 0. `1.000` => `1.`, `1.100` => `1.1`
+  .replace(/(\.\d*[^0])0*$/, '$1') // Remove useless decimal. `1.` => `1`
+  .replace(/\.0*$/, '') // Remove integer 0. `0001` => `1`, 000.1' => `.1`
+  .replace(/^0+/, '');
+
+  if (str.startsWith('.')) {
+    str = "0".concat(str);
+  }
+
+  var trimStr = str || '0';
+  var splitNumber = trimStr.split('.');
+  var integerStr = splitNumber[0] || '0';
+  var decimalStr = splitNumber[1] || '0';
+
+  if (integerStr === '0' && decimalStr === '0') {
+    negative = false;
+  }
+
+  var negativeStr = negative ? '-' : '';
+  return {
+    negative: negative,
+    negativeStr: negativeStr,
+    trimStr: trimStr,
+    integerStr: integerStr,
+    decimalStr: decimalStr,
+    fullStr: "".concat(negativeStr).concat(trimStr)
+  };
+}
+function isE(number) {
+  var str = String(number);
+  return !Number.isNaN(Number(str)) && str.includes('e');
+}
+/**
+ * [Legacy] Convert 1e-9 to 0.000000001.
+ * This may lose some precision if user really want 1e-9.
+ */
+
+function getNumberPrecision(number) {
+  var numStr = String(number);
+
+  if (isE(number)) {
+    var precision = Number(numStr.slice(numStr.indexOf('e-') + 2));
+    var decimalMatch = numStr.match(/\.(\d+)/);
+
+    if (decimalMatch === null || decimalMatch === void 0 ? void 0 : decimalMatch[1]) {
+      precision += decimalMatch[1].length;
+    }
+
+    return precision;
+  }
+
+  return numStr.includes('.') && validateNumber(numStr) ? numStr.length - numStr.indexOf('.') - 1 : 0;
+}
+/**
+ * Convert number (includes scientific notation) to -xxx.yyy format
+ */
+
+function num2str(number) {
+  var numStr = String(number);
+
+  if (isE(number)) {
+    if (number > Number.MAX_SAFE_INTEGER) {
+      return String((0,_supportUtil__WEBPACK_IMPORTED_MODULE_0__.supportBigInt)() ? BigInt(number).toString() : Number.MAX_SAFE_INTEGER);
+    }
+
+    if (number < Number.MIN_SAFE_INTEGER) {
+      return String((0,_supportUtil__WEBPACK_IMPORTED_MODULE_0__.supportBigInt)() ? BigInt(number).toString() : Number.MIN_SAFE_INTEGER);
+    }
+
+    numStr = number.toFixed(getNumberPrecision(numStr));
+  }
+
+  return trimNumber(numStr).fullStr;
+}
+function validateNumber(num) {
+  if (typeof num === 'number') {
+    return !Number.isNaN(num);
+  } // Empty
+
+
+  if (!num) {
+    return false;
+  }
+
+  return (// Normal type: 11.28
+    /^\s*-?\d+(\.\d+)?\s*$/.test(num) || // Pre-number: 1.
+    /^\s*-?\d+\.\s*$/.test(num) || // Post-number: .1
+    /^\s*-?\.\d+\s*$/.test(num)
+  );
+}
+
+/***/ }),
+
+/***/ "./node_modules/rc-input-number/es/utils/supportUtil.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/rc-input-number/es/utils/supportUtil.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "supportBigInt": () => (/* binding */ supportBigInt)
+/* harmony export */ });
+function supportBigInt() {
+  return typeof BigInt === 'function';
+}
 
 /***/ }),
 

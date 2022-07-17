@@ -1,7 +1,7 @@
 import {Table} from "antd";
 import React, {useState} from "react";
 
-export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleClickHandler, ...rest}) => {
+export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleClickHandler, selectable = true,...rest}) => {
     const _columns = columns.map(column => {
         return {
             title: column.title || "",
@@ -13,9 +13,7 @@ export const TTable = ({columns, dataSource, clickRecord, clickHandler, doubleCl
 
     const [selectedRowKey, setSelectedRowKey] = useState(null)
 
-    const rowClassName = record => {
-        return record.key === selectedRowKey ? 'clickRowStyle' : '';
-    }
+    const rowClassName = record => (selectable && record.key === selectedRowKey) ? 'clickRowStyle' : ''
 
     return (
         <Table
