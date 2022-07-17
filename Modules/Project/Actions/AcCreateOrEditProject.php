@@ -37,7 +37,7 @@ final class AcCreateOrEditProject extends ArrEnvelope
                         ],
                         new ArrIf(
                             Auth::user()->isAdmin(),
-                            fn () => ['dealers' => Dealer::allOrCached()->only(['id', 'name'])]
+                            fn () => ['dealers' => Dealer::allOrCached()->map->only(['id', 'name'])->all()]
                         ),
                     )
                 ),

@@ -2,7 +2,7 @@ import React from 'react'
 import {useInputRules} from "../../../../../../../resources/js/src/Hooks/input-rules.hook";
 import {usePage} from "@inertiajs/inertia-react";
 import {Selection} from "../../../../../../../resources/js/src/Shared/Inputs/Selection";
-import {Input, Switch} from "antd";
+import {Button, Divider, Form, Input, Select, Space, Switch, Table} from "antd";
 import {Inertia} from "@inertiajs/inertia";
 import {ResourceContainer} from "../../../../../../../resources/js/src/Shared/Resource/Containers/ResourceContainer";
 import {SubmitAction} from "../../../../../../../resources/js/src/Shared/Resource/Actions/SubmitAction";
@@ -10,6 +10,8 @@ import {ItemsForm} from "../../../../../../../resources/js/src/Shared/ItemsForm"
 import {BackToDealersLink} from "../../Components/BackToDealersLink";
 import {useLabels} from "../../../../../../../resources/js/src/Hooks/labels.hook";
 import {MultipleSelection} from "../../../../../../../resources/js/src/Shared/Inputs/MultipleSelection";
+import {useStyles} from "../../../../../../../resources/js/src/Hooks/styles.hook";
+import {PrimaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 
 export default function CreateOrEdit() {
     // HOOKS
@@ -91,6 +93,12 @@ export default function CreateOrEdit() {
                 name={formName}
                 onFinish={createOrUpdateDealerHandler}
             />
+            <Divider orientation="left">
+                Наценки
+            </Divider>
+            <PrimaryButton>
+                Add a row
+            </PrimaryButton>
         </ResourceContainer>
     )
 }

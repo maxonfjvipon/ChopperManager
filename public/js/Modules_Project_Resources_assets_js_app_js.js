@@ -13054,7 +13054,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/form/index.js");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/col/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _excluded = ["form", "withRow", "layout", "items", "labelSpan", "onFinish"];
 
@@ -13072,8 +13071,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
-
 var ItemsForm = function ItemsForm(_ref) {
   var form = _ref.form,
       _ref$withRow = _ref.withRow,
@@ -13085,23 +13082,6 @@ var ItemsForm = function ItemsForm(_ref) {
       labelSpan = _ref$labelSpan === void 0 ? 5 : _ref$labelSpan,
       onFinish = _ref.onFinish,
       rest = _objectWithoutProperties(_ref, _excluded);
-
-  var formItem = function formItem(item) {
-    return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_2__["default"].Item, _objectSpread(_objectSpread({}, item.values), {}, {
-      key: item.values.name
-    }), item.input);
-  };
-
-  var formItems = function formItems() {
-    return items.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [withRow && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          span: item.span || 3,
-          children: formItem(item)
-        }), !withRow && formItem(item)]
-      });
-    });
-  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__["default"], _objectSpread(_objectSpread({
     onFinish: onFinish,

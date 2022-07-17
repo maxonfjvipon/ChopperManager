@@ -14,7 +14,8 @@ final class RcProjectToEdit extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  Request
+     * @param Request
+     * @return array
      */
     public function toArray($request): array
     {

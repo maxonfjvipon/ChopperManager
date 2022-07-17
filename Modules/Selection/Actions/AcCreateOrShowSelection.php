@@ -2,7 +2,6 @@
 
 namespace Modules\Selection\Actions;
 
-use Auth;
 use Exception;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrEnvelope;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrFromCallback;
@@ -12,6 +11,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Modules\Components\Entities\CollectorMaterial;
 use Modules\Components\Entities\ControlSystemType;
 use Modules\Components\Entities\YesNo;
+use Modules\Project\Entities\Project;
 use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\Pump\Entities\DN;
 use Modules\PumpSeries\Entities\PumpBrand;
@@ -40,7 +40,7 @@ final class AcCreateOrShowSelection extends ArrEnvelope
         parent::__construct(
             new ArrFromCallback(
                 function () {
-                    $series_ids = self::availableSeriesIds();
+                    $series_ids = self::availableSeriesIds($this->projectId);
 
                     return new ArrMerged(
                         ['project_id' => $this->projectId],
@@ -97,11 +97,13 @@ final class AcCreateOrShowSelection extends ArrEnvelope
     }
 
     /**
-     * Get available {@see PumpSeries::$id}s for {@see Dealer} of {@see Auth::user()}.
+     * Get available {@see PumpSeries::$id}s for {@see Dealer} of {@see Project} by {@param  int  $projectId}.
      */
-    private static function availableSeriesIds(): array
+    private static function availableSeriesIds(int $projectId): array
     {
-        return Auth::user()->dealer->available_series()
+        return Project::find($projectId)
+            ->dealer
+            ->available_series()
             ->notDiscontinued()
             ->pluck('id')
             ->all();
