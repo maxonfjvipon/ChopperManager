@@ -9235,7 +9235,12 @@ function CreateOrEdit() {
     input: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_resources_js_src_Shared_Inputs_InputNum__WEBPACK_IMPORTED_MODULE_16__.InputNum, {
       style: fullWidth,
       min: 0
-    })
+    }),
+    render: function render(_, record) {
+      var _record$cost_to;
+
+      return (_record$cost_to = record.cost_to) === null || _record$cost_to === void 0 ? void 0 : _record$cost_to.toLocaleString();
+    }
   }, {
     title: "Наценка, %",
     dataIndex: "value",

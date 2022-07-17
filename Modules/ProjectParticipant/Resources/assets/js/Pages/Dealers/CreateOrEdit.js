@@ -88,7 +88,8 @@ export default function CreateOrEdit() {
         title: "Себестоимость до, ₽",
         dataIndex: "cost_to",
         editable: true,
-        input: <InputNum style={fullWidth} min={0}/>
+        input: <InputNum style={fullWidth} min={0}/>,
+        render: (_, record) => record.cost_to?.toLocaleString(),
     }, {
         title: "Наценка, %",
         dataIndex: "value",
