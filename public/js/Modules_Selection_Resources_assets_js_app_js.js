@@ -11427,7 +11427,8 @@ var PumpStationSelection = function PumpStationSelection(_ref3) {
               _context.t8 = {};
               _context.t9 = {
                 station_type: station_type,
-                selection_type: selection_type
+                selection_type: selection_type,
+                project_id: project_id
               };
               _context.t10 = (0, _context.t3)(_context.t7, _context.t8, _context.t9);
               _context.next = 20;

@@ -142,6 +142,7 @@ export const PumpStationSelection = ({title, widths}) => {
                 ...await selectionForm.validateFields(),
                 station_type,
                 selection_type,
+                project_id
             }, true)).selected_pumps)
         } catch (e) {
             console.log(e)
