@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Form, Input, message} from "antd";
 import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/TTable";
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
-import {LineChartOutlined, FilePdfOutlined, DeleteOutlined, DollarOutlined} from "@ant-design/icons";
+import {LineChartOutlined, FilePdfOutlined, DeleteOutlined, DollarOutlined, PercentageOutlined} from "@ant-design/icons";
 import {EditableCell} from "../../../../../../resources/js/src/Shared/EditableCell";
 import {TableAction} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableAction";
 import {Edit} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/Edit";
@@ -17,7 +17,8 @@ export const AddedPumpStationsTable = ({
                                     loading,
                                     setAddedStations,
                                     stationType,
-                                    selectionType
+                                    selectionType,
+                                    projectId
                                 }) => {
     const [editingKey, setEditingKey] = useState('');
     const [form] = Form.useForm()
@@ -82,6 +83,11 @@ export const AddedPumpStationsTable = ({
                             clickHandler={updateCostHandler(record)}
                             icon={<DollarOutlined/>}
                             title="Обновить себестоимость"
+                        />}
+                        {record.cost_structure && <TableAction
+                            clickHandler={markupByTemplateHandler(record)}
+                            icon={<PercentageOutlined/>}
+                            title="Наценка по шаблону"
                         />}
                         <TableAction
                             clickHandler={() => setStationToShow(record)}
@@ -176,6 +182,12 @@ export const AddedPumpStationsTable = ({
         stations.splice(index, 1, {...stations[index], ...updated})
         setAddedStations([...stations])
         setEditingKey('')
+    }
+
+    const markupByTemplateHandler = record => () => {
+        // postRequest(route('pump_stations.markup_by_template'), {
+        //     project_id: projectId,
+        // })
     }
 
     return (

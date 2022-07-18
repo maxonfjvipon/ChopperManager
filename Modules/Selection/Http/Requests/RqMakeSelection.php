@@ -26,6 +26,7 @@ use Modules\Components\Entities\ControlSystemType;
  * @property float $jockey_head
  * @property float $jockey_flow
  * @property array $jockey_series_ids
+ * @property int $project_id
  */
 abstract class RqMakeSelection extends RqDetermineSelection
 {
@@ -37,6 +38,7 @@ abstract class RqMakeSelection extends RqDetermineSelection
         return array_merge(
             parent::rules(),
             [
+                'project_id' => ['required', 'exists:projects,id'],
                 'flow' => ['required', 'numeric', 'min:0', 'not_in:0'],
                 'head' => ['required', 'numeric', 'min:0', 'not_in:0'],
                 'reserve_pumps_count' => ['required', 'numeric', new In([0, 1, 2, 3, 4])],

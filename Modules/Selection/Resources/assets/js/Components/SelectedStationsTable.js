@@ -5,14 +5,14 @@ import {TTable} from "../../../../../../resources/js/src/Shared/Resource/Table/T
 import {TableActionsContainer} from "../../../../../../resources/js/src/Shared/Resource/Table/Actions/TableActionsContainer";
 import {PlusOutlined} from "@ant-design/icons";
 
-export const SelectedPumpsTable = ({
-                                       selectedPumps,
-                                       setStationToShow,
-                                       loading,
-                                       addStationHandler,
-                                       dependencies = [],
-                                       clickPumpArticleHandler
-                                   }) => {
+export const SelectedStationsTable = ({
+                                          selectedPumps,
+                                          setStationToShow,
+                                          loading,
+                                          addStationHandler,
+                                          dependencies = [],
+                                          clickPumpArticleHandler
+                                      }) => {
     const {locales} = usePage().props
 
     const columns = [
@@ -32,10 +32,11 @@ export const SelectedPumpsTable = ({
         {
             title: "Себестоимость, ₽",
             dataIndex: 'cost_price',
-            render: (_, record) =>
-                <Tooltip overlayStyle={{whiteSpace: 'pre-line'}} placement="topRight" title={record.cost_structure}>
+            render: (_, record) => record.cost_structure
+                ? <Tooltip overlayStyle={{whiteSpace: 'pre-line'}} placement="topRight" title={record.cost_structure}>
                     {record.cost_price.toLocaleString()}
-                </Tooltip>,
+                </Tooltip>
+                : record.cost_price.toLocaleString(),
             sorter: (a, b) => a.cost_price - b.cost_price,
             defaultSortOrder: 'ascend'
         },

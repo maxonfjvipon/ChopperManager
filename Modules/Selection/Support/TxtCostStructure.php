@@ -20,9 +20,8 @@ final class TxtCostStructure extends TxtEnvelope
      *
      * @throws Exception
      */
-    public function __construct(
-        private Arrayable $structure
-    ) {
+    public function __construct(private Arrayable $structure)
+    {
         parent::__construct(
             new TxtJoined(
                 'Насос: '.($structure = $this->structure->asArray())['pump'],

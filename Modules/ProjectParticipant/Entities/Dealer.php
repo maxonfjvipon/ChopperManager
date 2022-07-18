@@ -26,6 +26,7 @@ use Modules\User\Entities\Area;
  * @property Carbon                             $created_at
  * @property string                             $phone
  * @property array<Project>|Collection<Project> $projects
+ * @property array<DealerMarkup>|Collection<DealerMarkup> $markups
  *
  * @method static self find(int|string $id)
  * @method static self create(array $attributes)
@@ -52,6 +53,9 @@ final class Dealer extends Model implements Arrayable
         'without_pumps' => 'boolean',
     ];
 
+    /**
+     * @return string
+     */
     protected static function getCacheKey(): string
     {
         return 'dealers';
@@ -79,6 +83,17 @@ final class Dealer extends Model implements Arrayable
             ),
             $bpe
         );
+    }
+
+    /**
+     * @param  int|float  $price
+     * @return DealerMarkup|null
+     */
+    public function markupForPrice(int|float $price): ?DealerMarkup
+    {
+        return $this->markups->where('cost_from', '<=', $price)
+            ->where('cost_to', '>=', $price)
+            ->first();
     }
 
     public function asArray(): array

@@ -12,6 +12,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Maxonfjvipon\Elegant_Elephant\Numerable\NumSticky;
 use Modules\Components\Entities\Chassis;
 use Modules\Components\Entities\ControlSystem;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Http\Requests\RqMakeSelection;
@@ -28,12 +29,19 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
+     * @param  RqMakeSelection  $request
+     * @param  Arrayable  $dnsMaterials
+     * @param  Rates  $rates
+     * @param  \Illuminate\Database\Eloquent\Collection  $controlSystems
+     * @param  Dealer  $dealer
      */
     public function __construct(
         private RqMakeSelection $request,
         private Arrayable $dnsMaterials,
         private Rates $rates,
-        private \Illuminate\Database\Eloquent\Collection $controlSystems
+        private \Illuminate\Database\Eloquent\Collection $controlSystems,
+        private Dealer $dealer
     ) {
         $key = 1;
         parent::__construct(
@@ -78,7 +86,8 @@ final class SelectedPumpsWSAuto extends ArrEnvelope
                                                                         'control_system' => $controlSystem,
                                                                         'chassis' => $chassis,
                                                                         'collectors' => $_collectors,
-                                                                    ]
+                                                                    ],
+                                                                    $this->dealer
                                                                 );
                                                             },
                                                             true

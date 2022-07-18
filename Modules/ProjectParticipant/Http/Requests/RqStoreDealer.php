@@ -11,6 +11,7 @@ use Modules\User\Entities\Area;
 
 /**
  * Store dealer request.
+ *
  * @property array $markups
  */
 class RqStoreDealer extends FormRequest
@@ -28,8 +29,9 @@ class RqStoreDealer extends FormRequest
             'itn' => ['sometimes', 'nullable', 'max:12', 'unique:dealers,itn'],
             'email' => ['sometimes', 'nullable', 'string', 'email', 'max:255', 'unique:dealers,email'],
             'phone' => ['sometimes', 'nullable', 'max:12'],
+            'without_pumps' => ['required', 'boolean'],
             'available_series_ids' => ['sometimes', 'nullable', 'array', new ArrayExistsInArray(PumpSeries::pluck('id')->all())],
-            'markups' => ['array']
+            'markups' => ['array'],
         ];
     }
 
@@ -41,6 +43,7 @@ class RqStoreDealer extends FormRequest
             'itn' => $this->itn,
             'email' => $this->email,
             'phone' => $this->phone,
+            'without_pumps' => $this->without_pumps,
         ];
     }
 }

@@ -10,6 +10,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMapped;
 use Modules\Components\Entities\Chassis;
 use Modules\Components\Entities\Collector;
 use Modules\Components\Entities\ControlSystem;
+use Modules\ProjectParticipant\Entities\Dealer;
 use Modules\Pump\Entities\DN;
 use Modules\Pump\Entities\Pump;
 use Modules\Selection\Http\Requests\RqMakeSelection;
@@ -19,11 +20,17 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
 {
     /**
      * Ctor.
+     *
+     * @param  RqMakeSelection  $request
+     * @param  Rates  $rates
+     * @param  Collection  $controlSystems
+     * @param  Dealer  $dealer
      */
     public function __construct(
         private RqMakeSelection $request,
         private Rates $rates,
-        private Collection $controlSystems
+        private Collection $controlSystems,
+        private Dealer $dealer,
     ) {
         parent::__construct(
             new ArrFromCallback(
@@ -72,7 +79,8 @@ final class SelectedPumpsAFHandle extends ArrEnvelope
                                     'collectors' => $collectors,
                                     'jockey_pump' => $jockeyPump,
                                     'jockey_chassis' => $jockeyChassis,
-                                ]
+                                ],
+                                $this->dealer
                             );
                         },
                         true

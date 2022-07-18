@@ -26,6 +26,7 @@ use Staudenmeir\EloquentHasManyDeep\HasRelationships;
  * @property string                                   $itn
  * @property bool                                     $is_active
  * @property string                                   $phone
+ * @property int                                      $dealer_id
  * @property string                                   $email
  * @property UserRole                                 $role
  * @property Carbon                                   $created_at

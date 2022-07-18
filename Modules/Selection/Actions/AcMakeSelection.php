@@ -13,6 +13,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrTernary;
 use Maxonfjvipon\Elegant_Elephant\Logical\IsEmpty;
 use Modules\Components\Entities\ControlSystem;
+use Modules\Project\Entities\Project;
 use Modules\Selection\Entities\SelectionType;
 use Modules\Selection\Entities\StationType;
 use Modules\Selection\Http\Requests\RqMakeSelection;
@@ -39,6 +40,9 @@ final class AcMakeSelection extends ArrEnvelope
                 function () use ($request) {
                     $controlSystems = ControlSystem::allOrCached()->load('type');
                     $rates = new StickyRates(new RealRates());
+                    $dealer = Project::find($request->project_id)
+                        ->dealer
+                        ->load('markups');
 
                     return new ArrTernary(
                         new IsEmpty(
@@ -49,12 +53,14 @@ final class AcMakeSelection extends ArrEnvelope
                                             $request,
                                             new ArrDNMaterials($request),
                                             $rates,
-                                            $controlSystems
+                                            $controlSystems,
+                                            $dealer,
                                         ),
                                         SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsWSHandle(
                                             $request,
                                             $rates,
-                                            $controlSystems
+                                            $controlSystems,
+                                            $dealer,
                                         )
                                     },
                                     StationType::getKey(StationType::AF) => match ($request->selection_type) {
@@ -62,12 +68,14 @@ final class AcMakeSelection extends ArrEnvelope
                                             $request,
                                             new ArrDNMaterials($request),
                                             $rates,
-                                            $controlSystems
+                                            $controlSystems,
+                                            $dealer,
                                         ),
                                         SelectionType::getKey(SelectionType::Handle) => new SelectedPumpsAFHandle(
                                             $request,
                                             $rates,
-                                            $controlSystems
+                                            $controlSystems,
+                                            $dealer,
                                         ),
                                     }
                                 }

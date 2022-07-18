@@ -19,7 +19,7 @@ final class RcDealerMarkup extends JsonResource
             'key' => $this->resource->id,
             'cost_from' => $this->resource->cost_from,
             'cost_to' => $this->resource->cost_to,
-            'value' => $this->resource->value
+            'value' => $this->resource->value,
         ];
     }
 }

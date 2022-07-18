@@ -16,7 +16,7 @@ import {Selection} from "../../../../../../../resources/js/src/Shared/Inputs/Sel
 import {SecondaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/SecondaryButton";
 import {PrimaryButton} from "../../../../../../../resources/js/src/Shared/Buttons/PrimaryButton";
 import {RoundedCard} from "../../../../../../../resources/js/src/Shared/Cards/RoundedCard";
-import {SelectedPumpsTable} from "../../Components/SelectedPumpsTable";
+import {SelectedStationsTable} from "../../Components/SelectedStationsTable";
 import {BoxFlexEnd} from "../../../../../../../resources/js/src/Shared/Box/BoxFlexEnd";
 import {usePage} from "@inertiajs/inertia-react";
 import {useCheck} from "../../../../../../../resources/js/src/Hooks/check.hook";
@@ -787,7 +787,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                         type="inner"
                                         title="Подобранные станции"
                                     >
-                                        <SelectedPumpsTable
+                                        <SelectedStationsTable
                                             selectedPumps={selectedPumps}
                                             setStationToShow={setStationToShow}
                                             loading={loading}
@@ -840,6 +840,7 @@ export const PumpStationSelection = ({title, widths}) => {
                                 setAddedStations={setAddedStations}
                                 selectionType={selection_type}
                                 stationType={station_type}
+                                projectId={project_id}
                             />
                         </RoundedCard>
                     </Col>

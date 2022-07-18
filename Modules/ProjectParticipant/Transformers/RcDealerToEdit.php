@@ -25,8 +25,9 @@ final class RcDealerToEdit extends JsonResource
             'area_id' => $this->resource->area_id,
             'itn' => $this->resource->itn,
             'email' => $this->resource->email,
+            'without_pumps' => $this->resource->without_pumps,
             'available_series_ids' => $this->resource->available_series->pluck('id')->all(),
-            'markups' => RcDealerMarkup::collection($this->resource->markups)
+            'markups' => RcDealerMarkup::collection($this->resource->markups),
         ];
     }
 }

@@ -72,6 +72,14 @@ export default function CreateOrEdit() {
         }, input: <Input placeholder={labels.email}/>
     }, {
         values: {
+            name: 'without_pumps',
+            label: "Наценки без учета насосов",
+            rules: [rules.required],
+            valuePropName: "checked",
+            initialValue: dealer ? dealer.without_pumps : false,
+        }, input: <Switch/>,
+    }, {
+        values: {
             name: 'available_series_ids', label: labels.available_series, initialValue: dealer?.available_series_ids,
         }, input: <MultipleSelection placeholder={labels.available_series} options={filter_data.series}/>
     }]

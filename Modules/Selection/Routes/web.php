@@ -47,6 +47,7 @@ Route::prefix('selections')->as('selections.')->group(function () {
 
 Route::prefix('pump-stations')->as('pump_stations.')->group(function () {
     Route::post('curves')->name('curves')->uses(EpPumpStationCurves::class);
+    Route::post('markup-by-template')->name('markup_by_template');
 
     Route::prefix('{pump_station}')->group(function () {
         Route::post('update-cost')->name('update_cost')->uses(EpUpdatePumpStationCost::class);
