@@ -79,8 +79,8 @@ final class ArrSelectedPump extends ArrEnvelope
                     )
                 ),
                 new ArrIf(
-                    \Auth::user()->dealer_id === $dealer->id,
-                    new ArrObject(
+                    \Auth::user()->dealer_id === Dealer::BPE,
+                    fn () => new ArrObject(
                         'cost_structure',
                         new TxtCostStructure($costStructure)
                     ),

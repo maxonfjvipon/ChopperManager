@@ -42,7 +42,7 @@ final class PumpStationPrice implements Numerable
         }
 
         // with markups
-        if (\Auth::user()->dealer_id === $this->dealer->id) {
+        if (\Auth::user()->dealer_id !== Dealer::BPE) {
             $toMarkup = $sum;
             if ($this->dealer->without_pumps) {
                 $toMarkup = $sum - $components['pumps'];
