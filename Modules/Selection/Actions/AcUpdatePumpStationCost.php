@@ -45,7 +45,8 @@ final class AcUpdatePumpStationCost extends ArrEnvelope
                                 ]),
                             ],
                             $pumpStation->pumps_count
-                        )
+                        ),
+                        \Auth::user()->dealer
                     ),
                     2
                 )
