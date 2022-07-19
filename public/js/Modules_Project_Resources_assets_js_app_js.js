@@ -12247,8 +12247,9 @@ function Index() {
       filteredBoolArray = _usePermissions.filteredBoolArray;
 
   var _useDate = (0,_resources_js_src_Hooks_date_hook__WEBPACK_IMPORTED_MODULE_9__.useDate)(),
-      compareDate = _useDate.compareDate; // STATE
+      compareDate = _useDate.compareDate;
 
+  console.log(filter_data); // STATE
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(projects),
       _useState2 = _slicedToArray(_useState, 2),

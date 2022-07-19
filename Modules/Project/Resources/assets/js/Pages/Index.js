@@ -18,6 +18,8 @@ export default function Index() {
     const {filteredBoolArray} = usePermissions()
     const {compareDate} = useDate()
 
+    console.log(filter_data)
+
     // STATE
     const [projectsToShow, setProjectsToShow] = useState(projects)
 
