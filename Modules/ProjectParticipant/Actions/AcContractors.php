@@ -10,6 +10,7 @@ use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrMerged;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrObject;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrSticky;
 use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrUnique;
+use Maxonfjvipon\Elegant_Elephant\Arrayable\ArrValues;
 use Modules\ProjectParticipant\Entities\Contractor;
 
 /**
@@ -33,17 +34,19 @@ final class AcContractors extends ArrEnvelope
                             Contractor::allOrCached()
                                 ->load('area')
                                 ->all(),
-                            fn (Contractor $contractor) => $contractor->asArray()
+                            fn(Contractor $contractor) => $contractor->asArray()
                         )
                     )
                 ),
                 new ArrObject(
                     'filter_data',
                     new ArrForFiltering(
-                        ['areas' => new ArrUnique(
-                            new ArrMapped(
-                                $contractors,
-                                fn (array $contractor) => $contractor['area']
+                        ['areas' => new ArrValues(
+                            new ArrUnique(
+                                new ArrMapped(
+                                    $contractors,
+                                    fn(array $contractor) => $contractor['area']
+                                )
                             )
                         )]
                     )
